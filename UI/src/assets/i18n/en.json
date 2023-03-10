@@ -1,0 +1,10 @@
+{
+  "menu": {
+    "home": "Home",
+    "vehicle": "Vehicle",
+    "auction": "Auction",
+    "location": "Location",
+    "services": "Services",
+    "privacy": "Privacy"
+  }
+}

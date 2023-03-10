@@ -1,0 +1,11 @@
+$dx-theme: 'light' !default;
+@use 'src/styles/variables' as vars;
+
+form.page-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-content {
+  overflow: auto;
+}

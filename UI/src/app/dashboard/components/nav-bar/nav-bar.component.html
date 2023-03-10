@@ -1,0 +1,8 @@
+<dx-list [items]="navigation" [width]="200" selectionMode="single" itemTemplate="links" class="">
+  <a [routerLink]="[link.href]" *dxTemplate="let link of 'links'">
+    <div class="dx-list-item-icon-container" location="before">
+      <i class="dx-icon dx-list-item-icon {{link.icon}}"></i>
+    </div>
+    <span [transloco]="link.text" [translocoParams]="{ n: 2 }"></span>
+  </a>
+</dx-list>

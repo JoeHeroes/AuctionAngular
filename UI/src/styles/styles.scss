@@ -1,0 +1,42 @@
+@use 'variables' as *;
+@use 'node_modules/devextreme/scss/widgets/generic/typography';
+@use 'node_modules/devextreme/scss/widgets/generic/icons';
+@use 'node_modules/devextreme/scss/widgets/generic/widget';
+@use 'node_modules/devextreme/scss/widgets/generic/card';
+@use 'node_modules/devextreme/scss/widgets/generic/fieldset';
+@use 'node_modules/devextreme/scss/widgets/generic/common';
+@use 'node_modules/devextreme/scss/widgets/base/resizable';
+@use 'node_modules/devextreme/scss/widgets/base/draggable';
+@use 'node_modules/devextreme/scss/widgets/base/ui';
+@use 'node_modules/devextreme/scss/widgets/generic';
+@use 'node_modules/@fortawesome/fontawesome-free/css/fontawesome.css';
+@use 'node_modules/@fortawesome/fontawesome-free/css/solid.css';
+
+html, body {
+  background: darken($base-bg, 5%);
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.dx-list-item-icon-container {
+  width: 34px;
+}
+
+.dx-form-group-caption {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.dx-theme-generic-typography h3 {
+  font-weight: bold;
+}
+
+.dx-button-has-text .dx-button-content {
+  padding: 5px 12px 6px;
+}
+
+.dx-button.dx-state-disabled {
+  pointer-events: auto;
+}

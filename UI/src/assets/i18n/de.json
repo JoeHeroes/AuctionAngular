@@ -1,0 +1,10 @@
+{
+  "menu": {
+    "home": "Heim",
+    "vehicle": "Fahrzeug",
+    "auction": "Versteigerung",
+    "location": "Standort",
+    "services": "Dienstleistungen",
+    "privacy": "Privatsphäre"
+  }
+}

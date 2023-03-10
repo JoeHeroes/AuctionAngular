@@ -1,0 +1,37 @@
+@use "../../../../styles/variables" as vars;
+
+:host {
+  border: 1px solid;
+  border-radius: 4px;
+  display: block;
+  margin: 1em 0;
+}
+
+h4 {
+  font-size: 1em;
+  margin: .8em 1em;
+}
+
+p {
+  margin: .8em 1em;
+}
+
+:host(.info) {
+  border-color: vars.$base-accent;
+  background-color: transparentize(vars.$base-accent, 0.9);
+}
+
+:host(.warning) {
+  border-color: vars.$base-warning;
+  background-color: transparentize(vars.$base-warning, 0.9);
+}
+
+:host(.danger) {
+  border-color: vars.$base-danger;
+  background-color: transparentize(vars.$base-danger, 0.9);
+}
+
+:host(.success) {
+  border-color: vars.$base-success;
+  background-color: transparentize(vars.$base-success, 0.9);
+}

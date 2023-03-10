@@ -1,0 +1,8 @@
+<ng-container *ngIf="!noText">
+  <img class="logo" [class.light]="true" src="/assets/erik_logo_b.svg" alt="tmERIK Ecosystem Status Site" />
+  <img class="logo" [class.dark]="true" src="/assets/erik_logo_w.svg" alt="tmERIK Ecosystem Status Site" />
+</ng-container>
+<ng-container *ngIf="noText">
+  <img class="logo" [class.light]="true" src="/assets/erik_logo_no_text_b.svg" alt="tmERIK Ecosystem Status Site" />
+  <img class="logo" [class.dark]="true"  src="/assets/erik_logo_no_text_w.svg" alt="tmERIK Ecosystem Status Site" />
+</ng-container>

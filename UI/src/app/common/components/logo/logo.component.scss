@@ -1,0 +1,45 @@
+:host {
+  display: block;
+  margin: 2rem auto;
+}
+
+.logo {
+  width: 100%;
+  display: block;
+
+  &.dark {
+    display: none;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .logo {
+    &.dark {
+      display: block;
+    }
+
+    &.light {
+      display: none;
+    }
+  }
+}
+
+:host.force-light .logo {
+  &.dark {
+    display: block;
+  }
+
+  &.light {
+    display: none;
+  }
+}
+
+:host.force-dark .logo {
+  &.dark {
+    display: none;
+  }
+
+  &.light {
+    display: block;
+  }
+}

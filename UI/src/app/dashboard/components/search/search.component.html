@@ -1,0 +1,12 @@
+<div class="search-container">
+  <div
+    class="dx-datagrid-search-panel dx-textbox dx-texteditor dx-searchbox dx-show-clear-button dx-widget dx-texteditor-empty">
+    <div class="dx-icon dx-icon-search"></div>
+    <form>
+      <input #searchTextBox aria-label="Suchen in der Datentabelle" autocomplete="new-password"
+        class="dx-texteditor-input" id="searchTextBox" role="textbox" spellcheck="false" tabindex="0" type="text" />
+      <div (click)="onSearchText(''); searchTextBox.value = ''; searchTextBox.focus()" *ngIf="searchText !== ''"
+        class="dx-icon dx-icon-clear"></div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<ng-container *transloco="let t">
+  <dx-toolbar>
+
+    <dxi-item location="before" locateInMenu="never">
+      <div class="toolbar-label">Copart</div>
+    </dxi-item>
+    <dxi-item locateInMenu="never">
+      <app-search class="align-self-center"></app-search>
+    </dxi-item>
+    <dxi-item location="after" locateInMenu="never">
+
+
+
+
+
+      <dx-drop-down-button stylingMode="text" [items]="availableLangs" keyExpr="id" displayExpr="label"
+        [useSelectMode]="true" (onSelectionChanged)="selectLang($event.item.id)" [selectedItemKey]="selectedLang">
+      </dx-drop-down-button>
+    </dxi-item>
+  </dx-toolbar>
+
+  <dx-toolbar class="bottom">
+
+    <dxi-item widget="dxButton" [onClick]="emitSidebarButtonClick" [options]="{
+      icon: 'menu',
+      stylingMode: 'text'
+    }" location="before">
+    </dxi-item>
+    <dxi-item location="after" locateInMenu="never">
+      <dx-button stylingMode="text" keyExpr="id" displayExpr="label" text="Register" [routerLink]="'/register'">
+      </dx-button>
+      <dx-button stylingMode="text" keyExpr="id" displayExpr="label" text="Login" [routerLink]="'/login'">
+      </dx-button>
+    </dxi-item>
+
+  </dx-toolbar>
+</ng-container>

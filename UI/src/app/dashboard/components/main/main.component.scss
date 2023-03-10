@@ -1,0 +1,64 @@
+@use "./src/styles/variables"as vars with ($dx-theme: 'light');
+
+tess-logo {
+  width: 100px;
+  margin: 0;
+  display: block;
+}
+
+dx-toolbar {
+  color: vars.$base-inverted-text-color;
+  background-color: vars.$color-nav;
+  box-shadow: 3px 3px 5px -2px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 200;
+  padding: 0 .35em;
+}
+
+
+dx-toolbar.bottom {
+  color: vars.$base-inverted-text-color;
+  background-color: vars.$color-nav-dark;
+}
+
+:host ::ng-deep .dx-button-mode-text .dx-icon {
+  color: vars.$base-inverted-text-color;
+}
+
+
+.dx-datagrid-search-panel {
+  margin: 0;
+}
+
+.dx-texteditor-input {
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--global-color-secondary);
+  padding: 0.25rem 0.25rem 0.25rem 2rem;
+  height: 32px;
+  min-height: 32px;
+  border-radius: 0.25rem;
+}
+
+.dx-icon-clear {
+  background-size: 18px 18px;
+  box-sizing: border-box;
+  cursor: pointer;
+  margin-left: -32px;
+}
+
+.dx-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.dx-searchbox {
+  width: 160px;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}

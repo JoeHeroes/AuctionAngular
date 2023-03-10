@@ -1,0 +1,18 @@
+﻿$dx-theme: 'light' !default;
+$base-bg: if($dx-theme=='light', #ffffff, #2e2e31);
+$color-nav: #3459e6;
+$color-nav-sub-dark: #3459e6;
+$color-nav-dark: #212529;
+
+@forward 'node_modules/devextreme/scss/widgets/generic/colors'with ($color: $dx-theme,
+  $base-accent: lighten($color-nav, 8%),
+  $base-warning: #FFD600,
+  $base-danger: #F03E3E,
+  $base-bg: $base-bg,
+  $base-font-family: ('Montserrat', 'Segoe UI', helvetica, verdana, sans-serif),
+);
+@forward 'node_modules/devextreme/scss/widgets/generic/sizes'with ($size: 'default',
+  $generic-base-icon-size: 15px,
+  $generic-base-inline-widget-height: 36px,
+  $generic-base-inline-block-height: 19px,
+);

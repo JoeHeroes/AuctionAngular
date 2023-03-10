@@ -1,0 +1,36 @@
+$dx-theme: 'light' !default;
+$type: 'grid' !default;
+@use 'sass:meta';
+@use 'src/styles/variables' as vars with ($dx-theme: $dx-theme);
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+h2.title {
+  font-size: 1.1em;
+  margin: 0;
+  font-weight: bold;
+}
+
+h3.subtitle {
+  font-size: 1.1em;
+  margin: 0;
+  font-weight: normal;
+}
+
+dx-toolbar {
+  padding: 0.15em 0.5em;
+  border-bottom: 1px solid vars.$base-border-color;
+  flex-shrink: 0;
+}
+
+@if $type == 'form' {
+  @include meta.load-css('src/styles/page/_form', $with: ('dx-theme': $dx-theme));
+}
+
+@if $type == 'grid' {
+  @include meta.load-css('src/styles/page/_grid', $with: ('dx-theme': $dx-theme));
+}
