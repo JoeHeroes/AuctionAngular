@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AuctionAngular.Services
 {
-    public interface IVehicleServices
+    public interface IVehicleService
     {
         int Create(VehicleDto dto);
         void Delete(int id);
@@ -13,11 +13,11 @@ namespace AuctionAngular.Services
         Vehicle GetById(int id);
         void Update(EditVehicleDto dto);
     }
-    public class VehicleServices : IVehicleServices
+    public class VehicleService : IVehicleService
     {
         private readonly AuctionDbContext dbContext;
         private readonly IWebHostEnvironment webHost;
-        public VehicleServices(AuctionDbContext dbContext, IWebHostEnvironment webHost)
+        public VehicleService(AuctionDbContext dbContext, IWebHostEnvironment webHost)
         {
             this.dbContext = dbContext;
             this.webHost = webHost;
@@ -72,7 +72,7 @@ namespace AuctionAngular.Services
         public int Create(VehicleDto dto)
         {
             var stringFileName = UploadFile(dto);
-            var vehicle = new Vehicle
+            var vehicle = new Models.Vehicle
             {
                 Producer = dto.Producer,
                 ModelSpecifer = dto.ModelSpecifer,
@@ -88,7 +88,6 @@ namespace AuctionAngular.Services
                 NumberKeys = dto.NumberKeys,
                 ServiceManual = dto.ServiceManual,
                 SecondTireSet = dto.SecondTireSet,
-                Location = dto.Location,
                 Fuel = dto.Fuel,
                 PrimaryDamage = dto.PrimaryDamage,
                 SecondaryDamage = dto.SecondaryDamage,

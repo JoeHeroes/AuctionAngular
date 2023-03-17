@@ -14,7 +14,7 @@ import { DxLoadIndicatorModule } from "devextreme-angular/ui/load-indicator";
 import { DxDropDownButtonModule } from "devextreme-angular/ui/drop-down-button";
 import { MainComponent } from './main/main.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { TessCommonModule } from 'src/app/common/tess-common.module';
+import { AuctionCommonModule } from 'src/app/common/auction-common.module';
 import { SearchComponent } from './search/search.component';
 
 @NgModule({
@@ -28,7 +28,7 @@ import { SearchComponent } from './search/search.component';
     TranslocoModule,
     RouterModule,
     DxListModule,
-    TessCommonModule,
+    AuctionCommonModule,
     DxToolbarModule,
     DxLoadPanelModule,
     FormsModule,

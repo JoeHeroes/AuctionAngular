@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Company, InfoService } from 'src/app/common/services/info.service';
 
 @Component({
   selector: 'app-privacy',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./privacy.component.css']
 })
 export class PrivacyComponent {
+  companies: Company[];
+
+  constructor(service: InfoService) {
+    this.companies = service.getCompanies();
+  }
 
 }

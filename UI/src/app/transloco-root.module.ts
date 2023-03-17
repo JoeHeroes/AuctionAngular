@@ -35,7 +35,7 @@ export class TranslocoHttpLoader implements TranslocoLoader {
             label: 'EN'
           }
         ],
-        defaultLang: localStorage.getItem('tess:lang') ?? navigator.language,
+        defaultLang: localStorage.getItem('auction:lang') ?? navigator.language,
         fallbackLang: 'en',
         reRenderOnLangChange: true,
         prodMode: environment.production,

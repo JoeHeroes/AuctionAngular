@@ -1,7 +1,7 @@
-import {Component, HostBinding, Input, OnInit} from '@angular/core';
+import { Component, HostBinding, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'tess-logo',
+  selector: 'auction-logo',
   templateUrl: './logo.component.html',
   styleUrls: ['./logo.component.scss']
 })

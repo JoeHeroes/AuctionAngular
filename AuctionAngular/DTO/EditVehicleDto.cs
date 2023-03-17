@@ -14,11 +14,5 @@ namespace AuctionAngular.Models.DTO
         public string Fuel { get; set; }
         public DateTime DateTime { get; set; }
 
-
-        public List<SelectListItem> RegistrationYearSelectList { get; set; }
-        public List<SelectListItem> BodyTypeSelectList { get; set; }
-        public List<SelectListItem> TransmissionSelectList { get; set; }
-        public List<SelectListItem> FuelSelectList { get; set; }
-        public List<SelectListItem> LocationSelectList { get; set; }
     }
 }

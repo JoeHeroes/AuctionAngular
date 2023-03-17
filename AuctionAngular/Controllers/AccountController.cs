@@ -8,27 +8,27 @@ namespace AuctionAngular.DTO
     public class AccountController : ControllerBase
     {
 
-        private readonly IAccountServices service;
+        private readonly IAccountService service;
 
-        public AccountController(IAccountServices service)
+        public AccountController(IAccountService service)
         {
             this.service = service;
         }
 
 
         [HttpPost("register")]
-        public ActionResult Register([FromBody] RegisterUserDto dto)
+        public async Task<IActionResult> Register([FromBody] RegisterUserDto dto)
         {
             this.service.RegisterUser(dto);
             return Ok();
         }
 
         [HttpPost("login")]
-        public ActionResult Login([FromBody] LoginDto dto)
+        public async Task<IActionResult> Login([FromBody] LoginDto dto)
         {
             string token =  this.service.GeneratJwt(dto);
 
-            return Ok(token);
+            return Ok(new AuthResponseDto { IsAuthSuccessful = true, Token = token });
         }
 
 

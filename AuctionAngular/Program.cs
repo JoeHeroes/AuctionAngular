@@ -70,8 +70,9 @@ try
     builder.Services.AddScoped<AuctionSeeder>();
 
     //Interface
-    builder.Services.AddScoped<IAccountServices, AccountServices>();
-    builder.Services.AddScoped<IVehicleServices, VehicleServices>();
+    builder.Services.AddScoped<IAccountService, AccountService>();
+    builder.Services.AddScoped<IVehicleService, VehicleService>();
+    builder.Services.AddScoped<ILocationService, LocationService>();
 
 
     //Middleware

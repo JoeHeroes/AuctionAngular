@@ -10,18 +10,18 @@ using System.Text;
 namespace AuctionAngular.Services
 {
 
-    public interface IAccountServices
+    public interface IAccountService
     {
         string GeneratJwt(LoginDto dto);
         void RegisterUser(RegisterUserDto dto);
         void RestartPassword(RestartPasswordDto dto);
     }
-    public class AccountServices : IAccountServices
+    public class AccountService : IAccountService
     {
         private readonly AuctionDbContext dbContext;
         private readonly IPasswordHasher<User> passwordHasher;
         private readonly AuthenticationSettings authenticationSetting;
-        public AccountServices(AuctionDbContext dbContext, IPasswordHasher<User> passwordHasher, AuthenticationSettings authenticationSetting)
+        public AccountService(AuctionDbContext dbContext, IPasswordHasher<User> passwordHasher, AuthenticationSettings authenticationSetting)
         {
             this.dbContext = dbContext;
             this.passwordHasher = passwordHasher;
@@ -72,8 +72,7 @@ namespace AuctionAngular.Services
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Name, $"{user.FirstName} {user.LastName}"),
-                new Claim(ClaimTypes.Role, $"{user.Role.Name} "),
-                //new Claim("DateOfBirth", user.DateOfBirth.Value.ToString("yyyy-MM-dd")),
+                new Claim("DateOfBirth", user.DateOfBirth.Value.ToString("yyyy-MM-dd")),
                 
             };
 

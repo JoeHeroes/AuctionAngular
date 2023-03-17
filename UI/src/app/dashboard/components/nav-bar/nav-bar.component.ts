@@ -19,7 +19,7 @@ const navigationItems: ListItem[] = [
 ];
 
 @Component({
-  selector: 'tess-nav',
+  selector: 'auction-nav',
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.scss', './nav-bar.component.dark.scss']
 })

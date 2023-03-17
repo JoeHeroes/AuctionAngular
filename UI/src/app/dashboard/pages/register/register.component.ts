@@ -1,6 +1,8 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { DxDataGridComponent } from 'devextreme-angular';
-import { debounceTime, distinctUntilChanged, fromEvent, Subject, takeUntil } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthenticationService, UserAuthenticationDto, UserRegisterDto } from 'src/app/common/services/authentication.service';
 
 @Component({
   selector: 'app-register',
@@ -8,27 +10,50 @@ import { debounceTime, distinctUntilChanged, fromEvent, Subject, takeUntil } fro
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  @Input() gridContainer: DxDataGridComponent | undefined;
-  @Input() searchText: string | undefined;
-  @Input() searchId: string | undefined;
-  @Output() readonly searchTextChange: EventEmitter<string> = new EventEmitter<string>();
-  destroyed$ = new Subject<boolean>();
+  private returnUrl!: string;
 
-  // eslint-disable-next-line no-useless-constructor
-  constructor() {
+  registerForm!: FormGroup;
+  errorMessage: string = '';
+  showError!: boolean;
+  constructor(private authService: AuthenticationService, private router: Router, private route: ActivatedRoute) { }
+
+  ngOnInit(): void {
+    this.registerForm = new FormGroup({
+      email: new FormControl("", [Validators.required]),
+      password: new FormControl("", [Validators.required]),
+      confirmpassword: new FormControl("", [Validators.required]),
+      firstname: new FormControl("", [Validators.required]),
+      lastname: new FormControl("", [Validators.required]),
+      nationality: new FormControl("", [Validators.required]),
+      dateofbirth: new FormControl("", [Validators.required]),
+      roleid: new FormControl("", [Validators.required]),
+    })
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
-  ngOnInit(): void { }
+  registerUser = (registerFormValue: any) => {
+    this.showError = false;
+    const register = { ...registerFormValue };
+    const userForAuth: UserRegisterDto = {
+      email: register.email,
+      password: register.password,
+      confirmpassword: register.confirmpassword,
+      firstname: register.firstname,
+      lastname: register.lastname,
+      nationality: register.nationality,
+      dateofbirth: register.dateofbirth,
+      roleid: register.roleid,
 
-
-
-  onSearchText(searchText: string): void {
-    if (this.gridContainer) {
-      this.gridContainer.instance.searchByText(searchText);
-    } else if (this.searchTextChange) {
-      this.searchTextChange.emit(searchText);
     }
+    this.authService.registerUser(userForAuth)
+      .subscribe({
+        next: (res: any) => {
+          alert("fsafaf")
+        },
+        error: (err: HttpErrorResponse) => {
+          this.errorMessage = err.message;
+          this.showError = true;
+        }
+      })
   }
-
-
 }

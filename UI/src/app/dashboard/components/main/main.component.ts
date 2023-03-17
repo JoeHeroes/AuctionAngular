@@ -1,14 +1,16 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { LangDefinition, TranslocoService } from '@ngneat/transloco';
+import { AuthenticationService } from 'src/app/common/services/authentication.service';
 
 @Component({
-  selector: 'tess-main',
+  selector: 'auction-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss', './main.component.dark.scss']
 })
 export class MainComponent implements OnInit {
   @Output() sidebarButtonClick = new EventEmitter<void>();
+  public isUserAuthenticated!: boolean;
 
   get availableLangs(): LangDefinition[] {
     return this.transloco.getAvailableLangs() as LangDefinition[];
@@ -18,23 +20,29 @@ export class MainComponent implements OnInit {
     return this.transloco.getActiveLang();
   }
 
-  constructor(private router: Router,
+  constructor(private authService: AuthenticationService,
+    private router: Router,
     private transloco: TranslocoService) {
   }
 
   ngOnInit(): void {
+    this.authService.authChanged
+      .subscribe(res => {
+        this.isUserAuthenticated = res;
+      })
   }
 
   emitSidebarButtonClick = () => {
     this.sidebarButtonClick.emit();
   }
 
-  logout = () => {
+  public logout = () => {
+    this.authService.logout();
     this.router.navigate(["/"]);
   }
 
   selectLang = (lang: string) => {
-    localStorage.setItem('tess:lang', lang);
+    localStorage.setItem('auction:lang', lang);
     this.transloco.setActiveLang(lang);
   }
 }

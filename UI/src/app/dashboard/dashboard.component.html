@@ -1,7 +1,7 @@
-<tess-main (sidebarButtonClick)="sidebarOpened = !sidebarOpened"></tess-main>
+<auction-main (sidebarButtonClick)="sidebarOpened = !sidebarOpened"></auction-main>
 <dx-drawer id="main-drawer" template="template" [minSize]="40" [opened]="sidebarOpened" revealMode="expand">
   <ng-container *dxTemplate="let data of 'template'">
-    <tess-nav></tess-nav>
+    <auction-nav></auction-nav>
   </ng-container>
   <router-outlet></router-outlet>
 </dx-drawer>

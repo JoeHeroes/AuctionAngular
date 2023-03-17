@@ -25,6 +25,9 @@ namespace AuctionAngular.Models.DTO
         public string Color { get; set; }
 
         [Required]
+        public Location Location { get; set; }
+
+        [Required]
         [DisplayName("Body Type")]
         public string BodyType { get; set; }
        
@@ -68,8 +71,6 @@ namespace AuctionAngular.Models.DTO
         [Required]
         [DisplayName("Second Tire Set")]
         public bool SecondTireSet { get; set; }
-        [Required]
-        public Location Location { get; set; }
 
         [Required]
         public string VIN { get; set; } = null!;
@@ -78,17 +79,6 @@ namespace AuctionAngular.Models.DTO
         [Required]
         [DisplayName("Date of Auction")]
         public DateTime DateTime { get; set; }
-
-
-
-        public List<SelectListItem> ProducerSelectList { get; set; }
-        public List<SelectListItem> RegistrationYearSelectList { get; set; }
-        public List<SelectListItem> BodyTypeSelectList { get; set; }
-        public List<SelectListItem> TransmissionSelectList { get; set; }
-        public List<SelectListItem> FuelSelectList { get; set; }
-        public List<SelectListItem> DriveSelectList { get; set; }
-        public List<SelectListItem> DamageSelectList { get; set; }
-        public List<SelectListItem> LocationSelectList { get; set; }
 
 
 

@@ -1,9 +1,9 @@
-import {Component, HostBinding, Input, OnInit} from '@angular/core';
+import { Component, HostBinding, Input, OnInit } from '@angular/core';
 
 type MessageType = "info" | "success" | "warning" | "danger";
 
 @Component({
-  selector: 'tess-message',
+  selector: 'auction-message',
   templateUrl: './message.component.html',
   styleUrls: ['./message.component.scss']
 })

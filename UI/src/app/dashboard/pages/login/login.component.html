@@ -1,24 +1,22 @@
-<p>login works!</p>
-
-
-
-
-
-<div class="box">
-
-  <form action="/Login" method="post">
-    <dx-text-box name="Login">
-      <dx-validator>
-        <dxi-validation-rule type="required"></dxi-validation-rule>
-      </dx-validator>
-    </dx-text-box>
-    <dx-text-box name="Password" mode="password">
-      <dx-validator>
-        <dxi-validation-rule type="required"></dxi-validation-rule>
-      </dx-validator>
-    </dx-text-box>
-    <dx-button text="Submit" type="success" [useSubmitBehavior]="true">
+<form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)">
+  <div class="dx-fieldset">
+    <div class="dx-fieldset-header">Login</div>
+    <div class="dx-field">
+      <div class="dx-field-label">Email</div>
+      <div class="dx-field-value">
+        <input type="text" id="email" formControlName="email" class="form-control" />
+      </div>
+    </div>
+    <div class="dx-field">
+      <div class="dx-field-label">Password</div>
+      <div class="dx-field-value">
+        <input type="password" id="password" formControlName="password" class="form-control" />
+      </div>
+    </div>
+  </div>
+  <div class="dx-fieldset">
+    <dx-validation-summary id="summary"></dx-validation-summary>
+    <dx-button width="100%" id="button" text="Login" type="default" [useSubmitBehavior]="true">
     </dx-button>
-  </form>
-
-</div>
+  </div>
+</form>

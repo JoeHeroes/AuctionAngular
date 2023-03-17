@@ -7,9 +7,9 @@ namespace AuctionAngular.Controllers
     [Route("[controller]")]
     public class AuctionController : ControllerBase
     {
-        private readonly IVehicleServices service;
+        private readonly IVehicleService service;
 
-        public AuctionController(IVehicleServices service)
+        public AuctionController(IVehicleService service)
         {
             this.service = service;
         }

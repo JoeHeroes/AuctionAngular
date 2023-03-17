@@ -163,7 +163,6 @@ namespace CarAuction.Seeder
                     VIN = "",
                     ProfileImg = "a4b6.png",
                     Location = new Location()
-
                 },
                 new Vehicle()
                 {
@@ -208,7 +207,7 @@ namespace CarAuction.Seeder
                     NumberKeys = "2",
                     ServiceManual = true,
                     SecondTireSet = true,
-                     Watch = false,
+                    Watch = false,
                     CurrentBid = 5000,
                     PrimaryDamage = Damage.Normal_Wear.ToString(),
                     SecondaryDamage = Damage.Normal_Wear.ToString(),
@@ -267,7 +266,7 @@ namespace CarAuction.Seeder
                     DateTime = new DateTime(2023,1,4),
                     VIN = "",
                     ProfileImg = "yaris2.png",
-                    Location = new Location()
+                     Location = new Location()
                 }
             };
         }

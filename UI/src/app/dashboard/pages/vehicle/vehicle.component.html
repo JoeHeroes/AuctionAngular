@@ -1,1 +1,39 @@
-<p>vehicle works!</p>
+<ng-container *transloco="let t">
+  <br />
+  <br />
+  <dx-data-grid [dataSource]="datasource" [hoverStateEnabled]="true" [activeStateEnabled]="true"
+    [allowColumnResizing]="true" [allowColumnReordering]="true" [remoteOperations]="true"
+    (onRowDblClick)="handleRowDoubleClick($event)">
+    <dxo-filter-row [visible]="true"></dxo-filter-row>
+    <dxo-scrolling mode="virtual" rowRenderingMode="virtual"></dxo-scrolling>
+    <dxo-paging [pageSize]="100"></dxo-paging>
+    <dxo-sorting mode="multiple"></dxo-sorting>
+
+    <dxi-column [width]="40" [fixed]="true"></dxi-column>
+    <dxi-column dataField="producer" [caption]="t('vehicle.producer')" [filterOperations]="['startswith']"
+      [allowSorting]="true"></dxi-column>
+
+    <dxi-column dataField="modelSpecifer" [caption]="t('vehicle.modelSpecifer')" [allowFiltering]="true"
+      [allowSorting]="false"></dxi-column>
+    <dxi-column dataField="modelGeneration" [caption]="t('vehicle.modelGeneration')" [allowFiltering]="false"
+      [allowSorting]="true"></dxi-column>
+    <dxi-column dataField="registrationYear" [caption]="t('vehicle.registrationYear')" [allowFiltering]="false"
+      [allowSorting]="true"></dxi-column>
+    <dxi-column dataField="meterReadout" [caption]="t('vehicle.meterReadout')" [allowFiltering]="false"
+      [allowSorting]="true"></dxi-column>
+    <dxi-column dataField="dateTime" [caption]="t('vehicle.dateTime')" [allowFiltering]="false" [allowSorting]="false">
+    </dxi-column>
+    <dxi-column dataField="currentBid" [caption]="t('vehicle.currentBid')" [allowFiltering]="false" [width]="120"
+      [allowSorting]="false"></dxi-column>
+
+    <dxi-column [width]=" 40"></dxi-column>
+
+    <dxo-summary>
+      <dxi-total-item column="producer" summaryType="count">
+      </dxi-total-item>
+    </dxo-summary>
+
+  </dx-data-grid>
+
+
+</ng-container>

@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { TessSystemApiClient } from 'src/app/common/services/tess-api.generated.service';
 import { marker as _ } from '@ngneat/transloco-keys-manager/marker';
+import { AuctionSystemApiClient } from 'src/app/common/services/auction-api.generated.service';
 
 export interface cardItem {
   text: string;
@@ -15,7 +15,7 @@ export interface cardItem {
 export class HomeComponent implements OnInit, OnDestroy {
 
 
-  constructor(private system: TessSystemApiClient) {
+  constructor(private system: AuctionSystemApiClient) {
   }
 
   ngOnDestroy(): void {

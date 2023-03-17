@@ -16,5 +16,5 @@ import { MessageComponent } from "src/app/common/components/message/message.comp
     MessageComponent,
   ]
 })
-export class TessCommonModule {
+export class AuctionCommonModule {
 }
