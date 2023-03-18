@@ -19,23 +19,23 @@ namespace AuctionAngular.DTO
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterUserDto dto)
         {
-            this.service.RegisterUser(dto);
+            await this.service.RegisterUser(dto);
             return Ok();
         }
 
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginDto dto)
         {
-            string token =  this.service.GeneratJwt(dto);
+            var token = await this.service.GeneratJwt(dto);
 
             return Ok(new AuthResponseDto { IsAuthSuccessful = true, Token = token });
         }
 
 
         [HttpPost("restart")]
-        public ActionResult Restart([FromBody] RestartPasswordDto dto)
+        public async Task<IActionResult> Restart([FromBody] RestartPasswordDto dto)
         {
-            this.service.RestartPassword(dto);
+            await this.service.RestartPassword(dto);
 
             return Ok();
         }

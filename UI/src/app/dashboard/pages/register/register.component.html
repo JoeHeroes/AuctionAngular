@@ -1,58 +1,61 @@
-<form [formGroup]="registerForm" (ngSubmit)="registerUser(registerForm.value)">
-  <div class="dx-fieldset">
-    <div class="dx-fieldset-header">Register</div>
-    <div class="dx-field">
-      <div class="dx-field-label">Email</div>
-      <div class="dx-field-value">
-        <input type="text" id="email" formControlName="email" class="form-control" />
+<ng-container *transloco="let t">
+  <form [formGroup]="registerForm" (ngSubmit)="registerUser(registerForm.value)">
+    <div class="dx-fieldset">
+      <div class="dx-fieldset-header">{{t('account.register')}}</div>
+      <div class="dx-field">
+        <div class="dx-field-label">{{t('account.email')}}</div>
+        <div class="dx-field-value">
+          <input type="text" id="email" formControlName="email" class="form-control" />
+        </div>
+      </div>
+      <div class="dx-field">
+        <div class="dx-field-label">{{t('account.password')}}</div>
+        <div class="dx-field-value">
+          <input type="password" id="password" formControlName="password" class="form-control" />
+        </div>
+      </div>
+      <div class="dx-field">
+        <div class="dx-field-label">{{t('account.confirmpassword')}}</div>
+        <div class="dx-field-value">
+          <input type="password" id="confirmpassword" formControlName="confirmpassword" class="form-control" />
+        </div>
+      </div>
+      <div class="dx-field">
+        <div class="dx-field-label">{{t('account.firstname')}}</div>
+        <div class="dx-field-value">
+          <input type="text" id="firstname" formControlName="firstname" class="form-control" />
+        </div>
+      </div>
+      <div class="dx-field">
+        <div class="dx-field-label">{{t('account.lastname')}}</div>
+        <div class="dx-field-value">
+          <input type="text" id="lastname" formControlName="lastname" class="form-control" />
+        </div>
+      </div>
+      <div class="dx-field">
+        <div class="dx-field-label">{{t('account.nationality')}}</div>
+        <div class="dx-field-value">
+          <input type="text" id="nationality" formControlName="nationality" class="form-control" />
+        </div>
+      </div>
+      <div class="dx-field">
+        <div class="dx-field-label">{{t('account.dateofbirth')}}</div>
+        <div class="dx-field-value">
+          <input type="date" id="dateofbirth" formControlName="dateofbirth" class="form-control" />
+        </div>
+      </div>
+      <div class="dx-field">
+        <div class="dx-field-label">{{t('account.role')}}</div>
+        <div class="dx-field-value">
+          <input type="number" id="roleid" formControlName="roleid" class="form-control" />
+        </div>
       </div>
     </div>
-    <div class="dx-field">
-      <div class="dx-field-label">Password</div>
-      <div class="dx-field-value">
-        <input type="password" id="password" formControlName="password" class="form-control" />
-      </div>
+    <div class="dx-fieldset">
+      <dx-validation-summary id="summary"></dx-validation-summary>
+      <dx-button width="100%" id="button" [text]="t('account.register')" type="default" [useSubmitBehavior]="true">
+      </dx-button>
     </div>
-    <div class="dx-field">
-      <div class="dx-field-label">ComfirmPassword</div>
-      <div class="dx-field-value">
-        <input type="password" id="confirmpassword" formControlName="confirmpassword" class="form-control" />
-      </div>
-    </div>
-    <div class="dx-field">
-      <div class="dx-field-label">First Name</div>
-      <div class="dx-field-value">
-        <input type="text" id="firstname" formControlName="firstname" class="form-control" />
-      </div>
-    </div>
-    <div class="dx-field">
-      <div class="dx-field-label">Lastname</div>
-      <div class="dx-field-value">
-        <input type="text" id="lastname" formControlName="lastname" class="form-control" />
-      </div>
-    </div>
-    <div class="dx-field">
-      <div class="dx-field-label">Nationality</div>
-      <div class="dx-field-value">
-        <input type="text" id="nationality" formControlName="nationality" class="form-control" />
-      </div>
-    </div>
-    <div class="dx-field">
-      <div class="dx-field-label">Date Of Birth</div>
-      <div class="dx-field-value">
-        <input type="date" id="dateofbirth" formControlName="dateofbirth" class="form-control" />
-      </div>
-    </div>
-    <div class="dx-field">
-      <div class="dx-field-label">Role</div>
-      <div class="dx-field-value">
-        <input type="number" id="roleid" formControlName="roleid" class="form-control" />
-      </div>
-    </div>
-  </div>
-  <div class="dx-fieldset">
-    <dx-validation-summary id="summary"></dx-validation-summary>
-    <dx-button width="100%" id="button" text="Register" type="default" [useSubmitBehavior]="true">
-    </dx-button>
-  </div>
-</form>
+  </form>
+
+</ng-container>

@@ -12,9 +12,9 @@ namespace AuctionAngular.Services
 
     public interface IAccountService
     {
-        string GeneratJwt(LoginDto dto);
-        void RegisterUser(RegisterUserDto dto);
-        void RestartPassword(RestartPasswordDto dto);
+        Task<string> GeneratJwt(LoginDto dto);
+        Task RegisterUser(RegisterUserDto dto);
+        Task RestartPassword(RestartPasswordDto dto);
     }
     public class AccountService : IAccountService
     {
@@ -27,7 +27,7 @@ namespace AuctionAngular.Services
             this.passwordHasher = passwordHasher;
             this.authenticationSetting = authenticationSetting;
         }
-        public void RegisterUser(RegisterUserDto dto)
+        public async Task RegisterUser(RegisterUserDto dto)
         {
             var newUser = new User()
             {
@@ -46,14 +46,21 @@ namespace AuctionAngular.Services
 
             newUser.PasswordHash = hashedPass;
             this.dbContext.Users.Add(newUser);
-            this.dbContext.SaveChanges();
+            try
+            {
+                await this.dbContext.SaveChangesAsync();
+            }
+            catch (DbUpdateException e)
+            {
+                throw new DbUpdateException("Error DataBase", e);
+            }
         }
 
-        public string GeneratJwt(LoginDto dto)
+        public async Task<string> GeneratJwt(LoginDto dto)
         {
-            var user =  this.dbContext
+            var user = await this.dbContext
                  .Users
-                 .FirstOrDefault(u => u.Email == dto.Email);
+                 .FirstOrDefaultAsync(u => u.Email == dto.Email);
 
 
             if (user is null)
@@ -75,7 +82,6 @@ namespace AuctionAngular.Services
                 new Claim("DateOfBirth", user.DateOfBirth.Value.ToString("yyyy-MM-dd")),
                 
             };
-
 
             if (!string.IsNullOrEmpty(user.Nationality))
             {
@@ -101,7 +107,7 @@ namespace AuctionAngular.Services
             return tokenHander.WriteToken(token);
         }
 
-        public void RestartPassword(RestartPasswordDto dto)
+        public async Task RestartPassword(RestartPasswordDto dto)
         {
             if (dto.NewPassword != dto.ConfirmNewPassword)
             {
@@ -115,11 +121,11 @@ namespace AuctionAngular.Services
             }
 
 
-            var account = dbContext.Users.FirstOrDefault(x => x.Email == dto.Email);
+            var account = await dbContext.Users.FirstOrDefaultAsync(x => x.Email == dto.Email);
 
 
-            var result1 = this.passwordHasher.VerifyHashedPassword(account, account.PasswordHash, dto.OldPassword);
-            if (result1 == PasswordVerificationResult.Failed)
+            var result = this.passwordHasher.VerifyHashedPassword(account, account.PasswordHash, dto.OldPassword);
+            if (result == PasswordVerificationResult.Failed)
             {
                 throw new BadRequestException("Old password is invalid");
             }
@@ -127,14 +133,12 @@ namespace AuctionAngular.Services
             account.PasswordHash = this.passwordHasher.HashPassword(account, dto.NewPassword); ;
             try
             {
-                this.dbContext.SaveChanges();
+                await this.dbContext.SaveChangesAsync();
             }
             catch (DbUpdateException e)
             {
                 throw new DbUpdateException("Error DataBase", e);
             }
-
-
         }
     }
 }

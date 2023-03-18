@@ -25,7 +25,6 @@ export class AuthenticationService {
 
   public logout = () => {
     localStorage.removeItem("token");
-    alert("xxxx");
     this.sendAuthStateChangeNotification(false);
   }
 }

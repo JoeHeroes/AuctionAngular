@@ -1,13 +1,14 @@
 ﻿using AuctionAngular.Models.DTO;
 using AuctionAngular.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace AuctionAngular.Services
 {
 
     public interface ILocationService
     {
-        IEnumerable<Location> GetAll();
-        Location GetById(int id);
+        Task<IEnumerable<Location>> GetAll();
+        Task<Location> GetById(int id);
     }
     public class LocationService : ILocationService
     {
@@ -17,32 +18,32 @@ namespace AuctionAngular.Services
             this.dbContext = dbContext;
         }
 
-        public Location GetById(int id)
+        public async Task<Location> GetById(int id)
         {
-            var location = this.dbContext
+            var result = await this.dbContext
                 .Locations
-                .FirstOrDefault(u => u.Id == id);
+                .FirstOrDefaultAsync(u => u.Id == id);
 
-            if (location is null)
+            if (result is null)
             {
                 throw new NotFoundException("Location not found");
             }
 
-            return location;
+            return result;
         }
 
-        public IEnumerable<Location> GetAll()
+        public async Task<IEnumerable<Location>> GetAll()
         {
-            var location = this.dbContext
+            var result = this.dbContext
                 .Locations
                 .ToList();
 
-            if (location is null)
+            if (result is null)
             {
                 throw new NotFoundException("Location not found");
             }
 
-            return location;
+            return result;
         }
 
         

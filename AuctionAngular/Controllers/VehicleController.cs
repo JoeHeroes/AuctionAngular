@@ -17,43 +17,43 @@ namespace AuctionAngular.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Vehicle>> GetAllVehicle()
+        public async Task<ActionResult<IEnumerable<Vehicle>>> GetAllVehicle()
         {
-            var vehicle = this.service.GetAll();
-            return Ok(vehicle);
+            var result = await this.service.GetAll();
+            return Ok(result);
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Vehicle> GetOne([FromRoute] int id)
+        public async Task<ActionResult<Vehicle>> GetOne([FromRoute] int id)
         {
-            var vehicle = this.service.GetById(id);
+            var result = await this.service.GetById(id);
 
-            return Ok(vehicle);
+            return Ok(result);
         }
 
         [HttpDelete("{id}")]
-        public ActionResult Delete([FromRoute] int id)
+        public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            this.service.Delete(id);
+            await this.service.Delete(id);
 
             return NotFound();
         }
 
         [HttpPost("create")]
-        public ActionResult CreateVehicle([FromBody] VehicleDto dto)
+        public async Task<IActionResult> CreateVehicle([FromBody] VehicleDto dto)
         {
 
-            this.service.Create(dto);
+            await this.service.Create(dto);
 
             return Ok();
         }
 
 
         [HttpPost("update")]
-        public ActionResult UpdateVehicle([FromBody] EditVehicleDto dto)
+        public async Task<IActionResult> UpdateVehicle([FromBody] EditVehicleDto dto)
         {
 
-            this.service.Update(dto);
+            await this.service.Update(dto);
 
             return Ok();
         }

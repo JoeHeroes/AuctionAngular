@@ -16,10 +16,10 @@ namespace AuctionAngular.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Location>> GetAllLocation()
+        public async Task<ActionResult<IEnumerable<Location>>> GetAllLocation()
         {
-            var location = this.service.GetAll();
-            return Ok(location);
+            var result = await this.service.GetAll();
+            return Ok(result);
         }
     }
 }

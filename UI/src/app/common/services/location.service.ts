@@ -8,8 +8,8 @@ export class LocationService {
 
   constructor(private http: HttpClient) { }
 
-  public loginUser() {
-    return this.http.post<any>("https://localhost:7257/Account/login");
+  public getLocations() {
+    return this.http.get<any>("https://localhost:7257/Location");
   }
 
 }

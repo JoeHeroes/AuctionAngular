@@ -15,5 +15,26 @@
     "meterReadout": "Meter Readout",
     "dateTime": "Date Time",
     "currentBid": "Current Bid"
+  },
+  "location": {
+    "phone": "Phone",
+    "email": "Email",
+    "city": "City",
+    "street": "Street",
+    "postalCode": "PostalCode"
+  },
+  "account": {
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout",
+    "email": "Email",
+    "password": "Password",
+    "confirmpassword": "Confirm Password",
+    "firstname": "Firstname",
+    "lastname": "Lastname",
+    "nationality": "Nationality",
+    "dateofbirth": "Date Of Birth",
+    "role": "Role"
   }
+
 }

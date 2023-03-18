@@ -15,5 +15,25 @@
     "meterReadout": "Zählerstand",
     "dateTime": "Terminzeit",
     "currentBid": "Aktuelles Gebot"
+  },
+  "location": {
+    "phone": "Telefon",
+    "email": "Email",
+    "city": "Stadt",
+    "street": "Straße",
+    "postalCode": "Postleitzahl"
+  },
+  "account": {
+    "login": "Anmeldung",
+    "register": "Registrieren",
+    "logout": "Ausloggen",
+    "email": "Email",
+    "password": "Passwort",
+    "confirmpassword": "Bestätige das Passwort",
+    "firstname": "Vorname",
+    "lastname": "Nachname",
+    "nationality": "Staatsangehörigkeit",
+    "dateofbirth": "Geburtsdatum",
+    "role": "Rolle"
   }
 }

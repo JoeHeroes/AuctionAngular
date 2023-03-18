@@ -27,15 +27,15 @@
     }" location="before">
     </dxi-item>
     <dxi-item location="after" locateInMenu="never">
-      <dx-button *ngIf='!isUserAuthenticated' stylingMode="text" keyExpr="id" displayExpr="label" text="Register"
-        [routerLink]="'/register'">
+      <dx-button *ngIf='!isUserAuthenticated' stylingMode="text" keyExpr="id" displayExpr="label"
+        [text]="t('account.register')" [routerLink]="'/register'">
       </dx-button>
-      <dx-button *ngIf='!isUserAuthenticated' stylingMode="text" keyExpr="id" displayExpr="label" text="Login"
-        [routerLink]="'/login'">
+      <dx-button *ngIf='!isUserAuthenticated' stylingMode="text" keyExpr="id" displayExpr="label"
+        [text]="t('account.login')" [routerLink]="'/login'">
       </dx-button>
 
       <dx-button *ngIf='isUserAuthenticated' (onClick)="this.logout()" stylingMode="text" keyExpr="id"
-        displayExpr="label" text="Logout">
+        displayExpr="label" [text]="t('account.logout')">
       </dx-button>
     </dxi-item>
 

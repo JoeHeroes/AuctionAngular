@@ -20,6 +20,7 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void { }
 
   onSearchText(searchText: string): void {
+    alert(searchText);
     if (this.gridContainer) {
       this.gridContainer.instance.searchByText(searchText);
     } else if (this.searchTextChange) {

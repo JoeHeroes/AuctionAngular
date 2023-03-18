@@ -1,5 +1,5 @@
 ﻿import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Route, RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from "src/app/dashboard/pages/home/home.component";
 import { NotFoundComponent } from "src/app/not-found/not-found.component";
 import { DashboardComponent } from "src/app/dashboard/dashboard.component";
@@ -11,6 +11,7 @@ import { SevicesComponent } from './pages/sevices/sevices.component';
 import { LocationComponent } from './pages/location/location.component';
 import { AuctionComponent } from './pages/auction/auction.component';
 import { VehicleComponent } from './pages/vehicle/vehicle.component';
+import { LotComponent } from './pages/lot/lot.component';
 
 const routes: Routes = [
   {
@@ -66,6 +67,16 @@ const routes: Routes = [
         path: 'register',
         pathMatch: 'full',
         component: RegisterComponent,
+      },
+      {
+        path: 'vehicle/lot',
+        children: [
+          {
+            path: ':id',
+            pathMatch: 'full',
+            component: LotComponent,
+          },
+        ],
       },
       {
         path: '**',

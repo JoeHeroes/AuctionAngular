@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthenticationService, UserAuthenticationDto, UserRegisterDto } from 'src/app/common/services/authentication.service';
+import { AuthenticationService, UserRegisterDto } from 'src/app/common/services/authentication.service';
 
 @Component({
   selector: 'app-register',
@@ -48,7 +48,7 @@ export class RegisterComponent implements OnInit {
     this.authService.registerUser(userForAuth)
       .subscribe({
         next: (res: any) => {
-          alert("fsafaf")
+          this.router.navigate([this.returnUrl]);
         },
         error: (err: HttpErrorResponse) => {
           this.errorMessage = err.message;

@@ -1,3 +1,4 @@
+import { VehicleService } from './../../../common/services/vehicle.service';
 import { IVehicle } from './../../../common/services/auction-api.generated.service';
 import { Component, OnInit } from '@angular/core';
 import { RowDblClickEvent } from 'devextreme/ui/data_grid';
@@ -12,9 +13,9 @@ import { Router } from '@angular/router';
 export class VehicleComponent implements OnInit {
   datasource: any;
 
-  constructor(private api: AuctionSystemApiClient,
+  constructor(private service: VehicleService,
     private router: Router) {
-    this.api.getVehicle().subscribe(res => {
+    this.service.getVehicles().subscribe(res => {
       this.datasource = res;
     });
   }
@@ -27,7 +28,7 @@ export class VehicleComponent implements OnInit {
 
   handleRowDoubleClick(event: RowDblClickEvent) {
     const template = event.data as IVehicle;
-    this.router.navigate(['/Vehicle', template.id].filter(v => !!v));
+    this.router.navigate(['/vehicle/lot', template.id].filter(v => !!v));
   }
 
 }

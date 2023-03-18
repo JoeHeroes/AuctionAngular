@@ -7,11 +7,11 @@ namespace AuctionAngular.Services
 {
     public interface IVehicleService
     {
-        int Create(VehicleDto dto);
-        void Delete(int id);
-        IEnumerable<Vehicle> GetAll();
-        Vehicle GetById(int id);
-        void Update(EditVehicleDto dto);
+        Task<int> Create(VehicleDto dto);
+        Task Delete(int id);
+        Task<IEnumerable<Vehicle>> GetAll();
+        Task<Vehicle> GetById(int id);
+        Task Update(EditVehicleDto dto);
     }
     public class VehicleService : IVehicleService
     {
@@ -24,7 +24,7 @@ namespace AuctionAngular.Services
         }
 
 
-        private string UploadFile(VehicleDto dto)
+        private async Task<string> UploadFile(VehicleDto dto)
         {
             string fileName = null;
             if (dto.PathPic != null)
@@ -41,38 +41,38 @@ namespace AuctionAngular.Services
             return fileName;
         }
 
-        public Vehicle GetById(int id)
+        public async Task<Vehicle> GetById(int id)
         {
-            var vehicle = this.dbContext
+            var result = await this.dbContext
                 .Vehicles
-                .FirstOrDefault(u => u.Id == id);
+                .FirstOrDefaultAsync(u => u.Id == id);
 
-            if (vehicle is null)
+            if (result is null)
             {
                 throw new NotFoundException("Vehicle not found");
             }
 
-            return vehicle;
+            return result;
         }
 
-        public IEnumerable<Vehicle> GetAll()
+        public async Task<IEnumerable<Vehicle>> GetAll()
         {
-            var vehicle = this.dbContext
+            var result = await this.dbContext
                 .Vehicles
-                .ToList();
+                .ToListAsync();
 
-            if (vehicle is null)
+            if (result is null)
             {
                 throw new NotFoundException("Vehicle not found");
             }
 
-            return vehicle;
+            return result;
         }
 
-        public int Create(VehicleDto dto)
+        public async Task<int> Create(VehicleDto dto)
         {
-            var stringFileName = UploadFile(dto);
-            var vehicle = new Models.Vehicle
+            var stringFileName = await UploadFile(dto);
+            var vehicle = new Vehicle
             {
                 Producer = dto.Producer,
                 ModelSpecifer = dto.ModelSpecifer,
@@ -97,29 +97,36 @@ namespace AuctionAngular.Services
             };
 
             this.dbContext.Vehicles.Add(vehicle);
-            this.dbContext.SaveChanges();
+            try
+            {
+                await this.dbContext.SaveChangesAsync();
+            }
+            catch (DbUpdateException e)
+            {
+                throw new DbUpdateException("Error DataBase", e);
+            }
 
-            var result = this.dbContext
+            var result = await this.dbContext
                 .Vehicles
-                .Find(vehicle);
+                .FindAsync(vehicle);
 
             return result.Id;
         }
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
-            var vehicle = this.dbContext
+            var result =  this.dbContext
                 .Vehicles
                 .FirstOrDefault(u => u.Id == id);
 
-            if (vehicle is null)
+            if (result is null)
             {
                 throw new NotFoundException("Vehicle not found");
             }
 
-            this.dbContext.Vehicles.Remove(vehicle);
+            this.dbContext.Vehicles.Remove(result);
             try
             {
-                this.dbContext.SaveChanges();
+                await this.dbContext.SaveChangesAsync();
             }
             catch (DbUpdateException e)
             {
@@ -127,11 +134,11 @@ namespace AuctionAngular.Services
             }
         }
 
-        public void Update(EditVehicleDto dto)
+        public async Task Update(EditVehicleDto dto)
         {
-            var vehicle = this.dbContext
+            var vehicle = await this.dbContext
                 .Vehicles
-                .FirstOrDefault(u => u.Id == dto.Id);
+                .FirstOrDefaultAsync(u => u.Id == dto.Id);
 
             if (vehicle is null)
             {
@@ -146,17 +153,14 @@ namespace AuctionAngular.Services
             vehicle.Fuel = dto.Fuel;
             vehicle.DateTime = dto.DateTime;
 
-
             try
             {
-                this.dbContext.SaveChanges();
+                await this.dbContext.SaveChangesAsync();
             }
             catch (DbUpdateException e)
             {
                 throw new DbUpdateException("Error DataBase", e);
             }
-
         }
-
     }
 }

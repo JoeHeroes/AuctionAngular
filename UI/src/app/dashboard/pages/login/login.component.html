@@ -1,22 +1,25 @@
-<form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)">
-  <div class="dx-fieldset">
-    <div class="dx-fieldset-header">Login</div>
-    <div class="dx-field">
-      <div class="dx-field-label">Email</div>
-      <div class="dx-field-value">
-        <input type="text" id="email" formControlName="email" class="form-control" />
+<ng-container *transloco="let t">
+  <form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)">
+    <div class="dx-fieldset">
+      <div class="dx-fieldset-header">{{t('account.login')}}</div>
+      <div class="dx-field">
+        <div class="dx-field-label">{{t('account.email')}}</div>
+        <div class="dx-field-value">
+          <input type="text" id="email" formControlName="email" class="form-control" />
+        </div>
+      </div>
+      <div class="dx-field">
+        <div class="dx-field-label">{{t('account.password')}}</div>
+        <div class="dx-field-value">
+          <input type="password" id="password" formControlName="password" class="form-control" />
+        </div>
       </div>
     </div>
-    <div class="dx-field">
-      <div class="dx-field-label">Password</div>
-      <div class="dx-field-value">
-        <input type="password" id="password" formControlName="password" class="form-control" />
-      </div>
+    <div class="dx-fieldset">
+      <dx-validation-summary id="summary"></dx-validation-summary>
+      <dx-button width="100%" id="button" [text]="t('account.login')" type="default" [useSubmitBehavior]="true">
+      </dx-button>
     </div>
-  </div>
-  <div class="dx-fieldset">
-    <dx-validation-summary id="summary"></dx-validation-summary>
-    <dx-button width="100%" id="button" text="Login" type="default" [useSubmitBehavior]="true">
-    </dx-button>
-  </div>
-</form>
+  </form>
+
+</ng-container>

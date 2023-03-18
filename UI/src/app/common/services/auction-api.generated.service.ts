@@ -20,13 +20,6 @@ export class AuctionSystemApiClient {
         this.http = http;
         this.baseUrl = "https://localhost:7257";
     }
-
-    getVehicle(): Observable<Vehicle[]> {
-
-        let url_ = "https://localhost:7257/Vehicle";
-
-        return this.http.get<any>(url_);
-    }
 }
 
 
