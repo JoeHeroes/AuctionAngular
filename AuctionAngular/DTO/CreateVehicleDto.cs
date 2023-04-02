@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AuctionAngular.Models.DTO
 {
-    public class VehicleDto
+    public class CreateVehicleDto
     {
         [Required]
         public string Producer { get; set; }
@@ -25,7 +25,7 @@ namespace AuctionAngular.Models.DTO
         public string Color { get; set; }
 
         [Required]
-        public Location Location { get; set; }
+        public int LocationId { get; set; }
 
         [Required]
         [DisplayName("Body Type")]

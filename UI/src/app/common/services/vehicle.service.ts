@@ -18,11 +18,24 @@ export class VehicleService {
   }
 
 
-  getVehicle(id: number): Observable<Vehicle> {
+  getVehicle(id: number): Observable<any> {
 
     let url_ = "https://localhost:7257/Vehicle/" + id;
 
     return this.http.get<any>(url_);
   }
 
+
+  bidVehicle(bid: BidDto) {
+
+    let url_ = "https://localhost:7257/Vehicle/bid";
+
+    return this.http.post<any>(url_, bid);
+  }
+
+}
+
+export interface BidDto {
+  lotNumber: number;
+  bidNow: number;
 }

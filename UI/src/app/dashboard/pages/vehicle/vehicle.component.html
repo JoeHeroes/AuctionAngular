@@ -1,39 +1,66 @@
 <ng-container *transloco="let t">
+  <dx-toolbar>
+    <dxi-item location="before">
+      <div *dxTemplate>
+        <h2 class="title">{{t('vehicle.list', {n: 5})}}</h2>
+      </div>
+    </dxi-item>
+    <dxi-item location="before">
+      <div *dxTemplate>
+        <a [routerLink]="['editor']">
+          <dx-button type="default" [text]="t('actions.add')"></dx-button>
+        </a>
+      </div>
+    </dxi-item>
+  </dx-toolbar>
   <br />
   <br />
-  <dx-data-grid [dataSource]="datasource" [hoverStateEnabled]="true" [activeStateEnabled]="true"
-    [allowColumnResizing]="true" [allowColumnReordering]="true" [remoteOperations]="true"
-    (onRowDblClick)="handleRowDoubleClick($event)">
-    <dxo-filter-row [visible]="true"></dxo-filter-row>
-    <dxo-scrolling mode="virtual" rowRenderingMode="virtual"></dxo-scrolling>
-    <dxo-paging [pageSize]="100"></dxo-paging>
-    <dxo-sorting mode="multiple"></dxo-sorting>
+  <div>
+    <dx-data-grid [dataSource]="datasource" [hoverStateEnabled]="true" [activeStateEnabled]="true"
+      [allowColumnResizing]="true" [allowColumnReordering]="true" [remoteOperations]="true"
+      (onRowDblClick)="handleRowDoubleClick($event)">
+      <dxo-filter-row [visible]="true"></dxo-filter-row>
+      <dxo-scrolling mode="virtual" rowRenderingMode="virtual"></dxo-scrolling>
+      <dxo-paging [pageSize]="100"></dxo-paging>
+      <dxo-sorting mode="multiple"></dxo-sorting>
 
-    <dxi-column [width]="40" [fixed]="true"></dxi-column>
-    <dxi-column dataField="producer" [caption]="t('vehicle.producer')" [filterOperations]="['startswith']"
-      [allowSorting]="true"></dxi-column>
+      <dxi-column [width]="40" [fixed]="true"></dxi-column>
 
-    <dxi-column dataField="modelSpecifer" [caption]="t('vehicle.modelSpecifer')" [allowFiltering]="true"
-      [allowSorting]="false"></dxi-column>
-    <dxi-column dataField="modelGeneration" [caption]="t('vehicle.modelGeneration')" [allowFiltering]="false"
-      [allowSorting]="true"></dxi-column>
-    <dxi-column dataField="registrationYear" [caption]="t('vehicle.registrationYear')" [allowFiltering]="false"
-      [allowSorting]="true"></dxi-column>
-    <dxi-column dataField="meterReadout" [caption]="t('vehicle.meterReadout')" [allowFiltering]="false"
-      [allowSorting]="true"></dxi-column>
-    <dxi-column dataField="dateTime" [caption]="t('vehicle.dateTime')" [allowFiltering]="false" [allowSorting]="false">
-    </dxi-column>
-    <dxi-column dataField="currentBid" [caption]="t('vehicle.currentBid')" [allowFiltering]="false" [width]="120"
-      [allowSorting]="false"></dxi-column>
+      <dxi-column dataField="image" [width]="220" [allowFiltering]="false" [allowSorting]="false"
+        cellTemplate="cellTemplate"></dxi-column>
 
-    <dxi-column [width]=" 40"></dxi-column>
 
-    <dxo-summary>
-      <dxi-total-item column="producer" summaryType="count">
-      </dxi-total-item>
-    </dxo-summary>
+      <dxi-column dataField="producer" [caption]="t('vehicle.producer')" [filterOperations]="['startswith']"
+        [allowSorting]="true"></dxi-column>
 
-  </dx-data-grid>
+      <dxi-column dataField="modelSpecifer" [caption]="t('vehicle.modelSpecifer')" [allowFiltering]="true"
+        [allowSorting]="false"></dxi-column>
+      <dxi-column dataField="modelGeneration" [caption]="t('vehicle.modelGeneration')" [allowFiltering]="false"
+        [allowSorting]="true"></dxi-column>
+      <dxi-column dataField="registrationYear" [caption]="t('vehicle.registrationYear')" [allowFiltering]="false"
+        [allowSorting]="true"></dxi-column>
+      <dxi-column dataField="meterReadout" [caption]="t('vehicle.meterReadout')" [allowFiltering]="false"
+        [allowSorting]="true"></dxi-column>
+      <dxi-column dataField="dateTime" [caption]="t('vehicle.dateTime')" dataType="date" [allowFiltering]="false"
+        [allowSorting]="false">
+      </dxi-column>
+      <dxi-column dataField="currentBid" [caption]="t('vehicle.currentBid')" [allowFiltering]="false" [width]="120"
+        [allowSorting]="false"></dxi-column>
+
+      <dxi-column [width]=" 40"></dxi-column>
+
+
+      <div *dxTemplate="let data of 'cellTemplate'">
+        <img [src]="data.value" width="200" height="150" />
+      </div>
+
+      <dxo-summary>
+        <dxi-total-item column="producer" summaryType="count">
+        </dxi-total-item>
+      </dxo-summary>
+
+    </dx-data-grid>
+  </div>
 
 
 </ng-container>

@@ -1,15 +1,10 @@
 ﻿using AuctionAngular.Models.DTO;
 using AuctionAngular.Models;
 using Microsoft.EntityFrameworkCore;
+using AuctionAngular.Services.Interface;
 
 namespace AuctionAngular.Services
 {
-
-    public interface ILocationService
-    {
-        Task<IEnumerable<Location>> GetAll();
-        Task<Location> GetById(int id);
-    }
     public class LocationService : ILocationService
     {
         private readonly AuctionDbContext dbContext;

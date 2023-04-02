@@ -1,5 +1,6 @@
 ﻿using AuctionAngular.DTO;
 using AuctionAngular.Models;
+using AuctionAngular.Services.Interface;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -9,13 +10,6 @@ using System.Text;
 
 namespace AuctionAngular.Services
 {
-
-    public interface IAccountService
-    {
-        Task<string> GeneratJwt(LoginDto dto);
-        Task RegisterUser(RegisterUserDto dto);
-        Task RestartPassword(RestartPasswordDto dto);
-    }
     public class AccountService : IAccountService
     {
         private readonly AuctionDbContext dbContext;
@@ -38,7 +32,8 @@ namespace AuctionAngular.Services
                 FirstName = dto.FirstName,
                 LastName = dto.LastName,
                 PasswordHash = dto.Password,
-                RoleId = dto.RoleId
+                RoleId = dto.RoleId,
+                ProfilePicture = ""
 
             };
 

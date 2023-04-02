@@ -16,6 +16,7 @@ using FluentValidation;
 using NLog;
 using Microsoft.EntityFrameworkCore;
 using AuctionAngular.Models.Validators;
+using AuctionAngular.Services.Interface;
 
 var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
 logger.Debug("init main");

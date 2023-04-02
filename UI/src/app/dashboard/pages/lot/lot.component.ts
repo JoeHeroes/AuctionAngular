@@ -1,8 +1,9 @@
-import { VehicleService } from './../../../common/services/vehicle.service';
-import { HttpContext } from '@angular/common/http';
+import { VehicleService, BidDto } from './../../../common/services/vehicle.service';
+import { HttpContext, HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-lot',
@@ -17,16 +18,9 @@ export class LotComponent {
   slideshowDelay = 2000;
 
 
-  images: string[] = [
-    'images/gallery/1.jpg',
-    'images/gallery/2.jpg',
-    'images/gallery/3.jpg',
-    'images/gallery/4.jpg',
-    'images/gallery/5.jpg',
-    'images/gallery/6.jpg',
-    'images/gallery/7.jpg',
-    'images/gallery/8.jpg',
-    'images/gallery/9.jpg'];
+
+  bidForm!: FormGroup;
+
 
   constructor(
     private service: VehicleService,
@@ -39,6 +33,10 @@ export class LotComponent {
       this.loadData(segments);
     });
 
+    this.bidForm = new FormGroup({
+      bidNow: new FormControl("", [Validators.required])
+    })
+
   }
 
   private loadData(url: UrlSegment[]) {
@@ -46,14 +44,38 @@ export class LotComponent {
 
     this.service.getVehicle(this.id).subscribe(res => {
       this.datasource = res;
+      this.pictures = res.images
     });
 
-    this.pictures = this.images;
+
+
+
 
   }
 
-  private valueChanged(e: any) {
-    this.slideshowDelay = e.value ? 2000 : 0;
+
+
+  bidCar(bidValue: any) {
+
+
+    const bid = { ...bidValue };
+    const bidDto: BidDto = {
+      lotNumber: this.datasource.id,
+      bidNow: bid.bidNow
+    }
+
+
+    this.service.bidVehicle(bidDto)
+      .subscribe({
+        next: () => {
+          this.service.getVehicle(this.id).subscribe(res => {
+            this.datasource = res;
+          });
+        },
+        error: () => {
+
+        }
+      })
   }
 }
 

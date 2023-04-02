@@ -12,6 +12,7 @@ import { LocationComponent } from './pages/location/location.component';
 import { AuctionComponent } from './pages/auction/auction.component';
 import { VehicleComponent } from './pages/vehicle/vehicle.component';
 import { LotComponent } from './pages/lot/lot.component';
+import { VehicleEditComponent } from './pages/vehicle-edit/vehicle-edit.component';
 
 const routes: Routes = [
   {
@@ -77,6 +78,11 @@ const routes: Routes = [
             component: LotComponent,
           },
         ],
+      },
+      {
+        path: 'vehicle/editor',
+        pathMatch: 'full',
+        component: VehicleEditComponent,
       },
       {
         path: '**',

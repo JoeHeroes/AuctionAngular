@@ -75,10 +75,6 @@ export class InfoService {
 
     constructor(private http: HttpClient) { }
 
-    public loginUser(user: UserAuthenticationDto) {
-        return this.http.post<any>("https://localhost:7257/Account/login", user);
-    }
-
 
     getCompanies(): Company[] {
         return companies;

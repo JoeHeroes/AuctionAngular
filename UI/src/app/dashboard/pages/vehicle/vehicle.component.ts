@@ -1,9 +1,8 @@
 import { VehicleService } from './../../../common/services/vehicle.service';
-import { IVehicle } from './../../../common/services/auction-api.generated.service';
 import { Component, OnInit } from '@angular/core';
 import { RowDblClickEvent } from 'devextreme/ui/data_grid';
-import { AuctionSystemApiClient } from 'src/app/common/services/auction-api.generated.service';
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-vehicle',
@@ -27,8 +26,8 @@ export class VehicleComponent implements OnInit {
   }
 
   handleRowDoubleClick(event: RowDblClickEvent) {
-    const template = event.data as IVehicle;
-    this.router.navigate(['/vehicle/lot', template.id].filter(v => !!v));
+    const template = event.data
+    this.router.navigate(['/vehicle/lot', template.lotNumber].filter(v => !!v));
   }
 
 }

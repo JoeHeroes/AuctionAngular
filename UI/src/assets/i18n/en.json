@@ -12,16 +12,30 @@
     "modelSpecifer": "Model Specifer",
     "modelGeneration": "Model Generation",
     "registrationYear": "Registration Year",
+    "color": "Color",
+    "bodyType": "Body Type",
+    "engineCapacity": "Engine Capacity",
+    "engineOutput": "Engine Output",
+    "transmission": "Transmission",
+    "drive": "Drive",
     "meterReadout": "Meter Readout",
+    "numberKeys": "Number Keys",
+    "serviceManual": "Service Manual",
+    "secondTireSet": "Second Tire Set",
+    "primaryDamage": "Primary Damage",
     "dateTime": "Date Time",
-    "currentBid": "Current Bid"
+    "statusBid": "Status Bid",
+    "currentBid": "Current Bid",
+    "newBid": "New Bid",
+    "nowBid": "Bid Now",
+    "list": "Vehicle List"
   },
   "location": {
     "phone": "Phone",
     "email": "Email",
     "city": "City",
     "street": "Street",
-    "postalCode": "PostalCode"
+    "postalCode": "Postal Code"
   },
   "account": {
     "login": "Login",

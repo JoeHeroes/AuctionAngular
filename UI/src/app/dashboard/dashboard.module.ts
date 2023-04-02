@@ -23,6 +23,7 @@ import { PrivacyComponent } from './pages/privacy/privacy.component';
 import { SupportComponent } from './pages/support/support.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LotComponent } from './pages/lot/lot.component';
+import { VehicleEditComponent } from './pages/vehicle-edit/vehicle-edit.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { LotComponent } from './pages/lot/lot.component';
     PrivacyComponent,
     SupportComponent,
     LotComponent,
+    VehicleEditComponent,
   ],
   exports: [],
   imports: [

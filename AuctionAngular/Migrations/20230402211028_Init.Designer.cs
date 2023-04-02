@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AuctionAngular.Migrations
 {
     [DbContext(typeof(AuctionDbContext))]
-    [Migration("20230305224309_Init")]
+    [Migration("20230402211028_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,7 +24,7 @@ namespace AuctionAngular.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("AuctionAngular.Models.CurrentBind", b =>
+            modelBuilder.Entity("AuctionAngular.Models.Bind", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -40,11 +40,7 @@ namespace AuctionAngular.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
-
-                    b.HasIndex("VehicleId");
-
-                    b.ToTable("CurrentBinds");
+                    b.ToTable("Binds");
                 });
 
             modelBuilder.Entity("AuctionAngular.Models.Event", b =>
@@ -106,11 +102,11 @@ namespace AuctionAngular.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PostalCode")
+                    b.Property<string>("Picture")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ProfileImg")
+                    b.Property<string>("PostalCode")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -121,6 +117,26 @@ namespace AuctionAngular.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Locations");
+                });
+
+            modelBuilder.Entity("AuctionAngular.Models.Picture", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("PathImg")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("VehicleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Pictures");
                 });
 
             modelBuilder.Entity("AuctionAngular.Models.Role", b =>
@@ -171,7 +187,7 @@ namespace AuctionAngular.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ProfileImg")
+                    b.Property<string>("ProfilePicture")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -179,8 +195,6 @@ namespace AuctionAngular.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("RoleId");
 
                     b.ToTable("Users");
                 });
@@ -193,9 +207,6 @@ namespace AuctionAngular.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<bool>("BidStatus")
-                        .HasColumnType("bit");
-
                     b.Property<string>("BodyType")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -203,9 +214,6 @@ namespace AuctionAngular.Migrations
                     b.Property<string>("Color")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("CreateById")
-                        .HasColumnType("int");
 
                     b.Property<int>("CurrentBid")
                         .HasColumnType("int");
@@ -256,10 +264,6 @@ namespace AuctionAngular.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ProfileImg")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("RegistrationYear")
                         .HasColumnType("int");
 
@@ -281,15 +285,10 @@ namespace AuctionAngular.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("Watch")
-                        .HasColumnType("bit");
-
                     b.Property<int>("WinnerId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("LocationId");
 
                     b.ToTable("Vehicles");
                 });
@@ -317,57 +316,16 @@ namespace AuctionAngular.Migrations
                     b.ToTable("Watches");
                 });
 
-            modelBuilder.Entity("AuctionAngular.Models.CurrentBind", b =>
-                {
-                    b.HasOne("AuctionAngular.Models.User", "UserMany")
-                        .WithMany("CurrentBinds")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("AuctionAngular.Models.Vehicle", "VehicleMany")
-                        .WithMany("CurrentBinds")
-                        .HasForeignKey("VehicleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("UserMany");
-
-                    b.Navigation("VehicleMany");
-                });
-
-            modelBuilder.Entity("AuctionAngular.Models.User", b =>
-                {
-                    b.HasOne("AuctionAngular.Models.Role", "Role")
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Role");
-                });
-
-            modelBuilder.Entity("AuctionAngular.Models.Vehicle", b =>
-                {
-                    b.HasOne("AuctionAngular.Models.Location", "Location")
-                        .WithMany()
-                        .HasForeignKey("LocationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Location");
-                });
-
             modelBuilder.Entity("AuctionAngular.Models.Watch", b =>
                 {
                     b.HasOne("AuctionAngular.Models.User", "UserMany")
-                        .WithMany("Observed")
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("AuctionAngular.Models.Vehicle", "VehicleMany")
-                        .WithMany("Bidders")
+                        .WithMany()
                         .HasForeignKey("VehicleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -375,20 +333,6 @@ namespace AuctionAngular.Migrations
                     b.Navigation("UserMany");
 
                     b.Navigation("VehicleMany");
-                });
-
-            modelBuilder.Entity("AuctionAngular.Models.User", b =>
-                {
-                    b.Navigation("CurrentBinds");
-
-                    b.Navigation("Observed");
-                });
-
-            modelBuilder.Entity("AuctionAngular.Models.Vehicle", b =>
-                {
-                    b.Navigation("Bidders");
-
-                    b.Navigation("CurrentBinds");
                 });
 #pragma warning restore 612, 618
         }

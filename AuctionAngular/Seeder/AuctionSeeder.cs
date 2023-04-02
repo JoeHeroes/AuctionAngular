@@ -39,6 +39,14 @@ namespace CarAuction.Seeder
                     _dbContext.Locations.AddRange(info);
                     _dbContext.SaveChanges();
                 }
+
+
+                if (!_dbContext.Pictures.Any())
+                {
+                    var pic = GetPictures();
+                    _dbContext.Pictures.AddRange(pic);
+                    _dbContext.SaveChanges();
+                }
             }
         }
 
@@ -54,7 +62,7 @@ namespace CarAuction.Seeder
                     City = "Espoo",
                     Street = "Pieni teollisuuskatu 7",
                     PostalCode = "Uusimaa 02920",
-                    ProfileImg = "Espoo.png"
+                    Picture = "Espoo.png"
                 },
                 new Location()
                 {
@@ -64,7 +72,7 @@ namespace CarAuction.Seeder
                     City = "Oulu",
                     Street = "Ahertajantie 1",
                     PostalCode = "North Ostrobothnia 90940",
-                    ProfileImg = "Oulu.png"
+                    Picture = "Oulu.png"
                 },
                 new Location()
                 {
@@ -74,7 +82,7 @@ namespace CarAuction.Seeder
                     City = "Pirkkala",
                     Street = "Teollisuustie 24",
                     PostalCode = "Pirkanmaa 33960",
-                    ProfileImg = "Pirkkala.png"
+                    Picture = "Pirkkala.png"
                 },
                 new Location()
                 {
@@ -84,7 +92,7 @@ namespace CarAuction.Seeder
                     City = "Turku",
                     Street = "Tiemestarinkatu 5",
                     PostalCode = "20360",
-                    ProfileImg = "Turku.png"
+                    Picture = "Turku.png"
                 },
             };
         }
@@ -108,6 +116,76 @@ namespace CarAuction.Seeder
             };
         }
 
+        public IEnumerable<Picture> GetPictures()
+        {
+            return new List<Picture>()
+            {
+                new Picture()
+                {
+                    VehicleId = 1,
+                    PathImg = "/assets/img/a4b9.png"
+                },
+                new Picture()
+                {
+                    VehicleId = 1,
+                    PathImg = "/assets/img/a4b6.png"
+                },
+                new Picture()
+                {
+                    VehicleId = 1,
+                    PathImg = "/assets/img/octavia3.png"
+                },
+                new Picture()
+                {
+                    VehicleId = 1,
+                    PathImg = "/assets/img/passatb8.png"
+                },
+                new Picture()
+                {
+                    VehicleId = 1,
+                    PathImg = "/assets/img/polo2g.png"
+                },
+                new Picture()
+                {
+                    VehicleId = 1,
+                    PathImg = "/assets/img/yaris2.png"
+                },
+                 new Picture()
+                {
+                    VehicleId = 2,
+                    PathImg = "/assets/img/a4b9.png"
+                },
+                new Picture()
+                {
+                    VehicleId = 2,
+                    PathImg = "/assets/img/a4b6.png"
+                },
+                new Picture()
+                {
+                    VehicleId = 2,
+                    PathImg = "/assets/img/octavia3.png"
+                },
+                new Picture()
+                {
+                    VehicleId = 2,
+                    PathImg = "/assets/img/passatb8.png"
+                },
+                new Picture()
+                {
+                    VehicleId = 2,
+                    PathImg = "/assets/img/polo2g.png"
+                },
+                new Picture()
+                {
+                    VehicleId = 2,
+                    PathImg = "/assets/img/yaris2.png"
+                },
+
+            };
+        }
+
+
+
         public IEnumerable<Vehicle> GetInfoVehicle()
         {
             return new List<Vehicle>()
@@ -129,14 +207,12 @@ namespace CarAuction.Seeder
                     NumberKeys = "1",
                     ServiceManual = true,
                     SecondTireSet = true,
-                    Watch = false,
                     CurrentBid = 5000,
                     PrimaryDamage = Damage.Normal_Wear.ToString(),
                     SecondaryDamage = Damage.Normal_Wear.ToString(),
                     DateTime = new DateTime(2023,12,28),
                     VIN = "",
-                    ProfileImg = "a4b9.png",
-                    Location = new Location()
+                    LocationId = 1
                 },
                 new Vehicle()
                 {
@@ -155,14 +231,13 @@ namespace CarAuction.Seeder
                     NumberKeys = "1",
                     ServiceManual = true,
                     SecondTireSet = false,
-                    Watch = false,
                     CurrentBid = 5000,
                     PrimaryDamage = Damage.Normal_Wear.ToString(),
                     SecondaryDamage = Damage.Normal_Wear.ToString(),
                     DateTime = new DateTime(2023,12,18),
                     VIN = "",
-                    ProfileImg = "a4b6.png",
-                    Location = new Location()
+                    LocationId = 2,
+
                 },
                 new Vehicle()
                 {
@@ -181,14 +256,12 @@ namespace CarAuction.Seeder
                     NumberKeys = "2",
                     ServiceManual = true,
                     SecondTireSet = true,
-                    Watch = false,
                     CurrentBid = 5000,
                     PrimaryDamage = Damage.Normal_Wear.ToString(),
                     SecondaryDamage = Damage.Normal_Wear.ToString(),
                     DateTime = new DateTime(2023,12,16 ),
                     VIN = "",
-                    ProfileImg = "passatb8.png",
-                    Location = new Location()
+                    LocationId = 3
                 },
                 new Vehicle()
                 {
@@ -207,14 +280,12 @@ namespace CarAuction.Seeder
                     NumberKeys = "2",
                     ServiceManual = true,
                     SecondTireSet = true,
-                    Watch = false,
                     CurrentBid = 5000,
                     PrimaryDamage = Damage.Normal_Wear.ToString(),
                     SecondaryDamage = Damage.Normal_Wear.ToString(),
                     DateTime = new DateTime(2023,12,30),
                     VIN = "",
-                    ProfileImg = "octavia3.png",
-                    Location = new Location()
+                    LocationId = 4
                 },
                 new Vehicle()
                 {
@@ -233,14 +304,12 @@ namespace CarAuction.Seeder
                     NumberKeys = "2",
                     ServiceManual = true,
                     SecondTireSet = true,
-                    Watch = false,
                     CurrentBid = 5000,
                     PrimaryDamage = Damage.Normal_Wear.ToString(),
                     SecondaryDamage = Damage.Normal_Wear.ToString(),
                     DateTime = new DateTime(2023,1,1),
                     VIN = "",
-                    ProfileImg = "polo2g.png",
-                    Location = new Location()
+                    LocationId = 1
                 },
                 new Vehicle()
                 {
@@ -259,14 +328,12 @@ namespace CarAuction.Seeder
                     NumberKeys = "2",
                     ServiceManual = false,
                     SecondTireSet = false,
-                    Watch = false,
                     CurrentBid = 5000,
                     PrimaryDamage = Damage.Normal_Wear.ToString(),
                     SecondaryDamage = Damage.Normal_Wear.ToString(),
                     DateTime = new DateTime(2023,1,4),
                     VIN = "",
-                    ProfileImg = "yaris2.png",
-                     Location = new Location()
+                    LocationId = 2
                 }
             };
         }

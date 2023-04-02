@@ -12,8 +12,9 @@ namespace AuctionAngular.Models
         public DbSet<Location> Locations { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<Watch> Watches { get; set; }
-        public DbSet<CurrentBind> CurrentBinds { get; set; }
+        public DbSet<Bind> Binds { get; set; }
         public DbSet<Event> Events { get; set; }
+        public DbSet<Picture> Pictures { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -25,41 +26,30 @@ namespace AuctionAngular.Models
                .Property(u => u.Email)
                .IsRequired();
 
+            modelBuilder.Entity<Location>()
+          .Property(u => u.Name)
+          .IsRequired();
+
             modelBuilder.Entity<Role>()
               .Property(u => u.Name)
               .IsRequired();
 
-            modelBuilder
-              .Entity<Watch>()
-              .HasKey(t => t.Id);
+            modelBuilder.Entity<Watch>()
+           .Property(u => u.Id)
+           .IsRequired();
 
-            modelBuilder
-             .Entity<Watch>()
-             .HasOne(c => c.VehicleMany)
-             .WithMany(c => c.Bidders)
-             .HasForeignKey(cl => cl.VehicleId);
+            
+            modelBuilder.Entity<Bind>()
+               .Property(u => u.Id)
+              .IsRequired();
 
-            modelBuilder
-             .Entity<Watch>()
-             .HasOne(c => c.UserMany)
-             .WithMany(c => c.Observed)
-             .HasForeignKey(cl => cl.UserId);
 
-            modelBuilder
-              .Entity<CurrentBind>()
-              .HasKey(t => t.Id);
+            modelBuilder.Entity<Picture>()
+              .Property(u => u.Id)
+              .IsRequired();
 
-            modelBuilder
-             .Entity<CurrentBind>()
-             .HasOne(c => c.VehicleMany)
-             .WithMany(c => c.CurrentBinds)
-             .HasForeignKey(cl => cl.VehicleId);
 
-            modelBuilder
-             .Entity<CurrentBind>()
-             .HasOne(c => c.UserMany)
-             .WithMany(c => c.CurrentBinds)
-             .HasForeignKey(cl => cl.UserId);
+
         }
     }
 }
