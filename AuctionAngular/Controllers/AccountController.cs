@@ -1,5 +1,8 @@
-﻿using AuctionAngular.Services.Interface;
+﻿using AuctionAngular.Models;
+using AuctionAngular.Services.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace AuctionAngular.DTO
 {
@@ -38,6 +41,21 @@ namespace AuctionAngular.DTO
             await this.service.RestartPassword(dto);
 
             return Ok();
+        }
+
+        [HttpGet("user/{id}")]
+        public async Task<IActionResult> UserId([FromRoute] int id)
+        {
+            return Ok( new { userId = id});
+        }
+
+        [Authorize]
+        [HttpGet("current")]
+        public async Task<IActionResult> CurrentLoggedUserId()
+        {
+            int id = Convert.ToInt32(HttpContext.User.FindFirstValue("UserId"));
+
+            return Ok(new { userId = id });
         }
 
     }

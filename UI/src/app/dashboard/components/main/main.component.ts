@@ -26,22 +26,30 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.authService.authChanged
       .subscribe(res => {
         this.isUserAuthenticated = res;
       })
+
+    if (this.authService.isLoggedIn()) {
+      this.isUserAuthenticated = true;
+    } else {
+      this.router.navigateByUrl("login");
+      this.isUserAuthenticated = false;
+    }
   }
 
-  emitSidebarButtonClick = () => {
+  public emitSidebarButtonClick() {
     this.sidebarButtonClick.emit();
   }
 
-  public logout = () => {
+  public logout() {
     this.authService.logout();
     this.router.navigate(["/"]);
   }
 
-  selectLang = (lang: string) => {
+  public selectLang(lang: string) {
     localStorage.setItem('auction:lang', lang);
     this.transloco.setActiveLang(lang);
   }

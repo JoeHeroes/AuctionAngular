@@ -24,6 +24,8 @@ import { SupportComponent } from './pages/support/support.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LotComponent } from './pages/lot/lot.component';
 import { VehicleEditComponent } from './pages/vehicle-edit/vehicle-edit.component';
+import { AuthGuard } from '../common/components/auth.guard';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,7 @@ import { VehicleEditComponent } from './pages/vehicle-edit/vehicle-edit.componen
     SupportComponent,
     LotComponent,
     VehicleEditComponent,
+    ProfileComponent,
   ],
   exports: [],
   imports: [
@@ -71,7 +74,8 @@ import { VehicleEditComponent } from './pages/vehicle-edit/vehicle-edit.componen
   ],
   providers: [
     HttpContext,
-    InfoService
+    InfoService,
+    AuthGuard
   ],
 })
 export class DashboardModule {

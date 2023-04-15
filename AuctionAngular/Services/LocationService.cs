@@ -29,9 +29,9 @@ namespace AuctionAngular.Services
 
         public async Task<IEnumerable<Location>> GetAll()
         {
-            var result = this.dbContext
+            var result = await this.dbContext
                 .Locations
-                .ToList();
+                .ToListAsync();
 
             if (result is null)
             {

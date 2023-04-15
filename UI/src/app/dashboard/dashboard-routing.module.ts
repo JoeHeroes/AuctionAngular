@@ -1,5 +1,5 @@
 ﻿import { NgModule } from '@angular/core';
-import { Route, RouterModule, Routes } from '@angular/router';
+import { Route, RouterModule, Routes, CanActivate } from '@angular/router';
 import { HomeComponent } from "src/app/dashboard/pages/home/home.component";
 import { NotFoundComponent } from "src/app/not-found/not-found.component";
 import { DashboardComponent } from "src/app/dashboard/dashboard.component";
@@ -13,6 +13,8 @@ import { AuctionComponent } from './pages/auction/auction.component';
 import { VehicleComponent } from './pages/vehicle/vehicle.component';
 import { LotComponent } from './pages/lot/lot.component';
 import { VehicleEditComponent } from './pages/vehicle-edit/vehicle-edit.component';
+import { AuthGuard } from '../common/components/auth.guard';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -43,6 +45,7 @@ const routes: Routes = [
         path: 'location',
         pathMatch: 'full',
         component: LocationComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'services',
@@ -63,6 +66,11 @@ const routes: Routes = [
         path: 'login',
         pathMatch: 'full',
         component: LoginComponent,
+      },
+      {
+        path: 'profile',
+        pathMatch: 'full',
+        component: ProfileComponent,
       },
       {
         path: 'register',

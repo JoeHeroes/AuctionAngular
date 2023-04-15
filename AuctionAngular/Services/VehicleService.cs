@@ -97,17 +97,6 @@ namespace AuctionAngular.Services
 
            foreach (var vehicle in vehicles)
             {
-                var watchResult = this.dbContext.Watches.Where(x => x.VehicleId == vehicle.Id);
-                var result = watchResult.FirstOrDefault(x => x.UserId == 1);
-
-                bool watchBool = false;
-
-                if (result != null)
-                {
-                    watchBool = true;
-                }
-
-
                 var restultPictures = this.dbContext.Pictures.Where(x => x.Id == vehicle.Id);
 
                 List<string> pictures = new List<string>();
@@ -244,16 +233,14 @@ namespace AuctionAngular.Services
                                 .Vehicles
                                 .FirstOrDefaultAsync(x => x.Id == dto.lotNumber);
 
-            int id = 5;
-
             if (dto.bidNow > vehicle.CurrentBid)
             {
-                vehicle.WinnerId = id;
+                vehicle.WinnerId = dto.userId;
                 vehicle.CurrentBid = dto.bidNow;
 
                 User user = await this.dbContext
                                   .Users
-                                  .FirstOrDefaultAsync(x => x.Id == id);
+                                  .FirstOrDefaultAsync(x => x.Id == dto.userId);
 
                 var bind = new Bind()
                 {

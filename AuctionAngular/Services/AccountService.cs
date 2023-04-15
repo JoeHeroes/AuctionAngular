@@ -72,8 +72,8 @@ namespace AuctionAngular.Services
 
             var clasims = new List<Claim>()
             {
-                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Name, $"{user.FirstName} {user.LastName}"),
+                new Claim("UserId", user.Id.ToString()),
                 new Claim("DateOfBirth", user.DateOfBirth.Value.ToString("yyyy-MM-dd")),
                 
             };

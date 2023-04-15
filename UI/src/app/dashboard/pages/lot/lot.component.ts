@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthenticationService } from 'src/app/common/services/authentication.service';
 
 @Component({
   selector: 'app-lot',
@@ -15,6 +16,7 @@ export class LotComponent {
   id: any;
   datasource: any;
   pictures: any;
+  user: any;
   slideshowDelay = 2000;
 
 
@@ -24,6 +26,7 @@ export class LotComponent {
 
   constructor(
     private service: VehicleService,
+    private serviceAuth: AuthenticationService,
     private activeRoute: ActivatedRoute,
   ) {
   }
@@ -58,10 +61,17 @@ export class LotComponent {
   bidCar(bidValue: any) {
 
 
+    this.serviceAuth.loggedUserId().subscribe(res => {
+      this.user = res;
+    });;
+
+
+
     const bid = { ...bidValue };
     const bidDto: BidDto = {
       lotNumber: this.datasource.id,
-      bidNow: bid.bidNow
+      bidNow: bid.bidNow,
+      userId: this.user.userId
     }
 
 

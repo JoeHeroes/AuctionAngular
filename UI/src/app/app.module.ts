@@ -1,3 +1,4 @@
+import { AuthGuard } from './common/components/auth.guard';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -19,7 +20,7 @@ import { TranslocoRootModule } from './transloco-root.module';
     DxDrawerModule,
     DxScrollViewModule,
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
@@ -6,9 +6,9 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthenticationService {
+
   private authChangeSub = new Subject<boolean>()
   public authChanged = this.authChangeSub.asObservable();
-
   constructor(private http: HttpClient) { }
 
   public loginUser(user: UserAuthenticationDto) {
@@ -22,10 +22,25 @@ export class AuthenticationService {
   public sendAuthStateChangeNotification = (isAuthenticated: boolean) => {
     this.authChangeSub.next(isAuthenticated);
   }
+  public loggedUserId() {
 
-  public logout = () => {
+    let token: any = localStorage.getItem("token");
+
+    const header = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    });
+
+    return this.http.get<any>("https://localhost:7257/Account/current", { headers: header });
+  }
+
+  public logout() {
     localStorage.removeItem("token");
     this.sendAuthStateChangeNotification(false);
+  }
+
+  public isLoggedIn() {
+    return localStorage.getItem("token") != null;
   }
 }
 

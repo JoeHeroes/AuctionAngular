@@ -34,9 +34,17 @@
         [text]="t('account.login')" [routerLink]="'/login'">
       </dx-button>
 
-      <dx-button *ngIf='isUserAuthenticated' (onClick)="this.logout()" stylingMode="text" keyExpr="id"
-        displayExpr="label" [text]="t('account.logout')">
+
+      <dx-button *ngIf='isUserAuthenticated' stylingMode="text" keyExpr="id" displayExpr="label" 
+      [text]="t('account.profile')"  [routerLink]="'/profile'">
       </dx-button>
+
+
+      <dx-button *ngIf='isUserAuthenticated' (onClick)="this.logout()" stylingMode="text" keyExpr="id"
+      displayExpr="label" [text]="t('account.logout')">
+    </dx-button>
+
+
     </dxi-item>
 
   </dx-toolbar>

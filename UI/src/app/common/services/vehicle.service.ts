@@ -38,4 +38,5 @@ export class VehicleService {
 export interface BidDto {
   lotNumber: number;
   bidNow: number;
+  userId: number;
 }
