@@ -43,6 +43,17 @@ namespace AuctionAngular.DTO
             return Ok();
         }
 
+
+        [HttpPost("edit")]
+        public async Task<IActionResult> Edit([FromBody] EditUserDto dto)
+        {
+
+            await this.service.EditProfile(dto);
+
+            return Ok();
+        }
+
+
         [HttpGet("user/{id}")]
         public async Task<IActionResult> UserId([FromRoute] int id)
         {
@@ -56,6 +67,15 @@ namespace AuctionAngular.DTO
             int id = Convert.ToInt32(HttpContext.User.FindFirstValue("UserId"));
 
             return Ok(new { userId = id });
+        }
+
+
+        [HttpGet("userInfo/{id}")]
+        public async Task<IActionResult> getUserInfo([FromRoute] int id)
+        {
+            var result = await this.service.GetUserInfo(id);
+
+            return Ok(result);
         }
 
     }

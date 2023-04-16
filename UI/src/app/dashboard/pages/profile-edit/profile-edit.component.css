@@ -1,0 +1,39 @@
+::ng-deep #form {
+  max-width: 600px;
+  width: 400px;
+  margin: auto;
+}
+
+::ng-deep #button {
+  margin-top: 50px;
+  margin-right: 20px;
+  float: right;
+}
+
+::ng-deep #fileuploader-container {
+  border: 1px solid #777777;
+  margin: 20px 20px 0 20px;
+  border-radius: 4px;
+  max-width: 600px;
+  width: 400px;
+}
+
+
+
+:host {
+  height: 100%;
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+}
+
+input {
+  width: 100%;
+  padding: 6px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+

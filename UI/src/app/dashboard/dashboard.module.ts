@@ -12,7 +12,7 @@ import { AuctionCommonModule } from '../common/auction-common.module';
 import { DashboardComponentsModule } from './components/dashboard-components.module';
 import { DxToolbarModule } from "devextreme-angular/ui/toolbar";
 import { DxListModule } from "devextreme-angular/ui/list";
-import { DxAccordionModule, DxBarGaugeModule, DxButtonGroupModule, DxButtonModule, DxCheckBoxModule, DxDataGridModule, DxDateBoxModule, DxFormModule, DxGalleryModule, DxLoadIndicatorModule, DxNumberBoxModule, DxSelectBoxModule, DxTextBoxModule, DxValidationSummaryModule, DxValidatorModule } from 'devextreme-angular';
+import { DxAccordionModule, DxBarGaugeModule, DxBulletModule, DxButtonGroupModule, DxButtonModule, DxCheckBoxModule, DxDataGridModule, DxDateBoxModule, DxFileUploaderModule, DxFormModule, DxGalleryModule, DxLoadIndicatorModule, DxNumberBoxModule, DxSelectBoxModule, DxTextBoxModule, DxValidationSummaryModule, DxValidatorModule } from 'devextreme-angular';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
 import { VehicleComponent } from './pages/vehicle/vehicle.component';
@@ -26,6 +26,8 @@ import { LotComponent } from './pages/lot/lot.component';
 import { VehicleEditComponent } from './pages/vehicle-edit/vehicle-edit.component';
 import { AuthGuard } from '../common/components/auth.guard';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { ProfileEditComponent } from './pages/profile-edit/profile-edit.component';
+import { RestartPasswordComponent } from './pages/restart-password/restart-password.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
     LotComponent,
     VehicleEditComponent,
     ProfileComponent,
+    ProfileEditComponent,
+    RestartPasswordComponent,
   ],
   exports: [],
   imports: [
@@ -71,6 +75,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
     DxCheckBoxModule,
     DxGalleryModule,
     DxBarGaugeModule,
+    DxFileUploaderModule,
+    DxBulletModule
   ],
   providers: [
     HttpContext,

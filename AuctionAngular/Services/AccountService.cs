@@ -1,6 +1,7 @@
 ﻿using AuctionAngular.DTO;
 using AuctionAngular.Models;
 using AuctionAngular.Services.Interface;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -15,11 +16,13 @@ namespace AuctionAngular.Services
         private readonly AuctionDbContext dbContext;
         private readonly IPasswordHasher<User> passwordHasher;
         private readonly AuthenticationSettings authenticationSetting;
-        public AccountService(AuctionDbContext dbContext, IPasswordHasher<User> passwordHasher, AuthenticationSettings authenticationSetting)
+        private readonly IWebHostEnvironment webHost;
+        public AccountService(AuctionDbContext dbContext, IPasswordHasher<User> passwordHasher, AuthenticationSettings authenticationSetting, IWebHostEnvironment webHost)
         {
             this.dbContext = dbContext;
             this.passwordHasher = passwordHasher;
             this.authenticationSetting = authenticationSetting;
+            this.webHost = webHost;
         }
         public async Task RegisterUser(RegisterUserDto dto)
         {
@@ -135,5 +138,51 @@ namespace AuctionAngular.Services
                 throw new DbUpdateException("Error DataBase", e);
             }
         }
+
+        public async Task<ViewUserDto> GetUserInfo(int id)
+        {
+            var result = await this.dbContext
+               .Users
+               .FirstOrDefaultAsync(u => u.Id == id);
+
+            if (result is null)
+            {
+                throw new NotFoundException("User not found");
+            }
+
+            var resultDto = new ViewUserDto()
+            {
+                Id = result.Id,
+                Email = result.Email,
+                FirstName = result.FirstName,
+                LastName = result.LastName,
+                DateOfBirth = result.DateOfBirth,
+                Nationality = result.Nationality,
+                ProfilePicture = result.ProfilePicture,
+            };
+
+            return resultDto;
+        }
+
+        public async Task EditProfile(EditUserDto dto)
+        {
+
+
+            var model = await this.dbContext.Users.FirstOrDefaultAsync(x => x.Id == dto.UserId);
+
+            model.FirstName = dto.FirstName;
+            model.LastName = dto.LastName;  
+            model.Nationality= dto.Nationality;
+
+            try
+            {
+                await this.dbContext.SaveChangesAsync();
+            }
+            catch (DbUpdateException e)
+            {
+                throw new DbUpdateException("Error DataBase", e);
+            }
+        }
+
     }
 }

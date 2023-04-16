@@ -1,14 +1,12 @@
 <ng-container *transloco="let t">
   <dx-toolbar>
     <dxi-item location="before">
-      <div *dxTemplate>
-        <h2 class="title">{{t('vehicle.list', {n: 5})}}</h2>
-      </div>
+      <h3>{{t('vehicle.list')}}</h3>
     </dxi-item>
     <dxi-item location="before">
       <div *dxTemplate>
         <a [routerLink]="['editor']">
-          <dx-button type="default" [text]="t('actions.add')"></dx-button>
+          <dx-button type="default" [text]="t('action.add')"></dx-button>
         </a>
       </div>
     </dxi-item>
@@ -58,6 +56,27 @@
         <dxi-total-item column="producer" summaryType="count">
         </dxi-total-item>
       </dxo-summary>
+
+      <div *dxTemplate="let d of 'discountCellTemplate'">
+        <div class="chart-cell">
+          <dx-bullet
+            [showTarget]="false"
+            [showZeroLevel]="true"
+            [startScaleValue]="0"
+            [endScaleValue]="100"
+            [value]="d.value * 100"
+          >
+            <dxo-size [width]="150" [height]="35"></dxo-size>
+            <dxo-tooltip
+              [enabled]="true"
+              [paddingTopBottom]="2"
+            >
+              <dxo-font [size]="18"></dxo-font>
+            </dxo-tooltip>
+            <dxo-margin [top]="5" [bottom]="0" [left]="5"></dxo-margin>
+          </dx-bullet>
+        </div>
+      </div>
 
     </dx-data-grid>
   </div>

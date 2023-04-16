@@ -1,4 +1,9 @@
 {
+  "action": {
+    "add": "Add Vehicle",
+    "edit": "Edit Profile",
+    "restart": "Restart Password"
+  },
   "menu": {
     "home": "Home",
     "vehicle": "Vehicle",
@@ -41,13 +46,16 @@
     "login": "Login",
     "register": "Register",
     "logout": "Logout",
+    "id":"Id",
     "email": "Email",
     "password": "Password",
-    "confirmpassword": "Confirm Password",
-    "firstname": "Firstname",
-    "lastname": "Lastname",
+    "confirmPassword": "Confirm Password",
+    "newPassword": "New Password",
+    "confirmNewPassword": "Confirm New Password",
+    "firstName": "First Name",
+    "lastName": "Last Name",
     "nationality": "Nationality",
-    "dateofbirth": "Date Of Birth",
+    "dateOfBirth": "Date Birth",
     "role": "Role"
   }
 

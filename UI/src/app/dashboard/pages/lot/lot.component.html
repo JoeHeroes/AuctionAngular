@@ -1,128 +1,125 @@
-<ng-container *transloco="let t">
-  <div class="container">
-    <div class="column1">
-      <div class="dx-field">
-        <h1>{{datasource.producer}} {{datasource.modelSpecifer}} {{datasource.modelGeneration}}</h1>
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
+<div class="student-profile py-4">
+  <ng-container *transloco="let t">
+    <div class="container1">
+      <div class="row">
+        <div class="column1">
+          <div class="dx-field">
+            <h1>{{datasource.id}} {{datasource.producer}} {{datasource.modelSpecifer}} {{datasource.modelGeneration}}</h1>
+          </div>
+          <div class="widget-container">
+            <dx-gallery #gallery id="gallery" [dataSource]="pictures" [height]="600" [slideshowDelay]="slideshowDelay"
+              [loop]="true" [showNavButtons]="true" [showIndicator]="true"></dx-gallery>
+          </div>
+        </div>
+        <div class="column2">
+          <div class="shadow-sm">
+            <div class="card-header bg-transparent border-0">
+              <h3 class="mb-0"><i class="far fa-clone pr-1"></i>General Information</h3>
+            </div>
+            <div class="card-body pt-0">
+              <table class="table table-bordered">
+               
+                <tr>
+                  <th width="50%" >{{t('vehicle.modelSpecifer')}}</th>
+                  <td>{{datasource.modelSpecifer}}</td>
+                </tr>
+                <tr>
+                  <th width="50%" >{{t('vehicle.modelGeneration')}}</th>
+                  <td>{{datasource.modelGeneration}}</td>
+                </tr>
+                <tr>
+                  <th width="50%" >{{t('vehicle.registrationYear')}}</th>
+                  <td>{{datasource.registrationYear}}</td>
+                </tr>
+                <tr>
+                  <th width="50%" >{{t('vehicle.color')}}</th>
+                  <td>{{datasource.color}}</td>
+                </tr>
+                <tr>
+                  <th width="50%" >{{t('vehicle.bodyType')}}</th>
+                  <td>{{datasource.bodyType}}</td>
+                </tr>
+                <tr>
+                  <th width="50%" >{{t('vehicle.engineCapacity')}}</th>
+                  <td>{{datasource.engineCapacity}}</td>
+                </tr>
+
+                <tr>
+                  <th width="50%" >{{t('vehicle.engineOutput')}}</th>
+                  <td>{{datasource.engineOutput}}</td>
+                </tr>
+                <tr>
+                  <th width="50%" >{{t('vehicle.drive')}}</th>
+                  <td>{{datasource.drive}}</td>
+                </tr>
+                <tr>
+                  <th width="50%" >{{t('vehicle.engineCapacity')}}</th>
+                  <td>{{datasource.engineCapacity}}</td>
+                </tr>
+
+
+                <tr>
+                  <th width="50%" >{{t('vehicle.meterReadout')}}</th>
+                  <td>{{datasource.meterReadout}}</td>
+                </tr>
+
+                <tr>
+                  <th width="50%" >{{t('vehicle.fuel')}}</th>
+                  <td>{{datasource.fuel}}</td>
+                </tr>
+
+                <tr>
+                  <th width="50%" >{{t('vehicle.numberKeys')}}</th>
+                  <td>{{datasource.numberKeys}}</td>
+                </tr>
+
+                <tr>
+                  <th width="50%" >{{t('vehicle.serviceManual')}}</th>
+                  <td>{{datasource.serviceManual}}</td>
+                </tr>
+
+                <tr>
+                  <th width="50%" >{{t('vehicle.primaryDamage')}}</th>
+                  <td>{{datasource.primaryDamage}}</td>
+                </tr>
+
+                <tr>
+                  <th width="50%" >{{t('vehicle.dateTime')}}</th>
+                  <td>{{datasource.dateTime}}</td>
+                </tr>
+
+
+
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="column3">
+          <div class="shadow-sm">
+            <div class="card-header bg-transparent border-0">
+              <h3 class="mb-0">Bid Information</h3>
+            </div>
+            <table class="table table-bordered">
+               
+              <tr>
+                <th width="50%" >{{t('vehicle.currentBid')}}</th>
+                <td>{{datasource.currentBid}}</td>
+              </tr>
+            </table>
+            <form [formGroup]="bidForm" (ngSubmit)="bidCar(bidForm.value)">
+              {{t('vehicle.newBid')}}:
+              <input type="number" id="bidNow" formControlName="bidNow" class="form-control" />
+              <br />
+              <br />
+              <dx-button id="button" [text]="t('vehicle.nowBid')" type="default" [useSubmitBehavior]="true">
+              </dx-button>
+            </form>
+          </div>
+        </div>
       </div>
-      <div class="widget-container">
-        <dx-gallery #gallery id="gallery" [dataSource]="pictures" [height]="600" [slideshowDelay]="slideshowDelay"
-          [loop]="true" [showNavButtons]="true" [showIndicator]="true"></dx-gallery>
-      </div>
     </div>
-
-
-
-    <div class="column23">
-      <table>
-        <br />
-        <br />
-        <br />
-        <br />
-        <tr>
-          <th style="width:60%"></th>
-          <th></th>
-        </tr>
-        <tr>
-          <td>Id:</td>
-          <td>{{datasource.id}}</td>
-        </tr>
-        <tr>
-          <td>{{t('vehicle.modelSpecifer')}}:</td>
-          <td>{{datasource.modelSpecifer}}</td>
-        </tr>
-        <tr>
-          <td>{{t('vehicle.modelGeneration')}}:</td>
-          <td>{{datasource.modelGeneration}}</td>
-        </tr>
-        <tr>
-          <td>{{t('vehicle.registrationYear')}}:</td>
-          <td>{{datasource.registrationYear}}</td>
-        </tr>
-        <tr>
-          <td>{{t('vehicle.color')}}:</td>
-          <td>{{datasource.color}}</td>
-        </tr>
-        <tr>
-          <td>{{t('vehicle.bodyType')}}:</td>
-          <td>{{datasource.bodyType}}</td>
-        </tr>
-        <tr>
-          <td>{{t('vehicle.engineCapacity')}}:</td>
-          <td>{{datasource.engineCapacity}}</td>
-        </tr>
-        <tr>
-          <td>{{t('vehicle.engineOutput')}}:</td>
-          <td>{{datasource.engineOutput}}</td>
-        </tr>
-        <tr>
-          <td>{{t('vehicle.transmission')}}:</td>
-          <td>{{datasource.transmission}}</td>
-        </tr>
-        <tr>
-          <td>{{t('vehicle.drive')}}:</td>
-          <td>{{datasource.drive}}</td>
-        </tr>
-        <tr>
-          <td>{{t('vehicle.meterReadout')}}:</td>
-          <td>{{datasource.meterReadout}}</td>
-        </tr>
-        <tr>
-          <td>{{t('vehicle.fuel')}}:</td>
-          <td>{{datasource.fuel}}</td>
-        </tr>
-        <tr>
-          <td>{{t('vehicle.numberKeys')}}:</td>
-          <td>{{datasource.numberKeys}}</td>
-        </tr>
-        <tr>
-          <td>{{t('vehicle.serviceManual')}}:</td>
-          <td>{{datasource.serviceManual}}</td>
-        </tr>
-
-        <tr>
-          <td>{{t('vehicle.secondTireSet')}}:</td>
-          <td>{{datasource.secondTireSet}}</td>
-        </tr>
-        <tr>
-          <td>{{t('vehicle.primaryDamage')}}:</td>
-          <td>{{datasource.primaryDamage}}</td>
-        </tr>
-        <tr>
-          <td>{{t('vehicle.dateTime')}}:</td>
-          <td>{{datasource.dateTime}}</td>
-        </tr>
-
-      </table>
-    </div>
-
-    <div class="column23">
-
-
-      <table>
-        <br />
-        <br />
-        <br />
-        <br />
-        <tr>
-          <th style="width:60%"></th>
-          <th></th>
-        </tr>
-        <tr>
-          <td>{{t('vehicle.currentBid')}}:</td>
-          <td>{{datasource.currentBid}}</td>
-        </tr>
-      </table>
-      <br />
-      <form [formGroup]="bidForm" (ngSubmit)="bidCar(bidForm.value)">
-        {{t('vehicle.newBid')}}:
-        <input type="number" id="bidNow" formControlName="bidNow" class="form-control" />
-        <br />
-        <br />
-        <dx-button width="75%" id="button" [text]="t('vehicle.nowBid')" type="default" [useSubmitBehavior]="true">
-        </dx-button>
-      </form>
-    </div>
-
-  </div>
-
-</ng-container>
+  </ng-container>
+</div>

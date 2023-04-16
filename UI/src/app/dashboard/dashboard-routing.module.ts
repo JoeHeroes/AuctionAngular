@@ -15,6 +15,8 @@ import { LotComponent } from './pages/lot/lot.component';
 import { VehicleEditComponent } from './pages/vehicle-edit/vehicle-edit.component';
 import { AuthGuard } from '../common/components/auth.guard';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { ProfileEditComponent } from './pages/profile-edit/profile-edit.component';
+import { RestartPasswordComponent } from './pages/restart-password/restart-password.component';
 
 const routes: Routes = [
   {
@@ -71,6 +73,16 @@ const routes: Routes = [
         path: 'profile',
         pathMatch: 'full',
         component: ProfileComponent,
+      },
+      {
+        path: 'profile-edit',
+        pathMatch: 'full',
+        component: ProfileEditComponent,
+      },
+      {
+        path: 'restart-password',
+        pathMatch: 'full',
+        component: RestartPasswordComponent,
       },
       {
         path: 'register',

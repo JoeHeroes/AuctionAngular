@@ -49,11 +49,6 @@ export class LotComponent {
       this.datasource = res;
       this.pictures = res.images
     });
-
-
-
-
-
   }
 
 

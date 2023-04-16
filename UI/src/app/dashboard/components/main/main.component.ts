@@ -11,6 +11,7 @@ import { AuthenticationService } from 'src/app/common/services/authentication.se
 export class MainComponent implements OnInit {
   @Output() sidebarButtonClick = new EventEmitter<void>();
   public isUserAuthenticated!: boolean;
+  datasource: any;
 
   get availableLangs(): LangDefinition[] {
     return this.transloco.getAvailableLangs() as LangDefinition[];
@@ -38,9 +39,16 @@ export class MainComponent implements OnInit {
       this.router.navigateByUrl("login");
       this.isUserAuthenticated = false;
     }
+
+
+    this.authService.loggedUserId().subscribe(res => {
+      this.authService.getUserInfo(res.userId).subscribe(res => {
+        this.datasource = res;
+      });
+    });
   }
 
-  public emitSidebarButtonClick() {
+  emitSidebarButtonClick = () => {
     this.sidebarButtonClick.emit();
   }
 
