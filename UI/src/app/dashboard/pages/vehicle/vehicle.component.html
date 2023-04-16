@@ -14,19 +14,30 @@
   <br />
   <br />
   <div>
-    <dx-data-grid [dataSource]="datasource" [hoverStateEnabled]="true" [activeStateEnabled]="true"
-      [allowColumnResizing]="true" [allowColumnReordering]="true" [remoteOperations]="true"
-      (onRowDblClick)="handleRowDoubleClick($event)">
-      <dxo-filter-row [visible]="true"></dxo-filter-row>
-      <dxo-scrolling mode="virtual" rowRenderingMode="virtual"></dxo-scrolling>
-      <dxo-paging [pageSize]="100"></dxo-paging>
-      <dxo-sorting mode="multiple"></dxo-sorting>
-
-      <dxi-column [width]="40" [fixed]="true"></dxi-column>
+    <dx-data-grid
+  id="gridContainer"
+  [customizeColumns]="customizeColumns"
+  [dataSource]="datasource"
+  [showBorders]="true" [hoverStateEnabled]="true" [activeStateEnabled]="true"
+  [allowColumnResizing]="true" [allowColumnReordering]="true" [remoteOperations]="true"
+  (onRowDblClick)="handleRowDoubleClick($event)">
+  <dxo-filter-row [visible]="true"></dxo-filter-row>
+  <dxo-scrolling rowRenderingMode="virtual"> </dxo-scrolling>
+  <dxo-sorting mode="multiple"></dxo-sorting>
+  <dxo-paging [pageSize]="10"> </dxo-paging>
+  <dxo-pager
+    [visible]="true"
+    [allowedPageSizes]="allowedPageSizes"
+    [displayMode]="displayMode"
+    [showPageSizeSelector]="true"
+    [showInfo]="true"
+    [showNavigationButtons]="true"
+  >
+  </dxo-pager>
+  <dxi-column [width]="40" [fixed]="true"></dxi-column>
 
       <dxi-column dataField="image" [width]="220" [allowFiltering]="false" [allowSorting]="false"
         cellTemplate="cellTemplate"></dxi-column>
-
 
       <dxi-column dataField="producer" [caption]="t('vehicle.producer')" [filterOperations]="['startswith']"
         [allowSorting]="true"></dxi-column>
@@ -40,7 +51,7 @@
       <dxi-column dataField="meterReadout" [caption]="t('vehicle.meterReadout')" [allowFiltering]="false"
         [allowSorting]="true"></dxi-column>
       <dxi-column dataField="dateTime" [caption]="t('vehicle.dateTime')" dataType="date" [allowFiltering]="false"
-        [allowSorting]="false">
+        [allowSorting]="true">
       </dxi-column>
       <dxi-column dataField="currentBid" [caption]="t('vehicle.currentBid')" [allowFiltering]="false" [width]="120"
         [allowSorting]="false"></dxi-column>
@@ -53,7 +64,17 @@
       </div>
 
       <dxo-summary>
-        <dxi-total-item column="producer" summaryType="count">
+        <dxi-total-item column="registrationYear" summaryType="count"> </dxi-total-item>
+        <dxi-total-item
+          column="registrationYear"
+          summaryType="min"
+        >
+        </dxi-total-item>
+        <dxi-total-item
+          column="registrationYear"
+          summaryType="sum"
+          valueFormat="currency"
+        >
         </dxi-total-item>
       </dxo-summary>
 
@@ -77,8 +98,7 @@
           </dx-bullet>
         </div>
       </div>
-
-    </dx-data-grid>
+</dx-data-grid>
   </div>
 
 

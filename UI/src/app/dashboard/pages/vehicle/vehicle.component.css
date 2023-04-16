@@ -1,2 +1,3 @@
-@use 'src/styles/page' with ($type: 'grid');
-
+::ng-deep #gridContainer {
+  height: 800px;
+}

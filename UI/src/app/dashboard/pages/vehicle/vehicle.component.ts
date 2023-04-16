@@ -12,6 +12,15 @@ import { Router } from '@angular/router';
 export class VehicleComponent implements OnInit {
   datasource: any;
 
+  readonly allowedPageSizes = [5, 10, 20, 'all'];
+
+  displayMode = 'full';
+
+  customizeColumns(columns: any) {
+    columns[0].width = 70;
+  }
+
+
   constructor(private service: VehicleService,
     private router: Router) {
     this.service.getVehicles().subscribe(res => {
