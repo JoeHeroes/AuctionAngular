@@ -8,15 +8,12 @@
               <input type="text" id="firstName" formControlName="firstName" class="form-control" />
             </div>
           </div>
-
           <div class="dx-field">
             <div class="dx-field-label">{{t('account.lastName')}}</div>
             <div class="dx-field-value">
               <input type="text" id="lastName" formControlName="lastName" class="form-control" />
             </div>
           </div>
-
-
           <div class="dx-field">
             <div class="dx-field-label">{{t('account.nationality')}}</div>
             <div class="dx-field-value">
@@ -24,7 +21,7 @@
             </div>
           </div>
       </div>
-      <dx-button id="button" [text]="t('action.edit')" type="success" [useSubmitBehavior]="true"></dx-button>
+      <dx-button class="button" [text]="t('action.edit')" type="success" [useSubmitBehavior]="true"></dx-button>
     </form>
   </ng-container>
   

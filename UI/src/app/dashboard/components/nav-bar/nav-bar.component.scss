@@ -1,14 +1,13 @@
-@use "./src/styles/variables"as vars with ($dx-theme: 'light');
 
 :host {
   display: block;
   height: 100%;
-  background-color: darken(vars.$base-bg, 3%);
+  background-color: #212529;
   box-shadow: 3px 3px 5px -2px rgba(0, 0, 0, 0.2);
 }
 
 a,
 a:active {
   text-decoration: none;
-  color: vars.$base-text-color;
+  color: #ffffff;
 }

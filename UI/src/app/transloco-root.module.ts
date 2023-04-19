@@ -18,7 +18,6 @@ export class TranslocoHttpLoader implements TranslocoLoader {
     return this.http.get<Translation>(`/assets/i18n/${lang}.json`);
   }
 }
-
 @NgModule({
   exports: [TranslocoModule],
   providers: [

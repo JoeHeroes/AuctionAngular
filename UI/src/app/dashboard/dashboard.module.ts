@@ -1,4 +1,3 @@
-import { InfoService } from './../common/services/info.service';
 import { HttpContext } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -84,7 +83,6 @@ import { ScrollComponent } from './pages/scroll/scroll.component';
   ],
   providers: [
     HttpContext,
-    InfoService,
     AuthGuard
   ],
 })

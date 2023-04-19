@@ -7,31 +7,46 @@ import { Observable, Subject } from 'rxjs';
 })
 export class AuthenticationService {
 
-  private authChangeSub = new Subject<boolean>()
-  public authChanged = this.authChangeSub.asObservable();
   constructor(private http: HttpClient) { }
 
-  public loginUser(data: UserAuthenticationDto) {
-    return this.http.post<any>("https://localhost:7257/Account/login", data);
+  public loginUser(data: UserAuthenticationDto): Observable<any> {
+
+    let url_ = "https://localhost:7257/Account/login";
+
+    return this.http.post<any>(url_, data);
   }
 
-  public registerUser(data: UserRegisterDto) {
-    return this.http.post<any>("https://localhost:7257/Account/register", data);
+  public registerUser(data: UserRegisterDto): Observable<any> {
+
+    let url_ = "https://localhost:7257/Account/register";
+
+    return this.http.post<any>(url_, data);
   }
 
-  public restartPassword(data: RestartPasswordDto) {
-    return this.http.post<any>("https://localhost:7257/Account/restart", data);
+  public restartPassword(data: RestartPasswordDto): Observable<any> {
+
+    let url_ = "https://localhost:7257/Account/restart";
+
+    return this.http.post<any>(url_, data);
   }
 
 
-  public editProfile(data: EditProfileDto) {
-    return this.http.post<any>("https://localhost:7257/Account/edit", data);
+  public editProfile(data: EditProfileDto): Observable<any> {
+
+    let url_ = "https://localhost:7257/Account/edit";
+
+    return this.http.post<any>(url_, data);
   }
 
 
-  public sendAuthStateChangeNotification = (isAuthenticated: boolean) => {
-    this.authChangeSub.next(isAuthenticated);
+  public getUserInfo(id: number): Observable<any> {
+
+    let url_ = "https://localhost:7257/Account/userInfo/" + id;
+
+    return this.http.get<any>(url_);
   }
+
+
   public loggedUserId() {
 
     let token: any = localStorage.getItem("token");
@@ -57,24 +72,9 @@ export class AuthenticationService {
 
     return this.http.get<any>("https://localhost:7257/Account/current", { headers: header });
   }
-
-  public logout() {
-    localStorage.removeItem("token");
-    this.sendAuthStateChangeNotification(false);
-  }
-
-  public isLoggedIn() {
-    return localStorage.getItem("token") != null;
-  }
-
-
-  public getUserInfo(id: number): Observable<any> {
-
-    let url_ = "https://localhost:7257/Account/userInfo/" + id;
-
-    return this.http.get<any>(url_);
-  }
 }
+
+
 
 export interface UserAuthenticationDto {
   email: string;
@@ -90,9 +90,7 @@ export interface UserRegisterDto {
   nationality: string;
   dateofbirth: Date;
   roleid: number;
-
 }
-
 
 export interface RestartPasswordDto {
   email: string;

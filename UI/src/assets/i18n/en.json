@@ -58,6 +58,11 @@
     "nationality": "Nationality",
     "dateOfBirth": "Date Birth",
     "role": "Role"
+  },
+  "notFoundPage":{
+    "title": "Not Found Page",
+    "message": "We could found page",
+    "goBack": "go Back"
   }
 
 }

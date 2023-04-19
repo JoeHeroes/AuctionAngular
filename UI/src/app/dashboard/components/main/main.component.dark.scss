@@ -1,7 +1,0 @@
-@use "./src/styles/variables" as vars with ($dx-theme: 'dark');
-
-@media screen and (prefers-color-scheme: dark) {
-  dx-toolbar {
-    background-color: vars.$color-nav-sub-dark;
-  }
-}

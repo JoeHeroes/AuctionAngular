@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { marker as _ } from '@ngneat/transloco-keys-manager/marker';
 
 export interface ListItem {
@@ -21,16 +21,12 @@ const navigationItems: ListItem[] = [
 @Component({
   selector: 'auction-nav',
   templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.scss', './nav-bar.component.dark.scss']
+  styleUrls: ['./nav-bar.component.scss']
 })
-export class NavBarComponent implements OnInit {
+export class NavBarComponent {
   navigation: ListItem[];
 
   constructor() {
     this.navigation = navigationItems
   }
-
-  ngOnInit(): void {
-  }
-
 }

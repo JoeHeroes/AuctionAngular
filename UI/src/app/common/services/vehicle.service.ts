@@ -17,7 +17,6 @@ export class VehicleService {
     return this.http.get<any>(url_);
   }
 
-
   getVehicle(id: number): Observable<any> {
 
     let url_ = "https://localhost:7257/Vehicle/" + id;
@@ -25,14 +24,12 @@ export class VehicleService {
     return this.http.get<any>(url_);
   }
 
-
-  bidVehicle(bid: BidDto) {
+  bidVehicle(bid: BidDto): Observable<any> {
 
     let url_ = "https://localhost:7257/Vehicle/bid";
 
     return this.http.post<any>(url_, bid);
   }
-
 }
 
 export interface BidDto {

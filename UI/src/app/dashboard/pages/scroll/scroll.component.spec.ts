@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ScrollComponent } from './scroll.component';
 
 describe('ScrollComponent', () => {
@@ -8,9 +7,9 @@ describe('ScrollComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ScrollComponent ]
+      declarations: [ScrollComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(ScrollComponent);
     component = fixture.componentInstance;

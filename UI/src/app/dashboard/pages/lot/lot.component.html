@@ -56,40 +56,30 @@
                   <th width="50%" >{{t('vehicle.engineCapacity')}}</th>
                   <td>{{datasource.engineCapacity}}</td>
                 </tr>
-
-
                 <tr>
                   <th width="50%" >{{t('vehicle.meterReadout')}}</th>
                   <td>{{datasource.meterReadout}}</td>
                 </tr>
-
                 <tr>
                   <th width="50%" >{{t('vehicle.fuel')}}</th>
                   <td>{{datasource.fuel}}</td>
                 </tr>
-
                 <tr>
                   <th width="50%" >{{t('vehicle.numberKeys')}}</th>
                   <td>{{datasource.numberKeys}}</td>
                 </tr>
-
                 <tr>
                   <th width="50%" >{{t('vehicle.serviceManual')}}</th>
                   <td>{{datasource.serviceManual}}</td>
                 </tr>
-
                 <tr>
                   <th width="50%" >{{t('vehicle.primaryDamage')}}</th>
                   <td>{{datasource.primaryDamage}}</td>
                 </tr>
-
                 <tr>
                   <th width="50%" >{{t('vehicle.dateTime')}}</th>
                   <td>{{datasource.dateTime}}</td>
                 </tr>
-
-
-
               </table>
             </div>
           </div>
@@ -100,7 +90,6 @@
               <h3 class="mb-0">Bid Information</h3>
             </div>
             <table class="table table-bordered">
-               
               <tr>
                 <th width="50%" >{{t('vehicle.currentBid')}}</th>
                 <td>{{datasource.currentBid}}</td>
@@ -111,7 +100,7 @@
               <input type="number" id="bidNow" formControlName="bidNow" class="form-control" />
               <br />
               <br />
-              <dx-button id="button" [text]="t('vehicle.nowBid')" type="default" [useSubmitBehavior]="true">
+              <dx-button class="button" [text]="t('vehicle.nowBid')" type="default" [useSubmitBehavior]="true">
               </dx-button>
             </form>
           </div>

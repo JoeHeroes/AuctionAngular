@@ -10,10 +10,11 @@ import { AuthResponseDto, AuthenticationService, EditProfileDto } from 'src/app/
   styleUrls: ['./profile-edit.component.css']
 })
 export class ProfileEditComponent implements OnInit {
-  private returnUrl!: string;
+
+  returnUrl!: string;
+  showError!: boolean;
   editForm!: FormGroup;
   errorMessage: string = '';
-  showError!: boolean;
   email: string = '';
   userId: number = 0;
 
@@ -36,8 +37,6 @@ export class ProfileEditComponent implements OnInit {
       });
     });
   }
-
-
 
   editProfile = (editFormValue: any) => {
     this.showError = false;

@@ -10,11 +10,14 @@ import { AuthenticationService, UserRegisterDto } from 'src/app/common/services/
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  private returnUrl!: string;
 
+  returnUrl!: string;
+  showError!: boolean;
   registerForm!: FormGroup;
   errorMessage: string = '';
-  showError!: boolean;
+  email: string = '';
+
+
   constructor(private authService: AuthenticationService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -28,7 +31,7 @@ export class RegisterComponent implements OnInit {
       dateofbirth: new FormControl("", [Validators.required]),
       roleid: new FormControl("", [Validators.required]),
     })
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/login';
   }
 
   registerUser = (registerFormValue: any) => {
@@ -51,7 +54,7 @@ export class RegisterComponent implements OnInit {
           this.router.navigate([this.returnUrl]);
         },
         error: (err: HttpErrorResponse) => {
-          this.errorMessage = err.message;
+          this.errorMessage = err.name;
           this.showError = true;
         }
       })

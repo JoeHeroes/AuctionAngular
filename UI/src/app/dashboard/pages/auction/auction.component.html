@@ -3,12 +3,6 @@
     <h1 class="display-4" style="font-weight: bold;">There are no current<br/> Live Auctions</h1>
 </div>
 
-
-
-
-
-
-
 <div class="text-center" *ngIf='liveAuction'>
     <ng-container *transloco="let t">
       <div class="container" >
@@ -16,7 +10,6 @@
           <div class="column1">
             <div class="card shadow-sm">
               <div class="card-header bg-transparent text-center">
-               
                     <div class="dx-field">
                       <h1>{{datasource[0].id}} {{datasource[0].producer}} {{datasource[0].modelSpecifer}} {{datasource[0].modelGeneration}}</h1>
                     </div>
@@ -24,11 +17,9 @@
                       <dx-gallery #gallery id="gallery" [dataSource]="datasource[0].images" [height]="600" [slideshowDelay]="slideshowDelay"
                         [loop]="true" [showNavButtons]="true" [showIndicator]="true"></dx-gallery>
                     </div>
-                
               </div>
             </div>
           </div>
-     
 
           <div class="column2">
             <div class="card shadow-sm">
@@ -36,7 +27,6 @@
                 <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Other Information</h3>
               </div>
               <table class="table table-bordered">
-               
                 <tr>
                   <th width="50%" >{{t('vehicle.modelSpecifer')}}</th>
                   <td>{{datasource[0].modelSpecifer}}</td>
@@ -61,7 +51,6 @@
                   <th width="50%" >{{t('vehicle.engineCapacity')}}</th>
                   <td>{{datasource[0].engineCapacity}}</td>
                 </tr>
-
                 <tr>
                   <th width="50%" >{{t('vehicle.engineOutput')}}</th>
                   <td>{{datasource[0].engineOutput}}</td>
@@ -74,44 +63,33 @@
                   <th width="50%" >{{t('vehicle.engineCapacity')}}</th>
                   <td>{{datasource[0].engineCapacity}}</td>
                 </tr>
-
-
                 <tr>
                   <th width="50%" >{{t('vehicle.meterReadout')}}</th>
                   <td>{{datasource[0].meterReadout}}</td>
                 </tr>
-
                 <tr>
                   <th width="50%" >{{t('vehicle.fuel')}}</th>
                   <td>{{datasource[0].fuel}}</td>
                 </tr>
-
                 <tr>
                   <th width="50%" >{{t('vehicle.numberKeys')}}</th>
                   <td>{{datasource[0].numberKeys}}</td>
                 </tr>
-
                 <tr>
                   <th width="50%" >{{t('vehicle.serviceManual')}}</th>
                   <td>{{datasource[0].serviceManual}}</td>
                 </tr>
-
                 <tr>
                   <th width="50%" >{{t('vehicle.primaryDamage')}}</th>
                   <td>{{datasource[0].primaryDamage}}</td>
                 </tr>
-
                 <tr>
                   <th width="50%" >{{t('vehicle.dateTime')}}</th>
                   <td>{{datasource[0].dateTime}}</td>
                 </tr>
-                
               </table>
-              
             </div>
           </div>
-
-
           <div class="column3">
             <div class="card shadow-sm">
               <div class="card-header bg-transparent border-0">
@@ -120,8 +98,6 @@
               <app-scroll></app-scroll>
             </div>
           </div>
-
-          
         </div>
       </div>
     </ng-container>

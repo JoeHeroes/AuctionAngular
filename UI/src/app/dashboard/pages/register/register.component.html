@@ -15,20 +15,12 @@
             <input type="password" id="password" formControlName="password" class="form-control" />
           </div>
         </div>
-
-
-
-
-
-
         <div class="dx-field">
           <div class="dx-field-label">{{t('account.confirmPassword')}}</div>
           <div class="dx-field-value">
             <input type="password" id="confirmpassword" formControlName="confirmpassword" class="form-control" />
           </div>
         </div>
-
-
         <div class="dx-field">
           <div class="dx-field-label">{{t('account.firstName')}}</div>
           <div class="dx-field-value">
@@ -59,8 +51,7 @@
             <input type="number" id="roleid" formControlName="roleid" class="form-control" />
           </div>
         </div>
-
-
+        <div *ngIf="errorMessage" style="color: red;">{{errorMessage}}</div>
       </div>
       <dx-validation-summary id="summary"></dx-validation-summary>
         <dx-button width="100%" id="button" [text]="t('account.register')" type="default" [useSubmitBehavior]="true"></dx-button>

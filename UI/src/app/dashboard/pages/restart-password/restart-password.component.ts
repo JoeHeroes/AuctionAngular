@@ -10,10 +10,10 @@ import { AuthResponseDto, AuthenticationService, RestartPasswordDto } from 'src/
   styleUrls: ['./restart-password.component.css']
 })
 export class RestartPasswordComponent implements OnInit {
-  private returnUrl!: string;
+  returnUrl!: string;
+  showError!: boolean;
   restartForm!: FormGroup;
   errorMessage: string = '';
-  showError!: boolean;
   email: string = '';
 
   constructor(private authService: AuthenticationService, private router: Router, private route: ActivatedRoute) { }
@@ -24,7 +24,7 @@ export class RestartPasswordComponent implements OnInit {
       newPassword: new FormControl("", [Validators.required]),
       confirmNewPassword: new FormControl("", [Validators.required])
     })
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/profile';
 
 
     this.authService.loggedUserId().subscribe(res => {
@@ -33,7 +33,6 @@ export class RestartPasswordComponent implements OnInit {
       });
     });
   }
-
 
 
   restartPassword = (restartFormValue: any) => {
@@ -50,6 +49,7 @@ export class RestartPasswordComponent implements OnInit {
     this.authService.restartPassword(restartData)
       .subscribe({
         next: (res: AuthResponseDto) => {
+          this.router.navigate([this.returnUrl]);
         },
         error: (err: HttpErrorResponse) => {
           this.errorMessage = err.message;

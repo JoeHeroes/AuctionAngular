@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService, AuthResponseDto, UserAuthenticationDto } from 'src/app/common/services/authentication.service';
+import { TokenService } from 'src/app/common/services/token.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   errorMessage: string = '';
   showError: boolean = false;
-  constructor(private authService: AuthenticationService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private authService: AuthenticationService, private tokenService: TokenService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -24,26 +25,6 @@ export class LoginComponent implements OnInit {
     })
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
-
-
-  /*doLogin = (e: SubmitEvent) => {
-     e.preventDefault();
-     this.submitting = true;
-     this.auth.getToken(new LoginCredentials({user: this.credentials}))
-       .subscribe({
-         next: response => {
-           this.submitting = false;
-           this.error = undefined;
-           this.tokenService.set(response.token!, response.expiresAt!);
-           this.router.navigate([this.returnTo ?? "dashboard"], {relativeTo: null});
-         },
-         error: (err: ITecsProblemDetails) => {
-           this.submitting = false;
-           this.error = err;
-         }
-       });
-   }
- */
 
   get email() { return this.loginForm.get('email'); }
 
@@ -61,7 +42,7 @@ export class LoginComponent implements OnInit {
         next: (res: AuthResponseDto) => {
           this.showError = false;
           localStorage.setItem("token", res.token);
-          this.authService.sendAuthStateChangeNotification(res.isAuthSuccessful);
+          this.tokenService.sendAuthStateChangeNotification(res.isAuthSuccessful);
           this.router.navigate([this.returnUrl]);
         },
         error: (err: HttpErrorResponse) => {
