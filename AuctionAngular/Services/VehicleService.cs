@@ -81,9 +81,6 @@ namespace AuctionAngular.Services
                 Images = pictures,
             };
 
-
-
-
             return view;
         }
 

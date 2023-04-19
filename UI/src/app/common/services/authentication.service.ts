@@ -41,6 +41,20 @@ export class AuthenticationService {
       Authorization: `Bearer ${token}`,
     });
 
+    /*
+     let url_ = this.baseUrl + "/authentication/token";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            context: httpContext,
+            headers: new HttpHeaders({
+                "Accept": "application/json"
+            })
+        };
+    */
+
     return this.http.get<any>("https://localhost:7257/Account/current", { headers: header });
   }
 
@@ -99,4 +113,10 @@ export interface AuthResponseDto {
   isAuthSuccessful: boolean;
   errorMessage: string;
   token: string;
+}
+
+
+export interface TecsJwtPayload {
+  name: string,
+  unique_name: string
 }

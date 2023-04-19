@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { LangDefinition, TranslocoService } from '@ngneat/transloco';
+import { AuctionService } from 'src/app/common/services/auction.service';
 import { AuthenticationService } from 'src/app/common/services/authentication.service';
 
 @Component({
@@ -12,6 +13,8 @@ export class MainComponent implements OnInit {
   @Output() sidebarButtonClick = new EventEmitter<void>();
   public isUserAuthenticated!: boolean;
   datasource: any;
+  liveAuction: boolean = false;
+
 
   get availableLangs(): LangDefinition[] {
     return this.transloco.getAvailableLangs() as LangDefinition[];
@@ -22,16 +25,14 @@ export class MainComponent implements OnInit {
   }
 
   constructor(private authService: AuthenticationService,
+    private auctionService: AuctionService,
     private router: Router,
     private transloco: TranslocoService) {
   }
 
-  ngOnInit(): void {
 
-    this.authService.authChanged
-      .subscribe(res => {
-        this.isUserAuthenticated = res;
-      })
+
+  ngOnInit(): void {
 
     if (this.authService.isLoggedIn()) {
       this.isUserAuthenticated = true;
@@ -40,6 +41,9 @@ export class MainComponent implements OnInit {
       this.isUserAuthenticated = false;
     }
 
+    this.auctionService.liveAuction().subscribe(res => {
+      this.liveAuction = res;
+    });
 
     this.authService.loggedUserId().subscribe(res => {
       this.authService.getUserInfo(res.userId).subscribe(res => {
@@ -50,6 +54,11 @@ export class MainComponent implements OnInit {
 
   emitSidebarButtonClick = () => {
     this.sidebarButtonClick.emit();
+  }
+
+
+  openAuction = () => {
+    this.router.navigate(["/auction"]);
   }
 
   public logout() {

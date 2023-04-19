@@ -15,13 +15,11 @@ import { DxDropDownButtonModule } from "devextreme-angular/ui/drop-down-button";
 import { MainComponent } from './main/main.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { AuctionCommonModule } from 'src/app/common/auction-common.module';
-import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
     MainComponent,
-    NavBarComponent,
-    SearchComponent,
+    NavBarComponent
   ],
   imports: [
     CommonModule,

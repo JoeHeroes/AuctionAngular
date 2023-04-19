@@ -21,6 +21,12 @@ dx-toolbar.bottom {
   background-color: vars.$color-nav-dark;
 }
 
+
+dx-toolbar.auction {
+  color: white;
+  background-color:rgb(25, 145, 25);
+}
+
 :host ::ng-deep .dx-button-mode-text .dx-icon {
   color: vars.$base-inverted-text-color;
 }

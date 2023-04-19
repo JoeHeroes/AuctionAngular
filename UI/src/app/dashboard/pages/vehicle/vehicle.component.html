@@ -34,7 +34,7 @@
     [showNavigationButtons]="true"
   >
   </dxo-pager>
-  <dxi-column [width]="40" [fixed]="true"></dxi-column>
+  <dxi-column [width]="20" [fixed]="true"></dxi-column>
 
       <dxi-column dataField="image" [width]="220" [allowFiltering]="false" [allowSorting]="false"
         cellTemplate="cellTemplate"></dxi-column>
@@ -63,20 +63,6 @@
         <img [src]="data.value" width="200" height="150" />
       </div>
 
-      <dxo-summary>
-        <dxi-total-item column="registrationYear" summaryType="count"> </dxi-total-item>
-        <dxi-total-item
-          column="registrationYear"
-          summaryType="min"
-        >
-        </dxi-total-item>
-        <dxi-total-item
-          column="registrationYear"
-          summaryType="sum"
-          valueFormat="currency"
-        >
-        </dxi-total-item>
-      </dxo-summary>
 
       <div *dxTemplate="let d of 'discountCellTemplate'">
         <div class="chart-cell">

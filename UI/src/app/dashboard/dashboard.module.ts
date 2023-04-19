@@ -28,6 +28,8 @@ import { AuthGuard } from '../common/components/auth.guard';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ProfileEditComponent } from './pages/profile-edit/profile-edit.component';
 import { RestartPasswordComponent } from './pages/restart-password/restart-password.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { ScrollComponent } from './pages/scroll/scroll.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,7 @@ import { RestartPasswordComponent } from './pages/restart-password/restart-passw
     ProfileComponent,
     ProfileEditComponent,
     RestartPasswordComponent,
+    ScrollComponent,
   ],
   exports: [],
   imports: [
@@ -76,7 +79,8 @@ import { RestartPasswordComponent } from './pages/restart-password/restart-passw
     DxGalleryModule,
     DxBarGaugeModule,
     DxFileUploaderModule,
-    DxBulletModule
+    DxBulletModule,
+    ScrollingModule
   ],
   providers: [
     HttpContext,

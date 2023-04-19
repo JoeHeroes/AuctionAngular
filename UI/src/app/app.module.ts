@@ -7,6 +7,8 @@ import { DxDrawerModule, DxScrollViewModule } from 'devextreme-angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TranslocoRootModule } from './transloco-root.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { TranslocoRootModule } from './transloco-root.module';
     TranslocoRootModule,
     DxDrawerModule,
     DxScrollViewModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

@@ -1,30 +1,27 @@
 <ng-container *transloco="let t">
   <dx-toolbar>
-
     <dxi-item location="before" locateInMenu="never">
-      <div class="toolbar-label">Copart</div>
-    </dxi-item>
-    <dxi-item locateInMenu="never">
-      <app-search class="align-self-center"></app-search>
+      <div class="toolbar-label"><b>Copart</b></div>
     </dxi-item>
     <dxi-item location="after" locateInMenu="never">
-
-
-
-
-
       <dx-drop-down-button stylingMode="text" [items]="availableLangs" keyExpr="id" displayExpr="label"
         [useSelectMode]="true" (onSelectionChanged)="selectLang($event.item.id)" [selectedItemKey]="selectedLang">
       </dx-drop-down-button>
     </dxi-item>
   </dx-toolbar>
 
-  <dx-toolbar class="bottom">
+  <dx-toolbar class="auction" *ngIf='liveAuction'>
+    <dxi-item>
+      <dx-button (onClick)="this.openAuction()" stylingMode="text" 
+      displayExpr="label" text="Auction is on now"> </dx-button>
+    </dxi-item>
+  </dx-toolbar>
 
+  <dx-toolbar class="bottom">
     <dxi-item widget="dxButton" [onClick]="emitSidebarButtonClick" [options]="{
       icon: 'menu',
-      stylingMode: 'text'
-    }" location="before">
+      stylingMode: 'text'}" 
+      location="before">
     </dxi-item>
     <dxi-item location="after" locateInMenu="never">
       <dx-button *ngIf='!isUserAuthenticated' stylingMode="text" keyExpr="id" displayExpr="label"
@@ -39,6 +36,7 @@
       text="{{datasource.firstName}} {{datasource.lastName}}"  [routerLink]="'/profile'">
       </dx-button>
 
+     
 
       <dx-button *ngIf='isUserAuthenticated' (onClick)="this.logout()" stylingMode="text" keyExpr="id"
       displayExpr="label" [text]="t('account.logout')">
@@ -48,4 +46,8 @@
     </dxi-item>
 
   </dx-toolbar>
+
+
+
+  
 </ng-container>

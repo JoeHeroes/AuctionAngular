@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-sevices',
@@ -6,5 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./sevices.component.css']
 })
 export class SevicesComponent {
-
+  title = 'Angular Form Validation Tutorial';
+  angForm!: FormGroup;
+  constructor(private fb: FormBuilder) {
+    this.createForm();
+  }
+  createForm() {
+    this.angForm = this.fb.group({
+      name: ['', Validators.required]
+    });
+  }
 }

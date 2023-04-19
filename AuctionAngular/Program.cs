@@ -74,7 +74,12 @@ try
     builder.Services.AddScoped<IAccountService, AccountService>();
     builder.Services.AddScoped<IVehicleService, VehicleService>();
     builder.Services.AddScoped<ILocationService, LocationService>();
+    builder.Services.AddScoped<IAuctionService, AuctionService>();
 
+
+
+
+    
 
     //Middleware
     builder.Services.AddScoped<ErrorHandlingMiddleware>();
