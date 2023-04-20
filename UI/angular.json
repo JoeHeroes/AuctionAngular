@@ -30,11 +30,6 @@
                 "input": "src/styles/dark.scss",
                 "bundleName": "styles-dark",
                 "inject": false
-              },
-              {
-                "input": "src/styles/light.scss",
-                "bundleName": "styles-light",
-                "inject": false
               }
             ],
             "scripts": []
