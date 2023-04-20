@@ -126,7 +126,7 @@ namespace AuctionAngular.Controllers
 
             try
             {
-                await this.service.Bid(dto);
+                 await this.service.Bid(dto);
             }
             catch (Exception)
             {

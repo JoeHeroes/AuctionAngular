@@ -7,8 +7,9 @@
     <div class="container1">
       <div class="row">
         <div class="column1">
-          <div class="dx-field">
-            <h1>{{datasource[index].id}} {{datasource[index].producer}} {{datasource[index].modelSpecifer}} {{datasource[index].modelGeneration}}</h1>
+          <div >
+            <h1 style="font-weight: bold;">{{datasource[index].id}} {{datasource[index].producer}} {{datasource[index].modelSpecifer}} {{datasource[index].modelGeneration}}</h1>
+            <h1 style="font-weight: bold; color: green;">On Live</h1>
           </div>
           <div class="widget-container">
             <dx-gallery [dataSource]="datasource[index].images" [height]="600" [slideshowDelay]="slideshowDelay"
@@ -91,9 +92,7 @@
                 <td>{{datasource[index].dateTime}}</td>
               </tr>
             </table>
-            <div class="card-header bg-transparent border-0">
-              
-            </div>
+
           </div>
         </div>
         <div class="column3">
@@ -107,14 +106,11 @@
               <dxo-label [indent]="30" 
                 ><dxo-format type="fixedPoint" [precision]="1"></dxo-format>
               </dxo-label>
-              <dxo-title text="Time left">
-                <dxo-font [size]="28"></dxo-font>
-              </dxo-title>
             </dx-bar-gauge>
             <table class="table table-bordered">
               <tr>
                 <th width="50%" >{{t('vehicle.currentBid')}}</th>
-                <td>{{datasource.currentBid}}</td>
+                <td>{{datasource[index].currentBid}}</td>
               </tr>
             </table>
             <form [formGroup]="bidForm" (ngSubmit)="bidCar(bidForm.value)">
@@ -124,8 +120,6 @@
               <dx-button class="button" [text]="t('vehicle.nowBid')" type="default" [useSubmitBehavior]="true">
               </dx-button>
             </form>
-            <div class="card-header bg-transparent border-0">
-            </div>
           </div>
           <div class="card shadow-sm">
             <div class="card-header bg-transparent border-0">

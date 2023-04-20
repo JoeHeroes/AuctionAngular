@@ -1,7 +1,7 @@
 <ng-container *transloco="let t">
   <div id="accordion">
     <dx-accordion [dataSource]="locations" [collapsible]="false" [multiple]="false" [animationDuration]="300"
-      [selectedItems]="[locations[0]]" id="accordion-container">
+       id="accordion-container">
       <div *dxTemplate="let location of 'title'">
         <h1>{{ location.name }}</h1>
       </div>

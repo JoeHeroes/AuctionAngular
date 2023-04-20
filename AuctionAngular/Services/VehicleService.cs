@@ -247,10 +247,13 @@ namespace AuctionAngular.Services
                     VehicleId = vehicle.Id,
                 };
 
+                /*
                 if (this.dbContext.Binds.FirstOrDefault(x => x.UserId == user.Id && x.VehicleId == vehicle.Id) == null)
                 {
                     this.dbContext.Binds.Add(bind);
                 }
+                */
+                this.dbContext.Binds.Add(bind);
 
                 try
                 {

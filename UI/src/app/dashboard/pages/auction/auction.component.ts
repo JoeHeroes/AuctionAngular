@@ -28,7 +28,7 @@ export class AuctionComponent implements OnInit {
   bidForm!: FormGroup;
 
   constructor(private auctionService: AuctionService, private authenticationService: AuthenticationService, private vehicleService: VehicleService) {
-    this.mySubscription = interval(100).subscribe((x => {
+    this.mySubscription = interval(500).subscribe((x => {
       this.doStuff();
     }));
   }
@@ -70,7 +70,7 @@ export class AuctionComponent implements OnInit {
 
     const bid = { ...bidValue };
     const bidDto: BidDto = {
-      lotNumber: this.datasource.id,
+      lotNumber: this.datasource[this.index].id,
       bidNow: bid.bidNow,
       userId: this.user.userId
     }
@@ -79,7 +79,7 @@ export class AuctionComponent implements OnInit {
     this.vehicleService.bidVehicle(bidDto)
       .subscribe({
         next: () => {
-          this.vehicleService.getVehicle(this.id).subscribe(res => {
+          this.auctionService.liveAuctionList().subscribe(res => {
             this.datasource = res;
           });
         },
