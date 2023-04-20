@@ -28,7 +28,7 @@ export class ProfileEditComponent implements OnInit {
       nationality: new FormControl("", [Validators.required]),
       pathPicture: new FormControl("", [Validators.required]),
     })
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/profile';
 
     this.authService.loggedUserId().subscribe(res => {
       this.userId = res.userId;
@@ -51,6 +51,7 @@ export class ProfileEditComponent implements OnInit {
     this.authService.editProfile(editData)
       .subscribe({
         next: (res: AuthResponseDto) => {
+          this.router.navigate([this.returnUrl]);
         },
         error: (err: HttpErrorResponse) => {
           this.errorMessage = err.message;

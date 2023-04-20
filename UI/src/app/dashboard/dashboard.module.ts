@@ -11,7 +11,7 @@ import { AuctionCommonModule } from '../common/auction-common.module';
 import { DashboardComponentsModule } from './components/dashboard-components.module';
 import { DxToolbarModule } from "devextreme-angular/ui/toolbar";
 import { DxListModule } from "devextreme-angular/ui/list";
-import { DxAccordionModule, DxBarGaugeModule, DxBulletModule, DxButtonGroupModule, DxButtonModule, DxCheckBoxModule, DxDataGridModule, DxDateBoxModule, DxFileUploaderModule, DxFormModule, DxGalleryModule, DxLoadIndicatorModule, DxNumberBoxModule, DxSelectBoxModule, DxTextBoxModule, DxValidationSummaryModule, DxValidatorModule } from 'devextreme-angular';
+import { DxAccordionModule, DxBarGaugeModule, DxBulletModule, DxButtonGroupModule, DxButtonModule, DxCheckBoxModule, DxCircularGaugeModule, DxDataGridModule, DxDateBoxModule, DxFileUploaderModule, DxFormModule, DxGalleryModule, DxLoadIndicatorModule, DxNumberBoxModule, DxSelectBoxModule, DxTextBoxModule, DxValidationSummaryModule, DxValidatorModule } from 'devextreme-angular';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
 import { VehicleComponent } from './pages/vehicle/vehicle.component';
@@ -79,7 +79,8 @@ import { ScrollComponent } from './pages/scroll/scroll.component';
     DxBarGaugeModule,
     DxFileUploaderModule,
     DxBulletModule,
-    ScrollingModule
+    ScrollingModule,
+    DxCircularGaugeModule
   ],
   providers: [
     HttpContext,

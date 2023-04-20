@@ -1,4 +1,5 @@
-﻿using AuctionAngular.Models;
+﻿using AuctionAngular.DTO;
+using AuctionAngular.Models;
 using AuctionAngular.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -25,7 +26,7 @@ namespace AuctionAngular.Controllers
         }
 
         [HttpGet("liveAuctionList")]
-        public async Task<ActionResult<IEnumerable<Vehicle>>> LiveAuctionList()
+        public async Task<ActionResult<IEnumerable<ViewVehicleDto>>> LiveAuctionList()
         {
             var result = await this.service.LiveAuctionList();
             return Ok(result);

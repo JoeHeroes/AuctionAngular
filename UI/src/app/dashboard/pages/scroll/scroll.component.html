@@ -1,4 +1,13 @@
 <cdk-virtual-scroll-viewport itemSize="50" minBufferPx="200" maxBufferPx="400"
 class="example-viewport">
-<div *cdkVirtualFor="let item of items" class="example-item">{{item}}</div>
+<div *cdkVirtualFor="let item of items" routerLink="vehicle/lot/{{item.id}}"  class="example-item">
+    
+    <img src="{{item.picture}}">
+    {{item.modelSpecifer}}
+    {{item.modelGeneration}}
+    {{item.modelSpecifer}}
+    {{item.registrationYear}}
+    {{item.currentBid}}
+
+</div>
 </cdk-virtual-scroll-viewport>

@@ -212,7 +212,8 @@ namespace CarAuction.Seeder
                     SecondaryDamage = Damage.Normal_Wear.ToString(),
                     DateTime = new DateTime(2023,12,28),
                     VIN = "",
-                    LocationId = 1
+                    LocationId = 1,
+                    SalesFinised= false,
                 },
                 new Vehicle()
                 {
@@ -237,6 +238,7 @@ namespace CarAuction.Seeder
                     DateTime = new DateTime(2023,12,18),
                     VIN = "",
                     LocationId = 2,
+                    SalesFinised= false,
 
                 },
                 new Vehicle()
@@ -261,7 +263,8 @@ namespace CarAuction.Seeder
                     SecondaryDamage = Damage.Normal_Wear.ToString(),
                     DateTime = new DateTime(2023,12,16 ),
                     VIN = "",
-                    LocationId = 3
+                    LocationId = 3,
+                    SalesFinised= false,
                 },
                 new Vehicle()
                 {
@@ -285,7 +288,8 @@ namespace CarAuction.Seeder
                     SecondaryDamage = Damage.Normal_Wear.ToString(),
                     DateTime = new DateTime(2023,12,30),
                     VIN = "",
-                    LocationId = 4
+                    LocationId = 4,
+                    SalesFinised= false,
                 },
                 new Vehicle()
                 {
@@ -309,7 +313,8 @@ namespace CarAuction.Seeder
                     SecondaryDamage = Damage.Normal_Wear.ToString(),
                     DateTime = new DateTime(2023,1,1),
                     VIN = "",
-                    LocationId = 1
+                    LocationId = 1,
+                    SalesFinised= false,
                 },
                 new Vehicle()
                 {
@@ -333,7 +338,8 @@ namespace CarAuction.Seeder
                     SecondaryDamage = Damage.Normal_Wear.ToString(),
                     DateTime = new DateTime(2023,1,4),
                     VIN = "",
-                    LocationId = 2
+                    LocationId = 2,
+                    SalesFinised= false,
                 }
             };
         }

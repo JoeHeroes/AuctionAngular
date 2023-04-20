@@ -69,6 +69,7 @@ namespace AuctionAngular.Services
                     DateTime = vehicle.DateTime,
                     CurrentBid = vehicle.CurrentBid,
                     WinnerId = vehicle.WinnerId,
+                    SalesFinised = vehicle.SalesFinised,
                     Images = pictures,
                 };
 

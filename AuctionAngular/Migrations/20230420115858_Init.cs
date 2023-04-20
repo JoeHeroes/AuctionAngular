@@ -135,7 +135,8 @@ namespace AuctionAngular.Migrations
                     Highlights = table.Column<int>(type: "int", nullable: false),
                     DateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CurrentBid = table.Column<int>(type: "int", nullable: false),
-                    WinnerId = table.Column<int>(type: "int", nullable: false)
+                    WinnerId = table.Column<int>(type: "int", nullable: false),
+                    SalesFinised = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {

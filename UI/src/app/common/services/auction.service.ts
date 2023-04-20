@@ -24,4 +24,5 @@ export class AuctionService {
     return this.http.get<any>(url_);
   }
 
+
 }

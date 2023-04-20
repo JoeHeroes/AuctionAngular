@@ -18,9 +18,6 @@ export class LotComponent {
   pictures: any;
   user: any;
   slideshowDelay = 2000;
-
-
-
   bidForm!: FormGroup;
 
 
@@ -54,13 +51,9 @@ export class LotComponent {
 
 
   bidCar(bidValue: any) {
-
-
     this.serviceAuth.loggedUserId().subscribe(res => {
       this.user = res;
     });;
-
-
 
     const bid = { ...bidValue };
     const bidDto: BidDto = {

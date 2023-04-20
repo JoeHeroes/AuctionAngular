@@ -1,8 +1,9 @@
-﻿$dx-theme: 'dark' !default;
+﻿$dx-theme: 'dark';
 $base-bg: #2e2e31;
 $color-nav: #3459e6;
-$color-nav-sub-dark: #3459e6;
 $color-nav-dark: #212529;
+$color-nav-sub-dark: #3459e6;
+
 
 @forward 'node_modules/devextreme/scss/widgets/generic/colors'with ($color: $dx-theme,
   $base-accent: lighten($color-nav, 8%),

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { interval, Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-privacy',

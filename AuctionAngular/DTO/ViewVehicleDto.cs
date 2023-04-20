@@ -30,5 +30,6 @@ namespace AuctionAngular.DTO
         public int CurrentBid { get; set; }
         public int WinnerId { get; set; }
         public List<string> Images { get; set; }
+        public bool SalesFinised { get; set; }
     }
 }

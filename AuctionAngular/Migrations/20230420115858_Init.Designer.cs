@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AuctionAngular.Migrations
 {
     [DbContext(typeof(AuctionDbContext))]
-    [Migration("20230402211028_Init")]
+    [Migration("20230420115858_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -266,6 +266,9 @@ namespace AuctionAngular.Migrations
 
                     b.Property<int>("RegistrationYear")
                         .HasColumnType("int");
+
+                    b.Property<bool>("SalesFinised")
+                        .HasColumnType("bit");
 
                     b.Property<bool>("SecondTireSet")
                         .HasColumnType("bit");

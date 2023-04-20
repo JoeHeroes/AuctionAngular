@@ -158,7 +158,7 @@ namespace AuctionAngular.Services
                 LastName = result.LastName,
                 DateOfBirth = result.DateOfBirth,
                 Nationality = result.Nationality,
-                ProfilePicture = result.ProfilePicture,
+                ProfilePicture = result.ProfilePicture
             };
 
             return resultDto;

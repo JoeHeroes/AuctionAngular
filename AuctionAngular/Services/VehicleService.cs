@@ -78,6 +78,7 @@ namespace AuctionAngular.Services
                 DateTime = vehicle.DateTime,
                 CurrentBid = vehicle.CurrentBid,
                 WinnerId = vehicle.WinnerId,
+                SalesFinised= vehicle.SalesFinised,
                 Images = pictures,
             };
 
@@ -154,6 +155,7 @@ namespace AuctionAngular.Services
                 SecondaryDamage = dto.SecondaryDamage,
                 VIN = dto.VIN,
                 DateTime = dto.DateTime,
+                SalesFinised = false
             };
 
             this.dbContext.Vehicles.Add(vehicle);

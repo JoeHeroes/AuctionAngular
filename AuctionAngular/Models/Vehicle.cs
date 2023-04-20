@@ -40,5 +40,6 @@ namespace AuctionAngular.Models
         public DateTime DateTime { get; set; }
         public int CurrentBid { get; set; }
         public int WinnerId { get; set; }
+        public bool SalesFinised { get; set; }
     }
 }

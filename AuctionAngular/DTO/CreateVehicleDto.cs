@@ -80,7 +80,5 @@ namespace AuctionAngular.Models.DTO
         [DisplayName("Date of Auction")]
         public DateTime DateTime { get; set; }
 
-
-
     }
 }

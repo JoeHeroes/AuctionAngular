@@ -1,8 +1,14 @@
 .container1{
-  margin-left: 50px;
+  margin-left: 40px;
 }
 .button {
   float: right;
+}
+
+.card{
+  background-color: #2e2e31;
+  border: 1px solid white;
+  margin: 40px 0;
 }
 
 .column1 {
