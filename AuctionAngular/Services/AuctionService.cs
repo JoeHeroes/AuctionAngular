@@ -14,19 +14,37 @@ namespace AuctionAngular.Services
             this.dbContext = dbContext;
         }
 
+        public async Task EndAuction()
+        {
+            var result = await this.dbContext.Vehicles.Where(x => x.DateTime <= DateTime.Now && x.DateTime.AddHours(1) >= DateTime.Now && x.SalesFinised == false).ToListAsync();
+
+            foreach (var res in result)
+            {
+                res.SalesFinised= true;
+            }
+
+            try
+            {
+                await this.dbContext.SaveChangesAsync();
+            }
+            catch (DbUpdateException e)
+            {
+                throw new DbUpdateException("Error DataBase", e);
+            }
+
+
+        }
+
         public async Task<bool> LiveAuction()
         {
-            var result = this.dbContext.Vehicles.Where(x => x.DateTime <= DateTime.Now && x.DateTime.AddHours(1) >= DateTime.Now).Any();
+            var result = await this.dbContext.Vehicles.Where(x => x.DateTime <= DateTime.Now && x.DateTime.AddHours(1) >= DateTime.Now && x.SalesFinised==false).AnyAsync();
 
             return result;
         }
 
         public async Task<IEnumerable<ViewVehicleDto>> LiveAuctionList()
         {
-            var vehicles = await this.dbContext.Vehicles.Where(x => x.DateTime <= DateTime.Now && x.DateTime.AddHours(1) >= DateTime.Now).ToListAsync(); ;
-
-
-
+            var vehicles = await this.dbContext.Vehicles.Where(x => x.DateTime <= DateTime.Now && x.DateTime.AddHours(1) >= DateTime.Now).ToListAsync();
 
             List<ViewVehicleDto> viewVehicle = new List<ViewVehicleDto>();
 
@@ -40,8 +58,6 @@ namespace AuctionAngular.Services
                 {
                     pictures.Add(pic.PathImg);
                 }
-
-
 
                 ViewVehicleDto view = new ViewVehicleDto()
                 {

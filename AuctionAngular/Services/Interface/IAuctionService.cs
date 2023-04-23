@@ -1,6 +1,4 @@
 ﻿using AuctionAngular.DTO;
-using AuctionAngular.Models;
-using Microsoft.AspNetCore.Mvc;
 
 namespace AuctionAngular.Services.Interface
 {
@@ -8,5 +6,6 @@ namespace AuctionAngular.Services.Interface
     {
         Task<bool> LiveAuction();
         Task<IEnumerable<ViewVehicleDto>> LiveAuctionList();
+        Task EndAuction();
     }
 }

@@ -28,8 +28,8 @@ export class AuctionComponent implements OnInit {
   bidForm!: FormGroup;
 
   constructor(private auctionService: AuctionService, private authenticationService: AuthenticationService, private vehicleService: VehicleService) {
-    this.mySubscription = interval(500).subscribe((x => {
-      this.doStuff();
+    this.mySubscription = interval(100).subscribe((x => {
+      this.doTimer();
     }));
   }
 
@@ -51,13 +51,15 @@ export class AuctionComponent implements OnInit {
   }
 
 
-  doStuff() {
+  doTimer() {
     this.time++;
     if (this.time > 110) {
       this.time = 0;
       this.index++;
       if (this.index == this.datasource.length) {
         this.liveAuction = false;
+        this.auctionService.endAuction().subscribe(res => {
+        });
       }
     }
   }

@@ -24,5 +24,12 @@ export class AuctionService {
     return this.http.get<any>(url_);
   }
 
+  endAuction(): Observable<any> {
+
+    let url_ = "https://localhost:7257/Auction/endAuction";
+
+    return this.http.get<any>(url_);
+  }
+
 
 }

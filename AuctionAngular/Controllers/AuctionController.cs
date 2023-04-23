@@ -31,5 +31,13 @@ namespace AuctionAngular.Controllers
             var result = await this.service.LiveAuctionList();
             return Ok(result);
         }
+
+
+        [HttpGet("endAuction")]
+        public async Task<ActionResult> EndAuction()
+        {
+            await this.service.EndAuction();
+            return Ok();
+        }
     }
 }
