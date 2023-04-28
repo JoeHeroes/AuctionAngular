@@ -34,72 +34,86 @@ const routes: Routes = [
         path: 'home',
         pathMatch: 'full',
         component: HomeComponent,
+        data: { title: 'Home' }
       },
       {
         path: 'vehicle',
         pathMatch: 'full',
         component: VehicleComponent,
+        data: { title: 'Vehicle' }
       },
       {
         path: 'auction',
         pathMatch: 'full',
         component: AuctionComponent,
+        data: { title: 'Auction' }
       },
       {
         path: 'location',
         pathMatch: 'full',
         component: LocationComponent,
+        data: { title: 'Location' },
         canActivate: [AuthGuard]
       },
       {
         path: 'services',
         pathMatch: 'full',
         component: SevicesComponent,
+        data: { title: 'Sevices' }
       },
       {
         path: 'support',
         pathMatch: 'full',
         component: SupportComponent,
+        data: { title: 'Support' }
       },
       {
         path: 'privacy',
         pathMatch: 'full',
         component: PrivacyComponent,
+        data: { title: 'Privacy' }
       },
       {
         path: 'watchlist',
         pathMatch: 'full',
         component: WatchListComponent,
+        data: { title: 'WatchList' }
       },
       {
         path: 'calendar',
         pathMatch: 'full',
         component: CalendarComponent,
+        data: { title: 'Calendar' }
       },
       {
         path: 'login',
         pathMatch: 'full',
         component: LoginComponent,
+        data: { title: 'Login' }
       },
       {
         path: 'profile',
         pathMatch: 'full',
         component: ProfileComponent,
+        data: { title: 'Profile' }
       },
       {
         path: 'profile-edit',
         pathMatch: 'full',
         component: ProfileEditComponent,
+        data: { title: 'ProfileEdit' }
       },
       {
         path: 'restart-password',
         pathMatch: 'full',
         component: RestartPasswordComponent,
+        data: { title: 'RestartPassword' }
       },
       {
         path: 'register',
         pathMatch: 'full',
         component: RegisterComponent,
+        data: { title: 'Register' }
       },
       {
         path: 'vehicle/lot',
@@ -108,6 +122,7 @@ const routes: Routes = [
             path: ':id',
             pathMatch: 'full',
             component: LotComponent,
+            data: { title: 'Lot' }
           },
         ],
       },
@@ -115,11 +130,13 @@ const routes: Routes = [
         path: 'vehicle/editor',
         pathMatch: 'full',
         component: VehicleEditComponent,
+        data: { title: 'VehicleEdit' }
       },
       {
         path: '**',
         pathMatch: 'full',
         component: NotFoundComponent,
+        data: { title: 'NotFound' }
       }
     ]
   },
