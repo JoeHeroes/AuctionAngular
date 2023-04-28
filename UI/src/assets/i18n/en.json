@@ -2,15 +2,20 @@
   "action": {
     "add": "Add Vehicle",
     "edit": "Edit Profile",
-    "restart": "Restart Password"
+    "restart": "Restart Password",
+    "watch": "Watch",
+    "removeWatch": "Remove Watch"
   },
   "menu": {
     "home": "Home",
     "vehicle": "Vehicle",
+    "watchlist": "Watchlist",
+    "calendar": "Calendar",
     "auction": "Auction",
     "location": "Location",
     "services": "Services",
-    "privacy": "Privacy"
+    "privacy": "Privacy",
+    "support": "Support"
   },
   "vehicle": {
     "producer": "Producer",
@@ -34,7 +39,8 @@
     "currentBid": "Current Bid",
     "newBid": "New Bid",
     "nowBid": "Bid Now",
-    "list": "Vehicle List"
+    "list": "Vehicle List",
+    "watchlist": "Vehicle Watchlist"
   },
   "location": {
     "phone": "Phone",

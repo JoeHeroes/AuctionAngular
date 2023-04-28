@@ -11,13 +11,13 @@ export class ScrollComponent implements OnInit {
 
   datasource: any;
   constructor(
-    private service: AuctionService,
+    private auctionService: AuctionService,
   ) {
   }
 
 
   ngOnInit(): void {
-    this.service.liveAuctionList().subscribe(res => {
+    this.auctionService.liveAuctionList().subscribe(res => {
       this.datasource = res;
     });
   }

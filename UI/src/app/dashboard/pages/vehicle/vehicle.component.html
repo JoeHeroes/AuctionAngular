@@ -18,7 +18,6 @@
   <div>
     <dx-data-grid
   id="gridContainer"
-  [customizeColumns]="customizeColumns"
   [dataSource]="datasource"
   [showBorders]="true" [hoverStateEnabled]="true" [activeStateEnabled]="true"
   [allowColumnResizing]="true" [allowColumnReordering]="true" [remoteOperations]="true"
@@ -36,8 +35,6 @@
     [showNavigationButtons]="true"
   >
   </dxo-pager>
-  <dxi-column [width]="20" [fixed]="true"></dxi-column>
-
       <dxi-column dataField="image" [width]="220" [allowFiltering]="false" [allowSorting]="false"
         cellTemplate="cellTemplate"></dxi-column>
 
@@ -58,8 +55,7 @@
       <dxi-column dataField="currentBid" [caption]="t('vehicle.currentBid')" [allowFiltering]="false" [width]="120"
         [allowSorting]="false"></dxi-column>
 
-      <dxi-column [width]=" 40"></dxi-column>
-
+      <dxi-column [width]="120"></dxi-column>
 
       <div *dxTemplate="let data of 'cellTemplate'">
         <img [src]="data.value" width="200" height="150" />

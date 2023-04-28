@@ -138,5 +138,87 @@ namespace AuctionAngular.Controllers
 
         }
 
+
+        [HttpPost("watch")]
+        public async Task<IActionResult> Watch([FromBody] WatchDto dto)
+        {
+            try
+            {
+                await this.service.Watch(dto);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                                "Error retrieving data from the database");
+            }
+
+            return Ok();
+
+        }
+
+
+        [HttpPost("removeWatch")]
+        public async Task<IActionResult> RemoveWatch([FromBody] WatchDto dto)
+        {
+            try
+            {
+                await this.service.RemoveWatch(dto);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                                "Error retrieving data from the database");
+            }
+
+            return Ok();
+
+        }
+
+        [HttpPost("checkWatch")]
+        public async Task<ActionResult<bool>> CheckWatch([FromBody] WatchDto dto)
+        {
+            try
+            {
+                var result = await this.service.CheckWatch(dto);
+
+                if (result)
+                {
+                    return Ok(result);
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                                "Error retrieving data from the database");
+            }
+        }
+
+        [HttpGet("getAllVehicleWatch/{id}")]
+        public async Task<ActionResult<IEnumerable<Vehicle>>> GetAllVehicleWatch([FromRoute] int id)
+        {
+            try
+            {
+                var result = await this.service.GetAllWatch(id);
+
+                if (result is null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return Ok(result);
+                }
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                                "Error retrieving data from the database");
+
+            }
+        }
     }
 }

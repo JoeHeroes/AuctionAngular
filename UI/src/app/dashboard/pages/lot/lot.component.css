@@ -1,8 +1,9 @@
 .container1{
   margin-left: 40px;
 }
-.button {
+.dx-button {
   float: right;
+  width: 250px;
 }
 
 .card{

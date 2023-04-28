@@ -1,14 +1,15 @@
 ﻿
 using AuctionAngular.DTO;
-using AuctionAngular.Enum;
 using AuctionAngular.Models;
 using AuctionAngular.Models.DTO;
 using AuctionAngular.Services.Interface;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Reflection.Metadata.Ecma335;
 
 namespace AuctionAngular.Services
 {
-  
+
     public class VehicleService : IVehicleService
     {
         private readonly AuctionDbContext dbContext;
@@ -61,10 +62,10 @@ namespace AuctionAngular.Services
                 RegistrationYear = vehicle.RegistrationYear,
                 Color = vehicle.Color,
                 BodyType = vehicle.BodyType,
-                EngineCapacity= vehicle.EngineCapacity,
+                EngineCapacity = vehicle.EngineCapacity,
                 EngineOutput = vehicle.EngineOutput,
                 Transmission = vehicle.Transmission,
-                Drive= vehicle.Drive,
+                Drive = vehicle.Drive,
                 MeterReadout = vehicle.MeterReadout,
                 Fuel = vehicle.Fuel,
                 NumberKeys = vehicle.NumberKeys,
@@ -78,7 +79,7 @@ namespace AuctionAngular.Services
                 DateTime = vehicle.DateTime,
                 CurrentBid = vehicle.CurrentBid,
                 WinnerId = vehicle.WinnerId,
-                SalesFinised= vehicle.SalesFinised,
+                SalesFinised = vehicle.SalesFinised,
                 Images = pictures,
             };
 
@@ -93,7 +94,7 @@ namespace AuctionAngular.Services
 
             List<ViewVehiclesDto> viewVehicle = new List<ViewVehiclesDto>();
 
-           foreach (var vehicle in vehicles)
+            foreach (var vehicle in vehicles)
             {
                 var restultPictures = this.dbContext.Pictures.Where(x => x.Id == vehicle.Id);
 
@@ -176,7 +177,7 @@ namespace AuctionAngular.Services
         }
         public async Task Delete(int id)
         {
-            var result =  this.dbContext
+            var result = this.dbContext
                 .Vehicles
                 .FirstOrDefault(u => u.Id == id);
 
@@ -266,7 +267,138 @@ namespace AuctionAngular.Services
             }
 
 
-           
+
+        }
+
+        public async Task Watch(WatchDto dto)
+        {
+            User user = await this.dbContext
+                                    .Users
+                                    .FirstOrDefaultAsync(x => x.Id == dto.UserId);
+
+            Vehicle vehicle = await this.dbContext
+                                    .Vehicles
+                                    .FirstOrDefaultAsync(x => x.Id == dto.VehicleId);
+
+            var observed = new Watch()
+            {
+                UserMany = user,
+                VehicleMany = vehicle,
+            };
+
+            if (await this.dbContext.Watches.FirstOrDefaultAsync(x => x.VehicleId == dto.VehicleId) == null)
+            {
+                var newEvent = new Event()
+                {
+                    Title = vehicle.Id + " " + vehicle.Producer + " " + vehicle.ModelGeneration,
+                    Start = vehicle.DateTime.ToString("yyyy-MM-dd"),
+                    End = vehicle.DateTime.ToString("yyyy-MM-dd"),
+                    Color = vehicle.Color,
+                    AllDay = true,
+                    Owner = user.Id,
+                };
+
+
+                this.dbContext.Events.Add(newEvent);
+                this.dbContext.Watches.Add(observed);
+            }
+
+            try
+            {
+                await this.dbContext.SaveChangesAsync();
+            }
+            catch (DbUpdateException e)
+            {
+                throw new DbUpdateException("Error DataBase", e);
+            }
+
+        }
+
+        public async Task RemoveWatch(WatchDto dto)
+        {
+
+            Vehicle vehicle = await this.dbContext.Vehicles.FirstOrDefaultAsync(x => x.Id == dto.VehicleId);
+
+            Watch observed = await this.dbContext.Watches.FirstOrDefaultAsync(x => x.UserId == dto.UserId && x.VehicleId == vehicle.Id);
+
+
+            var events = await this.dbContext.Events.FirstOrDefaultAsync(x => x.Title == vehicle.Id + " " + vehicle.Producer + " " + vehicle.ModelGeneration);
+
+
+
+            if (events != null && events.Owner == dto.UserId)
+            {
+                this.dbContext.Events.Remove(events);
+            }
+
+            this.dbContext.Watches.Remove(observed);
+
+            try
+            {
+                await this.dbContext.SaveChangesAsync();
+            }
+            catch (DbUpdateException e)
+            {
+                throw new DbUpdateException("Error DataBase", e);
+            }
+
+        }
+
+        public async Task<bool> CheckWatch(WatchDto dto)
+        {
+            var result = await this.dbContext.Watches.FirstOrDefaultAsync(x => x.UserId == dto.UserId && x.VehicleId == dto.VehicleId);
+
+            if (result != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public async Task<IEnumerable<ViewVehiclesDto>> GetAllWatch(int id)
+        {
+            var watches = await this.dbContext.Watches.Where(x => x.UserId == id).ToListAsync();
+
+            var vehicles = new List<Vehicle>();
+
+            foreach(var watch in watches)
+            {
+                var result = await this.dbContext.Vehicles.FirstOrDefaultAsync(x => x.Id == watch.VehicleId);
+                vehicles.Add(result);
+            }
+
+            List<ViewVehiclesDto> viewVehicle = new List<ViewVehiclesDto>();
+
+            foreach (var vehicle in vehicles)
+            {
+                var restultPictures = this.dbContext.Pictures.Where(x => x.Id == vehicle.Id);
+
+                List<string> pictures = new List<string>();
+
+                foreach (var pic in restultPictures)
+                {
+                    pictures.Add(pic.PathImg);
+                }
+
+                ViewVehiclesDto view = new ViewVehiclesDto()
+                {
+                    LotNumber = vehicle.Id,
+                    Image = pictures[0],
+                    Producer = vehicle.Producer,
+                    ModelSpecifer = vehicle.ModelSpecifer,
+                    ModelGeneration = vehicle.ModelGeneration,
+                    RegistrationYear = vehicle.RegistrationYear,
+                    MeterReadout = vehicle.MeterReadout,
+                    DateTime = vehicle.DateTime,
+                    CurrentBid = vehicle.CurrentBid,
+                };
+
+                viewVehicle.Add(view);
+            }
+
+            return viewVehicle;
         }
     }
 }

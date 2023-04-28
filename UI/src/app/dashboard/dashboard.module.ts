@@ -11,7 +11,7 @@ import { AuctionCommonModule } from '../common/auction-common.module';
 import { DashboardComponentsModule } from './components/dashboard-components.module';
 import { DxToolbarModule } from "devextreme-angular/ui/toolbar";
 import { DxListModule } from "devextreme-angular/ui/list";
-import { DxAccordionModule, DxBarGaugeModule, DxBulletModule, DxButtonGroupModule, DxButtonModule, DxCheckBoxModule, DxCircularGaugeModule, DxDataGridModule, DxDateBoxModule, DxFileUploaderModule, DxFormModule, DxGalleryModule, DxLoadIndicatorModule, DxNumberBoxModule, DxSelectBoxModule, DxTextBoxModule, DxValidationSummaryModule, DxValidatorModule } from 'devextreme-angular';
+import { DxAccordionModule, DxBarGaugeModule, DxBulletModule, DxButtonGroupModule, DxButtonModule, DxCalendarModule, DxCheckBoxModule, DxCircularGaugeModule, DxDataGridModule, DxDateBoxModule, DxFileUploaderModule, DxFormModule, DxGalleryModule, DxLoadIndicatorModule, DxNumberBoxModule, DxSelectBoxModule, DxTextBoxModule, DxValidationSummaryModule, DxValidatorModule } from 'devextreme-angular';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
 import { VehicleComponent } from './pages/vehicle/vehicle.component';
@@ -29,6 +29,18 @@ import { ProfileEditComponent } from './pages/profile-edit/profile-edit.componen
 import { RestartPasswordComponent } from './pages/restart-password/restart-password.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { ScrollComponent } from './pages/scroll/scroll.component';
+import { CalendarComponent } from './pages/calendar/calendar.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+
+
+
+import { FlatpickrModule } from 'angularx-flatpickr';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { WatchListComponent } from './pages/watch-list/watch-list.component';
+
+
+
 
 @NgModule({
   declarations: [
@@ -49,6 +61,8 @@ import { ScrollComponent } from './pages/scroll/scroll.component';
     ProfileEditComponent,
     RestartPasswordComponent,
     ScrollComponent,
+    CalendarComponent,
+    WatchListComponent,
   ],
   exports: [],
   imports: [
@@ -80,7 +94,14 @@ import { ScrollComponent } from './pages/scroll/scroll.component';
     DxFileUploaderModule,
     DxBulletModule,
     ScrollingModule,
-    DxCircularGaugeModule
+    DxCircularGaugeModule,
+    DxCalendarModule,
+    NgbModalModule,
+    FlatpickrModule.forRoot(),
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    })
   ],
   providers: [
     HttpContext,

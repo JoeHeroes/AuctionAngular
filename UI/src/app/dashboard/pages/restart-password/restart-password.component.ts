@@ -16,7 +16,7 @@ export class RestartPasswordComponent implements OnInit {
   errorMessage: string = '';
   email: string = '';
 
-  constructor(private authService: AuthenticationService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private authenticationService: AuthenticationService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.restartForm = new FormGroup({
@@ -27,8 +27,8 @@ export class RestartPasswordComponent implements OnInit {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/profile';
 
 
-    this.authService.loggedUserId().subscribe(res => {
-      this.authService.getUserInfo(res.userId).subscribe(res => {
+    this.authenticationService.loggedUserId().subscribe(res => {
+      this.authenticationService.getUserInfo(res.userId).subscribe(res => {
         this.email = res.email;
       });
     });
@@ -46,7 +46,7 @@ export class RestartPasswordComponent implements OnInit {
       confirmNewPassword: restart.confirmNewPassword
 
     }
-    this.authService.restartPassword(restartData)
+    this.authenticationService.restartPassword(restartData)
       .subscribe({
         next: (res: AuthResponseDto) => {
           this.router.navigate([this.returnUrl]);

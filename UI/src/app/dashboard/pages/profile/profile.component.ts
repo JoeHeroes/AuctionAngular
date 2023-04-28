@@ -19,7 +19,6 @@ export class ProfileComponent {
 
   constructor(
     private serviceAuth: AuthenticationService,
-    private activeRoute: ActivatedRoute,
   ) {
   }
 

@@ -10,27 +10,65 @@ export class VehicleService {
 
   constructor(private http: HttpClient) { }
 
-  getVehicles(): Observable<Vehicle[]> {
+  public getVehicles(): Observable<Vehicle[]> {
 
     let url_ = "https://localhost:7257/Vehicle";
 
     return this.http.get<any>(url_);
   }
 
-  getVehicle(id: number): Observable<any> {
+  public getVehicle(id: number): Observable<any> {
 
     let url_ = "https://localhost:7257/Vehicle/" + id;
 
     return this.http.get<any>(url_);
   }
 
-  bidVehicle(bid: BidDto): Observable<any> {
+  public bidVehicle(bid: BidDto): Observable<any> {
 
     let url_ = "https://localhost:7257/Vehicle/bid";
 
     return this.http.post<any>(url_, bid);
   }
+
+
+  public watch(bid: WatchDto): Observable<any> {
+
+    let url_ = "https://localhost:7257/Vehicle/watch";
+
+    return this.http.post<any>(url_, bid);
+  }
+
+
+  public removeWatch(bid: WatchDto): Observable<any> {
+
+    let url_ = "https://localhost:7257/Vehicle/removeWatch";
+
+    return this.http.post<any>(url_, bid);
+  }
+
+  public checkWatch(bid: WatchDto): Observable<any> {
+
+    let url_ = "https://localhost:7257/Vehicle/checkWatch";
+
+    alert("3");
+
+    return this.http.post<any>(url_, bid);
+  }
+
+  public getAllVehicleWatch(id: number): Observable<Vehicle[]> {
+
+    let url_ = "https://localhost:7257/Vehicle/getAllVehicleWatch/" + id;
+
+    return this.http.get<any>(url_);
+  }
 }
+
+export interface WatchDto {
+  vehicleId: number;
+  userId: number;
+}
+
 
 export interface BidDto {
   lotNumber: number;

@@ -15,7 +15,9 @@ export class VehicleEditComponent {
   errorMessage: string = '';
   showError!: boolean;
 
-  constructor(private service: VehicleService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private vehicleService: VehicleService,
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.vehicleForm = new FormGroup({

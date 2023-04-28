@@ -3,9 +3,15 @@
     <div class="container1">
       <div class="row">
         <div class="column1">
-          <div class="dx-field">
+          <div class="dx-field" style="float: left;">
             <h1>{{datasource.id}} {{datasource.producer}} {{datasource.modelSpecifer}} {{datasource.modelGeneration}}</h1>
+            
           </div>
+          <div class="dx-field">
+            <dx-button *ngIf="!watchLot" class="watch" (onClick)="this.watch()"><a><span style="color: yellow;">★</span>{{t('action.watch')}}</a></dx-button>
+            <dx-button *ngIf="watchLot" class="watch" (onClick)="this.removeWatch()"><a>★{{t('action.removeWatch')}}</a></dx-button>
+          </div>
+         
           <div class="widget-container">
             <dx-gallery [dataSource]="pictures" [height]="600" [slideshowDelay]="slideshowDelay"
               [loop]="true" [showNavButtons]="true" [showIndicator]="true"></dx-gallery>

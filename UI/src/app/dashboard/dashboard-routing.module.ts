@@ -17,6 +17,8 @@ import { AuthGuard } from '../common/components/auth.guard';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ProfileEditComponent } from './pages/profile-edit/profile-edit.component';
 import { RestartPasswordComponent } from './pages/restart-password/restart-password.component';
+import { CalendarComponent } from './pages/calendar/calendar.component';
+import { WatchListComponent } from './pages/watch-list/watch-list.component';
 
 const routes: Routes = [
   {
@@ -63,6 +65,16 @@ const routes: Routes = [
         path: 'privacy',
         pathMatch: 'full',
         component: PrivacyComponent,
+      },
+      {
+        path: 'watchlist',
+        pathMatch: 'full',
+        component: WatchListComponent,
+      },
+      {
+        path: 'calendar',
+        pathMatch: 'full',
+        component: CalendarComponent,
       },
       {
         path: 'login',

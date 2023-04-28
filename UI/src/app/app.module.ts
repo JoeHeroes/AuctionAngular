@@ -22,7 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     DxDrawerModule,
     DxScrollViewModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

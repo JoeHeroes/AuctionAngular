@@ -27,8 +27,10 @@ export class AuctionComponent implements OnInit {
 
   bidForm!: FormGroup;
 
-  constructor(private auctionService: AuctionService, private authenticationService: AuthenticationService, private vehicleService: VehicleService) {
-    this.mySubscription = interval(100).subscribe((x => {
+  constructor(private auctionService: AuctionService,
+    private authenticationService: AuthenticationService,
+    private vehicleService: VehicleService) {
+    this.mySubscription = interval(500).subscribe((x => {
       this.doTimer();
     }));
   }
@@ -44,6 +46,9 @@ export class AuctionComponent implements OnInit {
       }
     });
 
+    this.authenticationService.loggedUserId().subscribe(res => {
+      this.user = res;
+    });;
 
     this.bidForm = new FormGroup({
       bidNow: new FormControl("", [Validators.required])
@@ -66,10 +71,6 @@ export class AuctionComponent implements OnInit {
 
 
   bidCar(bidValue: any) {
-    this.authenticationService.loggedUserId().subscribe(res => {
-      this.user = res;
-    });;
-
     const bid = { ...bidValue };
     const bidDto: BidDto = {
       lotNumber: this.datasource[this.index].id,

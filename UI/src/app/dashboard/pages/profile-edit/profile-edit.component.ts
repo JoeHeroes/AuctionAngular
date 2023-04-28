@@ -18,7 +18,9 @@ export class ProfileEditComponent implements OnInit {
   email: string = '';
   userId: number = 0;
 
-  constructor(private authService: AuthenticationService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private authenticationService: AuthenticationService,
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.editForm = new FormGroup({
@@ -30,9 +32,9 @@ export class ProfileEditComponent implements OnInit {
     })
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/profile';
 
-    this.authService.loggedUserId().subscribe(res => {
+    this.authenticationService.loggedUserId().subscribe(res => {
       this.userId = res.userId;
-      this.authService.getUserInfo(res.userId).subscribe(res => {
+      this.authenticationService.getUserInfo(res.userId).subscribe(res => {
         this.email = res.email;
       });
     });
@@ -48,7 +50,7 @@ export class ProfileEditComponent implements OnInit {
       lastName: edit.lastName,
       nationality: edit.nationality,
     }
-    this.authService.editProfile(editData)
+    this.authenticationService.editProfile(editData)
       .subscribe({
         next: (res: AuthResponseDto) => {
           this.router.navigate([this.returnUrl]);

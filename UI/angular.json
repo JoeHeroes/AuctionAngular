@@ -25,6 +25,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/angular-calendar/css/angular-calendar.css",
               "@angular/material/prebuilt-themes/purple-green.css",
               {
                 "input": "src/styles/dark.scss",
@@ -36,7 +37,8 @@
           },
           "configurations": {
             "production": {
-              "budgets": [{
+              "budgets": [
+                {
                   "type": "initial",
                   "maximumWarning": "500kb",
                   "maximumError": "1mb"
@@ -91,6 +93,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/angular-calendar/css/angular-calendar.css",
               "@angular/material/prebuilt-themes/purple-green.css",
               "src/styles.css"
             ],

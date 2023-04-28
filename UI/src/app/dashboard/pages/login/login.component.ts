@@ -16,7 +16,10 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   errorMessage: string = '';
   showError: boolean = false;
-  constructor(private authService: AuthenticationService, private tokenService: TokenService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private authenticationService: AuthenticationService,
+    private tokenService: TokenService,
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -37,17 +40,16 @@ export class LoginComponent implements OnInit {
       email: login.email,
       password: login.password
     }
-    this.authService.loginUser(userForAuth)
+    this.authenticationService.loginUser(userForAuth)
       .subscribe({
         next: (res: AuthResponseDto) => {
-          this.showError = false;
           localStorage.setItem("token", res.token);
           this.tokenService.sendAuthStateChangeNotification(res.isAuthSuccessful);
           this.router.navigate([this.returnUrl]);
         },
         error: (err: HttpErrorResponse) => {
-          this.showError = false;
           this.errorMessage = err.message;
+          this.showError = true;
         }
       })
   }

@@ -18,7 +18,9 @@ export class RegisterComponent implements OnInit {
   email: string = '';
 
 
-  constructor(private authService: AuthenticationService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private authenticationService: AuthenticationService,
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.registerForm = new FormGroup({
@@ -48,7 +50,7 @@ export class RegisterComponent implements OnInit {
       roleid: register.roleid,
 
     }
-    this.authService.registerUser(userForAuth)
+    this.authenticationService.registerUser(userForAuth)
       .subscribe({
         next: (res: any) => {
           this.router.navigate([this.returnUrl]);

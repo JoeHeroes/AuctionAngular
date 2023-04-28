@@ -12,7 +12,7 @@ import { TokenService } from 'src/app/common/services/token.service';
 })
 export class MainComponent implements OnInit {
   @Output() sidebarButtonClick = new EventEmitter<void>();
-  isUserAuthenticated!: boolean;
+  isUserAuthenticated: boolean = false;
   datasource: any;
   liveAuction: boolean = false;
 

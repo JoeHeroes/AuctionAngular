@@ -10,10 +10,10 @@ import { LocationService } from 'src/app/common/services/location.service';
 export class LocationComponent implements OnInit {
   locations!: Location[];
 
-  constructor(private service: LocationService) {
+  constructor(private locationService: LocationService) {
 
 
-    this.service.getLocations()
+    this.locationService.getLocations()
       .subscribe({
         next: (res: any) => {
 
@@ -27,9 +27,6 @@ export class LocationComponent implements OnInit {
   }
   ngOnInit(): void {
   }
-
-
-
 }
 
 

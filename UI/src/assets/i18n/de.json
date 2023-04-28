@@ -38,16 +38,19 @@
     "postalCode": "Postleitzahl"
   },
   "account": {
-    "login": "Anmeldung",
-    "register": "Registrieren",
-    "logout": "Ausloggen",
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout",
+    "id":"Id",
     "email": "Email",
-    "password": "Passwort",
-    "confirmpassword": "Bestätige das Passwort",
-    "firstname": "Vorname",
-    "lastname": "Nachname",
-    "nationality": "Staatsangehörigkeit",
-    "dateofbirth": "Geburtsdatum",
-    "role": "Rolle"
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "newPassword": "New Password",
+    "confirmNewPassword": "Confirm New Password",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "nationality": "Nationality",
+    "dateOfBirth": "Date Birth",
+    "role": "Role"
   }
 }
