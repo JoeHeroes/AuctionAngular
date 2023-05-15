@@ -38,7 +38,7 @@
     "postalCode": "Postleitzahl"
   },
   "account": {
-    "login": "Login",
+    "login": "Anmeldung",
     "register": "Register",
     "logout": "Logout",
     "id":"Id",

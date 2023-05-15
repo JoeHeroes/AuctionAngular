@@ -125,7 +125,7 @@ namespace AuctionAngular.Migrations
                     Drive = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     MeterReadout = table.Column<long>(type: "bigint", nullable: false),
                     Fuel = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    NumberKeys = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NumberKeys = table.Column<int>(type: "int", nullable: false),
                     ServiceManual = table.Column<bool>(type: "bit", nullable: false),
                     SecondTireSet = table.Column<bool>(type: "bit", nullable: false),
                     LocationId = table.Column<int>(type: "int", nullable: false),

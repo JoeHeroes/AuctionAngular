@@ -1,5 +1,4 @@
-﻿using AuctionAngular.Models;
-using AuctionAngular.Services.Interface;
+﻿using AuctionAngular.Services.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -10,7 +9,6 @@ namespace AuctionAngular.DTO
     [Route("[controller]")]
     public class AccountController : ControllerBase
     {
-
         private readonly IAccountService service;
 
         public AccountController(IAccountService service)
@@ -47,7 +45,6 @@ namespace AuctionAngular.DTO
         [HttpPost("edit")]
         public async Task<IActionResult> Edit([FromBody] EditUserDto dto)
         {
-
             await this.service.EditProfile(dto);
 
             return Ok();
@@ -55,14 +52,14 @@ namespace AuctionAngular.DTO
 
 
         [HttpGet("user/{id}")]
-        public async Task<IActionResult> UserId([FromRoute] int id)
+        public IActionResult UserId([FromRoute] int id)
         {
             return Ok( new { userId = id});
         }
 
         [Authorize]
         [HttpGet("current")]
-        public async Task<IActionResult> CurrentLoggedUserId()
+        public IActionResult CurrentLoggedUserId()
         {
             int id = Convert.ToInt32(HttpContext.User.FindFirstValue("UserId"));
 
@@ -77,6 +74,5 @@ namespace AuctionAngular.DTO
 
             return Ok(result);
         }
-
     }
 }

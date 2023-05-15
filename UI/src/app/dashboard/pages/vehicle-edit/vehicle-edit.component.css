@@ -6,9 +6,9 @@
 }
 
 input {
-  width: 100%;
+  width: 70%;
   padding: 6px 20px;
-  margin: 8px 0;
+  margin: 10px 0;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -16,6 +16,22 @@ input {
 }
 
 form {
-  width: 400px;
-  margin-top: 10px;
+  width: 80%;
+  margin: 100px;
 }
+
+.dx-button {
+  width: 100%;
+}
+
+.column {
+  float: left;
+  width: 50%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+

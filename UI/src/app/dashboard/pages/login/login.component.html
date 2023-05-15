@@ -1,6 +1,6 @@
 <ng-container *transloco="let t">
   <form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)">
-    <h3>Login</h3>
+    <h3>{{t('account.login')}}</h3>
     <div class="dx-fieldset">
       <div class="dx-field">
         <div class="dx-field-label">{{t('account.email')}}:</div>

@@ -250,9 +250,8 @@ namespace AuctionAngular.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("NumberKeys")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("NumberKeys")
+                        .HasColumnType("int");
 
                     b.Property<string>("PrimaryDamage")
                         .IsRequired()

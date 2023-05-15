@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace AuctionAngular.Models.DTO
@@ -62,7 +61,7 @@ namespace AuctionAngular.Models.DTO
         [Required]
         [DisplayName("Number Keys")]
 
-        public string NumberKeys { get; set; }
+        public int NumberKeys { get; set; }
         
         [Required]
         [DisplayName("Service Manual")]
@@ -74,7 +73,6 @@ namespace AuctionAngular.Models.DTO
 
         [Required]
         public string VIN { get; set; } = null!;
-        public IFormFile PathPic { get; set; }
 
         [Required]
         [DisplayName("Date of Auction")]

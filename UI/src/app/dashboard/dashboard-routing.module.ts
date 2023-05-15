@@ -1,5 +1,5 @@
 ﻿import { NgModule } from '@angular/core';
-import { Route, RouterModule, Routes, CanActivate } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from "src/app/dashboard/pages/home/home.component";
 import { NotFoundComponent } from "src/app/not-found/not-found.component";
 import { DashboardComponent } from "src/app/dashboard/dashboard.component";
@@ -19,6 +19,7 @@ import { ProfileEditComponent } from './pages/profile-edit/profile-edit.componen
 import { RestartPasswordComponent } from './pages/restart-password/restart-password.component';
 import { CalendarComponent } from './pages/calendar/calendar.component';
 import { WatchListComponent } from './pages/watch-list/watch-list.component';
+import { VehiclePictureComponent } from './pages/vehicle-picture/vehicle-picture.component';
 
 const routes: Routes = [
   {
@@ -131,6 +132,12 @@ const routes: Routes = [
         pathMatch: 'full',
         component: VehicleEditComponent,
         data: { title: 'VehicleEdit' }
+      },
+      {
+        path: 'vehicle/picture',
+        pathMatch: 'full',
+        component: VehiclePictureComponent,
+        data: { title: 'VehiclePicture' }
       },
       {
         path: '**',

@@ -1,5 +1,4 @@
 ﻿using AuctionAngular.Enum;
-using System.ComponentModel;
 
 namespace AuctionAngular.DTO
 {
@@ -18,7 +17,7 @@ namespace AuctionAngular.DTO
         public string Drive { get; set; }
         public long MeterReadout { get; set; }
         public string Fuel { get; set; }
-        public string NumberKeys { get; set; }
+        public int NumberKeys { get; set; }
         public bool ServiceManual { get; set; }
         public bool SecondTireSet { get; set; }
         public int LocationId { get; set; }

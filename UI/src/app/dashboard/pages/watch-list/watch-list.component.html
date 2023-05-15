@@ -51,10 +51,8 @@
         <dxi-column [width]="120"></dxi-column>
   
         <div *dxTemplate="let data of 'cellTemplate'">
-          <img [src]="data.value" width="200" height="150" />
+          <img width="200" height="150" src="https://localhost:7257/Images/{{data.value}}" >
         </div>
-  
-  
         <div *dxTemplate="let d of 'discountCellTemplate'">
           <div class="chart-cell">
             <dx-bullet
@@ -75,9 +73,7 @@
             </dx-bullet>
           </div>
         </div>
-  </dx-data-grid>
+      </dx-data-grid>
     </div>
-  
-  
   </ng-container>
   

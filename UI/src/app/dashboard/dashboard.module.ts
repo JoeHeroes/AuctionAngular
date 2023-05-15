@@ -32,12 +32,10 @@ import { ScrollComponent } from './pages/scroll/scroll.component';
 import { CalendarComponent } from './pages/calendar/calendar.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
-
-
-
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { WatchListComponent } from './pages/watch-list/watch-list.component';
+import { VehiclePictureComponent } from './pages/vehicle-picture/vehicle-picture.component';
 
 
 
@@ -63,6 +61,7 @@ import { WatchListComponent } from './pages/watch-list/watch-list.component';
     ScrollComponent,
     CalendarComponent,
     WatchListComponent,
+    VehiclePictureComponent,
   ],
   exports: [],
   imports: [

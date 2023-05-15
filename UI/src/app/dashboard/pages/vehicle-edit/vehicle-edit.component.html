@@ -1,181 +1,151 @@
 <ng-container *transloco="let t">
   <form [formGroup]="vehicleForm" (ngSubmit)="addVehicle(vehicleForm.value)">
-    <div class="dx-fieldset">
-      <div class="dx-fieldset-header">{{t('account.register')}}</div>
+    <h3>{{t('vehicleAction.add')}}</h3>
+    <div class="row">
+      <div class="column">
+        <div class="dx-field">
+          <div class="dx-field-label">{{t('vehicle.producer')}}</div>
+          <div class="dx-field-value">
+            <input type="text" id="producer" formControlName="producer" class="form-control" />
+          </div>
+        </div>
+    
+        <div class="dx-field">
+          <div class="dx-field-label">{{t('vehicle.modelSpecifer')}}</div>
+          <div class="dx-field-value">
+            <input type="text" id="modelSpecifer" formControlName="modelSpecifer" class="form-control" />
+          </div>
+        </div>
+    
+        <div class="dx-field">
+          <div class="dx-field-label">{{t('vehicle.modelGeneration')}}</div>
+          <div class="dx-field-value">
+            <input type="text" id="modelGeneration" formControlName="modelGeneration" class="form-control" />
+          </div>
+        </div>
+    
+        <div class="dx-field">
+          <div class="dx-field-label">{{t('vehicle.registrationYear')}}</div>
+          <div class="dx-field-value">
+            <input type="text" id="registrationYear" formControlName="registrationYear" class="form-control" />
+          </div>
+        </div>
+    
+        <div class="dx-field">
+          <div class="dx-field-label">{{t('vehicle.color')}}</div>
+          <div class="dx-field-value">
+            <input type="text" id="color" formControlName="color" class="form-control" />
+          </div>
+        </div>
+    
+        <div class="dx-field">
+          <div class="dx-field-label">{{t('vehicle.locationId')}}</div>
+          <div class="dx-field-value">
+            <input type="text" id="locationId" formControlName="locationId" class="form-control" />
+          </div>
+        </div>
+    
+        <div class="dx-field">
+          <div class="dx-field-label">{{t('vehicle.bodyType')}}</div>
+          <div class="dx-field-value">
+            <input type="text" id="bodyType" formControlName="bodyType" class="form-control" />
+          </div>
+        </div>
 
-      <div class="dx-field">
-        <div class="dx-field-label">{{t('vehicle.producer')}}</div>
-        <div class="dx-field-value">
-          <input type="text" id="producer" formControlName="producer" class="form-control" />
+        <div class="dx-field">
+          <div class="dx-field-label">{{t('vehicle.transmission')}}</div>
+          <div class="dx-field-value">
+            <input type="text" id="transmission" formControlName="transmission" class="form-control" />
+          </div>
+        </div>
+    
+        <div class="dx-field">
+          <div class="dx-field-label">{{t('vehicle.drive')}}</div>
+          <div class="dx-field-value">
+            <input type="text" id="drive" formControlName="drive" class="form-control" />
+          </div>
+        </div>
+        
+        <div class="dx-field">
+          <div class="dx-field-label">{{t('vehicle.meterReadout')}}</div>
+          <div class="dx-field-value">
+            <input type="number" id="meterReadout" formControlName="meterReadout" class="form-control" />
+          </div>
         </div>
       </div>
+      
+      <div class="column">
+        <div class="dx-field">
+          <div class="dx-field-label">{{t('vehicle.fuel')}}</div>
+          <div class="dx-field-value">
+            <input type="text" id="fuel" formControlName="fuel" class="form-control" />
+          </div>
+        </div>
+    
+        <div class="dx-field">
+          <div class="dx-field-label">{{t('vehicle.primaryDamage')}}</div>
+          <div class="dx-field-value">
+            <input type="text" id="primaryDamage" formControlName="primaryDamage" class="form-control" />
+          </div>
+        </div>
 
+        <div class="dx-field">
+          <div class="dx-field-label">{{t('vehicle.secondaryDamage')}}</div>
+          <div class="dx-field-value">
+            <input type="text" id="secondaryDamage" formControlName="secondaryDamage" class="form-control" />
+          </div>
+        </div>
 
+        <div class="dx-field">
+          <div class="dx-field-label">{{t('vehicle.engineCapacity')}}</div>
+          <div class="dx-field-value">
+            <input type="text" id="engineCapacity" formControlName="engineCapacity" class="form-control" />
+          </div>
+        </div>
+    
+        <div class="dx-field">
+          <div class="dx-field-label">{{t('vehicle.engineOutput')}}</div>
+          <div class="dx-field-value">
+            <input type="text" id="engineOutput" formControlName="engineOutput" class="form-control" />
+          </div>
+        </div>
+    
+        <div class="dx-field">
+          <div class="dx-field-label">{{t('vehicle.numberKeys')}}</div>
+          <div class="dx-field-value">
+            <input type="number" id="numberKeys" formControlName="numberKeys" class="form-control" />
+          </div>
+        </div>
+    
+        <div class="dx-field">
+          <div class="dx-field-label">{{t('vehicle.serviceManual')}}</div>
+          <div class="dx-field-value">
+            <input type="text" id="serviceManual" formControlName="serviceManual" class="form-control" />
+          </div>
+        </div>
 
-      <div class="dx-field">
-        <div class="dx-field-label">{{t('vehicle.modelSpecifer')}}</div>
-        <div class="dx-field-value">
-          <input type="text" id="modelSpecifer" formControlName="modelSpecifer" class="form-control" />
+        <div class="dx-field">
+          <div class="dx-field-label">{{t('vehicle.secondTireSet')}}</div>
+          <div class="dx-field-value">
+            <input type="checkbox" checked="false" id="secondTireSet" formControlName="secondTireSet" class="form-control" />
+          </div>
+        </div>
+       
+        <div class="dx-field">
+          <div class="dx-field-label">{{t('vehicle.vin')}}</div>
+          <div class="dx-field-value">
+            <input type="text" id="VIN" formControlName="VIN" class="form-control" />
+          </div>
+        </div>
+
+        <div class="dx-field">
+          <div class="dx-field-label">{{t('vehicle.dateTime')}}</div>
+          <div class="dx-field-value">
+            <input type="date" id="dateTime" formControlName="dateTime" class="form-control" />
+          </div>
         </div>
       </div>
-
-
-      <div class="dx-field">
-        <div class="dx-field-label">{{t('vehicle.modelGeneration')}}</div>
-        <div class="dx-field-value">
-          <input type="text" id="modelGeneration" formControlName="modelGeneration" class="form-control" />
-        </div>
-      </div>
-
-
-      <div class="dx-field">
-        <div class="dx-field-label">{{t('vehicle.registrationYear')}}</div>
-        <div class="dx-field-value">
-          <input type="text" id="registrationYear" formControlName="registrationYear" class="form-control" />
-        </div>
-      </div>
-
-      <div class="dx-field">
-        <div class="dx-field-label">{{t('vehicle.registrationYear')}}</div>
-        <div class="dx-field-value">
-          <input type="text" id="registrationYear" formControlName="registrationYear" class="form-control" />
-        </div>
-      </div>
-
-
-      <div class="dx-field">
-        <div class="dx-field-label">{{t('vehicle.color')}}</div>
-        <div class="dx-field-value">
-          <input type="text" id="color" formControlName="color" class="form-control" />
-        </div>
-      </div>
-
-
-      <div class="dx-field">
-        <div class="dx-field-label">{{t('vehicle.bodyType')}}</div>
-        <div class="dx-field-value">
-          <input type="text" id="bodyType" formControlName="bodyType" class="form-control" />
-        </div>
-      </div>
-
-
-
-
-
-
-
-
-
-
-
-      <div class="dx-field">
-        <div class="dx-field-label">{{t('vehicle.engineCapacity')}}</div>
-        <div class="dx-field-value">
-          <input type="text" id="engineCapacity" formControlName="engineCapacity" class="form-control" />
-        </div>
-      </div>
-
-
-      <div class="dx-field">
-        <div class="dx-field-label">{{t('vehicle.engineOutput')}}</div>
-        <div class="dx-field-value">
-          <input type="text" id="bengineOutput" formControlName="engineOutput" class="form-control" />
-        </div>
-      </div>
-
-
-      <div class="dx-field">
-        <div class="dx-field-label">{{t('vehicle.transmission')}}</div>
-        <div class="dx-field-value">
-          <input type="text" id="transmission" formControlName="transmission" class="form-control" />
-        </div>
-      </div>
-
-
-      <div class="dx-field">
-        <div class="dx-field-label">{{t('vehicle.drive')}}</div>
-        <div class="dx-field-value">
-          <input type="text" id="drive" formControlName="drive" class="form-control" />
-        </div>
-      </div>
-
-
-      <div class="dx-field">
-        <div class="dx-field-label">{{t('vehicle.meterReadout')}}</div>
-        <div class="dx-field-value">
-          <input type="text" id="meterReadout" formControlName="meterReadout" class="form-control" />
-        </div>
-      </div>
-
-
-
-
-
-
-      <div class="dx-field">
-        <div class="dx-field-label">{{t('vehicle.fuel')}}</div>
-        <div class="dx-field-value">
-          <input type="text" id="fuel" formControlName="fuel" class="form-control" />
-        </div>
-      </div>
-
-
-      <div class="dx-field">
-        <div class="dx-field-label">{{t('vehicle.numberKeys')}}</div>
-        <div class="dx-field-value">
-          <input type="text" id="numberKeys" formControlName="numberKeys" class="form-control" />
-        </div>
-      </div>
-
-      <div class="dx-field">
-        <div class="dx-field-label">{{t('vehicle.serviceManual')}}</div>
-        <div class="dx-field-value">
-          <input type="text" id="serviceManual" formControlName="serviceManual" class="form-control" />
-        </div>
-      </div>
-
-      <div class="dx-field">
-        <div class="dx-field-label">{{t('vehicle.secondTireSet')}}</div>
-        <div class="dx-field-value">
-          <input type="text" id="secondTireSet" formControlName="secondTireSet" class="form-control" />
-        </div>
-      </div>
-
-      <div class="dx-field">
-        <div class="dx-field-label">{{t('vehicle.primaryDamage')}}</div>
-        <div class="dx-field-value">
-          <input type="text" id="primaryDamage" formControlName="primaryDamage" class="form-control" />
-        </div>
-      </div>
-
-
-      <div class="dx-field">
-        <div class="dx-field-label">{{t('vehicle.primaryDamage')}}</div>
-        <div class="dx-field-value">
-          <input type="text" id="primaryDamage" formControlName="primaryDamage" class="form-control" />
-        </div>
-      </div>
-
-
-      <div class="dx-field">
-        <div class="dx-field-label">{{t('vehicle.dateTime')}}</div>
-        <div class="dx-field-value">
-          <input type="text" id="dateTime" formControlName="dateTime" class="form-control" />
-        </div>
-      </div>
-
-
-
-
-
-
-
     </div>
-    <div class="dx-fieldset">
-      <dx-validation-summary id="summary"></dx-validation-summary>
-      <dx-button width="100%" id="button" [text]="t('account.register')" type="default" [useSubmitBehavior]="true">
-      </dx-button>
-    </div>
+    <dx-button id="button" [text]="t('action.add')" type="default" [useSubmitBehavior]="true"></dx-button>
   </form>
-
 </ng-container>

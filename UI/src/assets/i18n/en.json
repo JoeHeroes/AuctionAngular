@@ -17,30 +17,38 @@
     "privacy": "Privacy",
     "support": "Support"
   },
+  "vehicleAction": {
+    "add": "Add Vehicle",
+    "addPicture": "Add Picture"
+  },
   "vehicle": {
     "producer": "Producer",
     "modelSpecifer": "Model Specifer",
     "modelGeneration": "Model Generation",
     "registrationYear": "Registration Year",
     "color": "Color",
+    "locationId": "Location",
     "bodyType": "Body Type",
-    "engineCapacity": "Engine Capacity",
-    "engineOutput": "Engine Output",
     "transmission": "Transmission",
     "drive": "Drive",
     "meterReadout": "Meter Readout",
     "fuel": "Fuel",
+    "primaryDamage": "Primary Damage",
+    "secondaryDamage": "secondaryDamage",
+    "engineCapacity": "Engine Capacity",
+    "engineOutput": "Engine Output",
     "numberKeys": "Number Keys",
     "serviceManual": "Service Manual",
     "secondTireSet": "Second Tire Set",
-    "primaryDamage": "Primary Damage",
+    "vin":"VIN",
     "dateTime": "Date Time",
     "statusBid": "Status Bid",
     "currentBid": "Current Bid",
     "newBid": "New Bid",
     "nowBid": "Bid Now",
     "list": "Vehicle List",
-    "watchlist": "Vehicle Watchlist"
+    "watchlist": "Vehicle Watchlist",
+    "picture":"Picture"
   },
   "location": {
     "phone": "Phone",

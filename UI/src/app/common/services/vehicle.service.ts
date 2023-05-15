@@ -56,11 +56,27 @@ export class VehicleService {
     return this.http.post<any>(url_, bid);
   }
 
-  public getAllVehicleWatch(id: number): Observable<Vehicle[]> {
+  public getAllWatch(id: number): Observable<Vehicle[]> {
 
-    let url_ = "https://localhost:7257/Vehicle/getAllVehicleWatch/" + id;
+    let url_ = "https://localhost:7257/Vehicle/allWatch/" + id;
 
     return this.http.get<any>(url_);
+  }
+
+  public addVehicle(dto: CreateVehicleDto) {
+
+    let url_ = "https://localhost:7257/Vehicle/create";
+
+    return this.http.post<any>(url_, dto);
+  }
+
+
+
+  public addPictureVehicle(formData: any) {
+
+    let url_ = "https://localhost:7257/Vehicle/uploadFile";
+
+    return this.http.post<any>(url_, formData, { reportProgress: true, observe: 'events' });
   }
 }
 
@@ -75,3 +91,35 @@ export interface BidDto {
   bidNow: number;
   userId: number;
 }
+
+
+export interface CreateVehicleDto {
+  producer: string;
+  modelSpecifer: string;
+  modelGeneration: string;
+  registrationYear: string;
+  color: string;
+  locationId: number;
+  bodyType: string;
+  transmission: string;
+  drive: string;
+  meterReadout: number;
+  fuel: string;
+  primaryDamage: string;
+  secondaryDamage: string;
+  engineCapacity: number;
+  engineOutput: number;
+  numberKeys: number;
+  serviceManual: boolean;
+  secondTireSet: boolean;
+  VIN: string;
+  dateTime: Date;
+}
+
+
+
+
+
+
+
+

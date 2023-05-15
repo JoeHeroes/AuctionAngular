@@ -1,5 +1,4 @@
 ﻿using AuctionAngular.DTO;
-using AuctionAngular.Enum;
 using AuctionAngular.Models;
 using AuctionAngular.Models.DTO;
 using AuctionAngular.Services.Interface;
@@ -85,19 +84,19 @@ namespace AuctionAngular.Controllers
         [HttpPost("create")]
         public async Task<IActionResult> CreateVehicle([FromBody] CreateVehicleDto dto)
         {
+            int id;
 
             try
             {
-                await this.service.Create(dto);
+                id = await this.service.Create(dto);
             }
             catch (Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError,
                                 "Error retrieving data from the database");
-
             }
 
-            return Ok();
+            return Ok(id);
         }
 
 
@@ -135,7 +134,6 @@ namespace AuctionAngular.Controllers
             }
 
             return Ok();
-
         }
 
 
@@ -196,13 +194,40 @@ namespace AuctionAngular.Controllers
                                 "Error retrieving data from the database");
             }
         }
-
-        [HttpGet("getAllVehicleWatch/{id}")]
-        public async Task<ActionResult<IEnumerable<Vehicle>>> GetAllVehicleWatch([FromRoute] int id)
+        
+        [HttpGet("allWatch/{id}")]
+        public async Task<ActionResult<IEnumerable<Vehicle>>> AllWatch([FromRoute] int id)
         {
             try
             {
                 var result = await this.service.GetAllWatch(id);
+
+                if (result is null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return Ok(result);
+                }
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                                "Error retrieving data from the database");
+
+            }
+        }
+
+
+        [HttpPost]
+        [Route("uploadFile/{id}")]
+        public async Task<IActionResult> UploadFile([FromRoute] int id)
+        {
+            IFormFileCollection files = Request.Form.Files;
+            try
+            {
+                var result = await this.service.AddPicture(id, files);
 
                 if (result is null)
                 {

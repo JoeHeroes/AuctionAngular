@@ -1,6 +1,5 @@
 ﻿using AuctionAngular.Enum;
 using AuctionAngular.Models;
-using CarAuction.Models;
 using CarAuction.Models.Enum;
 
 namespace CarAuction.Seeder
@@ -204,7 +203,7 @@ namespace CarAuction.Seeder
                     Drive = Drive.FWD.ToString(),
                     MeterReadout = 177000,
                     Fuel = Fuel.Diesel.ToString(),
-                    NumberKeys = "1",
+                    NumberKeys = 1,
                     ServiceManual = true,
                     SecondTireSet = true,
                     CurrentBid = 5000,
@@ -229,7 +228,7 @@ namespace CarAuction.Seeder
                     Drive = Drive.FWD.ToString(),
                     MeterReadout = 268000,
                     Fuel = Fuel.Diesel.ToString(),
-                    NumberKeys = "1",
+                    NumberKeys = 1,
                     ServiceManual = true,
                     SecondTireSet = false,
                     CurrentBid = 5000,
@@ -255,7 +254,7 @@ namespace CarAuction.Seeder
                     Drive = Drive.FWD.ToString(),
                     MeterReadout = 180000,
                     Fuel = Fuel.Diesel.ToString(),
-                    NumberKeys = "2",
+                    NumberKeys = 2,
                     ServiceManual = true,
                     SecondTireSet = true,
                     CurrentBid = 5000,
@@ -280,7 +279,7 @@ namespace CarAuction.Seeder
                     Drive = Drive.FWD.ToString(),
                     MeterReadout = 172000,
                     Fuel = Fuel.Diesel.ToString(),
-                    NumberKeys = "2",
+                    NumberKeys = 2,
                     ServiceManual = true,
                     SecondTireSet = true,
                     CurrentBid = 5000,
@@ -305,7 +304,7 @@ namespace CarAuction.Seeder
                     Drive = Drive.FWD.ToString(),
                     MeterReadout = 25000,
                     Fuel = Fuel.Petrol.ToString(),
-                    NumberKeys = "2",
+                    NumberKeys = 2,
                     ServiceManual = true,
                     SecondTireSet = true,
                     CurrentBid = 5000,
@@ -330,7 +329,7 @@ namespace CarAuction.Seeder
                     Drive = Drive.FWD.ToString(),
                     MeterReadout = 80000,
                     Fuel = Fuel.Diesel.ToString(),
-                    NumberKeys = "2",
+                    NumberKeys = 2,
                     ServiceManual = false,
                     SecondTireSet = false,
                     CurrentBid = 5000,

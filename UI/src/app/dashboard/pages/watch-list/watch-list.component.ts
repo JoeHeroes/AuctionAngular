@@ -22,7 +22,7 @@ export class WatchListComponent {
     private router: Router) {
 
     this.authenticationService.loggedUserId().subscribe(res => {
-      this.vehicleService.getAllVehicleWatch(res.userId).subscribe(res => {
+      this.vehicleService.getAllWatch(res.userId).subscribe(res => {
         this.datasource = res;
       });
     });

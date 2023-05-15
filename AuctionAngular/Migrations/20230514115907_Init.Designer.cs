@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AuctionAngular.Migrations
 {
     [DbContext(typeof(AuctionDbContext))]
-    [Migration("20230420115858_Init")]
+    [Migration("20230514115907_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -252,9 +252,8 @@ namespace AuctionAngular.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("NumberKeys")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("NumberKeys")
+                        .HasColumnType("int");
 
                     b.Property<string>("PrimaryDamage")
                         .IsRequired()

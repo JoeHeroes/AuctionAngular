@@ -37,10 +37,8 @@
   </dxo-pager>
       <dxi-column dataField="image" [width]="220" [allowFiltering]="false" [allowSorting]="false"
         cellTemplate="cellTemplate"></dxi-column>
-
       <dxi-column dataField="producer" [caption]="t('vehicle.producer')" [filterOperations]="['startswith']"
         [allowSorting]="true"></dxi-column>
-
       <dxi-column dataField="modelSpecifer" [caption]="t('vehicle.modelSpecifer')" [allowFiltering]="true"
         [allowSorting]="false"></dxi-column>
       <dxi-column dataField="modelGeneration" [caption]="t('vehicle.modelGeneration')" [allowFiltering]="false"
@@ -58,7 +56,7 @@
       <dxi-column [width]="120"></dxi-column>
 
       <div *dxTemplate="let data of 'cellTemplate'">
-        <img [src]="data.value" width="200" height="150" />
+        <img width="200" height="150" src="https://localhost:7257/Images/{{data.value}}" >
       </div>
 
 
@@ -69,20 +67,18 @@
             [showZeroLevel]="true"
             [startScaleValue]="0"
             [endScaleValue]="100"
-            [value]="d.value * 100"
-          >
+            [value]="d.value * 100">
             <dxo-size [width]="150" [height]="35"></dxo-size>
             <dxo-tooltip
               [enabled]="true"
-              [paddingTopBottom]="2"
-            >
+              [paddingTopBottom]="2">
               <dxo-font [size]="18"></dxo-font>
             </dxo-tooltip>
             <dxo-margin [top]="5" [bottom]="0" [left]="5"></dxo-margin>
           </dx-bullet>
         </div>
       </div>
-</dx-data-grid>
+    </dx-data-grid>
   </div>
 
 

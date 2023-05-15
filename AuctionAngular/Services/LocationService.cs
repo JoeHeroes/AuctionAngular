@@ -1,5 +1,4 @@
-﻿using AuctionAngular.Models.DTO;
-using AuctionAngular.Models;
+﻿using AuctionAngular.Models;
 using Microsoft.EntityFrameworkCore;
 using AuctionAngular.Services.Interface;
 

@@ -15,5 +15,6 @@ namespace AuctionAngular.Services.Interface
         Task RemoveWatch(WatchDto dto);
         Task<bool> CheckWatch(WatchDto dto);
         Task<IEnumerable<ViewVehiclesDto>> GetAllWatch(int id);
+        Task<List<string>> AddPicture(int id, IFormFileCollection files);
     }
 }

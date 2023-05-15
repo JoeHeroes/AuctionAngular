@@ -4,8 +4,7 @@ using AuctionAngular.Models;
 using AuctionAngular.Models.DTO;
 using AuctionAngular.Services.Interface;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System.Reflection.Metadata.Ecma335;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace AuctionAngular.Services
 {
@@ -18,22 +17,6 @@ namespace AuctionAngular.Services
         {
             this.dbContext = dbContext;
             this.webHost = webHost;
-        }
-
-        private string UploadFile(CreateVehicleDto dto)
-        {
-            string fileName = null;
-            if (dto.PathPic != null)
-            {
-                string uploadDir = Path.Combine(webHost.WebRootPath, "Images");
-                fileName = Guid.NewGuid().ToString() + "-" + dto.PathPic.FileName;
-                string filePath = Path.Combine(uploadDir, fileName);
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    dto.PathPic.CopyTo(fileStream);
-                }
-            }
-            return fileName;
         }
 
         public async Task<ViewVehicleDto> GetById(int id)
@@ -128,12 +111,6 @@ namespace AuctionAngular.Services
 
         public async Task<int> Create(CreateVehicleDto dto)
         {
-            string stringFileName = UploadFile(dto);
-
-            var picture = new Picture { PathImg = stringFileName };
-            this.dbContext.Pictures.Add(picture);
-
-
             var vehicle = new Vehicle
             {
                 Producer = dto.Producer,
@@ -169,11 +146,9 @@ namespace AuctionAngular.Services
                 throw new DbUpdateException("Error DataBase", e);
             }
 
-            var result = await this.dbContext
-                .Vehicles
-                .FindAsync(vehicle);
+            var resultId = vehicle.Id;
 
-            return result.Id;
+            return resultId;
         }
         public async Task Delete(int id)
         {
@@ -399,6 +374,40 @@ namespace AuctionAngular.Services
             }
 
             return viewVehicle;
+        }
+
+        public async Task<List<string>> AddPicture(int id, IFormFileCollection files)
+        {
+            List<string> listPicture = new List<string>();
+            foreach (var file in files)
+            {
+                string fileName = "";
+                if (file != null)
+                {
+                    string uploadDir = Path.Combine(webHost.WebRootPath, "Images");
+                    fileName = Guid.NewGuid().ToString() + "-" + file.FileName;
+                    string filePath = Path.Combine(uploadDir, fileName);
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        file.CopyTo(fileStream);
+                    }
+                    fileName = "~/Images/" + fileName;
+                    listPicture.Add(fileName);
+                    var picture = new Picture { PathImg = fileName, VehicleId = id};
+                    this.dbContext.Pictures.Add(picture);
+                }
+            }
+
+            try
+            {
+                await this.dbContext.SaveChangesAsync();
+            }
+            catch (DbUpdateException e)
+            {
+                throw new DbUpdateException("Error DataBase", e);
+            }
+
+            return listPicture;
         }
     }
 }

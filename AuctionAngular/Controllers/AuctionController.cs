@@ -1,9 +1,6 @@
 ﻿using AuctionAngular.DTO;
-using AuctionAngular.Models;
 using AuctionAngular.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace AuctionAngular.Controllers
 {

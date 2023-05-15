@@ -1,7 +1,6 @@
-<ng-container *transloco="let t">
   <ng-container *transloco="let t">
     <form [formGroup]="registerForm" (ngSubmit)="registerUser(registerForm.value)">
-      <h3>Register</h3>
+      <h3>{{t('account.register')}}</h3>
       <div class="dx-fieldset">
         <div class="dx-field">
           <div class="dx-field-label">{{t('account.email')}}:</div>
@@ -58,4 +57,3 @@
     </form>
   </ng-container>
 
-</ng-container>

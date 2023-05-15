@@ -13,8 +13,13 @@
           </div>
          
           <div class="widget-container">
-            <dx-gallery [dataSource]="pictures" [height]="600" [slideshowDelay]="slideshowDelay"
-              [loop]="true" [showNavButtons]="true" [showIndicator]="true"></dx-gallery>
+            <dx-gallery [dataSource]="pictures" [height]="600" [slideshowDelay]="slideshowDelay" [loop]="true" [showNavButtons]="true" [showIndicator]="true">
+              <div *dxTemplate="let i of 'item'">
+                <div>
+                  <img height="600" src="https://localhost:7257/Images/{{i}}">
+                </div>
+              </div>
+            </dx-gallery>
           </div>
         </div>
         <div class="column2">

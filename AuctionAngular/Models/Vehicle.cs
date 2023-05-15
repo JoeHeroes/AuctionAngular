@@ -26,7 +26,7 @@ namespace AuctionAngular.Models
         public long MeterReadout { get; set; }
         public string Fuel { get; set; }
         [DisplayName("Number Keys")]
-        public string NumberKeys { get; set; }
+        public int NumberKeys { get; set; }
         [DisplayName("Service Manual")]
         public bool ServiceManual { get; set; }
         [DisplayName("Second Tire Set")]
