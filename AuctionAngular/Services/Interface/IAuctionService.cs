@@ -5,7 +5,8 @@ namespace AuctionAngular.Services.Interface
     public interface IAuctionService
     {
         Task<bool> LiveAuction();
-        Task<IEnumerable<ViewVehicleDto>> LiveAuctionList();
         Task EndAuction();
+        Task<IEnumerable<ViewVehicleDto>> LiveAuctionList();
+        Task<IEnumerable<ViewVehicleDto>> AuctionList();
     }
 }

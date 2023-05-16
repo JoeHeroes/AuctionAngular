@@ -68,9 +68,18 @@ namespace AuctionAngular.DTO
 
 
         [HttpGet("userInfo/{id}")]
-        public async Task<IActionResult> getUserInfo([FromRoute] int id)
+        public async Task<IActionResult> GetUserInfo([FromRoute] int id)
         {
             var result = await this.service.GetUserInfo(id);
+
+            return Ok(result);
+        }
+
+
+        [HttpGet("roles")]
+        public async Task<IActionResult> GetRoles()
+        {
+            var result = await this.service.GetRole();
 
             return Ok(result);
         }

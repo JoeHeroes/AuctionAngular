@@ -1,6 +1,5 @@
 <ng-container *transloco="let t">
   <br />
-
   <dx-toolbar>
     <dxi-item location="before">
       <h1>{{t('vehicle.list')}}</h1>
@@ -14,7 +13,6 @@
     </dxi-item>
   </dx-toolbar>
   <br />
- 
   <div>
     <dx-data-grid
   id="gridContainer"
@@ -26,6 +24,10 @@
   <dxo-scrolling rowRenderingMode="virtual"> </dxo-scrolling>
   <dxo-sorting mode="multiple"></dxo-sorting>
   <dxo-paging [pageSize]="10"> </dxo-paging>
+  <dxo-search-panel
+  [visible]="true"
+  [highlightCaseSensitive]="true"
+></dxo-search-panel>
   <dxo-pager
     [visible]="true"
     [allowedPageSizes]="allowedPageSizes"

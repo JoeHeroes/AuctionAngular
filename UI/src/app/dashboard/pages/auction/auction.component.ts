@@ -48,7 +48,7 @@ export class AuctionComponent implements OnInit {
 
     this.authenticationService.loggedUserId().subscribe(res => {
       this.user = res;
-    });;
+    });
 
     this.bidForm = new FormGroup({
       bidNow: new FormControl("", [Validators.required])

@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Vehicle } from './auction-api.generated.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +11,7 @@ export class AuctionService {
 
   liveAuction(): Observable<any> {
 
-    let url_ = "https://localhost:7257/Auction/live";
+    let url_ = "https://localhost:7257/Auction/liveAuction";
 
     return this.http.get<any>(url_);
   }

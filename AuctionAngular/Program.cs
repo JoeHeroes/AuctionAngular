@@ -2,14 +2,11 @@ using AuctionAngular.DTO;
 using AuctionAngular.Models;
 using AuctionAngular.Services;
 using AuctionAngular;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
-using System.Reflection;
 using System.Text;
 using NLog.Web;
 using FluentValidation.AspNetCore;
-using AuctionAngular.Authorization.Policy;
 using CarAuction.Seeder;
 using AuctionAngular.Middleware;
 using FluentValidation;
@@ -55,13 +52,6 @@ try
         };
     });
 
-    builder.Services.AddAuthorization(options => {
-        options.AddPolicy("HasNationality", builder => builder.RequireClaim("Nationality", "German", "Polish"));
-        options.AddPolicy("Atleast20", builder => builder.AddRequirements(new MinimumAgeRequirment(20)));
-    });
-
-    //RequirmentHandler
-    builder.Services.AddScoped<IAuthorizationHandler, MinimumAgeRequirmentHandler>();
 
     //Validator
     builder.Services.AddFluentValidationAutoValidation();

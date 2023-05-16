@@ -7,10 +7,10 @@
     margin: 5px 5px;
 }
 
-    .fa:hover {
-        opacity: 0.7;
-        color: white;
-    }
+.fa:hover {
+    opacity: 0.7;
+    color: white;
+}
 
 .fa-facebook {
     background: #3B5998;

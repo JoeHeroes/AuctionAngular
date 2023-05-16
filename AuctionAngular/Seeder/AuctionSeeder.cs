@@ -122,62 +122,62 @@ namespace CarAuction.Seeder
                 new Picture()
                 {
                     VehicleId = 1,
-                    PathImg = "/assets/img/a4b9.png"
+                    PathImg = "a4b9.png"
                 },
                 new Picture()
                 {
                     VehicleId = 1,
-                    PathImg = "/assets/img/a4b6.png"
+                    PathImg = "a4b6.png"
                 },
                 new Picture()
                 {
                     VehicleId = 1,
-                    PathImg = "/assets/img/octavia3.png"
+                    PathImg = "octavia3.png"
                 },
                 new Picture()
                 {
                     VehicleId = 1,
-                    PathImg = "/assets/img/passatb8.png"
+                    PathImg = "passatb8.png"
                 },
                 new Picture()
                 {
                     VehicleId = 1,
-                    PathImg = "/assets/img/polo2g.png"
+                    PathImg = "polo2g.png"
                 },
                 new Picture()
                 {
                     VehicleId = 1,
-                    PathImg = "/assets/img/yaris2.png"
+                    PathImg = "yaris2.png"
                 },
                  new Picture()
                 {
                     VehicleId = 2,
-                    PathImg = "/assets/img/a4b9.png"
+                    PathImg = "a4b9.png"
                 },
                 new Picture()
                 {
                     VehicleId = 2,
-                    PathImg = "/assets/img/a4b6.png"
+                    PathImg = "a4b6.png"
                 },
                 new Picture()
                 {
                     VehicleId = 2,
-                    PathImg = "/assets/img/octavia3.png"
+                    PathImg = "octavia3.png"
                 },
                 new Picture()
                 {
                     VehicleId = 2,
-                    PathImg = "/assets/img/passatb8.png"
+                    PathImg = "passatb8.png"
                 },
                 new Picture()
                 {
                     VehicleId = 2,
-                    PathImg = "/assets/img/polo2g.png"
+                    PathImg = "polo2g.png"
                 },
                 new Picture()
                 {
                     VehicleId = 2,
-                    PathImg = "/assets/img/yaris2.png"
+                    PathImg = "yaris2.png"
                 },
 
             };

@@ -1,4 +1,5 @@
 ﻿using AuctionAngular.DTO;
+using AuctionAngular.Models;
 
 namespace AuctionAngular.Services.Interface
 {
@@ -9,6 +10,6 @@ namespace AuctionAngular.Services.Interface
         Task RestartPassword(RestartPasswordDto dto);
         Task<ViewUserDto> GetUserInfo(int id);
         Task EditProfile(EditUserDto dto);
-
+        Task<IEnumerable<Role>> GetRole();
     }
 }

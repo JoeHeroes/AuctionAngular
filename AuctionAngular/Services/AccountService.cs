@@ -15,13 +15,11 @@ namespace AuctionAngular.Services
         private readonly AuctionDbContext dbContext;
         private readonly IPasswordHasher<User> passwordHasher;
         private readonly AuthenticationSettings authenticationSetting;
-        private readonly IWebHostEnvironment webHost;
-        public AccountService(AuctionDbContext dbContext, IPasswordHasher<User> passwordHasher, AuthenticationSettings authenticationSetting, IWebHostEnvironment webHost)
+        public AccountService(AuctionDbContext dbContext, IPasswordHasher<User> passwordHasher, AuthenticationSettings authenticationSetting)
         {
             this.dbContext = dbContext;
             this.passwordHasher = passwordHasher;
             this.authenticationSetting = authenticationSetting;
-            this.webHost = webHost;
         }
         public async Task RegisterUser(RegisterUserDto dto)
         {
@@ -183,5 +181,13 @@ namespace AuctionAngular.Services
             }
         }
 
+        public async Task<IEnumerable<Role>> GetRole()
+        {
+            var roles = await this.dbContext
+                .Roles
+                .ToListAsync();
+
+            return roles;
+        }
     }
 }

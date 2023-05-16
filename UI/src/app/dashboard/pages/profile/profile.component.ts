@@ -28,13 +28,11 @@ export class ProfileComponent {
       this.serviceAuth.getUserInfo(res.userId).subscribe(res => {
         this.datasource = res;
 
-
         if (res.profilePicture == "") {
           this.isPictureNull = true;
         } else {
           this.isPictureNull = false;
         }
-
 
       });
     });

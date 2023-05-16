@@ -37,6 +37,8 @@ namespace AuctionAngular.Models
         public string SecondaryDamage { get; set; }
         public string VIN { get; set; } = null!;
         public Highlight Highlights { get; set; }
+        [DisplayName("Sale Term")]
+        public SaleTerm SaleTerm { get; set; }
         public DateTime DateTime { get; set; }
         public int CurrentBid { get; set; }
         public int WinnerId { get; set; }

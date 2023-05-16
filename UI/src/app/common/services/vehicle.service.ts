@@ -51,8 +51,6 @@ export class VehicleService {
 
     let url_ = "https://localhost:7257/Vehicle/checkWatch";
 
-    alert("3");
-
     return this.http.post<any>(url_, bid);
   }
 

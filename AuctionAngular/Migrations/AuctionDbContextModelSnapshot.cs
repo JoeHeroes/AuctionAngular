@@ -264,6 +264,9 @@ namespace AuctionAngular.Migrations
                     b.Property<int>("RegistrationYear")
                         .HasColumnType("int");
 
+                    b.Property<int>("SaleTerm")
+                        .HasColumnType("int");
+
                     b.Property<bool>("SalesFinised")
                         .HasColumnType("bit");
 

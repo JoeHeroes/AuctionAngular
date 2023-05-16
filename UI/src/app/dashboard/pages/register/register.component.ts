@@ -15,14 +15,22 @@ export class RegisterComponent implements OnInit {
   showError!: boolean;
   registerForm!: FormGroup;
   errorMessage: string = '';
-  email: string = '';
+  roles: any;
 
 
   constructor(private authenticationService: AuthenticationService,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute) {
+
+
+    this.authenticationService.getRoles().subscribe(res => {
+      this.roles = res;
+    });
+  }
 
   ngOnInit(): void {
+
+
     this.registerForm = new FormGroup({
       email: new FormControl("", [Validators.required]),
       password: new FormControl("", [Validators.required]),
@@ -30,11 +38,23 @@ export class RegisterComponent implements OnInit {
       firstname: new FormControl("", [Validators.required]),
       lastname: new FormControl("", [Validators.required]),
       nationality: new FormControl("", [Validators.required]),
-      dateofbirth: new FormControl("", [Validators.required]),
+      dateofbirth: new FormControl('', [Validators.required, this.validateMaxDate.bind(this)]),
       roleid: new FormControl("", [Validators.required]),
     })
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/login';
   }
+
+  validateMaxDate(control: FormControl): { [key: string]: any } | null {
+    const selectedDate = new Date(control.value);
+    const currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0);
+
+    if (selectedDate > currentDate) {
+      return { maxDate: true };
+    }
+    return null;
+  }
+
 
   registerUser = (registerFormValue: any) => {
     this.showError = false;

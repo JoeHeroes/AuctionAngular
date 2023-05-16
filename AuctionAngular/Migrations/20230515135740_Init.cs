@@ -133,6 +133,7 @@ namespace AuctionAngular.Migrations
                     SecondaryDamage = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     VIN = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Highlights = table.Column<int>(type: "int", nullable: false),
+                    SaleTerm = table.Column<int>(type: "int", nullable: false),
                     DateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CurrentBid = table.Column<int>(type: "int", nullable: false),
                     WinnerId = table.Column<int>(type: "int", nullable: false),

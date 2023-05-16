@@ -15,11 +15,18 @@ namespace AuctionAngular.Controllers
             this.service = service;
         }
 
-        [HttpGet("live")]
+        [HttpGet("liveAuction")]
         public async Task<ActionResult<bool>> LiveAuction()
         {
             var result = await this.service.LiveAuction();
             return Ok(result);
+        }
+
+        [HttpGet("endAuction")]
+        public async Task<ActionResult> EndAuction()
+        {
+            await this.service.EndAuction();
+            return Ok();
         }
 
         [HttpGet("liveAuctionList")]
@@ -29,12 +36,12 @@ namespace AuctionAngular.Controllers
             return Ok(result);
         }
 
-
-        [HttpGet("endAuction")]
-        public async Task<ActionResult> EndAuction()
+        [HttpGet("auctionList")]
+        public async Task<ActionResult<IEnumerable<ViewVehicleDto>>> AuctionList()
         {
-            await this.service.EndAuction();
-            return Ok();
+            var result = await this.service.AuctionList();
+            return Ok(result);
         }
+
     }
 }

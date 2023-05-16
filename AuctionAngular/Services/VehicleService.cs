@@ -1,10 +1,8 @@
 ﻿
 using AuctionAngular.DTO;
 using AuctionAngular.Models;
-using AuctionAngular.Models.DTO;
 using AuctionAngular.Services.Interface;
 using Microsoft.EntityFrameworkCore;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace AuctionAngular.Services
 {

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from 'src/app/common/services/data.service';
+import { LocationService } from 'src/app/common/services/location.service';
 import { CreateVehicleDto, VehicleService } from 'src/app/common/services/vehicle.service';
 
 @Component({
@@ -16,11 +17,29 @@ export class VehicleEditComponent implements OnInit {
   vehicleForm !: FormGroup;
   errorMessage: string = '';
   showError: boolean = false;
+  enumBodyCar = Object.values(BodyCar);
+  enumDamage = Object.values(Damage);
+  enumDrive = Object.values(Drive);
+  enumFuel = Object.values(Fuel);
+  enumHighlight = Object.values(Highlight);
+  enumProducer = Object.values(Producer);
+  enumSaleTerm = Object.values(SaleTerm);
+  enumTransmission = Object.values(Transmission);
+  locations: any;
+
+
 
   constructor(private vehicleService: VehicleService,
+    private locationService: LocationService,
     private router: Router,
     private route: ActivatedRoute,
-    private dataService: DataService) { }
+    private dataService: DataService) {
+
+    this.locationService.getLocations().subscribe(res => {
+      this.locations = res;
+    });
+
+  }
 
   ngOnInit(): void {
     this.vehicleForm = new FormGroup({
@@ -86,3 +105,118 @@ export class VehicleEditComponent implements OnInit {
       })
   }
 }
+
+enum BodyCar {
+  none = '',
+  Micro = 'Micro',
+  Sedan = 'Sedan',
+  Liftback = 'Liftback',
+  Combi = 'Combi',
+  Coupe = 'Coupe',
+  Hatchback = 'Hatchback',
+  Van = 'Van',
+  SUV = 'SUV',
+  Picup = 'Picup',
+  Cabrio = 'Cabrio',
+}
+
+
+
+enum Damage {
+  none = '',
+  All_Over = 'All Over',
+  Burn = 'Burn',
+  Burn_Engine = 'Burn_Engine',
+  Front_End = 'Front End',
+  Hail = 'Hail',
+  Mechanical = 'Mechanical',
+  Minor_Dents_Scratch = 'Minor Dents Scratch',
+  Normal_Wear = 'Normal Wear',
+  Rear_End = 'Rear End',
+  Rollover = 'Rollover',
+  Side = 'Side',
+  Top_Roof = 'Top Roof',
+  Undercarriage = 'Undercarriage',
+  Unknown = 'Unknown',
+  Vandalism = 'Vandalism'
+}
+
+
+enum Drive {
+  none = '',
+  AWD = 'AWD',
+  FWD = 'FWD',
+  RWD = 'RWD',
+}
+
+
+enum Fuel {
+  none = '',
+  Diesel = 'Diesel',
+  Petrol = 'Petrol',
+  Gas = 'Gas',
+  Hybrid = 'Hybrid',
+  Electric = 'Electric',
+}
+
+
+enum Highlight {
+  NonOperational = 'Non Operational',
+  RunAndDrive = 'Run and Drive',
+}
+
+
+enum Producer {
+  none = '',
+  Alfa_Romeo = 'Alfa Romeo',
+  Audi = 'Audi',
+  BMW = 'BMW',
+  Cupra = 'Cupra',
+  Chevrolet = 'Chevrolet',
+  Citroen = 'Citroen',
+  Dacia = 'Dacia',
+  Dodge = 'Dodge',
+  FIAT = 'FIAT',
+  Ford = 'Ford',
+  Honda = 'Honda',
+  Hyundai = 'Hyundai',
+  Kia = 'Kia',
+  Land_Rover = 'Land Rover',
+  Jeep = 'Jeep',
+  Lexus = 'Lexus',
+  Mazda = 'Mazda',
+  Mercedes = 'Mercedes',
+  Mini = 'Mini',
+  Mitsubishi = 'Mitsubishi',
+  Nissan = 'Nissan',
+  Opel = 'Opel',
+  Peugeot = 'Peugeot',
+  Renault = 'Renault',
+  Seat = 'Seat',
+  Skoda = 'Skoda',
+  Subaru = 'Subaru',
+  Suzuki = 'Suzuki',
+  Tesla = 'Tesla',
+  Toyot = 'Toyot',
+  Volkswagen = 'Volkswagen',
+  Volvo = 'Volvo',
+}
+
+enum SaleTerm {
+  none = '',
+  Conditional_repair = 'Conditional_repair',
+  Used_vehicle = 'Used_vehicle',
+  To_be_desmantle = 'To_be_desmantle',
+  Classic = 'Classic',
+}
+
+
+
+enum Transmission {
+  none = '',
+  Manual = 'Manual',
+  Automatic = 'Automatic',
+  DualClutch = 'DualClutch',
+  CVT = 'CVT',
+}
+

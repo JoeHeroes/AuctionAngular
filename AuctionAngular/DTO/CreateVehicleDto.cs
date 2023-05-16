@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace AuctionAngular.Models.DTO
+namespace AuctionAngular.DTO
 {
     public class CreateVehicleDto
     {

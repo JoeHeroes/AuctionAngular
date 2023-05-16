@@ -1,7 +1,6 @@
 ﻿
-using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace AuctionAngular.Models.DTO
+namespace AuctionAngular.DTO
 {
     public class EditVehicleDto
     {

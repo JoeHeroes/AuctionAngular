@@ -1,25 +1,23 @@
 {
-  "action": {
+  "action": { 
     "add": "Add Vehicle",
     "edit": "Edit Profile",
     "restart": "Restart Password",
     "watch": "Watch",
-    "removeWatch": "Remove Watch"
+    "removeWatch": "Remove Watch",
+    "addVehicle": "Add Vehicle",
+    "addPicture": "Add Picture"
   },
   "menu": {
     "home": "Home",
     "vehicle": "Vehicle",
-    "watchlist": "Watchlist",
+    "watchlist": "Watch List",
     "calendar": "Calendar",
     "auction": "Auction",
     "location": "Location",
     "services": "Services",
     "privacy": "Privacy",
     "support": "Support"
-  },
-  "vehicleAction": {
-    "add": "Add Vehicle",
-    "addPicture": "Add Picture"
   },
   "vehicle": {
     "producer": "Producer",
@@ -34,7 +32,7 @@
     "meterReadout": "Meter Readout",
     "fuel": "Fuel",
     "primaryDamage": "Primary Damage",
-    "secondaryDamage": "secondaryDamage",
+    "secondaryDamage": "SecondaryDamage",
     "engineCapacity": "Engine Capacity",
     "engineOutput": "Engine Output",
     "numberKeys": "Number Keys",
@@ -73,10 +71,11 @@
     "dateOfBirth": "Date Birth",
     "role": "Role"
   },
-  "notFoundPage":{
+  "message":{
     "title": "Not Found Page",
     "message": "We could found page",
-    "goBack": "go Back"
+    "goBack": "go Back",
+    "noAuction": "There are no current Live Auctions"
   }
 
 }

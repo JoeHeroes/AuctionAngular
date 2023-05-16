@@ -37,9 +37,13 @@ export class MainComponent implements OnInit {
     });
 
     this.authService.loggedUserId().subscribe(res => {
-      this.authService.getUserInfo(res.userId).subscribe(res => {
-        this.datasource = res;
-        this.isUserAuthenticated = res;
+      this.authService.getUserInfo(res.userId).subscribe({
+        next: (res) => {
+          this.datasource = res;
+          this.isUserAuthenticated = true;
+        },
+        error: () => {
+        }
       });
     });
   }

@@ -1,11 +1,9 @@
 import { VehicleService, BidDto, WatchDto } from './../../../common/services/vehicle.service';
-import { HttpContext, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
+import { ActivatedRoute, UrlSegment } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/common/services/authentication.service';
-import { AuctionService } from 'src/app/common/services/auction.service';
 
 @Component({
   selector: 'app-lot',
@@ -17,16 +15,30 @@ export class LotComponent implements OnInit {
   id: any;
   datasource: any;
   pictures: any;
-  user: any;
+  userId: any;
   slideshowDelay = 2000;
   bidForm!: FormGroup;
   watchLot: boolean = false;
+  isUserAuthenticated: boolean = false;
+
+  watchDto: WatchDto = {
+    vehicleId: 0,
+    userId: 0
+  };
 
 
   constructor(private vehicleService: VehicleService,
+    private authService: AuthenticationService,
     private authenticationService: AuthenticationService,
     private activeRoute: ActivatedRoute) {
 
+    this.authService.loggedUserId().subscribe({
+      next: (res) => {
+        this.isUserAuthenticated = true;
+      },
+      error: () => {
+      }
+    })
   }
 
   ngOnInit(): void {
@@ -47,38 +59,33 @@ export class LotComponent implements OnInit {
       bidNow: new FormControl("", [Validators.required])
     })
 
-    this.authenticationService.loggedUserId()
-      .subscribe(res => {
-        this.user = res;
-      });
+    this.authenticationService.loggedUserId().subscribe(res => {
+      this.watchDto.vehicleId = this.id;
+      this.watchDto.userId = res.userId;
+      this.vehicleService.checkWatch(this.watchDto)
+        .subscribe({
+          next: (res) => {
+            this.watchLot = res;
+          },
+          error: () => {
+          }
+        })
+    });
 
-    const watchDto: WatchDto = {
-      vehicleId: this.datasource.id,
-      userId: this.user.userId
-    }
 
-    this.vehicleService.checkWatch(watchDto).subscribe({
-      next: () => {
-        this.watchLot = true;
-        alert("True");
-      },
-      error: () => {
-        alert("False");
-      }
-    })
+
+
+
+
 
   }
 
 
 
+
   watch() {
 
-    const watchDto: WatchDto = {
-      vehicleId: this.datasource.id,
-      userId: this.user.userId
-    }
-
-    this.vehicleService.watch(watchDto)
+    this.vehicleService.watch(this.watchDto)
       .subscribe({
         next: () => {
           this.watchLot = true;
@@ -90,13 +97,7 @@ export class LotComponent implements OnInit {
 
 
   removeWatch() {
-
-    const watchDto: WatchDto = {
-      vehicleId: this.datasource.id,
-      userId: this.user.userId
-    }
-
-    this.vehicleService.removeWatch(watchDto)
+    this.vehicleService.removeWatch(this.watchDto)
       .subscribe({
         next: () => {
           this.watchLot = false;
@@ -105,25 +106,6 @@ export class LotComponent implements OnInit {
         }
       })
   }
-
-
-  checkWatch() {
-
-    const watchDto: WatchDto = {
-      vehicleId: this.datasource.id,
-      userId: this.user.userId
-    }
-
-    this.vehicleService.checkWatch(watchDto)
-      .subscribe({
-        next: () => {
-          this.watchLot = false;
-        },
-        error: () => {
-        }
-      })
-  }
-
 
 
   bidCar(bidValue: any) {
@@ -132,7 +114,7 @@ export class LotComponent implements OnInit {
     const bidDto: BidDto = {
       lotNumber: this.datasource.id,
       bidNow: bid.bidNow,
-      userId: this.user.userId
+      userId: this.userId
     }
 
 
@@ -149,16 +131,3 @@ export class LotComponent implements OnInit {
       })
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

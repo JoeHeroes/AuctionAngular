@@ -42,12 +42,20 @@
           <div class="dx-field-label">{{t('account.dateOfBirth')}}</div>
           <div class="dx-field-value">
             <input type="date" id="dateofbirth" formControlName="dateofbirth" class="form-control" />
+            <div *ngIf="registerForm.controls['dateofbirth'].invalid && (registerForm.controls['dateofbirth'].errors?.['required'] || registerForm.controls['dateofbirth'].errors?.['maxDate'])">
+              <div *ngIf="registerForm.controls['dateofbirth'].errors?.['maxDate']">
+                Data nie może być w przyszłości.
+              </div>
+            </div>
+            
           </div>
         </div>
         <div class="dx-field">
           <div class="dx-field-label">{{t('account.role')}}</div>
           <div class="dx-field-value">
-            <input type="number" id="roleid" formControlName="roleid" class="form-control" />
+            <select id="roleid" formControlName="roleid" class="form-control">
+              <option *ngFor="let role of roles" [value]="role.id">{{ role.name }}</option>
+            </select>
           </div>
         </div>
         <div *ngIf="errorMessage" style="color: red;">{{errorMessage}}</div>

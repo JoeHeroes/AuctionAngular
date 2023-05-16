@@ -72,6 +72,17 @@ export class AuthenticationService {
 
     return this.http.get<any>("https://localhost:7257/Account/current", { headers: header });
   }
+
+
+
+  public getRoles(): Observable<any> {
+
+    let url_ = "https://localhost:7257/Account/roles";
+
+    return this.http.get<any>(url_);
+  }
+
+
 }
 
 

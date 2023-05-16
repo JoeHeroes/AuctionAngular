@@ -1,5 +1,4 @@
 ﻿using AuctionAngular.DTO;
-using AuctionAngular.Models.DTO;
 
 namespace AuctionAngular.Services.Interface
 {
