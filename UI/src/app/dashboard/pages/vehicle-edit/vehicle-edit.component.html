@@ -28,7 +28,7 @@
         <div class="dx-field">
           <div class="dx-field-label">{{t('vehicle.registrationYear')}}</div>
           <div class="dx-field-value">
-            <input type="text" id="registrationYear" formControlName="registrationYear" class="form-control" />
+            <input type="number" id="registrationYear" formControlName="registrationYear" class="form-control" />
           </div>
         </div>
     
@@ -96,7 +96,7 @@
         <div class="dx-field">
           <div class="dx-field-label">{{t('vehicle.primaryDamage')}}</div>
           <div class="dx-field-value">
-            <select id="fuel" formControlName="fuel" class="form-control" >
+            <select id="fuel" formControlName="primaryDamage" class="form-control" >
               <option *ngFor="let damage of enumDamage"  [value]="damage">{{ damage }}</option>
             </select>
           </div>

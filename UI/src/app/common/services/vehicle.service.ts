@@ -64,7 +64,6 @@ export class VehicleService {
   public addVehicle(dto: CreateVehicleDto) {
 
     let url_ = "https://localhost:7257/Vehicle/create";
-
     return this.http.post<any>(url_, dto);
   }
 
@@ -95,7 +94,7 @@ export interface CreateVehicleDto {
   producer: string;
   modelSpecifer: string;
   modelGeneration: string;
-  registrationYear: string;
+  registrationYear: number;
   color: string;
   locationId: number;
   bodyType: string;

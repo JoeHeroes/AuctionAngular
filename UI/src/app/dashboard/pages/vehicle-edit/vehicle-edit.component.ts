@@ -126,7 +126,7 @@ enum Damage {
   none = '',
   All_Over = 'All Over',
   Burn = 'Burn',
-  Burn_Engine = 'Burn_Engine',
+  Burn_Engine = 'Burn Engine',
   Front_End = 'Front End',
   Hail = 'Hail',
   Mechanical = 'Mechanical',

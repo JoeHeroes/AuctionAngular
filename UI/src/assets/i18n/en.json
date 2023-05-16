@@ -6,7 +6,8 @@
     "watch": "Watch",
     "removeWatch": "Remove Watch",
     "addVehicle": "Add Vehicle",
-    "addPicture": "Add Picture"
+    "addPicture": "Add Picture",
+    "saveProfile": "Save Profile"
   },
   "menu": {
     "home": "Home",
@@ -65,9 +66,10 @@
     "confirmPassword": "Confirm Password",
     "newPassword": "New Password",
     "confirmNewPassword": "Confirm New Password",
-    "firstName": "First Name",
-    "lastName": "Last Name",
+    "name": "Name",
+    "sureName": "Sure Name",
     "nationality": "Nationality",
+    "phone":"Phone",
     "dateOfBirth": "Date Birth",
     "role": "Role"
   },

@@ -25,9 +25,11 @@ export class ProfileEditComponent implements OnInit {
   ngOnInit(): void {
     this.editForm = new FormGroup({
       userId: new FormControl("", [Validators.required]),
-      firstName: new FormControl("", [Validators.required]),
-      lastName: new FormControl("", [Validators.required]),
+      name: new FormControl("", [Validators.required]),
+      sureName: new FormControl("", [Validators.required]),
+      phone: new FormControl("", [Validators.required]),
       nationality: new FormControl("", [Validators.required]),
+      dateOfBirth: new FormControl("", [Validators.required]),
       pathPicture: new FormControl("", [Validators.required]),
     })
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/profile';
@@ -46,9 +48,11 @@ export class ProfileEditComponent implements OnInit {
 
     const editData: EditProfileDto = {
       userId: this.userId,
-      firstName: edit.firstName,
-      lastName: edit.lastName,
+      name: edit.name,
+      sureName: edit.sureName,
+      phone: edit.phone,
       nationality: edit.nationality,
+      dateofbirth: edit.dateofbirth,
     }
     this.authenticationService.editProfile(editData)
       .subscribe({

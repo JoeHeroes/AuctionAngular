@@ -13,13 +13,15 @@ namespace AuctionAngular.Dtos
         [DisplayName("Confirm Password")]
         public string ConfirmPassword { get; set; }
         [Required]
-        [DisplayName("First Name")]
-        public string FirstName { get; set; }
+        [DisplayName("Name")]
+        public string Name { get; set; }
         [Required]
-        [DisplayName("Last Name")]
-        public string LastName { get; set; } 
+        [DisplayName("Sure Name")]
+        public string SureName { get; set; } 
         [Required]
         public string Nationality { get; set; }
+        [Required]
+        public string Phone { get; set; }
         [Required]
         [DisplayName("Date of Birth")]
         public DateTime? DateOfBirth { get; set; }

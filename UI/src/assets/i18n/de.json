@@ -47,8 +47,8 @@
     "confirmPassword": "Confirm Password",
     "newPassword": "New Password",
     "confirmNewPassword": "Confirm New Password",
-    "firstName": "First Name",
-    "lastName": "Last Name",
+    "name": "Name",
+    "sureName": "Sure Name",
     "nationality": "Nationality",
     "dateOfBirth": "Date Birth",
     "role": "Role"

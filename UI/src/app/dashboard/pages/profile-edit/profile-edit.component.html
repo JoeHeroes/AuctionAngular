@@ -3,21 +3,33 @@
     <h3>Profile Edit</h3>
       <div class="dx-fieldset">
         <div class="dx-field">
-            <div class="dx-field-label">{{t('account.firstName')}}</div>
+            <div class="dx-field-label">{{t('account.name')}}</div>
             <div class="dx-field-value">
-              <input type="text" id="firstName" formControlName="firstName" class="form-control" />
+              <input type="text" id="name" formControlName="name" class="form-control" />
             </div>
           </div>
           <div class="dx-field">
-            <div class="dx-field-label">{{t('account.lastName')}}</div>
+            <div class="dx-field-label">{{t('account.sureName')}}</div>
             <div class="dx-field-value">
-              <input type="text" id="lastName" formControlName="lastName" class="form-control" />
+              <input type="text" id="sureName" formControlName="sureName" class="form-control" />
+            </div>
+          </div>
+          <div class="dx-field">
+            <div class="dx-field-label">{{t('account.phone')}}</div>
+            <div class="dx-field-value">
+              <input type="text" id="phone" formControlName="phone" class="form-control" />
             </div>
           </div>
           <div class="dx-field">
             <div class="dx-field-label">{{t('account.nationality')}}</div>
             <div class="dx-field-value">
               <input type="text" id="nationality" formControlName="nationality" class="form-control" />
+            </div>
+          </div>
+          <div class="dx-field">
+            <div class="dx-field-label">{{t('account.dateOfBirth')}}</div>
+            <div class="dx-field-value">
+              <input type="date" id="dateOfBirth" formControlName="dateOfBirth" class="form-control" />
             </div>
           </div>
       </div>

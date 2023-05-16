@@ -28,11 +28,12 @@ namespace AuctionAngular.Services
             {
 
                 Email = dto.Email,
+                Name = dto.Name,
+                SureName = dto.SureName,
+                PasswordHash = dto.Password,
                 DateOfBirth = dto.DateOfBirth,
                 Nationality = dto.Nationality,
-                FirstName = dto.FirstName,
-                LastName = dto.LastName,
-                PasswordHash = dto.Password,
+                Phone = dto.Phone,
                 RoleId = dto.RoleId,
                 ProfilePicture = ""
 
@@ -73,7 +74,7 @@ namespace AuctionAngular.Services
 
             var clasims = new List<Claim>()
             {
-                new Claim(ClaimTypes.Name, $"{user.FirstName} {user.LastName}"),
+                new Claim(ClaimTypes.Name, $"{user.Name} {user.SureName}"),
                 new Claim("UserId", user.Id.ToString()),
                 new Claim("DateOfBirth", user.DateOfBirth.Value.ToString("yyyy-MM-dd")),
                 
@@ -150,10 +151,11 @@ namespace AuctionAngular.Services
             {
                 Id = user.Id,
                 Email = user.Email,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
+                Name = user.Name,
+                SureName = user.SureName,
                 DateOfBirth = user.DateOfBirth,
                 Nationality = user.Nationality,
+                Phone = user.Phone,
                 ProfilePicture = user.ProfilePicture
             };
 
@@ -164,9 +166,11 @@ namespace AuctionAngular.Services
         {
             var user = await this.dbContext.Users.FirstOrDefaultAsync(x => x.Id == dto.UserId);
 
-            user.FirstName = dto.FirstName;
-            user.LastName = dto.LastName;
+            user.Name = dto.Name;
+            user.SureName = dto.SureName;
+            user.Phone = dto.Phone;
             user.Nationality= dto.Nationality;
+            user.DateOfBirth = dto.Date;
 
             try
             {

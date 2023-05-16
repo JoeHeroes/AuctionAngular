@@ -57,6 +57,7 @@ namespace AuctionAngular.Services
 
                 var resultDto = new ViewLocationDto()
                 {
+                    id= loc.Id,
                     Name = loc.Name,
                     Phone = loc.Phone,
                     Email = loc.Email,

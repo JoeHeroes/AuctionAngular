@@ -50,8 +50,8 @@ export interface UserRegisterDto {
   email: string;
   password: string;
   confirmpassword: string;
-  firstname: string;
-  lastname: string;
+  name: string;
+  surename: string;
   nationality: string;
   dateofbirth: Date;
   roleid: number;
@@ -67,8 +67,8 @@ export interface RestartPasswordDto {
 
 export interface EditProfileDto {
   userId: number;
-  firstName: string;
-  lastName: string;
+  name: string;
+  surename: string;
   nationality: string;
 }
 
