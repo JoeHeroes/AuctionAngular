@@ -1,6 +1,6 @@
-﻿using AuctionAngular.DTO;
-using AuctionAngular.Models;
-using AuctionAngular.Services.Interface;
+﻿using AuctionAngular.Dtos;
+using AuctionAngular.Entities;
+using AuctionAngular.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AuctionAngular.Controllers
@@ -120,8 +120,6 @@ namespace AuctionAngular.Controllers
         [HttpPost("bid")]
         public async Task<IActionResult> UpdateBid([FromBody] UpdateBidDto dto)
         {
-
-
             try
             {
                  await this.service.Bid(dto);

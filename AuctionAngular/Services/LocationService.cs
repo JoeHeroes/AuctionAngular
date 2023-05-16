@@ -1,6 +1,6 @@
-﻿using AuctionAngular.Models;
-using Microsoft.EntityFrameworkCore;
-using AuctionAngular.Services.Interface;
+﻿using Microsoft.EntityFrameworkCore;
+using AuctionAngular.Entities;
+using AuctionAngular.Interfaces;
 
 namespace AuctionAngular.Services
 {

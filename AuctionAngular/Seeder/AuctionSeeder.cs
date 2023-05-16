@@ -1,6 +1,6 @@
-﻿using AuctionAngular.Enum;
-using AuctionAngular.Models;
-using CarAuction.Models.Enum;
+﻿using AuctionAngular;
+using AuctionAngular.Entities;
+using AuctionAngular.Enums;
 
 namespace CarAuction.Seeder
 {

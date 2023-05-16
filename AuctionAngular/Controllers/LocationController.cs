@@ -1,5 +1,5 @@
-﻿using AuctionAngular.Models;
-using AuctionAngular.Services.Interface;
+﻿using AuctionAngular.Entities;
+using AuctionAngular.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AuctionAngular.Controllers

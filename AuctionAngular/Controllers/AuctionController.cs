@@ -1,5 +1,5 @@
-﻿using AuctionAngular.DTO;
-using AuctionAngular.Services.Interface;
+﻿using AuctionAngular.Dtos;
+using AuctionAngular.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AuctionAngular.Controllers

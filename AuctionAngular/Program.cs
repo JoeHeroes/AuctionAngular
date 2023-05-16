@@ -1,5 +1,3 @@
-using AuctionAngular.DTO;
-using AuctionAngular.Models;
 using AuctionAngular.Services;
 using AuctionAngular;
 using Microsoft.AspNetCore.Identity;
@@ -8,12 +6,13 @@ using System.Text;
 using NLog.Web;
 using FluentValidation.AspNetCore;
 using CarAuction.Seeder;
-using AuctionAngular.Middleware;
 using FluentValidation;
 using NLog;
 using Microsoft.EntityFrameworkCore;
 using AuctionAngular.Models.Validators;
-using AuctionAngular.Services.Interface;
+using AuctionAngular.Interfaces;
+using AuctionAngular.Entities;
+using AuctionAngular.Dtos;
 
 var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
 logger.Debug("init main");
@@ -66,15 +65,6 @@ try
     builder.Services.AddScoped<ILocationService, LocationService>();
     builder.Services.AddScoped<IAuctionService, AuctionService>();
 
-
-
-
-    
-
-    //Middleware
-    builder.Services.AddScoped<ErrorHandlingMiddleware>();
-    builder.Services.AddScoped<RequestTimeMiddleware>();
-
     //Hasser
     builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 
@@ -117,9 +107,6 @@ try
     {
         app.UseDeveloperExceptionPage();
     }
-
-    app.UseMiddleware<ErrorHandlingMiddleware>();
-    app.UseMiddleware<RequestTimeMiddleware>();
 
     app.UseAuthentication();
 

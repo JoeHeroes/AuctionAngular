@@ -1,9 +1,10 @@
-﻿using AuctionAngular.Services.Interface;
+﻿using AuctionAngular.Dtos;
+using AuctionAngular.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
-namespace AuctionAngular.DTO
+namespace AuctionAngular.Controllers
 {
     [ApiController]
     [Route("[controller]")]

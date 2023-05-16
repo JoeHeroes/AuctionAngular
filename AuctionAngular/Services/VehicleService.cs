@@ -1,7 +1,6 @@
-﻿
-using AuctionAngular.DTO;
-using AuctionAngular.Models;
-using AuctionAngular.Services.Interface;
+﻿using AuctionAngular.Dtos;
+using AuctionAngular.Entities;
+using AuctionAngular.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace AuctionAngular.Services
