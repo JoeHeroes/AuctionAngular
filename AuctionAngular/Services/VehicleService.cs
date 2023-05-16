@@ -1,6 +1,7 @@
 ﻿using AuctionAngular.Dtos;
-using AuctionAngular.Entities;
 using AuctionAngular.Interfaces;
+using Database;
+using Database.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace AuctionAngular.Services
@@ -295,8 +296,6 @@ namespace AuctionAngular.Services
 
 
             var events = await this.dbContext.Events.FirstOrDefaultAsync(x => x.Title == vehicle.Id + " " + vehicle.Producer + " " + vehicle.ModelGeneration);
-
-
 
             if (events != null && events.Owner == dto.UserId)
             {

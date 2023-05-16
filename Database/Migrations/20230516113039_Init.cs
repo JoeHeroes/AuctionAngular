@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace AuctionAngular.Migrations
+namespace Database.Migrations
 {
+    /// <inheritdoc />
     public partial class Init : Migration
     {
+        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -132,8 +134,8 @@ namespace AuctionAngular.Migrations
                     PrimaryDamage = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SecondaryDamage = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     VIN = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Highlights = table.Column<int>(type: "int", nullable: false),
-                    SaleTerm = table.Column<int>(type: "int", nullable: false),
+                    Highlights = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SaleTerm = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CurrentBid = table.Column<int>(type: "int", nullable: false),
                     WinnerId = table.Column<int>(type: "int", nullable: false),
@@ -181,6 +183,7 @@ namespace AuctionAngular.Migrations
                 column: "VehicleId");
         }
 
+        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

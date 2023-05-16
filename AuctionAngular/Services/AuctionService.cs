@@ -1,5 +1,6 @@
 ﻿using AuctionAngular.Dtos;
 using AuctionAngular.Interfaces;
+using Database;
 using Microsoft.EntityFrameworkCore;
 
 namespace AuctionAngular.Services
@@ -42,7 +43,7 @@ namespace AuctionAngular.Services
         {
             var vehicles = await this.dbContext.Vehicles.Where(x => x.DateTime <= DateTime.Now && x.DateTime.AddHours(1) >= DateTime.Now).ToListAsync();
 
-            List<ViewVehicleDto> viewVehicle = new List<ViewVehicleDto>();
+            List<ViewVehicleDto> result = new List<ViewVehicleDto>();
 
             foreach (var vehicle in vehicles)
             {
@@ -85,11 +86,11 @@ namespace AuctionAngular.Services
                     Images = pictures,
                 };
 
-                viewVehicle.Add(view);
+                result.Add(view);
 
             }
 
-            return viewVehicle;
+            return result;
         }
 
 
@@ -97,7 +98,7 @@ namespace AuctionAngular.Services
         {
             var vehicles = await this.dbContext.Vehicles.ToListAsync();
 
-            List<ViewVehicleDto> viewVehicle = new List<ViewVehicleDto>();
+            List<ViewVehicleDto> result = new List<ViewVehicleDto>();
 
             foreach (var vehicle in vehicles)
             {
@@ -140,10 +141,10 @@ namespace AuctionAngular.Services
                     Images = pictures,
                 };
 
-                viewVehicle.Add(view);
+                result.Add(view);
             }
 
-            return viewVehicle;
+            return result;
         }
     }
 }

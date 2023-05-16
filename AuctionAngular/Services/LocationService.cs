@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using AuctionAngular.Entities;
 using AuctionAngular.Interfaces;
+using AuctionAngular.Dtos;
+using Database;
 
 namespace AuctionAngular.Services
 {
@@ -12,7 +13,7 @@ namespace AuctionAngular.Services
             this.dbContext = dbContext;
         }
 
-        public async Task<Location> GetById(int id)
+        public async Task<ViewLocationDto> GetById(int id)
         {
             var result = await this.dbContext
                 .Locations
@@ -23,18 +24,49 @@ namespace AuctionAngular.Services
                 throw new NotFoundException("Location not found");
             }
 
-            return result;
+            var resultDto = new ViewLocationDto()
+            {
+                Name = result.Name,
+                Phone = result.Phone,
+                Email = result.Email,
+                City = result.City,
+                Street = result.Street,
+                PostalCode = result.PostalCode,
+                Picture = result.Picture,
+            };
+
+
+            return resultDto;
         }
 
-        public async Task<IEnumerable<Location>> GetAll()
+        public async Task<IEnumerable<ViewLocationDto>> GetAll()
         {
-            var result = await this.dbContext
+            var locations= await this.dbContext
                 .Locations
                 .ToListAsync();
 
-            if (result is null)
+            if (locations is null)
             {
                 throw new NotFoundException("Location not found");
+            }
+
+            List<ViewLocationDto> result = new List<ViewLocationDto>();
+
+            foreach(var loc in locations)
+            {
+
+                var resultDto = new ViewLocationDto()
+                {
+                    Name = loc.Name,
+                    Phone = loc.Phone,
+                    Email = loc.Email,
+                    City = loc.City,
+                    Street = loc.Street,
+                    PostalCode = loc.PostalCode,
+                    Picture = loc.Picture,
+                };
+
+                result.Add(resultDto);
             }
 
             return result;

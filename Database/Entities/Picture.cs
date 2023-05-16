@@ -1,4 +1,4 @@
-﻿namespace AuctionAngular.Entities
+﻿namespace Database.Entities
 {
     public class Picture
     {

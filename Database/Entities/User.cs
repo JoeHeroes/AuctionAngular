@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace AuctionAngular.Entities
+namespace Database.Entities
 {
     public class User
     {

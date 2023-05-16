@@ -1,5 +1,4 @@
 ﻿using AuctionAngular.Dtos;
-using AuctionAngular.Entities;
 using AuctionAngular.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,7 +16,7 @@ namespace AuctionAngular.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Vehicle>>> GetAllVehicle()
+        public async Task<ActionResult<IEnumerable<ViewVehiclesDto>>> GetAllVehicle()
         {
             try
             {
@@ -41,7 +40,7 @@ namespace AuctionAngular.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Vehicle>> GetOne([FromRoute] int id)
+        public async Task<ActionResult<ViewVehicleDto>> GetOne([FromRoute] int id)
         {
             try
             {
@@ -193,7 +192,7 @@ namespace AuctionAngular.Controllers
         }
         
         [HttpGet("allWatch/{id}")]
-        public async Task<ActionResult<IEnumerable<Vehicle>>> AllWatch([FromRoute] int id)
+        public async Task<ActionResult<IEnumerable<ViewVehicleDto>>> AllWatch([FromRoute] int id)
         {
             try
             {

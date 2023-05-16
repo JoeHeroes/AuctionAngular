@@ -1,7 +1,6 @@
-﻿using AuctionAngular.Enums;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
-namespace AuctionAngular.Entities
+namespace Database.Entities
 {
     public class Vehicle
     {
@@ -36,9 +35,9 @@ namespace AuctionAngular.Entities
         public string PrimaryDamage { get; set; }
         public string SecondaryDamage { get; set; }
         public string VIN { get; set; } = null!;
-        public Highlight Highlights { get; set; }
+        public string Highlights { get; set; }
         [DisplayName("Sale Term")]
-        public SaleTerm SaleTerm { get; set; }
+        public string SaleTerm { get; set; }
         public DateTime DateTime { get; set; }
         public int CurrentBid { get; set; }
         public int WinnerId { get; set; }

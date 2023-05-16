@@ -9,10 +9,11 @@ using CarAuction.Seeder;
 using FluentValidation;
 using NLog;
 using Microsoft.EntityFrameworkCore;
-using AuctionAngular.Models.Validators;
 using AuctionAngular.Interfaces;
-using AuctionAngular.Entities;
 using AuctionAngular.Dtos;
+using Database.Entities;
+using Database.Entities.Validators;
+using Database;
 
 var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
 logger.Debug("init main");

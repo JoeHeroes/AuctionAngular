@@ -1,14 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AuctionAngular.Entities
+namespace AuctionAngular.Dtos
 {
-    public class Location
+    public class ViewLocationDto
     {
-        public int Id { get; set; }
         public string Name { get; set; }
-        [Phone]
         public string Phone { get; set; }
-        [EmailAddress]
         public string Email { get; set; }
         public string City { get; set; }
         public string Street { get; set; }

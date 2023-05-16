@@ -1,6 +1,6 @@
-﻿using AuctionAngular;
-using AuctionAngular.Entities;
-using AuctionAngular.Enums;
+﻿using AuctionAngular.Enums;
+using Database;
+using Database.Entities;
 
 namespace CarAuction.Seeder
 {
@@ -213,6 +213,8 @@ namespace CarAuction.Seeder
                     VIN = "",
                     LocationId = 1,
                     SalesFinised= false,
+                    SaleTerm="",
+                    Highlights="",
                 },
                 new Vehicle()
                 {
@@ -238,7 +240,8 @@ namespace CarAuction.Seeder
                     VIN = "",
                     LocationId = 2,
                     SalesFinised= false,
-
+                    SaleTerm="",
+                    Highlights="",
                 },
                 new Vehicle()
                 {
@@ -264,6 +267,8 @@ namespace CarAuction.Seeder
                     VIN = "",
                     LocationId = 3,
                     SalesFinised= false,
+                    SaleTerm="",
+                    Highlights="",
                 },
                 new Vehicle()
                 {
@@ -289,6 +294,8 @@ namespace CarAuction.Seeder
                     VIN = "",
                     LocationId = 4,
                     SalesFinised= false,
+                    SaleTerm="",
+                    Highlights="",
                 },
                 new Vehicle()
                 {
@@ -314,6 +321,8 @@ namespace CarAuction.Seeder
                     VIN = "",
                     LocationId = 1,
                     SalesFinised= false,
+                    SaleTerm="",
+                    Highlights="",
                 },
                 new Vehicle()
                 {
@@ -339,6 +348,8 @@ namespace CarAuction.Seeder
                     VIN = "",
                     LocationId = 2,
                     SalesFinised= false,
+                    SaleTerm="",
+                    Highlights="",
                 }
             };
         }

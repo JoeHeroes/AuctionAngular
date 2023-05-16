@@ -1,4 +1,4 @@
-﻿using AuctionAngular.Entities;
+﻿using AuctionAngular.Dtos;
 using AuctionAngular.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,7 +16,7 @@ namespace AuctionAngular.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Location>>> GetAllLocation()
+        public async Task<ActionResult<IEnumerable<ViewLocationDto>>> GetAllLocation()
         {
             var result = await this.service.GetAll();
             return Ok(result);

@@ -1,6 +1,7 @@
 ﻿using AuctionAngular.Dtos;
-using AuctionAngular.Entities;
 using AuctionAngular.Interfaces;
+using Database;
+using Database.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -109,12 +110,10 @@ namespace AuctionAngular.Services
                 throw new BadRequestException("New Password must be the same");
             }
 
-
             if (dto.OldPassword == dto.NewPassword)
             {
                 throw new BadRequestException("New and Old Password and couldn't be the same");
             }
-
 
             var account = await dbContext.Users.FirstOrDefaultAsync(x => x.Email == dto.Email);
 
@@ -138,38 +137,36 @@ namespace AuctionAngular.Services
 
         public async Task<ViewUserDto> GetUserInfo(int id)
         {
-            var result = await this.dbContext
+            var user = await this.dbContext
                .Users
                .FirstOrDefaultAsync(u => u.Id == id);
 
-            if (result is null)
+            if (user is null)
             {
                 throw new NotFoundException("User not found");
             }
 
-            var resultDto = new ViewUserDto()
+            var result = new ViewUserDto()
             {
-                Id = result.Id,
-                Email = result.Email,
-                FirstName = result.FirstName,
-                LastName = result.LastName,
-                DateOfBirth = result.DateOfBirth,
-                Nationality = result.Nationality,
-                ProfilePicture = result.ProfilePicture
+                Id = user.Id,
+                Email = user.Email,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                DateOfBirth = user.DateOfBirth,
+                Nationality = user.Nationality,
+                ProfilePicture = user.ProfilePicture
             };
 
-            return resultDto;
+            return result;
         }
 
         public async Task EditProfile(EditUserDto dto)
         {
+            var user = await this.dbContext.Users.FirstOrDefaultAsync(x => x.Id == dto.UserId);
 
-
-            var model = await this.dbContext.Users.FirstOrDefaultAsync(x => x.Id == dto.UserId);
-
-            model.FirstName = dto.FirstName;
-            model.LastName = dto.LastName;  
-            model.Nationality= dto.Nationality;
+            user.FirstName = dto.FirstName;
+            user.LastName = dto.LastName;
+            user.Nationality= dto.Nationality;
 
             try
             {
@@ -181,13 +178,21 @@ namespace AuctionAngular.Services
             }
         }
 
-        public async Task<IEnumerable<Role>> GetRole()
+        public async Task<IEnumerable<RoleDto>> GetRole()
         {
             var roles = await this.dbContext
                 .Roles
                 .ToListAsync();
 
-            return roles;
+            List<RoleDto> result = new List<RoleDto>();
+
+            foreach(var role in roles)
+            {
+                var roleDto = new RoleDto() { Id = role.Id, Name = role.Name };
+                result.Add(roleDto);
+            }
+
+            return result;
         }
     }
 }

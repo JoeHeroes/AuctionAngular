@@ -2,7 +2,7 @@
 using FluentValidation;
 
 
-namespace AuctionAngular.Models.Validators
+namespace Database.Entities.Validators
 {
     public class RegisterUserDtoValidator : AbstractValidator<RegisterUserDto>
     {

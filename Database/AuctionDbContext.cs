@@ -1,7 +1,7 @@
-﻿using AuctionAngular.Entities;
+﻿using Database.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace AuctionAngular
+namespace Database
 {
     public class AuctionDbContext : DbContext
     {
@@ -20,36 +20,33 @@ namespace AuctionAngular
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Vehicle>()
-                .Property(u => u.BodyType)
-                .IsRequired();
+               .Property(u => u.BodyType)
+               .IsRequired();
 
             modelBuilder.Entity<User>()
                .Property(u => u.Email)
                .IsRequired();
 
             modelBuilder.Entity<Location>()
-          .Property(u => u.Name)
-          .IsRequired();
+               .Property(u => u.Name)
+               .IsRequired();
 
             modelBuilder.Entity<Role>()
-              .Property(u => u.Name)
-              .IsRequired();
+               .Property(u => u.Name)
+               .IsRequired();
 
             modelBuilder.Entity<Watch>()
-           .Property(u => u.Id)
-           .IsRequired();
+               .Property(u => u.Id)
+               .IsRequired();
 
 
             modelBuilder.Entity<Bind>()
                .Property(u => u.Id)
-              .IsRequired();
-
+               .IsRequired();
 
             modelBuilder.Entity<Picture>()
-              .Property(u => u.Id)
-              .IsRequired();
-
-
+               .Property(u => u.Id)
+               .IsRequired();
 
         }
     }
