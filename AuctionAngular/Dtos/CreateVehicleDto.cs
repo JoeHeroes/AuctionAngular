@@ -49,7 +49,7 @@ namespace AuctionAngular.Dtos
         [Required]
         [DisplayName("Secondary Damage")]
         public string SecondaryDamage { get; set; }
-        
+
         [Required]
         [DisplayName("Engine Capacity")]
         public int EngineCapacity { get; set; }
@@ -73,6 +73,11 @@ namespace AuctionAngular.Dtos
 
         [Required]
         public string VIN { get; set; } = null!;
+
+        [Required]
+        public string SaleTerm { get; set; }
+        [Required]
+        public string Highlights { get; set; }
 
         [Required]
         [DisplayName("Date of Auction")]

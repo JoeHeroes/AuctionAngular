@@ -111,6 +111,8 @@ export interface CreateVehicleDto {
   secondTireSet: boolean;
   VIN: string;
   dateTime: Date;
+  saleTerm: string;
+  highlights: string;
 }
 
 

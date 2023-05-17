@@ -63,6 +63,8 @@ export class VehicleEditComponent implements OnInit {
       secondTireSet: new FormControl("", [Validators.required]),
       VIN: new FormControl("", [Validators.required]),
       dateTime: new FormControl("", [Validators.required]),
+      saleTerm: new FormControl("", [Validators.required]),
+      highlights: new FormControl("", [Validators.required]),
     })
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/vehicle/picture';
   }
@@ -91,6 +93,8 @@ export class VehicleEditComponent implements OnInit {
       secondTireSet: vehicle.secondTireSet,
       VIN: vehicle.VIN,
       dateTime: vehicle.dateTime,
+      saleTerm: vehicle.saleTerm,
+      highlights: vehicle.highlights,
     }
     this.vehicleService.addVehicle(createVehicle)
       .subscribe({
@@ -204,9 +208,9 @@ enum Producer {
 
 enum SaleTerm {
   none = '',
-  Conditional_repair = 'Conditional_repair',
-  Used_vehicle = 'Used_vehicle',
-  To_be_desmantle = 'To_be_desmantle',
+  Conditional_repair = 'Conditional Repair',
+  Used_vehicle = 'Used Vehicle',
+  To_be_desmantle = 'To be desmantle',
   Classic = 'Classic',
 }
 

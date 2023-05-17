@@ -81,9 +81,7 @@
             <input type="number" id="meterReadout" formControlName="meterReadout" class="form-control" />
           </div>
         </div>
-      </div>
-      
-      <div class="column">
+
         <div class="dx-field">
           <div class="dx-field-label">{{t('vehicle.fuel')}}</div>
           <div class="dx-field-value">
@@ -92,6 +90,12 @@
             </select>
           </div>
         </div>
+
+
+      </div>
+      
+      <div class="column">
+       
     
         <div class="dx-field">
           <div class="dx-field-label">{{t('vehicle.primaryDamage')}}</div>
@@ -159,6 +163,27 @@
             <input type="date" id="dateTime" formControlName="dateTime" class="form-control" />
           </div>
         </div>
+
+        <div class="dx-field">
+          <div class="dx-field-label">{{t('vehicle.saleTerm')}}</div>
+          <div class="dx-field-value">
+            <select id="fuel" formControlName="saleTerm" class="form-control" >
+              <option *ngFor="let saleTerm of enumSaleTerm"  [value]="saleTerm">{{ saleTerm }}</option>
+            </select>
+          </div>
+        </div>
+
+
+        <div class="dx-field">
+          <div class="dx-field-label">{{t('vehicle.highlight')}}</div>
+          <div class="dx-field-value">
+            <select id="fuel" formControlName="highlights" class="form-control" >
+              <option *ngFor="let highlight of enumHighlight"  [value]="highlight">{{ highlight }}</option>
+            </select>
+          </div>
+        </div>
+
+
       </div>
     </div>
     <dx-button id="button" [text]="t('action.add')" type="default" [useSubmitBehavior]="true"></dx-button>

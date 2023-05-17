@@ -7,7 +7,8 @@
     "removeWatch": "Remove Watch",
     "addVehicle": "Add Vehicle",
     "addPicture": "Add Picture",
-    "saveProfile": "Save Profile"
+    "saveProfile": "Save Profile",
+    "selectPicture": "Select Picture"
   },
   "menu": {
     "home": "Home",
@@ -42,6 +43,8 @@
     "vin":"VIN",
     "dateTime": "Date Time",
     "statusBid": "Status Bid",
+    "saleTerm": "Sale Term",
+    "highlight": "Highlight",
     "currentBid": "Current Bid",
     "newBid": "New Bid",
     "nowBid": "Bid Now",

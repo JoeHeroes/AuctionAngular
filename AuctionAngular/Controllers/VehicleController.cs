@@ -76,7 +76,7 @@ namespace AuctionAngular.Controllers
                                 "Error retrieving data from the database");
             }
 
-            return NotFound();
+            return NoContent();
         }
 
         [HttpPost("create")]

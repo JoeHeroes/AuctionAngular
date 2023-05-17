@@ -1,4 +1,5 @@
 ﻿using AuctionAngular.Dtos;
+using AuctionAngular.Enums;
 using AuctionAngular.Interfaces;
 using Database;
 using Database.Entities;
@@ -117,21 +118,24 @@ namespace AuctionAngular.Services
                 RegistrationYear = dto.RegistrationYear,
                 Color = dto.Color,
                 BodyType = dto.BodyType,
+                EngineCapacity = dto.EngineCapacity,
+                EngineOutput = dto.EngineOutput,
                 Transmission = dto.Transmission,
                 Drive = dto.Drive,
                 MeterReadout = dto.MeterReadout,
-                EngineCapacity = dto.EngineCapacity,
-                EngineOutput = dto.EngineOutput,
+                Fuel = dto.Fuel,
                 NumberKeys = dto.NumberKeys,
                 ServiceManual = dto.ServiceManual,
                 SecondTireSet = dto.SecondTireSet,
-                LocationId = dto.LocationId,
-                Fuel = dto.Fuel,
+                CurrentBid = 0,
                 PrimaryDamage = dto.PrimaryDamage,
                 SecondaryDamage = dto.SecondaryDamage,
-                VIN = dto.VIN,
                 DateTime = dto.DateTime,
-                SalesFinised = false
+                VIN = dto.VIN,
+                LocationId = dto.LocationId,
+                SalesFinised = false,
+                SaleTerm = dto.SaleTerm,
+                Highlights = dto.Highlights,
             };
 
             this.dbContext.Vehicles.Add(vehicle);

@@ -20,6 +20,7 @@ import { RestartPasswordComponent } from './pages/restart-password/restart-passw
 import { CalendarComponent } from './pages/calendar/calendar.component';
 import { WatchListComponent } from './pages/watch-list/watch-list.component';
 import { VehiclePictureComponent } from './pages/vehicle-picture/vehicle-picture.component';
+import { ProfilePictureComponent } from './pages/profile-picture/profile-picture.component';
 
 const routes: Routes = [
   {
@@ -103,6 +104,12 @@ const routes: Routes = [
         pathMatch: 'full',
         component: ProfileEditComponent,
         data: { title: 'ProfileEdit' }
+      },
+      {
+        path: 'profile-picture',
+        pathMatch: 'full',
+        component: ProfilePictureComponent,
+        data: { title: 'ProfilePicture' }
       },
       {
         path: 'restart-password',

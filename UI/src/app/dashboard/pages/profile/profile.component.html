@@ -10,8 +10,9 @@
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
               <img *ngIf='!isPictureNull' class="profile_img" src="{{datasource.profilePicture}}" alt="profile">
               <img *ngIf='isPictureNull' class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
-              <span class="font-weight-bold">Edogaru</span><span class="text-black-50">{{datasource.email}}</span><span> </span></div>
+              <span class="font-weight-bold">{{datasource.name}} {{datasource.sureName}}</span><span class="text-black-50">{{datasource.email}}</span><span> </span></div>
            
+            <div class="mt-2 text-center"><dx-button displayExpr="label" [text]="t('action.selectPicture')"  [routerLink]="'/profile-picture'"></dx-button></div>
             <div class="mt-2 text-center"><dx-button displayExpr="label" [text]="t('action.edit')"  [routerLink]="'/profile-edit'"></dx-button></div>
             <div class="mt-2 text-center"><dx-button displayExpr="label" [text]="t('action.restart')"  [routerLink]="'/restart-password'"></dx-button></div>
             <br/>

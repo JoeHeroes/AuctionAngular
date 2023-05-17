@@ -36,6 +36,7 @@ import { FlatpickrModule } from 'angularx-flatpickr';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { WatchListComponent } from './pages/watch-list/watch-list.component';
 import { VehiclePictureComponent } from './pages/vehicle-picture/vehicle-picture.component';
+import { ProfilePictureComponent } from './pages/profile-picture/profile-picture.component';
 
 
 
@@ -62,6 +63,7 @@ import { VehiclePictureComponent } from './pages/vehicle-picture/vehicle-picture
     CalendarComponent,
     WatchListComponent,
     VehiclePictureComponent,
+    ProfilePictureComponent,
   ],
   exports: [],
   imports: [

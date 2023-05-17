@@ -1,0 +1,13 @@
+<ng-container *transloco="let t">
+    <form (ngSubmit)="uploadPictures(file.files)">
+      <h3>{{t('action.addPicture')}}</h3>
+      <div class="dx-field">
+        <div class="dx-field-label">{{t('account.picture')}}</div>
+        <div class="dx-field-value">
+          <input #file type="file" id="pictureForm" accept=".jpg,.png,.gif" multiple />
+        </div>
+      </div>
+      <dx-button id="button" [text]="t('action.add')" type="success" [useSubmitBehavior]="true"></dx-button>
+    </form>
+  </ng-container>
+  
