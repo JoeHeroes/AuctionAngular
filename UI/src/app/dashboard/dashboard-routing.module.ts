@@ -79,7 +79,7 @@ const routes: Routes = [
         path: 'watchlist',
         pathMatch: 'full',
         component: WatchListComponent,
-        data: { title: 'WatchList' }
+        data: { title: 'Watch List' }
       },
       {
         path: 'calendar',
@@ -103,19 +103,19 @@ const routes: Routes = [
         path: 'profile-edit',
         pathMatch: 'full',
         component: ProfileEditComponent,
-        data: { title: 'ProfileEdit' }
+        data: { title: 'Profile Edit' }
       },
       {
         path: 'profile-picture',
         pathMatch: 'full',
         component: ProfilePictureComponent,
-        data: { title: 'ProfilePicture' }
+        data: { title: 'Profile Picture' }
       },
       {
         path: 'restart-password',
         pathMatch: 'full',
         component: RestartPasswordComponent,
-        data: { title: 'RestartPassword' }
+        data: { title: 'Restart Password' }
       },
       {
         path: 'register',
@@ -138,19 +138,19 @@ const routes: Routes = [
         path: 'vehicle/editor',
         pathMatch: 'full',
         component: VehicleEditComponent,
-        data: { title: 'VehicleEdit' }
+        data: { title: 'Vehicle Edit' }
       },
       {
         path: 'vehicle/picture',
         pathMatch: 'full',
         component: VehiclePictureComponent,
-        data: { title: 'VehiclePicture' }
+        data: { title: 'Vehicle Picture' }
       },
       {
         path: '**',
         pathMatch: 'full',
         component: NotFoundComponent,
-        data: { title: 'NotFound' }
+        data: { title: 'Not Found' }
       }
     ]
   },

@@ -7,9 +7,9 @@
             <h1>{{datasource.id}} {{datasource.producer}} {{datasource.modelSpecifer}} {{datasource.modelGeneration}}</h1>
             
           </div>
-          <div class="dx-field" >
-            <dx-button *ngIf="!watchLot" class="watch" (onClick)="this.watch()"><a><span style="color: yellow;">★</span>{{t('action.watch')}}</a></dx-button>
-            <dx-button *ngIf="watchLot" class="watch" (onClick)="this.removeWatch()"><a>★{{t('action.removeWatch')}}</a></dx-button>
+          <div *ngIf="isUserAuthenticated" class="dx-field" >
+            <dx-button *ngIf="!watchLot" class="watch" (onClick)="this.watch()"><a><span style="color: yellow;">★</span>{{t('actionVehicle.watch')}}</a></dx-button>
+            <dx-button *ngIf="watchLot" class="watch" (onClick)="this.removeWatch()"><a>★{{t('actionVehicle.removeWatch')}}</a></dx-button>
           </div>
          
           <div class="widget-container">

@@ -2,6 +2,7 @@
 using AuctionAngular.Interfaces;
 using Database;
 using Database.Entities;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -16,11 +17,13 @@ namespace AuctionAngular.Services
         private readonly AuctionDbContext dbContext;
         private readonly IPasswordHasher<User> passwordHasher;
         private readonly AuthenticationSettings authenticationSetting;
-        public AccountService(AuctionDbContext dbContext, IPasswordHasher<User> passwordHasher, AuthenticationSettings authenticationSetting)
+        private readonly IWebHostEnvironment webHost;
+        public AccountService(AuctionDbContext dbContext, IPasswordHasher<User> passwordHasher, AuthenticationSettings authenticationSetting, IWebHostEnvironment webHost)
         {
             this.dbContext = dbContext;
             this.passwordHasher = passwordHasher;
             this.authenticationSetting = authenticationSetting;
+            this.webHost = webHost;
         }
         public async Task RegisterUser(RegisterUserDto dto)
         {
@@ -197,6 +200,34 @@ namespace AuctionAngular.Services
             }
 
             return result;
+        }
+        
+        public async Task<string> AddPicture(int id, IFormFile file)
+        {
+            string fileName = "";
+            if (file != null)
+            {
+                string uploadDir = Path.Combine(webHost.WebRootPath, "Images");
+                fileName = Guid.NewGuid().ToString() + "-" + file.FileName;
+                string filePath = Path.Combine(uploadDir, fileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    file.CopyTo(fileStream);
+                }
+                var user = await this.dbContext.Users.FirstOrDefaultAsync(x => x.Id == id);
+                user.ProfilePicture = fileName;
+            }
+
+            try
+            {
+                await this.dbContext.SaveChangesAsync();
+            }
+            catch (DbUpdateException e)
+            {
+                throw new DbUpdateException("Error DataBase", e);
+            }
+
+            return fileName;
         }
     }
 }

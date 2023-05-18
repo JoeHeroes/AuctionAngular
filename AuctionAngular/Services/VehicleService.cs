@@ -391,7 +391,6 @@ namespace AuctionAngular.Services
                     {
                         file.CopyTo(fileStream);
                     }
-                    fileName = "~/Images/" + fileName;
                     listPicture.Add(fileName);
                     var picture = new Picture { PathImg = fileName, VehicleId = id};
                     this.dbContext.Pictures.Add(picture);

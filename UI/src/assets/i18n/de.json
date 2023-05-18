@@ -1,34 +1,60 @@
 {
+  "actionVehicle": { 
+    "add": "Fahrzeug hinzufügen",
+    "watch": "Beobachten",
+    "removeWatch": "Entfernen Beobachten",
+    "addVehicle": "Fahrzeug hinzufügen",
+    "selectPicture": "Wählen Sie Bild"
+  },
+  "actionAccount": { 
+    "add": "Bild hinzufügen",
+    "edit": "Profil bearbeiten",
+    "restart": "Passwort neu starten",
+    "addPicture": "Bild Profil",
+    "saveProfile": "Profil sichern",
+    "selectPicture": "Wähle Profil"
+  },
   "menu": {
     "home": "Heim",
     "vehicle": "Fahrzeug",
+    "watchlist": "Beobachtungsliste",
+    "calendar": "Kalender",
     "auction": "Versteigerung",
     "location": "Standort",
     "services": "Dienstleistungen",
-    "privacy": "Privatsphäre"
+    "privacy": "Privatsphäre",
+    "support": "Unterstützung"
   },
   "vehicle": {
-    "producer": "Produzent",
-    "modelSpecifer": "Modellbezeichner",
+    "producer": "Hersteller",
+    "modelSpecifer": "Modellspezifizierer",
     "modelGeneration": "Modellgenerierung",
     "registrationYear": "Registrierungsjahr",
     "color": "Farbe",
+    "locationId": "Standort",
     "bodyType": "Körpertyp",
-    "engineCapacity": "Motorleistung",
-    "engineOutput": "Motorleistung",
     "transmission": "Übertragung",
     "drive": "Antrieb",
     "meterReadout": "Zählerstand",
-    "numberKeys": "Zifferntasten",
+    "fuel": "Kraftstoff",
+    "primaryDamage": "Primärschaden",
+    "secondaryDamage": "Sekundärschaden",
+    "engineCapacity": "Hubraum",
+    "engineOutput": "Motorleistung",
+    "numberKeys": "Zahlentasten",
     "serviceManual": "Betriebsanleitung",
     "secondTireSet": "Zweiter Reifensatz",
-    "primaryDamage": "Primärschaden",
+    "vin":"VIN",
     "dateTime": "Terminzeit",
     "statusBid": "Statusgebot",
+    "saleTerm": "Verkaufsfrist",
+    "highlight": "Markieren",
     "currentBid": "Aktuelles Gebot",
     "newBid": "Neues Angebot",
-    "nowBid": "bieten Sie jetzt",
-    "list": "Fahrzeugliste"
+    "nowBid": "Bieten Sie jetzt",
+    "list": "Fahrzeugliste",
+    "watchlist": "Fahrzeugbeobachtungsliste",
+    "picture":"Bild"
   },
   "location": {
     "phone": "Telefon",
@@ -39,18 +65,26 @@
   },
   "account": {
     "login": "Anmeldung",
-    "register": "Register",
-    "logout": "Logout",
-    "id":"Id",
+    "register": "Registrieren",
+    "logout": "Ausloggen",
+    "id":"Ausweis",
     "email": "Email",
-    "password": "Password",
-    "confirmPassword": "Confirm Password",
-    "newPassword": "New Password",
-    "confirmNewPassword": "Confirm New Password",
+    "password": "Passwort",
+    "confirmPassword": "Bestätige das Passwort",
+    "newPassword": "Neues Kennwort",
+    "confirmNewPassword": "Bestätige neues Passwort",
     "name": "Name",
-    "sureName": "Sure Name",
-    "nationality": "Nationality",
-    "dateOfBirth": "Date Birth",
-    "role": "Role"
+    "sureName": "Nachname",
+    "nationality": "Staatsangehörigkeit",
+    "phone":"Telefon",
+    "dateOfBirth": "Geburtsdatum",
+    "role": "Rolle"
+  },
+  "message":{
+    "title": "Seite nicht gefunden",
+    "message": "Wir konnten Seite finden",
+    "goBack": "geh zurück",
+    "noAuction": "Es gibt keine aktuellen Live-Auktionen"
   }
+
 }

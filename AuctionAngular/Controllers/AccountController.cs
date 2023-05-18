@@ -84,5 +84,31 @@ namespace AuctionAngular.Controllers
 
             return Ok(result);
         }
+
+        [HttpPost]
+        [Route("uploadFile/{id}")]
+        public async Task<IActionResult> UploadFile([FromRoute] int id)
+        {
+            IFormFile files = Request.Form.Files[0];
+            try
+            {
+                var result = await this.service.AddPicture(id, files);
+
+                if (result is null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return Ok(result);
+                }
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                                "Error retrieving data from the database");
+
+            }
+        }
     }
 }

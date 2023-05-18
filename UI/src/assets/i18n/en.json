@@ -1,14 +1,18 @@
 {
-  "action": { 
+  "actionVehicle": { 
     "add": "Add Vehicle",
-    "edit": "Edit Profile",
-    "restart": "Restart Password",
     "watch": "Watch",
     "removeWatch": "Remove Watch",
     "addVehicle": "Add Vehicle",
-    "addPicture": "Add Picture",
-    "saveProfile": "Save Profile",
     "selectPicture": "Select Picture"
+  },
+  "actionAccount": { 
+    "add": "Add Picture",
+    "edit": "Edit Profile",
+    "restart": "Restart Password",
+    "addPicture": "Picture Profile",
+    "saveProfile": "Save Profile",
+    "selectPicture": "Select Profile"
   },
   "menu": {
     "home": "Home",
@@ -23,7 +27,7 @@
   },
   "vehicle": {
     "producer": "Producer",
-    "modelSpecifer": "Model Specifer",
+    "modelSpecifer": "Model Specifier",
     "modelGeneration": "Model Generation",
     "registrationYear": "Registration Year",
     "color": "Color",
