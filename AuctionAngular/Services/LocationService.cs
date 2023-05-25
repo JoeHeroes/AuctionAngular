@@ -8,6 +8,7 @@ namespace AuctionAngular.Services
     public class LocationService : ILocationService
     {
         private readonly AuctionDbContext dbContext;
+        /// <inheritdoc/>
         public LocationService(AuctionDbContext dbContext)
         {
             this.dbContext = dbContext;

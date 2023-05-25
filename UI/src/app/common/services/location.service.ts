@@ -11,7 +11,7 @@ export class LocationService {
 
   public getLocations(): Observable<any> {
 
-    let url_ = "https://localhost:7257/Location";
+    let url_ = "https://localhost:7257/Location/locationList";
 
     return this.http.get<any>(url_);
   }

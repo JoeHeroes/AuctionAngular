@@ -35,7 +35,7 @@ export class AuthenticationService {
 
     let url_ = "https://localhost:7257/Account/edit";
 
-    return this.http.post<any>(url_, data);
+    return this.http.patch<any>(url_, data);
   }
 
 

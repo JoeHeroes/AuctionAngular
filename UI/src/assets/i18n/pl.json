@@ -1,0 +1,96 @@
+{
+    "actionVehicle": { 
+      "add": "Dodaj Pojazd",
+      "watch": "Obserwuj",
+      "removeWatch": "Nie obserwuj",
+      "addVehicle": "Dodaj Pojazde",
+      "selectPicture": "Wybierz zdjecie"
+    },
+    "actionAccount": { 
+      "save": "Zapis",
+      "add": "Dodaj zdjecie",
+      "edit": "Edytuj profile",
+      "back": "Wróć",
+      "upload": "Prześlij",
+      "restart": "Resetuj Hasło",
+      "addPicture": "Zdjecie profilowe",
+      "saveProfile": "Zapisz profile",
+      "selectPicture": "Wybierz zdjecie"
+    },
+    "menu": {
+      "home": "Home",
+      "vehicle": "Pojazd",
+      "watchlist": "Lista obserwacji",
+      "calendar": "Kalendarz",
+      "auction": "Aukcja",
+      "location": "Lokacja",
+      "services": "Serwis",
+      "privacy": "Prywatność",
+      "support": "Wsparcie"
+    },
+    "vehicle": {
+      "producer": "Marka",
+      "modelSpecifer": "Model pojazdu",
+      "modelGeneration": "Generacja",
+      "registrationYear": "Rok rejestracji",
+      "color": "Kolor",
+      "locationId": "Lokacja",
+      "bodyType": "Typ nadwozia",
+      "transmission": "Skrzyunia",
+      "drive": "Napęd",
+      "meterReadout": "Przebieg",
+      "fuel": "Paliwo",
+      "primaryDamage": "Głowne uszkodzenie",
+      "secondaryDamage": "Drugie uszkodzenie",
+      "engineCapacity": "Pojemność",
+      "engineOutput": "Moc",
+      "numberKeys": "Kluczyki",
+      "serviceManual": "Ksiązka serwisowa",
+      "secondTireSet": "Drugi zestaw kół",
+      "vin":"VIN",
+      "dateTime": "Data",
+      "statusBid": "Status oferty",
+      "saleTerm": "Termin sprzedaży",
+      "highlight": "Stan jezdny",
+      "currentBid": "Aktualna oferta",
+      "newBid": "Nowa oferta",
+      "nowBid": "Przebij",
+      "list": "Lista pojazdów",
+      "watchlist": "Lista obserwowanych pojazdów",
+      "picture":"Zdjecie"
+    },
+    "location": {
+      "phone": "Telefon",
+      "email": "Email",
+      "city": "Miasto",
+      "street": "Ulica",
+      "postalCode": "Kod pocztowy"
+    },
+    "account": {
+      "login": "Login",
+      "register": "Rejestracja",
+      "logout": "Wyloguj",
+      "id":"Id",
+      "email": "Email",
+      "password": "Hasło",
+      "confirmPassword": "Potwierdz hasło",
+      "newPassword": "Nowe hasło",
+      "confirmNewPassword": "Potwierdz nowe hasło",
+      "name": "Imie",
+      "sureName": "Nazwisko",
+      "nationality": "Narodowość",
+      "phone":"Telefon",
+      "dateOfBirth": "Data urodzin",
+      "role": "Rola",
+      "profile": "Profil",
+      "description": "Opis"
+    },
+    "message":{
+      "title": "Nie znaleziono strony",
+      "message": "Nie można znależ strony",
+      "goBack": "Wróć",
+      "noAuction": "Brak aktualnych aukcji na żywo"
+    }
+  
+  }
+  

@@ -12,6 +12,7 @@ namespace AuctionAngular.Services
     {
         private readonly AuctionDbContext dbContext;
         private readonly IWebHostEnvironment webHost;
+        /// <inheritdoc/>
         public VehicleService(AuctionDbContext dbContext, IWebHostEnvironment webHost)
         {
             this.dbContext = dbContext;
@@ -174,11 +175,11 @@ namespace AuctionAngular.Services
             }
         }
 
-        public async Task Update(EditVehicleDto dto)
+        public async Task Update(int id, EditVehicleDto dto)
         {
             var vehicle = await this.dbContext
                 .Vehicles
-                .FirstOrDefaultAsync(u => u.Id == dto.Id);
+                .FirstOrDefaultAsync(u => u.Id == id);
 
             if (vehicle is null)
             {

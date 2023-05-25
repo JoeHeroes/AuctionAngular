@@ -8,6 +8,7 @@ namespace AuctionAngular.Services
     public class AuctionService : IAuctionService
     {
         private readonly AuctionDbContext dbContext;
+        /// <inheritdoc/>
         public AuctionService(AuctionDbContext dbContext)
         {
             this.dbContext = dbContext;

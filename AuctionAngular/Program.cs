@@ -14,6 +14,7 @@ using AuctionAngular.Dtos;
 using Database.Entities;
 using Database.Entities.Validators;
 using Database;
+using System.Reflection;
 
 var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
 logger.Debug("init main");
@@ -76,7 +77,12 @@ try
     builder.Services.AddHttpContextAccessor();
 
     //Swagger
-    builder.Services.AddSwaggerGen();
+    builder.Services.AddSwaggerGen(x =>
+    {
+        var xmlFail = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+        var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFail);
+        x.IncludeXmlComments(xmlPath);
+    });
 
     //Cors
     builder.Services.AddCors(
@@ -115,7 +121,12 @@ try
 
     app.UseSwagger();
 
-    app.UseSwaggerUI(x => x.SwaggerEndpoint("/swagger/v1/swagger.json", "v1.0"));
+    app.UseSwaggerUI(x => 
+        x.SwaggerEndpoint("/swagger/v1/swagger.json", "v1.0")    
+    );
+
+
+    
 
     app.UseRouting();
 

@@ -2,7 +2,6 @@
 using AuctionAngular.Interfaces;
 using Database;
 using Database.Entities;
-using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -12,12 +11,14 @@ using System.Text;
 
 namespace AuctionAngular.Services
 {
+
     public class AccountService : IAccountService
     {
         private readonly AuctionDbContext dbContext;
         private readonly IPasswordHasher<User> passwordHasher;
         private readonly AuthenticationSettings authenticationSetting;
         private readonly IWebHostEnvironment webHost;
+        /// <inheritdoc/>
         public AccountService(AuctionDbContext dbContext, IPasswordHasher<User> passwordHasher, AuthenticationSettings authenticationSetting, IWebHostEnvironment webHost)
         {
             this.dbContext = dbContext;

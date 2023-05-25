@@ -1,8 +1,8 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ms } from 'date-fns/locale';
 import { AuthenticationService } from 'src/app/common/services/authentication.service';
-import { DataService } from 'src/app/common/services/data.service';
 
 @Component({
   selector: 'app-profile-picture',
@@ -10,6 +10,7 @@ import { DataService } from 'src/app/common/services/data.service';
   styleUrls: ['./profile-picture.component.css']
 })
 export class ProfilePictureComponent {
+  successMessage: string | null = null;
   constructor(
     private authenticationService: AuthenticationService,
     private http: HttpClient,
@@ -25,17 +26,16 @@ export class ProfilePictureComponent {
       formData.append(file.name, file);
     }
     this.authenticationService.loggedUserId().subscribe(res => {
-      this.http.post('https://localhost:7257/Account/uploadFile/' + res.userId, formData, { reportProgress: true, observe: 'events' })
+      this.http.patch('https://localhost:7257/Account/uploadFile/' + res.userId, formData, { reportProgress: true, observe: 'events' })
         .subscribe({
-          next: (event: any) => {
-            this.router.navigate(['/profile'].filter(v => !!v));
+          next: (res: any) => {
+            this.successMessage = 'File uploaded successfully.';
           },
-          error: (err: HttpErrorResponse) => console.log(err)
+          error: (err: HttpErrorResponse) => {
+            console.log(err)
+          }
         });
     })
-
-
-
 
   }
 

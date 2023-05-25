@@ -11,6 +11,5 @@ namespace AuctionAngular.Interfaces
         Task EditProfile(EditUserDto dto);
         Task<IEnumerable<RoleDto>> GetRole();
         Task<string> AddPicture(int id, IFormFile file);
-
     }
 }

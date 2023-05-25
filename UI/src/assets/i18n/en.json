@@ -7,8 +7,11 @@
     "selectPicture": "Select Picture"
   },
   "actionAccount": { 
+    "save": "save",
     "add": "Add Picture",
     "edit": "Edit Profile",
+    "back": "Back",
+    "upload": "Upload",
     "restart": "Restart Password",
     "addPicture": "Picture Profile",
     "saveProfile": "Save Profile",
@@ -78,7 +81,9 @@
     "nationality": "Nationality",
     "phone":"Phone",
     "dateOfBirth": "Date Birth",
-    "role": "Role"
+    "role": "Role",
+    "profile": "Profile",
+    "description": "Description"
   },
   "message":{
     "title": "Not Found Page",
