@@ -86,15 +86,6 @@ export class VehicleService {
     let url_ = "https://localhost:7257/Vehicle/create";
     return this.http.post<any>(url_, dto);
   }
-
-
-
-  public addPictureVehicle(formData: any) {
-
-    let url_ = "https://localhost:7257/Vehicle/uploadFile";
-
-    return this.http.post<any>(url_, formData, { reportProgress: true, observe: 'events' });
-  }
 }
 
 export interface WatchDto {

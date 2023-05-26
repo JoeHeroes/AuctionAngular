@@ -4,7 +4,8 @@
     "watch": "Watch",
     "removeWatch": "Remove Watch",
     "addVehicle": "Add Vehicle",
-    "selectPicture": "Select Picture"
+    "selectPicture": "Select Picture",
+    "addPicture": "Add Picture"
   },
   "actionAccount": { 
     "save": "save",
@@ -20,9 +21,9 @@
   "menu": {
     "home": "Home",
     "vehicle": "Vehicles",
-    "vehicle-bids": "Vehicle Bids",
-    "vehicle-won": "Vehicle Won",
-    "vehicle-lost": "Vehicle Lost",
+    "vehicle-bids": "Bids",
+    "vehicle-won": "Won",
+    "vehicle-lost": "Lost",
     "watchlist": "Watch List",
     "calendar": "Calendar",
     "auction": "Auction",

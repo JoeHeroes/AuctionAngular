@@ -66,6 +66,7 @@ try
     builder.Services.AddScoped<IVehicleService, VehicleService>();
     builder.Services.AddScoped<ILocationService, LocationService>();
     builder.Services.AddScoped<IAuctionService, AuctionService>();
+    builder.Services.AddScoped<ICalendarService, CalendarService>();
 
     //Hasser
     builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();

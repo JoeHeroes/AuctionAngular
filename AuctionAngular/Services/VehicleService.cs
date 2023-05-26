@@ -4,6 +4,7 @@ using AuctionAngular.Interfaces;
 using Database;
 using Database.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Drawing;
 
 namespace AuctionAngular.Services
 {
@@ -79,7 +80,7 @@ namespace AuctionAngular.Services
 
             foreach (var vehicle in vehicles)
             {
-                var restultPictures = this.dbContext.Pictures.Where(x => x.Id == vehicle.Id);
+                var restultPictures = this.dbContext.Pictures.Where(x => x.VehicleId == vehicle.Id);
 
                 List<string> pictures = new List<string>();
 
@@ -87,12 +88,15 @@ namespace AuctionAngular.Services
                 {
                     pictures.Add(pic.PathImg);
                 }
+                if (pictures.Count() == 0)
+                {
 
+                }
 
                 ViewVehiclesDto view = new ViewVehiclesDto()
                 {
                     LotNumber = vehicle.Id,
-                    Image = pictures[0],
+                    Image = pictures.Count() == 0 ? "": pictures.First(),
                     Producer = vehicle.Producer,
                     ModelSpecifer = vehicle.ModelSpecifer,
                     ModelGeneration = vehicle.ModelGeneration,
@@ -308,6 +312,19 @@ namespace AuctionAngular.Services
                 Highlights = dto.Highlights,
             };
 
+
+            var eventSell = new Event()
+            {
+                Title = dto.Producer + " " + dto.ModelSpecifer + " " + dto.ModelGeneration + " " + dto.RegistrationYear,
+                Start = dto.DateTime,
+                End = dto.DateTime,
+                Color = dto.Color,
+                AllDay = false,
+                Owner = 0 //For All Users
+            };
+
+
+            this.dbContext.Events.Add(eventSell);
             this.dbContext.Vehicles.Add(vehicle);
             try
             {
@@ -438,8 +455,8 @@ namespace AuctionAngular.Services
                 var newEvent = new Event()
                 {
                     Title = vehicle.Id + " " + vehicle.Producer + " " + vehicle.ModelGeneration,
-                    Start = vehicle.DateTime.ToString("yyyy-MM-dd"),
-                    End = vehicle.DateTime.ToString("yyyy-MM-dd"),
+                    Start = vehicle.DateTime,
+                    End = vehicle.DateTime,
                     Color = vehicle.Color,
                     AllDay = true,
                     Owner = user.Id,

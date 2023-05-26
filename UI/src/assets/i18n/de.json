@@ -5,7 +5,8 @@
     "back": "Zurück",
     "removeWatch": "Entfernen Beobachten",
     "addVehicle": "Fahrzeug hinzufügen",
-    "selectPicture": "Wählen Sie Bild"
+    "selectPicture": "Wählen Sie Bild",
+    "addPicture": "Bild hinzufügen"
   },
   "actionAccount": { 
     "add": "Bild hinzufügen",
@@ -18,9 +19,9 @@
   "menu": {
     "home": "Heim",
     "vehicle": "Fahrzeug",
-    "vehicle-bids": "Fahrzeugbindung",
-    "vehicle-won": "Fahrzeug gewonnen",
-    "vehicle-lost": "Fahrzeug verloren",
+    "vehicle-bids": "Gebote",
+    "vehicle-won": "Gewonnen",
+    "vehicle-lost": "Verloren",
     "watchlist": "Beobachtungsliste",
     "calendar": "Kalender",
     "auction": "Versteigerung",

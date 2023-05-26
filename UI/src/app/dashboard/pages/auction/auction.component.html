@@ -1,5 +1,11 @@
 <div class="text-center" *ngIf='!liveAuction'>
-  <h1 class="display-4" style="font-weight: bold;">There are no current<br/> Live Auctions</h1>
+  <ng-container *transloco="let t">
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <h1 class="display-4" style="font-weight: bold;">{{t('message.noAuction')}}</h1>
+  </ng-container>
 </div>
 
 <div class="student-profile py-4" *ngIf='liveAuction'>

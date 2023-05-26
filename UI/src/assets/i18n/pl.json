@@ -4,7 +4,8 @@
       "watch": "Obserwuj",
       "removeWatch": "Nie obserwuj",
       "addVehicle": "Dodaj Pojazde",
-      "selectPicture": "Wybierz zdjecie"
+      "selectPicture": "Wybierz zdjecie",
+      "addPicture": "Dodaj zdjecie"
     },
     "actionAccount": { 
       "save": "Zapis",
@@ -20,9 +21,9 @@
     "menu": {
       "home": "Home",
       "vehicle": "Pojazdy",
-      "vehicle-binds": "Pojazdy Licytowane",
-      "vehicle-won": "Pojazdy wygrane",
-      "vehicle-lost": "Pojazdy przegrane",
+      "vehicle-binds": "Licytowane",
+      "vehicle-won": "Wygrane",
+      "vehicle-lost": "Przegrane",
       "watchlist": "Lista obserwacji",
       "calendar": "Kalendarz",
       "auction": "Aukcja",

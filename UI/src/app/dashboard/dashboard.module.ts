@@ -30,9 +30,6 @@ import { RestartPasswordComponent } from './pages/restart-password/restart-passw
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { ScrollComponent } from './pages/scroll/scroll.component';
 import { CalendarComponent } from './pages/calendar/calendar.component';
-import { CalendarModule, DateAdapter } from 'angular-calendar';
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
-import { FlatpickrModule } from 'angularx-flatpickr';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { WatchListComponent } from './pages/watch-list/watch-list.component';
 import { VehiclePictureComponent } from './pages/vehicle-picture/vehicle-picture.component';
@@ -40,6 +37,7 @@ import { ProfilePictureComponent } from './pages/profile-picture/profile-picture
 import { VehicleWonComponent } from './pages/vehicle-won/vehicle-won.component';
 import { VehicleLostComponent } from './pages/vehicle-lost/vehicle-lost.component';
 import { VehicleBidsComponent } from './pages/vehicle-binds/vehicle-bids.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 
 
@@ -104,11 +102,7 @@ import { VehicleBidsComponent } from './pages/vehicle-binds/vehicle-bids.compone
     DxCircularGaugeModule,
     DxCalendarModule,
     NgbModalModule,
-    FlatpickrModule.forRoot(),
-    CalendarModule.forRoot({
-      provide: DateAdapter,
-      useFactory: adapterFactory
-    })
+    FullCalendarModule
   ],
   providers: [
     HttpContext,

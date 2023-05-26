@@ -24,7 +24,7 @@ export class VehiclePictureComponent {
       formData.append(file.name, file);
     }
 
-    this.http.post('https://localhost:7257/Vehicle/uploadFile/' + this.dataService.id, formData, { reportProgress: true, observe: 'events' })
+    this.http.patch('https://localhost:7257/Vehicle/uploadFile/' + this.dataService.id, formData, { reportProgress: true, observe: 'events' })
       .subscribe({
         next: (event: any) => {
           this.router.navigate(['/vehicle/lot', this.dataService.id].filter(v => !!v));

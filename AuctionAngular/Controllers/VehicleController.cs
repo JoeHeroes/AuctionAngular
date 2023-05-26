@@ -403,14 +403,14 @@ namespace AuctionAngular.Controllers
 
 
         /// <summary>
-        /// Upload Pictures Files
+        /// Upload Picture File
         /// </summary>
-        /// <returns>Ok</returns>
+        /// <param name="id"></param>
+        /// <returns>Ok with messages or StatusCode</returns>
         /// <response code="200">Correct data</response>
-        /// <response code="400">Incorrect data</response>
+        /// <response code="400">Incorrect id</response>
+        /// <response code="500">Exception</response>
         [HttpPatch("uploadFile/{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
 
         public async Task<IActionResult> UploadFile([FromRoute] int id)
         {
