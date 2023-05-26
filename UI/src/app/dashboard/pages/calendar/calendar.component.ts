@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { CalendarOptions, DateSelectArg, EventClickArg } from '@fullcalendar/core';
+import { CalendarOptions, EventClickArg } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import { CalendarService } from 'src/app/common/services/calendar.service';
 
@@ -31,7 +31,7 @@ export class CalendarComponent {
   }
 
   handleEventClick(clickInfo: EventClickArg) {
-    alert('Clicked on event: ' + clickInfo.event.title);
-    this.router.navigate(['/vehicle/lot', 1].filter(v => !!v));
+    var id = clickInfo.event.title.split(" ", 1);
+    this.router.navigate(['/vehicle/lot', Number(id)].filter(v => !!v));
   }
 }

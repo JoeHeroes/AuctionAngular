@@ -220,18 +220,6 @@ namespace AuctionAngular.Services
             };
 
 
-            var eventSell = new Event()
-            {
-                Title = dto.Producer + " " + dto.ModelSpecifer + " " + dto.ModelGeneration + " " + dto.RegistrationYear,
-                Start = dto.DateTime,
-                End = dto.DateTime,
-                Color = dto.Color,
-                AllDay = false,
-                Owner = 0 //For All Users
-            };
-
-
-            this.dbContext.Events.Add(eventSell);
             this.dbContext.Vehicles.Add(vehicle);
             try
             {
@@ -242,9 +230,9 @@ namespace AuctionAngular.Services
                 throw new DbUpdateException("Error DataBase", e);
             }
 
-            var resultId = vehicle.Id;
+            AddEvent(vehicle.Id, dto);
 
-            return resultId;
+            return vehicle.Id;
         }
         public async Task Delete(int id)
         {
@@ -482,6 +470,31 @@ namespace AuctionAngular.Services
             }
 
             return listPicture;
+        }
+
+        public async Task AddEvent(int id, CreateVehicleDto dto)
+        {
+            var eventSell = new Event()
+            {
+                Title = id + " " + dto.Producer + " " + dto.ModelSpecifer + " " + dto.ModelGeneration,
+                Start = dto.DateTime,
+                End = dto.DateTime,
+                Color = dto.Color,
+                AllDay = false,
+                Owner = 0 //For All Users
+            };
+
+            this.dbContext.Events.Add(eventSell);
+
+            try
+            {
+                await this.dbContext.SaveChangesAsync();
+            }
+            catch (DbUpdateException e)
+            {
+                throw new DbUpdateException("Error DataBase", e);
+            }
+
         }
 
         public ViewVehicleDto ViewVehicleDtoConvert(Vehicle vehicle, List<string> pictures)

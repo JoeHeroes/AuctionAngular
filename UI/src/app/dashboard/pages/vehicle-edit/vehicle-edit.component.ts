@@ -201,7 +201,7 @@ enum Producer {
   Subaru = 'Subaru',
   Suzuki = 'Suzuki',
   Tesla = 'Tesla',
-  Toyot = 'Toyot',
+  Toyota = 'Toyota',
   Volkswagen = 'Volkswagen',
   Volvo = 'Volvo',
 }
