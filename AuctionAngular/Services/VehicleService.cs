@@ -1,14 +1,11 @@
 ﻿using AuctionAngular.Dtos;
-using AuctionAngular.Enums;
 using AuctionAngular.Interfaces;
 using Database;
 using Database.Entities;
 using Microsoft.EntityFrameworkCore;
-using System.Drawing;
 
 namespace AuctionAngular.Services
 {
-
     public class VehicleService : IVehicleService
     {
         private readonly AuctionDbContext dbContext;
@@ -35,39 +32,8 @@ namespace AuctionAngular.Services
             {
                 pictures.Add(pic.PathImg);
             }
-
-
-            ViewVehicleDto view = new ViewVehicleDto()
-            {
-                Id = vehicle.Id,
-                Producer = vehicle.Producer,
-                ModelSpecifer = vehicle.ModelSpecifer,
-                ModelGeneration = vehicle.ModelGeneration,
-                RegistrationYear = vehicle.RegistrationYear,
-                Color = vehicle.Color,
-                BodyType = vehicle.BodyType,
-                EngineCapacity = vehicle.EngineCapacity,
-                EngineOutput = vehicle.EngineOutput,
-                Transmission = vehicle.Transmission,
-                Drive = vehicle.Drive,
-                MeterReadout = vehicle.MeterReadout,
-                Fuel = vehicle.Fuel,
-                NumberKeys = vehicle.NumberKeys,
-                ServiceManual = vehicle.ServiceManual,
-                SecondTireSet = vehicle.SecondTireSet,
-                LocationId = vehicle.LocationId,
-                PrimaryDamage = vehicle.PrimaryDamage,
-                SecondaryDamage = vehicle.SecondaryDamage,
-                VIN = vehicle.VIN,
-                Highlights = vehicle.Highlights,
-                DateTime = vehicle.DateTime,
-                CurrentBid = vehicle.CurrentBid,
-                WinnerId = vehicle.WinnerId,
-                SalesFinised = vehicle.SalesFinised,
-                Images = pictures,
-            };
-
-            return view;
+            
+            return ViewVehicleDtoConvert(vehicle, pictures);
         }
 
         public async Task<IEnumerable<ViewVehiclesDto>> GetAll()
@@ -88,25 +54,8 @@ namespace AuctionAngular.Services
                 {
                     pictures.Add(pic.PathImg);
                 }
-                if (pictures.Count() == 0)
-                {
 
-                }
-
-                ViewVehiclesDto view = new ViewVehiclesDto()
-                {
-                    LotNumber = vehicle.Id,
-                    Image = pictures.Count() == 0 ? "": pictures.First(),
-                    Producer = vehicle.Producer,
-                    ModelSpecifer = vehicle.ModelSpecifer,
-                    ModelGeneration = vehicle.ModelGeneration,
-                    RegistrationYear = vehicle.RegistrationYear,
-                    MeterReadout = vehicle.MeterReadout,
-                    DateTime = vehicle.DateTime,
-                    CurrentBid = vehicle.CurrentBid,
-                };
-
-                viewVehicle.Add(view);
+                viewVehicle.Add(ViewVehiclesDtoConvert(vehicle, pictures));
 
             }
 
@@ -137,7 +86,6 @@ namespace AuctionAngular.Services
                 }
             }
 
-
             List<ViewVehiclesDto> viewVehicle = new List<ViewVehiclesDto>();
 
             foreach (var vehicle in vehicles)
@@ -151,21 +99,7 @@ namespace AuctionAngular.Services
                     pictures.Add(pic.PathImg);
                 }
 
-                ViewVehiclesDto view = new ViewVehiclesDto()
-                {
-                    LotNumber = vehicle.Id,
-                    Image = pictures[0],
-                    Producer = vehicle.Producer,
-                    ModelSpecifer = vehicle.ModelSpecifer,
-                    ModelGeneration = vehicle.ModelGeneration,
-                    RegistrationYear = vehicle.RegistrationYear,
-                    MeterReadout = vehicle.MeterReadout,
-                    DateTime = vehicle.DateTime,
-                    CurrentBid = vehicle.CurrentBid,
-                };
-
-                viewVehicle.Add(view);
-
+                viewVehicle.Add(ViewVehiclesDtoConvert(vehicle, pictures));
             }
 
             return viewVehicle;
@@ -207,21 +141,7 @@ namespace AuctionAngular.Services
                     pictures.Add(pic.PathImg);
                 }
 
-                ViewVehiclesDto view = new ViewVehiclesDto()
-                {
-                    LotNumber = vehicle.Id,
-                    Image = pictures[0],
-                    Producer = vehicle.Producer,
-                    ModelSpecifer = vehicle.ModelSpecifer,
-                    ModelGeneration = vehicle.ModelGeneration,
-                    RegistrationYear = vehicle.RegistrationYear,
-                    MeterReadout = vehicle.MeterReadout,
-                    DateTime = vehicle.DateTime,
-                    CurrentBid = vehicle.CurrentBid,
-                };
-
-                viewVehicle.Add(view);
-
+                viewVehicle.Add(ViewVehiclesDtoConvert(vehicle, pictures));
             }
 
             return viewVehicle;
@@ -263,20 +183,7 @@ namespace AuctionAngular.Services
                     pictures.Add(pic.PathImg);
                 }
 
-                ViewVehiclesDto view = new ViewVehiclesDto()
-                {
-                    LotNumber = vehicle.Id,
-                    Image = pictures[0],
-                    Producer = vehicle.Producer,
-                    ModelSpecifer = vehicle.ModelSpecifer,
-                    ModelGeneration = vehicle.ModelGeneration,
-                    RegistrationYear = vehicle.RegistrationYear,
-                    MeterReadout = vehicle.MeterReadout,
-                    DateTime = vehicle.DateTime,
-                    CurrentBid = vehicle.CurrentBid,
-                };
-
-                viewVehicle.Add(view);
+                viewVehicle.Add(ViewVehiclesDtoConvert(vehicle, pictures));
             }
 
             return viewVehicle;
@@ -390,7 +297,6 @@ namespace AuctionAngular.Services
             }
         }
 
-
         public async Task Bid(UpdateBidDto dto)
         {
             Vehicle vehicle = await this.dbContext
@@ -429,9 +335,6 @@ namespace AuctionAngular.Services
                     throw new DbUpdateException("Error DataBase", e);
                 }
             }
-
-
-
         }
 
         public async Task Watch(WatchDto dto)
@@ -461,7 +364,6 @@ namespace AuctionAngular.Services
                     AllDay = true,
                     Owner = user.Id,
                 };
-
 
                 this.dbContext.Events.Add(newEvent);
                 this.dbContext.Watches.Add(observed);
@@ -503,7 +405,6 @@ namespace AuctionAngular.Services
             {
                 throw new DbUpdateException("Error DataBase", e);
             }
-
         }
 
         public async Task<bool> CheckWatch(WatchDto dto)
@@ -544,20 +445,7 @@ namespace AuctionAngular.Services
                     pictures.Add(pic.PathImg);
                 }
 
-                ViewVehiclesDto view = new ViewVehiclesDto()
-                {
-                    LotNumber = vehicle.Id,
-                    Image = pictures[0],
-                    Producer = vehicle.Producer,
-                    ModelSpecifer = vehicle.ModelSpecifer,
-                    ModelGeneration = vehicle.ModelGeneration,
-                    RegistrationYear = vehicle.RegistrationYear,
-                    MeterReadout = vehicle.MeterReadout,
-                    DateTime = vehicle.DateTime,
-                    CurrentBid = vehicle.CurrentBid,
-                };
-
-                viewVehicle.Add(view);
+                viewVehicle.Add(ViewVehiclesDtoConvert(vehicle, pictures));
             }
 
             return viewVehicle;
@@ -594,6 +482,55 @@ namespace AuctionAngular.Services
             }
 
             return listPicture;
+        }
+
+        public ViewVehicleDto ViewVehicleDtoConvert(Vehicle vehicle, List<string> pictures)
+        {
+            return new ViewVehicleDto()
+            {
+                Id = vehicle.Id,
+                Producer = vehicle.Producer,
+                ModelSpecifer = vehicle.ModelSpecifer,
+                ModelGeneration = vehicle.ModelGeneration,
+                RegistrationYear = vehicle.RegistrationYear,
+                Color = vehicle.Color,
+                BodyType = vehicle.BodyType,
+                EngineCapacity = vehicle.EngineCapacity,
+                EngineOutput = vehicle.EngineOutput,
+                Transmission = vehicle.Transmission,
+                Drive = vehicle.Drive,
+                MeterReadout = vehicle.MeterReadout,
+                Fuel = vehicle.Fuel,
+                NumberKeys = vehicle.NumberKeys,
+                ServiceManual = vehicle.ServiceManual,
+                SecondTireSet = vehicle.SecondTireSet,
+                LocationId = vehicle.LocationId,
+                PrimaryDamage = vehicle.PrimaryDamage,
+                SecondaryDamage = vehicle.SecondaryDamage,
+                VIN = vehicle.VIN,
+                Highlights = vehicle.Highlights,
+                DateTime = vehicle.DateTime,
+                CurrentBid = vehicle.CurrentBid,
+                WinnerId = vehicle.WinnerId,
+                SalesFinised = vehicle.SalesFinised,
+                Images = pictures,
+            };
+        }
+
+        public ViewVehiclesDto ViewVehiclesDtoConvert(Vehicle vehicle, List<string> pictures)
+        {
+            return new ViewVehiclesDto()
+            {
+                LotNumber = vehicle.Id,
+                Image = pictures.Count() == 0 ? "" : pictures.First(),
+                Producer = vehicle.Producer,
+                ModelSpecifer = vehicle.ModelSpecifer,
+                ModelGeneration = vehicle.ModelGeneration,
+                RegistrationYear = vehicle.RegistrationYear,
+                MeterReadout = vehicle.MeterReadout,
+                DateTime = vehicle.DateTime,
+                CurrentBid = vehicle.CurrentBid,
+            };
         }
 
     }

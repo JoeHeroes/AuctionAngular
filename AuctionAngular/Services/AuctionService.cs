@@ -1,6 +1,7 @@
 ﻿using AuctionAngular.Dtos;
 using AuctionAngular.Interfaces;
 using Database;
+using Database.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace AuctionAngular.Services
@@ -27,7 +28,7 @@ namespace AuctionAngular.Services
 
             foreach (var res in result)
             {
-                res.SalesFinised= true;
+                res.SalesFinised = true;
             }
 
             try
@@ -57,35 +58,7 @@ namespace AuctionAngular.Services
                     pictures.Add(pic.PathImg);
                 }
 
-                ViewVehicleDto view = new ViewVehicleDto()
-                {
-                    Id = vehicle.Id,
-                    Producer = vehicle.Producer,
-                    ModelSpecifer = vehicle.ModelSpecifer,
-                    ModelGeneration = vehicle.ModelGeneration,
-                    RegistrationYear = vehicle.RegistrationYear,
-                    Color = vehicle.Color,
-                    BodyType = vehicle.BodyType,
-                    EngineCapacity = vehicle.EngineCapacity,
-                    EngineOutput = vehicle.EngineOutput,
-                    Transmission = vehicle.Transmission,
-                    Drive = vehicle.Drive,
-                    MeterReadout = vehicle.MeterReadout,
-                    Fuel = vehicle.Fuel,
-                    NumberKeys = vehicle.NumberKeys,
-                    ServiceManual = vehicle.ServiceManual,
-                    SecondTireSet = vehicle.SecondTireSet,
-                    LocationId = vehicle.LocationId,
-                    PrimaryDamage = vehicle.PrimaryDamage,
-                    SecondaryDamage = vehicle.SecondaryDamage,
-                    VIN = vehicle.VIN,
-                    Highlights = vehicle.Highlights,
-                    DateTime = vehicle.DateTime,
-                    CurrentBid = vehicle.CurrentBid,
-                    WinnerId = vehicle.WinnerId,
-                    SalesFinised = vehicle.SalesFinised,
-                    Images = pictures,
-                };
+                ViewVehicleDto view = ViewVehicleDtoConvert(vehicle, pictures);
 
                 result.Add(view);
 
@@ -95,7 +68,7 @@ namespace AuctionAngular.Services
         }
 
 
-        public async Task<IEnumerable<ViewVehicleDto>>AuctionList()
+        public async Task<IEnumerable<ViewVehicleDto>> AuctionList()
         {
             var vehicles = await this.dbContext.Vehicles.ToListAsync();
 
@@ -112,40 +85,47 @@ namespace AuctionAngular.Services
                     pictures.Add(pic.PathImg);
                 }
 
-                ViewVehicleDto view = new ViewVehicleDto()
-                {
-                    Id = vehicle.Id,
-                    Producer = vehicle.Producer,
-                    ModelSpecifer = vehicle.ModelSpecifer,
-                    ModelGeneration = vehicle.ModelGeneration,
-                    RegistrationYear = vehicle.RegistrationYear,
-                    Color = vehicle.Color,
-                    BodyType = vehicle.BodyType,
-                    EngineCapacity = vehicle.EngineCapacity,
-                    EngineOutput = vehicle.EngineOutput,
-                    Transmission = vehicle.Transmission,
-                    Drive = vehicle.Drive,
-                    MeterReadout = vehicle.MeterReadout,
-                    Fuel = vehicle.Fuel,
-                    NumberKeys = vehicle.NumberKeys,
-                    ServiceManual = vehicle.ServiceManual,
-                    SecondTireSet = vehicle.SecondTireSet,
-                    LocationId = vehicle.LocationId,
-                    PrimaryDamage = vehicle.PrimaryDamage,
-                    SecondaryDamage = vehicle.SecondaryDamage,
-                    VIN = vehicle.VIN,
-                    Highlights = vehicle.Highlights,
-                    DateTime = vehicle.DateTime,
-                    CurrentBid = vehicle.CurrentBid,
-                    WinnerId = vehicle.WinnerId,
-                    SalesFinised = vehicle.SalesFinised,
-                    Images = pictures,
-                };
+                ViewVehicleDto view = ViewVehicleDtoConvert(vehicle, pictures);
 
                 result.Add(view);
             }
 
             return result;
+        }
+
+
+        public ViewVehicleDto ViewVehicleDtoConvert(Vehicle vehicle, List<string> pictures)
+        {
+
+            return new ViewVehicleDto()
+            {
+                Id = vehicle.Id,
+                Producer = vehicle.Producer,
+                ModelSpecifer = vehicle.ModelSpecifer,
+                ModelGeneration = vehicle.ModelGeneration,
+                RegistrationYear = vehicle.RegistrationYear,
+                Color = vehicle.Color,
+                BodyType = vehicle.BodyType,
+                EngineCapacity = vehicle.EngineCapacity,
+                EngineOutput = vehicle.EngineOutput,
+                Transmission = vehicle.Transmission,
+                Drive = vehicle.Drive,
+                MeterReadout = vehicle.MeterReadout,
+                Fuel = vehicle.Fuel,
+                NumberKeys = vehicle.NumberKeys,
+                ServiceManual = vehicle.ServiceManual,
+                SecondTireSet = vehicle.SecondTireSet,
+                LocationId = vehicle.LocationId,
+                PrimaryDamage = vehicle.PrimaryDamage,
+                SecondaryDamage = vehicle.SecondaryDamage,
+                VIN = vehicle.VIN,
+                Highlights = vehicle.Highlights,
+                DateTime = vehicle.DateTime,
+                CurrentBid = vehicle.CurrentBid,
+                WinnerId = vehicle.WinnerId,
+                SalesFinised = vehicle.SalesFinised,
+                Images = pictures,
+            };
         }
     }
 }

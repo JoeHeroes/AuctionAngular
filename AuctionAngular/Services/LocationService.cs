@@ -2,6 +2,8 @@
 using AuctionAngular.Interfaces;
 using AuctionAngular.Dtos;
 using Database;
+using Database.Entities;
+using NLog.Fluent;
 
 namespace AuctionAngular.Services
 {
@@ -16,26 +18,16 @@ namespace AuctionAngular.Services
 
         public async Task<ViewLocationDto> GetById(int id)
         {
-            var result = await this.dbContext
+            var location = await this.dbContext
                 .Locations
                 .FirstOrDefaultAsync(u => u.Id == id);
 
-            if (result is null)
+            if (location is null)
             {
                 throw new NotFoundException("Location not found");
             }
 
-            var resultDto = new ViewLocationDto()
-            {
-                Name = result.Name,
-                Phone = result.Phone,
-                Email = result.Email,
-                City = result.City,
-                Street = result.Street,
-                PostalCode = result.PostalCode,
-                Picture = result.Picture,
-            };
-
+            var resultDto = ViewLocationDtoConvert(location);
 
             return resultDto;
         }
@@ -55,25 +47,26 @@ namespace AuctionAngular.Services
 
             foreach(var loc in locations)
             {
-
-                var resultDto = new ViewLocationDto()
-                {
-                    id= loc.Id,
-                    Name = loc.Name,
-                    Phone = loc.Phone,
-                    Email = loc.Email,
-                    City = loc.City,
-                    Street = loc.Street,
-                    PostalCode = loc.PostalCode,
-                    Picture = loc.Picture,
-                };
+                var resultDto = ViewLocationDtoConvert(loc);
 
                 result.Add(resultDto);
             }
 
             return result;
         }
-
-        
+        public ViewLocationDto ViewLocationDtoConvert(Location location)
+        {
+            return new ViewLocationDto()
+            {
+                id = location.Id,
+                Name = location.Name,
+                Phone = location.Phone,
+                Email = location.Email,
+                City = location.City,
+                Street = location.Street,
+                PostalCode = location.PostalCode,
+                Picture = location.Picture,
+            };
+        }
     }
 }
