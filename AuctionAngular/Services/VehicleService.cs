@@ -109,6 +109,175 @@ namespace AuctionAngular.Services
             return viewVehicle;
         }
 
+
+        public async Task<IEnumerable<ViewVehiclesDto>> GetAllBided(int id)
+        {
+
+            var bids = this.dbContext.Bids.Where(x => x.UserId == id);
+
+            var vehiclesReult = await this.dbContext
+                .Vehicles
+                .ToListAsync();
+
+            List<Vehicle> vehicles = new List<Vehicle>();
+
+            var vehiclesList = this.dbContext.Vehicles.ToList();
+
+            foreach (var x in bids)
+            {
+                var veh = vehiclesList.FirstOrDefault(d => d.Id == x.VehicleId);
+
+                if (veh != null)
+                {
+                    vehicles.Add(veh);
+                }
+            }
+
+
+            List<ViewVehiclesDto> viewVehicle = new List<ViewVehiclesDto>();
+
+            foreach (var vehicle in vehicles)
+            {
+                var restultPictures = this.dbContext.Pictures.Where(x => x.Id == vehicle.Id);
+
+                List<string> pictures = new List<string>();
+
+                foreach (var pic in restultPictures)
+                {
+                    pictures.Add(pic.PathImg);
+                }
+
+                ViewVehiclesDto view = new ViewVehiclesDto()
+                {
+                    LotNumber = vehicle.Id,
+                    Image = pictures[0],
+                    Producer = vehicle.Producer,
+                    ModelSpecifer = vehicle.ModelSpecifer,
+                    ModelGeneration = vehicle.ModelGeneration,
+                    RegistrationYear = vehicle.RegistrationYear,
+                    MeterReadout = vehicle.MeterReadout,
+                    DateTime = vehicle.DateTime,
+                    CurrentBid = vehicle.CurrentBid,
+                };
+
+                viewVehicle.Add(view);
+
+            }
+
+            return viewVehicle;
+        }
+
+        public async Task<IEnumerable<ViewVehiclesDto>> GetAllWon(int id)
+        {
+
+            var bids = this.dbContext.Bids.Where(x => x.UserId == id);
+
+            var vehiclesReult = await this.dbContext
+                .Vehicles
+                .ToListAsync();
+
+            List<Vehicle> vehicles = new List<Vehicle>();
+
+            var vehiclesList = this.dbContext.Vehicles.ToList();
+
+            foreach (var x in bids)
+            {
+                var veh = vehiclesList.FirstOrDefault(d => d.Id == x.VehicleId && d.WinnerId == id && d.SalesFinised==true);
+
+                if (veh != null)
+                {
+                    vehicles.Add(veh);
+                }
+            }
+
+            List<ViewVehiclesDto> viewVehicle = new List<ViewVehiclesDto>();
+
+            foreach (var vehicle in vehicles)
+            {
+                var restultPictures = this.dbContext.Pictures.Where(x => x.Id == vehicle.Id);
+
+                List<string> pictures = new List<string>();
+
+                foreach (var pic in restultPictures)
+                {
+                    pictures.Add(pic.PathImg);
+                }
+
+                ViewVehiclesDto view = new ViewVehiclesDto()
+                {
+                    LotNumber = vehicle.Id,
+                    Image = pictures[0],
+                    Producer = vehicle.Producer,
+                    ModelSpecifer = vehicle.ModelSpecifer,
+                    ModelGeneration = vehicle.ModelGeneration,
+                    RegistrationYear = vehicle.RegistrationYear,
+                    MeterReadout = vehicle.MeterReadout,
+                    DateTime = vehicle.DateTime,
+                    CurrentBid = vehicle.CurrentBid,
+                };
+
+                viewVehicle.Add(view);
+
+            }
+
+            return viewVehicle;
+        }
+
+        public async Task<IEnumerable<ViewVehiclesDto>> GetAllLost(int id)
+        {
+
+            var bids = this.dbContext.Bids.Where(x => x.UserId == id);
+
+            var vehiclesReult = await this.dbContext
+                .Vehicles
+                .ToListAsync();
+
+            List<Vehicle> vehicles = new List<Vehicle>();
+
+            var vehiclesList = this.dbContext.Vehicles.ToList();
+
+            foreach (var x in bids)
+            {
+                var veh = vehiclesList.FirstOrDefault(d => d.Id == x.VehicleId && d.WinnerId != id && d.SalesFinised == true);
+
+                if (veh != null)
+                {
+                    vehicles.Add(veh);
+                }
+            }
+
+            List<ViewVehiclesDto> viewVehicle = new List<ViewVehiclesDto>();
+
+            foreach (var vehicle in vehicles)
+            {
+                var restultPictures = this.dbContext.Pictures.Where(x => x.Id == vehicle.Id);
+
+                List<string> pictures = new List<string>();
+
+                foreach (var pic in restultPictures)
+                {
+                    pictures.Add(pic.PathImg);
+                }
+
+                ViewVehiclesDto view = new ViewVehiclesDto()
+                {
+                    LotNumber = vehicle.Id,
+                    Image = pictures[0],
+                    Producer = vehicle.Producer,
+                    ModelSpecifer = vehicle.ModelSpecifer,
+                    ModelGeneration = vehicle.ModelGeneration,
+                    RegistrationYear = vehicle.RegistrationYear,
+                    MeterReadout = vehicle.MeterReadout,
+                    DateTime = vehicle.DateTime,
+                    CurrentBid = vehicle.CurrentBid,
+                };
+
+                viewVehicle.Add(view);
+            }
+
+            return viewVehicle;
+        }
+
         public async Task<int> Create(CreateVehicleDto dto)
         {
             var vehicle = new Vehicle
@@ -220,19 +389,19 @@ namespace AuctionAngular.Services
                                   .Users
                                   .FirstOrDefaultAsync(x => x.Id == dto.userId);
 
-                var bind = new Bind()
+                var bind = new Bid()
                 {
                     UserId = user.Id,
                     VehicleId = vehicle.Id,
                 };
 
                 /*
-                if (this.dbContext.Binds.FirstOrDefault(x => x.UserId == user.Id && x.VehicleId == vehicle.Id) == null)
+                if (this.dbContext.Bids.FirstOrDefault(x => x.UserId == user.Id && x.VehicleId == vehicle.Id) == null)
                 {
-                    this.dbContext.Binds.Add(bind);
+                    this.dbContext.Bids.Add(bind);
                 }
                 */
-                this.dbContext.Binds.Add(bind);
+                this.dbContext.Bids.Add(bind);
 
                 try
                 {
@@ -409,5 +578,6 @@ namespace AuctionAngular.Services
 
             return listPicture;
         }
+
     }
 }

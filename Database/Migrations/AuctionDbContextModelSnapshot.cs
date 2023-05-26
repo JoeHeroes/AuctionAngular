@@ -22,7 +22,7 @@ namespace Database.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Database.Entities.Bind", b =>
+            modelBuilder.Entity("Database.Entities.Bid", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -38,7 +38,7 @@ namespace Database.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Binds");
+                    b.ToTable("Bids");
                 });
 
             modelBuilder.Entity("Database.Entities.Event", b =>

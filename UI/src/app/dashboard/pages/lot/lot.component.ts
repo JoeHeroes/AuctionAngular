@@ -60,8 +60,8 @@ export class LotComponent implements OnInit {
     })
 
     this.authenticationService.loggedUserId().subscribe(res => {
-      this.watchDto.vehicleId = this.id;
       this.watchDto.userId = res.userId;
+      this.watchDto.vehicleId = this.id;
       this.vehicleService.checkWatch(this.watchDto)
         .subscribe({
           next: (res) => {
@@ -71,13 +71,6 @@ export class LotComponent implements OnInit {
           }
         })
     });
-
-
-
-
-
-
-
   }
 
 
@@ -114,7 +107,7 @@ export class LotComponent implements OnInit {
     const bidDto: BidDto = {
       lotNumber: this.datasource.id,
       bidNow: bid.bidNow,
-      userId: this.userId
+      userId: this.watchDto.userId
     }
 
 

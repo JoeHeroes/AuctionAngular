@@ -23,7 +23,7 @@ namespace AuctionAngular.Controllers
         /// <returns>Ok with vehicle list</returns>
         /// <response code="200">Correct data</response>
         /// <response code="400">Incorrect data</response>
-        [HttpGet]
+        [HttpGet("getAll")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<ViewVehiclesDto>>> GetAllVehicle()
@@ -56,7 +56,7 @@ namespace AuctionAngular.Controllers
         /// <returns>Ok with vehicle</returns>
         /// <response code="200">Correct data</response>
         /// <response code="400">Incorrect data</response>
-        [HttpGet("{id}")]
+        [HttpGet("getOne/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         
@@ -85,11 +85,111 @@ namespace AuctionAngular.Controllers
 
 
         /// <summary>
+        /// Get Bided Vehicle List
+        /// </summary>
+        /// <returns>Ok with vehicle list</returns>
+        /// <response code="200">Correct data</response>
+        /// <response code="400">Incorrect data</response>
+        [HttpGet("getAllBided/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<IEnumerable<ViewVehiclesDto>>> GetAllBidedVehicle([FromRoute] int id)
+        {
+            try
+            {
+                var result = await this.service.GetAllBided(id);
+
+                if (result is null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return Ok(result);
+                }
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                                "Error retrieving data from the database");
+
+            }
+        }
+
+
+
+
+        /// <summary>
+        /// Get Won Vehicle List
+        /// </summary>
+        /// <returns>Ok with vehicle list</returns>
+        /// <response code="200">Correct data</response>
+        /// <response code="400">Incorrect data</response>
+        [HttpGet("getAllWon/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<IEnumerable<ViewVehiclesDto>>> GetAllWonVehicle([FromRoute] int id)
+        {
+            try
+            {
+                var result = await this.service.GetAllWon(id);
+
+                if (result is null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return Ok(result);
+                }
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                                "Error retrieving data from the database");
+
+            }
+        }
+
+        /// <summary>
+        /// Get Lost Vehicle List
+        /// </summary>
+        /// <returns>Ok with vehicle list</returns>
+        /// <response code="200">Correct data</response>
+        /// <response code="400">Incorrect data</response>
+        [HttpGet("getAllLost/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<IEnumerable<ViewVehiclesDto>>> GetAllLostVehicle([FromRoute] int id)
+        {
+            try
+            {
+                var result = await this.service.GetAllLost(id);
+
+                if (result is null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return Ok(result);
+                }
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                                "Error retrieving data from the database");
+
+            }
+        }
+
+
+        /// <summary>
         /// Delete Vehicle
         /// </summary>
         /// <response code="200">Correct data</response>
         /// <response code="400">Incorrect data</response>
-        [HttpDelete("{id}")]
+        [HttpDelete("delete/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Delete([FromRoute] int id)

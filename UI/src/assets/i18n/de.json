@@ -18,6 +18,9 @@
   "menu": {
     "home": "Heim",
     "vehicle": "Fahrzeug",
+    "vehicle-bids": "Fahrzeugbindung",
+    "vehicle-won": "Fahrzeug gewonnen",
+    "vehicle-lost": "Fahrzeug verloren",
     "watchlist": "Beobachtungsliste",
     "calendar": "Kalender",
     "auction": "Versteigerung",
@@ -53,7 +56,10 @@
     "currentBid": "Aktuelles Gebot",
     "newBid": "Neues Angebot",
     "nowBid": "Bieten Sie jetzt",
-    "list": "Fahrzeugliste",
+    "list": "Liste der Fahrzeuge",
+    "listBids": "List of auctioned vehicles",
+    "listWon": "Liste der gewonnenen Fahrzeuge",
+    "listLost": "Liste der verlorenen Fahrzeuge",
     "watchlist": "Fahrzeugbeobachtungsliste",
     "picture":"Bild"
   },

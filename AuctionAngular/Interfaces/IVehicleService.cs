@@ -7,6 +7,9 @@ namespace AuctionAngular.Interfaces
         Task<int> Create(CreateVehicleDto dto);
         Task Delete(int id);
         Task<IEnumerable<ViewVehiclesDto>> GetAll();
+        Task<IEnumerable<ViewVehiclesDto>> GetAllBided(int id);
+        Task<IEnumerable<ViewVehiclesDto>> GetAllWon(int id);
+        Task<IEnumerable<ViewVehiclesDto>> GetAllLost(int id);
         Task<ViewVehicleDto> GetById(int id);
         Task Update(int id, EditVehicleDto dto);
         Task Bid(UpdateBidDto dto);

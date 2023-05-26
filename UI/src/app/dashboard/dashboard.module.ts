@@ -37,6 +37,9 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { WatchListComponent } from './pages/watch-list/watch-list.component';
 import { VehiclePictureComponent } from './pages/vehicle-picture/vehicle-picture.component';
 import { ProfilePictureComponent } from './pages/profile-picture/profile-picture.component';
+import { VehicleWonComponent } from './pages/vehicle-won/vehicle-won.component';
+import { VehicleLostComponent } from './pages/vehicle-lost/vehicle-lost.component';
+import { VehicleBidsComponent } from './pages/vehicle-binds/vehicle-bids.component';
 
 
 
@@ -64,6 +67,9 @@ import { ProfilePictureComponent } from './pages/profile-picture/profile-picture
     WatchListComponent,
     VehiclePictureComponent,
     ProfilePictureComponent,
+    VehicleWonComponent,
+    VehicleLostComponent,
+    VehicleBidsComponent,
   ],
   exports: [],
   imports: [

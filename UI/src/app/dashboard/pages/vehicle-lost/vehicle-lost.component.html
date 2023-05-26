@@ -1,0 +1,81 @@
+<ng-container *transloco="let t">
+    <br />
+    <dx-toolbar>
+      <dxi-item location="before">
+        <h1>{{t('vehicle.listLost')}}</h1>
+      </dxi-item>
+    </dx-toolbar>
+    <br />
+    <div>
+      <dx-data-grid
+    id="gridContainer"
+    [dataSource]="datasource"
+    [showBorders]="true" [hoverStateEnabled]="true" [activeStateEnabled]="true"
+    [allowColumnResizing]="true" [allowColumnReordering]="true" [remoteOperations]="true"
+    (onRowDblClick)="handleRowDoubleClick($event)">
+    <dxo-filter-row [visible]="true"></dxo-filter-row>
+    <dxo-scrolling rowRenderingMode="virtual"> </dxo-scrolling>
+    <dxo-sorting mode="multiple"></dxo-sorting>
+    <dxo-paging [pageSize]="10"> </dxo-paging>
+    <dxo-search-panel
+    [visible]="true"
+    [highlightCaseSensitive]="true"
+  ></dxo-search-panel>
+    <dxo-pager
+      [visible]="true"
+      [allowedPageSizes]="allowedPageSizes"
+      [displayMode]="displayMode"
+      [showPageSizeSelector]="true"
+      [showInfo]="true"
+      [showNavigationButtons]="true"
+    >
+    </dxo-pager>
+        <dxi-column dataField="image" [width]="220" [allowFiltering]="false" [allowSorting]="false"
+          cellTemplate="cellTemplate"></dxi-column>
+        <dxi-column dataField="producer" [caption]="t('vehicle.producer')" [filterOperations]="['startswith']"
+          [allowSorting]="true"></dxi-column>
+        <dxi-column dataField="modelSpecifer" [caption]="t('vehicle.modelSpecifer')" [allowFiltering]="true"
+          [allowSorting]="false"></dxi-column>
+        <dxi-column dataField="modelGeneration" [caption]="t('vehicle.modelGeneration')" [allowFiltering]="false"
+          [allowSorting]="true"></dxi-column>
+        <dxi-column dataField="registrationYear" [caption]="t('vehicle.registrationYear')" [allowFiltering]="false"
+          [allowSorting]="true"></dxi-column>
+        <dxi-column dataField="meterReadout" [caption]="t('vehicle.meterReadout')" [allowFiltering]="false"
+          [allowSorting]="true"></dxi-column>
+        <dxi-column dataField="dateTime" [caption]="t('vehicle.dateTime')" dataType="date" [allowFiltering]="false"
+          [allowSorting]="true">
+        </dxi-column>
+        <dxi-column dataField="currentBid" [caption]="t('vehicle.currentBid')" [allowFiltering]="false" [width]="120"
+          [allowSorting]="false"></dxi-column>
+  
+        <dxi-column [width]="120"></dxi-column>
+  
+        <div *dxTemplate="let data of 'cellTemplate'">
+          <img width="200" height="150" src="https://localhost:7257/Images/{{data.value}}" >
+        </div>
+  
+  
+        <div *dxTemplate="let d of 'discountCellTemplate'">
+          <div class="chart-cell">
+            <dx-bullet
+              [showTarget]="false"
+              [showZeroLevel]="true"
+              [startScaleValue]="0"
+              [endScaleValue]="100"
+              [value]="d.value * 100">
+              <dxo-size [width]="150" [height]="35"></dxo-size>
+              <dxo-tooltip
+                [enabled]="true"
+                [paddingTopBottom]="2">
+                <dxo-font [size]="18"></dxo-font>
+              </dxo-tooltip>
+              <dxo-margin [top]="5" [bottom]="0" [left]="5"></dxo-margin>
+            </dx-bullet>
+          </div>
+        </div>
+      </dx-data-grid>
+    </div>
+  
+  
+  </ng-container>
+  

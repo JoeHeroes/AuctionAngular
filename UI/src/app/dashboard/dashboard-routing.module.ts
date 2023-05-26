@@ -21,6 +21,9 @@ import { CalendarComponent } from './pages/calendar/calendar.component';
 import { WatchListComponent } from './pages/watch-list/watch-list.component';
 import { VehiclePictureComponent } from './pages/vehicle-picture/vehicle-picture.component';
 import { ProfilePictureComponent } from './pages/profile-picture/profile-picture.component';
+import { VehicleWonComponent } from './pages/vehicle-won/vehicle-won.component';
+import { VehicleLostComponent } from './pages/vehicle-lost/vehicle-lost.component';
+import { VehicleBidsComponent } from './pages/vehicle-binds/vehicle-bids.component';
 
 const routes: Routes = [
   {
@@ -43,6 +46,24 @@ const routes: Routes = [
         pathMatch: 'full',
         component: VehicleComponent,
         data: { title: 'Vehicle' }
+      },
+      {
+        path: 'vehicle-won',
+        pathMatch: 'full',
+        component: VehicleWonComponent,
+        data: { title: 'Vehicle Won' }
+      },
+      {
+        path: 'vehicle-lost',
+        pathMatch: 'full',
+        component: VehicleLostComponent,
+        data: { title: 'Vehicle Lost' }
+      },
+      {
+        path: 'vehicle-bids',
+        pathMatch: 'full',
+        component: VehicleBidsComponent,
+        data: { title: 'Vehicle Bids' }
       },
       {
         path: 'auction',

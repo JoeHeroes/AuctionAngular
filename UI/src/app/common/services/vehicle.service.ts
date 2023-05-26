@@ -12,14 +12,35 @@ export class VehicleService {
 
   public getVehicles(): Observable<Vehicle[]> {
 
-    let url_ = "https://localhost:7257/Vehicle";
+    let url_ = "https://localhost:7257/Vehicle/getAll";
+
+    return this.http.get<any>(url_);
+  }
+
+  public getBidedVehicles(id: number): Observable<Vehicle[]> {
+
+    let url_ = "https://localhost:7257/Vehicle/getAllBided/" + id;
+
+    return this.http.get<any>(url_);
+  }
+
+  public getWonVehicles(id: number): Observable<Vehicle[]> {
+
+    let url_ = "https://localhost:7257/Vehicle/getAllWon/" + id;
+
+    return this.http.get<any>(url_);
+  }
+
+  public getLostVehicles(id: number): Observable<Vehicle[]> {
+
+    let url_ = "https://localhost:7257/Vehicle/getAllLost/" + id;
 
     return this.http.get<any>(url_);
   }
 
   public getVehicle(id: number): Observable<any> {
 
-    let url_ = "https://localhost:7257/Vehicle/" + id;
+    let url_ = "https://localhost:7257/Vehicle/getOne/" + id;
 
     return this.http.get<any>(url_);
   }
@@ -28,9 +49,8 @@ export class VehicleService {
 
     let url_ = "https://localhost:7257/Vehicle/bid";
 
-    return this.http.post<any>(url_, bid);
+    return this.http.patch<any>(url_, bid);
   }
-
 
   public watch(bid: WatchDto): Observable<any> {
 

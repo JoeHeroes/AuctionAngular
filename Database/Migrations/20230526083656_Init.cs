@@ -12,7 +12,7 @@ namespace Database.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Binds",
+                name: "Bids",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -22,7 +22,7 @@ namespace Database.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Binds", x => x.Id);
+                    table.PrimaryKey("PK_Bids", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -188,7 +188,7 @@ namespace Database.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Binds");
+                name: "Bids");
 
             migrationBuilder.DropTable(
                 name: "Events");

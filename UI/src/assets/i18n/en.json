@@ -19,7 +19,10 @@
   },
   "menu": {
     "home": "Home",
-    "vehicle": "Vehicle",
+    "vehicle": "Vehicles",
+    "vehicle-bids": "Vehicle Bids",
+    "vehicle-won": "Vehicle Won",
+    "vehicle-lost": "Vehicle Lost",
     "watchlist": "Watch List",
     "calendar": "Calendar",
     "auction": "Auction",
@@ -55,7 +58,10 @@
     "currentBid": "Current Bid",
     "newBid": "New Bid",
     "nowBid": "Bid Now",
-    "list": "Vehicle List",
+    "list": "List of Vehicles",
+    "listBids": "List of auctioned vehicles",
+    "listWon": "List of won vehicles",
+    "listLost": "List of lost vehicles",
     "watchlist": "Vehicle Watchlist",
     "picture":"Picture"
   },

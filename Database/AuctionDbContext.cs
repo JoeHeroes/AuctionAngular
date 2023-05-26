@@ -13,7 +13,7 @@ namespace Database
         public DbSet<Location> Locations { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<Watch> Watches { get; set; }
-        public DbSet<Bind> Binds { get; set; }
+        public DbSet<Bid> Bids { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<Picture> Pictures { get; set; }
 
@@ -40,7 +40,7 @@ namespace Database
                .IsRequired();
 
 
-            modelBuilder.Entity<Bind>()
+            modelBuilder.Entity<Bid>()
                .Property(u => u.Id)
                .IsRequired();
 

@@ -19,7 +19,10 @@
     },
     "menu": {
       "home": "Home",
-      "vehicle": "Pojazd",
+      "vehicle": "Pojazdy",
+      "vehicle-binds": "Pojazdy Licytowane",
+      "vehicle-won": "Pojazdy wygrane",
+      "vehicle-lost": "Pojazdy przegrane",
       "watchlist": "Lista obserwacji",
       "calendar": "Kalendarz",
       "auction": "Aukcja",
@@ -56,7 +59,11 @@
       "newBid": "Nowa oferta",
       "nowBid": "Przebij",
       "list": "Lista pojazdów",
+      "listBids": "Lista licytowanych pojazdów",
+      "listWon": "Lista wygranych pojazdów",
+      "listLost": "Lista przegranych pojazdów",
       "watchlist": "Lista obserwowanych pojazdów",
+      
       "picture":"Zdjecie"
     },
     "location": {
