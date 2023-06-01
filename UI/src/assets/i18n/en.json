@@ -8,7 +8,7 @@
     "addPicture": "Add Picture"
   },
   "actionAccount": { 
-    "save": "save",
+    "save": "Save",
     "add": "Add Picture",
     "edit": "Edit Profile",
     "back": "Back",
@@ -64,7 +64,8 @@
     "listWon": "List of won vehicles",
     "listLost": "List of lost vehicles",
     "watchlist": "Vehicle Watchlist",
-    "picture":"Picture"
+    "picture":"Picture",
+    "search":"Search..."
   },
   "location": {
     "phone": "Phone",
@@ -97,6 +98,17 @@
     "message": "We could found page",
     "goBack": "go Back",
     "noAuction": "There are no current Live Auctions"
+  },
+  "calendar": {
+    "week": "Week",
+    "day": "Day",
+    "list": "List",
+    "today": "Today",
+    "prev": "Preview",
+    "next": "Next",
+    "month": "Month",
+    "more": "More",
+    "allDayText": "All Day Text",
+    "noEventsText": "No Events Text"
   }
-
 }

@@ -2,7 +2,7 @@
     "actionVehicle": { 
       "add": "Dodaj Pojazd",
       "watch": "Obserwuj",
-      "removeWatch": "Nie obserwuj",
+      "removeWatch": "Usuń",
       "addVehicle": "Dodaj Pojazde",
       "selectPicture": "Wybierz zdjecie",
       "addPicture": "Dodaj zdjecie"
@@ -21,7 +21,7 @@
     "menu": {
       "home": "Home",
       "vehicle": "Pojazdy",
-      "vehicle-binds": "Licytowane",
+      "vehicle-bids": "Licytowane",
       "vehicle-won": "Wygrane",
       "vehicle-lost": "Przegrane",
       "watchlist": "Lista obserwacji",
@@ -44,7 +44,7 @@
       "drive": "Napęd",
       "meterReadout": "Przebieg",
       "fuel": "Paliwo",
-      "primaryDamage": "Głowne uszkodzenie",
+      "primaryDamage": "Główne uszkodzenie",
       "secondaryDamage": "Drugie uszkodzenie",
       "engineCapacity": "Pojemność",
       "engineOutput": "Moc",
@@ -64,8 +64,8 @@
       "listWon": "Lista wygranych pojazdów",
       "listLost": "Lista przegranych pojazdów",
       "watchlist": "Lista obserwowanych pojazdów",
-      
-      "picture":"Zdjecie"
+      "picture":"Zdjecie",
+      "search":"Wyszukaj..."
     },
     "location": {
       "phone": "Telefon",
@@ -98,7 +98,18 @@
       "message": "Nie można znależ strony",
       "goBack": "Wróć",
       "noAuction": "Brak aktualnych aukcji na żywo"
+    },
+    "calendar": {
+      "week": "Tydzień",
+      "day": "Dzień",
+      "list": "Lista",
+      "today": "Dzisiaj",
+      "prev": "Poprzedni",
+      "next": "Następny",
+      "month": "Miesiąc",
+      "more": "Więcej",
+      "allDayText": "Cały dzień",
+      "noEventsText": "Brak wydarzeń do wyświetlenia"
     }
-  
   }
   

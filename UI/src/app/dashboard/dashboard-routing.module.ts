@@ -23,7 +23,7 @@ import { VehiclePictureComponent } from './pages/vehicle-picture/vehicle-picture
 import { ProfilePictureComponent } from './pages/profile-picture/profile-picture.component';
 import { VehicleWonComponent } from './pages/vehicle-won/vehicle-won.component';
 import { VehicleLostComponent } from './pages/vehicle-lost/vehicle-lost.component';
-import { VehicleBidsComponent } from './pages/vehicle-binds/vehicle-bids.component';
+import { VehicleBidsComponent } from './pages/vehicle-bids/vehicle-bids.component';
 
 const routes: Routes = [
   {

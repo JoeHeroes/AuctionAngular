@@ -28,6 +28,7 @@
     <dxo-search-panel
     [visible]="true"
     [highlightCaseSensitive]="true"
+    [placeholder]="t('vehicle.search')"
   ></dxo-search-panel>
     <dxo-pager
       [visible]="true"
@@ -50,16 +51,15 @@
           [allowSorting]="true"></dxi-column>
         <dxi-column dataField="meterReadout" [caption]="t('vehicle.meterReadout')" [allowFiltering]="false"
           [allowSorting]="true"></dxi-column>
-        <dxi-column dataField="dateTime" [caption]="t('vehicle.dateTime')" dataType="date" [allowFiltering]="false"
-          [allowSorting]="true">
-        </dxi-column>
-        <dxi-column dataField="currentBid" [caption]="t('vehicle.currentBid')" [allowFiltering]="false" [width]="120"
+        <dxi-column dataField="dateTime" [caption]="t('vehicle.dateTime')" dataType="date" [allowFiltering]="false" [width]="120"
+          [allowSorting]="true"></dxi-column>
+        <dxi-column dataField="currentBid" [caption]="t('vehicle.currentBid')" [allowFiltering]="false"
           [allowSorting]="false"></dxi-column>
   
         <dxi-column [width]="120"></dxi-column>
   
         <div *dxTemplate="let data of 'cellTemplate'">
-          <img width="200" height="150" src="https://localhost:7257/Images/{{data.value}}" >
+          <img width="200" src="https://localhost:7257/Images/{{data.value}}">
         </div>
   
   

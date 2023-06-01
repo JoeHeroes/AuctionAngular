@@ -78,6 +78,5 @@ namespace AuctionAngular.Controllers
             var result = await this.service.AuctionList();
             return Ok(result);
         }
-
     }
 }

@@ -9,8 +9,11 @@
     "addPicture": "Bild hinzufügen"
   },
   "actionAccount": { 
+    "save": "Speichern",
     "add": "Bild hinzufügen",
     "edit": "Profil bearbeiten",
+    "back": "Zurück",
+    "upload": "Hochladen",
     "restart": "Passwort neu starten",
     "addPicture": "Bild Profil",
     "saveProfile": "Profil sichern",
@@ -62,7 +65,8 @@
     "listWon": "Liste der gewonnenen Fahrzeuge",
     "listLost": "Liste der verlorenen Fahrzeuge",
     "watchlist": "Fahrzeugbeobachtungsliste",
-    "picture":"Bild"
+    "picture":"Bild",
+    "search":"Suchen..."
   },
   "location": {
     "phone": "Telefon",
@@ -95,6 +99,18 @@
     "message": "Wir konnten Seite finden",
     "goBack": "geh zurück",
     "noAuction": "Es gibt keine aktuellen Live-Auktionen"
+  },
+  "calendar": {
+    "week": "Woche",
+    "day": "Tag",
+    "list": "Aufführen",
+    "today": "Today",
+    "prev": "Heute",
+    "next": "Nächste",
+    "month": "Monat",
+    "more": "Mehr",
+    "allDayText": "Ganztägiger Text",
+    "noEventsText": "Kein Ereignistext"
   }
 
 }

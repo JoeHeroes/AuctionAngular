@@ -32,6 +32,7 @@ namespace AuctionAngular.Controllers
         public async Task<IActionResult> Register([FromBody] RegisterUserDto dto)
         {
             await this.service.RegisterUser(dto);
+
             return Ok();
         }
 
@@ -154,25 +155,17 @@ namespace AuctionAngular.Controllers
         public async Task<IActionResult> UploadFile([FromRoute] int id)
         {
             IFormFile files = Request.Form.Files[0];
-            try
-            {
-                var result = await this.service.AddPicture(id, files);
 
-                if (result is null)
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    var response = new { Message = "Upload successfully!" };
-                    return Ok(response);
-                }
+            var result = await this.service.AddPicture(id, files);
+
+            if (result is null)
+            {
+                return NotFound();
             }
-            catch (Exception)
+            else
             {
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                                "Error retrieving data from the database");
-
+                var response = new { Message = "Upload successfully!" };
+                return Ok(response);
             }
         }
     }

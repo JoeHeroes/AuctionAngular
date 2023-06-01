@@ -90,7 +90,7 @@ namespace AuctionAngular.Services
 
             foreach (var vehicle in vehicles)
             {
-                var restultPictures = this.dbContext.Pictures.Where(x => x.Id == vehicle.Id);
+                var restultPictures = this.dbContext.Pictures.Where(x => x.VehicleId == vehicle.Id);
 
                 List<string> pictures = new List<string>();
 
@@ -132,7 +132,7 @@ namespace AuctionAngular.Services
 
             foreach (var vehicle in vehicles)
             {
-                var restultPictures = this.dbContext.Pictures.Where(x => x.Id == vehicle.Id);
+                var restultPictures = this.dbContext.Pictures.Where(x => x.VehicleId == vehicle.Id);
 
                 List<string> pictures = new List<string>();
 
@@ -174,7 +174,7 @@ namespace AuctionAngular.Services
 
             foreach (var vehicle in vehicles)
             {
-                var restultPictures = this.dbContext.Pictures.Where(x => x.Id == vehicle.Id);
+                var restultPictures = this.dbContext.Pictures.Where(x => x.VehicleId == vehicle.Id);
 
                 List<string> pictures = new List<string>();
 
@@ -424,7 +424,7 @@ namespace AuctionAngular.Services
 
             foreach (var vehicle in vehicles)
             {
-                var restultPictures = this.dbContext.Pictures.Where(x => x.Id == vehicle.Id);
+                var restultPictures = this.dbContext.Pictures.Where(x => x.VehicleId == vehicle.Id);
 
                 List<string> pictures = new List<string>();
 

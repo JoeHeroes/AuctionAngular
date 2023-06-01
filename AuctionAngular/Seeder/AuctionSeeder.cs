@@ -122,64 +122,53 @@ namespace CarAuction.Seeder
                 new Picture()
                 {
                     VehicleId = 1,
-                    PathImg = "a4b9.png"
+                    PathImg = "passat1.jpg"
                 },
                 new Picture()
                 {
                     VehicleId = 1,
-                    PathImg = "a4b6.png"
+                    PathImg = "passat2.jpg"
                 },
                 new Picture()
                 {
                     VehicleId = 1,
-                    PathImg = "octavia3.png"
+                    PathImg = "passat3.jpg"
                 },
                 new Picture()
                 {
                     VehicleId = 1,
-                    PathImg = "passatb8.png"
+                    PathImg = "passat4.jpg"
                 },
                 new Picture()
                 {
                     VehicleId = 1,
-                    PathImg = "polo2g.png"
-                },
-                new Picture()
-                {
-                    VehicleId = 1,
-                    PathImg = "yaris2.png"
-                },
-                 new Picture()
-                {
-                    VehicleId = 2,
-                    PathImg = "a4b9.png"
+                    PathImg = "passat5.jpg"
                 },
                 new Picture()
                 {
                     VehicleId = 2,
-                    PathImg = "a4b6.png"
+                    PathImg = "polo1.jpg"
                 },
                 new Picture()
                 {
                     VehicleId = 2,
-                    PathImg = "octavia3.png"
+                    PathImg = "polo2.jpg"
                 },
                 new Picture()
                 {
                     VehicleId = 2,
-                    PathImg = "passatb8.png"
+                    PathImg = "polo3.jpg"
                 },
                 new Picture()
                 {
                     VehicleId = 2,
-                    PathImg = "polo2g.png"
+                    PathImg = "polo4.jpg"
                 },
                 new Picture()
                 {
                     VehicleId = 2,
-                    PathImg = "yaris2.png"
+                    PathImg = "polo5.jpg"
                 },
-
             };
         }
 
@@ -189,60 +178,6 @@ namespace CarAuction.Seeder
         {
             return new List<Vehicle>()
             {
-                new Vehicle()
-                {
-                    Producer = Producer.Audi.ToString(),
-                    ModelSpecifer = "A4",
-                    ModelGeneration = "B9",
-                    RegistrationYear = 2016,
-                    Color = "Grey",
-                    BodyType = BodyCar.Combi.ToString(),
-                    EngineCapacity = 1968 ,
-                    EngineOutput = 110,
-                    Transmission = Transmission.DualClutch.ToString(),
-                    Drive = Drive.FWD.ToString(),
-                    MeterReadout = 177000,
-                    Fuel = Fuel.Diesel.ToString(),
-                    NumberKeys = 1,
-                    ServiceManual = true,
-                    SecondTireSet = true,
-                    CurrentBid = 5000,
-                    PrimaryDamage = Damage.Normal_Wear.ToString(),
-                    SecondaryDamage = Damage.Normal_Wear.ToString(),
-                    DateTime = new DateTime(2023,12,28),
-                    VIN = "",
-                    LocationId = 1,
-                    SalesFinised= false,
-                    SaleTerm="",
-                    Highlights="",
-                },
-                new Vehicle()
-                {
-                    Producer = Producer.Audi.ToString(),
-                    ModelSpecifer = "A4",
-                    ModelGeneration = "B6",
-                    RegistrationYear = 2004,
-                    Color = "Blue",
-                    BodyType = BodyCar.Sedan.ToString(),
-                    EngineCapacity = 1896,
-                    EngineOutput = 96,
-                    Transmission = Transmission.Manual.ToString(),
-                    Drive = Drive.FWD.ToString(),
-                    MeterReadout = 268000,
-                    Fuel = Fuel.Diesel.ToString(),
-                    NumberKeys = 1,
-                    ServiceManual = true,
-                    SecondTireSet = false,
-                    CurrentBid = 5000,
-                    PrimaryDamage = Damage.Normal_Wear.ToString(),
-                    SecondaryDamage = Damage.Normal_Wear.ToString(),
-                    DateTime = new DateTime(2023,12,18),
-                    VIN = "",
-                    LocationId = 2,
-                    SalesFinised= false,
-                    SaleTerm="",
-                    Highlights="",
-                },
                 new Vehicle()
                 {
                     Producer = Producer.Volkswagen.ToString(),
@@ -264,35 +199,8 @@ namespace CarAuction.Seeder
                     PrimaryDamage = Damage.Normal_Wear.ToString(),
                     SecondaryDamage = Damage.Normal_Wear.ToString(),
                     DateTime = new DateTime(2023,12,16 ),
-                    VIN = "",
+                    VIN = "XXXX",
                     LocationId = 3,
-                    SalesFinised= false,
-                    SaleTerm="",
-                    Highlights="",
-                },
-                new Vehicle()
-                {
-                    Producer = Producer.Skoda.ToString(),
-                    ModelSpecifer = "Octavia",
-                    ModelGeneration = "3",
-                    RegistrationYear = 2015,
-                    Color = "LightBlue",
-                    BodyType = BodyCar.Liftback.ToString(),
-                    EngineCapacity = 1968,
-                    EngineOutput = 110,
-                    Transmission = Transmission.DualClutch.ToString(),
-                    Drive = Drive.FWD.ToString(),
-                    MeterReadout = 172000,
-                    Fuel = Fuel.Diesel.ToString(),
-                    NumberKeys = 2,
-                    ServiceManual = true,
-                    SecondTireSet = true,
-                    CurrentBid = 5000,
-                    PrimaryDamage = Damage.Normal_Wear.ToString(),
-                    SecondaryDamage = Damage.Normal_Wear.ToString(),
-                    DateTime = new DateTime(2023,12,30),
-                    VIN = "",
-                    LocationId = 4,
                     SalesFinised= false,
                     SaleTerm="",
                     Highlights="",
@@ -318,39 +226,12 @@ namespace CarAuction.Seeder
                     PrimaryDamage = Damage.Normal_Wear.ToString(),
                     SecondaryDamage = Damage.Normal_Wear.ToString(),
                     DateTime = new DateTime(2023,1,1),
-                    VIN = "",
+                    VIN = "XXXX",
                     LocationId = 1,
                     SalesFinised= false,
                     SaleTerm="",
                     Highlights="",
                 },
-                new Vehicle()
-                {
-                    Producer = Producer.Toyota.ToString(),
-                    ModelSpecifer = "Yaris",
-                    ModelGeneration = "2",
-                    RegistrationYear = 2010,
-                    Color = "White",
-                    BodyType = BodyCar.Hatchback.ToString(),
-                    EngineCapacity = 1364,
-                    EngineOutput = 66,
-                    Transmission = Transmission.Manual.ToString(),
-                    Drive = Drive.FWD.ToString(),
-                    MeterReadout = 80000,
-                    Fuel = Fuel.Diesel.ToString(),
-                    NumberKeys = 2,
-                    ServiceManual = false,
-                    SecondTireSet = false,
-                    CurrentBid = 5000,
-                    PrimaryDamage = Damage.Normal_Wear.ToString(),
-                    SecondaryDamage = Damage.Normal_Wear.ToString(),
-                    DateTime = new DateTime(2023,1,4),
-                    VIN = "",
-                    LocationId = 2,
-                    SalesFinised= false,
-                    SaleTerm="",
-                    Highlights="",
-                }
             };
         }
     }

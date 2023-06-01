@@ -12,7 +12,7 @@ export interface ListItem {
 const navigationItems: ListItem[] = [
   { id: 10, text: _('menu.home'), href: '/home', icon: 'fa fa-house' },
   { id: 30, text: _('menu.vehicle'), href: '/vehicle', icon: 'fa fa-car' },
-  { id: 30, text: _('menu.vehicle-binds'), href: '/vehicle-bids', icon: '' },
+  { id: 30, text: _('menu.vehicle-bids'), href: '/vehicle-bids', icon: '' },
   { id: 50, text: _('menu.vehicle-won'), href: '/vehicle-won', icon: '' },
   { id: 70, text: _('menu.vehicle-lost'), href: '/vehicle-lost', icon: '' },
   { id: 90, text: _('menu.watchlist'), href: '/watchlist', icon: 'fa fa-star' },

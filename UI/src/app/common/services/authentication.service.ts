@@ -49,7 +49,7 @@ export class AuthenticationService {
 
   public loggedUserId() {
 
-    let token: any = localStorage.getItem("token");
+    let token: any = sessionStorage.getItem("token");
 
     const header = new HttpHeaders({
       'Content-Type': 'application/json',

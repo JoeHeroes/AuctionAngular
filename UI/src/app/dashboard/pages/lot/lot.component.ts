@@ -16,7 +16,6 @@ export class LotComponent implements OnInit {
   datasource: any;
   pictures: any;
   userId: any;
-  slideshowDelay = 2000;
   bidForm!: FormGroup;
   watchLot: boolean = false;
   isUserAuthenticated: boolean = false;

@@ -23,14 +23,17 @@ export class MainComponent implements OnInit {
     private transloco: TranslocoService) {
   }
 
-
-
   ngOnInit(): void {
 
-    this.tokenService.authChanged
-      .subscribe(res => {
-        this.isUserAuthenticated = res;
-      })
+    this.router.events.subscribe((value: any) => {
+      if (value.url) {
+        this.tokenService.authChanged
+          .subscribe(res => {
+            this.isUserAuthenticated = res;
+          });
+      }
+    });
+
 
     this.auctionService.liveAuction().subscribe(res => {
       this.liveAuction = res;
@@ -57,12 +60,12 @@ export class MainComponent implements OnInit {
   }
 
   public logout() {
-    this.tokenService.logout();
+    this.tokenService.clear();
     this.router.navigate(["/"]);
   }
 
   public selectLang(lang: string) {
-    localStorage.setItem('auction:lang', lang);
+    sessionStorage.setItem('auction:lang', lang);
     this.transloco.setActiveLang(lang);
   }
 

@@ -40,16 +40,16 @@
           [allowSorting]="true"></dxi-column>
         <dxi-column dataField="meterReadout" [caption]="t('vehicle.meterReadout')" [allowFiltering]="false"
           [allowSorting]="true"></dxi-column>
-        <dxi-column dataField="dateTime" [caption]="t('vehicle.dateTime')" dataType="date" [allowFiltering]="false"
+        <dxi-column dataField="dateTime" [caption]="t('vehicle.dateTime')" dataType="date" [allowFiltering]="false"  [width]="120"
           [allowSorting]="true">
         </dxi-column>
-        <dxi-column dataField="currentBid" [caption]="t('vehicle.currentBid')" [allowFiltering]="false" [width]="120"
+        <dxi-column dataField="currentBid" [caption]="t('vehicle.currentBid')" [allowFiltering]="false"
           [allowSorting]="false"></dxi-column>
   
         <dxi-column [width]="120"></dxi-column>
   
         <div *dxTemplate="let data of 'cellTemplate'">
-          <img width="200" height="150" src="https://localhost:7257/Images/{{data.value}}" >
+          <img width="200" src="https://localhost:7257/Images/{{data.value}}" >
         </div>
         <div *dxTemplate="let d of 'discountCellTemplate'">
           <div class="chart-cell">
@@ -58,13 +58,11 @@
               [showZeroLevel]="true"
               [startScaleValue]="0"
               [endScaleValue]="100"
-              [value]="d.value * 100"
-            >
+              [value]="d.value * 100">
               <dxo-size [width]="150" [height]="35"></dxo-size>
               <dxo-tooltip
                 [enabled]="true"
-                [paddingTopBottom]="2"
-              >
+                [paddingTopBottom]="2">
                 <dxo-font [size]="18"></dxo-font>
               </dxo-tooltip>
               <dxo-margin [top]="5" [bottom]="0" [left]="5"></dxo-margin>

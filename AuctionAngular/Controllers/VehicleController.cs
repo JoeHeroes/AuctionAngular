@@ -28,25 +28,14 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<ViewVehiclesDto>>> GetAllVehicle()
         {
-            try
-            {
-                var result = await this.service.GetAll();
+            var result = await this.service.GetAll();
 
-                if (result is null)
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    return Ok(result);
-                }
-            }
-            catch (Exception)
+            if (result is null)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                                "Error retrieving data from the database");
-
+                return NotFound();
             }
+
+            return Ok(result);
         }
 
 
@@ -62,25 +51,14 @@ namespace AuctionAngular.Controllers
         
         public async Task<ActionResult<ViewVehicleDto>> GetOne([FromRoute] int id)
         {
-            try
-            {
-                var result = await this.service.GetById(id);
+            var result = await this.service.GetById(id);
 
-                if (result is null)
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    return Ok(result);
-                }
-            }
-            catch (Exception)
+            if (result is null)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                                "Error retrieving data from the database");
-
+                return NotFound();
             }
+
+            return Ok(result);
         }
 
 
@@ -95,25 +73,14 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<ViewVehiclesDto>>> GetAllBidedVehicle([FromRoute] int id)
         {
-            try
-            {
-                var result = await this.service.GetAllBided(id);
+            var result = await this.service.GetAllBided(id);
 
-                if (result is null)
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    return Ok(result);
-                }
-            }
-            catch (Exception)
+            if (result is null)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                                "Error retrieving data from the database");
-
+                return NotFound();
             }
+
+            return Ok(result);
         }
 
 
@@ -130,25 +97,14 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<ViewVehiclesDto>>> GetAllWonVehicle([FromRoute] int id)
         {
-            try
-            {
-                var result = await this.service.GetAllWon(id);
+            var result = await this.service.GetAllWon(id);
 
-                if (result is null)
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    return Ok(result);
-                }
-            }
-            catch (Exception)
+            if (result is null)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                                "Error retrieving data from the database");
-
+                return NotFound();
             }
+
+            return Ok(result);
         }
 
         /// <summary>
@@ -162,25 +118,14 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<ViewVehiclesDto>>> GetAllLostVehicle([FromRoute] int id)
         {
-            try
-            {
-                var result = await this.service.GetAllLost(id);
+            var result = await this.service.GetAllLost(id);
 
-                if (result is null)
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    return Ok(result);
-                }
-            }
-            catch (Exception)
+            if (result is null)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                                "Error retrieving data from the database");
-
+                return NotFound();
             }
+
+            return Ok(result);
         }
 
 
@@ -194,15 +139,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            try
-            {
-                await this.service.Delete(id);
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                                "Error retrieving data from the database");
-            }
+            await this.service.Delete(id);
 
             return NoContent();
         }
@@ -219,17 +156,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> CreateVehicle([FromBody] CreateVehicleDto dto)
         {
-            int id;
-
-            try
-            {
-                id = await this.service.Create(dto);
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                                "Error retrieving data from the database");
-            }
+            int id = await this.service.Create(dto);
 
             return Ok(id);
         }
@@ -246,16 +173,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> UpdateVehicle([FromRoute] int id,[FromBody] EditVehicleDto dto)
         {
-            try
-            {
-                await this.service.Update(id, dto);
-               
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                                "Error retrieving data from the database");
-            }
+            await this.service.Update(id, dto);
 
             return NoContent();
         }
@@ -273,15 +191,7 @@ namespace AuctionAngular.Controllers
 
         public async Task<IActionResult> UpdateBid([FromBody] UpdateBidDto dto)
         {
-            try
-            {
-                 await this.service.Bid(dto);
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                                "Error retrieving data from the database");
-            }
+            await this.service.Bid(dto);
 
             return Ok();
         }
@@ -297,15 +207,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Watch([FromBody] WatchDto dto)
         {
-            try
-            {
-                await this.service.Watch(dto);
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                                "Error retrieving data from the database");
-            }
+            await this.service.Watch(dto);
 
             return Ok();
 
@@ -322,18 +224,9 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> RemoveWatch([FromBody] WatchDto dto)
         {
-            try
-            {
-                await this.service.RemoveWatch(dto);
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                                "Error retrieving data from the database");
-            }
+            await this.service.RemoveWatch(dto);
 
             return Ok();
-
         }
 
         /// <summary>
@@ -347,24 +240,9 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<bool>> CheckWatch([FromBody] WatchDto dto)
         {
-            try
-            {
-                var result = await this.service.CheckWatch(dto);
+            var result = await this.service.CheckWatch(dto);
 
-                if (result)
-                {
-                    return Ok(result);
-                }
-                else
-                {
-                    return NotFound();
-                }
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                                "Error retrieving data from the database");
-            }
+            return Ok(result);
         }
 
 
@@ -380,25 +258,14 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<ViewVehicleDto>>> AllWatch([FromRoute] int id)
         {
-            try
-            {
-                var result = await this.service.GetAllWatch(id);
+            var result = await this.service.GetAllWatch(id);
 
-                if (result is null)
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    return Ok(result);
-                }
-            }
-            catch (Exception)
+            if (result is null)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                                "Error retrieving data from the database");
-
+                return NotFound();
             }
+
+            return Ok(result);
         }
 
 
@@ -415,26 +282,16 @@ namespace AuctionAngular.Controllers
         public async Task<IActionResult> UploadFile([FromRoute] int id)
         {
             IFormFileCollection files = Request.Form.Files;
-            try
-            {
-                var result = await this.service.AddPicture(id, files);
 
-                if (result is null)
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    var response = new { Message = "Upload successfully!" };
-                    return Ok(response);
-                }
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                                "Error retrieving data from the database");
+            var result = await this.service.AddPicture(id, files);
 
+            if (result is null)
+            {
+                return NotFound();
             }
+
+            var response = new { Message = "Upload successfully!" };
+            return Ok(response);
         }
     }
 }

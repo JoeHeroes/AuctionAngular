@@ -13,12 +13,17 @@ export class TokenService {
   public sendAuthStateChangeNotification = (isAuthenticated: boolean) => {
     this.authChangeSub.next(isAuthenticated);
   }
-  public logout() {
-    localStorage.removeItem("token");
+  public clear() {
+    sessionStorage.removeItem("token");
     this.sendAuthStateChangeNotification(false);
   }
   public isLoggedIn() {
-    return localStorage.getItem("token") != null;
+    return sessionStorage.getItem("token") != null;
+  }
+
+  public set(token: string) {
+    sessionStorage.setItem("token", token);
+    this.sendAuthStateChangeNotification(true);
   }
 
 }
