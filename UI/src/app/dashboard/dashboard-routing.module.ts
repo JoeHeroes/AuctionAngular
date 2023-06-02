@@ -24,6 +24,7 @@ import { ProfilePictureComponent } from './pages/profile-picture/profile-picture
 import { VehicleWonComponent } from './pages/vehicle-won/vehicle-won.component';
 import { VehicleLostComponent } from './pages/vehicle-lost/vehicle-lost.component';
 import { VehicleBidsComponent } from './pages/vehicle-bids/vehicle-bids.component';
+import { AddEventComponent } from './pages/add-event/add-event.component';
 
 const routes: Routes = [
   {
@@ -107,6 +108,12 @@ const routes: Routes = [
         pathMatch: 'full',
         component: CalendarComponent,
         data: { title: 'Calendar' }
+      },
+      {
+        path: 'add-event',
+        pathMatch: 'full',
+        component: AddEventComponent,
+        data: { title: 'Add Event' }
       },
       {
         path: 'login',

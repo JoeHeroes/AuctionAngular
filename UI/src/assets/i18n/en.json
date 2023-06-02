@@ -1,22 +1,19 @@
 {
-  "actionVehicle": { 
-    "add": "Add Vehicle",
+  "action": { 
+    "addEvent": "Add Event",
+    "save": "Save",
+    "back": "Back",
+    "addVehicle": "Add Vehicle",
     "watch": "Watch",
     "removeWatch": "Remove Watch",
-    "addVehicle": "Add Vehicle",
-    "selectPicture": "Select Picture",
-    "addPicture": "Add Picture"
-  },
-  "actionAccount": { 
-    "save": "Save",
-    "add": "Add Picture",
-    "edit": "Edit Profile",
-    "back": "Back",
+    "editProfile": "Edit Profile",
     "upload": "Upload",
     "restart": "Restart Password",
-    "addPicture": "Picture Profile",
+    "addPicture": "Add Picture",
+    "selectPicture": "Select Picture",
+    "pictureProfile": "Picture Profile",
     "saveProfile": "Save Profile",
-    "selectPicture": "Select Profile"
+    "auction":"Auction is on now"
   },
   "menu": {
     "home": "Home",
@@ -99,16 +96,10 @@
     "goBack": "go Back",
     "noAuction": "There are no current Live Auctions"
   },
-  "calendar": {
-    "week": "Week",
-    "day": "Day",
-    "list": "List",
-    "today": "Today",
-    "prev": "Preview",
-    "next": "Next",
-    "month": "Month",
-    "more": "More",
-    "allDayText": "All Day Text",
-    "noEventsText": "No Events Text"
+  "calendar":{
+    "title": "Title",
+    "date": "Date",
+    "color": "Color",
+    "allDay": "All Day"
   }
 }

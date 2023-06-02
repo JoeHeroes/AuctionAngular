@@ -5,8 +5,8 @@
         <input #file type="file" id="pictureForm" accept=".jpg,.png,.gif"/>
       </div>
         <p *ngIf="successMessage">{{ successMessage }}</p>
-        <dx-button  [text]="t('actionAccount.back')" type="normal" [routerLink]="['/profile']"></dx-button>
-        <dx-button class="button" [text]="t('actionAccount.upload')" type="success" [useSubmitBehavior]="true"></dx-button>
+        <dx-button  [text]="t('action.back')" type="normal" [routerLink]="['/profile']"></dx-button>
+        <dx-button class="button" [text]="t('action.upload')" type="success" [useSubmitBehavior]="true"></dx-button>
       </form>
 </ng-container>
     

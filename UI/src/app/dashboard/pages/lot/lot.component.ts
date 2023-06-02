@@ -51,7 +51,6 @@ export class LotComponent implements OnInit {
 
     this.vehicleService.getVehicle(this.id).subscribe(res => {
       this.datasource = res;
-      this.pictures = res.images
     });
 
     this.bidForm = new FormGroup({
@@ -72,11 +71,7 @@ export class LotComponent implements OnInit {
     });
   }
 
-
-
-
   watch() {
-
     this.vehicleService.watch(this.watchDto)
       .subscribe({
         next: () => {
@@ -108,7 +103,6 @@ export class LotComponent implements OnInit {
       bidNow: bid.bidNow,
       userId: this.watchDto.userId
     }
-
 
     this.vehicleService.bidVehicle(bidDto)
       .subscribe({

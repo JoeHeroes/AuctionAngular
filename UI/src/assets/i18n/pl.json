@@ -1,23 +1,20 @@
 {
-    "actionVehicle": { 
-      "add": "Dodaj Pojazd",
-      "watch": "Obserwuj",
-      "removeWatch": "Usuń",
-      "addVehicle": "Dodaj Pojazde",
-      "selectPicture": "Wybierz zdjecie",
-      "addPicture": "Dodaj zdjecie"
-    },
-    "actionAccount": { 
-      "save": "Zapis",
-      "add": "Dodaj zdjecie",
-      "edit": "Edytuj profile",
-      "back": "Wróć",
-      "upload": "Prześlij",
-      "restart": "Resetuj Hasło",
-      "addPicture": "Zdjecie profilowe",
-      "saveProfile": "Zapisz profile",
-      "selectPicture": "Wybierz zdjecie"
-    },
+  "action": { 
+    "addEvent": "Dodaj wydarzenie",
+    "save": "Zapisz",
+    "back": "Wróć",
+    "addVehicle": "Dodaj Pojazd",
+    "watch": "Oberwuj",
+    "removeWatch": "Usuń obserwacje",
+    "editProfile": "Edytuj Profil",
+    "upload": "Prześlij",
+    "restart": "Restartuj hasło",
+    "addPicture": "Dodaj Zdjecie",
+    "selectPicture": "Wybierz zdjecie",
+    "pictureProfile": "Zdjecie profilowe",
+    "saveProfile": "Zapisz Profil",
+    "auction":"Aktualnie trwa aukcja"
+  },
     "menu": {
       "home": "Home",
       "vehicle": "Pojazdy",
@@ -99,17 +96,11 @@
       "goBack": "Wróć",
       "noAuction": "Brak aktualnych aukcji na żywo"
     },
-    "calendar": {
-      "week": "Tydzień",
-      "day": "Dzień",
-      "list": "Lista",
-      "today": "Dzisiaj",
-      "prev": "Poprzedni",
-      "next": "Następny",
-      "month": "Miesiąc",
-      "more": "Więcej",
-      "allDayText": "Cały dzień",
-      "noEventsText": "Brak wydarzeń do wyświetlenia"
+    "calendar":{
+      "title": "Tytuł",
+      "date": "Data",
+      "color": "Kolor",
+      "allDay": "Cały Dzień"
     }
   }
   

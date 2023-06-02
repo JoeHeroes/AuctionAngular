@@ -1,5 +1,8 @@
 
-<br/>
-<div class="text-center">
-  <full-calendar [options]="calendarOptions"></full-calendar>
-</div>
+<ng-container *transloco="let t">
+  <br/>
+  <div class="mt-2 text-center"><dx-button  [text]="t('action.addEvent')"  [routerLink]="'/add-event'"></dx-button></div>
+  <div class="text-center">
+    <full-calendar [options]="calendarOptions"></full-calendar>
+  </div>
+</ng-container>

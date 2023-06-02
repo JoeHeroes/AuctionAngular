@@ -4,6 +4,7 @@ import { CalendarOptions, EventClickArg } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import { TranslocoService } from '@ngneat/transloco';
 import { CalendarService } from 'src/app/common/services/calendar.service';
+import allLocales from '@fullcalendar/core/locales-all'
 
 @Component({
   selector: 'app-calendar',
@@ -17,20 +18,6 @@ import { CalendarService } from 'src/app/common/services/calendar.service';
 
 
 export class CalendarComponent {
-
-  translations = {
-    week: this.translocoService.translate('calendar.week'),
-    day: this.translocoService.translate('calendar.day'),
-    list: this.translocoService.translate('calendar.list'),
-    today: this.translocoService.translate('calendar.today'),
-    prev: this.translocoService.translate('calendar.prev'),
-    next: this.translocoService.translate('calendar.next'),
-    month: this.translocoService.translate('calendar.month'),
-    more: this.translocoService.translate('calendar.more'),
-    allDayText: this.translocoService.translate('calendar.allDayText'),
-    noEventsText: this.translocoService.translate('calendar.noEventsText')
-  };
-
   calendarOptions: CalendarOptions = {
     firstDay: 1,
     plugins: [dayGridPlugin],
@@ -39,13 +26,12 @@ export class CalendarComponent {
     editable: true,
     eventClick: this.handleEventClick.bind(this),
     events: [],
+    locales: allLocales,
     locale: sessionStorage.getItem('auction:lang')?.toString(),
-    buttonText: this.translations,
   };
 
 
   constructor(private calendarService: CalendarService,
-    private translocoService: TranslocoService,
     private router: Router) {
   }
   ngOnInit(): void {
@@ -56,6 +42,9 @@ export class CalendarComponent {
 
   handleEventClick(clickInfo: EventClickArg) {
     var id = clickInfo.event.title.split(" ", 1);
-    this.router.navigate(['/vehicle/lot', Number(id)].filter(v => !!v));
+    if (!Number.isNaN(Number(id))) {
+      this.router.navigate(['/vehicle/lot', Number(id)].filter(v => !!v));
+    }
+
   }
 }

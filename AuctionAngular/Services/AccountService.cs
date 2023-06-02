@@ -57,7 +57,7 @@ namespace AuctionAngular.Services
             }
         }
 
-        public async Task<string> GeneratJwt(LoginDto dto)
+        public async Task<string> GeneratJwt(LoginUserDto dto)
         {
             var user = await this.dbContext
                  .Users

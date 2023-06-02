@@ -2,7 +2,7 @@
 
 namespace AuctionAngular.Dtos
 {
-    public class LoginDto
+    public class LoginUserDto
     {
         [Required]
         public string Email { get; set; } = null!;

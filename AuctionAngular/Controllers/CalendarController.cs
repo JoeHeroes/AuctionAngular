@@ -32,5 +32,22 @@ namespace AuctionAngular.Controllers
             var result = await this.service.GetAll();
             return Ok(result);
         }
+
+
+
+        /// <summary>
+        /// Create Event
+        /// </summary>
+        /// <returns>Ok</returns>
+        /// <response code="200">Correct data</response>
+        /// <response code="400">Incorrect id</response>
+        [HttpPost("CreateEvent")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> CreateEvent([FromBody]CreateEventDto dto)
+        {
+            var result = await this.service.Create(dto);
+            return Ok();
+        }
     }
 }

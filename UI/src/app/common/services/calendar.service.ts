@@ -15,4 +15,23 @@ export class CalendarService {
 
     return this.http.get<any>(url_);
   }
+
+
+  public addEvent(data: AddEventeDto): Observable<any> {
+
+    let url_ = "https://localhost:7257/Calendar/CreateEvent";
+
+    return this.http.post<any>(url_, data);
+  }
+}
+
+
+
+
+export interface AddEventeDto {
+  title: number;
+  date: Date;
+  color: string;
+  allDay: boolean;
+  owner: number;
 }

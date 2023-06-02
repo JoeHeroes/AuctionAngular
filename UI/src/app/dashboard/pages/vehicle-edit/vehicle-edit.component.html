@@ -139,31 +139,34 @@
         <div class="dx-field">
           <div class="dx-field-label">{{t('vehicle.serviceManual')}}</div>
           <div class="dx-field-value">
-            <input type="checkbox" checked="false" id="serviceManual" formControlName="serviceManual" class="form-control" />
+            <select id="serviceManual" formControlName="serviceManual" class="form-control" >
+              <option [ngValue]="true">True</option>
+              <option [ngValue]="false">False</option>
+            </select>
           </div>
         </div>
 
         <div class="dx-field">
           <div class="dx-field-label">{{t('vehicle.secondTireSet')}}</div>
           <div class="dx-field-value">
-            <input type="checkbox" checked="false" id="secondTireSet" formControlName="secondTireSet" class="form-control" />
+            <select id="secondTireSet" formControlName="secondTireSet" class="form-control">
+              <option [ngValue]="true">True</option>
+              <option [ngValue]="false">False</option>
+            </select>
           </div>
         </div>
-       
         <div class="dx-field">
           <div class="dx-field-label">{{t('vehicle.vin')}}</div>
           <div class="dx-field-value">
             <input type="text" id="VIN" formControlName="VIN" class="form-control" />
           </div>
         </div>
-
         <div class="dx-field">
           <div class="dx-field-label">{{t('vehicle.dateTime')}}</div>
           <div class="dx-field-value">
             <input type="date" id="dateTime" formControlName="dateTime" class="form-control" />
           </div>
         </div>
-
         <div class="dx-field">
           <div class="dx-field-label">{{t('vehicle.saleTerm')}}</div>
           <div class="dx-field-value">
@@ -172,8 +175,6 @@
             </select>
           </div>
         </div>
-
-
         <div class="dx-field">
           <div class="dx-field-label">{{t('vehicle.highlight')}}</div>
           <div class="dx-field-value">
@@ -182,10 +183,8 @@
             </select>
           </div>
         </div>
-
-
       </div>
     </div>
-    <dx-button id="button" [text]="t('actionVehicle.add')" type="default" [useSubmitBehavior]="true"></dx-button>
+    <dx-button id="button" [text]="t('action.addEvent')" type="default" [useSubmitBehavior]="true"></dx-button>
   </form>
 </ng-container>

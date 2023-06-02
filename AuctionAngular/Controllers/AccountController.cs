@@ -46,7 +46,7 @@ namespace AuctionAngular.Controllers
         [HttpPost("login")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Login([FromBody] LoginDto dto)
+        public async Task<IActionResult> Login([FromBody] LoginUserDto dto)
         {
             var token = await this.service.GeneratJwt(dto);
 

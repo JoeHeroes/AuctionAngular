@@ -4,7 +4,7 @@ namespace AuctionAngular.Interfaces
 {
     public interface IAccountService
     {
-        Task<string> GeneratJwt(LoginDto dto);
+        Task<string> GeneratJwt(LoginUserDto dto);
         Task RegisterUser(RegisterUserDto dto);
         Task RestartPassword(RestartPasswordDto dto);
         Task<ViewUserDto> GetUserInfo(int id);

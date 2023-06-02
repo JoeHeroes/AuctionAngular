@@ -11,7 +11,7 @@ import { AuctionCommonModule } from '../common/auction-common.module';
 import { DashboardComponentsModule } from './components/dashboard-components.module';
 import { DxToolbarModule } from "devextreme-angular/ui/toolbar";
 import { DxListModule } from "devextreme-angular/ui/list";
-import { DxAccordionModule, DxBarGaugeModule, DxBulletModule, DxButtonGroupModule, DxButtonModule, DxCalendarModule, DxCheckBoxModule, DxCircularGaugeModule, DxDataGridModule, DxDateBoxModule, DxFileUploaderModule, DxFormModule, DxGalleryModule, DxLoadIndicatorModule, DxNumberBoxModule, DxSelectBoxModule, DxTextBoxModule, DxValidationSummaryModule, DxValidatorModule } from 'devextreme-angular';
+import { DxAccordionModule, DxBarGaugeModule, DxBulletModule, DxButtonGroupModule, DxButtonModule, DxCalendarModule, DxCheckBoxModule, DxCircularGaugeModule, DxColorBoxModule, DxDataGridModule, DxDateBoxModule, DxFileUploaderModule, DxFormModule, DxGalleryModule, DxLoadIndicatorModule, DxNumberBoxModule, DxSelectBoxModule, DxTextBoxModule, DxValidationSummaryModule, DxValidatorModule } from 'devextreme-angular';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
 import { VehicleComponent } from './pages/vehicle/vehicle.component';
@@ -38,6 +38,7 @@ import { VehicleWonComponent } from './pages/vehicle-won/vehicle-won.component';
 import { VehicleLostComponent } from './pages/vehicle-lost/vehicle-lost.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { VehicleBidsComponent } from './pages/vehicle-bids/vehicle-bids.component';
+import { AddEventComponent } from './pages/add-event/add-event.component';
 
 
 
@@ -68,6 +69,7 @@ import { VehicleBidsComponent } from './pages/vehicle-bids/vehicle-bids.componen
     VehicleWonComponent,
     VehicleLostComponent,
     VehicleBidsComponent,
+    AddEventComponent,
   ],
   exports: [],
   imports: [
@@ -102,7 +104,8 @@ import { VehicleBidsComponent } from './pages/vehicle-bids/vehicle-bids.componen
     DxCircularGaugeModule,
     DxCalendarModule,
     NgbModalModule,
-    FullCalendarModule
+    FullCalendarModule,
+    DxColorBoxModule,
   ],
   providers: [
     HttpContext,

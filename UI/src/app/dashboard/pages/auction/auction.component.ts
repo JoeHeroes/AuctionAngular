@@ -15,10 +15,7 @@ export class AuctionComponent implements OnInit {
 
   mySubscription: Subscription
   liveAuction: boolean = false;
-  live: boolean = true;
   datasource: any;
-  pictures: any;
-  slideshowDelay = 10000;
   time: number = 0;
   index: number = 0;
   id: any;

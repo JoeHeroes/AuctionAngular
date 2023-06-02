@@ -306,14 +306,12 @@ namespace AuctionAngular.Services
                     VehicleId = vehicle.Id,
                 };
 
-                /*
+                
                 if (this.dbContext.Bids.FirstOrDefault(x => x.UserId == user.Id && x.VehicleId == vehicle.Id) == null)
                 {
                     this.dbContext.Bids.Add(bind);
                 }
-                */
-                this.dbContext.Bids.Add(bind);
-
+                
                 try
                 {
                     await this.dbContext.SaveChangesAsync();

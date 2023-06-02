@@ -46,7 +46,6 @@ export class AuthenticationService {
     return this.http.get<any>(url_);
   }
 
-
   public loggedUserId() {
 
     let token: any = sessionStorage.getItem("token");
@@ -56,24 +55,8 @@ export class AuthenticationService {
       Authorization: `Bearer ${token}`,
     });
 
-    /*
-     let url_ = this.baseUrl + "/authentication/token";
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            observe: "response",
-            responseType: "blob",
-            context: httpContext,
-            headers: new HttpHeaders({
-                "Accept": "application/json"
-            })
-        };
-    */
-
     return this.http.get<any>("https://localhost:7257/Account/current", { headers: header });
   }
-
-
 
   public getRoles(): Observable<any> {
 
@@ -81,8 +64,6 @@ export class AuthenticationService {
 
     return this.http.get<any>(url_);
   }
-
-
 }
 
 
@@ -110,7 +91,6 @@ export interface RestartPasswordDto {
   newPassword: string;
   confirmNewPassword: string;
 }
-
 
 export interface EditProfileDto {
   userId: number;

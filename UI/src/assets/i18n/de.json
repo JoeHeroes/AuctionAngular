@@ -1,23 +1,19 @@
 {
-  "actionVehicle": { 
-    "add": "Fahrzeug hinzufügen",
-    "watch": "Beobachten",
-    "back": "Zurück",
-    "removeWatch": "Entfernen Beobachten",
-    "addVehicle": "Fahrzeug hinzufügen",
-    "selectPicture": "Wählen Sie Bild",
-    "addPicture": "Bild hinzufügen"
-  },
-  "actionAccount": { 
+  "action": { 
+    "addEvent": "Ereignis hinzufügen",
     "save": "Speichern",
-    "add": "Bild hinzufügen",
-    "edit": "Profil bearbeiten",
     "back": "Zurück",
+    "addVehicle": "Fahrzeug hinzufügen",
+    "watch": "Betrachten",
+    "removeWatch": "Uhr entfernen",
+    "editProfile": "Profil bearbeiten",
     "upload": "Hochladen",
     "restart": "Passwort neu starten",
-    "addPicture": "Bild Profil",
+    "addPicture": "Bild hinzufügen",
+    "selectPicture": "Wählen Sie Bild",
+    "pictureProfile": "Bildprofil",
     "saveProfile": "Profil sichern",
-    "selectPicture": "Wähle Profil"
+    "auction":"Die Auktion läuft jetzt"
   },
   "menu": {
     "home": "Heim",
@@ -100,17 +96,10 @@
     "goBack": "geh zurück",
     "noAuction": "Es gibt keine aktuellen Live-Auktionen"
   },
-  "calendar": {
-    "week": "Woche",
-    "day": "Tag",
-    "list": "Aufführen",
-    "today": "Today",
-    "prev": "Heute",
-    "next": "Nächste",
-    "month": "Monat",
-    "more": "Mehr",
-    "allDayText": "Ganztägiger Text",
-    "noEventsText": "Kein Ereignistext"
+  "calendar":{
+    "title": "Titel",
+    "date": "Datum",
+    "color": "Farbe",
+    "allDay": "Den ganzen Tag"
   }
-
 }

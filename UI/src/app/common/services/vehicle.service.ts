@@ -45,33 +45,33 @@ export class VehicleService {
     return this.http.get<any>(url_);
   }
 
-  public bidVehicle(bid: BidDto): Observable<any> {
+  public bidVehicle(data: BidDto): Observable<any> {
 
     let url_ = "https://localhost:7257/Vehicle/bid";
 
-    return this.http.patch<any>(url_, bid);
+    return this.http.patch<any>(url_, data);
   }
 
-  public watch(bid: WatchDto): Observable<any> {
+  public watch(data: WatchDto): Observable<any> {
 
     let url_ = "https://localhost:7257/Vehicle/watch";
 
-    return this.http.post<any>(url_, bid);
+    return this.http.post<any>(url_, data);
   }
 
 
-  public removeWatch(bid: WatchDto): Observable<any> {
+  public removeWatch(data: WatchDto): Observable<any> {
 
     let url_ = "https://localhost:7257/Vehicle/removeWatch";
 
-    return this.http.post<any>(url_, bid);
+    return this.http.post<any>(url_, data);
   }
 
-  public checkWatch(bid: WatchDto): Observable<any> {
+  public checkWatch(data: WatchDto): Observable<any> {
 
     let url_ = "https://localhost:7257/Vehicle/checkWatch";
 
-    return this.http.post<any>(url_, bid);
+    return this.http.post<any>(url_, data);
   }
 
   public getAllWatch(id: number): Observable<Vehicle[]> {
@@ -81,10 +81,10 @@ export class VehicleService {
     return this.http.get<any>(url_);
   }
 
-  public addVehicle(dto: CreateVehicleDto) {
+  public addVehicle(data: CreateVehicleDto) {
 
     let url_ = "https://localhost:7257/Vehicle/create";
-    return this.http.post<any>(url_, dto);
+    return this.http.post<any>(url_, data);
   }
 }
 

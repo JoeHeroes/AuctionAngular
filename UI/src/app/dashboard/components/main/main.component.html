@@ -12,7 +12,7 @@
   <dx-toolbar class="auction" *ngIf='liveAuction'>
     <dxi-item>
       <dx-button (onClick)="this.openAuction()" stylingMode="text" 
-      displayExpr="label" text="Auction is on now"> </dx-button>
+      displayExpr="label"  [text]="t('action.auction')"> </dx-button>
     </dxi-item>
   </dx-toolbar>
   <dx-toolbar class="bottom">

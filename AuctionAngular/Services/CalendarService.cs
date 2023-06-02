@@ -16,6 +16,7 @@ namespace AuctionAngular.Services
             this.dbContext = dbContext;
         }
 
+  
         public async Task<IEnumerable<ViewEventDto>> GetAll()
         {
             var events = await this.dbContext
@@ -45,5 +46,34 @@ namespace AuctionAngular.Services
 
             return result;
         }
+
+
+
+        public async Task<int> Create(CreateEventDto dto)
+        {
+            var eventResult = new Event()
+            {
+                Title = dto.Title,
+                Start = dto.Date,
+                End = dto.Date,
+                Color = dto.Color,
+                AllDay = dto.AllDay,
+                Owner = dto.Owner
+            };
+
+            this.dbContext.Events.Add(eventResult);
+
+            try
+            {
+                await this.dbContext.SaveChangesAsync();
+            }
+            catch (DbUpdateException e)
+            {
+                throw new DbUpdateException("Error DataBase", e);
+            }
+
+            return eventResult.Id;
+        }
+
     }
 }
