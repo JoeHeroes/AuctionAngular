@@ -10,11 +10,9 @@ import { mergeMap as _observableMergeMap, catchError as _observableCatch } from 
     providedIn: 'root'
 })
 export class AuctionSystemApiClient {
-    private http: HttpClient;
     private baseUrl: string;
 
     constructor(http: HttpClient) {
-        this.http = http;
         this.baseUrl = "https://localhost:7257";
     }
 }

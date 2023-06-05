@@ -23,7 +23,7 @@ namespace AuctionAngular.Controllers
         /// <returns>Ok with location list</returns>
         /// <response code="200">Correct data</response>
         /// <response code="400">Incorrect id</response>
-        [HttpGet("locationList")]
+        [HttpGet("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<ViewLocationDto>>> LocationList()

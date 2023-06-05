@@ -24,7 +24,7 @@ namespace AuctionAngular.Controllers
         /// <returns>Ok with event list</returns>
         /// <response code="200">Correct data</response>
         /// <response code="400">Incorrect id</response>
-        [HttpGet("eventList")]
+        [HttpGet("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<Event>>> EventList()
@@ -41,7 +41,7 @@ namespace AuctionAngular.Controllers
         /// <returns>Ok</returns>
         /// <response code="200">Correct data</response>
         /// <response code="400">Incorrect id</response>
-        [HttpPost("CreateEvent")]
+        [HttpPost("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> CreateEvent([FromBody]CreateEventDto dto)

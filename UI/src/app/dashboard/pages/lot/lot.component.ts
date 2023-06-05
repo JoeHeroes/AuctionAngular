@@ -13,7 +13,32 @@ import { AuthenticationService } from 'src/app/common/services/authentication.se
 export class LotComponent implements OnInit {
   urlSubscription?: Subscription;
   id: any;
-  datasource: any;
+  datasource: any = {
+    Producer: "",
+    ModelSpecifer: "",
+    ModelGeneration: "",
+    RegistrationYear: 0,
+    Color: "",
+    BodyType: "",
+    EngineCapacity: 0,
+    EngineOutput: 0,
+    Transmission: "",
+    Drive: "",
+    MeterReadout: 0,
+    Fuel: "",
+    NumberKeys: 0,
+    ServiceManual: "",
+    SecondTireSet: "",
+    CurrentBid: 0,
+    PrimaryDamage: "",
+    SecondaryDamage: "",
+    DateTime: Date,
+    VIN: "",
+    LocationId: 0,
+    SalesFinised: false,
+    SaleTerm: "",
+    Highlights: "",
+  };
   pictures: any;
   userId: any;
   bidForm!: FormGroup;

@@ -1,5 +1,6 @@
 ﻿using AuctionAngular.Dtos;
 using AuctionAngular.Interfaces;
+using Azure.Storage.Blobs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -26,7 +27,7 @@ namespace AuctionAngular.Controllers
         /// <returns>Ok</returns>
         /// <response code="201">Correct register new user</response>
         /// <response code="400">Incorrect data</response>
-        [HttpPost("register")]
+        [HttpPost("[action]")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Register([FromBody] RegisterUserDto dto)
@@ -43,7 +44,7 @@ namespace AuctionAngular.Controllers
         /// <returns>Ok with AuthResponseDto</returns>
         /// <response code="200">Correct login</response>
         /// <response code="400">Incorrect data</response>
-        [HttpPost("login")]
+        [HttpPost("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Login([FromBody] LoginUserDto dto)
@@ -60,7 +61,7 @@ namespace AuctionAngular.Controllers
         /// <returns>Ok with AuthResponseDto</returns>
         /// <response code="200">Correct restart</response>
         /// <response code="400">Incorrect data</response>
-        [HttpPost("restart")]
+        [HttpPost("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Restart([FromBody] RestartPasswordDto dto)
@@ -77,7 +78,7 @@ namespace AuctionAngular.Controllers
         /// <returns>Ok</returns>
         /// <response code="204">Correct edit</response>
         /// <response code="400">Incorrect data</response>
-        [HttpPatch("edit")]
+        [HttpPatch("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Edit([FromBody] EditUserDto dto)
@@ -95,7 +96,7 @@ namespace AuctionAngular.Controllers
         /// <response code="200">Correct id</response>
         /// <response code="400">Null id </response>
         [Authorize]
-        [HttpGet("current")]
+        [HttpGet("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult CurrentLoggedUserId()
@@ -112,7 +113,7 @@ namespace AuctionAngular.Controllers
         /// <returns>Ok user information</returns>
         /// <response code="200">Correct data</response>
         /// <response code="400">Incorrect id</response>
-        [HttpGet("userInfo/{id}")]
+        [HttpGet("[action]/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> GetUserInfo([FromRoute] int id)
@@ -129,7 +130,7 @@ namespace AuctionAngular.Controllers
         /// </summary>
         /// <returns>Ok with list of roles</returns>
         /// <response code="200">Correct data</response>
-        [HttpGet("roles")]
+        [HttpGet("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetRoles()
@@ -139,6 +140,8 @@ namespace AuctionAngular.Controllers
             return Ok(result);
         }
 
+
+
         /// <summary>
         /// Upload Picture File
         /// </summary>
@@ -147,12 +150,12 @@ namespace AuctionAngular.Controllers
         /// <response code="200">Correct data</response>
         /// <response code="400">Incorrect id</response>
         /// <response code="500">Exception</response>
-        [HttpPatch("uploadFile/{id}")]
+        [HttpPatch("[action]/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
-        public async Task<IActionResult> UploadFile([FromRoute] int id)
+        public async Task<IActionResult> UploadProfileImage([FromRoute] int id)
         {
             IFormFile files = Request.Form.Files[0];
 

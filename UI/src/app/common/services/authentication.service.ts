@@ -7,25 +7,29 @@ import { Observable, Subject } from 'rxjs';
 })
 export class AuthenticationService {
 
-  constructor(private http: HttpClient) { }
+  private baseUrl: string;
+
+  constructor(private http: HttpClient) {
+    this.baseUrl = "https://localhost:7257";
+  }
 
   public loginUser(data: UserAuthenticationDto): Observable<any> {
 
-    let url_ = "https://localhost:7257/Account/login";
+    let url_ = this.baseUrl + "/Account/Login";
 
     return this.http.post<any>(url_, data);
   }
 
   public registerUser(data: UserRegisterDto): Observable<any> {
 
-    let url_ = "https://localhost:7257/Account/register";
+    let url_ = this.baseUrl + "/Account/Register";
 
     return this.http.post<any>(url_, data);
   }
 
   public restartPassword(data: RestartPasswordDto): Observable<any> {
 
-    let url_ = "https://localhost:7257/Account/restart";
+    let url_ = this.baseUrl + "/Account/Restart";
 
     return this.http.post<any>(url_, data);
   }
@@ -33,7 +37,7 @@ export class AuthenticationService {
 
   public editProfile(data: EditProfileDto): Observable<any> {
 
-    let url_ = "https://localhost:7257/Account/edit";
+    let url_ = this.baseUrl + "/Account/Edit";
 
     return this.http.patch<any>(url_, data);
   }
@@ -41,7 +45,7 @@ export class AuthenticationService {
 
   public getUserInfo(id: number): Observable<any> {
 
-    let url_ = "https://localhost:7257/Account/userInfo/" + id;
+    let url_ = this.baseUrl + "/Account/GetUserInfo/" + id;
 
     return this.http.get<any>(url_);
   }
@@ -55,12 +59,12 @@ export class AuthenticationService {
       Authorization: `Bearer ${token}`,
     });
 
-    return this.http.get<any>("https://localhost:7257/Account/current", { headers: header });
+    return this.http.get<any>(this.baseUrl + "/Account/CurrentLoggedUserId", { headers: header });
   }
 
   public getRoles(): Observable<any> {
 
-    let url_ = "https://localhost:7257/Account/roles";
+    let url_ = this.baseUrl + "/Account/GetRoles";
 
     return this.http.get<any>(url_);
   }

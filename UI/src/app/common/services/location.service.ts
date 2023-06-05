@@ -7,11 +7,15 @@ import { Observable } from 'rxjs';
 })
 export class LocationService {
 
-  constructor(private http: HttpClient) { }
+  private baseUrl: string;
+
+  constructor(private http: HttpClient) {
+    this.baseUrl = "https://localhost:7257";
+  }
 
   public getLocations(): Observable<any> {
 
-    let url_ = "https://localhost:7257/Location/locationList";
+    let url_ = this.baseUrl + "/Location/LocationList";
 
     return this.http.get<any>(url_);
   }

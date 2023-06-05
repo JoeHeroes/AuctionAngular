@@ -7,25 +7,29 @@ import { Observable } from 'rxjs';
 })
 export class AuctionService {
 
-  constructor(private http: HttpClient) { }
+  private baseUrl: string;
+
+  constructor(private http: HttpClient) {
+    this.baseUrl = "https://localhost:7257";
+  }
 
   liveAuction(): Observable<any> {
 
-    let url_ = "https://localhost:7257/Auction/liveAuction";
+    let url_ = this.baseUrl + "/Auction/LiveAuction";
 
     return this.http.get<any>(url_);
   }
 
   liveAuctionList(): Observable<any> {
 
-    let url_ = "https://localhost:7257/Auction/liveAuctionList";
+    let url_ = this.baseUrl + "/Auction/LiveAuctionList";
 
     return this.http.get<any>(url_);
   }
 
   endAuction(): Observable<any> {
 
-    let url_ = "https://localhost:7257/Auction/endAuction";
+    let url_ = this.baseUrl + "/Auction/EndAuction";
 
     return this.http.get<any>(url_);
   }

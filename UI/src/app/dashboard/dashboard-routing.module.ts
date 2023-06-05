@@ -52,19 +52,22 @@ const routes: Routes = [
         path: 'vehicle-won',
         pathMatch: 'full',
         component: VehicleWonComponent,
-        data: { title: 'Vehicle Won' }
+        data: { title: 'Vehicle Won' },
+        canActivate: [AuthGuard]
       },
       {
         path: 'vehicle-lost',
         pathMatch: 'full',
         component: VehicleLostComponent,
-        data: { title: 'Vehicle Lost' }
+        data: { title: 'Vehicle Lost' },
+        canActivate: [AuthGuard]
       },
       {
         path: 'vehicle-bids',
         pathMatch: 'full',
         component: VehicleBidsComponent,
-        data: { title: 'Vehicle Bids' }
+        data: { title: 'Vehicle Bids' },
+        canActivate: [AuthGuard]
       },
       {
         path: 'auction',

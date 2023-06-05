@@ -23,7 +23,7 @@ namespace AuctionAngular.Controllers
         /// <returns>Ok with vehicle list</returns>
         /// <response code="200">Correct data</response>
         /// <response code="400">Incorrect data</response>
-        [HttpGet("getAll")]
+        [HttpGet("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<ViewVehiclesDto>>> GetAllVehicle()
@@ -45,7 +45,7 @@ namespace AuctionAngular.Controllers
         /// <returns>Ok with vehicle</returns>
         /// <response code="200">Correct data</response>
         /// <response code="400">Incorrect data</response>
-        [HttpGet("getOne/{id}")]
+        [HttpGet("[action]/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         
@@ -68,7 +68,7 @@ namespace AuctionAngular.Controllers
         /// <returns>Ok with vehicle list</returns>
         /// <response code="200">Correct data</response>
         /// <response code="400">Incorrect data</response>
-        [HttpGet("getAllBided/{id}")]
+        [HttpGet("[action]/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<ViewVehiclesDto>>> GetAllBidedVehicle([FromRoute] int id)
@@ -92,7 +92,7 @@ namespace AuctionAngular.Controllers
         /// <returns>Ok with vehicle list</returns>
         /// <response code="200">Correct data</response>
         /// <response code="400">Incorrect data</response>
-        [HttpGet("getAllWon/{id}")]
+        [HttpGet("[action]/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<ViewVehiclesDto>>> GetAllWonVehicle([FromRoute] int id)
@@ -113,7 +113,7 @@ namespace AuctionAngular.Controllers
         /// <returns>Ok with vehicle list</returns>
         /// <response code="200">Correct data</response>
         /// <response code="400">Incorrect data</response>
-        [HttpGet("getAllLost/{id}")]
+        [HttpGet("[action]/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<ViewVehiclesDto>>> GetAllLostVehicle([FromRoute] int id)
@@ -134,10 +134,10 @@ namespace AuctionAngular.Controllers
         /// </summary>
         /// <response code="200">Correct data</response>
         /// <response code="400">Incorrect data</response>
-        [HttpDelete("delete/{id}")]
+        [HttpDelete("[action]/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Delete([FromRoute] int id)
+        public async Task<IActionResult> DeleteVehicle([FromRoute] int id)
         {
             await this.service.Delete(id);
 
@@ -151,7 +151,7 @@ namespace AuctionAngular.Controllers
         /// <returns>Ok</returns>
         /// <response code="200">Correct data</response>
         /// <response code="400">Incorrect data</response>
-        [HttpPost("create")]
+        [HttpPost("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> CreateVehicle([FromBody] CreateVehicleDto dto)
@@ -160,7 +160,7 @@ namespace AuctionAngular.Controllers
 
             return Ok(id);
         }
-
+        
 
         /// <summary>
         /// Update Vehicle
@@ -168,7 +168,7 @@ namespace AuctionAngular.Controllers
         /// <returns>Ok</returns>
         /// <response code="204">Correct data</response>
         /// <response code="400">Incorrect data</response>
-        [HttpPatch("update/{id}")] 
+        [HttpPatch("[action]/{id}")] 
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> UpdateVehicle([FromRoute] int id,[FromBody] EditVehicleDto dto)
@@ -177,7 +177,7 @@ namespace AuctionAngular.Controllers
 
             return NoContent();
         }
-
+        
 
         /// <summary>
         /// Bid Vehicle
@@ -185,7 +185,7 @@ namespace AuctionAngular.Controllers
         /// <returns>Ok</returns>
         /// <response code="200">Correct data</response>
         /// <response code="400">Incorrect data</response>
-        [HttpPatch("bid")]
+        [HttpPatch("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
 
@@ -202,7 +202,7 @@ namespace AuctionAngular.Controllers
         /// <returns>Ok</returns>
         /// <response code="200">Correct data</response>
         /// <response code="400">Incorrect data</response>
-        [HttpPost("watch")]
+        [HttpPost("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Watch([FromBody] WatchDto dto)
@@ -219,7 +219,7 @@ namespace AuctionAngular.Controllers
         /// <returns>Ok</returns>
         /// <response code="200">Correct data</response>
         /// <response code="400">Incorrect data</response>
-        [HttpPost("removeWatch")]
+        [HttpPost("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> RemoveWatch([FromBody] WatchDto dto)
@@ -235,7 +235,7 @@ namespace AuctionAngular.Controllers
         /// <returns>Ok</returns>
         /// <response code="200">Correct data</response>
         /// <response code="400">Incorrect data</response>
-        [HttpPost("checkWatch")]
+        [HttpPost("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<bool>> CheckWatch([FromBody] WatchDto dto)
@@ -253,7 +253,7 @@ namespace AuctionAngular.Controllers
         /// <returns>Ok</returns>
         /// <response code="200">Correct data</response>
         /// <response code="400">Incorrect data</response>
-        [HttpGet("allWatch/{id}")]
+        [HttpGet("[action]/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<ViewVehicleDto>>> AllWatch([FromRoute] int id)
@@ -277,9 +277,8 @@ namespace AuctionAngular.Controllers
         /// <response code="200">Correct data</response>
         /// <response code="400">Incorrect id</response>
         /// <response code="500">Exception</response>
-        [HttpPatch("uploadFile/{id}")]
-
-        public async Task<IActionResult> UploadFile([FromRoute] int id)
+        [HttpPatch("[action]/{id}")]
+        public async Task<IActionResult> UploadVehicleImage([FromRoute] int id)
         {
             IFormFileCollection files = Request.Form.Files;
 

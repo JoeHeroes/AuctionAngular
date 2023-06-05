@@ -26,7 +26,7 @@ export class ProfilePictureComponent {
       formData.append(file.name, file);
     }
     this.authenticationService.loggedUserId().subscribe(res => {
-      this.http.patch('https://localhost:7257/Account/uploadFile/' + res.userId, formData, { reportProgress: true, observe: 'events' })
+      this.http.post('https://localhost:7257/Storage/UploadProfileImage/' + res.userId, formData, { reportProgress: true, observe: 'events' })
         .subscribe({
           next: (res: any) => {
             this.successMessage = 'File uploaded successfully.';

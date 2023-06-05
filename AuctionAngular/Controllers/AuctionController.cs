@@ -24,7 +24,7 @@ namespace AuctionAngular.Controllers
         /// <returns>Ok with list of current live vehicle</returns>
         /// <response code="200">Correct data</response>
         /// <response code="400">Incorrect id</response>
-        [HttpGet("liveAuction")]
+        [HttpGet("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<bool>> LiveAuction()
@@ -40,7 +40,7 @@ namespace AuctionAngular.Controllers
         /// <returns>Ok</returns>
         /// <response code="200">Correct data</response>
         /// <response code="400">Incorrect data</response>
-        [HttpGet("endAuction")]
+        [HttpGet("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> EndAuction()
@@ -55,7 +55,7 @@ namespace AuctionAngular.Controllers
         /// <returns>Ok with vehicle list</returns>
         /// <response code="200">Correct data</response>
         /// <response code="400">Incorrect data</response>
-        [HttpGet("liveAuctionList")]
+        [HttpGet("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<ViewVehicleDto>>> LiveAuctionList()
@@ -70,7 +70,7 @@ namespace AuctionAngular.Controllers
         /// <returns>Ok with vehicle list</returns>
         /// <response code="200">Correct data</response>
         /// <response code="400">Incorrect data</response>
-        [HttpGet("auctionList")]
+        [HttpGet("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<ViewVehicleDto>>> AuctionList()

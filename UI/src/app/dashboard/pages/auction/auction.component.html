@@ -21,7 +21,7 @@
             <dx-gallery [dataSource]="datasource[index].images" [loop]="true" [showNavButtons]="true" [showIndicator]="true">
               <div *dxTemplate="let i of 'item'">
                 <div>
-                  <img height="450" src="https://localhost:7257/Images/{{i}}">
+                  <img height="450" src="https://storagevehicleauction.blob.core.windows.net/vehicle-images/{{i}}">
                 </div>
               </div>
             </dx-gallery>
