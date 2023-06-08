@@ -103,7 +103,8 @@ namespace Database.Migrations
                     Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     RoleId = table.Column<int>(type: "int", nullable: false),
-                    ProfilePicture = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    ProfilePicture = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EmialConfirmed = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {

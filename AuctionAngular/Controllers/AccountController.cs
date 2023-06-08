@@ -3,7 +3,10 @@ using AuctionAngular.Interfaces;
 using Azure.Storage.Blobs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using RestSharp;
+using RestSharp.Authenticators;
 using System.Security.Claims;
+using System.Text;
 
 namespace AuctionAngular.Controllers
 {
@@ -15,7 +18,6 @@ namespace AuctionAngular.Controllers
     public class AccountController : ControllerBase
     {
         private readonly IAccountService service;
-
         public AccountController(IAccountService service)
         {
             this.service = service;
@@ -34,7 +36,21 @@ namespace AuctionAngular.Controllers
         {
             await this.service.RegisterUser(dto);
 
-            return Ok();
+
+            var token = await _userManager.GenerateEmailConfirmTokenAsync(user);
+            var confirmLink = Url.Action(nameof(ConfirmEmail), "Authication", new { token, email = User.Email });
+
+            var message = new Message(new string[] { dto.Email }, "ConfirmEmail email link", confirmLink);
+
+
+            var result = SendEmail(dto, confirmLink);
+
+            if (result)
+            {
+                return Ok("Please verify your email");
+            }
+
+            return Ok("Please request an email verification link");
         }
 
         /// <summary>
@@ -171,5 +187,60 @@ namespace AuctionAngular.Controllers
                 return Ok(response);
             }
         }
+
+
+        /// <summary>
+        /// Upload Picture File
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Ok with messages or StatusCode</returns>
+        /// <response code="200">Correct data</response>
+        /// <response code="400">Incorrect id</response>
+        /// <response code="500">Exception</response>
+        [HttpGet("[action]")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> ConfirmEmail(int userId, string code)
+        {
+            if(userId == 0 || code == null)
+            {
+                return BadRequest();
+            }
+
+            var user = await this.service.GetUserInfo(userId);
+
+            if(user == null)
+            {
+                return BadRequest();
+            }
+
+            code = Encoding.UTF8.GetString(Convert.FromBase64String(code));
+            //var result = await this.service.ConfirmEmail(user, code);
+            //var status = result.SucessStatus;
+
+            return Ok();
+        }
+
+
+        private bool SendEmail(RegisterUserDto dto, string confirmLink)
+        {
+            var options = new RestClientOptions("https://api.mailgun.net/v3");
+            options.Authenticator = new HttpBasicAuthenticator("api", "41df57fa62356e2c5fb2c0462b3e9abd-6d1c649a-92bb86b1");
+            var client = new RestClient(options);
+            
+            var request = new RestRequest("", Method.Post);
+            request.AddParameter("domain", "sandbox0e1fe82cedc54d2f915435caa729fae4.mailgun.org", ParameterType.UrlSegment);
+            request.Resource = "{domain}/messages";
+            request.AddParameter("from", "CarAuction <postmaster@sandbox0e1fe82cedc54d2f915435caa729fae4.mailgun.org>");
+            request.AddParameter("to", $"{dto.Name} {dto.SureName} <{dto.Email}>");
+            request.AddParameter("subject", $"Hello {dto.Name} {dto.SureName}, please verify your  Auction account");
+            request.AddParameter("text", "Thank you for choosing CarAuction! Please confirm your email address by clicking the link below.");
+            var response =  client.Execute(request);
+
+            return response.IsSuccessful;
+
+        }
+        
     }
 }

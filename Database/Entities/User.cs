@@ -19,5 +19,6 @@ namespace Database.Entities
         public int RoleId { get; set; }
         [DisplayName("Address")]
         public string ProfilePicture { get; set; }
+        public bool EmialConfirmed { get; set; }
     }
 }

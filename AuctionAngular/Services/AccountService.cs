@@ -30,7 +30,6 @@ namespace AuctionAngular.Services
         {
             var newUser = new User()
             {
-
                 Email = dto.Email,
                 Name = dto.Name,
                 SureName = dto.SureName,
@@ -39,8 +38,8 @@ namespace AuctionAngular.Services
                 Nationality = dto.Nationality,
                 Phone = dto.Phone,
                 RoleId = dto.RoleId,
-                ProfilePicture = ""
-
+                ProfilePicture = "",
+                EmialConfirmed = false
             };
 
             var hashedPass = this.passwordHasher.HashPassword(newUser, dto.Password);

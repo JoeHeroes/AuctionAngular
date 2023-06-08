@@ -1,5 +1,5 @@
 ﻿using AuctionAngular.Dtos;
-using Azure.Core;
+
 using Azure.Storage.Blobs;
 using Database;
 using Microsoft.AspNetCore.Mvc;
