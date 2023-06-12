@@ -4,6 +4,7 @@ using Database;
 using Database.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -18,15 +19,21 @@ namespace AuctionAngular.Services
         private readonly IPasswordHasher<User> passwordHasher;
         private readonly AuthenticationSettings authenticationSetting;
         private readonly IWebHostEnvironment webHost;
+        private readonly IConfiguration configuration;
         /// <inheritdoc/>
-        public AccountService(AuctionDbContext dbContext, IPasswordHasher<User> passwordHasher, AuthenticationSettings authenticationSetting, IWebHostEnvironment webHost)
+        public AccountService(AuctionDbContext dbContext,
+            IPasswordHasher<User> passwordHasher,
+            AuthenticationSettings authenticationSetting,
+            IWebHostEnvironment webHost,
+            IConfiguration configuration)
         {
             this.dbContext = dbContext;
             this.passwordHasher = passwordHasher;
             this.authenticationSetting = authenticationSetting;
             this.webHost = webHost;
+            this.configuration = configuration;
         }
-        public async Task RegisterUser(RegisterUserDto dto)
+        public async Task CreateUser(RegisterUserDto dto)
         {
             var newUser = new User()
             {
@@ -56,7 +63,7 @@ namespace AuctionAngular.Services
             }
         }
 
-        public async Task<string> GeneratJwt(LoginUserDto dto)
+        public async Task<string> LoginUser(LoginUserDto dto)
         {
             var user = await this.dbContext
                  .Users
@@ -68,43 +75,7 @@ namespace AuctionAngular.Services
                 throw new BadRequestException("Invalid username or password");
             }
 
-
-            var result = this.passwordHasher.VerifyHashedPassword(user, user.PasswordHash, dto.Password);
-            if (result == PasswordVerificationResult.Failed)
-            {
-                throw new BadRequestException("Invalid username or password");
-            }
-
-            var clasims = new List<Claim>()
-            {
-                new Claim(ClaimTypes.Name, $"{user.Name} {user.SureName}"),
-                new Claim("UserId", user.Id.ToString()),
-                new Claim("DateOfBirth", user.DateOfBirth.Value.ToString("yyyy-MM-dd")),
-                
-            };
-
-            if (!string.IsNullOrEmpty(user.Nationality))
-            {
-                clasims.Add(
-                    new Claim("Nationality", user.Nationality)
-                    );
-            }
-
-
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(authenticationSetting.JwtKey));
-            var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-            var expires = DateTime.Now.AddDays(authenticationSetting.JwtExpireDays);
-
-
-            var token = new JwtSecurityToken(authenticationSetting.JwtIssuer,
-                authenticationSetting.JwtIssuer,
-                clasims,
-                expires: expires,
-                signingCredentials: cred
-                );
-
-            var tokenHander = new JwtSecurityTokenHandler();
-            return tokenHander.WriteToken(token);
+            return await GenerateToken(user);
         }
 
         public async Task RestartPassword(RestartPasswordDto dto)
@@ -172,7 +143,7 @@ namespace AuctionAngular.Services
             user.Name = dto.Name;
             user.SureName = dto.SureName;
             user.Phone = dto.Phone;
-            user.Nationality= dto.Nationality;
+            user.Nationality = dto.Nationality;
             user.DateOfBirth = dto.Date;
 
             try
@@ -193,7 +164,7 @@ namespace AuctionAngular.Services
 
             List<RoleDto> result = new List<RoleDto>();
 
-            foreach(var role in roles)
+            foreach (var role in roles)
             {
                 var roleDto = new RoleDto() { Id = role.Id, Name = role.Name };
                 result.Add(roleDto);
@@ -228,6 +199,40 @@ namespace AuctionAngular.Services
             }
 
             return fileName;
+        }
+
+        public async Task<string> GenerateToken(User user)
+        {
+            var clasims = new List<Claim>()
+            {
+                new Claim(ClaimTypes.Name, $"{user.Name} {user.SureName}"),
+                new Claim("UserId", user.Id.ToString()),
+                new Claim("DateOfBirth", user.DateOfBirth.Value.ToString("yyyy-MM-dd")),
+
+            };
+
+            if (!string.IsNullOrEmpty(user.Nationality))
+            {
+                clasims.Add(
+                    new Claim("Nationality", user.Nationality)
+                    );
+            }
+
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(authenticationSetting.JwtKey));
+            var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            var expires = DateTime.Now.AddDays(authenticationSetting.JwtExpireDays);
+
+
+            var token = new JwtSecurityToken(authenticationSetting.JwtIssuer,
+                authenticationSetting.JwtIssuer,
+                clasims,
+                expires: expires,
+                signingCredentials: cred
+                );
+
+            var tokenHander = new JwtSecurityTokenHandler();
+            return tokenHander.WriteToken(token);
         }
     }
 }

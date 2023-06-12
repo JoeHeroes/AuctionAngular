@@ -66,7 +66,10 @@ try
     builder.Services.AddScoped<IVehicleService, VehicleService>();
     builder.Services.AddScoped<ILocationService, LocationService>();
     builder.Services.AddScoped<IAuctionService, AuctionService>();
-    builder.Services.AddScoped<ICalendarService, CalendarService>();
+    builder.Services.AddScoped<ICalendarService, CalendarService>(); 
+    builder.Services.AddTransient<IMailService, MailService>();
+
+
 
     //Hasser
     builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
@@ -92,6 +95,11 @@ try
         .AllowAnyHeader()
         .WithOrigins(builder.Configuration["AllowedOrigins"])
         ));
+
+
+    //Mail
+
+    builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
 
     //DbContext
     builder.Services.AddDbContext<AuctionDbContext>(options =>
