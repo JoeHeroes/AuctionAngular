@@ -39,7 +39,7 @@ export class RegisterComponent implements OnInit {
       surename: new FormControl("", [Validators.required]),
       nationality: new FormControl("", [Validators.required]),
       phone: new FormControl("", [Validators.required]),
-      dateofbirth: new FormControl('', [Validators.required, this.validateMaxDate.bind(this)]),
+      dateOfBirth: new FormControl('', [Validators.required, this.validateMaxDate.bind(this)]),
       roleid: new FormControl("", [Validators.required]),
     })
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/login';
@@ -78,8 +78,6 @@ export class RegisterComponent implements OnInit {
           this.router.navigate([this.returnUrl]);
         },
         error: (err: HttpErrorResponse) => {
-          this.errorMessage = err.name;
-          this.showError = true;
         }
       })
   }
