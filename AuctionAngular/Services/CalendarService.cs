@@ -35,10 +35,13 @@ namespace AuctionAngular.Services
 
                 var resultDto = new ViewEventDto()
                 {
+                    Id = eve.Id,
                     Title = eve.Title,
+                    Description= eve.Description,
                     Start = eve.Start.ToString("yyyy-MM-dd"),
                     End = eve.End.ToString("yyyy-MM-dd"),
                     Color = eve.Color,
+                    AllDay = eve.AllDay,
                 };
 
                 result.Add(resultDto);
@@ -54,6 +57,7 @@ namespace AuctionAngular.Services
             var eventResult = new Event()
             {
                 Title = dto.Title,
+                Description= dto.Description,
                 Start = dto.Date,
                 End = dto.Date,
                 Color = dto.Color,

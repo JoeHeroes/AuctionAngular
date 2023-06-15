@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace AuctionAngular.Services
 {
@@ -140,11 +142,12 @@ namespace AuctionAngular.Services
         {
             var user = await this.dbContext.Users.FirstOrDefaultAsync(x => x.Id == dto.UserId);
 
-            user.Name = dto.Name;
-            user.SureName = dto.SureName;
-            user.Phone = dto.Phone;
-            user.Nationality = dto.Nationality;
-            user.DateOfBirth = dto.Date;
+
+            user.Name = dto.Name!="" ? dto.Name: user.Name;
+            user.SureName = dto.SureName != "" ? dto.SureName : user.SureName;
+            user.Phone = dto.Phone != "" ? dto.Phone : user.Phone;
+            user.Nationality = dto.Nationality != "" ? dto.Nationality : user.Nationality;
+            user.DateOfBirth = dto.DateOfBirth.ToString() != default(DateTime).ToString() ? dto.DateOfBirth : user.DateOfBirth;
 
             try
             {

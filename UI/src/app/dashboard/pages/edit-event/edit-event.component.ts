@@ -1,22 +1,31 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthResponseDto, AuthenticationService } from 'src/app/common/services/authentication.service';
 import { AddEventeDto, CalendarService } from 'src/app/common/services/calendar.service';
 
 @Component({
-  selector: 'app-add-event',
-  templateUrl: './add-event.component.html',
-  styleUrls: ['./add-event.component.css']
+  selector: 'app-edit-event',
+  templateUrl: './edit-event.component.html',
+  styleUrls: ['./edit-event.component.css']
 })
-export class AddEventComponent implements OnInit {
+export class EditEventComponent {
 
   returnUrl!: string;
   showError!: boolean;
   eventForm!: FormGroup;
   errorMessage: string = '';
   userId: number = 0;
+
+
+  titleValue!: string;
+  descriptionValue!: string;
+  dateValue!: string;
+  colorValue!: string;
+  allDayValue!: string;
+  value!: string;
+
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -28,7 +37,7 @@ export class AddEventComponent implements OnInit {
     this.eventForm = new FormGroup({
       title: new FormControl("", [Validators.required]),
       description: new FormControl("", [Validators.required]),
-      date: new FormControl("", [Validators.required]),
+      date: new FormControl("", [Validators.required, this.validateMaxDate.bind(this)]),
       color: new FormControl("", [Validators.required]),
       allDay: new FormControl("", [Validators.required]),
     })
@@ -37,6 +46,18 @@ export class AddEventComponent implements OnInit {
     this.authenticationService.loggedUserId().subscribe(res => {
       this.userId = res.userId;
     });
+  }
+
+
+  validateMaxDate(control: FormControl): { [key: string]: any } | null {
+    const selectedDate = new Date(control.value);
+    const currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0);
+
+    if (selectedDate > currentDate) {
+      return { maxDate: true };
+    }
+    return null;
   }
 
   addEvent = (editFormValue: any) => {

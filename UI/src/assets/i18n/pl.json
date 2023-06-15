@@ -1,6 +1,7 @@
 {
   "action": { 
     "addEvent": "Dodaj wydarzenie",
+    "editEvent": "Edytuj wydarzenie",
     "save": "Zapisz",
     "back": "Wróć",
     "addVehicle": "Dodaj Pojazd",
@@ -13,7 +14,8 @@
     "selectPicture": "Wybierz zdjecie",
     "pictureProfile": "Zdjecie profilowe",
     "saveProfile": "Zapisz Profil",
-    "auction":"Aktualnie trwa aukcja"
+    "auction":"Aktualnie trwa aukcja",
+    "calendarManage": "Zarządzanie kalendarzem"
   },
     "menu": {
       "home": "Home",
@@ -98,9 +100,11 @@
     },
     "calendar":{
       "title": "Tytuł",
+      "description": "Opis",
       "date": "Data",
       "color": "Kolor",
-      "allDay": "Cały Dzień"
+      "allDay": "Cały Dzień",
+      "manager": "Zarządzanie kalendarzem"
     }
   }
   

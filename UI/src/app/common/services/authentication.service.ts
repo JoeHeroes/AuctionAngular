@@ -85,7 +85,7 @@ export interface UserRegisterDto {
   sureName: string;
   nationality: string;
   phone: string;
-  dateofbirth: Date;
+  dateOfBirth: Date;
   roleid: number;
 }
 
@@ -102,7 +102,7 @@ export interface EditProfileDto {
   sureName: string;
   nationality: string;
   phone: string;
-  dateofbirth: Date;
+  dateOfBirth: Date;
 }
 
 export interface AuthResponseDto {

@@ -18,6 +18,15 @@ export class ProfileEditComponent implements OnInit {
   email: string = '';
   userId: number = 0;
 
+
+  nameValue!: string;
+  sureNameValue!: string;
+  phoneValue!: string;
+  nationalityValue!: string;
+  dateOfBirthValue!: string;
+
+  value!: string;
+
   constructor(private authenticationService: AuthenticationService,
     private router: Router,
     private route: ActivatedRoute) { }
@@ -29,17 +38,34 @@ export class ProfileEditComponent implements OnInit {
       sureName: new FormControl("", [Validators.required]),
       phone: new FormControl("", [Validators.required]),
       nationality: new FormControl("", [Validators.required]),
-      dateOfBirth: new FormControl("", [Validators.required]),
-      pathPicture: new FormControl("", [Validators.required]),
+      dateOfBirth: new FormControl("", [Validators.required, this.validateMaxDate.bind(this)]),
     })
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/profile';
 
     this.authenticationService.loggedUserId().subscribe(res => {
       this.userId = res.userId;
       this.authenticationService.getUserInfo(res.userId).subscribe(res => {
-        this.email = res.email;
+
+        this.nameValue = res.name;
+        this.sureNameValue = res.sureName;
+        this.phoneValue = res.phone;
+        this.nationalityValue = res.nationality;
+        this.value = res.dateOfBirth;
+        this.dateOfBirthValue = this.value.slice(0, 10);
+
       });
     });
+  }
+
+  validateMaxDate(control: FormControl): { [key: string]: any } | null {
+    const selectedDate = new Date(control.value);
+    const currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0);
+
+    if (selectedDate > currentDate) {
+      return { maxDate: true };
+    }
+    return null;
   }
 
   editProfile = (editFormValue: any) => {
@@ -52,8 +78,10 @@ export class ProfileEditComponent implements OnInit {
       sureName: edit.sureName,
       phone: edit.phone,
       nationality: edit.nationality,
-      dateofbirth: edit.dateofbirth,
+      dateOfBirth: edit.dateOfBirth,
     }
+
+    alert(edit.dateOfBirth);
     this.authenticationService.editProfile(editData)
       .subscribe({
         next: (res: AuthResponseDto) => {

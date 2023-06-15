@@ -29,6 +29,7 @@ export class CalendarService {
 
 export interface AddEventeDto {
   title: number;
+  description: string;
   date: Date;
   color: string;
   allDay: boolean;

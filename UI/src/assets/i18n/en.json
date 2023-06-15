@@ -1,6 +1,7 @@
 {
   "action": { 
     "addEvent": "Add Event",
+    "editEvent": "Edit Event",
     "save": "Save",
     "back": "Back",
     "addVehicle": "Add Vehicle",
@@ -13,7 +14,8 @@
     "selectPicture": "Select Picture",
     "pictureProfile": "Picture Profile",
     "saveProfile": "Save Profile",
-    "auction":"Auction is on now"
+    "auction":"Auction is on now",
+    "calendarManage": "Calendar management"
   },
   "menu": {
     "home": "Home",
@@ -98,8 +100,10 @@
   },
   "calendar":{
     "title": "Title",
+    "description": "Description",
     "date": "Date",
     "color": "Color",
-    "allDay": "All Day"
+    "allDay": "All Day",
+    "manager": "Calendar management"
   }
 }

@@ -2,10 +2,16 @@
     <form [formGroup]="eventForm" (ngSubmit)="addEvent(eventForm.value)" enctype="multipart/form-data">
       <h3>{{t('action.addEvent')}}</h3>
         <div class="dx-fieldset">
-          <div class="dx-field">
+            <div class="dx-field">
               <div class="dx-field-label">{{t('calendar.title')}}</div>
               <div class="dx-field-value">
                 <input type="text" id="title" formControlName="title" class="form-control" />
+              </div>
+            </div>
+            <div class="dx-field">
+              <div class="dx-field-label">{{t('calendar.description')}}</div>
+              <div class="dx-field-value">
+                <input type="text" id="description" formControlName="description" class="form-control" />
               </div>
             </div>
             <div class="dx-field">

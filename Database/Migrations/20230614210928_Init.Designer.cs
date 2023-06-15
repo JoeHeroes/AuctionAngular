@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Database.Migrations
 {
     [DbContext(typeof(AuctionDbContext))]
-    [Migration("20230612204649_Init")]
+    [Migration("20230614210928_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -56,6 +56,10 @@ namespace Database.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Color")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

@@ -25,6 +25,8 @@ import { VehicleWonComponent } from './pages/vehicle-won/vehicle-won.component';
 import { VehicleLostComponent } from './pages/vehicle-lost/vehicle-lost.component';
 import { VehicleBidsComponent } from './pages/vehicle-bids/vehicle-bids.component';
 import { AddEventComponent } from './pages/add-event/add-event.component';
+import { CalendarManageComponent } from './pages/calendar-manage/calendar-manage.component';
+import { EditEventComponent } from './pages/edit-event/edit-event.component';
 
 const routes: Routes = [
   {
@@ -117,6 +119,23 @@ const routes: Routes = [
         pathMatch: 'full',
         component: AddEventComponent,
         data: { title: 'Add Event' }
+      },
+      {
+        path: 'edit-event',
+        children: [
+          {
+            path: ':id',
+            pathMatch: 'full',
+            component: EditEventComponent,
+            data: { title: 'Edit Event' }
+          },
+        ],
+      },
+      {
+        path: 'calendar-manage',
+        pathMatch: 'full',
+        component: CalendarManageComponent,
+        data: { title: 'Calendar Manage' }
       },
       {
         path: 'login',

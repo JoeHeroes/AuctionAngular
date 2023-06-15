@@ -68,7 +68,7 @@ export class RegisterComponent implements OnInit {
       sureName: register.surename,
       nationality: register.nationality,
       phone: register.phone,
-      dateofbirth: register.dateofbirth,
+      dateOfBirth: register.dateOfBirth,
       roleid: register.roleid,
 
     }

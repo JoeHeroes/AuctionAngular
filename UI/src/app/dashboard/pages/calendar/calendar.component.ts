@@ -13,10 +13,6 @@ import allLocales from '@fullcalendar/core/locales-all'
 })
 
 
-
-
-
-
 export class CalendarComponent {
   calendarOptions: CalendarOptions = {
     firstDay: 1,

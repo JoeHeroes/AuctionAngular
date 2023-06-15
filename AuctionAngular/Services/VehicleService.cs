@@ -325,11 +325,11 @@ namespace AuctionAngular.Services
 
         public async Task Watch(WatchDto dto)
         {
-            User user = await this.dbContext
+            User? user = await this.dbContext
                                     .Users
                                     .FirstOrDefaultAsync(x => x.Id == dto.UserId);
 
-            Vehicle vehicle = await this.dbContext
+            Vehicle? vehicle = await this.dbContext
                                     .Vehicles
                                     .FirstOrDefaultAsync(x => x.Id == dto.VehicleId);
 
@@ -344,6 +344,7 @@ namespace AuctionAngular.Services
                 var newEvent = new Event()
                 {
                     Title = vehicle.Id + " " + vehicle.Producer + " " + vehicle.ModelGeneration,
+                    Description = "",
                     Start = vehicle.DateTime,
                     End = vehicle.DateTime,
                     Color = vehicle.Color,
@@ -475,6 +476,7 @@ namespace AuctionAngular.Services
             var eventSell = new Event()
             {
                 Title = id + " " + dto.Producer + " " + dto.ModelSpecifer + " " + dto.ModelGeneration,
+                Description = "",
                 Start = dto.DateTime,
                 End = dto.DateTime,
                 Color = dto.Color,

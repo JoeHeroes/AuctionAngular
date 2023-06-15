@@ -1,0 +1,54 @@
+<ng-container *transloco="let t">
+  <form [formGroup]="eventForm" (ngSubmit)="addEvent(eventForm.value)" enctype="multipart/form-data">
+    <h3>{{t('action.editEvent')}}</h3>
+      <div class="dx-fieldset">
+          <div class="dx-field">
+            <div class="dx-field-label">{{t('calendar.title')}}</div>
+            <div class="dx-field-value">
+              <input type="text" id="title" formControlName="title" class="form-control" />
+            </div>
+          </div>
+          <div class="dx-field">
+            <div class="dx-field-label">{{t('calendar.description')}}</div>
+            <div class="dx-field-value">
+              <input type="text" id="description" formControlName="description" class="form-control" />
+            </div>
+          </div>
+          <div class="dx-field">
+            <div class="dx-field">
+              <div class="dx-field-label">{{t('calendar.date')}}:</div>
+              <div class="dx-field-value">
+                <input type="date" id="date" formControlName="dateOfBirth" [value]="dateValue" start class="form-control" />
+                <div *ngIf="eventForm.controls['date'].invalid && (eventForm.controls['date'].errors?.['required'] || eventForm.controls['dateOfBirth'].errors?.['maxDate'])">
+                  <div *ngIf="eventForm.controls['date'].errors?.['maxDate']">
+                    Data nie może być w przyszłości.
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          <div class="dx-field">
+            <div class="dx-field-label">{{t('calendar.color')}}</div>
+            <div class="dx-field-value">
+              <dx-color-box id="color" formControlName="color" class="form-control" ></dx-color-box>
+            </div>
+          </div>
+          <div class="dx-field">
+            <div class="dx-field-label">{{t('calendar.allDay')}}</div>
+            <div class="dx-field-value">
+              <select id="allDay" formControlName="allDay" class="form-control">
+                  <option [ngValue]="true">True</option>
+                  <option [ngValue]="false">False</option>
+              </select>
+            </div>
+          </div>
+        
+         
+      </div>
+      <dx-button  [text]="t('action.back')" type="normal" [routerLink]="['/calendar']"></dx-button>
+      <dx-button class="button" [text]="t('action.save')" type="success" [useSubmitBehavior]="true"></dx-button>
+    </form>
+  </ng-container>
+  
+  

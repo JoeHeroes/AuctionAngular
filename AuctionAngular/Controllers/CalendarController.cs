@@ -27,7 +27,7 @@ namespace AuctionAngular.Controllers
         [HttpGet("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<IEnumerable<Event>>> EventList()
+        public async Task<ActionResult<IEnumerable<ViewEventDto>>> EventList()
         {
             var result = await this.service.GetAll();
             return Ok(result);

@@ -9,6 +9,6 @@ namespace AuctionAngular.Dtos
         public string SureName { get; set; }
         public string Phone { get; set; }
         public string Nationality { get; set; }
-        public DateTime Date { get; set; }
+        public DateTime? DateOfBirth { get; set; }
     }
 }

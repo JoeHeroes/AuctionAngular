@@ -39,6 +39,8 @@ import { VehicleLostComponent } from './pages/vehicle-lost/vehicle-lost.componen
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { VehicleBidsComponent } from './pages/vehicle-bids/vehicle-bids.component';
 import { AddEventComponent } from './pages/add-event/add-event.component';
+import { CalendarManageComponent } from './pages/calendar-manage/calendar-manage.component';
+import { EditEventComponent } from './pages/edit-event/edit-event.component';
 
 
 
@@ -70,6 +72,8 @@ import { AddEventComponent } from './pages/add-event/add-event.component';
     VehicleLostComponent,
     VehicleBidsComponent,
     AddEventComponent,
+    CalendarManageComponent,
+    EditEventComponent,
   ],
   exports: [],
   imports: [
