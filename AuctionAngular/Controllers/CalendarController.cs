@@ -1,6 +1,5 @@
 ﻿using AuctionAngular.Dtos;
 using AuctionAngular.Interfaces;
-using Database.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AuctionAngular.Controllers
@@ -9,13 +8,13 @@ namespace AuctionAngular.Controllers
     [Route("[controller]")]
     public class CalendarController : ControllerBase
     {
-        private readonly ICalendarService service;
+        private readonly ICalendarService _calendarService;
         /// <summary>
         /// Calendar Controller
         /// </summary>
-        public CalendarController(ICalendarService service)
+        public CalendarController(ICalendarService calendarService)
         {
-            this.service = service;
+            _calendarService = calendarService;
         }
 
         /// <summary>
@@ -29,11 +28,32 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<ViewEventDto>>> EventList()
         {
-            var result = await this.service.GetAll();
+            var result = await _calendarService.GetAll();
             return Ok(result);
         }
 
 
+        /// <summary>
+        /// Get One Event
+        /// </summary>
+        /// <returns>Ok with event</returns>
+        /// <response code="200">Correct data</response>
+        /// <response code="400">Incorrect data</response>
+        [HttpGet("[action]/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+
+        public async Task<ActionResult<ViewEventDto>> GetOne([FromRoute] int id)
+        {
+            var result = await _calendarService.GetById(id);
+
+            if (result is null)
+            {
+                return NotFound();
+            }
+
+            return Ok(result);
+        }
 
         /// <summary>
         /// Create Event
@@ -46,7 +66,24 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> CreateEvent([FromBody]CreateEventDto dto)
         {
-            var result = await this.service.Create(dto);
+            var result = await _calendarService.Create(dto);
+            return Ok();
+        }
+
+
+
+        /// <summary>
+        /// Edit Event
+        /// </summary>
+        /// <returns>Ok</returns>
+        /// <response code="200">Correct data</response>
+        /// <response code="400">Incorrect id</response>
+        [HttpPost("[action]")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> EditEvent([FromBody] EditEventDto dto)
+        {
+            await _calendarService.Edit(dto);
             return Ok();
         }
     }

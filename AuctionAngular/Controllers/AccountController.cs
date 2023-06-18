@@ -2,11 +2,8 @@
 using AuctionAngular.Interfaces;
 using Database.Entities;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.WebUtilities;
 using System.Security.Claims;
-using System.Text;
 
 namespace AuctionAngular.Controllers
 {
@@ -17,13 +14,15 @@ namespace AuctionAngular.Controllers
     [Route("[controller]")]
     public class AccountController : ControllerBase
     {
-        private readonly IAccountService service;
-        private readonly IMailService mailService;
+        private readonly IAccountService _accountService;
+        private readonly IMailService _mailService;
+        private readonly IMessageService _messageService;
 
-        public AccountController(IAccountService service, IMailService mailService)
+        public AccountController(IAccountService accountService, IMailService mailService, IMessageService messageService)
         {
-            this.service = service;
-            this.mailService = mailService;
+            _accountService = accountService;
+            _mailService = mailService;
+            _messageService = messageService;
         }
         /// <summary>
         /// User registration
@@ -37,7 +36,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Register([FromBody] RegisterUserDto dto)
         {
-            await this.service.CreateUser(dto);
+            await _accountService.CreateUserAsync(dto);
 
             var user = new User()
             {
@@ -53,7 +52,7 @@ namespace AuctionAngular.Controllers
                 EmialConfirmed = false
             };
 
-            var token = await this.service.GenerateToken(user);
+            var token = await _accountService.GenerateTokenAsync(user);
 
             return Ok(token);
         }
@@ -70,7 +69,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Login([FromBody] LoginUserDto dto)
         {
-            var token = await this.service.LoginUser(dto);
+            var token = await _accountService.LoginUserAsync(dto);
 
             return Ok(new AuthResponseDto { IsAuthSuccessful = true, Token = token });
         }
@@ -87,7 +86,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Restart([FromBody] RestartPasswordDto dto)
         {
-            await this.service.RestartPassword(dto);
+            await _accountService.RestartPasswordAsync(dto);
 
             return Ok();
         }
@@ -104,7 +103,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Edit([FromBody] EditUserDto dto)
         {
-            await this.service.EditProfile(dto);
+            await _accountService.EditProfileAsync(dto);
 
             return NoContent();
         }
@@ -139,7 +138,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> GetUserInfo([FromRoute] int id)
         {
-            var result = await this.service.GetUserInfo(id);
+            var result = await _accountService.GetUserInfoByIdAsync(id);
 
             return Ok(result);
         }
@@ -156,7 +155,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetRoles()
         {
-            var result = await this.service.GetRole();
+            var result = await _accountService.GetAllRoleAsync();
 
             return Ok(result);
         }
@@ -180,7 +179,7 @@ namespace AuctionAngular.Controllers
         {
             IFormFile files = Request.Form.Files[0];
 
-            var result = await this.service.AddPicture(id, files);
+            var result = await _accountService.AddProfilePictureAsync(id, files);
 
             if (result is null)
             {
@@ -195,36 +194,36 @@ namespace AuctionAngular.Controllers
 
 
         [HttpGet("[action]")]
-        public async Task<IActionResult> Account_Info()
+        public async Task<IActionResult> SendEmail(string email)
         {
+            var user = await _accountService.GetByEmailAsync(email);
 
-            var user = new User()
-            {
-                Email = "JoeHeros@wp.pl",
-                Name = "string",
-                SureName = "string",
-                PasswordHash = "string",
-                DateOfBirth = new DateTime(),
-                Nationality = "string",
-                Phone = "string",
-                RoleId = 0,
-                ProfilePicture = "",
-                EmialConfirmed = false
-            };
+            var token = await _accountService.GenerateTokenAsync(user);
 
+            string link = "https://localhost:7257" + "/Account/ConfirmEmail/"+ token + "/" + email;
 
-            var token = await this.service.GenerateToken(user);
-            var encodedToken = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token));
-            var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, token = encodedToken }, Request.Scheme);
+            string LOGIN_EMAIL_CONTENT_FORMAT = "<h1>Account Verification</h1></br><p>Thank you for choosing CarAuction</p></br> <p>Please confirm your email address by clicking the link below. </br> <a  href=\"{Link}\">Verify your email address</a></b></p>";
+            string content = LOGIN_EMAIL_CONTENT_FORMAT.Replace("{Link}", link);
 
             var mail = new MailRequestDto()
             {
-                ToEmail="JoeHeros@wp.pl",
-                Subject="lol",
-                Body = callbackUrl
+                ToEmail = "JoeHeros@wp.pl",
+                Subject = $"Hi {user.Name} {user.SureName}, please verify your CarAuction account",
+                Body = content
             };
-            var result = await this.mailService.SendEmailAsync(mail);
+            var result = await _mailService.SendEmailAsync(mail);
 
+
+            Message authenticationMessage = new Message()
+            {
+                Email = email,
+                Sent = result,
+                Title = "Logowanie do Panelu klienta",
+                Content = content,
+                Data = token,
+                Date = DateTime.Now,
+            };
+            await _messageService.Create(authenticationMessage);
 
             if (result)
             {
@@ -232,6 +231,22 @@ namespace AuctionAngular.Controllers
             }
 
             return Problem();
+        }
+
+
+
+
+        [HttpGet("[action]/{token}/{email}")]
+
+        public async Task<IActionResult> ConfirmEmail([FromRoute] string token, [FromRoute] string email)
+        {
+            bool resultCheck = _messageService.Check(token, email);
+
+            User user = await _accountService.GetByEmailAsync(email);
+
+            await _accountService.AccountVerification(user.Id ,resultCheck);
+
+            return Ok(token);
         }
     }
 }

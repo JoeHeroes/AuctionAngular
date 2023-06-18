@@ -13,8 +13,13 @@ import { TokenService } from 'src/app/common/services/token.service';
 export class MainComponent implements OnInit {
   @Output() sidebarButtonClick = new EventEmitter<void>();
   isUserAuthenticated: boolean = false;
-  datasource: any;
+  datasource: any = {
+    Name: "Account",
+    SureName: "",
+  };
   liveAuction: boolean = false;
+
+
 
   constructor(private authService: AuthenticationService,
     private auctionService: AuctionService,

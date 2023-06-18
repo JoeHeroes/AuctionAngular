@@ -19,10 +19,25 @@ export class CalendarService {
 
     return this.http.get<any>(url_);
   }
+
+  public getEvent(id: number): Observable<any> {
+
+    let url_ = this.baseUrl + "/Calendar/GetOne/" + id;
+
+    return this.http.get<any>(url_);
+  }
+
   public addEvent(data: AddEventeDto): Observable<any> {
 
     let url_ = this.baseUrl + "/Calendar/CreateEvent";
 
+    return this.http.post<any>(url_, data);
+  }
+
+  public editEvent(data: EditEventeDto): Observable<any> {
+
+    alert("xD");
+    let url_ = this.baseUrl + "/Calendar/EditEvent";
     return this.http.post<any>(url_, data);
   }
 }
@@ -34,4 +49,13 @@ export interface AddEventeDto {
   color: string;
   allDay: boolean;
   owner: number;
+}
+
+export interface EditEventeDto {
+  id: number;
+  title: number;
+  description: string;
+  date: Date;
+  color: string;
+  allDay: boolean;
 }

@@ -8,13 +8,13 @@ namespace AuctionAngular.Controllers
     [Route("[controller]")]
     public class LocationController : ControllerBase
     {
-        private readonly ILocationService service;
+        private readonly ILocationService _locationService;
         /// <summary>
         /// Location Controller
         /// </summary>
-        public LocationController(ILocationService service)
+        public LocationController(ILocationService locationService)
         {
-            this.service = service;
+            _locationService = locationService;
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<ViewLocationDto>>> LocationList()
         {
-            var result = await this.service.GetAll();
+            var result = await _locationService.GetAll();
             return Ok(result);
         }
     }

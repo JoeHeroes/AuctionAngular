@@ -49,7 +49,7 @@
         <dxi-column [width]="120"></dxi-column>
   
         <div *dxTemplate="let data of 'cellTemplate'">
-          <img width="200" src="https://localhost:7257/Images/{{data.value}}" >
+          <img width="200" src="https://storagevehicleauction.blob.core.windows.net/vehicle-images/{{data.value}}">
         </div>
         <div *dxTemplate="let d of 'discountCellTemplate'">
           <div class="chart-cell">

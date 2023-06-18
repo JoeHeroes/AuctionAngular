@@ -8,23 +8,23 @@ namespace AuctionAngular.Services
 {
     public class VehicleService : IVehicleService
     {
-        private readonly AuctionDbContext dbContext;
-        private readonly IWebHostEnvironment webHost;
+        private readonly AuctionDbContext _dbContext;
+        private readonly IWebHostEnvironment _webHost;
         /// <inheritdoc/>
         public VehicleService(AuctionDbContext dbContext, IWebHostEnvironment webHost)
         {
-            this.dbContext = dbContext;
-            this.webHost = webHost;
+            _dbContext = dbContext;
+            _webHost = webHost;
         }
 
         public async Task<ViewVehicleDto> GetById(int id)
         {
-            var vehicle = await this.dbContext
+            var vehicle = await _dbContext
                 .Vehicles
                 .FirstOrDefaultAsync(u => u.Id == id);
 
 
-            var restultPictures = this.dbContext.Pictures.Where(x => x.VehicleId == vehicle.Id);
+            var restultPictures = _dbContext.Pictures.Where(x => x.VehicleId == vehicle.Id);
 
             List<string> pictures = new List<string>();
 
@@ -38,7 +38,7 @@ namespace AuctionAngular.Services
 
         public async Task<IEnumerable<ViewVehiclesDto>> GetAll()
         {
-            var vehicles = await this.dbContext
+            var vehicles = await _dbContext
                 .Vehicles
                 .ToListAsync();
 
@@ -46,7 +46,7 @@ namespace AuctionAngular.Services
 
             foreach (var vehicle in vehicles)
             {
-                var restultPictures = this.dbContext.Pictures.Where(x => x.VehicleId == vehicle.Id);
+                var restultPictures = _dbContext.Pictures.Where(x => x.VehicleId == vehicle.Id);
 
                 List<string> pictures = new List<string>();
 
@@ -56,7 +56,6 @@ namespace AuctionAngular.Services
                 }
 
                 viewVehicle.Add(ViewVehiclesDtoConvert(vehicle, pictures));
-
             }
 
             return viewVehicle;
@@ -66,15 +65,15 @@ namespace AuctionAngular.Services
         public async Task<IEnumerable<ViewVehiclesDto>> GetAllBided(int id)
         {
 
-            var bids = this.dbContext.Bids.Where(x => x.UserId == id);
+            var bids = _dbContext.Bids.Where(x => x.UserId == id);
 
-            var vehiclesReult = await this.dbContext
+            var vehiclesReult = await _dbContext
                 .Vehicles
                 .ToListAsync();
 
             List<Vehicle> vehicles = new List<Vehicle>();
 
-            var vehiclesList = this.dbContext.Vehicles.ToList();
+            var vehiclesList = _dbContext.Vehicles.ToList();
 
             foreach (var x in bids)
             {
@@ -90,7 +89,7 @@ namespace AuctionAngular.Services
 
             foreach (var vehicle in vehicles)
             {
-                var restultPictures = this.dbContext.Pictures.Where(x => x.VehicleId == vehicle.Id);
+                var restultPictures = _dbContext.Pictures.Where(x => x.VehicleId == vehicle.Id);
 
                 List<string> pictures = new List<string>();
 
@@ -108,15 +107,15 @@ namespace AuctionAngular.Services
         public async Task<IEnumerable<ViewVehiclesDto>> GetAllWon(int id)
         {
 
-            var bids = this.dbContext.Bids.Where(x => x.UserId == id);
+            var bids = _dbContext.Bids.Where(x => x.UserId == id);
 
-            var vehiclesReult = await this.dbContext
+            var vehiclesReult = await _dbContext
                 .Vehicles
                 .ToListAsync();
 
             List<Vehicle> vehicles = new List<Vehicle>();
 
-            var vehiclesList = this.dbContext.Vehicles.ToList();
+            var vehiclesList = _dbContext.Vehicles.ToList();
 
             foreach (var x in bids)
             {
@@ -132,7 +131,7 @@ namespace AuctionAngular.Services
 
             foreach (var vehicle in vehicles)
             {
-                var restultPictures = this.dbContext.Pictures.Where(x => x.VehicleId == vehicle.Id);
+                var restultPictures = _dbContext.Pictures.Where(x => x.VehicleId == vehicle.Id);
 
                 List<string> pictures = new List<string>();
 
@@ -150,15 +149,15 @@ namespace AuctionAngular.Services
         public async Task<IEnumerable<ViewVehiclesDto>> GetAllLost(int id)
         {
 
-            var bids = this.dbContext.Bids.Where(x => x.UserId == id);
+            var bids = _dbContext.Bids.Where(x => x.UserId == id);
 
-            var vehiclesReult = await this.dbContext
+            var vehiclesReult = await _dbContext
                 .Vehicles
                 .ToListAsync();
 
             List<Vehicle> vehicles = new List<Vehicle>();
 
-            var vehiclesList = this.dbContext.Vehicles.ToList();
+            var vehiclesList = _dbContext.Vehicles.ToList();
 
             foreach (var x in bids)
             {
@@ -174,7 +173,7 @@ namespace AuctionAngular.Services
 
             foreach (var vehicle in vehicles)
             {
-                var restultPictures = this.dbContext.Pictures.Where(x => x.VehicleId == vehicle.Id);
+                var restultPictures = _dbContext.Pictures.Where(x => x.VehicleId == vehicle.Id);
 
                 List<string> pictures = new List<string>();
 
@@ -220,10 +219,10 @@ namespace AuctionAngular.Services
             };
 
 
-            this.dbContext.Vehicles.Add(vehicle);
+            _dbContext.Vehicles.Add(vehicle);
             try
             {
-                await this.dbContext.SaveChangesAsync();
+                await _dbContext.SaveChangesAsync();
             }
             catch (DbUpdateException e)
             {
@@ -236,7 +235,7 @@ namespace AuctionAngular.Services
         }
         public async Task Delete(int id)
         {
-            var result = this.dbContext
+            var result = _dbContext
                 .Vehicles
                 .FirstOrDefault(u => u.Id == id);
 
@@ -245,10 +244,10 @@ namespace AuctionAngular.Services
                 throw new NotFoundException("Vehicle not found");
             }
 
-            this.dbContext.Vehicles.Remove(result);
+            _dbContext.Vehicles.Remove(result);
             try
             {
-                await this.dbContext.SaveChangesAsync();
+                await _dbContext.SaveChangesAsync();
             }
             catch (DbUpdateException e)
             {
@@ -258,7 +257,7 @@ namespace AuctionAngular.Services
 
         public async Task Update(int id, EditVehicleDto dto)
         {
-            var vehicle = await this.dbContext
+            var vehicle = await _dbContext
                 .Vehicles
                 .FirstOrDefaultAsync(u => u.Id == id);
 
@@ -277,7 +276,7 @@ namespace AuctionAngular.Services
 
             try
             {
-                await this.dbContext.SaveChangesAsync();
+                await _dbContext.SaveChangesAsync();
             }
             catch (DbUpdateException e)
             {
@@ -287,7 +286,7 @@ namespace AuctionAngular.Services
 
         public async Task Bid(UpdateBidDto dto)
         {
-            Vehicle vehicle = await this.dbContext
+            Vehicle? vehicle = await _dbContext
                                 .Vehicles
                                 .FirstOrDefaultAsync(x => x.Id == dto.lotNumber);
 
@@ -296,7 +295,7 @@ namespace AuctionAngular.Services
                 vehicle.WinnerId = dto.userId;
                 vehicle.CurrentBid = dto.bidNow;
 
-                User user = await this.dbContext
+                User? user = await _dbContext
                                   .Users
                                   .FirstOrDefaultAsync(x => x.Id == dto.userId);
 
@@ -307,14 +306,14 @@ namespace AuctionAngular.Services
                 };
 
                 
-                if (this.dbContext.Bids.FirstOrDefault(x => x.UserId == user.Id && x.VehicleId == vehicle.Id) == null)
+                if (_dbContext.Bids.FirstOrDefault(x => x.UserId == user.Id && x.VehicleId == vehicle.Id) == null)
                 {
-                    this.dbContext.Bids.Add(bind);
+                    _dbContext.Bids.Add(bind);
                 }
                 
                 try
                 {
-                    await this.dbContext.SaveChangesAsync();
+                    await _dbContext.SaveChangesAsync();
                 }
                 catch (DbUpdateException e)
                 {
@@ -325,11 +324,11 @@ namespace AuctionAngular.Services
 
         public async Task Watch(WatchDto dto)
         {
-            User? user = await this.dbContext
+            User? user = await _dbContext
                                     .Users
                                     .FirstOrDefaultAsync(x => x.Id == dto.UserId);
 
-            Vehicle? vehicle = await this.dbContext
+            Vehicle? vehicle = await _dbContext
                                     .Vehicles
                                     .FirstOrDefaultAsync(x => x.Id == dto.VehicleId);
 
@@ -339,7 +338,7 @@ namespace AuctionAngular.Services
                 VehicleMany = vehicle,
             };
 
-            if (await this.dbContext.Watches.FirstOrDefaultAsync(x => x.VehicleId == dto.VehicleId) == null)
+            if (await _dbContext.Watches.FirstOrDefaultAsync(x => x.VehicleId == dto.VehicleId) == null)
             {
                 var newEvent = new Event()
                 {
@@ -352,13 +351,13 @@ namespace AuctionAngular.Services
                     Owner = user.Id,
                 };
 
-                this.dbContext.Events.Add(newEvent);
-                this.dbContext.Watches.Add(observed);
+                _dbContext.Events.Add(newEvent);
+                _dbContext.Watches.Add(observed);
             }
 
             try
             {
-                await this.dbContext.SaveChangesAsync();
+                await _dbContext.SaveChangesAsync();
             }
             catch (DbUpdateException e)
             {
@@ -370,23 +369,23 @@ namespace AuctionAngular.Services
         public async Task RemoveWatch(WatchDto dto)
         {
 
-            Vehicle vehicle = await this.dbContext.Vehicles.FirstOrDefaultAsync(x => x.Id == dto.VehicleId);
+            Vehicle vehicle = await _dbContext.Vehicles.FirstOrDefaultAsync(x => x.Id == dto.VehicleId);
 
-            Watch observed = await this.dbContext.Watches.FirstOrDefaultAsync(x => x.UserId == dto.UserId && x.VehicleId == vehicle.Id);
+            Watch observed = await _dbContext.Watches.FirstOrDefaultAsync(x => x.UserId == dto.UserId && x.VehicleId == vehicle.Id);
 
 
-            var events = await this.dbContext.Events.FirstOrDefaultAsync(x => x.Title == vehicle.Id + " " + vehicle.Producer + " " + vehicle.ModelGeneration);
+            var events = await _dbContext.Events.FirstOrDefaultAsync(x => x.Title == vehicle.Id + " " + vehicle.Producer + " " + vehicle.ModelGeneration);
 
             if (events != null && events.Owner == dto.UserId)
             {
-                this.dbContext.Events.Remove(events);
+                _dbContext.Events.Remove(events);
             }
 
-            this.dbContext.Watches.Remove(observed);
+            _dbContext.Watches.Remove(observed);
 
             try
             {
-                await this.dbContext.SaveChangesAsync();
+                await _dbContext.SaveChangesAsync();
             }
             catch (DbUpdateException e)
             {
@@ -396,7 +395,7 @@ namespace AuctionAngular.Services
 
         public async Task<bool> CheckWatch(WatchDto dto)
         {
-            var result = await this.dbContext.Watches.FirstOrDefaultAsync(x => x.UserId == dto.UserId && x.VehicleId == dto.VehicleId);
+            var result = await _dbContext.Watches.FirstOrDefaultAsync(x => x.UserId == dto.UserId && x.VehicleId == dto.VehicleId);
 
             if (result != null)
             {
@@ -409,13 +408,13 @@ namespace AuctionAngular.Services
         }
         public async Task<IEnumerable<ViewVehiclesDto>> GetAllWatch(int id)
         {
-            var watches = await this.dbContext.Watches.Where(x => x.UserId == id).ToListAsync();
+            var watches = await _dbContext.Watches.Where(x => x.UserId == id).ToListAsync();
 
             var vehicles = new List<Vehicle>();
 
             foreach(var watch in watches)
             {
-                var result = await this.dbContext.Vehicles.FirstOrDefaultAsync(x => x.Id == watch.VehicleId);
+                var result = await _dbContext.Vehicles.FirstOrDefaultAsync(x => x.Id == watch.VehicleId);
                 vehicles.Add(result);
             }
 
@@ -423,7 +422,7 @@ namespace AuctionAngular.Services
 
             foreach (var vehicle in vehicles)
             {
-                var restultPictures = this.dbContext.Pictures.Where(x => x.VehicleId == vehicle.Id);
+                var restultPictures = _dbContext.Pictures.Where(x => x.VehicleId == vehicle.Id);
 
                 List<string> pictures = new List<string>();
 
@@ -446,7 +445,7 @@ namespace AuctionAngular.Services
                 string fileName = "";
                 if (file != null)
                 {
-                    string uploadDir = Path.Combine(webHost.WebRootPath, "Images");
+                    string uploadDir = Path.Combine(_webHost.WebRootPath, "Images");
                     fileName = Guid.NewGuid().ToString() + "-" + file.FileName;
                     string filePath = Path.Combine(uploadDir, fileName);
                     using (var fileStream = new FileStream(filePath, FileMode.Create))
@@ -455,13 +454,13 @@ namespace AuctionAngular.Services
                     }
                     listPicture.Add(fileName);
                     var picture = new Picture { PathImg = fileName, VehicleId = id};
-                    this.dbContext.Pictures.Add(picture);
+                    _dbContext.Pictures.Add(picture);
                 }
             }
 
             try
             {
-                await this.dbContext.SaveChangesAsync();
+                await _dbContext.SaveChangesAsync();
             }
             catch (DbUpdateException e)
             {
@@ -484,11 +483,11 @@ namespace AuctionAngular.Services
                 Owner = 0 //For All Users
             };
 
-            this.dbContext.Events.Add(eventSell);
+            _dbContext.Events.Add(eventSell);
 
             try
             {
-                await this.dbContext.SaveChangesAsync();
+                await _dbContext.SaveChangesAsync();
             }
             catch (DbUpdateException e)
             {

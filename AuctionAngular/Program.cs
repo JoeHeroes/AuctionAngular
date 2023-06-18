@@ -68,7 +68,7 @@ try
     builder.Services.AddScoped<IAuctionService, AuctionService>();
     builder.Services.AddScoped<ICalendarService, CalendarService>(); 
     builder.Services.AddTransient<IMailService, MailService>();
-
+    builder.Services.AddTransient<IMessageService, MessageService>();
 
 
     //Hasser

@@ -39,9 +39,9 @@ export class AddEventComponent implements OnInit {
     });
   }
 
-  addEvent = (editFormValue: any) => {
+  addEvent = (addFormValue: any) => {
     this.showError = false;
-    const edit = { ...editFormValue };
+    const edit = { ...addFormValue };
 
     const eventData: AddEventeDto = {
       title: edit.title,

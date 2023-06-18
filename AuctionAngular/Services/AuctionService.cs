@@ -3,29 +3,28 @@ using AuctionAngular.Interfaces;
 using Database;
 using Database.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace AuctionAngular.Services
 {
     public class AuctionService : IAuctionService
     {
-        private readonly AuctionDbContext dbContext;
+        private readonly AuctionDbContext _dbContext;
         /// <inheritdoc/>
         public AuctionService(AuctionDbContext dbContext)
         {
-            this.dbContext = dbContext;
+            _dbContext = dbContext;
         }
 
         public async Task<bool> LiveAuction()
         {
-            var result = await this.dbContext.Vehicles.Where(x => x.DateTime <= DateTime.Now && x.DateTime.AddHours(1) >= DateTime.Now && x.SalesFinised == false).AnyAsync();
+            var result = await _dbContext.Vehicles.Where(x => x.DateTime <= DateTime.Now && x.DateTime.AddHours(1) >= DateTime.Now && x.SalesFinised == false).AnyAsync();
 
             return result;
         }
 
         public async Task EndAuction()
         {
-            var result = await this.dbContext.Vehicles.Where(x => x.DateTime <= DateTime.Now && x.DateTime.AddHours(1) >= DateTime.Now && x.SalesFinised == false).ToListAsync();
+            var result = await _dbContext.Vehicles.Where(x => x.DateTime <= DateTime.Now && x.DateTime.AddHours(1) >= DateTime.Now && x.SalesFinised == false).ToListAsync();
 
             foreach (var res in result)
             {
@@ -34,7 +33,7 @@ namespace AuctionAngular.Services
 
             try
             {
-                await this.dbContext.SaveChangesAsync();
+                await _dbContext.SaveChangesAsync();
             }
             catch (DbUpdateException e)
             {
@@ -44,13 +43,13 @@ namespace AuctionAngular.Services
 
         public async Task<IEnumerable<ViewVehicleDto>> LiveAuctionList()
         {
-            var vehicles = await this.dbContext.Vehicles.Where(x => x.DateTime <= DateTime.Now && x.DateTime.AddHours(1) >= DateTime.Now).ToListAsync();
+            var vehicles = await _dbContext.Vehicles.Where(x => x.DateTime <= DateTime.Now && x.DateTime.AddHours(1) >= DateTime.Now).ToListAsync();
 
             List<ViewVehicleDto> result = new List<ViewVehicleDto>();
 
             foreach (var vehicle in vehicles)
             {
-                var restultPictures = this.dbContext.Pictures.Where(x => x.VehicleId == vehicle.Id);
+                var restultPictures = _dbContext.Pictures.Where(x => x.VehicleId == vehicle.Id);
 
                 List<string> pictures = new List<string>();
 
@@ -71,13 +70,13 @@ namespace AuctionAngular.Services
 
         public async Task<IEnumerable<ViewVehicleDto>> AuctionList()
         {
-            var vehicles = await this.dbContext.Vehicles.ToListAsync();
+            var vehicles = await _dbContext.Vehicles.ToListAsync();
 
             List<ViewVehicleDto> result = new List<ViewVehicleDto>();
 
             foreach (var vehicle in vehicles)
             {
-                var restultPictures = this.dbContext.Pictures.Where(x => x.VehicleId == vehicle.Id);
+                var restultPictures = _dbContext.Pictures.Where(x => x.VehicleId == vehicle.Id);
 
                 List<string> pictures = new List<string>();
 

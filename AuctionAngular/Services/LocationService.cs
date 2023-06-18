@@ -3,22 +3,21 @@ using AuctionAngular.Interfaces;
 using AuctionAngular.Dtos;
 using Database;
 using Database.Entities;
-using NLog.Fluent;
 
 namespace AuctionAngular.Services
 {
     public class LocationService : ILocationService
     {
-        private readonly AuctionDbContext dbContext;
+        private readonly AuctionDbContext _dbContext;
         /// <inheritdoc/>
         public LocationService(AuctionDbContext dbContext)
         {
-            this.dbContext = dbContext;
+            _dbContext = dbContext;
         }
 
         public async Task<ViewLocationDto> GetById(int id)
         {
-            var location = await this.dbContext
+            var location = await _dbContext
                 .Locations
                 .FirstOrDefaultAsync(u => u.Id == id);
 
@@ -34,7 +33,7 @@ namespace AuctionAngular.Services
 
         public async Task<IEnumerable<ViewLocationDto>> GetAll()
         {
-            var locations= await this.dbContext
+            var locations= await _dbContext
                 .Locations
                 .ToListAsync();
 

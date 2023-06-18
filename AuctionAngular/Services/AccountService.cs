@@ -4,24 +4,21 @@ using Database;
 using Database.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace AuctionAngular.Services
 {
 
     public class AccountService : IAccountService
     {
-        private readonly AuctionDbContext dbContext;
-        private readonly IPasswordHasher<User> passwordHasher;
-        private readonly AuthenticationSettings authenticationSetting;
-        private readonly IWebHostEnvironment webHost;
-        private readonly IConfiguration configuration;
+        private readonly AuctionDbContext _dbContext;
+        private readonly AuthenticationSettings _authenticationSetting;
+        private readonly IPasswordHasher<User> _passwordHasher;
+        private readonly IWebHostEnvironment _webHost;
+        private readonly IConfiguration _configuration;
         /// <inheritdoc/>
         public AccountService(AuctionDbContext dbContext,
             IPasswordHasher<User> passwordHasher,
@@ -29,13 +26,13 @@ namespace AuctionAngular.Services
             IWebHostEnvironment webHost,
             IConfiguration configuration)
         {
-            this.dbContext = dbContext;
-            this.passwordHasher = passwordHasher;
-            this.authenticationSetting = authenticationSetting;
-            this.webHost = webHost;
-            this.configuration = configuration;
+            _dbContext = dbContext;
+            _passwordHasher = passwordHasher;
+            _authenticationSetting = authenticationSetting;
+            _webHost = webHost;
+            _configuration = configuration;
         }
-        public async Task CreateUser(RegisterUserDto dto)
+        public async Task CreateUserAsync(RegisterUserDto dto)
         {
             var newUser = new User()
             {
@@ -51,13 +48,13 @@ namespace AuctionAngular.Services
                 EmialConfirmed = false
             };
 
-            var hashedPass = this.passwordHasher.HashPassword(newUser, dto.Password);
+            var hashedPass = _passwordHasher.HashPassword(newUser, dto.Password);
 
             newUser.PasswordHash = hashedPass;
-            this.dbContext.Users.Add(newUser);
+            _dbContext.Users.Add(newUser);
             try
             {
-                await this.dbContext.SaveChangesAsync();
+                await _dbContext.SaveChangesAsync();
             }
             catch (DbUpdateException e)
             {
@@ -65,22 +62,35 @@ namespace AuctionAngular.Services
             }
         }
 
-        public async Task<string> LoginUser(LoginUserDto dto)
+        public async Task<string> LoginUserAsync(LoginUserDto dto)
         {
-            var user = await this.dbContext
+            var account = await _dbContext
                  .Users
                  .FirstOrDefaultAsync(u => u.Email == dto.Email);
 
 
-            if (user is null)
+            if (account is null)
             {
                 throw new BadRequestException("Invalid username or password");
             }
 
-            return await GenerateToken(user);
+            var result = _passwordHasher.VerifyHashedPassword(account, account.PasswordHash, dto.Password);
+            if (result == PasswordVerificationResult.Failed)
+            {
+                throw new BadRequestException("Invalid username or password");
+            }
+
+
+            if(account.EmialConfirmed == false)
+            {
+                throw new BadRequestException("Confirm your email");
+            }
+           
+
+            return await GenerateTokenAsync(account);
         }
 
-        public async Task RestartPassword(RestartPasswordDto dto)
+        public async Task RestartPasswordAsync(RestartPasswordDto dto)
         {
             if (dto.NewPassword != dto.ConfirmNewPassword)
             {
@@ -92,19 +102,19 @@ namespace AuctionAngular.Services
                 throw new BadRequestException("New and Old Password and couldn't be the same");
             }
 
-            var account = await dbContext.Users.FirstOrDefaultAsync(x => x.Email == dto.Email);
+            var account = await _dbContext.Users.FirstOrDefaultAsync(x => x.Email == dto.Email);
 
 
-            var result = this.passwordHasher.VerifyHashedPassword(account, account.PasswordHash, dto.OldPassword);
+            var result = _passwordHasher.VerifyHashedPassword(account, account.PasswordHash, dto.OldPassword);
             if (result == PasswordVerificationResult.Failed)
             {
                 throw new BadRequestException("Old password is invalid");
             }
 
-            account.PasswordHash = this.passwordHasher.HashPassword(account, dto.NewPassword); ;
+            account.PasswordHash = _passwordHasher.HashPassword(account, dto.NewPassword); ;
             try
             {
-                await this.dbContext.SaveChangesAsync();
+                await _dbContext.SaveChangesAsync();
             }
             catch (DbUpdateException e)
             {
@@ -112,9 +122,9 @@ namespace AuctionAngular.Services
             }
         }
 
-        public async Task<ViewUserDto> GetUserInfo(int id)
+        public async Task<ViewUserDto> GetUserInfoByIdAsync(int id)
         {
-            var user = await this.dbContext
+            var user = await _dbContext
                .Users
                .FirstOrDefaultAsync(u => u.Id == id);
 
@@ -138,9 +148,9 @@ namespace AuctionAngular.Services
             return result;
         }
 
-        public async Task EditProfile(EditUserDto dto)
+        public async Task EditProfileAsync(EditUserDto dto)
         {
-            var user = await this.dbContext.Users.FirstOrDefaultAsync(x => x.Id == dto.UserId);
+            var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == dto.UserId);
 
 
             user.Name = dto.Name!="" ? dto.Name: user.Name;
@@ -151,7 +161,7 @@ namespace AuctionAngular.Services
 
             try
             {
-                await this.dbContext.SaveChangesAsync();
+                await _dbContext.SaveChangesAsync();
             }
             catch (DbUpdateException e)
             {
@@ -159,9 +169,9 @@ namespace AuctionAngular.Services
             }
         }
 
-        public async Task<IEnumerable<RoleDto>> GetRole()
+        public async Task<IEnumerable<RoleDto>> GetAllRoleAsync()
         {
-            var roles = await this.dbContext
+            var roles = await _dbContext
                 .Roles
                 .ToListAsync();
 
@@ -176,25 +186,25 @@ namespace AuctionAngular.Services
             return result;
         }
         
-        public async Task<string> AddPicture(int id, IFormFile file)
+        public async Task<string> AddProfilePictureAsync(int id, IFormFile file)
         {
             string fileName = "";
             if (file != null)
             {
-                string uploadDir = Path.Combine(webHost.WebRootPath, "Images");
+                string uploadDir = Path.Combine(_webHost.WebRootPath, "Images");
                 fileName = Guid.NewGuid().ToString() + "-" + file.FileName;
                 string filePath = Path.Combine(uploadDir, fileName);
                 using (var fileStream = new FileStream(filePath, FileMode.Create))
                 {
                     file.CopyTo(fileStream);
                 }
-                var user = await this.dbContext.Users.FirstOrDefaultAsync(x => x.Id == id);
+                var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == id);
                 user.ProfilePicture = fileName;
             }
 
             try
             {
-                await this.dbContext.SaveChangesAsync();
+                await _dbContext.SaveChangesAsync();
             }
             catch (DbUpdateException e)
             {
@@ -204,7 +214,7 @@ namespace AuctionAngular.Services
             return fileName;
         }
 
-        public async Task<string> GenerateToken(User user)
+        public async Task<string> GenerateTokenAsync(User user)
         {
             var clasims = new List<Claim>()
             {
@@ -221,14 +231,13 @@ namespace AuctionAngular.Services
                     );
             }
 
-
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(authenticationSetting.JwtKey));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_authenticationSetting.JwtKey));
             var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-            var expires = DateTime.Now.AddDays(authenticationSetting.JwtExpireDays);
+            var expires = DateTime.Now.AddDays(_authenticationSetting.JwtExpireDays);
 
 
-            var token = new JwtSecurityToken(authenticationSetting.JwtIssuer,
-                authenticationSetting.JwtIssuer,
+            var token = new JwtSecurityToken(_authenticationSetting.JwtIssuer,
+                _authenticationSetting.JwtIssuer,
                 clasims,
                 expires: expires,
                 signingCredentials: cred
@@ -236,6 +245,26 @@ namespace AuctionAngular.Services
 
             var tokenHander = new JwtSecurityTokenHandler();
             return tokenHander.WriteToken(token);
+        }
+
+        public async Task<User?> GetByEmailAsync(string email)
+        {
+            return await _dbContext.Users.FirstOrDefaultAsync(x => x.Email == email);
+        }
+
+        public async Task AccountVerification(int id ,bool autorization)
+        {
+            User user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == id);
+            user.EmialConfirmed = autorization;
+
+            try
+            {
+                await _dbContext.SaveChangesAsync();
+            }
+            catch (DbUpdateException e)
+            {
+                throw new DbUpdateException("Error DataBase", e);
+            }
         }
     }
 }

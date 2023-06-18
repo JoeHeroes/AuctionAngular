@@ -3,7 +3,6 @@ using AuctionAngular.Interfaces;
 using AuctionAngular.Dtos;
 using Database;
 using Database.Entities;
-using System.Drawing;
 
 namespace AuctionAngular.Services
 {
@@ -52,6 +51,26 @@ namespace AuctionAngular.Services
 
 
 
+        public async Task<ViewEventDto> GetById(int id)
+        {
+            var eventResult = await this.dbContext
+                .Events
+                .FirstOrDefaultAsync(u => u.Id == id);
+
+            return  new ViewEventDto()
+            {
+                Id = eventResult.Id,
+                Title = eventResult.Title,
+                Description = eventResult.Description,
+                Start = eventResult.Start.ToString("yyyy-MM-dd"),
+                End = eventResult.End.ToString("yyyy-MM-dd"),
+                Color = eventResult.Color,
+                AllDay = eventResult.AllDay,
+            };
+        }
+
+
+
         public async Task<int> Create(CreateEventDto dto)
         {
             var eventResult = new Event()
@@ -79,5 +98,29 @@ namespace AuctionAngular.Services
             return eventResult.Id;
         }
 
+        public async Task Edit(EditEventDto dto)
+        {
+
+            var eventResult = await this.dbContext.Events.FirstOrDefaultAsync(x => x.Id == dto.Id);
+
+
+            eventResult.Title = dto.Title != "" ? dto.Title : eventResult.Title;
+            eventResult.Description = dto.Description != "" ? dto.Description : eventResult.Description;
+            eventResult.Start = dto.Date.ToString() != default(DateTime).ToString() ? dto.Date : eventResult.Start;
+            eventResult.End = dto.Date.ToString() != default(DateTime).ToString() ? dto.Date : eventResult.End;
+            eventResult.Color = dto.Color != "" ? dto.Color : eventResult.Color;
+            eventResult.AllDay = dto.AllDay;
+
+
+
+            try
+            {
+                await dbContext.SaveChangesAsync();
+            }
+            catch (DbUpdateException e)
+            {
+                throw new DbUpdateException("Error DataBase", e);
+            }
+        }
     }
 }

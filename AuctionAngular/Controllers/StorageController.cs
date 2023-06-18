@@ -1,5 +1,4 @@
 ﻿using AuctionAngular.Dtos;
-
 using Azure.Storage.Blobs;
 using Database;
 using Microsoft.AspNetCore.Mvc;
@@ -12,25 +11,25 @@ namespace AuctionAngular.Controllers
     [Route("[controller]")]
     public class StorageController: ControllerBase
     {
-        private readonly BlobServiceClient blobServiceClient;
-        private readonly IConfiguration configuration;
-        private readonly AuctionDbContext dbContext;
+        private readonly BlobServiceClient _blobServiceClient;
+        private readonly AuctionDbContext _dbContext;
         private readonly string containerProfileImages = "profile-images";
         private readonly string containerVehicleImages = "vehicle-images";
+        private readonly IConfiguration _configuration;
 
 
-    public StorageController(IConfiguration configuration, AuctionDbContext dbContext)
+        public StorageController(IConfiguration configuration, AuctionDbContext dbContext)
         {
             string connectionAzure = "DefaultEndpointsProtocol=https;AccountName=storagevehicleauction;AccountKey=nTEomYfRiVp9WXbWzbttNwqKFPdNeBe4u1K0LknMvijAT9lrJincjkxWyGbXumsggBjY6wF8FTI3+AStiaw+Rw==;EndpointSuffix=core.windows.net";
-            this.blobServiceClient = new BlobServiceClient(connectionAzure);
-            this.configuration = configuration;
-            this.dbContext = dbContext;
+            _blobServiceClient = new BlobServiceClient(connectionAzure);
+            _dbContext = dbContext;
+            _configuration = configuration;
         }
 
         [HttpGet("[action]")]
         public async Task<ActionResult<Uri>> GetVehicleImage(string fileName)
         {
-            var containerClient = blobServiceClient.GetBlobContainerClient(containerVehicleImages);
+            var containerClient = _blobServiceClient.GetBlobContainerClient(containerVehicleImages);
             var blobClient = containerClient.GetBlobClient(fileName);
 
             return Ok(blobClient.Uri);
@@ -41,7 +40,7 @@ namespace AuctionAngular.Controllers
         public async Task<ActionResult<FileNameDto>> UploadVehicleImage([FromRoute] int id)
         {
             IFormFile formFile = Request.Form.Files[0];
-            var containerClient = blobServiceClient.GetBlobContainerClient(containerVehicleImages);
+            var containerClient = _blobServiceClient.GetBlobContainerClient(containerVehicleImages);
             var blobClient = containerClient.GetBlobClient(formFile.FileName);
             using (var stream = formFile.OpenReadStream())
             {
@@ -62,7 +61,7 @@ namespace AuctionAngular.Controllers
         [HttpGet("[action]")]
         public async Task<ActionResult<Uri>> GetProfileImage(string fileName)
         {
-            var containerClient = blobServiceClient.GetBlobContainerClient(containerProfileImages);
+            var containerClient = _blobServiceClient.GetBlobContainerClient(containerProfileImages);
             var blobClient = containerClient.GetBlobClient(fileName);
 
             return Ok(blobClient.Uri);
@@ -77,19 +76,19 @@ namespace AuctionAngular.Controllers
             string uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(formFile.FileName);
 
 
-            var containerClient = blobServiceClient.GetBlobContainerClient(containerProfileImages);
+            var containerClient = _blobServiceClient.GetBlobContainerClient(containerProfileImages);
             var blobClient = containerClient.GetBlobClient(uniqueFileName);
             using (var stream = formFile.OpenReadStream())
             {
                 await blobClient.UploadAsync(stream);
             }
 
-            var user = await this.dbContext.Users.FirstOrDefaultAsync(x => x.Id == id);
+            var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == id);
             user.ProfilePicture = uniqueFileName;
 
             try
             {
-                await this.dbContext.SaveChangesAsync();
+                await _dbContext.SaveChangesAsync();
             }
             catch (DbUpdateException e)
             {

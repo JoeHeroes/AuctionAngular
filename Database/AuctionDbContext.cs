@@ -16,6 +16,8 @@ namespace Database
         public DbSet<Bid> Bids { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<Picture> Pictures { get; set; }
+        public DbSet<Message> Messages { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -47,6 +49,10 @@ namespace Database
             modelBuilder.Entity<Picture>()
                .Property(u => u.Id)
                .IsRequired();
+
+            modelBuilder.Entity<Message>()
+              .Property(u => u.Email)
+              .IsRequired();
 
         }
     }

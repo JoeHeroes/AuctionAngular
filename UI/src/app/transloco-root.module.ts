@@ -26,20 +26,20 @@ export class TranslocoHttpLoader implements TranslocoLoader {
       useValue: translocoConfig({
         availableLangs: [
           {
-            id: 'pl',
+            id: 'pl-PL',
             label: 'PL'
           },
           {
-            id: 'de',
+            id: 'de-DE',
             label: 'DE'
           },
           {
-            id: 'en',
+            id: 'en-GB',
             label: 'EN'
           }
         ],
         defaultLang: sessionStorage.getItem('auction:lang') ?? navigator.language,
-        fallbackLang: 'en',
+        fallbackLang: 'en-GB',
         reRenderOnLangChange: true,
         prodMode: environment.production,
       })

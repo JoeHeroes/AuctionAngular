@@ -1,9 +1,10 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AuthResponseDto, AuthenticationService } from 'src/app/common/services/authentication.service';
-import { AddEventeDto, CalendarService } from 'src/app/common/services/calendar.service';
+import { AddEventeDto, CalendarService, EditEventeDto } from 'src/app/common/services/calendar.service';
 
 @Component({
   selector: 'app-edit-event',
@@ -12,6 +13,8 @@ import { AddEventeDto, CalendarService } from 'src/app/common/services/calendar.
 })
 export class EditEventComponent {
 
+  urlSubscription?: Subscription;
+  id: any;
   returnUrl!: string;
   showError!: boolean;
   eventForm!: FormGroup;
@@ -31,48 +34,58 @@ export class EditEventComponent {
     private authenticationService: AuthenticationService,
     private calendarService: CalendarService,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,) { }
 
   ngOnInit(): void {
     this.eventForm = new FormGroup({
       title: new FormControl("", [Validators.required]),
       description: new FormControl("", [Validators.required]),
-      date: new FormControl("", [Validators.required, this.validateMaxDate.bind(this)]),
+      date: new FormControl("", [Validators.required]),
       color: new FormControl("", [Validators.required]),
       allDay: new FormControl("", [Validators.required]),
     })
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/calendar';
 
+    this.urlSubscription = this.route.url.subscribe(segments => {
+      this.loadData(segments);
+    });
+
+
+  }
+
+
+  private loadData(url: UrlSegment[]) {
+    this.id = url.map(x => x.path).join('/');
+
+
     this.authenticationService.loggedUserId().subscribe(res => {
       this.userId = res.userId;
+
+      this.calendarService.getEvent(this.id).subscribe(res => {
+        this.titleValue = res.title;
+        this.descriptionValue = res.description;
+        this.colorValue = res.color;
+        this.allDayValue = res.allDay;
+        this.dateValue = res.start;
+      })
     });
+
   }
 
-
-  validateMaxDate(control: FormControl): { [key: string]: any } | null {
-    const selectedDate = new Date(control.value);
-    const currentDate = new Date();
-    currentDate.setHours(0, 0, 0, 0);
-
-    if (selectedDate > currentDate) {
-      return { maxDate: true };
-    }
-    return null;
-  }
 
   addEvent = (editFormValue: any) => {
     this.showError = false;
     const edit = { ...editFormValue };
 
-    const eventData: AddEventeDto = {
+    const eventData: EditEventeDto = {
+      id: this.id,
       title: edit.title,
       description: edit.description,
       date: edit.date,
       color: edit.color,
-      allDay: edit.allDay,
-      owner: this.userId,
+      allDay: true,
     }
-    this.calendarService.addEvent(eventData)
+    this.calendarService.editEvent(eventData)
       .subscribe({
         next: (res: AuthResponseDto) => {
           this.router.navigate([this.returnUrl]);

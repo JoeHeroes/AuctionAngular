@@ -11,11 +11,11 @@ namespace AuctionAngular.Controllers
     [Route("[controller]")]
     public class AuctionController : ControllerBase
     {
-        private readonly IAuctionService service;
+        private readonly IAuctionService _auctionService;
 
-        public AuctionController(IAuctionService service)
+        public AuctionController(IAuctionService auctionService)
         {
-            this.service = service;
+            _auctionService = auctionService;
         }
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<bool>> LiveAuction()
         {
-            var result = await this.service.LiveAuction();
+            var result = await _auctionService.LiveAuction();
             return Ok(result);
         }
 
@@ -45,7 +45,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> EndAuction()
         {
-            await this.service.EndAuction();
+            await _auctionService.EndAuction();
             return NoContent();
         }
 
@@ -60,7 +60,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<ViewVehicleDto>>> LiveAuctionList()
         {
-            var result = await this.service.LiveAuctionList();
+            var result = await _auctionService.LiveAuctionList();
             return Ok(result);
         }
 
@@ -75,7 +75,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<ViewVehicleDto>>> AuctionList()
         {
-            var result = await this.service.AuctionList();
+            var result = await _auctionService.AuctionList();
             return Ok(result);
         }
     }

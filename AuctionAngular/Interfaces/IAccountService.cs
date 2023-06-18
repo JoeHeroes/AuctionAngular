@@ -5,13 +5,15 @@ namespace AuctionAngular.Interfaces
 {
     public interface IAccountService
     {
-        Task<string> LoginUser(LoginUserDto dto);
-        Task CreateUser(RegisterUserDto dto);
-        Task RestartPassword(RestartPasswordDto dto);
-        Task<ViewUserDto> GetUserInfo(int id);
-        Task EditProfile(EditUserDto dto);
-        Task<IEnumerable<RoleDto>> GetRole();
-        Task<string> AddPicture(int id, IFormFile file);
-        Task<string> GenerateToken(User user);
+        Task<string> LoginUserAsync(LoginUserDto dto);
+        Task CreateUserAsync(RegisterUserDto dto);
+        Task RestartPasswordAsync(RestartPasswordDto dto);
+        Task<ViewUserDto> GetUserInfoByIdAsync(int id);
+        Task EditProfileAsync(EditUserDto dto);
+        Task<IEnumerable<RoleDto>> GetAllRoleAsync();
+        Task<string> AddProfilePictureAsync(int id, IFormFile file);
+        Task<string> GenerateTokenAsync(User user);
+        Task<User> GetByEmailAsync(string email);
+        Task AccountVerification(int id, bool autorization);
     }
 }
