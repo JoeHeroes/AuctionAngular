@@ -41,6 +41,7 @@ namespace AuctionAngular.Services
                     End = eve.End.ToString("yyyy-MM-dd"),
                     Color = eve.Color,
                     AllDay = eve.AllDay,
+                    Url = eve.Url
                 };
 
                 result.Add(resultDto);
@@ -66,6 +67,7 @@ namespace AuctionAngular.Services
                 End = eventResult.End.ToString("yyyy-MM-dd"),
                 Color = eventResult.Color,
                 AllDay = eventResult.AllDay,
+                Url = eventResult.Url
             };
         }
 
@@ -81,10 +83,24 @@ namespace AuctionAngular.Services
                 End = dto.Date,
                 Color = dto.Color,
                 AllDay = dto.AllDay,
-                Owner = dto.Owner
+                Owner = dto.Owner,
+                Url = "/edit-event/"
             };
 
             this.dbContext.Events.Add(eventResult);
+
+            try
+            {
+                await this.dbContext.SaveChangesAsync();
+            }
+            catch (DbUpdateException e)
+            {
+                throw new DbUpdateException("Error DataBase", e);
+            }
+
+            var updateEventResult = await this.dbContext.Events.FirstOrDefaultAsync(x => x.Id == eventResult.Id);
+
+            updateEventResult!.Url = "/edit-event/" + eventResult.Id;
 
             try
             {

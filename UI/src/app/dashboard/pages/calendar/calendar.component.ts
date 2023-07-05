@@ -20,7 +20,6 @@ export class CalendarComponent {
     initialView: 'dayGridMonth',
     weekends: true,
     editable: true,
-    eventClick: this.handleEventClick.bind(this),
     events: [],
     locales: allLocales,
     locale: sessionStorage.getItem('auction:lang')?.toString(),
@@ -36,11 +35,4 @@ export class CalendarComponent {
     });
   }
 
-  handleEventClick(clickInfo: EventClickArg) {
-    var id = clickInfo.event.title.split(" ", 1);
-    if (!Number.isNaN(Number(id))) {
-      this.router.navigate(['/vehicle/lot', Number(id)].filter(v => !!v));
-    }
-
-  }
 }

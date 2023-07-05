@@ -342,13 +342,14 @@ namespace AuctionAngular.Services
             {
                 var newEvent = new Event()
                 {
-                    Title = vehicle.Id + " " + vehicle.Producer + " " + vehicle.ModelGeneration,
+                    Title = vehicle!.Id + " " + vehicle.Producer + " " + vehicle.ModelGeneration,
                     Description = "",
                     Start = vehicle.DateTime,
                     End = vehicle.DateTime,
                     Color = vehicle.Color,
                     AllDay = true,
                     Owner = user.Id,
+                    Url = "/vehicle/lot/"+ vehicle.Id
                 };
 
                 _dbContext.Events.Add(newEvent);
@@ -480,7 +481,8 @@ namespace AuctionAngular.Services
                 End = dto.DateTime,
                 Color = dto.Color,
                 AllDay = false,
-                Owner = 0 //For All Users
+                Owner = 0, //For All Users
+                Url = "/vehicle/lot"+id
             };
 
             _dbContext.Events.Add(eventSell);

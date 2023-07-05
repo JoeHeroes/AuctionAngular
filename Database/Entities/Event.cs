@@ -10,5 +10,6 @@
         public string Color { get; set; }
         public bool AllDay { get; set; }
         public int Owner { get; set; } = 0;
+        public string Url { get; set; }
     }
 }

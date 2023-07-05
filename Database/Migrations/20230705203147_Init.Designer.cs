@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Database.Migrations
 {
     [DbContext(typeof(AuctionDbContext))]
-    [Migration("20230618133632_Init")]
+    [Migration("20230705203147_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -73,6 +73,10 @@ namespace Database.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Url")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

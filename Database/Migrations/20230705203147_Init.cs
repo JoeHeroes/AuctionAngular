@@ -37,7 +37,8 @@ namespace Database.Migrations
                     End = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Color = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AllDay = table.Column<bool>(type: "bit", nullable: false),
-                    Owner = table.Column<int>(type: "int", nullable: false)
+                    Owner = table.Column<int>(type: "int", nullable: false),
+                    Url = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
