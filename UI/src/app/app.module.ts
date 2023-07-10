@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { TranslocoRootModule } from './transloco-root.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     DxScrollViewModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

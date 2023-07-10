@@ -1,5 +1,6 @@
 ﻿using AuctionAngular.Dtos;
 using AuctionAngular.Interfaces;
+using AuctionAngular.Services;
 using Database.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -233,6 +234,19 @@ namespace AuctionAngular.Controllers
             return Problem();
         }
 
+
+        [HttpGet("[action]/{email}")]
+
+        public async Task<IActionResult> CheckEmail([FromRoute] string email)
+        {
+            var result = await _accountService.GetByEmailAsync(email);
+
+            if(result is null)
+            {
+                return NotFound();
+            }
+            return Ok(result.EmialConfirmed);
+        }
 
 
 

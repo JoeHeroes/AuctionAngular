@@ -50,6 +50,13 @@ export class AuthenticationService {
     return this.http.get<any>(url_);
   }
 
+  public checkEmail(email: string): Observable<any> {
+
+    let url_ = this.baseUrl + "/Account/CheckEmail/" + email;
+
+    return this.http.get<any>(url_);
+  }
+
   public loggedUserId() {
 
     let token: any = sessionStorage.getItem("token");

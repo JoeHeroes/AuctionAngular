@@ -11,7 +11,7 @@ import { AuctionCommonModule } from '../common/auction-common.module';
 import { DashboardComponentsModule } from './components/dashboard-components.module';
 import { DxToolbarModule } from "devextreme-angular/ui/toolbar";
 import { DxListModule } from "devextreme-angular/ui/list";
-import { DxAccordionModule, DxBarGaugeModule, DxBulletModule, DxButtonGroupModule, DxButtonModule, DxCalendarModule, DxCheckBoxModule, DxCircularGaugeModule, DxColorBoxModule, DxDataGridModule, DxDateBoxModule, DxFileUploaderModule, DxFormModule, DxGalleryModule, DxLoadIndicatorModule, DxNumberBoxModule, DxSelectBoxModule, DxTextBoxModule, DxValidationSummaryModule, DxValidatorModule } from 'devextreme-angular';
+import { DxAccordionModule, DxBarGaugeModule, DxBulletModule, DxButtonGroupModule, DxButtonModule, DxCalendarModule, DxCheckBoxModule, DxCircularGaugeModule, DxColorBoxModule, DxDataGridModule, DxDateBoxModule, DxFileUploaderModule, DxFormModule, DxGalleryModule, DxLoadIndicatorModule, DxNumberBoxModule, DxSelectBoxModule, DxTextBoxModule, DxValidationGroupModule, DxValidationSummaryModule, DxValidatorModule } from 'devextreme-angular';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
 import { VehicleComponent } from './pages/vehicle/vehicle.component';
@@ -96,6 +96,7 @@ import { EditEventComponent } from './pages/edit-event/edit-event.component';
     DxNumberBoxModule,
     DxDateBoxModule,
     DxValidationSummaryModule,
+    DxValidationGroupModule,
     FormsModule,
     ReactiveFormsModule,
     DxLoadIndicatorModule,

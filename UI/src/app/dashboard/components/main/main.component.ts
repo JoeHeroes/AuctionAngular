@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LangDefinition, TranslocoService } from '@ngneat/transloco';
 import { AuctionService } from 'src/app/common/services/auction.service';
 import { AuthenticationService } from 'src/app/common/services/authentication.service';
+import { NotificationService } from 'src/app/common/services/notification.service';
 import { TokenService } from 'src/app/common/services/token.service';
 
 @Component({
@@ -24,6 +25,7 @@ export class MainComponent implements OnInit {
   constructor(private authService: AuthenticationService,
     private auctionService: AuctionService,
     private tokenService: TokenService,
+    private notificationService: NotificationService,
     private router: Router,
     private transloco: TranslocoService) {
   }
@@ -65,6 +67,7 @@ export class MainComponent implements OnInit {
   }
 
   public logout() {
+    this.notificationService.showSuccess("Wylogowano", "Sukces");
     this.tokenService.clear();
     this.router.navigate(["/"]);
   }

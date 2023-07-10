@@ -1,9 +1,5 @@
-import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { AuthResponseDto, AuthenticationService, EditProfileDto } from 'src/app/common/services/authentication.service';
+import { Component } from '@angular/core';
+import { AuthenticationService, EditProfileDto } from 'src/app/common/services/authentication.service';
 import { StorageService } from 'src/app/common/services/storage.service';
 
 @Component({

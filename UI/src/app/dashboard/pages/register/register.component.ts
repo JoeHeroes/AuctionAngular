@@ -29,8 +29,6 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-
     this.registerForm = new FormGroup({
       email: new FormControl("", [Validators.required]),
       password: new FormControl("", [Validators.required]),
@@ -70,15 +68,55 @@ export class RegisterComponent implements OnInit {
       phone: register.phone,
       dateOfBirth: register.dateOfBirth,
       roleid: register.roleid,
-
     }
-    this.authenticationService.registerUser(userForAuth)
-      .subscribe({
-        next: (res: any) => {
-          this.router.navigate([this.returnUrl]);
-        },
-        error: (err: HttpErrorResponse) => {
-        }
-      })
+
+    if (register.email == "") {
+      this.errorMessage = "Email is required";
+      this.showError = true;
+    }
+    else if (register.password == "") {
+      this.errorMessage = "Password is required";
+      this.showError = true;
+    }
+    else if (register.confirmpassword == "") {
+      this.errorMessage = "Confirm password is required";
+      this.showError = true;
+    }
+    else if (register.name == "") {
+      this.errorMessage = "Name is required";
+      this.showError = true;
+    }
+    else if (register.surename == "") {
+      this.errorMessage = "Surename is required";
+      this.showError = true;
+    }
+    else if (register.nationality == "") {
+      this.errorMessage = "Nationality is required";
+      this.showError = true;
+    }
+    else if (register.phone == "") {
+      this.errorMessage = "Phone is required";
+      this.showError = true;
+    }
+    else if (register.dateOfBirth == "") {
+      this.errorMessage = "Date of birth is required";
+      this.showError = true;
+    }
+    else if (register.roleid == "") {
+      this.errorMessage = "Role ID is required";
+      this.showError = true;
+    }
+    else {
+      alert("XD");
+      this.authenticationService.registerUser(userForAuth)
+        .subscribe({
+          next: (res: any) => {
+
+          },
+          error: (err: any) => {
+            this.router.navigate([this.returnUrl]);
+          }
+        })
+    }
   }
 }

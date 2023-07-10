@@ -1,4 +1,3 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -34,22 +33,49 @@ export class LoginComponent implements OnInit {
   get password() { return this.loginForm.get('password'); }
 
   loginUser = (loginFormValue: any) => {
-    this.showError = true;
     const login = { ...loginFormValue };
-    const userForAuth: UserAuthenticationDto = {
-      email: login.email,
-      password: login.password
+
+    if (login.email == "") {
+      this.errorMessage = "Email is required";
+      this.showError = true;
     }
-    this.authenticationService.loginUser(userForAuth)
-      .subscribe({
-        next: (res: AuthResponseDto) => {
-          this.tokenService.set(res.token);
-          this.router.navigate([this.returnUrl]);
-        },
-        error: (err: HttpErrorResponse) => {
-          this.errorMessage = err.message;
-          this.showError = true;
-        }
-      })
+    else if (login.password == "") {
+      this.errorMessage = "Password is required";
+      this.showError = true;
+    }
+    else {
+
+      const userForAuth: UserAuthenticationDto = {
+        email: login.email,
+        password: login.password
+      }
+
+      this.authenticationService.checkEmail(login.email)
+        .subscribe({
+          next: (res: any) => {
+            if (res == true) {
+              this.authenticationService.loginUser(userForAuth)
+                .subscribe({
+                  next: (res: AuthResponseDto) => {
+                    this.tokenService.set(res.token);
+                    this.router.navigate([this.returnUrl]);
+                  },
+                  error: (err: any) => {
+                    this.errorMessage = "Incorrect email address or password";
+                    this.showError = true;
+                  }
+                })
+            }
+            else {
+              this.errorMessage = "Confirm your account on email";
+              this.showError = true;
+            }
+          },
+          error: (err: any) => {
+            this.errorMessage = "Incorrect email address or password";
+            this.showError = true;
+          }
+        });
+    }
   }
 }
