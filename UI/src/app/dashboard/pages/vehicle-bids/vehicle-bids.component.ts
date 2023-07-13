@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { RowDblClickEvent } from 'devextreme/ui/tree_list';
+import { RowDblClickEvent } from 'devextreme/ui/data_grid';
 import { AuthenticationService } from 'src/app/common/services/authentication.service';
 import { VehicleService } from 'src/app/common/services/vehicle.service';
 
