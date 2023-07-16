@@ -24,7 +24,7 @@ namespace AuctionAngular.Services
                 .FirstOrDefaultAsync(u => u.Id == id);
 
 
-            var restultPictures = _dbContext.Pictures.Where(x => x.VehicleId == vehicle.Id);
+            var restultPictures = _dbContext.Pictures.Where(x => x.VehicleId == vehicle!.Id);
 
             List<string> pictures = new List<string>();
 
@@ -33,7 +33,7 @@ namespace AuctionAngular.Services
                 pictures.Add(pic.PathImg);
             }
             
-            return ViewVehicleDtoConvert(vehicle, pictures);
+            return ViewVehicleDtoConvert(vehicle!, pictures);
         }
 
         public async Task<IEnumerable<ViewVehiclesDto>> GetAll()
@@ -337,8 +337,8 @@ namespace AuctionAngular.Services
 
             var observed = new Watch()
             {
-                UserMany = user,
-                VehicleMany = vehicle,
+                UserMany = user!,
+                VehicleMany = vehicle!,
             };
 
             if (await _dbContext.Watches.FirstOrDefaultAsync(x => x.VehicleId == dto.VehicleId) == null)
@@ -351,7 +351,7 @@ namespace AuctionAngular.Services
                     End = vehicle.DateTime,
                     Color = vehicle.Color,
                     AllDay = true,
-                    Owner = user.Id,
+                    Owner = user!.Id,
                     Url = "/vehicle/lot/"+ vehicle.Id
                 };
 
@@ -373,19 +373,19 @@ namespace AuctionAngular.Services
         public async Task RemoveWatch(WatchDto dto)
         {
 
-            Vehicle vehicle = await _dbContext.Vehicles.FirstOrDefaultAsync(x => x.Id == dto.VehicleId);
+            Vehicle? vehicle = await _dbContext.Vehicles.FirstOrDefaultAsync(x => x.Id == dto.VehicleId);
 
-            Watch observed = await _dbContext.Watches.FirstOrDefaultAsync(x => x.UserId == dto.UserId && x.VehicleId == vehicle.Id);
+            Watch? observed = await _dbContext.Watches.FirstOrDefaultAsync(x => x.UserId == dto.UserId && x.VehicleId == vehicle!.Id);
 
 
-            var events = await _dbContext.Events.FirstOrDefaultAsync(x => x.Title == vehicle.Id + " " + vehicle.Producer + " " + vehicle.ModelGeneration);
+            var events = await _dbContext.Events.FirstOrDefaultAsync(x => x.Title == vehicle!.Id + " " + vehicle.Producer + " " + vehicle.ModelGeneration);
 
             if (events != null && events.Owner == dto.UserId)
             {
                 _dbContext.Events.Remove(events);
             }
 
-            _dbContext.Watches.Remove(observed);
+            _dbContext.Watches.Remove(observed!);
 
             try
             {
@@ -549,6 +549,5 @@ namespace AuctionAngular.Services
                 CurrentBid = vehicle.CurrentBid,
             };
         }
-
     }
 }

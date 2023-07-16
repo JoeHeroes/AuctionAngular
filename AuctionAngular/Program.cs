@@ -61,6 +61,10 @@ try
     //Sedder
     builder.Services.AddScoped<AuctionSeeder>();
 
+
+    //Scheduler
+    builder.Services.AddHostedService<SchedulerService>();
+
     //Interface
     builder.Services.AddScoped<IAccountService, AccountService>();
     builder.Services.AddScoped<IVehicleService, VehicleService>();
