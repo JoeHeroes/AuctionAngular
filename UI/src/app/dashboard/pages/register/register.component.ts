@@ -1,8 +1,9 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslocoService } from '@ngneat/transloco';
 import { AuthenticationService, UserRegisterDto } from 'src/app/common/services/authentication.service';
+import { NotificationService } from 'src/app/common/services/notification.service';
 
 @Component({
   selector: 'app-register',
@@ -17,12 +18,11 @@ export class RegisterComponent implements OnInit {
   errorMessage: string = '';
   roles: any;
 
-
   constructor(private authenticationService: AuthenticationService,
+    private notificationService: NotificationService,
     private router: Router,
-    private route: ActivatedRoute) {
-
-
+    private route: ActivatedRoute,
+    private transloco: TranslocoService) {
     this.authenticationService.getRoles().subscribe(res => {
       this.roles = res;
     });
@@ -107,13 +107,13 @@ export class RegisterComponent implements OnInit {
       this.showError = true;
     }
     else {
-      alert("XD");
       this.authenticationService.registerUser(userForAuth)
         .subscribe({
           next: (res: any) => {
 
           },
           error: (err: any) => {
+            this.notificationService.showSuccess( this.transloco.translate('notification.registered'), "Success");
             this.router.navigate([this.returnUrl]);
           }
         })

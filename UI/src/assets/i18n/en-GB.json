@@ -105,5 +105,14 @@
     "color": "Color",
     "allDay": "All Day",
     "manager": "Calendar management"
+  },
+  "notification":{
+    "loggedOut": "Logged out",
+    "loggedIn": "Logged in",
+    "registered": "Registered",
+    "loggedInFail": "Login failed",
+    "registeredFail": "Registration failed",
+    "bid":"Your bid is the highest",
+    "bidFail":"Your bid is not the highest"
   }
 }

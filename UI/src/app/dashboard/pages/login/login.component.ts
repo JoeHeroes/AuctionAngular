@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslocoService } from '@ngneat/transloco';
 import { AuthenticationService, AuthResponseDto, UserAuthenticationDto } from 'src/app/common/services/authentication.service';
+import { NotificationService } from 'src/app/common/services/notification.service';
 import { TokenService } from 'src/app/common/services/token.service';
 
 @Component({
@@ -17,8 +19,10 @@ export class LoginComponent implements OnInit {
   showError: boolean = false;
   constructor(private authenticationService: AuthenticationService,
     private tokenService: TokenService,
+    private notificationService: NotificationService,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private transloco: TranslocoService) { }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -58,10 +62,12 @@ export class LoginComponent implements OnInit {
                 .subscribe({
                   next: (res: AuthResponseDto) => {
                     this.tokenService.set(res.token);
+                    this.notificationService.showSuccess( this.transloco.translate('notification.loggedIn'), "Success");
                     this.router.navigate([this.returnUrl]);
                   },
                   error: (err: any) => {
                     this.errorMessage = "Incorrect email address or password";
+                    this.notificationService.showError( this.transloco.translate('notification.loggedInFail'), "Failed");
                     this.showError = true;
                   }
                 })

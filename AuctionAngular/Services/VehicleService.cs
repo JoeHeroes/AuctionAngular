@@ -284,13 +284,13 @@ namespace AuctionAngular.Services
             }
         }
 
-        public async Task Bid(UpdateBidDto dto)
+        public async Task<bool> Bid(UpdateBidDto dto)
         {
             Vehicle? vehicle = await _dbContext
                                 .Vehicles
                                 .FirstOrDefaultAsync(x => x.Id == dto.lotNumber);
 
-            if (dto.bidNow > vehicle.CurrentBid)
+            if (dto.bidNow > vehicle?.CurrentBid)
             {
                 vehicle.WinnerId = dto.userId;
                 vehicle.CurrentBid = dto.bidNow;
@@ -301,7 +301,7 @@ namespace AuctionAngular.Services
 
                 var bind = new Bid()
                 {
-                    UserId = user.Id,
+                    UserId = user!.Id,
                     VehicleId = vehicle.Id,
                 };
 
@@ -319,7 +319,10 @@ namespace AuctionAngular.Services
                 {
                     throw new DbUpdateException("Error DataBase", e);
                 }
+                return true;
             }
+
+            return false;
         }
 
         public async Task Watch(WatchDto dto)

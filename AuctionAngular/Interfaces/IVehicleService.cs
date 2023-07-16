@@ -12,7 +12,7 @@ namespace AuctionAngular.Interfaces
         Task<IEnumerable<ViewVehiclesDto>> GetAllLost(int id);
         Task<ViewVehicleDto> GetById(int id);
         Task Update(int id, EditVehicleDto dto);
-        Task Bid(UpdateBidDto dto);
+        Task<bool> Bid(UpdateBidDto dto);
         Task Watch(WatchDto dto);
         Task RemoveWatch(WatchDto dto);
         Task<bool> CheckWatch(WatchDto dto);

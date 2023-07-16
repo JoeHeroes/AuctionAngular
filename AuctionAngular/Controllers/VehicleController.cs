@@ -191,9 +191,13 @@ namespace AuctionAngular.Controllers
 
         public async Task<IActionResult> UpdateBid([FromBody] UpdateBidDto dto)
         {
-            await _vehicleService.Bid(dto);
 
-            return Ok();
+            if(await _vehicleService.Bid(dto))
+            {
+                return Ok();
+            }
+
+            return NotFound();
         }
 
         /// <summary>

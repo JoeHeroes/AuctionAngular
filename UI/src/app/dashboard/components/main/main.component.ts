@@ -63,11 +63,11 @@ export class MainComponent implements OnInit {
   }
 
   openAuction = () => {
-    this.router.navigate(["/auction"]);
+    this.router.navigate(["/auction"]); 
   }
 
   public logout() {
-    this.notificationService.showSuccess("Wylogowano", "Sukces");
+    this.notificationService.showSuccess( this.transloco.translate('notification.loggedOut'), "Success");
     this.tokenService.clear();
     this.router.navigate(["/"]);
   }

@@ -105,6 +105,15 @@
       "color": "Kolor",
       "allDay": "Cały Dzień",
       "manager": "Zarządzanie kalendarzem"
+    },
+    "notification":{
+      "loggedOut": "Wylogowano",
+      "loggedIn": "Zalogowano",
+      "registered": "Zarejestrowano",
+      "loggedInFail": "Logowanie nie powiodło się",
+      "registeredFail": "Rejestracja nie powiodła się",
+      "bid":"Twoja oferta jest najwyższa",
+      "bidFail":"Twoja oferta nie jest najwyższa"
     }
   }
   

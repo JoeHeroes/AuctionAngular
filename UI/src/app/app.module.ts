@@ -23,7 +23,9 @@ import { ToastrModule } from 'ngx-toastr';
     DxScrollViewModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot({
+      positionClass:"toast-bottom-right"
+    })
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

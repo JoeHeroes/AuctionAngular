@@ -4,6 +4,8 @@ import { ActivatedRoute, UrlSegment } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/common/services/authentication.service';
+import { NotificationService } from 'src/app/common/services/notification.service';
+import { TranslocoService } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-lot',
@@ -54,7 +56,9 @@ export class LotComponent implements OnInit {
   constructor(private vehicleService: VehicleService,
     private authService: AuthenticationService,
     private authenticationService: AuthenticationService,
-    private activeRoute: ActivatedRoute) {
+    private notificationService: NotificationService,
+    private activeRoute: ActivatedRoute,
+    private transloco: TranslocoService) {
 
     this.authService.loggedUserId().subscribe({
       next: (res) => {
@@ -134,10 +138,11 @@ export class LotComponent implements OnInit {
         next: () => {
           this.vehicleService.getVehicle(this.id).subscribe(res => {
             this.datasource = res;
+            this.notificationService.showSuccess( this.transloco.translate('notification.bid'), "Success");
           });
         },
         error: () => {
-
+          this.notificationService.showError( this.transloco.translate('notification.bidFail'), "Failed");
         }
       })
   }
