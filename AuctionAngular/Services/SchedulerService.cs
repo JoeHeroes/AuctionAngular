@@ -1,47 +1,96 @@
-﻿
-using AuctionAngular.Interfaces;
+﻿using Quartz.Impl;
+using Quartz.Logging;
+using Quartz;
+using Database;
 
 namespace AuctionAngular.Services
 {
     public class SchedulerService : IHostedService, IDisposable
     {
-        private int executionCount = 0;
-
-        private Timer _timerNotification;
-        public IConfiguration _configuration;
+        private readonly AuctionDbContext _dbContext;
         private readonly IServiceScopeFactory _serviceScopeFactory;
-        private readonly Microsoft.AspNetCore.Hosting.IHostingEnvironment _hostingEnvironment;
 
-        public SchedulerService(IServiceScopeFactory serviceScopeFactory, Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment, IConfiguration configuration)
+        public SchedulerService(AuctionDbContext dbContext, IServiceScopeFactory serviceScopeFactory)
         {
+            _dbContext = dbContext;
             _serviceScopeFactory = serviceScopeFactory;
-            _hostingEnvironment = hostingEnvironment;
-            _configuration = configuration;
         }
 
-        public Task StartAsync(CancellationToken cancellationToken)
+        public async Task StartAsync(CancellationToken cancellationToken)
         {
-            _timerNotification = new Timer(callback: RunJob, null, TimeSpan.Zero, TimeSpan.FromMicroseconds(1));
-            return Task.CompletedTask;
+            LogProvider.SetCurrentLogProvider(new ConsoleLogProvider());
+
+            StdSchedulerFactory factory = new StdSchedulerFactory();
+            IScheduler scheduler = await factory.GetScheduler();
+
+            await scheduler.Start();
+
+            IJobDetail job = JobBuilder.Create<HelloJob>()
+                .WithIdentity("job1", "group1")
+                .Build();
+
+            DateTime dateTime = new DateTime(2023, 7, 20, 14, 44, 0);
+            DateTimeOffset triggerTime = new DateTimeOffset(dateTime, TimeSpan.FromHours(2));
+
+
+
+            //List<Auction> auctions = new List<Auction>();
+            //List<DateTimeOffset> triggerTimes = new List<DateTimeOffset>();
+
+            //foreach (var auction in auctions)
+            //{
+            //    triggerTimes.Add(new DateTimeOffset(auction.date, TimeSpan.FromHours(2)));
+            //}
+
+            //foreach (var trig in triggerTimes)
+            //{
+            //    ITrigger trigger = TriggerBuilder.Create()
+            //     .WithIdentity("trigger1", "group1")
+            //     .StartAt(trig)
+            //     .Build();
+
+            //    await scheduler.ScheduleJob(job, trigger);
+            //}
+
+
+            ITrigger trigger = TriggerBuilder.Create()
+                .WithIdentity("trigger1", "group1")
+                .StartAt(triggerTime)
+                .Build();
+
+            await scheduler.ScheduleJob(job, trigger);
+
+            Console.WriteLine("Press any key to stop");
+            Console.ReadKey();
+
+            await scheduler.Shutdown();
         }
 
-        private void RunJob(object state)
+
+        private class ConsoleLogProvider : ILogProvider
         {
-            using (var scrope = _serviceScopeFactory.CreateScope())
+            public Logger GetLogger(string name)
             {
-                try
+                return (level, func, exception, parameters) =>
                 {
-                    Console.WriteLine("Lol");
-                    //var store = scrope.ServiceProvider.GetService<IAuctionService>();
+                    if (level >= Quartz.Logging.LogLevel.Info && func != null)
+                    {
+                        Console.WriteLine("[" + DateTime.Now.ToLongTimeString() + "] [" + level + "] " + func(), parameters);
+                    }
+                    return true;
+                };
+            }
 
-                }
-                catch (Exception ex) { }
+            public IDisposable OpenNestedContext(string message)
+            {
+                throw new NotImplementedException();
+            }
 
-                Interlocked.Increment(ref executionCount);
+            public IDisposable OpenMappedContext(string key, object value, bool destructure = false)
+            {
+                throw new NotImplementedException();
             }
         }
-
-
 
         public Task StopAsync(CancellationToken cancellationToken)
         {
@@ -51,6 +100,14 @@ namespace AuctionAngular.Services
         public void Dispose()
         {
             throw new NotImplementedException();
+        }
+    }
+
+    public class HelloJob : IJob
+    {
+        public async Task Execute(IJobExecutionContext context)
+        {
+            await Console.Out.WriteLineAsync("Greetings from HelloJob!");
         }
     }
 }
