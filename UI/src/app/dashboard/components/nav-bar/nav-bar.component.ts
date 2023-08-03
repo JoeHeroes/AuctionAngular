@@ -20,8 +20,7 @@ const navigationItems: ListItem[] = [
   { id: 130, text: _('menu.auction'), href: '/auction', icon: 'fa fa-gavel' },
   { id: 150, text: _('menu.location'), href: '/location', icon: 'fa fa-location-arrow' },
   { id: 170, text: _('menu.services'), href: '/services', icon: 'fa fa-server' },
-  { id: 190, text: _('menu.privacy'), href: '/privacy', icon: 'fa fa-user-secret' },
-  { id: 210, text: _('menu.support'), href: '/support', icon: 'fa fa-info-circle' },
+  { id: 190, text: _('menu.support'), href: '/support', icon: 'fa fa-info-circle' },
 
 ];
 

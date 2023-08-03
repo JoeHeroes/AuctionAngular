@@ -5,7 +5,6 @@ import { NotFoundComponent } from "src/app/not-found/not-found.component";
 import { DashboardComponent } from "src/app/dashboard/dashboard.component";
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
-import { PrivacyComponent } from './pages/privacy/privacy.component';
 import { SupportComponent } from './pages/support/support.component';
 import { SevicesComponent } from './pages/sevices/sevices.component';
 import { LocationComponent } from './pages/location/location.component';
@@ -95,12 +94,6 @@ const routes: Routes = [
         pathMatch: 'full',
         component: SupportComponent,
         data: { title: 'Support' }
-      },
-      {
-        path: 'privacy',
-        pathMatch: 'full',
-        component: PrivacyComponent,
-        data: { title: 'Privacy' }
       },
       {
         path: 'watchlist',

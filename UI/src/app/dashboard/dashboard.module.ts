@@ -18,7 +18,6 @@ import { VehicleComponent } from './pages/vehicle/vehicle.component';
 import { AuctionComponent } from './pages/auction/auction.component';
 import { LocationComponent } from './pages/location/location.component';
 import { SevicesComponent } from './pages/sevices/sevices.component';
-import { PrivacyComponent } from './pages/privacy/privacy.component';
 import { SupportComponent } from './pages/support/support.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LotComponent } from './pages/lot/lot.component';
@@ -56,7 +55,6 @@ import { EditEventComponent } from './pages/edit-event/edit-event.component';
     AuctionComponent,
     LocationComponent,
     SevicesComponent,
-    PrivacyComponent,
     SupportComponent,
     LotComponent,
     VehicleEditComponent,

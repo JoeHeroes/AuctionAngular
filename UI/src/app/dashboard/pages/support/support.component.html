@@ -1,0 +1,79 @@
+<div class="student-profile py-4">
+    <ng-container *transloco="let t">
+      <div class="container">
+        <div class="row">
+
+          <div class="column">
+            <div class="shadow-sm">
+              <div class="card-header bg-transparent border-0">
+                <h1 class="mb-0">Contact US</h1>
+              </div>
+              <div class="card-body pt-0">
+                <table class="table table-bordered">
+                    <tr>
+                        <th width="50%" >{{t('vehicle.modelSpecifer')}}</th>
+                    </tr>
+                  <tr>
+                    <th width="50%">Having questions or needing help? Copart is at your service. Contact us by email or phone.</th>
+                  </tr>
+                  <tr>
+                    <a [routerLink]="['editor']">
+                        <dx-button type="default" text="Contact Us"></dx-button>
+                    </a>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="column">
+            <div class="shadow-sm">
+              <div class="card-header bg-transparent border-0">
+                <h1 class="mb-0">FAQ</h1>
+              </div>
+              <div class="card-body pt-0">
+                <table class="table table-bordered">
+                    <tr>
+                        <th width="50%" >{{t('vehicle.modelSpecifer')}}</th>
+                    </tr>
+                  <tr>
+                    <th width="50%">Having questions or wondering how it works? Learn more on our FAQ page.</th>
+                  </tr>
+                  <tr>
+                    <a [routerLink]="['editor']">
+                        <dx-button type="default" text="Contact Us"></dx-button>
+                    </a>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="column">
+            <div class="shadow-sm">
+              <div class="card-header bg-transparent border-0">
+                <h1 class="mb-0">How to buy</h1>
+              </div>
+              <div class="card-body pt-0">
+                <table class="table table-bordered">
+                    <tr>
+                        <th width="50%" >{{t('vehicle.modelSpecifer')}}</th>
+                    </tr>
+                  <tr>
+                    <th width="50%" >You have no idea what the whole buying process looks like. Learn more about buying details and more.</th>
+                  </tr>
+                  <tr>
+                    <a [routerLink]="['editor']">
+                        <dx-button type="default" text="Contact Us"></dx-button>
+                    </a>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
