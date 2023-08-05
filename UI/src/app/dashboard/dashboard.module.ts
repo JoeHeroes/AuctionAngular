@@ -1,5 +1,4 @@
 import { HttpContext } from '@angular/common/http';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslocoModule } from "@ngneat/transloco";
 import { DxDrawerModule } from "devextreme-angular/ui/drawer";
@@ -18,7 +17,6 @@ import { AuctionComponent } from './pages/auction/auction.component';
 import { LocationComponent } from './pages/location/location.component';
 import { SevicesComponent } from './pages/sevices/sevices.component';
 import { SupportComponent } from './pages/support/support.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LotComponent } from './pages/lot/lot.component';
 import { VehicleEditComponent } from './pages/vehicle-edit/vehicle-edit.component';
 import { AuthGuard } from '../common/components/auth.guard';
@@ -38,8 +36,13 @@ import { VehicleBidsComponent } from './pages/vehicle-bids/vehicle-bids.componen
 import { AddEventComponent } from './pages/add-event/add-event.component';
 import { CalendarManageComponent } from './pages/calendar-manage/calendar-manage.component';
 import { EditEventComponent } from './pages/edit-event/edit-event.component';
-import { FullCalendarModule } from '@fullcalendar/angular';
 import { HomeComponent } from './pages/home/home.component';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { ContactusComponent } from './pages/support/pages/contactus/contactus.component';
+import { FaqComponent } from './pages/support/pages/faq/faq.component';
+import { HowtobuyComponent } from './pages/support/pages/howtobuy/howtobuy.component';
 
 
 
@@ -72,6 +75,9 @@ import { HomeComponent } from './pages/home/home.component';
     AddEventComponent,
     CalendarManageComponent,
     EditEventComponent,
+    ContactusComponent,
+    FaqComponent,
+    HowtobuyComponent
   ],
   exports: [],
   imports: [
@@ -103,11 +109,12 @@ import { HomeComponent } from './pages/home/home.component';
     DxBarGaugeModule,
     DxFileUploaderModule,
     DxBulletModule,
-    ScrollingModule,
     DxCircularGaugeModule,
     DxCalendarModule,
     NgbModalModule,
     DxColorBoxModule,
+    FullCalendarModule,
+    ScrollingModule
   ],
   providers: [
     HttpContext,

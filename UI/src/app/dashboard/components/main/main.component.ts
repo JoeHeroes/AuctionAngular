@@ -67,7 +67,7 @@ export class MainComponent implements OnInit {
   }
 
   public logout() {
-    this.notificationService.showSuccess( this.transloco.translate('notification.loggedOut'), "Success");
+    this.notificationService.showSuccess(this.transloco.translate('notification.loggedOut'), "Success");
     this.tokenService.clear();
     this.router.navigate(["/"]);
   }
