@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { TranslocoService } from '@ngneat/transloco';
-import { filter, map } from 'rxjs';
+import { Component, OnInit } from "@angular/core";
+import { Title } from "@angular/platform-browser";
+import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
+import { TranslocoService } from "@ngneat/transloco";
 import { locale } from "devextreme/localization";
+import { filter, map } from "rxjs";
 
 @Component({
   selector: 'app-root',

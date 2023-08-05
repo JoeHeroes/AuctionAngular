@@ -1,10 +1,10 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthResponseDto, AuthenticationService } from 'src/app/common/services/authentication.service';
-import { AddEventeDto, CalendarService, EditEventeDto } from 'src/app/common/services/calendar.service';
+import { CalendarService, EditEventeDto } from 'src/app/common/services/calendar.service';
 
 @Component({
   selector: 'app-edit-event',
@@ -34,7 +34,7 @@ export class EditEventComponent {
     private authenticationService: AuthenticationService,
     private calendarService: CalendarService,
     private router: Router,
-    private route: ActivatedRoute,) { }
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.eventForm = new FormGroup({

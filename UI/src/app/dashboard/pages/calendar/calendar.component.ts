@@ -1,10 +1,9 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { CalendarOptions, EventClickArg } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
-import { TranslocoService } from '@ngneat/transloco';
 import { CalendarService } from 'src/app/common/services/calendar.service';
 import allLocales from '@fullcalendar/core/locales-all'
+import { Component } from '@angular/core';
+import { CalendarOptions } from '@fullcalendar/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-calendar',

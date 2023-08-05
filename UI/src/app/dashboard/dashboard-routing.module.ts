@@ -1,6 +1,4 @@
-﻿import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from "src/app/dashboard/pages/home/home.component";
+﻿import { HomeComponent } from "src/app/dashboard/pages/home/home.component";
 import { NotFoundComponent } from "src/app/not-found/not-found.component";
 import { DashboardComponent } from "src/app/dashboard/dashboard.component";
 import { LoginComponent } from './pages/login/login.component';
@@ -26,6 +24,8 @@ import { VehicleBidsComponent } from './pages/vehicle-bids/vehicle-bids.componen
 import { AddEventComponent } from './pages/add-event/add-event.component';
 import { CalendarManageComponent } from './pages/calendar-manage/calendar-manage.component';
 import { EditEventComponent } from './pages/edit-event/edit-event.component';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from "@angular/router";
 
 const routes: Routes = [
   {

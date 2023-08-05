@@ -5,7 +5,6 @@ import { TranslocoModule } from "@ngneat/transloco";
 import { DxDrawerModule } from "devextreme-angular/ui/drawer";
 import { NotFoundComponent } from '../not-found/not-found.component';
 import { DashboardComponent } from './dashboard.component';
-import { HomeComponent } from './pages/home/home.component';
 import { DashboardRoutingModule } from "./dashboard-routing.module";
 import { AuctionCommonModule } from '../common/auction-common.module';
 import { DashboardComponentsModule } from './components/dashboard-components.module';
@@ -35,11 +34,12 @@ import { VehiclePictureComponent } from './pages/vehicle-picture/vehicle-picture
 import { ProfilePictureComponent } from './pages/profile-picture/profile-picture.component';
 import { VehicleWonComponent } from './pages/vehicle-won/vehicle-won.component';
 import { VehicleLostComponent } from './pages/vehicle-lost/vehicle-lost.component';
-import { FullCalendarModule } from '@fullcalendar/angular';
 import { VehicleBidsComponent } from './pages/vehicle-bids/vehicle-bids.component';
 import { AddEventComponent } from './pages/add-event/add-event.component';
 import { CalendarManageComponent } from './pages/calendar-manage/calendar-manage.component';
 import { EditEventComponent } from './pages/edit-event/edit-event.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { HomeComponent } from './pages/home/home.component';
 
 
 
@@ -107,7 +107,6 @@ import { EditEventComponent } from './pages/edit-event/edit-event.component';
     DxCircularGaugeModule,
     DxCalendarModule,
     NgbModalModule,
-    FullCalendarModule,
     DxColorBoxModule,
   ],
   providers: [

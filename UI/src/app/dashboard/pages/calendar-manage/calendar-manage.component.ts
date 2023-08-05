@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { RowDblClickEvent } from 'devextreme/ui/data_grid';
 import { Router } from '@angular/router';
+import { RowDblClickEvent } from 'devextreme/ui/data_grid';
 import { CalendarService } from 'src/app/common/services/calendar.service';
 
 

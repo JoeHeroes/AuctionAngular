@@ -1,11 +1,11 @@
 import { VehicleService, BidDto, WatchDto } from './../../../common/services/vehicle.service';
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, UrlSegment } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/common/services/authentication.service';
 import { NotificationService } from 'src/app/common/services/notification.service';
 import { TranslocoService } from '@ngneat/transloco';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, UrlSegment } from '@angular/router';
 
 @Component({
   selector: 'app-lot',

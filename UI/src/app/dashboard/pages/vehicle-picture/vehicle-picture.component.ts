@@ -1,8 +1,8 @@
-import { DxDataGridModule } from 'devextreme-angular';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Component, Input } from '@angular/core';
-import { DataService } from 'src/app/common/services/data.service';
+import { Component } from "@angular/core";
 import { Router } from '@angular/router';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { DataService } from 'src/app/common/services/data.service';
+
 
 @Component({
   selector: 'app-vehicle-picture',

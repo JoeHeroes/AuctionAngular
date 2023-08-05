@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 import { Router } from '@angular/router';
 import { VehicleService } from 'src/app/common/services/vehicle.service';
 import { RowDblClickEvent } from 'devextreme/ui/data_grid';

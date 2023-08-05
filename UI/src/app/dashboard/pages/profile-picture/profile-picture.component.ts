@@ -1,7 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ms } from 'date-fns/locale';
 import { AuthenticationService } from 'src/app/common/services/authentication.service';
 
 @Component({

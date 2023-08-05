@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 import { marker as _ } from '@ngneat/transloco-keys-manager/marker';
 
 export interface ListItem {

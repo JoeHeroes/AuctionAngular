@@ -1,11 +1,8 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslocoModule } from "@ngneat/transloco";
-import { RouterModule } from "@angular/router";
 import { DxListModule } from "devextreme-angular/ui/list";
 import { DxToolbarModule } from "devextreme-angular/ui/toolbar";
 import { DxLoadPanelModule } from "devextreme-angular/ui/load-panel";
-import { FormsModule } from "@angular/forms";
 import { DxSelectBoxModule } from "devextreme-angular/ui/select-box";
 import { DxPopupModule } from "devextreme-angular/ui/popup";
 import { DxFormModule } from "devextreme-angular/ui/form";
@@ -15,6 +12,9 @@ import { DxDropDownButtonModule } from "devextreme-angular/ui/drop-down-button";
 import { MainComponent } from './main/main.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { AuctionCommonModule } from 'src/app/common/auction-common.module';
+import { FormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
