@@ -1,0 +1,32 @@
+.container {
+    margin-left: auto;
+}
+
+.card {
+    background-color: #2e2e31;
+    border: 1px solid white;
+}
+
+.column {
+    text-align: center;
+    width: 300px;
+    float: left;
+    padding: 20px;
+}
+
+h2 {
+    font-weight: bold;
+}
+
+p {
+    margin: 10px 0;
+}
+
+h2 {
+    margin: 20px 0;
+}
+
+ul {
+    margin: 10px 0;
+    padding-left: 20px;
+}

@@ -26,6 +26,9 @@ import { CalendarManageComponent } from './pages/calendar-manage/calendar-manage
 import { EditEventComponent } from './pages/edit-event/edit-event.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from "@angular/router";
+import { ContactusComponent } from "./pages/contactus/contactus.component";
+import { FaqComponent } from "./pages/faq/faq.component";
+import { HowtobuyComponent } from "./pages/howtobuy/howtobuy.component";
 
 const routes: Routes = [
   {
@@ -50,25 +53,16 @@ const routes: Routes = [
         data: { title: 'Vehicle' }
       },
       {
-        path: 'vehicle-won',
-        pathMatch: 'full',
-        component: VehicleWonComponent,
-        data: { title: 'Vehicle Won' },
-        canActivate: [AuthGuard]
-      },
-      {
-        path: 'vehicle-lost',
-        pathMatch: 'full',
-        component: VehicleLostComponent,
-        data: { title: 'Vehicle Lost' },
-        canActivate: [AuthGuard]
-      },
-      {
-        path: 'vehicle-bids',
-        pathMatch: 'full',
-        component: VehicleBidsComponent,
-        data: { title: 'Vehicle Bids' },
-        canActivate: [AuthGuard]
+        path: 'vehicle',
+        children: [
+          { path: 'lot/:id', pathMatch: 'full', component: LotComponent, data: { title: 'Lot' } },
+          { path: 'editor', pathMatch: 'full', component: VehicleEditComponent, data: { title: 'Vehicle Edit' } },
+          { path: 'picture', pathMatch: 'full', component: VehiclePictureComponent, data: { title: 'Vehicle Picture' } },
+          { path: 'won', pathMatch: 'full', component: VehicleWonComponent, data: { title: 'Vehicle Won' }, canActivate: [AuthGuard]},
+          { path: 'lost', pathMatch: 'full', component: VehicleLostComponent, data: { title: 'Vehicle Lost' }, canActivate: [AuthGuard] },
+          { path: 'bids', pathMatch: 'full', component: VehicleBidsComponent, data: { title: 'Vehicle Bids' }, canActivate: [AuthGuard] },
+          { path: 'watchlist', pathMatch: 'full', component: WatchListComponent, data: { title: 'Watch List' }, canActivate: [AuthGuard] },
+        ],
       },
       {
         path: 'auction',
@@ -96,10 +90,12 @@ const routes: Routes = [
         data: { title: 'Support' }
       },
       {
-        path: 'watchlist',
-        pathMatch: 'full',
-        component: WatchListComponent,
-        data: { title: 'Watch List' }
+        path: 'support',
+        children: [
+          { path: 'ContactUs', pathMatch: 'full', component: ContactusComponent, data: { title: 'Contact Us' } },
+          { path: 'FAQ', pathMatch: 'full', component: FaqComponent, data: { title: 'FAQ' } },
+          { path: 'HowToBuy', pathMatch: 'full', component: HowtobuyComponent, data: { title: 'How To Buy' } },
+        ],
       },
       {
         path: 'calendar',
@@ -165,29 +161,6 @@ const routes: Routes = [
         pathMatch: 'full',
         component: RegisterComponent,
         data: { title: 'Register' }
-      },
-      {
-        path: 'vehicle/lot',
-        children: [
-          {
-            path: ':id',
-            pathMatch: 'full',
-            component: LotComponent,
-            data: { title: 'Lot' }
-          },
-        ],
-      },
-      {
-        path: 'vehicle/editor',
-        pathMatch: 'full',
-        component: VehicleEditComponent,
-        data: { title: 'Vehicle Edit' }
-      },
-      {
-        path: 'vehicle/picture',
-        pathMatch: 'full',
-        component: VehiclePictureComponent,
-        data: { title: 'Vehicle Picture' }
       },
       {
         path: '**',

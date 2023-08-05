@@ -40,9 +40,6 @@ import { HomeComponent } from './pages/home/home.component';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FullCalendarModule } from '@fullcalendar/angular';
-import { ContactusComponent } from './pages/support/pages/contactus/contactus.component';
-import { FaqComponent } from './pages/support/pages/faq/faq.component';
-import { HowtobuyComponent } from './pages/support/pages/howtobuy/howtobuy.component';
 
 
 
@@ -74,10 +71,7 @@ import { HowtobuyComponent } from './pages/support/pages/howtobuy/howtobuy.compo
     VehicleBidsComponent,
     AddEventComponent,
     CalendarManageComponent,
-    EditEventComponent,
-    ContactusComponent,
-    FaqComponent,
-    HowtobuyComponent
+    EditEventComponent
   ],
   exports: [],
   imports: [
@@ -102,7 +96,6 @@ import { HowtobuyComponent } from './pages/support/pages/howtobuy/howtobuy.compo
     DxValidationSummaryModule,
     DxValidationGroupModule,
     FormsModule,
-    ReactiveFormsModule,
     DxLoadIndicatorModule,
     DxCheckBoxModule,
     DxGalleryModule,
@@ -114,7 +107,8 @@ import { HowtobuyComponent } from './pages/support/pages/howtobuy/howtobuy.compo
     NgbModalModule,
     DxColorBoxModule,
     FullCalendarModule,
-    ScrollingModule
+    ScrollingModule,
+    ReactiveFormsModule
   ],
   providers: [
     HttpContext,
