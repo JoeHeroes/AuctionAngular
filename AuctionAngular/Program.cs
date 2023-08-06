@@ -62,6 +62,12 @@ try
     builder.Services.AddScoped<AuctionSeeder>();
 
 
+    //Scheduler
+    //builder.Services.AddHostedService<SchedulerService>();
+
+    builder.Services.AddHostedService<HostBackgroundService>();
+    builder.Services.AddScoped<IProcessingService, ProcessingService>();
+
     //Interface
     builder.Services.AddScoped<IAccountService, AccountService>();
     builder.Services.AddScoped<IVehicleService, VehicleService>();
