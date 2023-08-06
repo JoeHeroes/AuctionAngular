@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslocoService } from '@ngneat/transloco';
 import { AuthenticationService, AuthResponseDto, UserAuthenticationDto } from 'src/app/common/services/authentication.service';
@@ -12,42 +12,78 @@ import { TokenService } from 'src/app/common/services/token.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loginForm!: FormGroup;
+  private returnUrl!: string;
+
   loading = false;
-  submitted = false;
-  returnUrl!: string;
+  loginForm!: FormGroup;
+  errorMessage: string = '';
+  showError: boolean = false;
+  constructor(private authenticationService: AuthenticationService,
+    private tokenService: TokenService,
+    private notificationService: NotificationService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private transloco: TranslocoService) { }
 
-  constructor(
-      private formBuilder: FormBuilder,
-      private route: ActivatedRoute,
-      private router: Router,
-      private authenticationService: AuthenticationService
-  ) {
-     
+  ngOnInit(): void {
+    this.loginForm = new FormGroup({
+      email: new FormControl("", [Validators.required, Validators.email]),
+      password: new FormControl("", [Validators.required])
+    })
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
-  ngOnInit() {
-      this.loginForm = this.formBuilder.group({
-          username: ['', Validators.required],
-          password: ['', Validators.required]
-      });
+  get email() { return this.loginForm.get('email'); }
 
-      // get return url from route parameters or default to '/'
-      this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-  }
+  get password() { return this.loginForm.get('password'); }
 
-  // convenience getter for easy access to form fields
-  get f() { return this.loginForm.controls; }
+  loginUser = (loginFormValue: any) => {
+    const login = { ...loginFormValue };
 
-  onSubmit() {
-      this.submitted = true;
+    if (login.email == "") {
+      this.errorMessage = "Email is required";
+      this.showError = true;
+    }
+    else if (login.password == "") {
+      this.errorMessage = "Password is required";
+      this.showError = true;
+    }
+    else {
 
-      // stop here if form is invalid
-      if (this.loginForm.invalid) {
-          return;
+      const userForAuth: UserAuthenticationDto = {
+        email: login.email,
+        password: login.password
       }
 
-      this.loading = true;
-      alert("XD");
+      this.authenticationService.checkEmail(login.email)
+        .subscribe({
+          next: (res: any) => {
+            if (res == true) {
+              this.authenticationService.loginUser(userForAuth)
+                .subscribe({
+                  next: (res: AuthResponseDto) => {
+                    this.tokenService.set(res.token);
+                    this.notificationService.showSuccess( this.transloco.translate('notification.loggedIn'), "Success");
+                    this.router.navigate([this.returnUrl]);
+                  },
+                  error: (err: any) => {
+                    this.errorMessage = "Incorrect email address or password";
+                    this.notificationService.showError( this.transloco.translate('notification.loggedInFail'), "Failed");
+                    this.showError = true;
+                    this.loading = true;
+                  }
+                })
+            }
+            else {
+              this.errorMessage = "Confirm your account on email";
+              this.showError = true;
+            }
+          },
+          error: (err: any) => {
+            this.errorMessage = "Incorrect email address or password";
+            this.showError = true;
+          }
+        });
+    }
   }
 }

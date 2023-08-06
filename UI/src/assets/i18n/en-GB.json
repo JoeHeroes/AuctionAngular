@@ -113,5 +113,18 @@
     "registeredFail": "Registration failed",
     "bid":"Your bid is the highest",
     "bidFail":"Your bid is not the highest"
+  },
+  "dashboard":{
+    "title":"Dashboard",
+    "text1":"Copart has over ",
+    "text2":" vehicles on sell"
+  },
+  "support":{
+    "contactUS":"Contact US",
+    "contactUSDescription":"Having questions or needing help? Copart is at your service. Contact us by email or phone.",
+    "FAQ":"FAQ",
+    "FAQDescription":"Having questions or wondering how it works? Learn more on our FAQ page.",
+    "howToBuy":"How to buy",
+    "howToBuyDescription":"You have no idea what the whole buying process looks like. Learn more about buying details and more."
   }
 }

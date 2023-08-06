@@ -113,6 +113,19 @@
       "registeredFail": "Rejestracja nie powiodła się",
       "bid":"Twoja oferta jest najwyższa",
       "bidFail":"Twoja oferta nie jest najwyższa"
+    },
+    "dashboard":{
+      "title":"Dashboard",
+      "text1":"Copart ma ponad ",
+      "text2":" pojazdów na sprzedarz"
+    },
+    "support":{
+      "contactUS":"Skontaktuj się z nami",
+      "contactUSDescription":"Masz pytania lub potrzebujesz pomocy? Copart jest do Twojej dyspozycji. Skontaktuj się z nami przez e-mail lub telefon.",
+      "FAQ":"FAQ",
+      "FAQDescription":"Masz pytania lub zastanawiasz się, jak to działa? Dowiedz się więcej na naszej stronie FAQ.",
+      "howToBuy":"Jak kupić",
+      "howToBuyDescription":"Nie masz pojęcia, jak wygląda cały proces zakupu. Dowiedz się więcej o szczegółach zakupu i nie tylko."
     }
   }
   

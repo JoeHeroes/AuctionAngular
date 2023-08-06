@@ -7,7 +7,6 @@ import {
   translocoConfig,
   TranslocoModule
 } from '@ngneat/transloco';
-import { environment } from '../environments/environment';
 import { Injectable, NgModule } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
@@ -41,7 +40,7 @@ export class TranslocoHttpLoader implements TranslocoLoader {
         defaultLang: sessionStorage.getItem('auction:lang') ?? navigator.language,
         fallbackLang: 'en-GB',
         reRenderOnLangChange: true,
-        prodMode: environment.production,
+        prodMode: true,
       })
     },
     { provide: TRANSLOCO_LOADER, useClass: TranslocoHttpLoader }

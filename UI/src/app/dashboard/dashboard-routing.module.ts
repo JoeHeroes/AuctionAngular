@@ -55,7 +55,14 @@ const routes: Routes = [
       {
         path: 'vehicle',
         children: [
-          { path: 'lot/:id', pathMatch: 'full', component: LotComponent, data: { title: 'Lot' } },
+          { path: 'lot', children: [
+            {
+              path: ':id',
+              pathMatch: 'full',
+              component: LotComponent,
+              data: { title: 'Lot' }
+            },
+          ], },
           { path: 'editor', pathMatch: 'full', component: VehicleEditComponent, data: { title: 'Vehicle Edit' } },
           { path: 'picture', pathMatch: 'full', component: VehiclePictureComponent, data: { title: 'Vehicle Picture' } },
           { path: 'won', pathMatch: 'full', component: VehicleWonComponent, data: { title: 'Vehicle Won' }, canActivate: [AuthGuard]},
