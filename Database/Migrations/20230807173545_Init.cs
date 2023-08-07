@@ -12,6 +12,22 @@ namespace Database.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Auctions",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LocationId = table.Column<int>(type: "int", nullable: false),
+                    SalesStarted = table.Column<bool>(type: "bit", nullable: false),
+                    SalesFinised = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Auctions", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Bids",
                 columns: table => new
                 {
@@ -152,16 +168,15 @@ namespace Database.Migrations
                     NumberKeys = table.Column<int>(type: "int", nullable: false),
                     ServiceManual = table.Column<bool>(type: "bit", nullable: false),
                     SecondTireSet = table.Column<bool>(type: "bit", nullable: false),
-                    LocationId = table.Column<int>(type: "int", nullable: false),
                     PrimaryDamage = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SecondaryDamage = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     VIN = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Highlights = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SaleTerm = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CurrentBid = table.Column<int>(type: "int", nullable: false),
                     WinnerId = table.Column<int>(type: "int", nullable: false),
-                    SalesFinised = table.Column<bool>(type: "bit", nullable: false)
+                    AuctionId = table.Column<int>(type: "int", nullable: false),
+                    Sold = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -208,6 +223,9 @@ namespace Database.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Auctions");
+
             migrationBuilder.DropTable(
                 name: "Bids");
 

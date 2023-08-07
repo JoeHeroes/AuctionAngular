@@ -30,17 +30,16 @@ namespace Database.Entities
         public bool ServiceManual { get; set; }
         [DisplayName("Second Tire Set")]
         public bool SecondTireSet { get; set; }
-        [DisplayName("Owner")]
-        public int LocationId { get; set; }
         public string PrimaryDamage { get; set; }
         public string SecondaryDamage { get; set; }
         public string VIN { get; set; } = null!;
         public string Highlights { get; set; }
         [DisplayName("Sale Term")]
         public string SaleTerm { get; set; }
-        public DateTime DateTime { get; set; }
         public int CurrentBid { get; set; }
         public int WinnerId { get; set; }
-        public bool SalesFinised { get; set; }
+        public int AuctionId { get; set; }
+
+        public bool Sold { get; set; }
     }
 }

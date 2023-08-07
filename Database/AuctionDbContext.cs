@@ -10,6 +10,7 @@ namespace Database
         }
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Auction> Auctions { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<Watch> Watches { get; set; }
@@ -29,6 +30,10 @@ namespace Database
                .Property(u => u.Email)
                .IsRequired();
 
+            modelBuilder.Entity<Auction>()
+              .Property(u => u.SalesFinised)
+              .IsRequired();
+
             modelBuilder.Entity<Location>()
                .Property(u => u.Name)
                .IsRequired();
@@ -40,7 +45,6 @@ namespace Database
             modelBuilder.Entity<Watch>()
                .Property(u => u.Id)
                .IsRequired();
-
 
             modelBuilder.Entity<Bid>()
                .Property(u => u.Id)

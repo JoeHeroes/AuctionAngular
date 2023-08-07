@@ -22,6 +22,31 @@ namespace Database.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Database.Entities.Auction", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("LocationId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("SalesFinised")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("SalesStarted")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Auctions");
+                });
+
             modelBuilder.Entity("Database.Entities.Bid", b =>
                 {
                     b.Property<int>("Id")
@@ -253,6 +278,9 @@ namespace Database.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("AuctionId")
+                        .HasColumnType("int");
+
                     b.Property<string>("BodyType")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -263,9 +291,6 @@ namespace Database.Migrations
 
                     b.Property<int>("CurrentBid")
                         .HasColumnType("int");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("Drive")
                         .IsRequired()
@@ -284,9 +309,6 @@ namespace Database.Migrations
                     b.Property<string>("Highlights")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("LocationId")
-                        .HasColumnType("int");
 
                     b.Property<long>("MeterReadout")
                         .HasColumnType("bigint");
@@ -317,9 +339,6 @@ namespace Database.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("SalesFinised")
-                        .HasColumnType("bit");
-
                     b.Property<bool>("SecondTireSet")
                         .HasColumnType("bit");
 
@@ -328,6 +347,9 @@ namespace Database.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("ServiceManual")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Sold")
                         .HasColumnType("bit");
 
                     b.Property<string>("Transmission")

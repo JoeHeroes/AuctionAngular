@@ -119,7 +119,9 @@ namespace AuctionAngular.Services
 
             foreach (var x in bids)
             {
-                var veh = vehiclesList.FirstOrDefault(d => d.Id == x.VehicleId && d.WinnerId == id && d.SalesFinised==true);
+                Auction? auction = await _dbContext.Auctions.FirstOrDefaultAsync(a => a.Id == x.VehicleId);
+
+                var veh = vehiclesList.FirstOrDefault(d => d.Id == x.VehicleId && d.WinnerId == id && auction?.SalesFinised == true);
 
                 if (veh != null)
                 {
@@ -161,7 +163,9 @@ namespace AuctionAngular.Services
 
             foreach (var x in bids)
             {
-                var veh = vehiclesList.FirstOrDefault(d => d.Id == x.VehicleId && d.WinnerId != id && d.SalesFinised == true);
+                Auction? auction = await _dbContext.Auctions.FirstOrDefaultAsync(a => a.Id == x.VehicleId);
+
+                var veh = vehiclesList.FirstOrDefault(d => d.Id == x.VehicleId && d.WinnerId != id && auction?.SalesFinised == true);
 
                 if (veh != null)
                 {
@@ -210,10 +214,8 @@ namespace AuctionAngular.Services
                 CurrentBid = 0,
                 PrimaryDamage = dto.PrimaryDamage,
                 SecondaryDamage = dto.SecondaryDamage,
-                DateTime = dto.DateTime,
                 VIN = dto.VIN,
-                LocationId = dto.LocationId,
-                SalesFinised = false,
+                AuctionId = dto.AuctionId,
                 SaleTerm = dto.SaleTerm,
                 Highlights = dto.Highlights,
             };
@@ -270,9 +272,8 @@ namespace AuctionAngular.Services
             vehicle.Color = dto.Color;
             vehicle.BodyType = dto.BodyType;
             vehicle.Transmission = dto.Transmission;
-            vehicle.LocationId = dto.LocationId;
+            vehicle.AuctionId = dto.AuctionId;
             vehicle.Fuel = dto.Fuel;
-            vehicle.DateTime = dto.DateTime;
 
             try
             {
@@ -343,12 +344,14 @@ namespace AuctionAngular.Services
 
             if (await _dbContext.Watches.FirstOrDefaultAsync(x => x.VehicleId == dto.VehicleId) == null)
             {
+                Auction? auction = await _dbContext.Auctions.FirstOrDefaultAsync(a => a.Id == dto.VehicleId);
+
                 var newEvent = new Event()
                 {
                     Title = vehicle!.Id + " " + vehicle.Producer + " " + vehicle.ModelGeneration,
                     Description = "",
-                    Start = vehicle.DateTime,
-                    End = vehicle.DateTime,
+                    Start = auction.DateTime,
+                    End = auction.DateTime,
                     Color = vehicle.Color,
                     AllDay = true,
                     Owner = user!.Id,
@@ -476,12 +479,14 @@ namespace AuctionAngular.Services
 
         public async Task AddEvent(int id, CreateVehicleDto dto)
         {
+            Auction? auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.Id == dto.AuctionId);
+
             var eventSell = new Event()
             {
                 Title = id + " " + dto.Producer + " " + dto.ModelSpecifer + " " + dto.ModelGeneration,
                 Description = "",
-                Start = dto.DateTime,
-                End = dto.DateTime,
+                Start = auction.DateTime,
+                End = auction.DateTime,
                 Color = dto.Color,
                 AllDay = false,
                 Owner = 0, //For All Users
@@ -521,21 +526,21 @@ namespace AuctionAngular.Services
                 NumberKeys = vehicle.NumberKeys,
                 ServiceManual = vehicle.ServiceManual,
                 SecondTireSet = vehicle.SecondTireSet,
-                LocationId = vehicle.LocationId,
+                AuctionId = vehicle.AuctionId,
                 PrimaryDamage = vehicle.PrimaryDamage,
                 SecondaryDamage = vehicle.SecondaryDamage,
                 VIN = vehicle.VIN,
                 Highlights = vehicle.Highlights,
-                DateTime = vehicle.DateTime,
                 CurrentBid = vehicle.CurrentBid,
                 WinnerId = vehicle.WinnerId,
-                SalesFinised = vehicle.SalesFinised,
                 Images = pictures,
             };
         }
 
         public ViewVehiclesDto ViewVehiclesDtoConvert(Vehicle vehicle, List<string> pictures)
         {
+            Auction? auction = _dbContext.Auctions.FirstOrDefault(a => a.Id == vehicle.AuctionId);
+
             return new ViewVehiclesDto()
             {
                 LotNumber = vehicle.Id,
@@ -545,7 +550,7 @@ namespace AuctionAngular.Services
                 ModelGeneration = vehicle.ModelGeneration,
                 RegistrationYear = vehicle.RegistrationYear,
                 MeterReadout = vehicle.MeterReadout,
-                DateTime = vehicle.DateTime,
+                DateTime = auction.DateTime,
                 CurrentBid = vehicle.CurrentBid,
             };
         }

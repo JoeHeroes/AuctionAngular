@@ -20,7 +20,7 @@ namespace AuctionAngular.Dtos
         public int NumberKeys { get; set; }
         public bool ServiceManual { get; set; }
         public bool SecondTireSet { get; set; }
-        public int LocationId { get; set; }
+        public int AuctionId { get; set; }
         public string PrimaryDamage { get; set; }
         public string SecondaryDamage { get; set; }
         public string VIN { get; set; } = null!;

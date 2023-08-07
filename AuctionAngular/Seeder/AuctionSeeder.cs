@@ -32,6 +32,13 @@ namespace CarAuction.Seeder
                     _dbContext.SaveChanges();
                 }
 
+                if (!_dbContext.Auctions.Any())
+                {
+                    var info = GetInfoAuction();
+                    _dbContext.Auctions.AddRange(info);
+                    _dbContext.SaveChanges();
+                }
+
                 if (!_dbContext.Locations.Any())
                 {
                     var info = GetLocations();
@@ -47,6 +54,37 @@ namespace CarAuction.Seeder
                     _dbContext.SaveChanges();
                 }
             }
+        }
+
+
+        public IEnumerable<Auction> GetInfoAuction()
+        {
+            return new List<Auction>()
+            {
+                new Auction()
+                {
+                    DateTime = new DateTime(2023, 8, 7, 19, 0, 0),
+                    LocationId = 1,
+                    SalesStarted = false,
+                    SalesFinised = false,
+                    
+                },
+                new Auction()
+                {
+                    DateTime = new DateTime(2023, 8, 7, 19, 0, 0),
+                    LocationId = 2,
+                    SalesStarted = false,
+                    SalesFinised = false,
+                },
+                new Auction()
+                {
+                    DateTime = new DateTime(2023, 8, 7, 19, 0, 0),
+                    LocationId = 3,
+                    SalesStarted = false,
+                    SalesFinised = false,
+                },
+
+            };
         }
 
         public IEnumerable<Location> GetLocations()
@@ -198,10 +236,8 @@ namespace CarAuction.Seeder
                     CurrentBid = 5000,
                     PrimaryDamage = Damage.Normal_Wear.ToString(),
                     SecondaryDamage = Damage.Normal_Wear.ToString(),
-                    DateTime = new DateTime(2023,12,16 ),
                     VIN = "XXXX",
-                    LocationId = 3,
-                    SalesFinised= false,
+                    AuctionId = 3,
                     SaleTerm="",
                     Highlights="",
                 },
@@ -225,10 +261,8 @@ namespace CarAuction.Seeder
                     CurrentBid = 5000,
                     PrimaryDamage = Damage.Normal_Wear.ToString(),
                     SecondaryDamage = Damage.Normal_Wear.ToString(),
-                    DateTime = new DateTime(2023,1,1),
                     VIN = "XXXX",
-                    LocationId = 1,
-                    SalesFinised= false,
+                    AuctionId = 1,
                     SaleTerm="",
                     Highlights="",
                 },

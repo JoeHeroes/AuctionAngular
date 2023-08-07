@@ -24,7 +24,7 @@ namespace AuctionAngular.Dtos
         public string Color { get; set; }
 
         [Required]
-        public int LocationId { get; set; }
+        public int AuctionId { get; set; }
 
         [Required]
         [DisplayName("Body Type")]

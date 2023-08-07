@@ -12,24 +12,23 @@ namespace AuctionAngular.Services
             _provider = provider;
         }
 
-        public Task Execute(IJobExecutionContext context)
+        public async Task Execute(IJobExecutionContext context)
         {
             using (var scope = _provider.CreateScope())
             {
                 var service = scope.ServiceProvider.GetService<IAuctionService>();
-                Console.Out.WriteLineAsync("Greetings from HelloJob!");
+                Console.Out.WriteLineAsync("...");
 
+                bool live = await service.LiveAuction();
 
-                var list = service.AuctionListSpecial();
-
-
-                foreach (var item in list)
+                if (live)
                 {
-                    Console.Out.WriteLineAsync(item.Fuel.ToString());
+
+                    await service.StartAuction();
+
+                    await service.EndAuction();
                 }
             }
-
-            return Task.CompletedTask;
         }
     }
 }
