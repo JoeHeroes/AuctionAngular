@@ -67,7 +67,6 @@ namespace AuctionAngular.Services
             return result;
         }
 
-
         public async Task<IEnumerable<ViewVehicleDto>> AuctionList()
         {
             var vehicles = await _dbContext.Vehicles.ToListAsync();
@@ -126,6 +125,32 @@ namespace AuctionAngular.Services
                 SalesFinised = vehicle.SalesFinised,
                 Images = pictures,
             };
+        }
+
+
+        public IEnumerable<ViewVehicleDto> AuctionListSpecial()
+        {
+            var vehicles = _dbContext.Vehicles.ToList();
+
+            List<ViewVehicleDto> result = new List<ViewVehicleDto>();
+
+            foreach (var vehicle in vehicles)
+            {
+                var restultPictures = _dbContext.Pictures.Where(x => x.VehicleId == vehicle.Id);
+
+                List<string> pictures = new List<string>();
+
+                foreach (var pic in restultPictures)
+                {
+                    pictures.Add(pic.PathImg);
+                }
+
+                ViewVehicleDto view = ViewVehicleDtoConvert(vehicle, pictures);
+
+                result.Add(view);
+            }
+
+            return result;
         }
     }
 }

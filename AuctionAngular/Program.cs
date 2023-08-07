@@ -15,6 +15,9 @@ using Database.Entities;
 using Database.Entities.Validators;
 using Database;
 using System.Reflection;
+using Quartz.Impl;
+using Quartz.Spi;
+using Quartz;
 
 var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
 logger.Debug("init main");
@@ -53,7 +56,6 @@ try
         };
     });
 
-
     //Validator
     builder.Services.AddFluentValidationAutoValidation();
     builder.Services.AddFluentValidationClientsideAdapters();
@@ -61,12 +63,19 @@ try
     //Sedder
     builder.Services.AddScoped<AuctionSeeder>();
 
-
     //Scheduler
-    //builder.Services.AddHostedService<SchedulerService>();
 
-    builder.Services.AddHostedService<HostBackgroundService>();
-    builder.Services.AddScoped<IProcessingService, ProcessingService>();
+    builder.Services.AddSingleton<IJobFactory, SingletonJobFactory>();
+    builder.Services.AddSingleton<ISchedulerFactory, StdSchedulerFactory>();
+
+    // Add our job
+    builder.Services.AddSingleton<ProcessingJob>();
+    builder.Services.AddSingleton(new JobSchedule(
+        jobType: typeof(ProcessingJob),
+        cronExpression: "0/1 * * * * ?")); // run every 5 seconds
+
+    //Hosted
+    builder.Services.AddHostedService<QuartzHostedService>();
 
     //Interface
     builder.Services.AddScoped<IAccountService, AccountService>();
@@ -76,7 +85,6 @@ try
     builder.Services.AddScoped<ICalendarService, CalendarService>(); 
     builder.Services.AddTransient<IMailService, MailService>();
     builder.Services.AddTransient<IMessageService, MessageService>();
-
 
     //Hasser
     builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();

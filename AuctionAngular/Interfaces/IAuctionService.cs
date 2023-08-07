@@ -8,5 +8,6 @@ namespace AuctionAngular.Interfaces
         Task EndAuction();
         Task<IEnumerable<ViewVehicleDto>> LiveAuctionList();
         Task<IEnumerable<ViewVehicleDto>> AuctionList();
+        IEnumerable<ViewVehicleDto> AuctionListSpecial();
     }
 }
