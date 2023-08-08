@@ -7,7 +7,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace AuctionAngular.Services
@@ -32,19 +31,6 @@ namespace AuctionAngular.Services
         }
         public async Task<User> CreateUserAsync(RegisterUserDto dto)
         {
-            dto = new RegisterUserDto()
-            {
-                Email = "Test@wp.pl",
-                Password = "Password12#",
-                ConfirmPassword = "Password12#",
-                Name = "Test",
-                SureName = "Test",
-                Nationality = "Poland",
-                Phone = "+48 123 456 789",
-                DateOfBirth = DateTime.Now,
-                RoleId = 1,
-            };
-
             var newUser = new User()
             {
                 Email = dto.Email,
@@ -58,6 +44,24 @@ namespace AuctionAngular.Services
                 ProfilePicture = "",
                 EmialConfirmed = false
             };
+
+
+            var user = _dbContext.Users.FirstOrDefault(u => u.Email == dto.Email);
+
+            if (user != null)
+            {
+                throw new Exception("Email is taken.");
+            }
+
+            if (dto.Password != dto.ConfirmPassword)
+            {
+                throw new Exception("Password and ConfirmPassword must be the same.");
+            }
+
+            if (dto.DateOfBirth > DateTime.Now.Date.AddDays(1))
+            {
+                throw new Exception("Are you time traveler?");
+            }
 
             var hashedPass = _passwordHasher.HashPassword(newUser, dto.Password);
 
@@ -85,35 +89,35 @@ namespace AuctionAngular.Services
 
             if (account is null)
             {
-                throw new BadRequestException("Invalid username or password");
+                throw new BadRequestException("Invalid username or password.");
+            }
+
+            if (account.EmialConfirmed == false)
+            {
+                throw new BadRequestException("Confirm your email.");
             }
 
             var result = _passwordHasher.VerifyHashedPassword(account, account.PasswordHash, dto.Password);
             if (result == PasswordVerificationResult.Failed)
             {
-                throw new BadRequestException("Invalid username or password");
+                throw new BadRequestException("Invalid username or password.");
             }
 
-
-            if(account.EmialConfirmed == false)
-            {
-                throw new BadRequestException("Confirm your email");
-            }
            
 
             return await GenerateTokenAsync(account);
         }
 
-        public async Task RestartPasswordAsync(RestartPasswordDto dto)
+        public async Task<bool> RestartPasswordAsync(RestartPasswordDto dto)
         {
             if (dto.NewPassword != dto.ConfirmNewPassword)
             {
-                throw new BadRequestException("New Password must be the same");
+                throw new BadRequestException("New Password must be the same.");
             }
 
             if (dto.OldPassword == dto.NewPassword)
             {
-                throw new BadRequestException("New and Old Password and couldn't be the same");
+                throw new BadRequestException("New and Old Password and couldn't be the same.");
             }
 
             var account = await _dbContext.Users.FirstOrDefaultAsync(x => x.Email == dto.Email);
@@ -122,10 +126,11 @@ namespace AuctionAngular.Services
             var result = _passwordHasher.VerifyHashedPassword(account, account.PasswordHash, dto.OldPassword);
             if (result == PasswordVerificationResult.Failed)
             {
-                throw new BadRequestException("Old password is invalid");
+                throw new BadRequestException("Old password is invalid.");
             }
 
             account.PasswordHash = _passwordHasher.HashPassword(account, dto.NewPassword); ;
+
             try
             {
                 await _dbContext.SaveChangesAsync();
@@ -134,6 +139,8 @@ namespace AuctionAngular.Services
             {
                 throw new DbUpdateException("Error DataBase", e);
             }
+
+            return true;
         }
 
         public async Task<ViewUserDto> GetUserInfoByIdAsync(int id)
@@ -144,7 +151,7 @@ namespace AuctionAngular.Services
 
             if (user is null)
             {
-                throw new NotFoundException("User not found");
+                throw new NotFoundException("User not found.");
             }
 
             var result = new ViewUserDto()
@@ -166,6 +173,10 @@ namespace AuctionAngular.Services
         {
             var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == dto.UserId);
 
+            if (user is null)
+            {
+                throw new NotFoundException("User not found.");
+            }
 
             user.Name = dto.Name!="" ? dto.Name: user.Name;
             user.SureName = dto.SureName != "" ? dto.SureName : user.SureName;
@@ -188,6 +199,11 @@ namespace AuctionAngular.Services
             var roles = await _dbContext
                 .Roles
                 .ToListAsync();
+
+            if (roles is null)
+            {
+                throw new NotFoundException("Roles not found.");
+            }
 
             List<RoleDto> result = new List<RoleDto>();
 

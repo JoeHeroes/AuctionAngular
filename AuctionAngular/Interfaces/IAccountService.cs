@@ -7,7 +7,7 @@ namespace AuctionAngular.Interfaces
     {
         Task<string> LoginUserAsync(LoginUserDto dto);
         Task<User> CreateUserAsync(RegisterUserDto dto);
-        Task RestartPasswordAsync(RestartPasswordDto dto);
+        Task<bool> RestartPasswordAsync(RestartPasswordDto dto);
         Task<ViewUserDto> GetUserInfoByIdAsync(int id);
         Task EditProfileAsync(EditUserDto dto);
         Task<IEnumerable<RoleDto>> GetAllRoleAsync();

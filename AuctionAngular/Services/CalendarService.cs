@@ -3,6 +3,7 @@ using AuctionAngular.Interfaces;
 using AuctionAngular.Dtos;
 using Database;
 using Database.Entities;
+using Microsoft.Extensions.Logging;
 
 namespace AuctionAngular.Services
 {
@@ -16,7 +17,7 @@ namespace AuctionAngular.Services
         }
 
   
-        public async Task<IEnumerable<ViewEventDto>> GetAll()
+        public async Task<IEnumerable<ViewEventDto>> GetEventsAsync()
         {
             var events = await this.dbContext
                 .Events
@@ -24,7 +25,7 @@ namespace AuctionAngular.Services
 
             if (events is null)
             {
-                throw new NotFoundException("Events not found");
+                throw new NotFoundException("Events not found.");
             }
 
             List<ViewEventDto> result = new List<ViewEventDto>();
@@ -50,15 +51,18 @@ namespace AuctionAngular.Services
             return result;
         }
 
-
-
-        public async Task<ViewEventDto> GetById(int id)
+        public async Task<ViewEventDto> GetByIdEventAsync(int id)
         {
             var eventResult = await this.dbContext
                 .Events
                 .FirstOrDefaultAsync(u => u.Id == id);
 
-            return  new ViewEventDto()
+            if (eventResult is null)
+            {
+                throw new NotFoundException("Event not found.");
+            }
+
+            return new ViewEventDto()
             {
                 Id = eventResult.Id,
                 Title = eventResult.Title,
@@ -73,7 +77,7 @@ namespace AuctionAngular.Services
 
 
 
-        public async Task<int> Create(CreateEventDto dto)
+        public async Task<int> CreateEventAsync(CreateEventDto dto)
         {
             var eventResult = new Event()
             {
@@ -114,7 +118,7 @@ namespace AuctionAngular.Services
             return eventResult.Id;
         }
 
-        public async Task Edit(EditEventDto dto)
+        public async Task EditEventsAsync(EditEventDto dto)
         {
 
             var eventResult = await this.dbContext.Events.FirstOrDefaultAsync(x => x.Id == dto.Id);
@@ -126,8 +130,6 @@ namespace AuctionAngular.Services
             eventResult.End = dto.Date.ToString() != default(DateTime).ToString() ? dto.Date : eventResult.End;
             eventResult.Color = dto.Color != "" ? dto.Color : eventResult.Color;
             eventResult.AllDay = dto.AllDay;
-
-
 
             try
             {

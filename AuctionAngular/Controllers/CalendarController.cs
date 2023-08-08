@@ -28,7 +28,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<ViewEventDto>>> EventList()
         {
-            var result = await _calendarService.GetAll();
+            var result = await _calendarService.GetEventsAsync();
             return Ok(result);
         }
 
@@ -45,7 +45,7 @@ namespace AuctionAngular.Controllers
 
         public async Task<ActionResult<ViewEventDto>> GetOne([FromRoute] int id)
         {
-            var result = await _calendarService.GetById(id);
+            var result = await _calendarService.GetByIdEventAsync(id);
 
             if (result is null)
             {
@@ -66,7 +66,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> CreateEvent([FromBody]CreateEventDto dto)
         {
-            var result = await _calendarService.Create(dto);
+            var result = await _calendarService.CreateEventAsync(dto);
             return Ok();
         }
 
@@ -83,7 +83,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> EditEvent([FromBody] EditEventDto dto)
         {
-            await _calendarService.Edit(dto);
+            await _calendarService.EditEventsAsync(dto);
             return Ok();
         }
     }
