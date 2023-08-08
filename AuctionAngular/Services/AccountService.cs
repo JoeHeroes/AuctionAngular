@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace AuctionAngular.Services
@@ -18,22 +19,32 @@ namespace AuctionAngular.Services
         private readonly AuthenticationSettings _authenticationSetting;
         private readonly IPasswordHasher<User> _passwordHasher;
         private readonly IWebHostEnvironment _webHost;
-        private readonly IConfiguration _configuration;
         /// <inheritdoc/>
         public AccountService(AuctionDbContext dbContext,
             IPasswordHasher<User> passwordHasher,
             AuthenticationSettings authenticationSetting,
-            IWebHostEnvironment webHost,
-            IConfiguration configuration)
+            IWebHostEnvironment webHost)
         {
             _dbContext = dbContext;
             _passwordHasher = passwordHasher;
             _authenticationSetting = authenticationSetting;
             _webHost = webHost;
-            _configuration = configuration;
         }
-        public async Task CreateUserAsync(RegisterUserDto dto)
+        public async Task<User> CreateUserAsync(RegisterUserDto dto)
         {
+            dto = new RegisterUserDto()
+            {
+                Email = "Test@wp.pl",
+                Password = "Password12#",
+                ConfirmPassword = "Password12#",
+                Name = "Test",
+                SureName = "Test",
+                Nationality = "Poland",
+                Phone = "+48 123 456 789",
+                DateOfBirth = DateTime.Now,
+                RoleId = 1,
+            };
+
             var newUser = new User()
             {
                 Email = dto.Email,
@@ -52,6 +63,7 @@ namespace AuctionAngular.Services
 
             newUser.PasswordHash = hashedPass;
             _dbContext.Users.Add(newUser);
+
             try
             {
                 await _dbContext.SaveChangesAsync();
@@ -60,6 +72,8 @@ namespace AuctionAngular.Services
             {
                 throw new DbUpdateException("Error DataBase", e);
             }
+
+            return newUser;
         }
 
         public async Task<string> LoginUserAsync(LoginUserDto dto)

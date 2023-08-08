@@ -6,7 +6,7 @@ namespace AuctionAngular.Interfaces
     public interface IAccountService
     {
         Task<string> LoginUserAsync(LoginUserDto dto);
-        Task CreateUserAsync(RegisterUserDto dto);
+        Task<User> CreateUserAsync(RegisterUserDto dto);
         Task RestartPasswordAsync(RestartPasswordDto dto);
         Task<ViewUserDto> GetUserInfoByIdAsync(int id);
         Task EditProfileAsync(EditUserDto dto);

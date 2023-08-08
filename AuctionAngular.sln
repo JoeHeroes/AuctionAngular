@@ -5,7 +5,9 @@ VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuctionAngular", "AuctionAngular\AuctionAngular.csproj", "{E899B6A1-DDCA-4169-BC9F-F6FFF5C3BA97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "Database\Database.csproj", "{0B602E45-F865-45D4-83AF-0705634E2A9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Database", "Database\Database.csproj", "{0B602E45-F865-45D4-83AF-0705634E2A9C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuctionAngular.Tests", "AuctionAngular.Tests\AuctionAngular.Tests.csproj", "{4DDB7AEE-1E58-4D9C-A69F-7B1E69FD20EA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{0B602E45-F865-45D4-83AF-0705634E2A9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B602E45-F865-45D4-83AF-0705634E2A9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B602E45-F865-45D4-83AF-0705634E2A9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DDB7AEE-1E58-4D9C-A69F-7B1E69FD20EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DDB7AEE-1E58-4D9C-A69F-7B1E69FD20EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DDB7AEE-1E58-4D9C-A69F-7B1E69FD20EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DDB7AEE-1E58-4D9C-A69F-7B1E69FD20EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
