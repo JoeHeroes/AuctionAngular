@@ -37,7 +37,6 @@ namespace AuctionAngular.Services
             }
 
             return true;
-
         }
     }
 }

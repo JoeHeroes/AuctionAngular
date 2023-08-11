@@ -225,7 +225,8 @@ namespace AuctionAngular.Services
             };
 
 
-            _dbContext.Vehicles.Add(vehicle);
+            await _dbContext.Vehicles.AddAsync(vehicle);
+
             try
             {
                 await _dbContext.SaveChangesAsync();
@@ -235,7 +236,7 @@ namespace AuctionAngular.Services
                 throw new DbUpdateException("Error DataBase", e);
             }
 
-            AddEvent(vehicle.Id, dto);
+            await AddEventVehicleAsync(vehicle.Id, dto);
 
             return vehicle.Id;
         }
@@ -311,9 +312,9 @@ namespace AuctionAngular.Services
                 };
 
                 
-                if (_dbContext.Bids.FirstOrDefault(x => x.UserId == user.Id && x.VehicleId == vehicle.Id) == null)
+                if (await _dbContext.Bids.FirstOrDefaultAsync(x => x.UserId == user.Id && x.VehicleId == vehicle.Id) == null)
                 {
-                    _dbContext.Bids.Add(bind);
+                    await _dbContext.Bids.AddAsync(bind);
                 }
                 
                 try
@@ -362,8 +363,8 @@ namespace AuctionAngular.Services
                     Url = "/vehicle/lot/"+ vehicle.Id
                 };
 
-                _dbContext.Events.Add(newEvent);
-                _dbContext.Watches.Add(observed);
+                await _dbContext.Events.AddAsync(newEvent);
+                await _dbContext.Watches.AddAsync(observed);
             }
 
             try
@@ -383,7 +384,6 @@ namespace AuctionAngular.Services
             Vehicle? vehicle = await _dbContext.Vehicles.FirstOrDefaultAsync(x => x.Id == dto.VehicleId);
 
             Watch? observed = await _dbContext.Watches.FirstOrDefaultAsync(x => x.UserId == dto.UserId && x.VehicleId == vehicle!.Id);
-
 
             var events = await _dbContext.Events.FirstOrDefaultAsync(x => x.Title == vehicle!.Id + " " + vehicle.Producer + " " + vehicle.ModelGeneration);
 
@@ -408,13 +408,13 @@ namespace AuctionAngular.Services
         {
             var result = await _dbContext.Watches.FirstOrDefaultAsync(x => x.UserId == dto.UserId && x.VehicleId == dto.VehicleId);
 
-            if (result != null)
+            if (result == null)
             {
-                return true;
+                return false;
             }
             else
             {
-                return false;
+                return true;
             }
         }
         public async Task<IEnumerable<ViewVehiclesDto>> GetAllWatchAsync(int id)
@@ -497,7 +497,7 @@ namespace AuctionAngular.Services
                 Url = "/vehicle/lot"+id
             };
 
-            _dbContext.Events.Add(eventSell);
+            await _dbContext.Events.AddAsync(eventSell);
 
             try
             {

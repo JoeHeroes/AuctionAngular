@@ -29,7 +29,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<bool>> LiveAuction()
         {
-            var result = await _auctionService.LiveAuction();
+            var result = await _auctionService.LiveAuctionAsync();
             return Ok(result);
         }
 
@@ -45,7 +45,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> EndAuction()
         {
-            await _auctionService.EndAuction();
+            await _auctionService.EndAuctionAsync();
             return NoContent();
         }
 
@@ -60,7 +60,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<ViewVehicleDto>>> LiveAuctionList()
         {
-            var result = await _auctionService.LiveAuctionList();
+            var result = await _auctionService.LiveAuctionListAsync();
             return Ok(result);
         }
 
@@ -75,7 +75,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<ViewVehicleDto>>> AuctionList()
         {
-            var result = await _auctionService.AuctionList();
+            var result = await _auctionService.AuctionListAsync();
             return Ok(result);
         }
     }

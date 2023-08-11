@@ -46,7 +46,7 @@ namespace AuctionAngular.Services
             };
 
 
-            var user = _dbContext.Users.FirstOrDefault(u => u.Email == dto.Email);
+            var user =  await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == dto.Email);
 
             if (user != null)
             {
@@ -66,7 +66,7 @@ namespace AuctionAngular.Services
             var hashedPass = _passwordHasher.HashPassword(newUser, dto.Password);
 
             newUser.PasswordHash = hashedPass;
-            _dbContext.Users.Add(newUser);
+            await _dbContext.Users.AddAsync(newUser);
 
             try
             {
@@ -103,8 +103,6 @@ namespace AuctionAngular.Services
                 throw new BadRequestException("Invalid username or password.");
             }
 
-           
-
             return await GenerateTokenAsync(account);
         }
 
@@ -121,7 +119,6 @@ namespace AuctionAngular.Services
             }
 
             var account = await _dbContext.Users.FirstOrDefaultAsync(x => x.Email == dto.Email);
-
 
             var result = _passwordHasher.VerifyHashedPassword(account, account.PasswordHash, dto.OldPassword);
             if (result == PasswordVerificationResult.Failed)
@@ -251,7 +248,6 @@ namespace AuctionAngular.Services
                 new Claim(ClaimTypes.Name, $"{user.Name} {user.SureName}"),
                 new Claim("UserId", user.Id.ToString()),
                 new Claim("DateOfBirth", user.DateOfBirth.Value.ToString("yyyy-MM-dd")),
-
             };
 
             if (!string.IsNullOrEmpty(user.Nationality))
@@ -264,7 +260,6 @@ namespace AuctionAngular.Services
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_authenticationSetting.JwtKey));
             var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
             var expires = DateTime.Now.AddDays(_authenticationSetting.JwtExpireDays);
-
 
             var token = new JwtSecurityToken(_authenticationSetting.JwtIssuer,
                 _authenticationSetting.JwtIssuer,
@@ -284,7 +279,7 @@ namespace AuctionAngular.Services
 
         public async Task AccountVerification(int id ,bool autorization)
         {
-            User user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == id);
+            var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == id);
             user.EmialConfirmed = autorization;
 
             try

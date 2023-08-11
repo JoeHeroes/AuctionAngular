@@ -226,7 +226,7 @@ namespace AuctionAngular.Controllers
                 Data = token,
                 Date = DateTime.Now,
             };
-            await _messageService.Create(authenticationMessage);
+            await _messageService.CreateMessageAsync(authenticationMessage);
 
             if (result)
             {
@@ -256,7 +256,7 @@ namespace AuctionAngular.Controllers
 
         public async Task<IActionResult> ConfirmEmail([FromRoute] string token, [FromRoute] string email)
         {
-            bool resultCheck = _messageService.Check(token, email);
+            bool resultCheck = await _messageService.CheckMessageAsync(token, email);
 
             User user = await _accountService.GetByEmailAsync(email);
 

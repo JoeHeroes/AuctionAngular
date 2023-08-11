@@ -13,10 +13,9 @@ namespace AuctionAngular.Services
             _dbContext = dbContext;
         }
 
-        public bool Check(string token, string email)
+        public async Task<bool> CheckMessageAsync(string token, string email)
         {
-
-            var result =  _dbContext.Messages.Where(x => x.Email == email).OrderByDescending(s => s.Date).Where(t => t.Data == token);
+            var result =  await _dbContext.Messages.Where(x => x.Email == email).OrderByDescending(s => s.Date).Where(t => t.Data == token).FirstOrDefaultAsync();
         
             if(result != null)
             {
@@ -26,9 +25,9 @@ namespace AuctionAngular.Services
             return false;
         }
 
-        public async Task Create(Message dto)
+        public async Task CreateMessageAsync(Message dto)
         {
-            _dbContext.Messages.Add(dto);
+            await _dbContext.Messages.AddAsync(dto);
             try
             {
                 await _dbContext.SaveChangesAsync();

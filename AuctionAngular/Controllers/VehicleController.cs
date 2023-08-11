@@ -28,7 +28,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<ViewVehiclesDto>>> GetAllVehicle()
         {
-            var result = await _vehicleService.GetAll();
+            var result = await _vehicleService.GetVehiclesAsync();
 
             if (result is null)
             {
@@ -51,7 +51,7 @@ namespace AuctionAngular.Controllers
         
         public async Task<ActionResult<ViewVehicleDto>> GetOne([FromRoute] int id)
         {
-            var result = await _vehicleService.GetById(id);
+            var result = await _vehicleService.GetByIdVehicleAsync(id);
 
             if (result is null)
             {
@@ -73,7 +73,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<ViewVehiclesDto>>> GetAllBidedVehicle([FromRoute] int id)
         {
-            var result = await _vehicleService.GetAllBided(id);
+            var result = await _vehicleService.GetAllBidedAsync(id);
 
             if (result is null)
             {
@@ -97,7 +97,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<ViewVehiclesDto>>> GetAllWonVehicle([FromRoute] int id)
         {
-            var result = await _vehicleService.GetAllWon(id);
+            var result = await _vehicleService.GetAllWonAsync(id);
 
             if (result is null)
             {
@@ -118,7 +118,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<ViewVehiclesDto>>> GetAllLostVehicle([FromRoute] int id)
         {
-            var result = await _vehicleService.GetAllLost(id);
+            var result = await _vehicleService.GetAllLostAsync(id);
 
             if (result is null)
             {
@@ -139,7 +139,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> DeleteVehicle([FromRoute] int id)
         {
-            await _vehicleService.Delete(id);
+            await _vehicleService.DeleteVehicleAsync(id);
 
             return NoContent();
         }
@@ -156,7 +156,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> CreateVehicle([FromBody] CreateVehicleDto dto)
         {
-            int id = await _vehicleService.Create(dto);
+            int id = await _vehicleService.CreateVehicleAsync(dto);
 
             return Ok(id);
         }
@@ -173,7 +173,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> UpdateVehicle([FromRoute] int id,[FromBody] EditVehicleDto dto)
         {
-            await _vehicleService.Update(id, dto);
+            await _vehicleService.UpdateVehicleAsync(id, dto);
 
             return NoContent();
         }
@@ -192,7 +192,7 @@ namespace AuctionAngular.Controllers
         public async Task<IActionResult> UpdateBid([FromBody] UpdateBidDto dto)
         {
 
-            if(await _vehicleService.Bid(dto))
+            if(await _vehicleService.BidVehicleAsync(dto))
             {
                 return Ok();
             }
@@ -211,10 +211,9 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Watch([FromBody] WatchDto dto)
         {
-            await _vehicleService.Watch(dto);
+            await _vehicleService.WatchVehicleAsync(dto);
 
             return Ok();
-
         }
 
         /// <summary>
@@ -228,7 +227,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> RemoveWatch([FromBody] WatchDto dto)
         {
-            await _vehicleService.RemoveWatch(dto);
+            await _vehicleService.RemoveWatchAsync(dto);
 
             return Ok();
         }
@@ -244,7 +243,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<bool>> CheckWatch([FromBody] WatchDto dto)
         {
-            var result = await _vehicleService.CheckWatch(dto);
+            var result = await _vehicleService.CheckWatchAsync(dto);
 
             return Ok(result);
         }
@@ -262,7 +261,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<ViewVehicleDto>>> AllWatch([FromRoute] int id)
         {
-            var result = await _vehicleService.GetAllWatch(id);
+            var result = await _vehicleService.GetAllWatchAsync(id);
 
             if (result is null)
             {
@@ -286,7 +285,7 @@ namespace AuctionAngular.Controllers
         {
             IFormFileCollection files = Request.Form.Files;
 
-            var result = await _vehicleService.AddPicture(id, files);
+            var result = await _vehicleService.AddPictureAsync(id, files);
 
             if (result is null)
             {

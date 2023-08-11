@@ -4,7 +4,7 @@ namespace AuctionAngular.Interfaces
 {
     public interface IMessageService
     {
-        Task CreateAsync(Message dto);
-        bool CheckAsync(string token, string email);
+        Task CreateMessageAsync(Message dto);
+        Task<bool> CheckMessageAsync(string token, string email);
     }
 }

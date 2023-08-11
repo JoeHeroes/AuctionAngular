@@ -15,14 +15,14 @@ namespace AuctionAngular.Services
             _dbContext = dbContext;
         }
 
-        public async Task<bool> LiveAuction()
+        public async Task<bool> LiveAuctionAsync()
         {
             var auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.DateTime <= DateTime.Now && x.DateTime.AddHours(1) >= DateTime.Now && x.SalesFinised == false);
 
             return auction != null ? true : false;
         }
 
-        public async Task StartAuction()
+        public async Task StartAuctionAsync()
         {
             var auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.DateTime <= DateTime.Now && x.DateTime.AddMinutes(1) >= DateTime.Now && x.SalesStarted == false && x.SalesFinised == false);
 
@@ -47,7 +47,7 @@ namespace AuctionAngular.Services
             }
         }
 
-        public async Task EndAuction()
+        public async Task EndAuctionAsync()
         {
             var auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.SalesStarted == true && x.SalesFinised == false);
 
@@ -67,7 +67,7 @@ namespace AuctionAngular.Services
             }
         }
 
-        public async Task<IEnumerable<ViewVehicleDto>> LiveAuctionList()
+        public async Task<IEnumerable<ViewVehicleDto>> LiveAuctionListAsync()
         {
             var auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.DateTime <= DateTime.Now && x.DateTime.AddHours(1) >= DateTime.Now && x.SalesFinised == false && x.SalesStarted == false);
 
@@ -89,13 +89,12 @@ namespace AuctionAngular.Services
                 ViewVehicleDto view = ViewVehicleDtoConvert(vehicle, pictures);
 
                 result.Add(view);
-
             }
 
             return result;
         }
 
-        public async Task<IEnumerable<Auction>> AuctionList()
+        public async Task<IEnumerable<Auction>> AuctionListAsync()
         {
             var auctions = await _dbContext.Auctions.Where(x => x.SalesFinised == false).ToListAsync();
 
@@ -105,7 +104,6 @@ namespace AuctionAngular.Services
 
         public ViewVehicleDto ViewVehicleDtoConvert(Vehicle vehicle, List<string> pictures)
         {
-
             return new ViewVehicleDto()
             {
                 Id = vehicle.Id,

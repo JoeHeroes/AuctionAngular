@@ -30,7 +30,6 @@ namespace AuctionAngular.Services
 
             foreach(var eve in events)
             {
-
                 var resultDto = new ViewEventDto()
                 {
                     Id = eve.Id,
@@ -87,7 +86,7 @@ namespace AuctionAngular.Services
                 Url = "/edit-event/"
             };
 
-            _dbContext.Events.Add(eventResult);
+            await _dbContext.Events.AddAsync(eventResult);
 
             try
             {

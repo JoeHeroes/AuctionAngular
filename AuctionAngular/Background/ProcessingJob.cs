@@ -18,13 +18,13 @@ namespace AuctionAngular.Background
                 var service = scope.ServiceProvider.GetService<IAuctionService>();
                 Console.Out.WriteLineAsync("...");
 
-                bool live = await service.LiveAuction();
+                bool live = await service.LiveAuctionAsync();
 
                 if (live)
                 {
-                    await service.StartAuction();
+                    await service.StartAuctionAsync();
 
-                    await service.EndAuction();
+                    await service.EndAuctionAsync();
                 }
             }
         }
