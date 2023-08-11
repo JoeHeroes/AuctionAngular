@@ -14,12 +14,35 @@ namespace AuctionAngularTests
             context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
 
+            context.Locations.AddRange(new Location()
+            {
+                Name = "Test1",
+                Phone = "Test2",
+                Email = "Test@Test.pl",
+                City = "Test3",
+                Street = "Test4",
+                PostalCode = "Test5",
+                Picture = "Test6"
+            });
+
+
+            context.Events.AddRange(new Event()
+            {
+                Title = "Test",
+                Description = "Test",
+                Start = DateTime.Now,
+                End = DateTime.Now.AddHours(1),
+                Color = "Red",
+                AllDay = false,
+                Owner = 1,
+                Url = "/edit-event/"
+            });
+
             context.Roles.AddRange(
                  new Role()
                  {
                      Name = "Buyer"
-                 }
-                );
+                 });
 
             context.Users.AddRange(
                 new User() {

@@ -28,7 +28,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<ViewLocationDto>>> LocationList()
         {
-            var result = await _locationService.GetAll();
+            var result = await _locationService.GetLocationsAsync();
             return Ok(result);
         }
     }

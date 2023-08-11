@@ -17,12 +17,16 @@ namespace AuctionAngular.Services
             _webHost = webHost;
         }
 
-        public async Task<ViewVehicleDto> GetById(int id)
+        public async Task<ViewVehicleDto> GetByIdVehicleAsync(int id)
         {
             var vehicle = await _dbContext
                 .Vehicles
                 .FirstOrDefaultAsync(u => u.Id == id);
 
+            if(vehicle is null)
+            {
+                throw new NotFoundException("Vehicle not found.");
+            }
 
             var restultPictures = _dbContext.Pictures.Where(x => x.VehicleId == vehicle!.Id);
 
@@ -36,7 +40,7 @@ namespace AuctionAngular.Services
             return ViewVehicleDtoConvert(vehicle!, pictures);
         }
 
-        public async Task<IEnumerable<ViewVehiclesDto>> GetAll()
+        public async Task<IEnumerable<ViewVehiclesDto>> GetVehiclesAsync()
         {
             var vehicles = await _dbContext
                 .Vehicles
@@ -62,7 +66,7 @@ namespace AuctionAngular.Services
         }
 
 
-        public async Task<IEnumerable<ViewVehiclesDto>> GetAllBided(int id)
+        public async Task<IEnumerable<ViewVehiclesDto>> GetAllBidedAsync(int id)
         {
 
             var bids = _dbContext.Bids.Where(x => x.UserId == id);
@@ -104,7 +108,7 @@ namespace AuctionAngular.Services
             return viewVehicle;
         }
 
-        public async Task<IEnumerable<ViewVehiclesDto>> GetAllWon(int id)
+        public async Task<IEnumerable<ViewVehiclesDto>> GetAllWonAsync(int id)
         {
 
             var bids = _dbContext.Bids.Where(x => x.UserId == id);
@@ -148,7 +152,7 @@ namespace AuctionAngular.Services
             return viewVehicle;
         }
 
-        public async Task<IEnumerable<ViewVehiclesDto>> GetAllLost(int id)
+        public async Task<IEnumerable<ViewVehiclesDto>> GetAllLostAsync(int id)
         {
 
             var bids = _dbContext.Bids.Where(x => x.UserId == id);
@@ -192,7 +196,7 @@ namespace AuctionAngular.Services
             return viewVehicle;
         }
 
-        public async Task<int> Create(CreateVehicleDto dto)
+        public async Task<int> CreateVehicleAsync(CreateVehicleDto dto)
         {
             var vehicle = new Vehicle
             {
@@ -235,7 +239,7 @@ namespace AuctionAngular.Services
 
             return vehicle.Id;
         }
-        public async Task Delete(int id)
+        public async Task DeleteVehicleAsync(int id)
         {
             var result = _dbContext
                 .Vehicles
@@ -257,7 +261,7 @@ namespace AuctionAngular.Services
             }
         }
 
-        public async Task Update(int id, EditVehicleDto dto)
+        public async Task UpdateVehicleAsync(int id, EditVehicleDto dto)
         {
             var vehicle = await _dbContext
                 .Vehicles
@@ -285,7 +289,7 @@ namespace AuctionAngular.Services
             }
         }
 
-        public async Task<bool> Bid(UpdateBidDto dto)
+        public async Task<bool> BidVehicleAsync(UpdateBidDto dto)
         {
             Vehicle? vehicle = await _dbContext
                                 .Vehicles
@@ -326,7 +330,7 @@ namespace AuctionAngular.Services
             return false;
         }
 
-        public async Task Watch(WatchDto dto)
+        public async Task WatchVehicleAsync(WatchDto dto)
         {
             User? user = await _dbContext
                                     .Users
@@ -373,7 +377,7 @@ namespace AuctionAngular.Services
 
         }
 
-        public async Task RemoveWatch(WatchDto dto)
+        public async Task RemoveWatchAsync(WatchDto dto)
         {
 
             Vehicle? vehicle = await _dbContext.Vehicles.FirstOrDefaultAsync(x => x.Id == dto.VehicleId);
@@ -400,7 +404,7 @@ namespace AuctionAngular.Services
             }
         }
 
-        public async Task<bool> CheckWatch(WatchDto dto)
+        public async Task<bool> CheckWatchAsync(WatchDto dto)
         {
             var result = await _dbContext.Watches.FirstOrDefaultAsync(x => x.UserId == dto.UserId && x.VehicleId == dto.VehicleId);
 
@@ -413,7 +417,7 @@ namespace AuctionAngular.Services
                 return false;
             }
         }
-        public async Task<IEnumerable<ViewVehiclesDto>> GetAllWatch(int id)
+        public async Task<IEnumerable<ViewVehiclesDto>> GetAllWatchAsync(int id)
         {
             var watches = await _dbContext.Watches.Where(x => x.UserId == id).ToListAsync();
 
@@ -444,7 +448,7 @@ namespace AuctionAngular.Services
             return viewVehicle;
         }
 
-        public async Task<List<string>> AddPicture(int id, IFormFileCollection files)
+        public async Task<List<string>> AddPictureAsync(int id, IFormFileCollection files)
         {
             List<string> listPicture = new List<string>();
             foreach (var file in files)
@@ -477,7 +481,7 @@ namespace AuctionAngular.Services
             return listPicture;
         }
 
-        public async Task AddEvent(int id, CreateVehicleDto dto)
+        public async Task AddEventVehicleAsync(int id, CreateVehicleDto dto)
         {
             Auction? auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.Id == dto.AuctionId);
 

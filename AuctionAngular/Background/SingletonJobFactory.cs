@@ -1,7 +1,7 @@
 ﻿using Quartz.Spi;
 using Quartz;
 
-namespace AuctionAngular.Services
+namespace AuctionAngular.Background
 {
     public class SingletonJobFactory : IJobFactory
     {

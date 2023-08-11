@@ -83,7 +83,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> EditEvent([FromBody] EditEventDto dto)
         {
-            await _calendarService.EditEventsAsync(dto);
+            await _calendarService.EditEventAsync(dto);
             return Ok();
         }
     }

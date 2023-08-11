@@ -1,11 +1,10 @@
 ﻿using AuctionAngular.Interfaces;
 using Quartz;
 
-namespace AuctionAngular.Services
+namespace AuctionAngular.Background
 {
     public class ProcessingJob : IJob
     {
-
         private readonly IServiceProvider _provider;
         public ProcessingJob(IServiceProvider provider)
         {
@@ -23,7 +22,6 @@ namespace AuctionAngular.Services
 
                 if (live)
                 {
-
                     await service.StartAuction();
 
                     await service.EndAuction();

@@ -55,6 +55,8 @@ namespace AuctionAngular.Controllers
 
             var token = await _accountService.GenerateTokenAsync(user);
 
+            await SendEmail(dto.Email);
+
             return Ok(token);
         }
 

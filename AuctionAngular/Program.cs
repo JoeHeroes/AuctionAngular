@@ -18,6 +18,7 @@ using System.Reflection;
 using Quartz.Impl;
 using Quartz.Spi;
 using Quartz;
+using AuctionAngular.Background;
 
 var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
 logger.Debug("init main");

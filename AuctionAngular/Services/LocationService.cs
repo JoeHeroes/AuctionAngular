@@ -15,7 +15,7 @@ namespace AuctionAngular.Services
             _dbContext = dbContext;
         }
 
-        public async Task<ViewLocationDto> GetById(int id)
+        public async Task<ViewLocationDto> GetByIdLocationAsync(int id)
         {
             var location = await _dbContext
                 .Locations
@@ -23,7 +23,7 @@ namespace AuctionAngular.Services
 
             if (location is null)
             {
-                throw new NotFoundException("Location not found");
+                throw new NotFoundException("Location not found.");
             }
 
             var resultDto = ViewLocationDtoConvert(location);
@@ -31,7 +31,7 @@ namespace AuctionAngular.Services
             return resultDto;
         }
 
-        public async Task<IEnumerable<ViewLocationDto>> GetAll()
+        public async Task<IEnumerable<ViewLocationDto>> GetLocationsAsync()
         {
             var locations= await _dbContext
                 .Locations
@@ -39,7 +39,7 @@ namespace AuctionAngular.Services
 
             if (locations is null)
             {
-                throw new NotFoundException("Location not found");
+                throw new NotFoundException("Location not found.");
             }
 
             List<ViewLocationDto> result = new List<ViewLocationDto>();

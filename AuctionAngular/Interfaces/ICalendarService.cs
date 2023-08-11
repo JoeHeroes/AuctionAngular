@@ -1,4 +1,5 @@
 ﻿using AuctionAngular.Dtos;
+using Database.Entities;
 
 namespace AuctionAngular.Interfaces
 {
@@ -7,6 +8,7 @@ namespace AuctionAngular.Interfaces
         Task<IEnumerable<ViewEventDto>> GetEventsAsync();
         Task<ViewEventDto> GetByIdEventAsync(int id);
         Task<int> CreateEventAsync(CreateEventDto dto);
-        Task EditEventsAsync(EditEventDto dto);
+        Task<Event> EditEventAsync(EditEventDto dto);
+        Task<int> DeleteEventAsync(int id);
     }
 }

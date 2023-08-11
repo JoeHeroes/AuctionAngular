@@ -4,19 +4,19 @@ namespace AuctionAngular.Interfaces
 {
     public interface IVehicleService
     {
-        Task<int> Create(CreateVehicleDto dto);
-        Task Delete(int id);
-        Task<IEnumerable<ViewVehiclesDto>> GetAll();
-        Task<IEnumerable<ViewVehiclesDto>> GetAllBided(int id);
-        Task<IEnumerable<ViewVehiclesDto>> GetAllWon(int id);
-        Task<IEnumerable<ViewVehiclesDto>> GetAllLost(int id);
-        Task<ViewVehicleDto> GetById(int id);
-        Task Update(int id, EditVehicleDto dto);
-        Task<bool> Bid(UpdateBidDto dto);
-        Task Watch(WatchDto dto);
-        Task RemoveWatch(WatchDto dto);
-        Task<bool> CheckWatch(WatchDto dto);
-        Task<IEnumerable<ViewVehiclesDto>> GetAllWatch(int id);
-        Task<List<string>> AddPicture(int id, IFormFileCollection files);
+        Task<int> CreateVehicleAsync(CreateVehicleDto dto);
+        Task DeleteVehicleAsync(int id);
+        Task<IEnumerable<ViewVehiclesDto>> GetVehiclesAsync();
+        Task<IEnumerable<ViewVehiclesDto>> GetAllBidedAsync(int id);
+        Task<IEnumerable<ViewVehiclesDto>> GetAllWonAsync(int id);
+        Task<IEnumerable<ViewVehiclesDto>> GetAllLostAsync(int id);
+        Task<ViewVehicleDto> GetByIdVehicleAsync(int id);
+        Task UpdateVehicleAsync(int id, EditVehicleDto dto);
+        Task<bool> BidVehicleAsync(UpdateBidDto dto);
+        Task WatchVehicleAsync(WatchDto dto);
+        Task RemoveWatchAsync(WatchDto dto);
+        Task<bool> CheckWatchAsync(WatchDto dto);
+        Task<IEnumerable<ViewVehiclesDto>> GetAllWatchAsync(int id);
+        Task<List<string>> AddPictureAsync(int id, IFormFileCollection files);
     }
 }

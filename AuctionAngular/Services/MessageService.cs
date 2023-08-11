@@ -24,7 +24,6 @@ namespace AuctionAngular.Services
             }
 
             return false;
-
         }
 
         public async Task Create(Message dto)

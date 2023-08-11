@@ -1,11 +1,10 @@
-﻿using AuctionAngular.Dtos;
-using Database.Entities;
+﻿using Database.Entities;
 
 namespace AuctionAngular.Interfaces
 {
     public interface IMessageService
     {
-        Task Create(Message dto);
-        bool Check(string token, string email);
+        Task CreateAsync(Message dto);
+        bool CheckAsync(string token, string email);
     }
 }

@@ -3,23 +3,21 @@ using AuctionAngular.Interfaces;
 using AuctionAngular.Dtos;
 using Database;
 using Database.Entities;
-using Microsoft.Extensions.Logging;
 
 namespace AuctionAngular.Services
 {
     public class CalendarService : ICalendarService
     {
-        private readonly AuctionDbContext dbContext;
+        private readonly AuctionDbContext _dbContext;
         /// <inheritdoc/>
         public CalendarService(AuctionDbContext dbContext)
         {
-            this.dbContext = dbContext;
+            this._dbContext = dbContext;
         }
-
   
         public async Task<IEnumerable<ViewEventDto>> GetEventsAsync()
         {
-            var events = await this.dbContext
+            var events = await _dbContext
                 .Events
                 .ToListAsync();
 
@@ -53,7 +51,7 @@ namespace AuctionAngular.Services
 
         public async Task<ViewEventDto> GetByIdEventAsync(int id)
         {
-            var eventResult = await this.dbContext
+            var eventResult = await _dbContext
                 .Events
                 .FirstOrDefaultAsync(u => u.Id == id);
 
@@ -75,8 +73,6 @@ namespace AuctionAngular.Services
             };
         }
 
-
-
         public async Task<int> CreateEventAsync(CreateEventDto dto)
         {
             var eventResult = new Event()
@@ -91,24 +87,24 @@ namespace AuctionAngular.Services
                 Url = "/edit-event/"
             };
 
-            this.dbContext.Events.Add(eventResult);
+            _dbContext.Events.Add(eventResult);
 
             try
             {
-                await this.dbContext.SaveChangesAsync();
+                await _dbContext.SaveChangesAsync();
             }
             catch (DbUpdateException e)
             {
                 throw new DbUpdateException("Error DataBase", e);
             }
 
-            var updateEventResult = await this.dbContext.Events.FirstOrDefaultAsync(x => x.Id == eventResult.Id);
+            var updateEventResult = await _dbContext.Events.FirstOrDefaultAsync(x => x.Id == eventResult.Id);
 
             updateEventResult!.Url = "/edit-event/" + eventResult.Id;
 
             try
             {
-                await this.dbContext.SaveChangesAsync();
+                await _dbContext.SaveChangesAsync();
             }
             catch (DbUpdateException e)
             {
@@ -118,11 +114,15 @@ namespace AuctionAngular.Services
             return eventResult.Id;
         }
 
-        public async Task EditEventsAsync(EditEventDto dto)
+        public async Task<Event> EditEventAsync(EditEventDto dto)
         {
 
-            var eventResult = await this.dbContext.Events.FirstOrDefaultAsync(x => x.Id == dto.Id);
+            var eventResult = await _dbContext.Events.FirstOrDefaultAsync(x => x.Id == dto.Id);
 
+            if (eventResult is null)
+            {
+                throw new NotFoundException("Event not found.");
+            }
 
             eventResult.Title = dto.Title != "" ? dto.Title : eventResult.Title;
             eventResult.Description = dto.Description != "" ? dto.Description : eventResult.Description;
@@ -133,12 +133,39 @@ namespace AuctionAngular.Services
 
             try
             {
-                await dbContext.SaveChangesAsync();
+                await _dbContext.SaveChangesAsync();
             }
             catch (DbUpdateException e)
             {
                 throw new DbUpdateException("Error DataBase", e);
             }
+
+            return eventResult;
+        }
+
+
+        public async Task<int> DeleteEventAsync(int id)
+        {
+
+            var eventResult = await _dbContext.Events.FirstOrDefaultAsync(x => x.Id == id);
+
+            if(eventResult == null)
+            {
+                throw new NotFoundException("Event not found.");
+            }
+
+            _dbContext.Events.Remove(eventResult);
+
+            try
+            {
+                await _dbContext.SaveChangesAsync();
+            }
+            catch (DbUpdateException e)
+            {
+                throw new DbUpdateException("Error DataBase", e);
+            }
+
+            return id;
         }
     }
 }

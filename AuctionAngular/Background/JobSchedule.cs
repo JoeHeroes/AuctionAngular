@@ -1,4 +1,4 @@
-﻿namespace AuctionAngular.Services
+﻿namespace AuctionAngular.Background
 {
     public class JobSchedule
     {
