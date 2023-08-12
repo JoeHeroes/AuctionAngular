@@ -113,6 +113,11 @@ namespace AuctionAngular.Services
 
             var bids = _dbContext.Bids.Where(x => x.UserId == id);
 
+            if (bids is null)
+            {
+                throw new NotFoundException("Bids not found.");
+            }
+
             var vehiclesReult = await _dbContext
                 .Vehicles
                 .ToListAsync();
@@ -248,7 +253,7 @@ namespace AuctionAngular.Services
 
             if (result is null)
             {
-                throw new NotFoundException("Vehicle not found");
+                throw new NotFoundException("Vehicle not found.");
             }
 
             _dbContext.Vehicles.Remove(result);
@@ -262,7 +267,7 @@ namespace AuctionAngular.Services
             }
         }
 
-        public async Task UpdateVehicleAsync(int id, EditVehicleDto dto)
+        public async Task<Vehicle> UpdateVehicleAsync(int id, EditVehicleDto dto)
         {
             var vehicle = await _dbContext
                 .Vehicles
@@ -270,7 +275,7 @@ namespace AuctionAngular.Services
 
             if (vehicle is null)
             {
-                throw new NotFoundException("Vehicle not found");
+                throw new NotFoundException("Vehicle not found.");
             }
 
             vehicle.RegistrationYear = dto.RegistrationYear;
@@ -288,6 +293,8 @@ namespace AuctionAngular.Services
             {
                 throw new DbUpdateException("Error DataBase", e);
             }
+
+            return vehicle;
         }
 
         public async Task<bool> BidVehicleAsync(UpdateBidDto dto)
@@ -295,6 +302,11 @@ namespace AuctionAngular.Services
             Vehicle? vehicle = await _dbContext
                                 .Vehicles
                                 .FirstOrDefaultAsync(x => x.Id == dto.lotNumber);
+
+            if (vehicle is null)
+            {
+                throw new NotFoundException("Vehicle not found.");
+            }
 
             if (dto.bidNow > vehicle?.CurrentBid)
             {
@@ -304,6 +316,11 @@ namespace AuctionAngular.Services
                 User? user = await _dbContext
                                   .Users
                                   .FirstOrDefaultAsync(x => x.Id == dto.userId);
+
+                if (user is null)
+                {
+                    throw new NotFoundException("User not found.");
+                }
 
                 var bind = new Bid()
                 {
@@ -337,9 +354,19 @@ namespace AuctionAngular.Services
                                     .Users
                                     .FirstOrDefaultAsync(x => x.Id == dto.UserId);
 
+            if (user is null)
+            {
+                throw new NotFoundException("User not found.");
+            }
+
             Vehicle? vehicle = await _dbContext
                                     .Vehicles
                                     .FirstOrDefaultAsync(x => x.Id == dto.VehicleId);
+
+            if (vehicle is null)
+            {
+                throw new NotFoundException("Vehicle not found.");
+            }
 
             var observed = new Watch()
             {
@@ -383,7 +410,17 @@ namespace AuctionAngular.Services
 
             Vehicle? vehicle = await _dbContext.Vehicles.FirstOrDefaultAsync(x => x.Id == dto.VehicleId);
 
+            if (vehicle is null)
+            {
+                throw new NotFoundException("Vehicle not found.");
+            }
+
             Watch? observed = await _dbContext.Watches.FirstOrDefaultAsync(x => x.UserId == dto.UserId && x.VehicleId == vehicle!.Id);
+
+            if (observed is null)
+            {
+                throw new NotFoundException("Observed not found.");
+            }
 
             var events = await _dbContext.Events.FirstOrDefaultAsync(x => x.Title == vehicle!.Id + " " + vehicle.Producer + " " + vehicle.ModelGeneration);
 
