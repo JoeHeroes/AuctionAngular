@@ -29,7 +29,7 @@
           <div class="dx-field">
             <div class="dx-field">
               <div class="dx-field-label">{{t('account.dateOfBirth')}}:</div>
-              <div class="dx-field-value">
+              <div class="dx-field-value"> 
                 <input type="date" id="dateOfBirth" formControlName="dateOfBirth" [value]="dateOfBirthValue" start class="form-control" />
                 <div *ngIf="editForm.controls['dateOfBirth'].invalid && (editForm.controls['dateOfBirth'].errors?.['required'] || editForm.controls['dateOfBirth'].errors?.['maxDate'])">
                   <div *ngIf="editForm.controls['dateOfBirth'].errors?.['maxDate']">

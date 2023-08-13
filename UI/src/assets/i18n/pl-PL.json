@@ -24,6 +24,7 @@
       "vehicle-won": "Wygrane",
       "vehicle-lost": "Przegrane",
       "watchlist": "Lista obserwacji",
+      "payment":"Płatność",
       "calendar": "Kalendarz",
       "auction": "Aukcja",
       "location": "Lokacja",
@@ -62,6 +63,8 @@
       "listWon": "Lista wygranych pojazdów",
       "listLost": "Lista przegranych pojazdów",
       "watchlist": "Lista obserwowanych pojazdów",
+      "paymentDue": "Należne płatności",
+      "paymentHistory": "Historia Płatności",
       "picture":"Zdjecie",
       "search":"Wyszukaj..."
     },
@@ -120,6 +123,8 @@
       "text2":" pojazdów na sprzedarz"
     },
     "support":{
+      "readMore":"Czytaj wiecej",
+      "learnMore":"Naucz wiecej",
       "contactUS":"Skontaktuj się z nami",
       "contactUSDescription":"Masz pytania lub potrzebujesz pomocy? Copart jest do Twojej dyspozycji. Skontaktuj się z nami przez e-mail lub telefon.",
       "FAQ":"FAQ",

@@ -29,6 +29,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { ContactusComponent } from "./pages/contactus/contactus.component";
 import { FaqComponent } from "./pages/faq/faq.component";
 import { HowtobuyComponent } from "./pages/howtobuy/howtobuy.component";
+import { PaymentComponent } from "./pages/payment/payment.component";
 
 const routes: Routes = [
   {
@@ -70,6 +71,12 @@ const routes: Routes = [
           { path: 'bids', pathMatch: 'full', component: VehicleBidsComponent, data: { title: 'Vehicle Bids' }, canActivate: [AuthGuard] },
           { path: 'watchlist', pathMatch: 'full', component: WatchListComponent, data: { title: 'Watch List' }, canActivate: [AuthGuard] },
         ],
+      },
+      {
+        path: 'payment',
+        pathMatch: 'full',
+        component: PaymentComponent,
+        data: { title: 'Payment' }
       },
       {
         path: 'auction',

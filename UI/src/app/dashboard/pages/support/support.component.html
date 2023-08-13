@@ -1,80 +1,82 @@
-<div class="student-profile py-4">
-  <ng-container *transloco="let t">
-    <div class="container">
-      <div class="row">
-        <div class="column">
-          <div class="shadow-sm">
-            <div class="card-header bg-transparent border-0">
-              <h1 class="mb-0">{{t('support.contactUS')}}</h1>
-            </div>
-            <div class="card-body pt-0">
-              <table class="table">
-                <tr>
-                  <th width="50%">XXXX</th>
-                </tr>
-                <tr>
-                  <th width="50%">{{t('support.contactUSDescription')}}</th>
-                </tr>
-                <tr>
-                  <th width="50%">
-                    <a [routerLink]="['ContactUs']">
-                      <dx-button type="default" text="Contact Us"></dx-button>
-                    </a>
-                  </th>
-                </tr>
-              </table>
-            </div>
-          </div>
-        </div>
-        <div class="column">
-          <div class="shadow-sm">
-            <div class="card-header bg-transparent border-0">
-              <h1 class="mb-0">{{t('support.FAQ')}}</h1>
-            </div>
-            <div class="card-body pt-0">
-              <table class="table">
-                <tr>
-                  <th width="50%">XXX</th>
-                </tr>
-                <tr>
-                  <th width="50%">{{t('support.FAQDescription')}}</th>
-                </tr>
-                <tr>
-                  <th width="50%">
-                    <a [routerLink]="['FAQ']">
-                      <dx-button type="default" text="Contact Us"></dx-button>
-                    </a>
-                  </th>
-                </tr>
-              </table>
+  <div class="student-profile py-4">
+    <ng-container *transloco="let t">
+      <div class="container">
+        <div class="row">
+          <div class="column">
+            <div class="shadow-sm">
+              <div class="card-header bg-transparent border-0">
+                <h1 class="mb-0">{{t('support.contactUS')}}</h1>
+              </div>
+              <div class="card-body pt-0">
+                <table class="table">
+                  <tr>
+                    <th width="50%">XXXX</th>
+                  </tr>
+                  <tr>
+                    <th width="50%">{{t('support.contactUSDescription')}}</th>
+                  </tr>
+                  <tr>
+                    <th width="50%">
+                      <a [routerLink]="['ContactUs']">
+                        <dx-button type="default" [text]="t('support.contactUS')"></dx-button>
+                      </a>
+                    </th>
+                  </tr>
+                </table>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="column">
-          <div class="shadow-sm">
-            <div class="card-header bg-transparent border-0">
-              <h1 class="mb-0">{{t('support.howToBuy')}}</h1>
+          
+          <div class="column">
+            <div class="shadow-sm">
+              <div class="card-header bg-transparent border-0">
+                <h1 class="mb-0">{{t('support.howToBuy')}}</h1>
+              </div>
+              <div class="card-body pt-0">
+                <table class="table">
+                  <tr>
+                    <th width="50%">{{t('vehicle.modelSpecifer')}}</th>
+                  </tr>
+                  <tr>
+                    <th width="50%">{{t('support.howToBuyDescription')}}</th>
+                  </tr>
+                  <tr>
+                    <th width="50%">
+                      <a [routerLink]="['HowToBuy']">
+                        <dx-button type="default" [text]="t('support.learnMore')"></dx-button>
+                      </a>
+                    </th>
+                  </tr>
+                </table>
+              </div>
             </div>
-            <div class="card-body pt-0">
-              <table class="table">
-                <tr>
-                  <th width="50%">{{t('vehicle.modelSpecifer')}}</th>
-                </tr>
-                <tr>
-                  <th width="50%">{{t('support.howToBuyDescription')}}</th>
-                </tr>
-                <tr>
-                  <th width="50%">
-                    <a [routerLink]="['HowToBuy']">
-                      <dx-button type="default" text="Contact Us"></dx-button>
-                    </a>
-                  </th>
-                </tr>
-              </table>
+          </div>
+  
+          <div class="column">
+            <div class="shadow-sm">
+              <div class="card-header bg-transparent border-0">
+                <h1 class="mb-0">{{t('support.FAQ')}}</h1>
+              </div>
+              <div class="card-body pt-0">
+                <table class="table">
+                  <tr>
+                    <th width="50%">XXX</th>
+                  </tr>
+                  <tr>
+                    <th width="50%">{{t('support.FAQDescription')}}</th>
+                  </tr>
+                  <tr>
+                    <th width="50%">
+                      <a [routerLink]="['FAQ']">
+                        <dx-button type="default" [text]="t('support.readMore')"></dx-button>
+                      </a>
+                    </th>
+                  </tr>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </ng-container>
-</div>
+    </ng-container>
+  </div>

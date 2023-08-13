@@ -24,6 +24,7 @@
     "vehicle-won": "Won",
     "vehicle-lost": "Lost",
     "watchlist": "Watch List",
+    "payment":"Payment",
     "calendar": "Calendar",
     "auction": "Auction",
     "location": "Location",
@@ -62,6 +63,8 @@
     "listWon": "List of won vehicles",
     "listLost": "List of lost vehicles",
     "watchlist": "Vehicle Watchlist",
+    "paymentDue": "Payment Due",
+    "paymentHistory": "Payment History",
     "picture":"Picture",
     "search":"Search..."
   },
@@ -120,11 +123,32 @@
     "text2":" vehicles on sell"
   },
   "support":{
-    "contactUS":"Contact US",
+    "readMore":"Read more",
+    "learnMore":"Learn more",
+    "contactUS":"Contact us",
     "contactUSDescription":"Having questions or needing help? Copart is at your service. Contact us by email or phone.",
     "FAQ":"FAQ",
     "FAQDescription":"Having questions or wondering how it works? Learn more on our FAQ page.",
     "howToBuy":"How to buy",
     "howToBuyDescription":"You have no idea what the whole buying process looks like. Learn more about buying details and more."
+  },
+  "howToBuy":{
+    "line1":"How to Buy Vehicles from Copart",
+    "line2":"Copart Finland auctions are held 100% online, so you can search and bid vehicles at home or on the go. Copart Finland specializes in salvage car auctions.",
+    "line3":"Copart.fi takes the guess work out of finding the perfect vehicle for your next project.",
+    "line4":"Copart provides key information on every vehicle in our inventory to make it easy for members to bid on and win also clean title used vehicles; hassle-free.",
+    "line5":"Use",
+    "line6":"Vehicle Finder",
+    "line7":" to explore the range of Cars, Trucks, Moped/Scooters, Vans and more.",
+    "line8":"There are four Copart locations plus more than 20 sublots in Finland to store and resell vehicles. Copart operates in 11 countries. Copart Finland's experience in damaged vehicles have now been combined with Copart Inc.'s international and modern auction technology.",
+    "line9":"Follow the following steps, and you'll be on your way to bidding and buying in Copart Finland auctions:",
+
+    "line10":"Join",
+    "line11":"Search vehicles",
+    "line12":"Vehicle preview",
+    "line13":"Join auctions",
+    "line14":"Place bids",
+    "line15":"After auction",
+    "line16":"Fees and pricelist"
   }
 }

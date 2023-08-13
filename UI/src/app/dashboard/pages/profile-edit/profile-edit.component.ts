@@ -72,6 +72,10 @@ export class ProfileEditComponent implements OnInit {
     this.showError = false;
     const edit = { ...editFormValue };
 
+    if(edit.dateOfBirth == ""){
+      edit.dateOfBirth = this.value;
+    }
+
     const editData: EditProfileDto = {
       userId: this.userId,
       name: edit.name,
@@ -81,7 +85,6 @@ export class ProfileEditComponent implements OnInit {
       dateOfBirth: edit.dateOfBirth,
     }
 
-    alert(edit.dateOfBirth);
     this.authenticationService.editProfile(editData)
       .subscribe({
         next: (res: AuthResponseDto) => {

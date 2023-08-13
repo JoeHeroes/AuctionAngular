@@ -30,13 +30,11 @@
             <div class="dx-field-label">{{t('calendar.allDay')}}</div>
             <div class="dx-field-value">
               <select id="allDay" formControlName="allDay" [value]="allDayValue" class="form-control">
-                  <option [value]="true">True</option>
-                  <option [value]="false">False</option>
+                  <option value="true">True</option>
+                  <option value="false">False</option>
               </select>
             </div>
           </div>
-        
-         
       </div>
       <dx-button  [text]="t('action.back')" type="normal" [routerLink]="['/calendar-manage']"></dx-button>
       <dx-button class="button" [text]="t('action.save')" type="success" [useSubmitBehavior]="true"></dx-button>

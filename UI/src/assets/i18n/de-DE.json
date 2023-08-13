@@ -24,6 +24,7 @@
     "vehicle-won": "Gewonnen",
     "vehicle-lost": "Verloren",
     "watchlist": "Beobachtungsliste",
+    "payment":"Zahlung",
     "calendar": "Kalender",
     "auction": "Versteigerung",
     "location": "Standort",
@@ -62,6 +63,8 @@
     "listWon": "Liste der gewonnenen Fahrzeuge",
     "listLost": "Liste der verlorenen Fahrzeuge",
     "watchlist": "Fahrzeugbeobachtungsliste",
+    "paymentDue": "Zahlung fällig",
+    "paymentHistory": "Zahlungshistorie",
     "picture":"Bild",
     "search":"Suchen..."
   },
@@ -120,6 +123,8 @@
     "text2":" Fahrzeuge im Angebot"
   },
   "support":{
+    "readMore":"Mehr lesen",
+    "learnMore":"Lern mehr",
     "contactUS":"Kontaktiere uns",
     "contactUSDescription":"Haben Sie Fragen oder benötigen Sie Hilfe? Copart steht Ihnen gerne zur Verfügung. Kontaktieren Sie uns per E-Mail oder Telefon.",
     "FAQ":"FAQ",

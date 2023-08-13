@@ -40,6 +40,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import { PaymentComponent } from './pages/payment/payment.component';
 
 
 
@@ -71,7 +72,8 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     VehicleBidsComponent,
     AddEventComponent,
     CalendarManageComponent,
-    EditEventComponent
+    EditEventComponent,
+    PaymentComponent
   ],
   exports: [],
   imports: [

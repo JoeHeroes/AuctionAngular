@@ -36,8 +36,8 @@ export class CalendarService {
 
   public editEvent(data: EditEventeDto): Observable<any> {
 
-    alert("xD");
     let url_ = this.baseUrl + "/Calendar/EditEvent";
+    
     return this.http.post<any>(url_, data);
   }
 }

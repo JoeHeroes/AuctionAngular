@@ -20,8 +20,9 @@ export class EditEventComponent {
   eventForm!: FormGroup;
   errorMessage: string = '';
   userId: number = 0;
+  day: boolean = true;
 
-
+ 
   titleValue!: string;
   descriptionValue!: string;
   dateValue!: string;
@@ -77,14 +78,26 @@ export class EditEventComponent {
     this.showError = false;
     const edit = { ...editFormValue };
 
+    if(edit.date == ""){
+      edit.date = this.value;
+    }
+
+    if(edit.allDay=="true"){
+      this.day = true
+    }
+    else{
+      this.day = false
+    }
+
     const eventData: EditEventeDto = {
       id: this.id,
       title: edit.title,
       description: edit.description,
       date: edit.date,
       color: edit.color,
-      allDay: true,
+      allDay: this.day,
     }
+
     this.calendarService.editEvent(eventData)
       .subscribe({
         next: (res: AuthResponseDto) => {
