@@ -1,9 +1,7 @@
-﻿
-namespace Database.Entities
+﻿namespace AuctionAngular.Dtos
 {
-    public class Payment
+    public class ViewPaymentDto
     {
-        public int Id { get; set; }
         public DateTime SaleDate { get; set; }
         public int LotId { get; set; }
         public int LocationId { get; set; }
