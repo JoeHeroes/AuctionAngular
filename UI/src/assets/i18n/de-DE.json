@@ -131,5 +131,17 @@
     "FAQDescription":"Haben Sie Fragen oder fragen Sie sich, wie es funktioniert? Erfahren Sie mehr auf unserer FAQ-Seite.",
     "howToBuy":"Wie kauft man",
     "howToBuyDescription":"Sie haben keine Ahnung, wie der gesamte Kaufprozess aussieht. Erfahren Sie mehr über Kaufdetails und mehr."
+  },
+
+  "payment":{
+    "saleDate":"Verkaufsdatum",
+    "lot":"Viel",
+    "location":"Standort",
+    "description":"Beschreibung",
+    "invoiceAmount":"Rechnungsbetrag",
+    "lastInvoicePaidDate":"Zahlungsdatum der Rechnung",
+    "lotLeftLocationDate":"Datum des verlassenen Standorts",
+    "invoice":"Rechnung",
+    "status":"Status"
   }
 }

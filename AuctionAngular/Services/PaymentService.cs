@@ -25,6 +25,7 @@ namespace AuctionAngular.Services
                 InvoiceAmount = dto.InvoiceAmount,
                 LastInvoicePaidDate = DateTime.Now,
                 LotLeftLocationDate = dto.LotLeftLocationDate,
+                Status = false
             };
 
 
@@ -74,10 +75,9 @@ namespace AuctionAngular.Services
                 throw new NotFoundException("Vehicle not found.");
             }
 
-            result.LocationId = dto.LocationId;
-            result.Description = dto.Description;
             result.InvoiceAmount = dto.InvoiceAmount;
             result.LotLeftLocationDate = dto.LotLeftLocationDate;
+            result.Status = dto.Status;
 
             try
             {
@@ -117,22 +117,23 @@ namespace AuctionAngular.Services
             {
                 viewPayment.Add(ViewPaymentDtoConvert(payment));
             }
-
             return viewPayment;
         }
 
-
         public ViewPaymentDto ViewPaymentDtoConvert(Payment payment)
         {
+            var location = _dbContext.Locations.FirstOrDefault(x => x.Id == payment.LocationId);
+
             return new ViewPaymentDto()
             {
                 SaleDate = payment.SaleDate,
                 LotId = payment.LotId,
-                LocationId = payment.LocationId,
+                Location = location!.Name,
                 Description = payment.Description,
                 InvoiceAmount = payment.InvoiceAmount,
                 LastInvoicePaidDate = payment.LastInvoicePaidDate,
                 LotLeftLocationDate = payment.LotLeftLocationDate,
+                Status = payment.Status,
             };
         } 
     }

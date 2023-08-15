@@ -14,9 +14,9 @@ export class PaymentService {
     this.baseUrl = "https://localhost:7257";
   }
  
-  public getPayments(id: number): Observable<Vehicle[]> {
+  public getPayments(): Observable<Vehicle[]> {
 
-    let url_ = "https://localhost:7257/Payment/getAllPayments/" + id;
+    let url_ = "https://localhost:7257/Payment/GetAllPayments";
 
     return this.http.get<any>(url_);
   }

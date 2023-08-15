@@ -18,6 +18,13 @@ namespace CarAuction.Seeder
             if (_dbContext.Database.CanConnect())
             {
 
+                if (!_dbContext.Payments.Any())
+                {
+                    var info = GetPayment();
+                    _dbContext.Payments.AddRange(info);
+                    _dbContext.SaveChanges();
+                }
+
                 if (!_dbContext.Roles.Any())
                 {
                     var info = GetRole();
@@ -27,14 +34,14 @@ namespace CarAuction.Seeder
 
                 if (!_dbContext.Vehicles.Any())
                 {
-                    var info = GetInfoVehicle();
+                    var info = GetVehicle();
                     _dbContext.Vehicles.AddRange(info);
                     _dbContext.SaveChanges();
                 }
 
                 if (!_dbContext.Auctions.Any())
                 {
-                    var info = GetInfoAuction();
+                    var info = GetAuction();
                     _dbContext.Auctions.AddRange(info);
                     _dbContext.SaveChanges();
                 }
@@ -46,7 +53,6 @@ namespace CarAuction.Seeder
                     _dbContext.SaveChanges();
                 }
 
-
                 if (!_dbContext.Pictures.Any())
                 {
                     var pic = GetPictures();
@@ -56,8 +62,24 @@ namespace CarAuction.Seeder
             }
         }
 
-
-        public IEnumerable<Auction> GetInfoAuction()
+        public IEnumerable<Payment> GetPayment()
+        {
+            return new List<Payment>()
+            {
+                new Payment
+                {
+                    SaleDate = DateTime.Now,
+                    LotId = 1,
+                    LocationId = 1,
+                    Description = "XD",
+                    InvoiceAmount = 1231,
+                    LastInvoicePaidDate = DateTime.Now.AddDays(1),
+                    LotLeftLocationDate =  DateTime.Now.AddDays(2),
+                    Status = false
+                }
+            };
+        }
+        public IEnumerable<Auction> GetAuction()
         {
             return new List<Auction>()
             {
@@ -212,7 +234,7 @@ namespace CarAuction.Seeder
 
 
 
-        public IEnumerable<Vehicle> GetInfoVehicle()
+        public IEnumerable<Vehicle> GetVehicle()
         {
             return new List<Vehicle>()
             {

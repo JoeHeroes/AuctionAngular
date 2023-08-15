@@ -19,10 +19,14 @@ export class PaymentComponent{
   constructor(private paymentService: PaymentService,
     private authenticationService: AuthenticationService,
     private router: Router) {
+    
+
+    this.paymentService.getPayments().subscribe(res => {
+      this.datasource = res;
+    });
+    
     this.authenticationService.loggedUserId().subscribe(res => {
-      this.paymentService.getPayments(res.userId).subscribe(res => {
-        this.datasource = res;
-      });
+      
     })
   }
 

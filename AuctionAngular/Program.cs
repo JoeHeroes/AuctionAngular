@@ -80,12 +80,13 @@ try
 
     //Interface
     builder.Services.AddScoped<IAccountService, AccountService>();
-    builder.Services.AddScoped<IVehicleService, VehicleService>();
-    builder.Services.AddScoped<ILocationService, LocationService>();
     builder.Services.AddScoped<IAuctionService, AuctionService>();
-    builder.Services.AddScoped<ICalendarService, CalendarService>(); 
+    builder.Services.AddScoped<ICalendarService, CalendarService>();
+    builder.Services.AddScoped<ILocationService, LocationService>();
     builder.Services.AddTransient<IMailService, MailService>();
     builder.Services.AddTransient<IMessageService, MessageService>();
+    builder.Services.AddScoped<IPaymentService, PaymentService>();
+    builder.Services.AddScoped<IVehicleService, VehicleService>();
 
     //Hasser
     builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();

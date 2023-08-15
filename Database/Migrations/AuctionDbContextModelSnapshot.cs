@@ -183,6 +183,44 @@ namespace Database.Migrations
                     b.ToTable("Messages");
                 });
 
+            modelBuilder.Entity("Database.Entities.Payment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("InvoiceAmount")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("LastInvoicePaidDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("LocationId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LotId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("LotLeftLocationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("SaleDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Payments");
+                });
+
             modelBuilder.Entity("Database.Entities.Picture", b =>
                 {
                     b.Property<int>("Id")

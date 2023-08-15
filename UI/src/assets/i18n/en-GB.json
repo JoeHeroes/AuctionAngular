@@ -132,6 +132,19 @@
     "howToBuy":"How to buy",
     "howToBuyDescription":"You have no idea what the whole buying process looks like. Learn more about buying details and more."
   },
+
+  "payment":{
+    "saleDate":"Sale Date",
+    "lot":"Lot",
+    "location":"Location",
+    "description":"Description",
+    "invoiceAmount":"Invoice Amount",
+    "lastInvoicePaidDate":"Invoice Paid Date",
+    "lotLeftLocationDate":"Left Location Date",
+    "invoice":"Invoice",
+    "status":"Status"
+  },
+
   "howToBuy":{
     "line1":"How to Buy Vehicles from Copart",
     "line2":"Copart Finland auctions are held 100% online, so you can search and bid vehicles at home or on the go. Copart Finland specializes in salvage car auctions.",
