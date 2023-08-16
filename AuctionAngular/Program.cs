@@ -82,6 +82,7 @@ try
     builder.Services.AddScoped<IAccountService, AccountService>();
     builder.Services.AddScoped<IAuctionService, AuctionService>();
     builder.Services.AddScoped<ICalendarService, CalendarService>();
+    builder.Services.AddScoped<IInvoiceService, InvoiceService>();
     builder.Services.AddScoped<ILocationService, LocationService>();
     builder.Services.AddTransient<IMailService, MailService>();
     builder.Services.AddTransient<IMessageService, MessageService>();

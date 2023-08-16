@@ -29,7 +29,7 @@ namespace AuctionAngular.Controllers
         [HttpGet("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> GeneratePDF([FromBody] string InvoiceNo)
+        public async Task<IActionResult> GeneratePDF([FromQuery] string InvoiceNo)
         {
             var file = await _invoiceService.GeneratePDFAsync(InvoiceNo);
 
@@ -48,7 +48,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> GeneratePDFAddress()
         {
-            var file = await _invoiceService.GeneratePDFAddressAsync();
+            await _invoiceService.GeneratePDFAddressAsync();
 
             return Ok();
         }
