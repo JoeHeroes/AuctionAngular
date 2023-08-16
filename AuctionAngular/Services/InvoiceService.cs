@@ -233,6 +233,8 @@ namespace AuctionAngular.Services
             dto.Filename = "Invoice_" + InvoiceNo + ".pdf";
 
             return dto;
+
+            ////////////////////////////////////////
         }
 
         public Task GeneratePDFAddressAsync()
