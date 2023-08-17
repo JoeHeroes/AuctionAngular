@@ -121,6 +121,7 @@ namespace CarAuction.Seeder
                     City = "Espoo",
                     Street = "Pieni teollisuuskatu 7",
                     PostalCode = "Uusimaa 02920",
+                    County = "Finlandia",
                     Picture = "Espoo.png"
                 },
                 new Location()
@@ -131,6 +132,7 @@ namespace CarAuction.Seeder
                     City = "Oulu",
                     Street = "Ahertajantie 1",
                     PostalCode = "North Ostrobothnia 90940",
+                    County = "Finlandia",
                     Picture = "Oulu.png"
                 },
                 new Location()
@@ -141,6 +143,7 @@ namespace CarAuction.Seeder
                     City = "Pirkkala",
                     Street = "Teollisuustie 24",
                     PostalCode = "Pirkanmaa 33960",
+                    County = "Finlandia",
                     Picture = "Pirkkala.png"
                 },
                 new Location()
@@ -151,6 +154,7 @@ namespace CarAuction.Seeder
                     City = "Turku",
                     Street = "Tiemestarinkatu 5",
                     PostalCode = "20360",
+                    County = "Finlandia",
                     Picture = "Turku.png"
                 },
             };

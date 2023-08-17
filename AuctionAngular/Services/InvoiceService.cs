@@ -5,7 +5,6 @@ using Database;
 using Database.Entities;
 using PdfSharpCore;
 using PdfSharpCore.Pdf;
-using SixLabors.Fonts.Tables.AdvancedTypographic;
 using TheArtOfDev.HtmlRenderer.PdfSharp;
 
 namespace AuctionAngular.Services
@@ -133,92 +132,67 @@ namespace AuctionAngular.Services
                     Total = 4,
                 },
             };
-            string htmlcontent = "<div style='width:100%; text-align:center'>";
+            string htmlcontent = "<div style='width:100%;'>";
             htmlcontent += "<img style='width:80px;height:80%' src='" + imgeurl + "'   />";
-            htmlcontent += "<b>Receipt</b>";
+
+            htmlcontent += "<h1>Faktura</h1>";
 
 
+
+
+
+
+
+
+            htmlcontent += "<head><style> .item-list th, .item-list td { border: 1px solid #ccc; padding: 8px; text-align: center;}</style></head><body>";
             
             
+            
+            htmlcontent += "<div style='font-family: Arial, sans-serif; margin: 0 auto; max-width: 800px; padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);'>";
+            htmlcontent += "<div style='text-align: center; margin-bottom: 20px;'><h1>Receipt</h1><p>Receipt number: 12345</p></div>";
+            htmlcontent += "<div><div style='margin-bottom: 40px; width:50%; float:left;'><h3>Buyer:</h3><p>Nazwa firmy</p><p>Adres</p><p>NIP: 123-456-789</p>";
+            htmlcontent += "</div><div style='margin-bottom: 40px;  width:50%; float:left;'><h3>Delivery address</h3><p>Nazwa klienta</p><p>Adres</p><p>NIP: 987-654-321</p>";
+            htmlcontent += "</div></div><div style='text-align: left; margin-bottom: 20px;'><p>Information:</p></div>";
+            htmlcontent += "<table style='width: 100%; border-collapse: collapse; margin-bottom: 20px;'>";
+            htmlcontent += "<thead><tr style='border: 1px solid #ccc; padding: 8px; text-align: center;'>";
+            htmlcontent += "<th style='border: 1px solid #ccc; padding: 8px; text-align: center;'>Product</th>";
+            htmlcontent += "<th style='border: 1px solid #ccc; padding: 8px; text-align: center;'>Psc</th>";
+            htmlcontent += "<th style='border: 1px solid #ccc; padding: 8px; text-align: center;'>Price</th>";
+            htmlcontent += "<th style='border: 1px solid #ccc; padding: 8px; text-align: center;'>Tax</th>";
+            htmlcontent += "<th style='border: 1px solid #ccc; padding: 8px; text-align: center;'>Total</th></tr></thead><tbody><tr style=\"border: 1px solid #ccc;padding: 8px; text-align: center;'>";
+            htmlcontent += "<td style='border: 1px solid #ccc; padding: 8px; text-align: center;'> Produkt 1</td>";
+            htmlcontent += "<td style='border: 1px solid #ccc; padding: 8px; text-align: center;'> 2</td>";
+            htmlcontent += "<td style='border: 1px solid #ccc; padding: 8px; text-align: center;'> 50.00 zł</td>";
+            htmlcontent += "<td style='border: 1px solid #ccc; padding: 8px; text-align: center;'> 23% </td>";
+            htmlcontent += "<td style='border: 1px solid #ccc; padding: 8px; text-align: center;'> 100.00 zł </td></tr><tr>";
+            htmlcontent += "<td style='border: 1px solid #ccc; padding: 8px; text-align: center;'> Produkt 2 </td>";
+            htmlcontent += "<td style='border: 1px solid #ccc; padding: 8px; text-align: center;'> 3 </td>";
+            htmlcontent += "<td style='border: 1px solid #ccc; padding: 8px; text-align: center;'> 30.00 zł </td>";
+            htmlcontent += "<td style='border: 1px solid #ccc; padding: 8px; text-align: center;'> 23% </td>";
+            htmlcontent += "<td style='border: 1px solid #ccc; padding: 8px; text-align: center;'> 90.00 zł</td></tr></tbody></table>";
+            htmlcontent += "<div style='text-align: left; margin-bottom: 80px;'> <p>Linked to Vehicle 50227047</p></div>";
+            htmlcontent += "<div style='text-align: right;'><p>Razem: 190.00 zł</p></div>";
+            htmlcontent += "<table><tr style='margin:20px'><td>VAT 24 %:</td><td></td><td>829,55</td></tr>";
+            htmlcontent += "<tr style='margin:20px'><td>Total tax:</td><td></td><td>829,55</td></tr>";
+            htmlcontent += "<tr style='margin:20px'><td>Tax free price:</td><td></td><td>3456,45</td></tr></table></br></br></br>";
+            htmlcontent += "<table><tr><td>Payment methods:</td><td style=\"width:100px\"></td><td>Bank</td><td style='width:100px'></td><td>1321,00</td></tr>";
+            htmlcontent += "<tr style='margin:20px'><td>Payment reference:</td><td></td><td>200001743108</td></tr>";
+            htmlcontent += "<tr><td><b>Payment Date</b></td><td></td><td><b>27.06.2022</b></td></tr></table>";
+            htmlcontent += "<div style='text-align: left; margin-top: 80px;'><p><b>Vehicle information</b></p></div>";
+            htmlcontent += "<table><tr><td>Selling price:</td><td style='width:250px'></td><td>3950,00 EUR</td></tr></table></br></br>";
+            htmlcontent += "<table><tr><td>Location:</td><td style='width:30px'></td><td>Bank</td></tr>";
+            htmlcontent += "<tr><td>Vehicle category:</td><td></td><td>200001743108</td></tr>";
+            htmlcontent += "<tr><td>Make:</td><td></td><td>200001743108</td></tr>";
+            htmlcontent += "<tr><td>Registration number:</td><td></td><td>200001743108</td></tr>";
+            htmlcontent += "<tr><td>Primary Damage:</td><td></td><td>200001743108</td></tr>";
+            htmlcontent += "<tr><td>Secondary Damage:</td><td></td><td>200001743108</td></tr>";
+            htmlcontent += "<tr><td>VIN:</td><td></td><td>200001743108</td></tr>";
+            htmlcontent += "<tr><td>Sale group:</td><td></td><td>200001743108</td></tr>";
+            htmlcontent += "<tr><td>Model:</td><td></td><td>200001743108</td></tr>";
+            htmlcontent += "<tr><td>Vehicle category:</td><td></td><td>200001743108</td></tr>";
+            htmlcontent += "<tr><td>Registration year:</td><td></td><td>200001743108</td></tr></table></div></body>";
 
-            if (header != null)
-            {
-                htmlcontent += "<p>Receipt number:" +header.ReceiptNumber+ "</p>";
-                htmlcontent += "<p>Date:" +header.CreateDate+ "</p>";
-                htmlcontent += "<p>Location:" +place.Name+ "</p>";
 
-
-                htmlcontent += "<p>Buyer:</p>";
-                htmlcontent += "<p>Customer id:" +header.CustomerId+ "</p>";
-                htmlcontent += "<p>"+user.Name + " " +user.SureName+ "</p>";
-                htmlcontent += "<p>" +location.Street+ "</p>";
-                htmlcontent += "<p>" +location.PostalCode+ " " +location.City+ " " +location.County+ "</p>";
-
-
-
-                htmlcontent += "<p>Delivery address:</p>";
-                htmlcontent += "<p>" +user.Name+ " " +user.SureName+ "</p>";
-                htmlcontent += "<p>" +delivery.Street+ "</p>";
-                htmlcontent += "<p>" +delivery.PostalCode+ " " +delivery.City+ " " +delivery.County+ "</p>";
-                
-                
-                htmlcontent += "<p>Information:</p>";
-
-
-
-            }
-
-
-
-            htmlcontent += "<table style ='width:100%; border: 1px solid black'>";
-            htmlcontent += "<thead style='font-weight:bold'>";
-            htmlcontent += "<tr>";
-            htmlcontent += "<td style='border:1px solid black'> Product </td>";
-            htmlcontent += "<td style='border:1px solid black'> Pcs </td>";
-            htmlcontent += "<td style='border:1px solid black'> Price </td>";
-            htmlcontent += "<td style='border:1px solid black'> Tax </td >";
-            htmlcontent += "<td style='border:1px solid black'> Total </td>";
-            htmlcontent += "</tr>";
-            htmlcontent += "</thead >";
-
-            htmlcontent += "<tbody>";
-            if (detail != null && detail.Count > 0)
-            {
-                detail.ForEach(item =>
-                {
-                    htmlcontent += "<tr>";
-                    htmlcontent += "<td>" + item.Product + "</td>";
-                    htmlcontent += "<td>" + item.Pcs + "</td>";
-                    htmlcontent += "<td>" + item.Price + "</td >";
-                    htmlcontent += "<td>" + item.Tax + "</td>";
-                    htmlcontent += "<td> " + item.Total + "</td >";
-                    htmlcontent += "</tr>";
-                });
-            }
-            htmlcontent += "</tbody>";
-
-            htmlcontent += "</table>";
-            htmlcontent += "</div>";
-
-            htmlcontent += "<div style='text-align:right'>";
-            htmlcontent += "<h1> Summary Info </h1>";
-            htmlcontent += "<table style='border:1px solid  black;float:right' >";
-            htmlcontent += "<tr>";
-            htmlcontent += "<td style='border:1px solid black'> Summary Total </td>";
-            htmlcontent += "<td style='border:1px solid  black'> Summary Tax </td>";
-            htmlcontent += "<td style='border:1px solid  black'> Summary NetTotal </td>";
-            htmlcontent += "</tr>";
-            if (header != null)
-            {
-                htmlcontent += "<tr>";
-                htmlcontent += "<td style='border: 1px solid  black'> " + header.Total + " </td>";
-                htmlcontent += "<td style='border: 1px solid  black'>" + header.Tax + "</td>";
-                htmlcontent += "<td style='border: 1px solid  black'> " + header.NetTotal + "</td>";
-                htmlcontent += "</tr>";
-            }
-            htmlcontent += "</table>";
-            htmlcontent += "</div>";
-            htmlcontent += "</div>";
 
             PdfGenerator.AddPdfPages(document, htmlcontent, PageSize.A4);
 
