@@ -132,55 +132,39 @@ namespace AuctionAngular.Services
                     Total = 4,
                 },
             };
-            string htmlcontent = "<div style='width:100%;'>";
-            htmlcontent += "<img style='width:80px;height:80%' src='" + imgeurl + "'   />";
-
-            htmlcontent += "<h1>Faktura</h1>";
-
-
+            string htmlcontent = "<style>body { font-family: Arial, sans-serif; margin: 0; padding: 20px; width:100%;} .invoice {max-width: 800px;margin-bottom: 20px; padding: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);} .item-list { width: 100%; border-collapse: collapse; margin-bottom: 20px; } .item-list th, .item-list td { border: 1px solid #ccc; padding: 8px; text-align: center; } .total { text-align: right; }</style>\r\n";
+            htmlcontent += "<body><img style='width:80px;height:80%' src='" + imgeurl + "'   />";
+            htmlcontent += "<h1>Receipt</h1><p>Receipt number: 12345</p>";
+            htmlcontent += "<div class='invoice'>";
 
 
+            htmlcontent += "<table style='margin-bottom: 20px;'><tr><td><h3>Nadawca:</h3><p>Nazwa firmy</p><p>Adres</p><p>NIP: 123-456-789</p></td>";
+            htmlcontent += "<td style='width:150px'><div></div></td>";
+            htmlcontent += "<td><h3>Odbiorca:</h3><p>Nazwa klienta</p><p>Adres</p><p>NIP: 987-654-321</p></td></tr></table>";
 
 
-
-
-            htmlcontent += "<head><style> .item-list th, .item-list td { border: 1px solid #ccc; padding: 8px; text-align: center;}</style></head><body>";
-            
-            
-            
-            htmlcontent += "<div style='font-family: Arial, sans-serif; margin: 0 auto; max-width: 800px; padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);'>";
-            htmlcontent += "<div style='text-align: center; margin-bottom: 20px;'><h1>Receipt</h1><p>Receipt number: 12345</p></div>";
-            htmlcontent += "<div><div style='margin-bottom: 40px; width:50%; float:left;'><h3>Buyer:</h3><p>Nazwa firmy</p><p>Adres</p><p>NIP: 123-456-789</p>";
-            htmlcontent += "</div><div style='margin-bottom: 40px;  width:50%; float:left;'><h3>Delivery address</h3><p>Nazwa klienta</p><p>Adres</p><p>NIP: 987-654-321</p>";
-            htmlcontent += "</div></div><div style='text-align: left; margin-bottom: 20px;'><p>Information:</p></div>";
-            htmlcontent += "<table style='width: 100%; border-collapse: collapse; margin-bottom: 20px;'>";
-            htmlcontent += "<thead><tr style='border: 1px solid #ccc; padding: 8px; text-align: center;'>";
-            htmlcontent += "<th style='border: 1px solid #ccc; padding: 8px; text-align: center;'>Product</th>";
-            htmlcontent += "<th style='border: 1px solid #ccc; padding: 8px; text-align: center;'>Psc</th>";
-            htmlcontent += "<th style='border: 1px solid #ccc; padding: 8px; text-align: center;'>Price</th>";
-            htmlcontent += "<th style='border: 1px solid #ccc; padding: 8px; text-align: center;'>Tax</th>";
-            htmlcontent += "<th style='border: 1px solid #ccc; padding: 8px; text-align: center;'>Total</th></tr></thead><tbody><tr style=\"border: 1px solid #ccc;padding: 8px; text-align: center;'>";
-            htmlcontent += "<td style='border: 1px solid #ccc; padding: 8px; text-align: center;'> Produkt 1</td>";
-            htmlcontent += "<td style='border: 1px solid #ccc; padding: 8px; text-align: center;'> 2</td>";
-            htmlcontent += "<td style='border: 1px solid #ccc; padding: 8px; text-align: center;'> 50.00 zł</td>";
-            htmlcontent += "<td style='border: 1px solid #ccc; padding: 8px; text-align: center;'> 23% </td>";
-            htmlcontent += "<td style='border: 1px solid #ccc; padding: 8px; text-align: center;'> 100.00 zł </td></tr><tr>";
-            htmlcontent += "<td style='border: 1px solid #ccc; padding: 8px; text-align: center;'> Produkt 2 </td>";
-            htmlcontent += "<td style='border: 1px solid #ccc; padding: 8px; text-align: center;'> 3 </td>";
-            htmlcontent += "<td style='border: 1px solid #ccc; padding: 8px; text-align: center;'> 30.00 zł </td>";
-            htmlcontent += "<td style='border: 1px solid #ccc; padding: 8px; text-align: center;'> 23% </td>";
-            htmlcontent += "<td style='border: 1px solid #ccc; padding: 8px; text-align: center;'> 90.00 zł</td></tr></tbody></table>";
-            htmlcontent += "<div style='text-align: left; margin-bottom: 80px;'> <p>Linked to Vehicle 50227047</p></div>";
+            htmlcontent += "<table class='item-list'><thead>";
+            htmlcontent += "<tr><th>Product</th><th>Psc</th><th>Price</th><th>Tax</th><th>Total</th></tr>";
+            htmlcontent += "</thead><tbody>";
+            htmlcontent += "<tr><td>Produkt 1</td><td>2</td><td>50.00 zł</td><td>100.00 zł</td><td>100.00 zł</td></tr>";
+            htmlcontent += "<tr><td>Produkt 2</td><td>3</td><td>30.00 zł</td><td>90.00 zł</td><td>100.00 zł</td></tr>";
+            htmlcontent += "</tbody></table>";
+            htmlcontent += "<div style='text-align: left; margin-bottom: 40px;'> <p>Linked to Vehicle 50227047</p></div>";
             htmlcontent += "<div style='text-align: right;'><p>Razem: 190.00 zł</p></div>";
-            htmlcontent += "<table><tr style='margin:20px'><td>VAT 24 %:</td><td></td><td>829,55</td></tr>";
+            htmlcontent += "<table>";
+            htmlcontent += "<tr style='margin:20px'><td>VAT 24 %:</td><td></td><td>829,55</td></tr>";
             htmlcontent += "<tr style='margin:20px'><td>Total tax:</td><td></td><td>829,55</td></tr>";
-            htmlcontent += "<tr style='margin:20px'><td>Tax free price:</td><td></td><td>3456,45</td></tr></table></br></br></br>";
-            htmlcontent += "<table><tr><td>Payment methods:</td><td style=\"width:100px\"></td><td>Bank</td><td style='width:100px'></td><td>1321,00</td></tr>";
+            htmlcontent += "<tr style='margin:20px'><td>Tax free price:</td><td></td><td>3456,45</td></tr>";
+            htmlcontent += "</table></br></br></br>";
+            htmlcontent += "<table>";
+            htmlcontent += "<tr><td>Payment methods:</td><td style='width:80px'></td><td>Bank</td><td style='width:80px'></td><td>1321,00</td></tr>";
             htmlcontent += "<tr style='margin:20px'><td>Payment reference:</td><td></td><td>200001743108</td></tr>";
-            htmlcontent += "<tr><td><b>Payment Date</b></td><td></td><td><b>27.06.2022</b></td></tr></table>";
+            htmlcontent += "<tr><td><b>Payment Date</b></td><td></td><td><b>27.06.2022</b></td></tr>";
+            htmlcontent += "</table>";
             htmlcontent += "<div style='text-align: left; margin-top: 80px;'><p><b>Vehicle information</b></p></div>";
             htmlcontent += "<table><tr><td>Selling price:</td><td style='width:250px'></td><td>3950,00 EUR</td></tr></table></br></br>";
-            htmlcontent += "<table><tr><td>Location:</td><td style='width:30px'></td><td>Bank</td></tr>";
+            htmlcontent += "<table>";
+            htmlcontent += "<tr><td>Location:</td><td style='width:30px'></td><td>Bank</td></tr>";
             htmlcontent += "<tr><td>Vehicle category:</td><td></td><td>200001743108</td></tr>";
             htmlcontent += "<tr><td>Make:</td><td></td><td>200001743108</td></tr>";
             htmlcontent += "<tr><td>Registration number:</td><td></td><td>200001743108</td></tr>";
@@ -190,7 +174,29 @@ namespace AuctionAngular.Services
             htmlcontent += "<tr><td>Sale group:</td><td></td><td>200001743108</td></tr>";
             htmlcontent += "<tr><td>Model:</td><td></td><td>200001743108</td></tr>";
             htmlcontent += "<tr><td>Vehicle category:</td><td></td><td>200001743108</td></tr>";
-            htmlcontent += "<tr><td>Registration year:</td><td></td><td>200001743108</td></tr></table></div></body>";
+            htmlcontent += "<tr><td>Registration year:</td><td></td><td>200001743108</td></tr>";
+            htmlcontent += "</table></div></body>";
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
