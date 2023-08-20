@@ -71,20 +71,6 @@ namespace AuctionAngular.Services
             };
 
 
-            Location place = new Location()
-            {
-                Name = "Espoo21",
-                Phone = "3584017760321001",
-                Email = "Espoo@Copart.fi1312",
-                City = "Espoo3121",
-                Street = "Pieni teollisuuskatu 73121",
-                PostalCode = "Uusimaa 029231201",
-                County = "Finland1",
-                Picture = "Espoo.png"
-
-            };
-
-
             User user = new User()
             {
                 Name = "Joe",
@@ -97,7 +83,6 @@ namespace AuctionAngular.Services
             {
                 new InvoiceDetail()
                 {
-                    InvoiceNo = "Test1",
                     Product = "Test1",
                     Pcs = "Test1",
                     Price  = "Test1",
@@ -106,7 +91,6 @@ namespace AuctionAngular.Services
                 },
                 new InvoiceDetail()
                 {
-                    InvoiceNo = "Test2",
                     Product = "Test2",
                     Pcs = "Test2",
                     Price  = "Test2",
@@ -115,7 +99,6 @@ namespace AuctionAngular.Services
                 },
                 new InvoiceDetail()
                 {
-                    InvoiceNo = "Test3",
                     Product = "Test3",
                     Pcs = "Test3",
                     Price  = "Test3",
@@ -124,7 +107,6 @@ namespace AuctionAngular.Services
                 },
                 new InvoiceDetail()
                 {
-                    InvoiceNo = "Test3",
                     Product = "Test3",
                     Pcs = "Test4",
                     Price  = "Test4",
@@ -133,21 +115,48 @@ namespace AuctionAngular.Services
                 },
             };
             string htmlcontent = "<style>body { font-family: Arial, sans-serif; margin: 0; padding: 20px; width:100%;} .invoice {max-width: 800px;margin-bottom: 20px; padding: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);} .item-list { width: 100%; border-collapse: collapse; margin-bottom: 20px; } .item-list th, .item-list td { border: 1px solid #ccc; padding: 8px; text-align: center; } .total { text-align: right; }</style>\r\n";
-            htmlcontent += "<body><img style='width:80px;height:80%' src='" + imgeurl + "'   />";
-            htmlcontent += "<h1>Receipt</h1><p>Receipt number: 12345</p>";
+
+
+            htmlcontent += "<table style='margin-bottom: 20px;'><tr><td><img style='width:80px;height:80%' src='" + imgeurl + "'/></td>";
+            htmlcontent += "<td style='width:150px'><div></div></td>";
+            htmlcontent += "<td><h1>Receipt</h1><p>Receipt number: "+InvoiceNo+"</p></td></tr></table>";
             htmlcontent += "<div class='invoice'>";
 
 
-            htmlcontent += "<table style='margin-bottom: 20px;'><tr><td><h3>Nadawca:</h3><p>Nazwa firmy</p><p>Adres</p><p>NIP: 123-456-789</p></td>";
+            htmlcontent += "<table style='margin-bottom: 20px;'><tr>";
+            htmlcontent += "<td><h3>Buyer:</h3><p>Customer id: "+ user.Id +" </p><p> "+user.Name + " "+ user.SureName +"</p><p>"+ location.Street + "</p><p>"+location.PostalCode +" " + location.City+ "</p></td>";
             htmlcontent += "<td style='width:150px'><div></div></td>";
-            htmlcontent += "<td><h3>Odbiorca:</h3><p>Nazwa klienta</p><p>Adres</p><p>NIP: 987-654-321</p></td></tr></table>";
-
-
+            htmlcontent += "<td><h3>Delivery address</h3><p>> "+user.Name + " "+ user.SureName + "</p><p>" + location.Street + "</p><p>" + location.PostalCode + " " + location.City + "</p></td></tr></table>";
             htmlcontent += "<table class='item-list'><thead>";
-            htmlcontent += "<tr><th>Product</th><th>Psc</th><th>Price</th><th>Tax</th><th>Total</th></tr>";
+
+
+            htmlcontent += "<tr>";
+            htmlcontent += "<th>Product</th>";
+            htmlcontent += "<th>Psc</th>";
+            htmlcontent += "<th>Price</th>";
+            htmlcontent += "<th>Tax</th>";
+            htmlcontent += "<th>Total</th>";
+            htmlcontent += "</tr>";
+           
+
             htmlcontent += "</thead><tbody>";
-            htmlcontent += "<tr><td>Produkt 1</td><td>2</td><td>50.00 zł</td><td>100.00 zł</td><td>100.00 zł</td></tr>";
-            htmlcontent += "<tr><td>Produkt 2</td><td>3</td><td>30.00 zł</td><td>90.00 zł</td><td>100.00 zł</td></tr>";
+
+            if (detail != null && detail.Count > 0)
+            {
+                detail.ForEach(item =>
+                {
+                    htmlcontent += "<tr>";
+                    htmlcontent += "<td>" + item.Product + "</td>";
+                    htmlcontent += "<td>" + item.Pcs + "</td >";
+                    htmlcontent += "<td>" + item.Price + "</td>";
+                    htmlcontent += "<td>" + item.Tax + "</td>"; 
+                    htmlcontent += "<td> " + item.Total + "</td >";
+                    htmlcontent += "</tr>";
+                });
+            }
+
+
+
             htmlcontent += "</tbody></table>";
             htmlcontent += "<div style='text-align: left; margin-bottom: 40px;'> <p>Linked to Vehicle 50227047</p></div>";
             htmlcontent += "<div style='text-align: right;'><p>Razem: 190.00 zł</p></div>";
