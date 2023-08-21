@@ -1,4 +1,5 @@
 ﻿using AuctionAngular.Interfaces;
+using AuctionAngular.Services.NewFolder;
 using Azure;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,47 +27,15 @@ namespace AuctionAngular.Controllers
         /// <returns>Ok with payment list</returns>
         /// <response code="200">Correct data</response>
         /// <response code="400">Incorrect data</response>
-        [HttpGet("[action]")]
+        [HttpPost("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> GeneratePDF([FromQuery] string InvoiceNo)
+        public async Task<IActionResult> GeneratePDF([FromBody] PDFInfo info)
         {
-            var file = await _invoiceService.GeneratePDFAsync(InvoiceNo);
+            var file = await _invoiceService.GeneratePDFAsync(info);
 
             return File(file.Response, "application/pdf", file.Filename);
 
-        }
-
-        /// <summary>
-        /// Generate PDF Address
-        /// </summary>
-        /// <returns>Ok with payment list</returns>
-        /// <response code="200">Correct data</response>
-        /// <response code="400">Incorrect data</response>
-        [HttpGet("[action]")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> GeneratePDFAddress()
-        {
-            await _invoiceService.GeneratePDFAddressAsync();
-
-            return Ok();
-        }
-
-        /// <summary>
-        /// Generate PDF With Image
-        /// </summary>
-        /// <returns>Ok with payment list</returns>
-        /// <response code="200">Correct data</response>
-        /// <response code="400">Incorrect data</response>
-        [HttpGet("[action]")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> GeneratePDFWithImage()
-        {
-            await _invoiceService.GeneratePDFWithImageAsync();
-
-            return Ok();
         }
     }
 }
