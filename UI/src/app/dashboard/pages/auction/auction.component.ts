@@ -13,7 +13,6 @@ import { BidDto, VehicleService } from 'src/app/common/services/vehicle.service'
 })
 export class AuctionComponent implements OnInit {
 
-  mySubscription: Subscription
   liveAuction: boolean = false;
   datasource: any;
   time: number = 0;
@@ -27,9 +26,6 @@ export class AuctionComponent implements OnInit {
   constructor(private auctionService: AuctionService,
     private authenticationService: AuthenticationService,
     private vehicleService: VehicleService) {
-    this.mySubscription = interval(500).subscribe((x => {
-      this.doTimer();
-    }));
   }
 
   ngOnInit(): void {
@@ -39,6 +35,9 @@ export class AuctionComponent implements OnInit {
       if (res) {
         this.auctionService.liveAuctionList().subscribe(res => {
           this.datasource = res;
+        });
+
+        this.auctionService.startAuction().subscribe(res => {
         });
       }
     });
@@ -52,19 +51,7 @@ export class AuctionComponent implements OnInit {
     })
   }
 
-
-  doTimer() {
-    this.time++;
-    if (this.time > 110) {
-      this.time = 0;
-      this.index++;
-      if (this.index == this.datasource.length) {
-        this.liveAuction = false;
-        this.auctionService.endAuction().subscribe(res => {
-        });
-      }
-    }
-  }
+  
 
 
   bidCar(bidValue: any) {

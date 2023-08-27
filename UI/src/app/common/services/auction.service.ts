@@ -27,9 +27,9 @@ export class AuctionService {
     return this.http.get<any>(url_);
   }
 
-  endAuction(): Observable<any> {
+  startAuction(): Observable<any> {
 
-    let url_ = this.baseUrl + "/Auction/EndAuction";
+    let url_ = this.baseUrl + "/Auction/StartAuction";
 
     return this.http.get<any>(url_);
   }

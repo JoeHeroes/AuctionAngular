@@ -24,18 +24,9 @@ namespace AuctionAngular.Services
 
         public async Task StartAuctionAsync()
         {
-            var auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.DateTime <= DateTime.Now && x.DateTime.AddMinutes(1) >= DateTime.Now && x.SalesStarted == false && x.SalesFinised == false);
+            var auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.DateTime <= DateTime.Now && x.DateTime.AddHours(1) >= DateTime.Now && x.SalesStarted == false && x.SalesFinised == false);
 
-            if (auction != null)
-            {
-                auction.SalesStarted = true;
-
-                Console.Out.WriteLineAsync("Auction Start");
-            }
-            else
-            {
-                Console.Out.WriteLineAsync("Auction Run");
-            }
+            auction.SalesStarted = true;
 
             try
             {
@@ -45,6 +36,11 @@ namespace AuctionAngular.Services
             {
                 throw new DbUpdateException("Error DataBase", e);
             }
+
+            //await Task.Delay(TimeSpan.FromHours(1));
+            await Task.Delay(TimeSpan.FromMinutes(1));
+
+            EndAuctionAsync();
         }
 
         public async Task EndAuctionAsync()
@@ -54,7 +50,6 @@ namespace AuctionAngular.Services
             if (auction.DateTime.AddMinutes(1) <= DateTime.Now)
             {
                 auction.SalesFinised = true;
-                Console.Out.WriteLineAsync("Auction End");
             }
 
             try

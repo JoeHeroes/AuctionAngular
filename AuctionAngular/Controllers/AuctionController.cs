@@ -35,6 +35,23 @@ namespace AuctionAngular.Controllers
 
 
         /// <summary>
+        /// Start of the auction
+        /// </summary>
+        /// <returns>Ok</returns>
+        /// <response code="200">Correct data</response>
+        /// <response code="400">Incorrect data</response>
+        [HttpGet("[action]")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult> StartAuction()
+        {
+            await _auctionService.StartAuctionAsync();
+            return Ok();
+        }
+
+
+
+        /// <summary>
         /// End of the auction
         /// </summary>
         /// <returns>Ok</returns>
