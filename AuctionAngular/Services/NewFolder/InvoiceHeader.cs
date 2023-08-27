@@ -9,10 +9,10 @@
         public int CustomerAddressId { get; set; }
         public int DeliveryAddressId { get; set; }
         public string Product { get; set; }
-        public int Tax { get; set; }
-        public int TaxFreePrice { get; set; }
-        public int TaxTotal { get; set; }
-        public int Total { get; set; }
+        public double Tax { get; set; }
+        public double TaxFreePrice { get; set; }
+        public double TaxTotal { get; set; }
+        public double Total { get; set; }
         public string PaymentMethod { get; set; }
     }
 }

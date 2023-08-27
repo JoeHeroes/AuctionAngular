@@ -39,9 +39,8 @@
 
 
         <div *dxTemplate="let data of 'cellTemplate'">
-          <button (click)="downloadIconClick()">
-            Download
-          </button>
+          <span style="cursor: pointer; font-weight: bold" (click)="downloadIconClick(data.data.lotId)">Download</span>
+          
         </div>
         <dxi-column dataField="status" [caption]="t('payment.status')" [allowFiltering]="false"
           [allowSorting]="true"></dxi-column>
