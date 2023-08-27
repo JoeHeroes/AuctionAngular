@@ -12,12 +12,10 @@ namespace AuctionAngular.Services
     public class InvoiceService: IInvoiceService
     {
         private readonly AuctionDbContext _dbContext;
-        private readonly IWebHostEnvironment _webHost;
 
-        public InvoiceService(AuctionDbContext dbContext, IWebHostEnvironment webHost)
+        public InvoiceService(AuctionDbContext dbContext)
         {
             _dbContext = dbContext;
-            _webHost = webHost;
         }
 
         public async Task<PDFResponseDto> GeneratePDFAsync(PDFInfo info)

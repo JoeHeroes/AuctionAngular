@@ -17,49 +17,49 @@ export class VehicleService {
 
   public getVehicles(): Observable<Vehicle[]> {
 
-    let url_ = "https://localhost:7257/Vehicle/GetAllVehicle";
+    let url_ = this.baseUrl + "/Vehicle/GetAllVehicle";
 
     return this.http.get<any>(url_);
   }
 
   public getBidedVehicles(id: number): Observable<Vehicle[]> {
 
-    let url_ = "https://localhost:7257/Vehicle/GetAllBidedVehicle/" + id;
+    let url_ = this.baseUrl + "/Vehicle/GetAllBidedVehicle/" + id;
 
     return this.http.get<any>(url_);
   }
 
   public getWonVehicles(id: number): Observable<Vehicle[]> {
 
-    let url_ = "https://localhost:7257/Vehicle/GetAllWonVehicle/" + id;
+    let url_ = this.baseUrl + "/Vehicle/GetAllWonVehicle/" + id;
 
     return this.http.get<any>(url_);
   }
 
   public getLostVehicles(id: number): Observable<Vehicle[]> {
 
-    let url_ = "https://localhost:7257/Vehicle/GetAllLostVehicle/" + id;
+    let url_ = this.baseUrl + "/Vehicle/GetAllLostVehicle/" + id;
 
     return this.http.get<any>(url_);
   }
 
   public getVehicle(id: number): Observable<any> {
 
-    let url_ = "https://localhost:7257/Vehicle/GetOne/" + id;
+    let url_ = this.baseUrl + "/Vehicle/GetOne/" + id;
 
     return this.http.get<any>(url_);
   }
 
   public bidVehicle(data: BidDto): Observable<any> {
 
-    let url_ = "https://localhost:7257/Vehicle/UpdateBid";
+    let url_ = this.baseUrl + "/Vehicle/UpdateBid";
 
     return this.http.patch<any>(url_, data);
   }
 
   public watch(data: WatchDto): Observable<any> {
 
-    let url_ = "https://localhost:7257/Vehicle/Watch";
+    let url_ = this.baseUrl + "/Vehicle/Watch";
 
     return this.http.post<any>(url_, data);
   }
@@ -67,28 +67,28 @@ export class VehicleService {
 
   public removeWatch(data: WatchDto): Observable<any> {
 
-    let url_ = "https://localhost:7257/Vehicle/RemoveWatch";
+    let url_ = this.baseUrl + "/Vehicle/RemoveWatch";
 
     return this.http.post<any>(url_, data);
   }
 
   public checkWatch(data: WatchDto): Observable<any> {
 
-    let url_ = "https://localhost:7257/Vehicle/CheckWatch";
+    let url_ = this.baseUrl + "/Vehicle/CheckWatch";
 
     return this.http.post<any>(url_, data);
   }
 
   public getAllWatch(id: number): Observable<Vehicle[]> {
 
-    let url_ = "https://localhost:7257/Vehicle/AllWatch/" + id;
+    let url_ = this.baseUrl + "/Vehicle/AllWatch/" + id;
 
     return this.http.get<any>(url_);
   }
 
   public addVehicle(data: CreateVehicleDto) {
 
-    let url_ = "https://localhost:7257/Vehicle/CreateVehicle";
+    let url_ = this.baseUrl + "/Vehicle/CreateVehicle";
     return this.http.post<any>(url_, data);
   }
 }

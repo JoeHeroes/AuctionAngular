@@ -8,9 +8,7 @@
     </dx-toolbar>
     <br />
     <div>
-      <dx-data-grid id="gridContainer" [dataSource]="datasource" [showBorders]="true" [hoverStateEnabled]="true"
-        [activeStateEnabled]="true" [allowColumnResizing]="true" [allowColumnReordering]="true"
-        [remoteOperations]="true">
+      <dx-data-grid id="gridContainer" [dataSource]="datasource" [showBorders]="true" [hoverStateEnabled]="true">
         <dxo-filter-row [visible]="true"></dxo-filter-row>
         <dxo-scrolling rowRenderingMode="virtual"> </dxo-scrolling>
         <dxo-sorting mode="multiple"></dxo-sorting>
@@ -35,8 +33,16 @@
           [allowFiltering]="false" [width]="160" [allowSorting]="true"></dxi-column>
         <dxi-column dataField="lotLeftLocationDate" [caption]="t('payment.lotLeftLocationDate')" dataType="date"
           [allowFiltering]="false" [width]="160" [allowSorting]="true"></dxi-column>
-        <dxi-column dataField="invoice" [caption]="t('payment.invoice')" [allowFiltering]="false"
-          [allowSorting]="true"></dxi-column>
+        <dxi-column type="buttons" dataField="invoice" [caption]="t('payment.invoice')" cellTemplate="cellTemplate">
+         
+        </dxi-column>
+
+
+        <div *dxTemplate="let data of 'cellTemplate'">
+          <button (click)="downloadIconClick()">
+            Download
+          </button>
+        </div>
         <dxi-column dataField="status" [caption]="t('payment.status')" [allowFiltering]="false"
           [allowSorting]="true"></dxi-column>
 

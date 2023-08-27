@@ -128,9 +128,7 @@ namespace AuctionAngular.Services
 
             foreach (var x in bids)
             {
-                Auction? auction = await _dbContext.Auctions.FirstOrDefaultAsync(a => a.Id == x.VehicleId);
-
-                var veh = vehiclesList.FirstOrDefault(d => d.Id == x.VehicleId && d.WinnerId == id && auction?.SalesFinised == true);
+                var veh = vehiclesList.FirstOrDefault(d => d.Id == x.VehicleId && d.WinnerId == id && d.Sold == true);
 
                 if (veh != null)
                 {
@@ -172,9 +170,7 @@ namespace AuctionAngular.Services
 
             foreach (var x in bids)
             {
-                Auction? auction = await _dbContext.Auctions.FirstOrDefaultAsync(a => a.Id == x.VehicleId);
-
-                var veh = vehiclesList.FirstOrDefault(d => d.Id == x.VehicleId && d.WinnerId != id && auction?.SalesFinised == true);
+                var veh = vehiclesList.FirstOrDefault(d => d.Id == x.VehicleId && d.WinnerId == id && d.Sold == false);
 
                 if (veh != null)
                 {

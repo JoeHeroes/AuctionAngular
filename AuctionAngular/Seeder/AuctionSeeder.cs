@@ -85,7 +85,7 @@ namespace CarAuction.Seeder
             {
                 new Auction()
                 {
-                    DateTime = new DateTime(2023, 8, 7, 19, 0, 0),
+                    DateTime = DateTime.Now,
                     LocationId = 1,
                     SalesStarted = false,
                     SalesFinised = false,

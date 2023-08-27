@@ -7,7 +7,6 @@
     <h1 class="display-4" style="font-weight: bold;">{{t('message.noAuction')}}</h1>
   </ng-container>
 </div>
-
 <div class="student-profile py-4" *ngIf='liveAuction'>
   <ng-container *transloco="let t">
     <div class="container1">
@@ -18,7 +17,7 @@
             <h1 style="font-weight: bold; color: green;">On Live</h1>
           </div>
           <div class="widget-container">
-            <dx-gallery [dataSource]="datasource[index].images" [loop]="true" [showNavButtons]="true" [showIndicator]="true">
+            <dx-gallery [dataSource]="datasource.images" [loop]="true" [showNavButtons]="true" [showIndicator]="true">
               <div *dxTemplate="let i of 'item'">
                 <div>
                   <img height="450" src="https://storagevehicleauction.blob.core.windows.net/vehicle-images/{{i}}">
@@ -28,86 +27,80 @@
           </div>
         </div>
         <div class="column2">
-          <div class=" card shadow-sm">
+          <div class="shadow-sm">
             <div class="card-header bg-transparent border-0">
-              <h3 class="mb-0">Bid Information</h3>
+              <h3 class="mb-0">General Information</h3>
             </div>
-            <table class="table table-bordered">
-               
-              <tr>
-                <th width="50%" >{{t('vehicle.modelSpecifer')}}</th>
-                <td>{{datasource[index].modelSpecifer}}</td>
-              </tr>
-              <tr>
-                <th width="50%" >{{t('vehicle.modelGeneration')}}</th>
-                <td>{{datasource[index].modelGeneration}}</td>
-              </tr>
-              <tr>
-                <th width="50%" >{{t('vehicle.registrationYear')}}</th>
-                <td>{{datasource[index].registrationYear}}</td>
-              </tr>
-              <tr>
-                <th width="50%" >{{t('vehicle.color')}}</th>
-                <td>{{datasource[index].color}}</td>
-              </tr>
-              <tr>
-                <th width="50%" >{{t('vehicle.bodyType')}}</th>
-                <td>{{datasource[index].bodyType}}</td>
-              </tr>
-              <tr>
-                <th width="50%" >{{t('vehicle.engineCapacity')}}</th>
-                <td>{{datasource[index].engineCapacity}}</td>
-              </tr>
-
-              <tr>
-                <th width="50%" >{{t('vehicle.engineOutput')}}</th>
-                <td>{{datasource[index].engineOutput}}</td>
-              </tr>
-              <tr>
-                <th width="50%" >{{t('vehicle.drive')}}</th>
-                <td>{{datasource[index].drive}}</td>
-              </tr>
-              <tr>
-                <th width="50%" >{{t('vehicle.engineCapacity')}}</th>
-                <td>{{datasource[index].engineCapacity}}</td>
-              </tr>
-
-
-              <tr>
-                <th width="50%" >{{t('vehicle.meterReadout')}}</th>
-                <td>{{datasource[index].meterReadout}}</td>
-              </tr>
-
-              <tr>
-                <th width="50%" >{{t('vehicle.fuel')}}</th>
-                <td>{{datasource[index].fuel}}</td>
-              </tr>
-
-              <tr>
-                <th width="50%" >{{t('vehicle.numberKeys')}}</th>
-                <td>{{datasource[index].numberKeys}}</td>
-              </tr>
-
-              <tr>
-                <th width="50%" >{{t('vehicle.serviceManual')}}</th>
-                <td>{{datasource[index].serviceManual}}</td>
-              </tr>
-
-              <tr>
-                <th width="50%" >{{t('vehicle.primaryDamage')}}</th>
-                <td>{{datasource[index].primaryDamage}}</td>
-              </tr>
-
-              <tr>
-                <th width="50%" >{{t('vehicle.dateTime')}}</th>
-                <td>{{datasource[index].dateTime}}</td>
-              </tr>
-            </table>
-
+            <div class="card-body pt-0">
+              <table class="table table-bordered">
+                <tr>
+                  <th width="50%">{{t('vehicle.modelSpecifer')}}</th>
+                  <td>{{datasource[index].modelSpecifer}}</td>
+                </tr>
+                <tr>
+                  <th width="50%">{{t('vehicle.modelGeneration')}}</th>
+                  <td>{{datasource[index].modelGeneration}}</td>
+                </tr>
+                <tr>
+                  <th width="50%">{{t('vehicle.registrationYear')}}</th>
+                  <td>{{datasource[index].registrationYear}}</td>
+                </tr>
+                <tr>
+                  <th width="50%">{{t('vehicle.color')}}</th>
+                  <td>{{datasource[index].color}}</td>
+                </tr>
+                <tr>
+                  <th width="50%">{{t('vehicle.bodyType')}}</th>
+                  <td>{{datasource[index].bodyType}}</td>
+                </tr>
+                <tr>
+                  <th width="50%">{{t('vehicle.engineCapacity')}}</th>
+                  <td>{{datasource[index].engineCapacity}}</td>
+                </tr>
+                <tr>
+                  <th width="50%">{{t('vehicle.engineOutput')}}</th>
+                  <td>{{datasource[index].engineOutput}}</td>
+                </tr>
+                <tr>
+                  <th width="50%">{{t('vehicle.drive')}}</th>
+                  <td>{{datasource[index].drive}}</td>
+                </tr>
+                <tr>
+                  <th width="50%">{{t('vehicle.engineCapacity')}}</th>
+                  <td>{{datasource[index].engineCapacity}}</td>
+                </tr>
+                <tr>
+                  <th width="50%">{{t('vehicle.meterReadout')}}</th>
+                  <td>{{datasource[index].meterReadout}}</td>
+                </tr>
+                <tr>
+                  <th width="50%">{{t('vehicle.fuel')}}</th>
+                  <td>{{datasource[index].fuel}}</td>
+                </tr>
+                <tr>
+                  <th width="50%">{{t('vehicle.numberKeys')}}</th>
+                  <td>{{datasource[index].numberKeys}}</td>
+                </tr>
+                <tr>
+                  <th width="50%">{{t('vehicle.serviceManual')}}</th>
+                  <td>{{datasource[index].serviceManual}}</td>
+                </tr>
+                <tr>
+                  <th width="50%">{{t('vehicle.primaryDamage')}}</th>
+                  <td>{{datasource[index].primaryDamage}}</td>
+                </tr>
+                <tr>
+                  <th width="50%">{{t('vehicle.dateTime')}}</th>
+                  <td>{{datasource[index].dateTime}}</td>
+                </tr>
+              </table>
+            </div>
           </div>
         </div>
+
+
         <div class="column3">
-          <div class=" card shadow-sm">
+          <div>
             <dx-bar-gauge
               id="gauge"
               [startValue]="0"
@@ -132,13 +125,8 @@
               </dx-button>
             </form>
           </div>
-          <div class="card shadow-sm">
-            <div class="card-header bg-transparent border-0">
-              <h3 class="mb-0">List auction</h3>
-            </div>
-            <app-scroll></app-scroll>
-          </div>
         </div>
+        
       </div>
     </div>
   </ng-container>
