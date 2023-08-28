@@ -39,7 +39,6 @@ namespace Database.Entities
         public int CurrentBid { get; set; }
         public int WinnerId { get; set; }
         public int AuctionId { get; set; }
-
         public bool Sold { get; set; }
     }
 }

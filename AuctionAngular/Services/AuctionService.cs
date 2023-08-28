@@ -22,9 +22,18 @@ namespace AuctionAngular.Services
             return auction != null ? true : false;
         }
 
+        public async Task<bool> StartedAuctionAsync()
+        {
+            var auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.DateTime <= DateTime.Now && x.DateTime.AddHours(1) >= DateTime.Now && x.SalesStarted == true);
+
+            return auction != null ? true : false;
+        }
+
+        
+
         public async Task StartAuctionAsync()
         {
-            var auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.DateTime <= DateTime.Now && x.DateTime.AddHours(1) >= DateTime.Now && x.SalesStarted == false && x.SalesFinised == false);
+            var auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.DateTime <= DateTime.Now && x.DateTime.AddHours(1) >= DateTime.Now && x.SalesFinised == false);
 
             auction.SalesStarted = true;
 
@@ -40,7 +49,7 @@ namespace AuctionAngular.Services
             //await Task.Delay(TimeSpan.FromHours(1));
             await Task.Delay(TimeSpan.FromMinutes(1));
 
-            EndAuctionAsync();
+            await EndAuctionAsync();
         }
 
         public async Task EndAuctionAsync()

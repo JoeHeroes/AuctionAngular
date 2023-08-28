@@ -22,18 +22,18 @@ namespace AuctionAngular.Background
 
         public async Task StartAsync(CancellationToken cancellationToken)
         {
-            //Scheduler = await _schedulerFactory.GetScheduler(cancellationToken);
-            //Scheduler.JobFactory = _jobFactory;
+            Scheduler = await _schedulerFactory.GetScheduler(cancellationToken);
+            Scheduler.JobFactory = _jobFactory;
 
-            //foreach (var jobSchedule in _jobSchedules)
-            //{
-            //    var job = CreateJob(jobSchedule);
-            //    var trigger = CreateTrigger(jobSchedule);
+            foreach (var jobSchedule in _jobSchedules)
+            {
+                var job = CreateJob(jobSchedule);
+                var trigger = CreateTrigger(jobSchedule);
 
-            //    await Scheduler.ScheduleJob(job, trigger, cancellationToken);
-            //}
+                await Scheduler.ScheduleJob(job, trigger, cancellationToken);
+            }
 
-            //await Scheduler.Start(cancellationToken);
+            await Scheduler.Start(cancellationToken);
         }
 
         public async Task StopAsync(CancellationToken cancellationToken)

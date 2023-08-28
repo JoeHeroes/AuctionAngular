@@ -20,11 +20,12 @@ namespace AuctionAngular.Background
 
                 bool live = await service.LiveAuctionAsync();
 
-                if (live)
-                {
-                    await service.StartAuctionAsync();
+                bool start = await service.StartedAuctionAsync();
 
-                    await service.EndAuctionAsync();
+                if (live && !start)
+                {
+                    Console.Out.WriteLineAsync("Auction Start!!!");
+                    await service.StartAuctionAsync();
                 }
             }
         }

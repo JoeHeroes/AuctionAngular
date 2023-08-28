@@ -36,9 +36,6 @@ export class AuctionComponent implements OnInit {
         this.auctionService.liveAuctionList().subscribe(res => {
           this.datasource = res;
         });
-
-        this.auctionService.startAuction().subscribe(res => {
-        });
       }
     });
 
