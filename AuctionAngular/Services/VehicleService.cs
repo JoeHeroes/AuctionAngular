@@ -543,6 +543,25 @@ namespace AuctionAngular.Services
 
         }
 
+        public async Task SoldVehicleAsync(int id)
+        {
+
+            Vehicle? vehicle = await _dbContext
+                                .Vehicles
+                                .FirstOrDefaultAsync(x => x.Id == id);
+            
+            vehicle.Sold = !vehicle.Sold;
+            
+            try
+            {
+                await _dbContext.SaveChangesAsync();
+            }
+            catch (DbUpdateException e)
+            {
+                throw new DbUpdateException("Error DataBase", e);
+            }
+        }
+
         public ViewVehicleDto ViewVehicleDtoConvert(Vehicle vehicle, List<string> pictures)
         {
             return new ViewVehicleDto()
@@ -589,6 +608,7 @@ namespace AuctionAngular.Services
                 MeterReadout = vehicle.MeterReadout,
                 DateTime = auction.DateTime,
                 CurrentBid = vehicle.CurrentBid,
+                Sold = vehicle.Sold,
             };
         }
     }

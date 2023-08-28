@@ -19,5 +19,6 @@ namespace AuctionAngular.Interfaces
         Task<bool> CheckWatchAsync(WatchDto dto);
         Task<IEnumerable<ViewVehiclesDto>> GetAllWatchAsync(int id);
         Task<List<string>> AddPictureAsync(int id, IFormFileCollection files);
+        Task SoldVehicleAsync(int id);
     }
 }

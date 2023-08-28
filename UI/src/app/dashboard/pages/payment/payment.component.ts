@@ -32,7 +32,7 @@ export class PaymentComponent{
     });
   }
 
-  downloadIconClick(vehicleId: any)  {
+  downloadClick(vehicleId: any)  {
     this.authenticationService.loggedUserId().subscribe(res => {
       this.invoiceInfo.userId = res.userId;
       this.invoiceInfo.vehicleId = vehicleId;

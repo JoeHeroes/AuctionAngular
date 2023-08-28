@@ -50,6 +50,20 @@ export class VehicleService {
     return this.http.get<any>(url_);
   }
 
+  public sellVehicle(id: number): Observable<any> {
+
+    let url_ = this.baseUrl + "/Vehicle/SoldVehicle/" + id;
+
+    return this.http.get<any>(url_);
+  }
+
+  public deleteVehicle(id: number): Observable<any> {
+
+    let url_ = this.baseUrl + "/Vehicle/DeleteVehicle/" + id;
+
+    return this.http.delete<any>(url_);
+  }
+
   public bidVehicle(data: BidDto): Observable<any> {
 
     let url_ = this.baseUrl + "/Vehicle/UpdateBid";

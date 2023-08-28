@@ -30,6 +30,7 @@ import { ContactusComponent } from "./pages/contactus/contactus.component";
 import { FaqComponent } from "./pages/faq/faq.component";
 import { HowtobuyComponent } from "./pages/howtobuy/howtobuy.component";
 import { PaymentComponent } from "./pages/payment/payment.component";
+import { AdminPanelComponent } from "./pages/admin-panel/admin-panel.component";
 
 const routes: Routes = [
   {
@@ -83,6 +84,12 @@ const routes: Routes = [
         pathMatch: 'full',
         component: AuctionComponent,
         data: { title: 'Auction' }
+      },
+      {
+        path: 'panel',
+        pathMatch: 'full',
+        component: AdminPanelComponent,
+        data: { title: 'AdminPanel' }
       },
       {
         path: 'location',

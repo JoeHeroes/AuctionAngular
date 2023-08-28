@@ -48,9 +48,6 @@ export class AuctionComponent implements OnInit {
     })
   }
 
-  
-
-
   bidCar(bidValue: any) {
     const bid = { ...bidValue };
     const bidDto: BidDto = {

@@ -15,7 +15,8 @@
     "pictureProfile": "Zdjecie profilowe",
     "saveProfile": "Zapisz Profil",
     "auction":"Aktualnie trwa aukcja",
-    "calendarManage": "Zarządzanie kalendarzem"
+    "calendarManage": "Zarządzanie kalendarzem",
+    "download":"Pobierz"
   },
     "menu": {
       "home": "Home",
@@ -29,9 +30,12 @@
       "auction": "Aukcja",
       "location": "Lokacja",
       "services": "Serwis",
-      "support": "Wsparcie"
+      "support": "Wsparcie",
+      "admin":"Panel admina"
     },
     "vehicle": {
+      "image": "Zdjecie",
+      "lotNumber":"Numer Aukcji",
       "producer": "Marka",
       "modelSpecifer": "Model pojazdu",
       "modelGeneration": "Generacja",
@@ -143,6 +147,16 @@
       "lotLeftLocationDate":"Data opuszczenia",
       "invoice":"Faktura",
       "status":"Status"
+    },
+
+    "admin":{
+      "panel":"Admin Panel",
+      "confirm": "Potwierdz sprzedarz",
+      "edit": "Edytuj",
+      "delete": "Usuń",
+      "sell": "Potwierdzam",
+      "sold": "Sprzedane",
+      "back": "Cofnij"
     }
   }
   

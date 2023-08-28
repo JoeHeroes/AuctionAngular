@@ -11,6 +11,6 @@
         public DateTime DateTime { get; set; }
         public int CurrentBid { get; set; }
         public string Image { get; set; }
-        public bool SalesFinised { get; set; }
+        public bool Sold { get; set; }
     }
 }

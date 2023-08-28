@@ -34,13 +34,9 @@
         <dxi-column dataField="lotLeftLocationDate" [caption]="t('payment.lotLeftLocationDate')" dataType="date"
           [allowFiltering]="false" [width]="160" [allowSorting]="true"></dxi-column>
         <dxi-column type="buttons" dataField="invoice" [caption]="t('payment.invoice')" cellTemplate="cellTemplate">
-         
         </dxi-column>
-
-
         <div *dxTemplate="let data of 'cellTemplate'">
-          <span style="cursor: pointer; font-weight: bold" (click)="downloadIconClick(data.data.lotId)">Download</span>
-          
+          <span style="cursor: pointer; font-weight: bold" (click)="downloadClick(data.data.lotId)">{{t('action.download')}}</span>
         </div>
         <dxi-column dataField="status" [caption]="t('payment.status')" [allowFiltering]="false"
           [allowSorting]="true"></dxi-column>

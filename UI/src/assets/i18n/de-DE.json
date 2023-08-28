@@ -15,7 +15,8 @@
     "pictureProfile": "Bildprofil",
     "saveProfile": "Profil sichern",
     "auction":"Die Auktion läuft jetzt",
-    "calendarManage": "Kalenderverwaltung"
+    "calendarManage": "Kalenderverwaltung",
+    "download":"Herunterladen"
   },
   "menu": {
     "home": "Heim",
@@ -29,9 +30,12 @@
     "auction": "Versteigerung",
     "location": "Standort",
     "services": "Dienstleistungen",
-    "support": "Unterstützung"
+    "support": "Unterstützung",
+    "admin":"Administrationsmenü"
   },
   "vehicle": {
+    "image": "Bild",
+    "lotNumber":"Chargennummer",
     "producer": "Hersteller",
     "modelSpecifer": "Modellspezifizierer",
     "modelGeneration": "Modellgenerierung",
@@ -143,5 +147,15 @@
     "lotLeftLocationDate":"Datum des verlassenen Standorts",
     "invoice":"Rechnung",
     "status":"Status"
+  },
+
+  "admin":{
+    "panel":"Administrationsmenü",
+    "confirm": "Bestätigen Sie den Verkauf",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "sell": "Verkaufen",
+    "sold": "Verkauft",
+    "back": "Zurück"
   }
 }

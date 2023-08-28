@@ -41,6 +41,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { PaymentComponent } from './pages/payment/payment.component';
+import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
 
 
 
@@ -73,7 +74,8 @@ import { PaymentComponent } from './pages/payment/payment.component';
     AddEventComponent,
     CalendarManageComponent,
     EditEventComponent,
-    PaymentComponent
+    PaymentComponent,
+    AdminPanelComponent
   ],
   exports: [],
   imports: [

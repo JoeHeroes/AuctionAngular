@@ -15,7 +15,8 @@
     "pictureProfile": "Picture Profile",
     "saveProfile": "Save Profile",
     "auction":"Auction is on now",
-    "calendarManage": "Calendar management"
+    "calendarManage": "Calendar management",
+    "download":"Download"
   },
   "menu": {
     "home": "Home",
@@ -29,9 +30,12 @@
     "auction": "Auction",
     "location": "Location",
     "services": "Services",
-    "support": "Support"
+    "support": "Support",
+    "admin":"Admin Panel"
   },
   "vehicle": {
+    "image": "Image",
+    "lotNumber":"Lot Number",
     "producer": "Producer",
     "modelSpecifer": "Model Specifier",
     "modelGeneration": "Model Generation",
@@ -143,6 +147,16 @@
     "lotLeftLocationDate":"Left Location Date",
     "invoice":"Invoice",
     "status":"Status"
+  },
+
+  "admin":{
+    "panel":"Admin Panel",
+    "confirm": "Confirm sell",
+    "edit": "Edit",
+    "delete": "Delete",
+    "sell": "Sell",
+    "sold": "Sold",
+    "back": "Back"
   },
 
   "howToBuy":{

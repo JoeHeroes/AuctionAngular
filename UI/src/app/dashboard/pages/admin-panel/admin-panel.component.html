@@ -1,0 +1,89 @@
+<div class="center">
+    <ng-container *transloco="let t">
+        <br />
+        <dx-toolbar>
+            <dxi-item location="before">
+                <h1 style="font-weight: bold">{{t('admin.panel')}}</h1>
+            </dxi-item>
+            <dxi-item location="after" style="float: right; margin-right: 20px;">
+                <div *dxTemplate>
+                    <a [routerLink]="['editor']">
+                        <dx-button type="default" [text]="t('action.addVehicle')"></dx-button>
+                    </a>
+                </div>
+            </dxi-item>
+        </dx-toolbar>
+        <br />
+        <div>
+            <dx-data-grid id="gridContainer" [dataSource]="datasource" [showBorders]="true" [hoverStateEnabled]="true"
+                [activeStateEnabled]="true" [allowColumnResizing]="true" [allowColumnReordering]="true"
+                [remoteOperations]="true">
+                <dxo-filter-row [visible]="true"></dxo-filter-row>
+                <dxo-scrolling rowRenderingMode="virtual"> </dxo-scrolling>
+                <dxo-sorting mode="multiple"></dxo-sorting>
+                <dxo-paging [pageSize]="10"> </dxo-paging>
+                <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"
+                    [placeholder]="t('vehicle.search')"></dxo-search-panel>
+                <dxo-pager [visible]="true" [allowedPageSizes]="allowedPageSizes" [displayMode]="displayMode"
+                    [showPageSizeSelector]="true" [showInfo]="true" [showNavigationButtons]="true">
+                </dxo-pager>
+                <dxi-column dataField="lotNumber" [caption]="t('vehicle.lotNumber')" [filterOperations]="['startswith']"
+                    [allowSorting]="true"></dxi-column>
+                <dxi-column dataField="producer" [caption]="t('vehicle.producer')" [allowSorting]="true"></dxi-column>
+                <dxi-column dataField="modelSpecifer" [caption]="t('vehicle.modelSpecifer')" [allowFiltering]="true"
+                    [allowSorting]="false"></dxi-column>
+                <dxi-column dataField="modelGeneration" [caption]="t('vehicle.modelGeneration')"
+                    [allowFiltering]="false" [allowSorting]="true"></dxi-column>
+                <dxi-column dataField="registrationYear" [caption]="t('vehicle.registrationYear')"
+                    [allowFiltering]="false" [allowSorting]="true"></dxi-column>
+                <dxi-column dataField="dateTime" [caption]="t('vehicle.dateTime')" dataType="date"
+                    [allowFiltering]="false" [width]="120" [allowSorting]="true"></dxi-column>
+                <dxi-column dataField="currentBid" [caption]="t('vehicle.currentBid')" [allowFiltering]="false"
+                    [allowSorting]="false"></dxi-column>
+
+                <dxi-column type="buttons" dataField="invoice2" [caption]="t('admin.confirm')"
+                    cellTemplate="cellTemplateSell">
+                </dxi-column>
+
+                <dxi-column type="buttons" dataField="invoice1" [caption]="t('admin.edit')"
+                    cellTemplate="cellTemplateEdit">
+                </dxi-column>
+                
+                <dxi-column type="buttons" dataField="invoice3" [caption]="t('admin.delete')"
+                    cellTemplate="cellTemplateDelete">
+                </dxi-column>
+
+                <dxi-column dataField="sold" [caption]="t('admin.sold')" [allowFiltering]="false"
+                [allowSorting]="true"></dxi-column>
+
+
+               
+
+                <div *dxTemplate="let data of 'cellTemplateSell'">
+                    <span style="cursor: pointer; font-weight: bold" (click)="sellClick(data.data.lotNumber)"><span *ngIf='!data.data.sold'>{{t('admin.sell')}}</span> <span *ngIf='data.data.sold'>{{t('admin.back')}}</span></span>
+                </div>
+
+                <div *dxTemplate="let data of 'cellTemplateEdit'">
+                    <span style="cursor: pointer; font-weight: bold; color: gray" (click)="editClick(data.data.lotNumber)">{{t('admin.edit')}}</span>
+                </div>
+
+                <div *dxTemplate="let data of 'cellTemplateDelete'">
+                    <span style="cursor: pointer; font-weight: bold; color:orangered" (click)="deleteClick(data.data.lotNumber)">{{t('admin.delete')}}</span>
+                </div>
+
+                <div *dxTemplate="let d of 'discountCellTemplate'">
+                    <div class="chart-cell">
+                        <dx-bullet [showTarget]="false" [showZeroLevel]="true" [startScaleValue]="0"
+                            [endScaleValue]="100" [value]="d.value * 100">
+                            <dxo-size [width]="150" [height]="35"></dxo-size>
+                            <dxo-tooltip [enabled]="true" [paddingTopBottom]="2">
+                                <dxo-font [size]="18"></dxo-font>
+                            </dxo-tooltip>
+                            <dxo-margin [top]="5" [bottom]="0" [left]="5"></dxo-margin>
+                        </dx-bullet>
+                    </div>
+                </div>
+            </dx-data-grid>
+        </div>
+    </ng-container>
+</div>
