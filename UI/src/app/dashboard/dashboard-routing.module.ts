@@ -31,6 +31,7 @@ import { FaqComponent } from "./pages/faq/faq.component";
 import { HowtobuyComponent } from "./pages/howtobuy/howtobuy.component";
 import { PaymentComponent } from "./pages/payment/payment.component";
 import { AdminPanelComponent } from "./pages/admin-panel/admin-panel.component";
+import { VehicleAddComponent } from "./pages/vehicle-add/vehicle-add.component";
 
 const routes: Routes = [
   {
@@ -65,7 +66,8 @@ const routes: Routes = [
               data: { title: 'Lot' }
             },
           ], },
-          { path: 'editor', pathMatch: 'full', component: VehicleEditComponent, data: { title: 'Vehicle Edit' } },
+          { path: 'edit', pathMatch: 'full', component: VehicleEditComponent, data: { title: 'Vehicle Edit' } },
+          { path: 'add', pathMatch: 'full', component: VehicleAddComponent, data: { title: 'Vehicle Add' } },
           { path: 'picture', pathMatch: 'full', component: VehiclePictureComponent, data: { title: 'Vehicle Picture' } },
           { path: 'won', pathMatch: 'full', component: VehicleWonComponent, data: { title: 'Vehicle Won' }, canActivate: [AuthGuard]},
           { path: 'lost', pathMatch: 'full', component: VehicleLostComponent, data: { title: 'Vehicle Lost' }, canActivate: [AuthGuard] },

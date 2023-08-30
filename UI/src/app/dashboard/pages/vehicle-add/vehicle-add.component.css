@@ -22,12 +22,10 @@
     margin: 50px;
   }
   
-
-  .button {
+  .dx-button {
+    float: right;
     margin-top: 30px;
     width: 20%;
-    margin-right: 20px;
-    float: right;
   }
   
   .column {

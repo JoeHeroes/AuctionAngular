@@ -42,6 +42,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { PaymentComponent } from './pages/payment/payment.component';
 import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
+import { VehicleAddComponent } from './pages/vehicle-add/vehicle-add.component';
 
 
 
@@ -75,7 +76,8 @@ import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
     CalendarManageComponent,
     EditEventComponent,
     PaymentComponent,
-    AdminPanelComponent
+    AdminPanelComponent,
+    VehicleAddComponent
   ],
   exports: [],
   imports: [

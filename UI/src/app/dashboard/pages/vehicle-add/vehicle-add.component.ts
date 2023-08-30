@@ -6,12 +6,13 @@ import { DataService } from 'src/app/common/services/data.service';
 import { LocationService } from 'src/app/common/services/location.service';
 import { CreateVehicleDto, VehicleService } from 'src/app/common/services/vehicle.service';
 
+
 @Component({
-  selector: 'app-vehicle-edit',
-  templateUrl: './vehicle-edit.component.html',
-  styleUrls: ['./vehicle-edit.component.css']
+  selector: 'app-vehicle-add',
+  templateUrl: './vehicle-add.component.html',
+  styleUrls: ['./vehicle-add.component.css']
 })
-export class VehicleEditComponent implements OnInit {
+export class VehicleAddComponent implements OnInit {
   private returnUrl!: string;
 
   vehicleForm !: FormGroup;
@@ -69,7 +70,7 @@ export class VehicleEditComponent implements OnInit {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/vehicle/picture';
   }
 
-  editVehicle = (vehicleFormValue: any) => {
+  addVehicle = (vehicleFormValue: any) => {
     this.showError = true;
     const vehicle = { ...vehicleFormValue };
     const createVehicle: CreateVehicleDto = {

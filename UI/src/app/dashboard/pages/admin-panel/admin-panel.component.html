@@ -7,8 +7,16 @@
             </dxi-item>
             <dxi-item location="after" style="float: right; margin-right: 20px;">
                 <div *dxTemplate>
-                    <a [routerLink]="['editor']">
+                    <a [routerLink]="['/vehicle/add']">
                         <dx-button type="default" [text]="t('action.addVehicle')"></dx-button>
+                    </a>
+                </div>
+            </dxi-item>
+
+            <dxi-item location="after" style="float: right; margin-right: 20px;">
+                <div *dxTemplate>
+                    <a [routerLink]="['/vehicle/edit']">
+                        <dx-button type="default" [text]="t('action.editVehicle')"></dx-button>
                     </a>
                 </div>
             </dxi-item>
@@ -55,9 +63,6 @@
 
                 <dxi-column dataField="sold" [caption]="t('admin.sold')" [allowFiltering]="false"
                 [allowSorting]="true"></dxi-column>
-
-
-               
 
                 <div *dxTemplate="let data of 'cellTemplateSell'">
                     <span style="cursor: pointer; font-weight: bold" (click)="sellClick(data.data.lotNumber)"><span *ngIf='!data.data.sold'>{{t('admin.sell')}}</span> <span *ngIf='data.data.sold'>{{t('admin.back')}}</span></span>
