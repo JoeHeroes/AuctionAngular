@@ -587,6 +587,7 @@ namespace AuctionAngular.Services
                 SecondaryDamage = vehicle.SecondaryDamage,
                 VIN = vehicle.VIN,
                 Highlights = vehicle.Highlights,
+                SaleTerm = vehicle.SaleTerm,
                 CurrentBid = vehicle.CurrentBid,
                 WinnerId = vehicle.WinnerId,
                 Images = pictures,

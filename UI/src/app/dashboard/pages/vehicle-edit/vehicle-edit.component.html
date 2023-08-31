@@ -6,13 +6,13 @@
             <h1 style="font-weight: bold">{{t('action.editVehicle')}}</h1>
         </dxi-item>
     </dx-toolbar>
-      <form [formGroup]="vehicleForm" (ngSubmit)="editVehicle(vehicleForm.value)">
+      <form [formGroup]="editForm" (ngSubmit)="editVehicle(editForm.value)">
         <div class="row">
           <div class="column">
             <div class="dx-field">
               <div class="dx-field-label">{{t('vehicle.producer')}}</div>
               <div class="dx-field-value">
-                <select id="producer" formControlName="producer" class="form-control">
+                <select id="producer" formControlName="producer" [value]="producerValue" class="form-control">
                   <option *ngFor="let producer of enumProducer"  [value]="producer">{{ producer }}</option>
                 </select>
               </div>
@@ -21,44 +21,35 @@
             <div class="dx-field">
               <div class="dx-field-label">{{t('vehicle.modelSpecifer')}}</div>
               <div class="dx-field-value">
-                <input type="text" id="modelSpecifer" formControlName="modelSpecifer" class="form-control" />
+                <input type="text" id="modelSpecifer" formControlName="modelSpecifer" [value]="modelSpeciferValue" class="form-control" />
               </div>
             </div>
         
             <div class="dx-field">
               <div class="dx-field-label">{{t('vehicle.modelGeneration')}}</div>
               <div class="dx-field-value">
-                <input type="text" id="modelGeneration" formControlName="modelGeneration" class="form-control" />
+                <input type="text" id="modelGeneration" formControlName="modelGeneration" [value]="modelGenerationValue" class="form-control" />
               </div>
             </div>
         
             <div class="dx-field">
               <div class="dx-field-label">{{t('vehicle.registrationYear')}}</div>
               <div class="dx-field-value">
-                <input type="number" id="registrationYear" formControlName="registrationYear" class="form-control" />
+                <input type="number" id="registrationYear" formControlName="registrationYear" [value]="registrationYearValue" class="form-control" />
               </div>
             </div>
         
             <div class="dx-field">
               <div class="dx-field-label">{{t('vehicle.color')}}</div>
               <div class="dx-field-value">
-                <input type="text" id="color" formControlName="color" class="form-control" />
-              </div>
-            </div>
-        
-            <div class="dx-field">
-              <div class="dx-field-label">{{t('vehicle.locationId')}}</div>
-              <div class="dx-field-value">
-                <select id="locationId" formControlName="locationId" class="form-control">
-                  <option *ngFor="let location of locations" [value]="location.id">{{ location.name }}</option>
-                </select>
+                <input type="text" id="color" formControlName="color" [value]="colorValue" class="form-control" />
               </div>
             </div>
         
             <div class="dx-field">
               <div class="dx-field-label">{{t('vehicle.bodyType')}}</div>
               <div class="dx-field-value">
-                <select id="bodyType" formControlName="bodyType" class="form-control">
+                <select id="bodyType" formControlName="bodyType" [value]="bodyTypeValue" class="form-control">
                   <option *ngFor="let bodyCar of enumBodyCar"  [value]="bodyCar">{{ bodyCar }}</option>
                 </select>
               </div>
@@ -67,7 +58,7 @@
             <div class="dx-field">
               <div class="dx-field-label">{{t('vehicle.transmission')}}</div>
               <div class="dx-field-value">
-                <select id="transmission" formControlName="transmission" class="form-control" >
+                <select id="transmission" formControlName="transmission" [value]="transmissionValue" class="form-control" >
                   <option *ngFor="let transmission of enumTransmission"  [value]="transmission">{{ transmission }}</option>
                 </select>
               </div>
@@ -76,8 +67,8 @@
             <div class="dx-field">
               <div class="dx-field-label">{{t('vehicle.drive')}}</div>
               <div class="dx-field-value">
-                <select id="drive" formControlName="drive" class="form-control"  >
-                  <option *ngFor="let drive of enumDrive"  [value]="drive">{{ drive }}</option>
+                <select id="drive" formControlName="drive" [value]="driveValue" class="form-control"  >
+                  <option *ngFor="let drive of enumDrive" [value]="drive">{{ drive }}</option>
                 </select>
               </div>
             </div>
@@ -85,20 +76,18 @@
             <div class="dx-field">
               <div class="dx-field-label">{{t('vehicle.meterReadout')}}</div>
               <div class="dx-field-value">
-                <input type="number" id="meterReadout" formControlName="meterReadout" class="form-control" />
+                <input type="number" id="meterReadout" formControlName="meterReadout" [value]="meterReadoutValue" class="form-control" />
               </div>
             </div>
     
             <div class="dx-field">
               <div class="dx-field-label">{{t('vehicle.fuel')}}</div>
               <div class="dx-field-value">
-                <select id="fuel" formControlName="fuel" class="form-control" >
+                <select id="fuel" formControlName="fuel" [value]="fuelValue" class="form-control" >
                   <option *ngFor="let fuel of enumFuel"  [value]="fuel">{{ fuel }}</option>
                 </select>
               </div>
             </div>
-    
-    
           </div>
           
           <div class="column">
@@ -107,8 +96,8 @@
             <div class="dx-field">
               <div class="dx-field-label">{{t('vehicle.primaryDamage')}}</div>
               <div class="dx-field-value">
-                <select id="fuel" formControlName="primaryDamage" class="form-control" >
-                  <option *ngFor="let damage of enumDamage"  [value]="damage">{{ damage }}</option>
+                <select id="primaryDamage" formControlName="primaryDamage" [value]="primaryDamageValue" class="form-control" >
+                  <option *ngFor="let damage of enumPrimaryDamage"  [value]="damage">{{ damage }}</option>
                 </select>
               </div>
             </div>
@@ -116,8 +105,8 @@
             <div class="dx-field">
               <div class="dx-field-label">{{t('vehicle.secondaryDamage')}}</div>
               <div class="dx-field-value">
-                <select id="secondaryDamage" formControlName="secondaryDamage" class="form-control" >
-                  <option *ngFor="let damage of enumDamage"  [value]="damage">{{ damage }}</option>
+                <select id="secondaryDamage" formControlName="secondaryDamage" [value]="secondaryDamageValue" class="form-control" >
+                  <option *ngFor="let damage of enumSecondaryDamage"  [value]="damage">{{ damage }}</option>
                 </select>
               </div>
             </div>
@@ -125,38 +114,36 @@
             <div class="dx-field">
               <div class="dx-field-label">{{t('vehicle.engineCapacity')}}</div>
               <div class="dx-field-value">
-                <input type="number" id="engineCapacity" formControlName="engineCapacity" class="form-control" />
+                <input type="number" id="engineCapacity" formControlName="engineCapacity" [value]="engineCapacityValue" class="form-control" />
               </div>
             </div>
         
             <div class="dx-field">
               <div class="dx-field-label">{{t('vehicle.engineOutput')}}</div>
               <div class="dx-field-value">
-                <input type="number" id="engineOutput" formControlName="engineOutput" class="form-control" />
+                <input type="number" id="engineOutput" formControlName="engineOutput" [value]="engineOutputValue" class="form-control" />
               </div>
             </div>
         
             <div class="dx-field">
               <div class="dx-field-label">{{t('vehicle.numberKeys')}}</div>
               <div class="dx-field-value">
-                <input type="number" id="numberKeys" formControlName="numberKeys" class="form-control" />
+                <input type="number" id="numberKeys" formControlName="numberKeys" [value]="numberKeysValue" class="form-control" />
               </div>
             </div>
-        
             <div class="dx-field">
               <div class="dx-field-label">{{t('vehicle.serviceManual')}}</div>
               <div class="dx-field-value">
-                <select id="serviceManual" formControlName="serviceManual" class="form-control" >
+                <select id="serviceManual" formControlName="serviceManual" [value]="serviceManualValue" class="form-control" >
                   <option value="true">True</option>
                   <option value="false">False</option>
                 </select>
               </div>
             </div>
-    
             <div class="dx-field">
               <div class="dx-field-label">{{t('vehicle.secondTireSet')}}</div>
               <div class="dx-field-value">
-                <select id="secondTireSet" formControlName="secondTireSet" class="form-control">
+                <select id="secondTireSet" formControlName="secondTireSet" [value]="secondTireSetValue" class="form-control">
                   <option value="true">True</option>
                   <option  value="false">False</option>
                 </select>
@@ -165,19 +152,24 @@
             <div class="dx-field">
               <div class="dx-field-label">{{t('vehicle.vin')}}</div>
               <div class="dx-field-value">
-                <input type="text" id="VIN" formControlName="VIN" class="form-control" />
+                <input type="text" id="VIN" formControlName="VIN" [value]="VINValue" class="form-control" />
               </div>
             </div>
             <div class="dx-field">
               <div class="dx-field-label">{{t('vehicle.dateTime')}}</div>
               <div class="dx-field-value">
-                <input type="date" id="dateTime" formControlName="dateTime" class="form-control" />
+                <input type="date" id="dateTime" formControlName="dateTime" [value]="dateTimeValue" class="form-control" />
+                <div *ngIf="editForm.controls['dateTime'].invalid && (editForm.controls['dateTime'].errors?.['required'] || editForm.controls['dateTime'].errors?.['minDate'])">
+                  <div *ngIf="editForm.controls['dateTime'].errors?.['minDate']">
+                    Data nie może być w przeszłości.
+                  </div>
+                </div>
               </div>
             </div>
             <div class="dx-field">
               <div class="dx-field-label">{{t('vehicle.saleTerm')}}</div>
               <div class="dx-field-value">
-                <select id="fuel" formControlName="saleTerm" class="form-control" >
+                <select id="saleTerm" formControlName="saleTerm" [value]="saleTermValue" class="form-control" >
                   <option *ngFor="let saleTerm of enumSaleTerm"  [value]="saleTerm">{{ saleTerm }}</option>
                 </select>
               </div>
@@ -185,10 +177,10 @@
             <div class="dx-field">
               <div class="dx-field-label">{{t('vehicle.highlight')}}</div>
               <div class="dx-field-value">
-                <select id="fuel" formControlName="highlights" class="form-control" >
+                <select id="highlight" formControlName="highlights" [value]="highlightsValue" class="form-control" >
                   <option *ngFor="let highlight of enumHighlight"  [value]="highlight">{{ highlight }}</option>
                 </select>
-              </div>
+              </div> 
             </div>
           </div>
         </div>

@@ -25,6 +25,7 @@ namespace AuctionAngular.Dtos
         public string SecondaryDamage { get; set; }
         public string VIN { get; set; } = null!;
         public string Highlights { get; set; }
+        public string SaleTerm { get; set; }
         public DateTime DateTime { get; set; }
         public int CurrentBid { get; set; }
         public int WinnerId { get; set; }

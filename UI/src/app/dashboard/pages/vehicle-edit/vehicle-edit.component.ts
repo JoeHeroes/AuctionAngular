@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/common/services/data.service';
 import { LocationService } from 'src/app/common/services/location.service';
 import { CreateVehicleDto, VehicleService } from 'src/app/common/services/vehicle.service';
@@ -12,13 +13,17 @@ import { CreateVehicleDto, VehicleService } from 'src/app/common/services/vehicl
   styleUrls: ['./vehicle-edit.component.css']
 })
 export class VehicleEditComponent implements OnInit {
-  private returnUrl!: string;
 
-  vehicleForm !: FormGroup;
+  urlSubscription?: Subscription;
+  returnUrl!: string;
+  id: any;
+
+  editForm !: FormGroup;
   errorMessage: string = '';
   showError: boolean = false;
   enumBodyCar = Object.values(BodyCar);
-  enumDamage = Object.values(Damage);
+  enumPrimaryDamage = Object.values(Damage);
+  enumSecondaryDamage = Object.values(Damage);
   enumDrive = Object.values(Drive);
   enumFuel = Object.values(Fuel);
   enumHighlight = Object.values(Highlight);
@@ -29,20 +34,43 @@ export class VehicleEditComponent implements OnInit {
 
 
 
+
+      producerValue!: string;
+      modelSpeciferValue!: string;
+      modelGenerationValue!: string;
+      registrationYearValue!: string;
+      colorValue!: string;
+      locationIdValue!: string;
+      bodyTypeValue!: string;
+      transmissionValue!: string;
+      driveValue!: string;
+      meterReadoutValue!: string;
+      fuelValue!: string;
+      primaryDamageValue!: string;
+      secondaryDamageValue!: string;
+      engineCapacityValue!: string;
+      engineOutputValue!: string;
+      numberKeysValue!: string;
+      serviceManualValue!: string;
+      secondTireSetValue!: string;
+      VINValue!: string;
+      dateTimeValue!: string;
+      saleTermValue!: string;
+      highlightsValue!: string;
+
+      value!: string;
+
   constructor(private vehicleService: VehicleService,
-    private locationService: LocationService,
     private router: Router,
     private route: ActivatedRoute,
     private dataService: DataService) {
-
-    this.locationService.getLocations().subscribe(res => {
-      this.locations = res;
-    });
-
   }
 
   ngOnInit(): void {
-    this.vehicleForm = new FormGroup({
+
+    this.id = 1;
+
+    this.editForm = new FormGroup({
       producer: new FormControl("", [Validators.required]),
       modelSpecifer: new FormControl("", [Validators.required]),
       modelGeneration: new FormControl("", [Validators.required]),
@@ -62,15 +90,55 @@ export class VehicleEditComponent implements OnInit {
       serviceManual: new FormControl("", [Validators.required]),
       secondTireSet: new FormControl("", [Validators.required]),
       VIN: new FormControl("", [Validators.required]),
-      dateTime: new FormControl("", [Validators.required]),
+      dateTime: new FormControl("", [Validators.required, this.validateMinDate.bind(this)]),
       saleTerm: new FormControl("", [Validators.required]),
       highlights: new FormControl("", [Validators.required]),
     })
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/vehicle/picture';
+
+
+    
+
+    this.vehicleService.getVehicle(this.id).subscribe(res => {
+      this.producerValue = res.producer;
+      this.modelSpeciferValue = res.modelSpecifer;
+      this.modelGenerationValue = res.modelGeneration;
+      this.registrationYearValue = res.registrationYear;
+      this.colorValue = res.color;
+      this.locationIdValue = res.locationId;
+      this.bodyTypeValue = res.bodyType;
+      this.transmissionValue = res.transmission;
+      this.driveValue = res.drive;
+      this.meterReadoutValue = res.meterReadout;
+      this.fuelValue = res.fuel;
+      this.primaryDamageValue = res.primaryDamage;
+      this.secondaryDamageValue = res.secondaryDamage;
+      this.engineCapacityValue = res.engineCapacity;
+      this.engineOutputValue = res.engineOutput;
+      this.numberKeysValue = res.numberKeys;
+      this.serviceManualValue = res.serviceManual;
+      this.secondTireSetValue = res.secondTireSet;
+      this.VINValue = res.vin;
+      this.saleTermValue = res.saleTerm;
+      this.highlightsValue = res.highlights;
+    });
+  }
+
+  validateMinDate(control: FormControl): { [key: string]: any } | null {
+    const selectedDate = new Date(control.value);
+    const currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0);
+
+    if (selectedDate > currentDate) {
+      return { minDate: true };
+    }
+    return null;
   }
 
   editVehicle = (vehicleFormValue: any) => {
-    this.showError = true;
+    this.showError = false;
+
+
     const vehicle = { ...vehicleFormValue };
     const createVehicle: CreateVehicleDto = {
       producer: vehicle.producer,
@@ -128,18 +196,18 @@ enum BodyCar {
 
 enum Damage {
   none = '',
-  All_Over = 'All Over',
+  All_Over = 'All_Over',
   Burn = 'Burn',
-  Burn_Engine = 'Burn Engine',
-  Front_End = 'Front End',
+  Burn_Engine = 'Burn_Engine',
+  Front_End = 'Front_End',
   Hail = 'Hail',
   Mechanical = 'Mechanical',
-  Minor_Dents_Scratch = 'Minor Dents Scratch',
-  Normal_Wear = 'Normal Wear',
-  Rear_End = 'Rear End',
+  Minor_Dents_Scratch = 'Minor_Dents_Scratch',
+  Normal_Wear = 'Normal_Wear',
+  Rear_End = 'Rear_End',
   Rollover = 'Rollover',
   Side = 'Side',
-  Top_Roof = 'Top Roof',
+  Top_Roof = 'Top_Roof',
   Undercarriage = 'Undercarriage',
   Unknown = 'Unknown',
   Vandalism = 'Vandalism'

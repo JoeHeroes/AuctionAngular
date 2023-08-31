@@ -52,7 +52,6 @@ export class ProfileEditComponent implements OnInit {
         this.nationalityValue = res.nationality;
         this.value = res.dateOfBirth;
         this.dateOfBirthValue = this.value.slice(0, 10);
-
       });
     });
   }
