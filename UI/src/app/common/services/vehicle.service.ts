@@ -105,6 +105,12 @@ export class VehicleService {
     let url_ = this.baseUrl + "/Vehicle/CreateVehicle";
     return this.http.post<any>(url_, data);
   }
+
+  public editVehicle(data: EditVehicleDto) {
+
+    let url_ = this.baseUrl + "/Vehicle/UpdateVehicle/1";
+    return this.http.patch<any>(url_, data);
+  }
 }
 
 export interface WatchDto {
@@ -126,7 +132,7 @@ export interface CreateVehicleDto {
   modelGeneration: string;
   registrationYear: number;
   color: string;
-  locationId: number;
+  auction: number;
   bodyType: string;
   transmission: string;
   drive: string;
@@ -140,7 +146,31 @@ export interface CreateVehicleDto {
   serviceManual: boolean;
   secondTireSet: boolean;
   VIN: string;
-  dateTime: Date;
+  saleTerm: string;
+  highlights: string;
+}
+
+
+export interface EditVehicleDto {
+  producer: string;
+  modelSpecifer: string;
+  modelGeneration: string;
+  registrationYear: number;
+  color: string;
+  auction: number;
+  bodyType: string;
+  transmission: string;
+  drive: string;
+  meterReadout: number;
+  fuel: string;
+  primaryDamage: string;
+  secondaryDamage: string;
+  engineCapacity: number;
+  engineOutput: number;
+  numberKeys: number;
+  serviceManual: boolean;
+  secondTireSet: boolean;
+  VIN: string;
   saleTerm: string;
   highlights: string;
 }

@@ -1,11 +1,10 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/common/services/data.service';
-import { LocationService } from 'src/app/common/services/location.service';
-import { CreateVehicleDto, VehicleService } from 'src/app/common/services/vehicle.service';
+import { EditVehicleDto, VehicleService } from 'src/app/common/services/vehicle.service';
 
 @Component({
   selector: 'app-vehicle-edit',
@@ -32,15 +31,12 @@ export class VehicleEditComponent implements OnInit {
   enumTransmission = Object.values(Transmission);
   locations: any;
 
-
-
-
       producerValue!: string;
       modelSpeciferValue!: string;
       modelGenerationValue!: string;
       registrationYearValue!: string;
       colorValue!: string;
-      locationIdValue!: string;
+      auctionValue!: string;
       bodyTypeValue!: string;
       transmissionValue!: string;
       driveValue!: string;
@@ -54,15 +50,12 @@ export class VehicleEditComponent implements OnInit {
       serviceManualValue!: string;
       secondTireSetValue!: string;
       VINValue!: string;
-      dateTimeValue!: string;
       saleTermValue!: string;
       highlightsValue!: string;
 
-      value!: string;
 
   constructor(private vehicleService: VehicleService,
     private router: Router,
-    private route: ActivatedRoute,
     private dataService: DataService) {
   }
 
@@ -76,7 +69,7 @@ export class VehicleEditComponent implements OnInit {
       modelGeneration: new FormControl("", [Validators.required]),
       registrationYear: new FormControl("", [Validators.required]),
       color: new FormControl("", [Validators.required]),
-      locationId: new FormControl("", [Validators.required]),
+      auction: new FormControl("", [Validators.required]),
       bodyType: new FormControl("", [Validators.required]),
       transmission: new FormControl("", [Validators.required]),
       drive: new FormControl("", [Validators.required]),
@@ -90,13 +83,9 @@ export class VehicleEditComponent implements OnInit {
       serviceManual: new FormControl("", [Validators.required]),
       secondTireSet: new FormControl("", [Validators.required]),
       VIN: new FormControl("", [Validators.required]),
-      dateTime: new FormControl("", [Validators.required, this.validateMinDate.bind(this)]),
       saleTerm: new FormControl("", [Validators.required]),
       highlights: new FormControl("", [Validators.required]),
     })
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/vehicle/picture';
-
-
     
 
     this.vehicleService.getVehicle(this.id).subscribe(res => {
@@ -105,7 +94,7 @@ export class VehicleEditComponent implements OnInit {
       this.modelGenerationValue = res.modelGeneration;
       this.registrationYearValue = res.registrationYear;
       this.colorValue = res.color;
-      this.locationIdValue = res.locationId;
+      this.auctionValue = res.auctionId;
       this.bodyTypeValue = res.bodyType;
       this.transmissionValue = res.transmission;
       this.driveValue = res.drive;
@@ -124,29 +113,84 @@ export class VehicleEditComponent implements OnInit {
     });
   }
 
-  validateMinDate(control: FormControl): { [key: string]: any } | null {
-    const selectedDate = new Date(control.value);
-    const currentDate = new Date();
-    currentDate.setHours(0, 0, 0, 0);
-
-    if (selectedDate > currentDate) {
-      return { minDate: true };
-    }
-    return null;
-  }
 
   editVehicle = (vehicleFormValue: any) => {
     this.showError = false;
 
-
     const vehicle = { ...vehicleFormValue };
-    const createVehicle: CreateVehicleDto = {
+
+    if(vehicle.producer==""){
+      vehicle.producer = this.producerValue;
+    }
+    if(vehicle.modelSpecifer==""){
+      vehicle.modelSpecifer = this.modelSpeciferValue;
+    }
+    if(vehicle.modelGeneration==""){
+      vehicle.modelGeneration = this.modelGenerationValue;
+    }
+    if(vehicle.registrationYear==""){
+      vehicle.registrationYear = this.registrationYearValue;
+    }
+    if(vehicle.color==""){
+      vehicle.color = this.colorValue;
+    }
+    if(vehicle.auction==""){
+      vehicle.auction = this.auctionValue;
+    }
+    if(vehicle.bodyType==""){
+      vehicle.bodyType = this.bodyTypeValue;
+    }
+    if(vehicle.transmission==""){
+      vehicle.transmission = this.transmissionValue;
+    }
+    if(vehicle.drive==""){
+      vehicle.drive = this.driveValue;
+    }
+    if(vehicle.meterReadout==""){
+      vehicle.meterReadout = this.meterReadoutValue;
+    }
+    if(vehicle.fuel==""){
+      vehicle.fuel = this.fuelValue;
+    }
+    if(vehicle.primaryDamage==""){
+      vehicle.primaryDamage = this.primaryDamageValue;
+    }
+    if(vehicle.secondaryDamage==""){
+      vehicle.secondaryDamage = this.secondaryDamageValue;
+    }
+    if(vehicle.engineCapacity==""){
+      vehicle.engineCapacity = this.engineCapacityValue;
+    }
+    if(vehicle.engineOutput==""){
+      vehicle.engineOutput = this.engineOutputValue;
+    }
+    if(vehicle.numberKeys==""){
+      vehicle.numberKeys = this.numberKeysValue;
+    }
+    if(vehicle.serviceManual==""){
+      vehicle.serviceManual = this.serviceManualValue;
+    }
+    if(vehicle.secondTireSet==""){
+      vehicle.secondTireSet = this.secondTireSetValue;
+    }
+    if(vehicle.VIN==""){
+      vehicle.VIN = this.VINValue;
+    }
+    if(vehicle.saleTerm==""){
+      vehicle.saleTerm = this.saleTermValue;
+    }
+    if(vehicle.highlights==""){
+      vehicle.highlights = this.highlightsValue;
+    }
+
+
+    const editVehicle: EditVehicleDto = {
       producer: vehicle.producer,
       modelSpecifer: vehicle.modelSpecifer,
       modelGeneration: vehicle.modelGeneration,
       registrationYear: vehicle.registrationYear,
       color: vehicle.color,
-      locationId: vehicle.locationId,
+      auction: vehicle.auction,
       bodyType: vehicle.bodyType,
       transmission: vehicle.transmission,
       drive: vehicle.drive,
@@ -157,14 +201,13 @@ export class VehicleEditComponent implements OnInit {
       engineCapacity: vehicle.engineCapacity,
       engineOutput: vehicle.engineOutput,
       numberKeys: vehicle.numberKeys,
-      serviceManual: vehicle.serviceManua,
+      serviceManual: vehicle.serviceManual,
       secondTireSet: vehicle.secondTireSet,
       VIN: vehicle.VIN,
-      dateTime: vehicle.dateTime,
       saleTerm: vehicle.saleTerm,
       highlights: vehicle.highlights,
     }
-    this.vehicleService.addVehicle(createVehicle)
+    this.vehicleService.editVehicle(editVehicle)
       .subscribe({
         next: (res: any) => {
           this.dataService.id = res;
@@ -191,7 +234,6 @@ enum BodyCar {
   Picup = 'Picup',
   Cabrio = 'Cabrio',
 }
-
 
 
 enum Damage {

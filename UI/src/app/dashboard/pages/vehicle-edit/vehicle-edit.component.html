@@ -45,6 +45,13 @@
                 <input type="text" id="color" formControlName="color" [value]="colorValue" class="form-control" />
               </div>
             </div>
+
+            <div class="dx-field">
+              <div class="dx-field-label">{{t('vehicle.auction')}}</div>
+              <div class="dx-field-value">
+                <input type="number" id="auction" formControlName="auction" [value]="auctionValue" class="form-control" />
+              </div>
+            </div>
         
             <div class="dx-field">
               <div class="dx-field-label">{{t('vehicle.bodyType')}}</div>
@@ -131,6 +138,7 @@
                 <input type="number" id="numberKeys" formControlName="numberKeys" [value]="numberKeysValue" class="form-control" />
               </div>
             </div>
+
             <div class="dx-field">
               <div class="dx-field-label">{{t('vehicle.serviceManual')}}</div>
               <div class="dx-field-value">
@@ -153,17 +161,6 @@
               <div class="dx-field-label">{{t('vehicle.vin')}}</div>
               <div class="dx-field-value">
                 <input type="text" id="VIN" formControlName="VIN" [value]="VINValue" class="form-control" />
-              </div>
-            </div>
-            <div class="dx-field">
-              <div class="dx-field-label">{{t('vehicle.dateTime')}}</div>
-              <div class="dx-field-value">
-                <input type="date" id="dateTime" formControlName="dateTime" [value]="dateTimeValue" class="form-control" />
-                <div *ngIf="editForm.controls['dateTime'].invalid && (editForm.controls['dateTime'].errors?.['required'] || editForm.controls['dateTime'].errors?.['minDate'])">
-                  <div *ngIf="editForm.controls['dateTime'].errors?.['minDate']">
-                    Data nie może być w przeszłości.
-                  </div>
-                </div>
               </div>
             </div>
             <div class="dx-field">

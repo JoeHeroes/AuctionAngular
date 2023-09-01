@@ -19,7 +19,8 @@ export class VehicleAddComponent implements OnInit {
   errorMessage: string = '';
   showError: boolean = false;
   enumBodyCar = Object.values(BodyCar);
-  enumDamage = Object.values(Damage);
+  enumPrimaryDamage = Object.values(Damage);
+  enumSecondaryDamage = Object.values(Damage);
   enumDrive = Object.values(Drive);
   enumFuel = Object.values(Fuel);
   enumHighlight = Object.values(Highlight);
@@ -63,7 +64,6 @@ export class VehicleAddComponent implements OnInit {
       serviceManual: new FormControl("", [Validators.required]),
       secondTireSet: new FormControl("", [Validators.required]),
       VIN: new FormControl("", [Validators.required]),
-      dateTime: new FormControl("", [Validators.required]),
       saleTerm: new FormControl("", [Validators.required]),
       highlights: new FormControl("", [Validators.required]),
     })
@@ -73,13 +73,16 @@ export class VehicleAddComponent implements OnInit {
   addVehicle = (vehicleFormValue: any) => {
     this.showError = true;
     const vehicle = { ...vehicleFormValue };
+
+    alert(vehicle.secondTireSet);
+
     const createVehicle: CreateVehicleDto = {
       producer: vehicle.producer,
       modelSpecifer: vehicle.modelSpecifer,
       modelGeneration: vehicle.modelGeneration,
       registrationYear: vehicle.registrationYear,
       color: vehicle.color,
-      locationId: vehicle.locationId,
+      auction: vehicle.auction,
       bodyType: vehicle.bodyType,
       transmission: vehicle.transmission,
       drive: vehicle.drive,
@@ -90,10 +93,9 @@ export class VehicleAddComponent implements OnInit {
       engineCapacity: vehicle.engineCapacity,
       engineOutput: vehicle.engineOutput,
       numberKeys: vehicle.numberKeys,
-      serviceManual: vehicle.serviceManua,
+      serviceManual: vehicle.serviceManual,
       secondTireSet: vehicle.secondTireSet,
       VIN: vehicle.VIN,
-      dateTime: vehicle.dateTime,
       saleTerm: vehicle.saleTerm,
       highlights: vehicle.highlights,
     }

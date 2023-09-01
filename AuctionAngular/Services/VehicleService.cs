@@ -274,12 +274,28 @@ namespace AuctionAngular.Services
                 throw new NotFoundException("Vehicle not found.");
             }
 
-            vehicle.RegistrationYear = dto.RegistrationYear;
-            vehicle.Color = dto.Color;
-            vehicle.BodyType = dto.BodyType;
-            vehicle.Transmission = dto.Transmission;
-            vehicle.AuctionId = dto.AuctionId;
-            vehicle.Fuel = dto.Fuel;
+            vehicle.Producer = dto.Producer != "" ? dto.Producer : vehicle.Producer;
+            vehicle.ModelSpecifer = dto.ModelSpecifer != "" ? dto.ModelSpecifer : vehicle.ModelSpecifer;
+            vehicle.ModelGeneration = dto.ModelGeneration != "" ? dto.ModelGeneration : vehicle.ModelGeneration;
+            vehicle.RegistrationYear = dto.RegistrationYear.ToString() != "" ? dto.RegistrationYear : vehicle.RegistrationYear;
+            vehicle.Color = dto.Color != "" ? dto.Color : vehicle.Color;
+            vehicle.AuctionId = dto.Auction.ToString() != "" ? dto.Auction : vehicle.AuctionId;
+            vehicle.BodyType = dto.BodyType != "" ? dto.BodyType : vehicle.BodyType;
+            vehicle.Transmission = dto.Transmission != "" ? dto.Transmission : vehicle.Transmission;
+            vehicle.Drive = dto.Drive != "" ? dto.Drive : vehicle.Drive;
+            vehicle.MeterReadout = dto.MeterReadout.ToString() != "" ? dto.MeterReadout : vehicle.MeterReadout;
+            vehicle.Fuel = dto.Fuel != "" ? dto.Fuel : vehicle.Fuel;
+            vehicle.PrimaryDamage = dto.PrimaryDamage != "" ? dto.PrimaryDamage : vehicle.PrimaryDamage;
+            vehicle.SecondaryDamage = dto.SecondaryDamage != "" ? dto.SecondaryDamage : vehicle.SecondaryDamage;
+            vehicle.EngineCapacity = dto.EngineCapacity.ToString() != "" ? dto.EngineCapacity : vehicle.EngineCapacity;
+            vehicle.EngineOutput = dto.EngineOutput.ToString() != "" ? dto.EngineOutput : vehicle.EngineOutput;
+            vehicle.NumberKeys = dto.NumberKeys.ToString() != "" ? dto.NumberKeys : vehicle.NumberKeys;
+            vehicle.ServiceManual = dto.ServiceManual.ToString() != "" ? dto.ServiceManual : vehicle.ServiceManual;
+            vehicle.SecondTireSet = dto.SecondTireSet.ToString() != "" ? dto.SecondTireSet : vehicle.SecondTireSet;
+            vehicle.VIN = dto.VIN != "" ? dto.VIN : vehicle.VIN;
+            vehicle.SaleTerm = dto.SaleTerm != "" ? dto.SaleTerm : vehicle.SaleTerm;
+            vehicle.Highlights = dto.Highlights != "" ? dto.Highlights : vehicle.Highlights;
+
 
             try
             {
