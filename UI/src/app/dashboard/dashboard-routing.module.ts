@@ -66,7 +66,7 @@ const routes: Routes = [
               data: { title: 'Lot' }
             },
           ], },
-          { path: 'edit', pathMatch: 'full', component: VehicleEditComponent, data: { title: 'Vehicle Edit' } },
+          { path: 'edit', children: [{ path: ':id', pathMatch: 'full', component: VehicleEditComponent, data: { title: 'Vehicle Edit' }},],},
           { path: 'add', pathMatch: 'full', component: VehicleAddComponent, data: { title: 'Vehicle Add' } },
           { path: 'picture', pathMatch: 'full', component: VehiclePictureComponent, data: { title: 'Vehicle Picture' } },
           { path: 'won', pathMatch: 'full', component: VehicleWonComponent, data: { title: 'Vehicle Won' }, canActivate: [AuthGuard]},
@@ -91,7 +91,7 @@ const routes: Routes = [
         path: 'panel',
         pathMatch: 'full',
         component: AdminPanelComponent,
-        data: { title: 'AdminPanel' }
+        data: { title: 'Admin Panel' }
       },
       {
         path: 'location',

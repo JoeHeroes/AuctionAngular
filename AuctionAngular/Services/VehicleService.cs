@@ -580,6 +580,8 @@ namespace AuctionAngular.Services
 
         public ViewVehicleDto ViewVehicleDtoConvert(Vehicle vehicle, List<string> pictures)
         {
+            var auction = _dbContext.Auctions.FirstOrDefault(x => x.Id == vehicle.AuctionId);
+
             return new ViewVehicleDto()
             {
                 Id = vehicle.Id,
@@ -607,6 +609,7 @@ namespace AuctionAngular.Services
                 CurrentBid = vehicle.CurrentBid,
                 WinnerId = vehicle.WinnerId,
                 Images = pictures,
+                DateTime = auction.DateTime
             };
         }
 

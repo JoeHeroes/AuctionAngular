@@ -1,6 +1,6 @@
 <ng-container *transloco="let t">
   <form [formGroup]="editForm" (ngSubmit)="editProfile(editForm.value)" enctype="multipart/form-data">
-    <h3>Profile Edit</h3>
+    <h3>{{t('action.editProfile')}}</h3>
       <div class="dx-fieldset">
         <div class="dx-field">
             <div class="dx-field-label">{{t('account.name')}}</div>
@@ -28,7 +28,7 @@
           </div>
           <div class="dx-field">
             <div class="dx-field">
-              <div class="dx-field-label">{{t('account.dateOfBirth')}}:</div>
+              <div class="dx-field-label">{{t('account.dateOfBirth')}}</div>
               <div class="dx-field-value"> 
                 <input type="date" id="dateOfBirth" formControlName="dateOfBirth" [value]="dateOfBirthValue" start class="form-control" />
                 <div *ngIf="editForm.controls['dateOfBirth'].invalid && (editForm.controls['dateOfBirth'].errors?.['required'] || editForm.controls['dateOfBirth'].errors?.['maxDate'])">

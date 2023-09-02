@@ -49,15 +49,19 @@
                 <dxi-column dataField="currentBid" [caption]="t('vehicle.currentBid')" [allowFiltering]="false"
                     [allowSorting]="false"></dxi-column>
 
-                <dxi-column type="buttons" dataField="invoice2" [caption]="t('admin.confirm')"
+                <dxi-column type="buttons" dataField="sell" [caption]="t('admin.confirm')"
                     cellTemplate="cellTemplateSell">
                 </dxi-column>
 
-                <dxi-column type="buttons" dataField="invoice1" [caption]="t('admin.edit')"
+                <dxi-column type="buttons" dataField="invoice" [caption]="t('admin.invoice')"
+                    cellTemplate="cellTemplateInvoice">
+                </dxi-column>
+
+                <dxi-column type="buttons" dataField="Edit" [caption]="t('admin.edit')"
                     cellTemplate="cellTemplateEdit">
                 </dxi-column>
                 
-                <dxi-column type="buttons" dataField="invoice3" [caption]="t('admin.delete')"
+                <dxi-column type="buttons" dataField="Delete" [caption]="t('admin.delete')"
                     cellTemplate="cellTemplateDelete">
                 </dxi-column>
 
@@ -66,6 +70,10 @@
 
                 <div *dxTemplate="let data of 'cellTemplateSell'">
                     <span style="cursor: pointer; font-weight: bold" (click)="sellClick(data.data.lotNumber)"><span *ngIf='!data.data.sold'>{{t('admin.sell')}}</span> <span *ngIf='data.data.sold'>{{t('admin.back')}}</span></span>
+                </div>
+
+                <div *dxTemplate="let data of 'cellTemplateInvoice'">
+                    <span style="cursor: pointer; font-weight: bold; color: blue" (click)="invoiceClick(data.data.lotNumber)">{{t('admin.invoice')}}</span>
                 </div>
 
                 <div *dxTemplate="let data of 'cellTemplateEdit'">

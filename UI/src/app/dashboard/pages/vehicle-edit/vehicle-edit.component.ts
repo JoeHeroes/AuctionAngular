@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/common/services/data.service';
 import { EditVehicleDto, VehicleService } from 'src/app/common/services/vehicle.service';
@@ -56,12 +56,20 @@ export class VehicleEditComponent implements OnInit {
 
   constructor(private vehicleService: VehicleService,
     private router: Router,
+    private activeRoute: ActivatedRoute,
     private dataService: DataService) {
+  }
+
+
+  private loadData(url: UrlSegment[]) {
+    this.id = url.map(x => x.path).join('/');
   }
 
   ngOnInit(): void {
 
-    this.id = 1;
+    this.urlSubscription = this.activeRoute.url.subscribe(segments => {
+      this.loadData(segments);
+    });
 
     this.editForm = new FormGroup({
       producer: new FormControl("", [Validators.required]),

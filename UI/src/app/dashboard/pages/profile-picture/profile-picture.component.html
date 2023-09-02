@@ -1,6 +1,6 @@
 <ng-container *transloco="let t">
     <form (ngSubmit)="uploadPictures(file.files)">
-      <h3>Select Picture</h3>
+      <h3>{{t('action.selectPicture')}}</h3>
       <div class="dx-field">
         <input #file type="file" id="pictureForm" accept=".jpg,.png,.gif"/>
       </div>

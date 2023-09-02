@@ -22,11 +22,6 @@ export class AdminPanelComponent  {
     });
   }
 
-  handleRowDoubleClick(event: RowDblClickEvent) {
-    const template = event.data
-    this.router.navigate(['/vehicle/lot', template.lotNumber].filter(v => !!v));
-  }
-  
   sellClick(vehicleId: any)  {
     this.vehicleService.sellVehicle(vehicleId).subscribe(res => {
       this.vehicleService.getVehicles().subscribe(res => {
@@ -36,7 +31,7 @@ export class AdminPanelComponent  {
   }
 
   editClick(vehicleId: any)  {
-
+    this.router.navigate(['/vehicle/edit', vehicleId].filter(v => !!v));
   }
 
   deleteClick(vehicleId: any)  {
@@ -47,6 +42,8 @@ export class AdminPanelComponent  {
     })
   }
 
-
+  invoiceClick(vehicleId: any)  {
+    
+  }
 
 }

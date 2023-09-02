@@ -29,8 +29,6 @@ export class VehicleAddComponent implements OnInit {
   enumTransmission = Object.values(Transmission);
   locations: any;
 
-
-
   constructor(private vehicleService: VehicleService,
     private locationService: LocationService,
     private router: Router,
