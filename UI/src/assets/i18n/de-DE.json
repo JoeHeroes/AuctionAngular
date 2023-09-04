@@ -81,6 +81,7 @@
     "postalCode": "Postleitzahl"
   },
   "account": {
+    "account": "Konto",
     "login": "Anmeldung",
     "register": "Registrieren",
     "logout": "Ausloggen",
@@ -153,6 +154,7 @@
   "admin":{
     "panel":"Administrationsmenü",
     "confirm": "Bestätigen Sie den Verkauf",
+    "invoice": "Rechnung erstellen",
     "edit": "Bearbeiten",
     "delete": "Löschen",
     "sell": "Verkaufen",

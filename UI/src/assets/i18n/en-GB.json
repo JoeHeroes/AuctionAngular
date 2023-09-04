@@ -81,6 +81,7 @@
     "postalCode": "Postal Code"
   },
   "account": {
+    "account": "Account",
     "login": "Login",
     "register": "Register",
     "logout": "Logout",
@@ -153,6 +154,7 @@
   "admin":{
     "panel":"Admin Panel",
     "confirm": "Confirm sell",
+    "invoice": "Generate Invoice",
     "edit": "Edit",
     "delete": "Delete",
     "sell": "Sell",

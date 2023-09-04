@@ -81,6 +81,7 @@
       "postalCode": "Kod pocztowy"
     },
     "account": {
+      "account": "Konto",
       "login": "Login",
       "register": "Rejestracja",
       "logout": "Wyloguj",
@@ -153,6 +154,7 @@
     "admin":{
       "panel":"Admin Panel",
       "confirm": "Potwierdz sprzedarz",
+      "invoice": "Wygeneruj fakture",
       "edit": "Edytuj",
       "delete": "Usuń",
       "sell": "Potwierdzam",

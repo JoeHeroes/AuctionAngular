@@ -202,6 +202,9 @@ namespace Database.Migrations
                     b.Property<int>("InvoiceAmount")
                         .HasColumnType("int");
 
+                    b.Property<bool>("InvoiceGenereted")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime>("LastInvoicePaidDate")
                         .HasColumnType("datetime2");
 
@@ -217,8 +220,11 @@ namespace Database.Migrations
                     b.Property<DateTime>("SaleDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("Status")
+                    b.Property<bool>("StatusSell")
                         .HasColumnType("bit");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

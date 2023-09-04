@@ -14,10 +14,26 @@ export class PaymentService {
     this.baseUrl = "https://localhost:7257";
   }
  
-  public getPayments(): Observable<Vehicle[]> {
+  public getPayments(userId: number): Observable<Vehicle[]> {
 
-     let url_ = this.baseUrl + "/Payment/GetAllPayments";
+     let url_ = this.baseUrl + "/Payment/GetAllPayments/"+ userId;
 
     return this.http.get<any>(url_);
   }
+
+
+  public createPayment(data: PaymentInfo): Observable<Vehicle[]> {
+
+    let url_ = this.baseUrl + "/Payment/CreatePayment";
+
+   return this.http.post<any>(url_, data);
+ }
+}
+
+export interface PaymentInfo {
+  lotId: number;
+  auctionId: number;
+  description: string;
+  invoiceAmount: number;
+  lotLeftLocationDate: Date;
 }

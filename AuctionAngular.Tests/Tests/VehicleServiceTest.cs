@@ -246,7 +246,7 @@ namespace AuctionAngular.Tests
                 BodyType = "test1",
                 Transmission = "test1",
                 Fuel = "test1",
-                AuctionId = 2,
+                Auction = 2,
             };
 
             //Act
@@ -261,7 +261,7 @@ namespace AuctionAngular.Tests
             Assert.Equal(dto.BodyType, vehicle.BodyType);
             Assert.Equal(dto.Transmission, vehicle.Transmission);
             Assert.Equal(dto.Fuel, vehicle.Fuel);
-            Assert.Equal(dto.AuctionId, vehicle.AuctionId);
+            Assert.Equal(dto.Auction, vehicle.AuctionId);
         }
 
         [Fact]

@@ -12,14 +12,6 @@
                     </a>
                 </div>
             </dxi-item>
-
-            <dxi-item location="after" style="float: right; margin-right: 20px;">
-                <div *dxTemplate>
-                    <a [routerLink]="['/vehicle/edit']">
-                        <dx-button type="default" [text]="t('action.editVehicle')"></dx-button>
-                    </a>
-                </div>
-            </dxi-item>
         </dx-toolbar>
         <br />
         <div>
@@ -73,7 +65,7 @@
                 </div>
 
                 <div *dxTemplate="let data of 'cellTemplateInvoice'">
-                    <span style="cursor: pointer; font-weight: bold; color: blue" (click)="invoiceClick(data.data.lotNumber)">{{t('admin.invoice')}}</span>
+                    <span style="cursor: pointer; font-weight: bold; color: green" (click)="invoiceClick(data.data.lotNumber)">{{t('admin.invoice')}}</span>
                 </div>
 
                 <div *dxTemplate="let data of 'cellTemplateEdit'">

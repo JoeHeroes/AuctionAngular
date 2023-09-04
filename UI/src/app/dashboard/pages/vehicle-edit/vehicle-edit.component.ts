@@ -14,7 +14,7 @@ import { EditVehicleDto, VehicleService } from 'src/app/common/services/vehicle.
 export class VehicleEditComponent implements OnInit {
 
   urlSubscription?: Subscription;
-  returnUrl!: string;
+  returnUrl: string = "/panel";
   id: any;
 
   editForm !: FormGroup;
@@ -215,7 +215,7 @@ export class VehicleEditComponent implements OnInit {
       saleTerm: vehicle.saleTerm,
       highlights: vehicle.highlights,
     }
-    this.vehicleService.editVehicle(editVehicle)
+    this.vehicleService.editVehicle(this.id, editVehicle)
       .subscribe({
         next: (res: any) => {
           this.dataService.id = res;

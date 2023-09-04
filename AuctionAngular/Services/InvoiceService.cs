@@ -2,6 +2,7 @@
 using AuctionAngular.Interfaces;
 using AuctionAngular.Services.NewFolder;
 using Database;
+using Database.Entities;
 using Microsoft.EntityFrameworkCore;
 using PdfSharpCore;
 using PdfSharpCore.Pdf;
@@ -189,6 +190,14 @@ namespace AuctionAngular.Services
             }
 
             dto.Filename = "Invoice_" + header.InvoiceNumber + ".pdf";
+
+
+
+            var payment = await _dbContext
+                                 .Payments
+                                 .FirstOrDefaultAsync(x => x.LotId == info.VehicleId);
+
+            payment!.InvoiceGenereted = !payment.InvoiceGenereted;
 
             return dto;
         }

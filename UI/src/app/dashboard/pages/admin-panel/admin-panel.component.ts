@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { RowDblClickEvent } from 'devextreme/ui/data_grid';
+import { PaymentInfo, PaymentService } from 'src/app/common/services/payment.service';
 import { VehicleService } from 'src/app/common/services/vehicle.service';
 
 @Component({
@@ -16,6 +16,7 @@ export class AdminPanelComponent  {
   displayMode = 'full';
 
   constructor(private vehicleService: VehicleService,
+    private paymentService: PaymentService,
     private router: Router) {
     this.vehicleService.getVehicles().subscribe(res => {
       this.datasource = res;
@@ -43,7 +44,19 @@ export class AdminPanelComponent  {
   }
 
   invoiceClick(vehicleId: any)  {
-    
-  }
 
+    this.vehicleService.getVehicle(vehicleId).subscribe(res => {
+
+      const paymentInfo: PaymentInfo = {
+        lotId: vehicleId,
+        auctionId: res.auctionId,
+        description: "",
+        invoiceAmount: res.currentBid,
+        lotLeftLocationDate: new Date,
+      }
+  
+      this.paymentService.createPayment(paymentInfo).subscribe(res => {
+      })
+    });
+  }
 }

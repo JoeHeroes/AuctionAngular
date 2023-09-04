@@ -7,7 +7,7 @@ namespace AuctionAngular.Interfaces
     {
         Task<int> CreatePaymentAsync(CreatePaymentDto dto);
         Task DeletePaymentAsync(int id);
-        Task<IEnumerable<ViewPaymentDto>> GetPaymentsAsync();
+        Task<IEnumerable<ViewPaymentDto>> GetPaymentsAsync(int userId);
         Task<ViewPaymentDto> GetByIdPaymentAsync(int id);
         Task<Payment> UpdatePaymentAsync(int id, EditPaymentDto dto);
     }

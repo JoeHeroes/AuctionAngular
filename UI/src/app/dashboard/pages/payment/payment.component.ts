@@ -25,11 +25,13 @@ export class PaymentComponent{
 
   constructor(private paymentService: PaymentService,
     private invoiceService: InvoiceService,
-    private authenticationService: AuthenticationService,
-    private router: Router) {
-    this.paymentService.getPayments().subscribe(res => {
-      this.datasource = res;
-    });
+    private authenticationService: AuthenticationService) {
+      this.authenticationService.loggedUserId().subscribe(res => {
+        this.paymentService.getPayments(res.userId).subscribe(res => {
+          this.datasource = res;
+        });
+      }
+    )
   }
 
   downloadClick(vehicleId: any)  {

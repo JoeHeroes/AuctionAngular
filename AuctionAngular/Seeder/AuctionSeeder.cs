@@ -75,7 +75,8 @@ namespace CarAuction.Seeder
                     InvoiceAmount = 1231,
                     LastInvoicePaidDate = DateTime.Now.AddDays(1),
                     LotLeftLocationDate =  DateTime.Now.AddDays(2),
-                    Status = false
+                    StatusSell = false,
+                    InvoiceGenereted = false,
                 }
             };
         }

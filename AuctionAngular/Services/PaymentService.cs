@@ -16,16 +16,33 @@ namespace AuctionAngular.Services
 
         public async Task<int> CreatePaymentAsync(CreatePaymentDto dto)
         {
+
+            var result = await _dbContext
+              .Payments
+              .FirstOrDefaultAsync(x => x.LotId == dto.LotId);
+
+            if(result != null)
+            {
+                return result.Id;
+            }
+
+
+            var vehicle = await _dbContext.Vehicles.FirstOrDefaultAsync(u => u.Id == dto.LotId);
+
+            var auction = await _dbContext.Auctions.FirstOrDefaultAsync(u => u.Id == dto.AuctionId);
+
             var payment = new Payment
             {
-                SaleDate = dto.SaleDate,
+                SaleDate = auction!.DateTime,
                 LotId = dto.LotId,
-                LocationId = dto.LocationId,
+                LocationId = auction.LocationId,
                 Description = dto.Description,
                 InvoiceAmount = dto.InvoiceAmount,
                 LastInvoicePaidDate = DateTime.Now,
                 LotLeftLocationDate = dto.LotLeftLocationDate,
-                Status = false
+                StatusSell = false,
+                InvoiceGenereted = false,
+                UserId = vehicle!.WinnerId
             };
 
 
@@ -77,7 +94,8 @@ namespace AuctionAngular.Services
 
             result.InvoiceAmount = dto.InvoiceAmount;
             result.LotLeftLocationDate = dto.LotLeftLocationDate;
-            result.Status = dto.Status;
+            result.StatusSell = dto.StatusSell;
+            result.InvoiceGenereted = dto.InvoiceGenereted;
 
             try
             {
@@ -105,7 +123,7 @@ namespace AuctionAngular.Services
             return ViewPaymentDtoConvert(payment);
         }
 
-        public async Task<IEnumerable<ViewPaymentDto>> GetPaymentsAsync()
+        public async Task<IEnumerable<ViewPaymentDto>> GetPaymentsAsync(int userId)
         {
             var payments = await _dbContext
                 .Payments
@@ -115,7 +133,10 @@ namespace AuctionAngular.Services
 
             foreach (var payment in payments)
             {
-                viewPayment.Add(ViewPaymentDtoConvert(payment));
+                if(payment.UserId == userId)
+                {
+                    viewPayment.Add(ViewPaymentDtoConvert(payment));
+                }
             }
             return viewPayment;
         }
@@ -133,7 +154,8 @@ namespace AuctionAngular.Services
                 InvoiceAmount = payment.InvoiceAmount,
                 LastInvoicePaidDate = payment.LastInvoicePaidDate,
                 LotLeftLocationDate = payment.LotLeftLocationDate,
-                Status = payment.Status,
+                StatusSell = payment.StatusSell,
+                InvoiceGenereted = payment.InvoiceGenereted
             };
         } 
     }

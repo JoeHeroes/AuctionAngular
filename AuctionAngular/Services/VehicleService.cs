@@ -178,7 +178,7 @@ namespace AuctionAngular.Services
                 }
             }
 
-            List<ViewVehiclesDto> viewVehicle = new List<ViewVehiclesDto>();
+            var viewVehicle = new List<ViewVehiclesDto>();
 
             foreach (var vehicle in vehicles)
             {
@@ -311,7 +311,7 @@ namespace AuctionAngular.Services
 
         public async Task<bool> BidVehicleAsync(UpdateBidDto dto)
         {
-            Vehicle? vehicle = await _dbContext
+            var vehicle = await _dbContext
                                 .Vehicles
                                 .FirstOrDefaultAsync(x => x.Id == dto.lotNumber);
 
@@ -362,7 +362,7 @@ namespace AuctionAngular.Services
 
         public async Task WatchVehicleAsync(WatchDto dto)
         {
-            User? user = await _dbContext
+            var user = await _dbContext
                                     .Users
                                     .FirstOrDefaultAsync(x => x.Id == dto.UserId);
 
@@ -371,7 +371,7 @@ namespace AuctionAngular.Services
                 throw new NotFoundException("User not found.");
             }
 
-            Vehicle? vehicle = await _dbContext
+            var vehicle = await _dbContext
                                     .Vehicles
                                     .FirstOrDefaultAsync(x => x.Id == dto.VehicleId);
 
@@ -420,14 +420,14 @@ namespace AuctionAngular.Services
         public async Task RemoveWatchAsync(WatchDto dto)
         {
 
-            Vehicle? vehicle = await _dbContext.Vehicles.FirstOrDefaultAsync(x => x.Id == dto.VehicleId);
+            var vehicle = await _dbContext.Vehicles.FirstOrDefaultAsync(x => x.Id == dto.VehicleId);
 
             if (vehicle is null)
             {
                 throw new NotFoundException("Vehicle not found.");
             }
 
-            Watch? observed = await _dbContext.Watches.FirstOrDefaultAsync(x => x.UserId == dto.UserId && x.VehicleId == vehicle!.Id);
+            var observed = await _dbContext.Watches.FirstOrDefaultAsync(x => x.UserId == dto.UserId && x.VehicleId == vehicle!.Id);
 
             if (observed is null)
             {
@@ -478,7 +478,7 @@ namespace AuctionAngular.Services
                 vehicles.Add(result);
             }
 
-            List<ViewVehiclesDto> viewVehicle = new List<ViewVehiclesDto>();
+            var viewVehicle = new List<ViewVehiclesDto>();
 
             foreach (var vehicle in vehicles)
             {
@@ -532,13 +532,13 @@ namespace AuctionAngular.Services
 
         public async Task AddEventVehicleAsync(int id, CreateVehicleDto dto)
         {
-            Auction? auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.Id == dto.AuctionId);
+            var auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.Id == dto.AuctionId);
 
             var eventSell = new Event()
             {
                 Title = id + " " + dto.Producer + " " + dto.ModelSpecifer + " " + dto.ModelGeneration,
                 Description = "",
-                Start = auction.DateTime,
+                Start = auction!.DateTime,
                 End = auction.DateTime,
                 Color = dto.Color,
                 AllDay = false,
@@ -562,12 +562,23 @@ namespace AuctionAngular.Services
         public async Task SoldVehicleAsync(int id)
         {
 
-            Vehicle? vehicle = await _dbContext
+            var vehicle = await _dbContext
                                 .Vehicles
                                 .FirstOrDefaultAsync(x => x.Id == id);
             
-            vehicle.Sold = !vehicle.Sold;
             
+
+            var payment = await _dbContext
+                                .Payments
+                                .FirstOrDefaultAsync(x => x.LotId == id);
+
+            if(payment != null)
+            {
+                vehicle!.Sold = !vehicle.Sold;
+                payment!.StatusSell = !payment.StatusSell;
+                
+            }
+
             try
             {
                 await _dbContext.SaveChangesAsync();
@@ -615,7 +626,7 @@ namespace AuctionAngular.Services
 
         public ViewVehiclesDto ViewVehiclesDtoConvert(Vehicle vehicle, List<string> pictures)
         {
-            Auction? auction = _dbContext.Auctions.FirstOrDefault(a => a.Id == vehicle.AuctionId);
+            var auction = _dbContext.Auctions.FirstOrDefault(a => a.Id == vehicle.AuctionId);
 
             return new ViewVehiclesDto()
             {
@@ -626,7 +637,7 @@ namespace AuctionAngular.Services
                 ModelGeneration = vehicle.ModelGeneration,
                 RegistrationYear = vehicle.RegistrationYear,
                 MeterReadout = vehicle.MeterReadout,
-                DateTime = auction.DateTime,
+                DateTime = auction!.DateTime,
                 CurrentBid = vehicle.CurrentBid,
                 Sold = vehicle.Sold,
             };

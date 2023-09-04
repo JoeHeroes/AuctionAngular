@@ -6,6 +6,7 @@
         Alfa_Romeo,
         Audi,
         BMW,
+        BUICK,
         Cupra,
         Chevrolet,
         Citroen,

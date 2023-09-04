@@ -106,9 +106,9 @@ export class VehicleService {
     return this.http.post<any>(url_, data);
   }
 
-  public editVehicle(data: EditVehicleDto) {
+  public editVehicle(id: number, data: EditVehicleDto) {
 
-    let url_ = this.baseUrl + "/Vehicle/UpdateVehicle/1";
+    let url_ = this.baseUrl + "/Vehicle/UpdateVehicle/" + id;
     return this.http.patch<any>(url_, data);
   }
 }
