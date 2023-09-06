@@ -25,9 +25,10 @@
     "vehicle-bids": "Bids",
     "vehicle-won": "Won",
     "vehicle-lost": "Lost",
-    "watchlist": "Watch List",
+    "watch-list": "Watch List",
     "payment":"Payment",
     "calendar": "Calendar",
+    "auction-list": "Auction List",
     "auction": "Auction",
     "location": "Location",
     "services": "Services",
@@ -72,6 +73,15 @@
     "paymentHistory": "Payment History",
     "picture":"Picture",
     "search":"Search..."
+  },
+  "auction":{
+    "list":"List of Auctions",
+    "id":"Auction number",
+    "location":"Location",
+    "description":"Description",
+    "countVehicle":"Count Vehicle",
+    "dateTime":"Auction Date",
+    "search":"Search auction"
   },
   "location": {
     "phone": "Phone",
@@ -125,14 +135,14 @@
   },
   "dashboard":{
     "title":"Dashboard",
-    "text1":"Copart has over ",
+    "text1":"carWink has over ",
     "text2":" vehicles on sell"
   },
   "support":{
     "readMore":"Read more",
     "learnMore":"Learn more",
     "contactUS":"Contact us",
-    "contactUSDescription":"Having questions or needing help? Copart is at your service. Contact us by email or phone.",
+    "contactUSDescription":"Having questions or needing help? carWink is at your service. Contact us by email or phone.",
     "FAQ":"FAQ",
     "FAQDescription":"Having questions or wondering how it works? Learn more on our FAQ page.",
     "howToBuy":"How to buy",
@@ -163,15 +173,15 @@
   },
 
   "howToBuy":{
-    "line1":"How to Buy Vehicles from Copart",
+    "line1":"How to Buy Vehicles from carWink",
     "line2":"Copart Finland auctions are held 100% online, so you can search and bid vehicles at home or on the go. Copart Finland specializes in salvage car auctions.",
     "line3":"Copart.fi takes the guess work out of finding the perfect vehicle for your next project.",
     "line4":"Copart provides key information on every vehicle in our inventory to make it easy for members to bid on and win also clean title used vehicles; hassle-free.",
     "line5":"Use",
     "line6":"Vehicle Finder",
     "line7":" to explore the range of Cars, Trucks, Moped/Scooters, Vans and more.",
-    "line8":"There are four Copart locations plus more than 20 sublots in Finland to store and resell vehicles. Copart operates in 11 countries. Copart Finland's experience in damaged vehicles have now been combined with Copart Inc.'s international and modern auction technology.",
-    "line9":"Follow the following steps, and you'll be on your way to bidding and buying in Copart Finland auctions:",
+    "line8":"There are four Copart locations plus more than 20 sublots in Finland to store and resell vehicles. carWink operates in 11 countries. Copart Finland's experience in damaged vehicles have now been combined with Copart Inc.'s international and modern auction technology.",
+    "line9":"Follow the following steps, and you'll be on your way to bidding and buying in carWink Finland auctions:",
 
     "line10":"Join",
     "line11":"Search vehicles",

@@ -10,6 +10,8 @@ namespace AuctionAngular.Interfaces
         Task StartAuctionAsync();
         Task EndAuctionAsync();
         Task<IEnumerable<ViewVehicleDto>> LiveAuctionListAsync();
-        Task<IEnumerable<Auction>> AuctionListAsync();
+        Task<IEnumerable<ViewAuctionDto>> AuctionListAsync();
+        ViewVehicleDto ViewVehicleDtoConvert(Vehicle vehicle, List<string> pictures);
+        Task<ViewAuctionDto> ViewAuctionDtoConvert(Auction auction);
     }
 }

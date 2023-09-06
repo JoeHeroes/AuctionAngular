@@ -25,10 +25,11 @@
       "vehicle-bids": "Licytowane",
       "vehicle-won": "Wygrane",
       "vehicle-lost": "Przegrane",
-      "watchlist": "Lista obserwacji",
+      "watch-list": "Lista obserwacji",
       "payment":"Płatność",
       "calendar": "Kalendarz",
-      "auction": "Numer Aukcja",
+      "auction-list": "Lista aukcji",
+      "auction": "Aukcja",
       "location": "Lokacja",
       "services": "Serwis",
       "support": "Wsparcie",
@@ -72,6 +73,15 @@
       "paymentHistory": "Historia Płatności",
       "picture":"Zdjecie",
       "search":"Wyszukaj..."
+    },
+    "auction":{
+      "list":"Lista aukcji",
+      "id":"Numer aukcji",
+      "location":"Lokacja aukcji",
+      "description":"Opis",
+      "countVehicle":"Liczba pojazdów",
+      "dateTime":"Data aukcji",
+      "search":"Szukaj aukcji"
     },
     "location": {
       "phone": "Telefon",
@@ -125,14 +135,14 @@
     },
     "dashboard":{
       "title":"Dashboard",
-      "text1":"Copart ma ponad ",
-      "text2":" pojazdów na sprzedarz"
+      "text1":"carWink ma ponad ",
+      "text2":" pojazdy na sprzedarz"
     },
     "support":{
       "readMore":"Czytaj wiecej",
       "learnMore":"Naucz wiecej",
-      "contactUS":"Skontaktuj się z nami",
-      "contactUSDescription":"Masz pytania lub potrzebujesz pomocy? Copart jest do Twojej dyspozycji. Skontaktuj się z nami przez e-mail lub telefon.",
+      "contactUS":"Kontakt",
+      "contactUSDescription":"Masz pytania lub potrzebujesz pomocy? carWink jest do Twojej dyspozycji. Skontaktuj się z nami przez e-mail lub telefon.",
       "FAQ":"FAQ",
       "FAQDescription":"Masz pytania lub zastanawiasz się, jak to działa? Dowiedz się więcej na naszej stronie FAQ.",
       "howToBuy":"Jak kupić",

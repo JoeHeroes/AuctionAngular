@@ -43,6 +43,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { PaymentComponent } from './pages/payment/payment.component';
 import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
 import { VehicleAddComponent } from './pages/vehicle-add/vehicle-add.component';
+import { AuctionListComponent } from './pages/auction-list/auction-list.component';
 
 
 
@@ -77,7 +78,8 @@ import { VehicleAddComponent } from './pages/vehicle-add/vehicle-add.component';
     EditEventComponent,
     PaymentComponent,
     AdminPanelComponent,
-    VehicleAddComponent
+    VehicleAddComponent,
+    AuctionListComponent
   ],
   exports: [],
   imports: [

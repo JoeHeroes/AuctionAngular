@@ -44,7 +44,7 @@ export class AppComponent implements OnInit {
       if (routeTitle) {
         this.titleService.setTitle(routeTitle + ' | CP');
       } else {
-        this.titleService.setTitle("Copart Poland")
+        this.titleService.setTitle("carWink Poland")
       }
     });
   }

@@ -32,6 +32,7 @@ import { HowtobuyComponent } from "./pages/howtobuy/howtobuy.component";
 import { PaymentComponent } from "./pages/payment/payment.component";
 import { AdminPanelComponent } from "./pages/admin-panel/admin-panel.component";
 import { VehicleAddComponent } from "./pages/vehicle-add/vehicle-add.component";
+import { AuctionListComponent } from "./pages/auction-list/auction-list.component";
 
 const routes: Routes = [
   {
@@ -80,6 +81,12 @@ const routes: Routes = [
         pathMatch: 'full',
         component: PaymentComponent,
         data: { title: 'Payment' }
+      },
+      {
+        path: 'auctionlist',
+        pathMatch: 'full',
+        component: AuctionListComponent,
+        data: { title: 'Auction List' }
       },
       {
         path: 'auction',

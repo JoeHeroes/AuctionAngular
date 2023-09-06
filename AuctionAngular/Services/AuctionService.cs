@@ -29,8 +29,6 @@ namespace AuctionAngular.Services
             return auction != null ? true : false;
         }
 
-        
-
         public async Task StartAuctionAsync()
         {
             var auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.DateTime <= DateTime.Now && x.DateTime.AddHours(1) >= DateTime.Now && x.SalesFinised == false);
@@ -75,15 +73,15 @@ namespace AuctionAngular.Services
         {
             var auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.DateTime <= DateTime.Now && x.DateTime.AddHours(1) >= DateTime.Now && x.SalesFinised == false && x.SalesStarted == false);
 
-            List<ViewVehicleDto> result = new List<ViewVehicleDto>();
+            var result = new List<ViewVehicleDto>();
 
-            var vehicles = await _dbContext.Vehicles.Where(x => x.AuctionId == auction.Id).ToListAsync();
+            var vehicles = await _dbContext.Vehicles.Where(x => x.AuctionId == auction!.Id).ToListAsync();
 
             foreach (var vehicle in vehicles)
             {
                 var restultPictures = _dbContext.Pictures.Where(x => x.VehicleId == vehicle.Id);
 
-                List<string> pictures = new List<string>();
+                var pictures = new List<string>();
 
                 foreach (var pic in restultPictures)
                 {
@@ -98,11 +96,18 @@ namespace AuctionAngular.Services
             return result;
         }
 
-        public async Task<IEnumerable<Auction>> AuctionListAsync()
+        public async Task<IEnumerable<ViewAuctionDto>> AuctionListAsync()
         {
             var auctions = await _dbContext.Auctions.Where(x => x.SalesFinised == false).ToListAsync();
 
-            return auctions;
+            var auctionDto = new List<ViewAuctionDto>();
+
+            foreach (var auc in auctions)
+            {
+                auctionDto.Add(await ViewAuctionDtoConvert(auc));
+            }
+
+            return auctionDto;
         }
 
 
@@ -134,6 +139,22 @@ namespace AuctionAngular.Services
                 CurrentBid = vehicle.CurrentBid,
                 WinnerId = vehicle.WinnerId,
                 Images = pictures,
+            };
+        }
+
+        public async Task<ViewAuctionDto> ViewAuctionDtoConvert(Auction auction)
+        {
+            var location = await _dbContext.Locations.FirstOrDefaultAsync(x => x.Id == auction.LocationId);
+
+            var vehicles = await _dbContext.Vehicles.Where(x => x.AuctionId == auction.Id).ToListAsync();
+
+            return new ViewAuctionDto()
+            {
+                Id = auction.Id,
+                DateTime = auction.DateTime,
+                Description = "",
+                CountVehicle = vehicles.Count(),
+                Location = location!.Name,
             };
         }
     }

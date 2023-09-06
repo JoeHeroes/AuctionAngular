@@ -565,8 +565,6 @@ namespace AuctionAngular.Services
             var vehicle = await _dbContext
                                 .Vehicles
                                 .FirstOrDefaultAsync(x => x.Id == id);
-            
-            
 
             var payment = await _dbContext
                                 .Payments
@@ -576,7 +574,6 @@ namespace AuctionAngular.Services
             {
                 vehicle!.Sold = !vehicle.Sold;
                 payment!.StatusSell = !payment.StatusSell;
-                
             }
 
             try
