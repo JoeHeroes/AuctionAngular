@@ -4,7 +4,7 @@
     <br />
     <dx-toolbar>
       <dxi-item location="before">
-        <h1 style="font-weight: bold">{{t('vehicle.watch-list')}}</h1>
+        <h1 style="font-weight: bold">{{t('vehicle.watchlist')}}</h1>
       </dxi-item>
     </dx-toolbar>
     <br />
@@ -28,7 +28,7 @@
       [showNavigationButtons]="true"
     >
     </dxo-pager>
-        <dxi-column dataField="image" [width]="220" [allowFiltering]="false" [allowSorting]="false"
+        <dxi-column dataField="image" [caption]="t('vehicle.image')" [width]="220" [allowFiltering]="false" [allowSorting]="false"
           cellTemplate="cellTemplate"></dxi-column>
         <dxi-column dataField="producer" [caption]="t('vehicle.producer')" [filterOperations]="['startswith']"
           [allowSorting]="true"></dxi-column>

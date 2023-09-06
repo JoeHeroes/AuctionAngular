@@ -22,6 +22,15 @@ export class VehicleService {
     return this.http.get<any>(url_);
   }
 
+
+  public getVehiclesAuctionEnd(): Observable<Vehicle[]> {
+
+    let url_ = this.baseUrl + "/Vehicle/GetAllVehicleAuctionEnd";
+
+    return this.http.get<any>(url_);
+  }
+
+  
   public getBidedVehicles(id: number): Observable<Vehicle[]> {
 
     let url_ = this.baseUrl + "/Vehicle/GetAllBidedVehicle/" + id;

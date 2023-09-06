@@ -46,13 +46,13 @@ namespace AuctionAngular.Services
                 .Vehicles
                 .ToListAsync();
 
-            List<ViewVehiclesDto> viewVehicle = new List<ViewVehiclesDto>();
+            var viewVehicle = new List<ViewVehiclesDto>();
 
             foreach (var vehicle in vehicles)
             {
                 var restultPictures = _dbContext.Pictures.Where(x => x.VehicleId == vehicle.Id);
 
-                List<string> pictures = new List<string>();
+                var pictures = new List<string>();
 
                 foreach (var pic in restultPictures)
                 {
@@ -60,6 +60,28 @@ namespace AuctionAngular.Services
                 }
 
                 viewVehicle.Add(ViewVehiclesDtoConvert(vehicle, pictures));
+            }
+
+            return viewVehicle;
+        }
+
+        public async Task<IEnumerable<AdminVehiclesDto>> GetVehicleAuctionEndAsync()
+        {
+            var vehicles = await _dbContext
+                .Vehicles
+                .ToListAsync();
+
+            var viewVehicle = new List<AdminVehiclesDto>();
+
+            foreach (var vehicle in vehicles)
+            {
+
+                var auction = await _dbContext.Auctions.FirstOrDefaultAsync(a => a.Id == vehicle.AuctionId && a.SalesFinised == true);
+
+                if(auction != null)
+                {
+                    viewVehicle.Add(AdminVehiclesDtoConvert(vehicle, auction));
+                }
             }
 
             return viewVehicle;
@@ -118,19 +140,19 @@ namespace AuctionAngular.Services
                 throw new NotFoundException("Bids not found.");
             }
 
-            var vehiclesReult = await _dbContext
-                .Vehicles
-                .ToListAsync();
-
             List<Vehicle> vehicles = new List<Vehicle>();
 
             var vehiclesList = _dbContext.Vehicles.ToList();
 
+            var auctionsList = _dbContext.Auctions.ToList();
+
             foreach (var x in bids)
             {
-                var veh = vehiclesList.FirstOrDefault(d => d.Id == x.VehicleId && d.WinnerId == id && d.Sold == true);
+                var veh = vehiclesList.FirstOrDefault(d => d.Id == x.VehicleId && d.WinnerId == id);
 
-                if (veh != null)
+                var auc = auctionsList.FirstOrDefault(a => a.Id == veh.AuctionId && a.SalesFinised == true);
+
+                if (veh != null && auc != null)
                 {
                     vehicles.Add(veh);
                 }
@@ -617,7 +639,8 @@ namespace AuctionAngular.Services
                 CurrentBid = vehicle.CurrentBid,
                 WinnerId = vehicle.WinnerId,
                 Images = pictures,
-                DateTime = auction.DateTime
+                DateTime = auction.DateTime,
+                Sold = vehicle.Sold
             };
         }
 
@@ -629,6 +652,26 @@ namespace AuctionAngular.Services
             {
                 LotNumber = vehicle.Id,
                 Image = pictures.Count() == 0 ? "" : pictures.First(),
+                Producer = vehicle.Producer,
+                ModelSpecifer = vehicle.ModelSpecifer,
+                ModelGeneration = vehicle.ModelGeneration,
+                RegistrationYear = vehicle.RegistrationYear,
+                MeterReadout = vehicle.MeterReadout,
+                DateTime = auction!.DateTime,
+                CurrentBid = vehicle.CurrentBid,
+                Sold = vehicle.Sold,
+            };
+        }
+
+
+        
+
+
+        public AdminVehiclesDto AdminVehiclesDtoConvert(Vehicle vehicle, Auction auction)
+        {
+            return new AdminVehiclesDto()
+            {
+                LotNumber = vehicle.Id,
                 Producer = vehicle.Producer,
                 ModelSpecifer = vehicle.ModelSpecifer,
                 ModelGeneration = vehicle.ModelGeneration,

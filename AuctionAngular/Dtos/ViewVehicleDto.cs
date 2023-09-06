@@ -1,5 +1,4 @@
-﻿using AuctionAngular.Enums;
-
+﻿
 namespace AuctionAngular.Dtos
 {
     public class ViewVehicleDto
@@ -30,6 +29,6 @@ namespace AuctionAngular.Dtos
         public int CurrentBid { get; set; }
         public int WinnerId { get; set; }
         public List<string> Images { get; set; }
-        public bool SalesFinised { get; set; }
+        public bool Sold { get; set; }
     }
 }

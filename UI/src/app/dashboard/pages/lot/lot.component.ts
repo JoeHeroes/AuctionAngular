@@ -52,7 +52,6 @@ export class LotComponent implements OnInit {
     userId: 0
   };
 
-
   constructor(private vehicleService: VehicleService,
     private authService: AuthenticationService,
     private authenticationService: AuthenticationService,
@@ -111,7 +110,6 @@ export class LotComponent implements OnInit {
       })
   }
 
-
   removeWatch() {
     this.vehicleService.removeWatch(this.watchDto)
       .subscribe({
@@ -123,9 +121,7 @@ export class LotComponent implements OnInit {
       })
   }
 
-
   bidCar(bidValue: any) {
-
     const bid = { ...bidValue };
     const bidDto: BidDto = {
       lotNumber: this.datasource.id,

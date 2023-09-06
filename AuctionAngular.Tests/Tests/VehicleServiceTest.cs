@@ -71,6 +71,7 @@ namespace AuctionAngular.Tests
                 Highlights = "Test",
                 CurrentBid = 1000,
                 WinnerId = 1,
+                Sold = false,
             };
 
             //Act

@@ -62,6 +62,7 @@
     "saleTerm": "Verkaufsfrist",
     "highlight": "Markieren",
     "currentBid": "Aktuelles Gebot",
+    "status":"Status",
     "newBid": "Neues Angebot",
     "nowBid": "Bieten Sie jetzt",
     "list": "Liste der Fahrzeuge",
@@ -156,8 +157,7 @@
     "invoiceAmount":"Rechnungsbetrag",
     "lastInvoicePaidDate":"Zahlungsdatum der Rechnung",
     "lotLeftLocationDate":"Datum des verlassenen Standorts",
-    "invoice":"Rechnung",
-    "status":"Status"
+    "invoice":"Rechnung"
   },
 
   "admin":{

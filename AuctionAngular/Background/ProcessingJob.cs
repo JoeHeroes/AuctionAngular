@@ -16,7 +16,7 @@ namespace AuctionAngular.Background
             using (var scope = _provider.CreateScope())
             {
                 var service = scope.ServiceProvider.GetService<IAuctionService>();
-                Console.Out.WriteLineAsync("...");
+                await Console.Out.WriteLineAsync("...");
 
                 bool live = await service.LiveAuctionAsync();
 
@@ -24,7 +24,6 @@ namespace AuctionAngular.Background
 
                 if (live && !start)
                 {
-                    Console.Out.WriteLineAsync("Auction Start!!!");
                     await service.StartAuctionAsync();
                 }
             }

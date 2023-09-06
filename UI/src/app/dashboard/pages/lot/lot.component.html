@@ -96,7 +96,7 @@
           </div>
         </div>
         <div class="column3">
-          <div class="shadow-sm" *ngIf="!datasource.salesFinised && watchDto.userId">
+          <div class="shadow-sm" *ngIf="!datasource.sold && watchDto.userId">
             <div class="card-header bg-transparent border-0">
               <h3 class="mb-0">Bid Information</h3>
             </div>
@@ -117,7 +117,7 @@
               </form>
             </div>
           </div>
-          <div class="shadow-sm" *ngIf="datasource.salesFinised">
+          <div class="shadow-sm" *ngIf="datasource.sold">
             <div class="card-header bg-transparent border-0">
               <h3 class="mb-0">Bid Information</h3>
             </div>

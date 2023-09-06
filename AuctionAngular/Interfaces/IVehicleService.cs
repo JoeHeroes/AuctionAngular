@@ -8,6 +8,7 @@ namespace AuctionAngular.Interfaces
         Task<int> CreateVehicleAsync(CreateVehicleDto dto);
         Task DeleteVehicleAsync(int id);
         Task<IEnumerable<ViewVehiclesDto>> GetVehiclesAsync();
+        Task<IEnumerable<AdminVehiclesDto>> GetVehicleAuctionEndAsync();
         Task<IEnumerable<ViewVehiclesDto>> GetAllBidedAsync(int id);
         Task<IEnumerable<ViewVehiclesDto>> GetAllWonAsync(int id);
         Task<IEnumerable<ViewVehiclesDto>> GetAllLostAsync(int id);

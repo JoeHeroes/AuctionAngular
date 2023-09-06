@@ -31,9 +31,11 @@ namespace AuctionAngular.Services
 
         public async Task StartAuctionAsync()
         {
+            await Console.Out.WriteLineAsync("Auction Start!!!");
+
             var auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.DateTime <= DateTime.Now && x.DateTime.AddHours(1) >= DateTime.Now && x.SalesFinised == false);
 
-            auction.SalesStarted = true;
+            auction!.SalesStarted = true;
 
             try
             {
@@ -52,9 +54,11 @@ namespace AuctionAngular.Services
 
         public async Task EndAuctionAsync()
         {
+            await Console.Out.WriteLineAsync("Auction End!!!");
+
             var auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.SalesStarted == true && x.SalesFinised == false);
 
-            if (auction.DateTime.AddMinutes(1) <= DateTime.Now)
+            if (auction!.DateTime.AddMinutes(1) <= DateTime.Now)
             {
                 auction.SalesFinised = true;
             }
@@ -71,9 +75,14 @@ namespace AuctionAngular.Services
 
         public async Task<IEnumerable<ViewVehicleDto>> LiveAuctionListAsync()
         {
-            var auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.DateTime <= DateTime.Now && x.DateTime.AddHours(1) >= DateTime.Now && x.SalesFinised == false && x.SalesStarted == false);
+            var auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.DateTime <= DateTime.Now && x.DateTime.AddHours(1) >= DateTime.Now && x.SalesFinised == false && x.SalesStarted == true);
 
             var result = new List<ViewVehicleDto>();
+
+            if(auction == null)
+            {
+                return result;
+            }
 
             var vehicles = await _dbContext.Vehicles.Where(x => x.AuctionId == auction!.Id).ToListAsync();
 
@@ -139,6 +148,7 @@ namespace AuctionAngular.Services
                 CurrentBid = vehicle.CurrentBid,
                 WinnerId = vehicle.WinnerId,
                 Images = pictures,
+                Sold = vehicle.Sold,
             };
         }
 

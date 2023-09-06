@@ -18,14 +18,14 @@ export class AdminPanelComponent  {
   constructor(private vehicleService: VehicleService,
     private paymentService: PaymentService,
     private router: Router) {
-    this.vehicleService.getVehicles().subscribe(res => {
+    this.vehicleService.getVehiclesAuctionEnd().subscribe(res => {
       this.datasource = res;
     });
   }
 
   sellClick(vehicleId: any)  {
     this.vehicleService.sellVehicle(vehicleId).subscribe(res => {
-      this.vehicleService.getVehicles().subscribe(res => {
+      this.vehicleService.getVehiclesAuctionEnd().subscribe(res => {
         this.datasource = res;
       });
     })
@@ -37,7 +37,7 @@ export class AdminPanelComponent  {
 
   deleteClick(vehicleId: any)  {
     this.vehicleService.deleteVehicle(vehicleId).subscribe(res => {
-      this.vehicleService.getVehicles().subscribe(res => {
+      this.vehicleService.getVehiclesAuctionEnd().subscribe(res => {
         this.datasource = res;
       });
     })
