@@ -150,15 +150,18 @@ namespace AuctionAngular.Services
             {
                 var veh = vehiclesList.FirstOrDefault(d => d.Id == x.VehicleId && d.WinnerId == id);
 
-                var auc = auctionsList.FirstOrDefault(a => a.Id == veh.AuctionId && a.SalesFinised == true);
-
-                if (veh != null && auc != null)
+                if(veh != null)
                 {
-                    vehicles.Add(veh);
+                    var auc = auctionsList.FirstOrDefault(a => a.Id == veh.AuctionId && a.SalesFinised == true);
+
+                    if (auc != null)
+                    {
+                        vehicles.Add(veh);
+                    }
                 }
             }
 
-            List<ViewVehiclesDto> viewVehicle = new List<ViewVehiclesDto>();
+            var viewVehicle = new List<ViewVehiclesDto>();
 
             foreach (var vehicle in vehicles)
             {
@@ -182,21 +185,28 @@ namespace AuctionAngular.Services
 
             var bids = _dbContext.Bids.Where(x => x.UserId == id);
 
-            var vehiclesReult = await _dbContext
-                .Vehicles
-                .ToListAsync();
+            if (bids is null)
+            {
+                throw new NotFoundException("Bids not found.");
+            }
 
             List<Vehicle> vehicles = new List<Vehicle>();
 
             var vehiclesList = _dbContext.Vehicles.ToList();
 
+            var auctionsList = _dbContext.Auctions.ToList();
+
             foreach (var x in bids)
             {
-                var veh = vehiclesList.FirstOrDefault(d => d.Id == x.VehicleId && d.WinnerId == id && d.Sold == false);
-
-                if (veh != null)
+                var veh = vehiclesList.FirstOrDefault(d => d.Id == x.VehicleId && d.WinnerId != id);
+                if(veh != null)
                 {
-                    vehicles.Add(veh);
+                    var auc = auctionsList.FirstOrDefault(a => a.Id == veh.AuctionId && a.SalesFinised == true);
+
+                    if (auc != null)
+                    {
+                        vehicles.Add(veh);
+                    }
                 }
             }
 
@@ -640,7 +650,8 @@ namespace AuctionAngular.Services
                 WinnerId = vehicle.WinnerId,
                 Images = pictures,
                 DateTime = auction.DateTime,
-                Sold = vehicle.Sold
+                Sold = vehicle.Sold,
+                WaitingForConfirm = auction.SalesFinised
             };
         }
 

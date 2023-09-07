@@ -97,7 +97,7 @@ namespace AuctionAngular.Services
                     pictures.Add(pic.PathImg);
                 }
 
-                ViewVehicleDto view = ViewVehicleDtoConvert(vehicle, pictures);
+                ViewVehicleDto view = await ViewVehicleDtoConvert(vehicle, pictures);
 
                 result.Add(view);
             }
@@ -120,8 +120,10 @@ namespace AuctionAngular.Services
         }
 
 
-        public ViewVehicleDto ViewVehicleDtoConvert(Vehicle vehicle, List<string> pictures)
+        public async Task<ViewVehicleDto> ViewVehicleDtoConvert(Vehicle vehicle, List<string> pictures)
         {
+
+            var auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.Id == vehicle.AuctionId);
             return new ViewVehicleDto()
             {
                 Id = vehicle.Id,
@@ -149,6 +151,7 @@ namespace AuctionAngular.Services
                 WinnerId = vehicle.WinnerId,
                 Images = pictures,
                 Sold = vehicle.Sold,
+                WaitingForConfirm = auction.SalesFinised
             };
         }
 

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs/internal/Subscription';
-import { interval } from 'rxjs/internal/observable/interval';
 import { AuctionService } from 'src/app/common/services/auction.service';
 import { AuthenticationService } from 'src/app/common/services/authentication.service';
 import { BidDto, VehicleService } from 'src/app/common/services/vehicle.service';

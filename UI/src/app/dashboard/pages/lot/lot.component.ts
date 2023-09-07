@@ -40,6 +40,7 @@ export class LotComponent implements OnInit {
     SalesFinised: false,
     SaleTerm: "",
     Highlights: "",
+    WaitingForConfirm: false,
   };
   pictures: any;
   userId: any;
