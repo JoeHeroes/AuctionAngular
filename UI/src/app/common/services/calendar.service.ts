@@ -13,28 +13,28 @@ export class CalendarService {
     this.baseUrl = "https://localhost:7257";
   }
 
-  public getEvents(): Observable<any> {
+  getEvents(): Observable<any> {
 
     let url_ = this.baseUrl + "/Calendar/EventList";
 
     return this.http.get<any>(url_);
   }
 
-  public getEvent(id: number): Observable<any> {
+  getEvent(id: number): Observable<any> {
 
     let url_ = this.baseUrl + "/Calendar/GetOne/" + id;
 
     return this.http.get<any>(url_);
   }
 
-  public addEvent(data: AddEventeDto): Observable<any> {
+  addEvent(data: AddEventeDto): Observable<any> {
 
     let url_ = this.baseUrl + "/Calendar/CreateEvent";
 
     return this.http.post<any>(url_, data);
   }
 
-  public editEvent(data: EditEventeDto): Observable<any> {
+  editEvent(data: EditEventeDto): Observable<any> {
 
     let url_ = this.baseUrl + "/Calendar/EditEvent";
     

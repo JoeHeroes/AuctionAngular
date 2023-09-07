@@ -28,12 +28,28 @@ export class AuctionService {
   }
 
 
-  auctionList(): Observable<any> {
+  getAuctionList(): Observable<any> {
 
     let url_ = this.baseUrl + "/Auction/AuctionList";
 
     return this.http.get<any>(url_);
   }
+
+
+  deleteAuction(id: number): Observable<any> {
+
+    let url_ = this.baseUrl + "/Auction/DeleteAuction/" + id;
+
+    return this.http.delete<any>(url_);
+  }
+
+  addAuction(data: AddAuctionDto): Observable<any> {
+
+    let url_ = this.baseUrl + "/Auction/CreateAuction";
+    
+    return this.http.post<any>(url_, data);
+  }
+
 
   startAuction(): Observable<any> {
 
@@ -41,4 +57,24 @@ export class AuctionService {
 
     return this.http.get<any>(url_);
   }
+
+
+  endAuction(): Observable<any> {
+
+    let url_ = this.baseUrl + "/Auction/EndAuction";
+
+    return this.http.get<any>(url_);
+  }
+}
+
+export interface AddAuctionDto {
+  location: string;
+  description: string;
+  auctionDate: Date;
+}
+
+export interface EditAuctionDto {
+  location: string;
+  description: string;
+  auctionDate: Date;
 }

@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { RowDblClickEvent } from 'devextreme/ui/data_grid';
 import { CalendarService } from 'src/app/common/services/calendar.service';
 
-
 @Component({
   selector: 'app-calendar-manage',
   templateUrl: './calendar-manage.component.html',
@@ -25,7 +24,7 @@ export class CalendarManageComponent {
 
   handleRowDoubleClick(event: RowDblClickEvent) {
     const template = event.data
-    this.router.navigate(['/edit-event', template.id].filter(v => !!v));
+    this.router.navigate(['/event/edit', template.id].filter(v => !!v));
   }
 
 }

@@ -2,10 +2,13 @@
   "action": { 
     "addEvent": "Add Event",
     "editEvent": "Edit Event",
-    "save": "Save",
-    "back": "Back",
     "addVehicle": "Add Vehicle",
     "editVehicle": "Edit Vehicle",
+    "addAuction": "Add Auction",
+    "editAuction": "Edit Auction",
+    "add": "Add",
+    "save": "Save",
+    "back": "Back",
     "watch": "Watch",
     "removeWatch": "Remove Watch",
     "editProfile": "Edit Profile",
@@ -33,7 +36,8 @@
     "location": "Location",
     "services": "Services",
     "support": "Support",
-    "admin":"Admin Panel"
+    "panel-vehicle":"Vehicle panel",
+    "panel-auction":"Auction panel"
   },
   "vehicle": {
     "image": "Image",
@@ -66,9 +70,9 @@
     "newBid": "New Bid",
     "nowBid": "Bid Now",
     "list": "List of Vehicles",
-    "listBids": "List of auctioned vehicles",
-    "listWon": "List of won vehicles",
-    "listLost": "List of lost vehicles",
+    "listBids": "List of Auctioned Vehicles",
+    "listWon": "List of Won Vehicles",
+    "listLost": "List of Lost Vehicles",
     "watchlist": "Vehicle Watchlist",
     "paymentDue": "Payment Due",
     "paymentHistory": "Payment History",
@@ -162,7 +166,8 @@
   },
 
   "admin":{
-    "panel":"Admin Panel",
+    "panel-vehicles":"Vehicles management panel",
+    "panel-auctions":"Auctions management panel",
     "confirm": "Confirm sell",
     "invoice": "Generate Invoice",
     "edit": "Edit",

@@ -15,7 +15,7 @@ export class MainComponent implements OnInit {
   @Output() sidebarButtonClick = new EventEmitter<void>();
   isUserAuthenticated: boolean = false;
   datasource: any = {
-    Name: "Account",
+    Name: "",
     SureName: "",
   };
   liveAuction: boolean = false;
@@ -67,6 +67,8 @@ export class MainComponent implements OnInit {
   }
 
   public logout() {
+    this.datasource.Name = "",
+    this.datasource.SureName = "",
     this.notificationService.showSuccess(this.transloco.translate('notification.loggedOut'), "Success");
     this.tokenService.clear();
     this.router.navigate(["/"]);

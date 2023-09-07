@@ -88,6 +88,7 @@ namespace CarAuction.Seeder
                 {
                     DateTime = DateTime.Now,
                     LocationId = 1,
+                    Description = "",
                     SalesStarted = false,
                     SalesFinised = false,
                     
@@ -96,6 +97,7 @@ namespace CarAuction.Seeder
                 {
                     DateTime = new DateTime(2023, 8, 7, 19, 0, 0),
                     LocationId = 2,
+                    Description = "",
                     SalesStarted = false,
                     SalesFinised = false,
                 },
@@ -103,6 +105,7 @@ namespace CarAuction.Seeder
                 {
                     DateTime = new DateTime(2023, 8, 7, 19, 0, 0),
                     LocationId = 3,
+                    Description = "",
                     SalesStarted = false,
                     SalesFinised = false,
                 },

@@ -73,6 +73,53 @@ namespace AuctionAngular.Services
             }
         }
 
+        public async Task CreateAuctionAsync(CreateAuctionDto dto)
+        {
+            var location = _dbContext.Locations.FirstOrDefaultAsync(x => x.Name == dto.Location);
+
+            var auction = new Auction()
+            {
+                DateTime = dto.AuctionDate,
+                LocationId = location != null ? location.Id : 0,
+                Description = dto.Description,
+                SalesStarted = false,
+                SalesFinised = false
+            };
+
+            _dbContext.Auctions.Add(auction);
+
+            try
+            {
+                await _dbContext.SaveChangesAsync();
+            }
+            catch (DbUpdateException e)
+            {
+                throw new DbUpdateException("Error DataBase", e);
+            }
+
+        }
+
+        public async Task DeleteAuctionAsync(int id)
+        {
+            var auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (auction is null)
+            {
+                throw new NotFoundException("Auction not found.");
+            }
+
+            _dbContext.Auctions.Remove(auction);
+
+            try
+            {
+                await _dbContext.SaveChangesAsync();
+            }
+            catch (DbUpdateException e)
+            {
+                throw new DbUpdateException("Error DataBase", e);
+            }
+        }
+
         public async Task<IEnumerable<ViewVehicleDto>> LiveAuctionListAsync()
         {
             var auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.DateTime <= DateTime.Now && x.DateTime.AddHours(1) >= DateTime.Now && x.SalesFinised == false && x.SalesStarted == true);
@@ -167,7 +214,7 @@ namespace AuctionAngular.Services
                 DateTime = auction.DateTime,
                 Description = "",
                 CountVehicle = vehicles.Count(),
-                Location = location!.Name,
+                Location = location != null ? location!.Name: "Unknown",
             };
         }
     }

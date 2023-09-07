@@ -4,11 +4,11 @@ import { PaymentInfo, PaymentService } from 'src/app/common/services/payment.ser
 import { VehicleService } from 'src/app/common/services/vehicle.service';
 
 @Component({
-  selector: 'app-admin-panel',
-  templateUrl: './admin-panel.component.html',
-  styleUrls: ['./admin-panel.component.css']
+  selector: 'app-admin-panel-vehicles',
+  templateUrl: './admin-panel-vehicles.component.html',
+  styleUrls: ['./admin-panel-vehicles.component.css']
 })
-export class AdminPanelComponent  {
+export class AdminPanelVehiclesComponent {
   datasource: any;
 
   readonly allowedPageSizes = [5, 10, 20, 'all'];

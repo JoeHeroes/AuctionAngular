@@ -14,7 +14,7 @@ export class AuctionListComponent {
   displayMode = 'full';
 
   constructor(private auctionService: AuctionService) {
-    this.auctionService.auctionList().subscribe(res => {
+    this.auctionService.getAuctionList().subscribe(res => {
       this.datasource = res;
     });
   }

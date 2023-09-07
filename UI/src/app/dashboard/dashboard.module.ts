@@ -41,9 +41,12 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { PaymentComponent } from './pages/payment/payment.component';
-import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
 import { VehicleAddComponent } from './pages/vehicle-add/vehicle-add.component';
 import { AuctionListComponent } from './pages/auction-list/auction-list.component';
+import { AdminPanelVehiclesComponent } from './pages/admin-panel-vehicles/admin-panel-vehicles.component';
+import { AdminPanelAuctionsComponent } from './pages/admin-panel-auctions/admin-panel-auctions.component';
+import { AuctionAddComponent } from './pages/auction-add/auction-add.component';
+import { AuctionEditComponent } from './pages/auction-edit/auction-edit.component';
 
 
 
@@ -77,9 +80,12 @@ import { AuctionListComponent } from './pages/auction-list/auction-list.componen
     CalendarManageComponent,
     EditEventComponent,
     PaymentComponent,
-    AdminPanelComponent,
     VehicleAddComponent,
-    AuctionListComponent
+    AuctionListComponent,
+    AdminPanelVehiclesComponent,
+    AdminPanelAuctionsComponent,
+    AuctionAddComponent,
+    AuctionEditComponent
   ],
   exports: [],
   imports: [

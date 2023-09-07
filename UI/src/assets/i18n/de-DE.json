@@ -2,10 +2,13 @@
   "action": { 
     "addEvent": "Ereignis hinzufügen",
     "editEvent": "Ereignis bearbeiten",
-    "save": "Speichern",
-    "back": "Zurück",
     "addVehicle": "Fahrzeug hinzufügen",
     "editVehicle": "Fahrzeug bearbeiten",
+    "addAuction": "Auktion hinzufügen",
+    "editAuction": "Auktion bearbeiten",
+    "add": "Hinzufügen",
+    "save": "Speichern",
+    "back": "Zurück",
     "watch": "Betrachten",
     "removeWatch": "Uhr entfernen",
     "editProfile": "Profil bearbeiten",
@@ -33,7 +36,8 @@
     "location": "Standort",
     "services": "Dienstleistungen",
     "support": "Unterstützung",
-    "admin":"Administration"
+    "panel-vehicle":"Fahrzeugtafel",
+    "panel-auction":"Auktionspanel"
   },
   "vehicle": {
     "image": "Bild",
@@ -66,7 +70,7 @@
     "newBid": "Neues Angebot",
     "nowBid": "Bieten Sie jetzt",
     "list": "Liste der Fahrzeuge",
-    "listBids": "List of auctioned vehicles",
+    "listBids": "Liste der versteigerten Fahrzeuge",
     "listWon": "Liste der gewonnenen Fahrzeuge",
     "listLost": "Liste der verlorenen Fahrzeuge",
     "watchlist": "Fahrzeugbeobachtungsliste",
@@ -161,7 +165,8 @@
   },
 
   "admin":{
-    "panel":"Administrationsmenü",
+    "panel-vehicles":"Fahrzeugverwaltungspanel",
+    "panel-auctions":"Auktionsverwaltungspanel",
     "confirm": "Bestätigen Sie den Verkauf",
     "invoice": "Rechnung erstellen",
     "edit": "Bearbeiten",

@@ -50,10 +50,7 @@ export class EditEventComponent {
     this.urlSubscription = this.route.url.subscribe(segments => {
       this.loadData(segments);
     });
-
-
   }
-
 
   private loadData(url: UrlSegment[]) {
     this.id = url.map(x => x.path).join('/');
@@ -70,7 +67,6 @@ export class EditEventComponent {
         this.dateValue = res.start;
       })
     });
-
   }
 
 

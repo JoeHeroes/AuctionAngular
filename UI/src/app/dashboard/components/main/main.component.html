@@ -23,10 +23,10 @@
     </dxi-item>
     <dxi-item location="after" locateInMenu="never">
       <dx-button *ngIf='!isUserAuthenticated' stylingMode="text" keyExpr="id" displayExpr="label"
-        [text]="t('account.register')" [routerLink]="'/register'">
+        [text]="t('account.register')" [routerLink]="'/account/register'">
       </dx-button>
       <dx-button *ngIf='!isUserAuthenticated' stylingMode="text" keyExpr="id" displayExpr="label"
-        [text]="t('account.login')" [routerLink]="'/login'">
+        [text]="t('account.login')" [routerLink]="'/account/login'">
       </dx-button>
       <dx-button *ngIf='isUserAuthenticated' stylingMode="text" keyExpr="id" displayExpr="label" 
         text="{{datasource!.name}} {{datasource!.sureName}}"  [routerLink]="'/profile'">

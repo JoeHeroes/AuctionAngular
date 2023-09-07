@@ -2,10 +2,13 @@
   "action": { 
     "addEvent": "Dodaj wydarzenie",
     "editEvent": "Edytuj wydarzenie",
-    "save": "Zapisz",
-    "back": "Wróć",
     "addVehicle": "Dodaj Pojazd",
     "editVehicle": "Edytuj Pojazd",
+    "addAuction": "Dodaj Aukcje",
+    "editAuction": "Edytuj Aukcje",
+    "add": "Dodaj",
+    "save": "Zapisz",
+    "back": "Wróć",
     "watch": "Oberwuj",
     "removeWatch": "Usuń obserwacje",
     "editProfile": "Edytuj Profil",
@@ -33,7 +36,8 @@
       "location": "Lokacja",
       "services": "Serwis",
       "support": "Wsparcie",
-      "admin":"Panel admina"
+      "panel-vehicle":"Panel pojazdów",
+      "panel-auction":"Panel aukcji"
     },
     "vehicle": {
       "image": "Zdjecie",
@@ -162,7 +166,8 @@
     },
 
     "admin":{
-      "panel":"Admin Panel",
+      "panel-vehicles":"Panel zarządzania autami",
+      "panel-auctions":"Panel zarządzania aukcjami",
       "confirm": "Potwierdz sprzedarz",
       "invoice": "Wygeneruj fakture",
       "edit": "Edytuj",

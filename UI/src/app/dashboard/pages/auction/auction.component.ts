@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { TranslocoService } from '@ngneat/transloco';
+import { Subscription, interval } from 'rxjs';
 import { AuctionService } from 'src/app/common/services/auction.service';
 import { AuthenticationService } from 'src/app/common/services/authentication.service';
+import { NotificationService } from 'src/app/common/services/notification.service';
 import { BidDto, VehicleService } from 'src/app/common/services/vehicle.service';
 
 @Component({
@@ -11,6 +14,7 @@ import { BidDto, VehicleService } from 'src/app/common/services/vehicle.service'
 })
 export class AuctionComponent implements OnInit {
 
+  mySubscription: Subscription
   liveAuction: boolean = false;
   datasource: any;
   time: number = 0;
@@ -22,8 +26,15 @@ export class AuctionComponent implements OnInit {
   bidForm!: FormGroup;
 
   constructor(private auctionService: AuctionService,
+    private notificationService: NotificationService,
     private authenticationService: AuthenticationService,
-    private vehicleService: VehicleService) {
+    private vehicleService: VehicleService,
+    private transloco: TranslocoService) {
+
+      this.mySubscription = interval(200).subscribe((x => {
+        this.doTimer();
+      }));
+
   }
 
   ngOnInit(): void {
@@ -46,6 +57,20 @@ export class AuctionComponent implements OnInit {
     })
   }
 
+
+  doTimer() {
+    this.time++;
+    if (this.time > 110) {
+      this.time = 0;
+      this.index++;
+      if (this.index == this.datasource.length) {
+        this.liveAuction = false;
+        this.auctionService.endAuction().subscribe(res => {
+        });
+      }
+    }
+  }
+
   bidCar(bidValue: any) {
     const bid = { ...bidValue };
     const bidDto: BidDto = {
@@ -60,10 +85,11 @@ export class AuctionComponent implements OnInit {
         next: () => {
           this.auctionService.liveAuctionList().subscribe(res => {
             this.datasource = res;
+            this.notificationService.showSuccess( this.transloco.translate('notification.bid'), "Success");
           });
         },
         error: () => {
-
+          this.notificationService.showError( this.transloco.translate('notification.bidFail'), "Failed");
         }
       })
   }
