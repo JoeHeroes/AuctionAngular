@@ -6,11 +6,11 @@ import { AuthResponseDto, AuthenticationService } from 'src/app/common/services/
 import { AddEventeDto, CalendarService } from 'src/app/common/services/calendar.service';
 
 @Component({
-  selector: 'app-add-event',
-  templateUrl: './add-event.component.html',
-  styleUrls: ['./add-event.component.css']
+  selector: 'app-event-add',
+  templateUrl: './event-add.component.html',
+  styleUrls: ['./event-add.component.css']
 })
-export class AddEventComponent implements OnInit {
+export class EventAddComponent implements OnInit {
 
   returnUrl!: string;
   showError!: boolean;
@@ -51,13 +51,36 @@ export class AddEventComponent implements OnInit {
       allDay: edit.allDay,
       owner: this.userId,
     }
+
+
+    if (edit.title == "") {
+      this.errorMessage = "Title is required";
+      this.showError = true;
+    }
+    else if (edit.description == "") {
+      this.errorMessage = "Description is required";
+      this.showError = true;
+    }
+    else if (edit.date == "") {
+      this.errorMessage = "Date is required";
+      this.showError = true;
+    }
+    else if (edit.color == "") {
+      this.errorMessage = "Color is required";
+      this.showError = true;
+    }
+    else if (edit.allDay == "") {
+      this.errorMessage = "All day is required";
+      this.showError = true;
+    }
+
+
     this.calendarService.addEvent(eventData)
       .subscribe({
         next: (res: AuthResponseDto) => {
           this.router.navigate([this.returnUrl]);
         },
         error: (err: HttpErrorResponse) => {
-          this.errorMessage = err.message;
           this.showError = true;
         }
       })

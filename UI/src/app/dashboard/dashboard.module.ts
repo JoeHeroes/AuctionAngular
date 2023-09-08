@@ -33,9 +33,7 @@ import { ProfilePictureComponent } from './pages/profile-picture/profile-picture
 import { VehicleWonComponent } from './pages/vehicle-won/vehicle-won.component';
 import { VehicleLostComponent } from './pages/vehicle-lost/vehicle-lost.component';
 import { VehicleBidsComponent } from './pages/vehicle-bids/vehicle-bids.component';
-import { AddEventComponent } from './pages/add-event/add-event.component';
 import { CalendarManageComponent } from './pages/calendar-manage/calendar-manage.component';
-import { EditEventComponent } from './pages/edit-event/edit-event.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -47,6 +45,8 @@ import { AdminPanelVehiclesComponent } from './pages/admin-panel-vehicles/admin-
 import { AdminPanelAuctionsComponent } from './pages/admin-panel-auctions/admin-panel-auctions.component';
 import { AuctionAddComponent } from './pages/auction-add/auction-add.component';
 import { AuctionEditComponent } from './pages/auction-edit/auction-edit.component';
+import { EventEditComponent } from './pages/event-edit/event-edit.component';
+import { EventAddComponent } from './pages/event-add/event-add.component';
 
 
 
@@ -76,16 +76,18 @@ import { AuctionEditComponent } from './pages/auction-edit/auction-edit.componen
     VehicleWonComponent,
     VehicleLostComponent,
     VehicleBidsComponent,
-    AddEventComponent,
+    EventAddComponent,
     CalendarManageComponent,
-    EditEventComponent,
+    EventEditComponent,
     PaymentComponent,
     VehicleAddComponent,
     AuctionListComponent,
     AdminPanelVehiclesComponent,
     AdminPanelAuctionsComponent,
     AuctionAddComponent,
-    AuctionEditComponent
+    AuctionEditComponent,
+    EventEditComponent,
+    EventAddComponent
   ],
   exports: [],
   imports: [

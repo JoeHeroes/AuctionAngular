@@ -426,8 +426,8 @@ namespace AuctionAngular.Services
                 {
                     Title = vehicle!.Id + " " + vehicle.Producer + " " + vehicle.ModelGeneration,
                     Description = "",
-                    Start = auction.DateTime,
-                    End = auction.DateTime,
+                    Start = auction != null ? auction.DateTime: new DateTime(),
+                    End = auction != null ? auction.DateTime : new DateTime(),
                     Color = vehicle.Color,
                     AllDay = true,
                     Owner = user!.Id,
@@ -649,7 +649,7 @@ namespace AuctionAngular.Services
                 CurrentBid = vehicle.CurrentBid,
                 WinnerId = vehicle.WinnerId,
                 Images = pictures,
-                DateTime = auction.DateTime,
+                DateTime = auction != null ? auction.DateTime: new DateTime(),
                 Sold = vehicle.Sold,
                 WaitingForConfirm = auction.SalesFinised
             };
@@ -668,7 +668,7 @@ namespace AuctionAngular.Services
                 ModelGeneration = vehicle.ModelGeneration,
                 RegistrationYear = vehicle.RegistrationYear,
                 MeterReadout = vehicle.MeterReadout,
-                DateTime = auction!.DateTime,
+                DateTime = auction != null ? auction!.DateTime : new DateTime(),
                 CurrentBid = vehicle.CurrentBid,
                 Sold = vehicle.Sold,
             };

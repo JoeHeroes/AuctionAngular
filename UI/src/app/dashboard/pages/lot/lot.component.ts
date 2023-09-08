@@ -60,6 +60,8 @@ export class LotComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     private transloco: TranslocoService) {
 
+    this.isUserAuthenticated = false;
+
     this.authService.loggedUserId().subscribe({
       next: (res) => {
         this.isUserAuthenticated = true;

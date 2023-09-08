@@ -72,8 +72,6 @@ export class VehicleAddComponent implements OnInit {
     this.showError = true;
     const vehicle = { ...vehicleFormValue };
 
-    alert(vehicle.secondTireSet);
-
     const createVehicle: CreateVehicleDto = {
       producer: vehicle.producer,
       modelSpecifer: vehicle.modelSpecifer,
@@ -97,6 +95,96 @@ export class VehicleAddComponent implements OnInit {
       saleTerm: vehicle.saleTerm,
       highlights: vehicle.highlights,
     }
+
+    if (vehicle.producer == "") {
+      this.errorMessage = "Producer is required";
+      this.showError = true;
+    }
+    else if (vehicle.modelSpecifer == "") {
+      this.errorMessage = "ModelSpecifer is required";
+      this.showError = true;
+    }
+    else if (vehicle.modelGeneration == "") {
+      this.errorMessage = "ModelGeneration is required";
+      this.showError = true;
+    }
+    else if (vehicle.registrationYear == "") {
+      this.errorMessage = "RegistrationYear is required";
+      this.showError = true;
+    }
+    else if (vehicle.color == "") {
+      this.errorMessage = "Color is required";
+      this.showError = true;
+    }
+    else if (vehicle.auction == "") {
+      this.errorMessage = "Auction is required";
+      this.showError = true;
+    }
+    else if (vehicle.bodyType == "") {
+      this.errorMessage = "BodyType is required";
+      this.showError = true;
+    }
+    else if (vehicle.transmission == "") {
+      this.errorMessage = "Transmission is required";
+      this.showError = true;
+    }
+    else if (vehicle.drive == "") {
+      this.errorMessage = "Drive is required";
+      this.showError = true;
+    }
+    else if (vehicle.meterReadout == "") {
+      this.errorMessage = "MeterReadout is required";
+      this.showError = true;
+    }
+    else if (vehicle.fuel == "") {
+      this.errorMessage = "Fuel  is required";
+      this.showError = true;
+    }
+    else if (vehicle.primaryDamage == "") {
+      this.errorMessage = "PrimaryDamage is required";
+      this.showError = true;
+    }
+    else if (vehicle.secondaryDamage == "") {
+      this.errorMessage = "SecondaryDamage is required";
+      this.showError = true;
+    }
+    else if (vehicle.engineCapacity == "") {
+      this.errorMessage = "EngineCapacity is required";
+      this.showError = true;
+    }
+    else if (vehicle.engineOutput == "") {
+      this.errorMessage = "EngineOutput is required";
+      this.showError = true;
+    }
+    else if (vehicle.numberKeys == "") {
+      this.errorMessage = "NumberKeys is required";
+      this.showError = true;
+    }
+
+
+
+    else if (vehicle.serviceManual == "") {
+      this.errorMessage = "ServiceManual is required";
+      this.showError = true;
+    }
+    else if (vehicle.secondTireSet == "") {
+      this.errorMessage = "SecondTireSet is required";
+      this.showError = true;
+    }
+    else if (vehicle.VIN == "") {
+      this.errorMessage = "VIN is required";
+      this.showError = true;
+    }
+    else if (vehicle.saleTerm == "") {
+      this.errorMessage = "SaleTerm is required";
+      this.showError = true;
+    }
+    else if (vehicle.highlights == "") {
+      this.errorMessage = "Highlights is required";
+      this.showError = true;
+    }
+
+
     this.vehicleService.addVehicle(createVehicle)
       .subscribe({
         next: (res: any) => {
@@ -104,7 +192,6 @@ export class VehicleAddComponent implements OnInit {
           this.router.navigate([this.returnUrl]);
         },
         error: (err: HttpErrorResponse) => {
-          this.errorMessage = err.name;
           this.showError = true;
         }
       })
@@ -146,14 +233,12 @@ enum Damage {
   Vandalism = 'Vandalism'
 }
 
-
 enum Drive {
   none = '',
   AWD = 'AWD',
   FWD = 'FWD',
   RWD = 'RWD',
 }
-
 
 enum Fuel {
   none = '',

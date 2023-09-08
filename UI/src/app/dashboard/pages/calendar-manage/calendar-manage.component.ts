@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { RowDblClickEvent } from 'devextreme/ui/data_grid';
+import { AuthenticationService } from 'src/app/common/services/authentication.service';
 import { CalendarService } from 'src/app/common/services/calendar.service';
 
 @Component({
@@ -15,11 +16,19 @@ export class CalendarManageComponent {
 
   displayMode = 'full';
 
-  constructor(private calendarService: CalendarService,
+  constructor(private authenticationService: AuthenticationService,
+    private calendarService: CalendarService,
     private router: Router) {
-    this.calendarService.getEvents().subscribe(res => {
-      this.datasource = res;
+    
+
+
+
+    this.authenticationService.loggedUserId().subscribe(res => {
+      this.calendarService.getEvents(res.userId).subscribe(res => {
+        this.datasource = res;
+      });
     });
+
   }
 
   handleRowDoubleClick(event: RowDblClickEvent) {

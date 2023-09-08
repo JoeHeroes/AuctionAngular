@@ -21,9 +21,7 @@ import { ProfilePictureComponent } from './pages/profile-picture/profile-picture
 import { VehicleWonComponent } from './pages/vehicle-won/vehicle-won.component';
 import { VehicleLostComponent } from './pages/vehicle-lost/vehicle-lost.component';
 import { VehicleBidsComponent } from './pages/vehicle-bids/vehicle-bids.component';
-import { AddEventComponent } from './pages/add-event/add-event.component';
 import { CalendarManageComponent } from './pages/calendar-manage/calendar-manage.component';
-import { EditEventComponent } from './pages/edit-event/edit-event.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from "@angular/router";
 import { ContactusComponent } from "./pages/contactus/contactus.component";
@@ -36,6 +34,8 @@ import { AdminPanelVehiclesComponent } from "./pages/admin-panel-vehicles/admin-
 import { AdminPanelAuctionsComponent } from "./pages/admin-panel-auctions/admin-panel-auctions.component";
 import { AuctionAddComponent } from "./pages/auction-add/auction-add.component";
 import { AuctionEditComponent } from "./pages/auction-edit/auction-edit.component";
+import { EventAddComponent } from "./pages/event-add/event-add.component";
+import { EventEditComponent } from "./pages/event-edit/event-edit.component";
 
 const routes: Routes = [
   {
@@ -119,8 +119,8 @@ const routes: Routes = [
       {
         path: 'event',
         children: [
-          { path: 'edit', children: [{ path: ':id', pathMatch: 'full', component: EditEventComponent, data: { title: 'Event Edit' }},],},
-          { path: 'add', pathMatch: 'full', component: AddEventComponent, data: { title: 'Event Add' } },
+          { path: 'edit', children: [{ path: ':id', pathMatch: 'full', component: EventEditComponent, data: { title: 'Event Edit' }},],},
+          { path: 'add', pathMatch: 'full', component: EventAddComponent, data: { title: 'Event Add' } },
         ],
       },
       {

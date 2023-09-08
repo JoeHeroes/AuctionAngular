@@ -58,10 +58,11 @@ namespace AuctionAngular.Services
 
             var auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.SalesStarted == true && x.SalesFinised == false);
 
-            if (auction!.DateTime.AddMinutes(1) <= DateTime.Now)
+            if (auction != null && auction!.DateTime.AddMinutes(1) <= DateTime.Now)
             {
                 auction.SalesFinised = true;
             }
+            
 
             try
             {
@@ -75,7 +76,7 @@ namespace AuctionAngular.Services
 
         public async Task CreateAuctionAsync(CreateAuctionDto dto)
         {
-            var location = _dbContext.Locations.FirstOrDefaultAsync(x => x.Name == dto.Location);
+            var location = await _dbContext.Locations.FirstOrDefaultAsync(x => x.Name == dto.Location);
 
             var auction = new Auction()
             {
@@ -104,9 +105,7 @@ namespace AuctionAngular.Services
             var auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.Id == id);
 
             if (auction is null)
-            {
                 throw new NotFoundException("Auction not found.");
-            }
 
             _dbContext.Auctions.Remove(auction);
 
@@ -118,6 +117,47 @@ namespace AuctionAngular.Services
             {
                 throw new DbUpdateException("Error DataBase", e);
             }
+        }
+
+        public async Task EditAuctionAsync(EditAuctionDto dto)
+        {
+
+            var auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.Id == dto.Id);
+
+            if (auction is null)
+                throw new NotFoundException("Auction not found.");
+
+            if(dto.Location != "")
+            {
+                var location = await _dbContext.Locations.FirstOrDefaultAsync(x => x.Name == dto.Location);
+
+                if (location == null)
+                    auction.LocationId = 0;
+                else
+                    auction.LocationId = location.Id;
+            }
+         
+
+
+
+            auction.Description = dto.Description != "" ? dto.Description : auction.Description;
+            auction.DateTime = dto.AuctionDate.ToString() != default(DateTime).ToString() ? dto.AuctionDate : auction.DateTime;
+
+            try
+            {
+                await _dbContext.SaveChangesAsync();
+            }
+            catch (DbUpdateException e)
+            {
+                throw new DbUpdateException("Error DataBase", e);
+            }
+        }
+
+        public async Task<ViewAuctionDto> GetByIdAuctionAsync(int id)
+        {
+            var auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.Id == id);
+
+            return await ViewAuctionDtoConvert(auction);
         }
 
         public async Task<IEnumerable<ViewVehicleDto>> LiveAuctionListAsync()
@@ -212,7 +252,7 @@ namespace AuctionAngular.Services
             {
                 Id = auction.Id,
                 DateTime = auction.DateTime,
-                Description = "",
+                Description = auction.Description,
                 CountVehicle = vehicles.Count(),
                 Location = location != null ? location!.Name: "Unknown",
             };

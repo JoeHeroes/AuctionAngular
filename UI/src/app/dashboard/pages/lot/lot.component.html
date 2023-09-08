@@ -13,7 +13,6 @@
             <dx-button *ngIf="watchLot" class="watch"
               (onClick)="this.removeWatch()"><a>★{{t('action.removeWatch')}}</a></dx-button>
           </div>
-
           <div class="widget-container">
             <dx-gallery [dataSource]="datasource.images" [loop]="true" [showNavButtons]="true" [showIndicator]="true">
               <div *dxTemplate="let i of 'item'">

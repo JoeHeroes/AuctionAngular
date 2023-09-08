@@ -15,7 +15,7 @@ namespace AuctionAngular.Services
             this._dbContext = dbContext;
         }
   
-        public async Task<IEnumerable<ViewEventDto>> GetEventsAsync()
+        public async Task<IEnumerable<ViewEventDto>> GetEventsAsync(int userId)
         {
             var events = await _dbContext
                 .Events
@@ -30,19 +30,22 @@ namespace AuctionAngular.Services
 
             foreach(var eve in events)
             {
-                var resultDto = new ViewEventDto()
+                if (eve.Owner == userId || eve.Owner == 0)
                 {
-                    Id = eve.Id,
-                    Title = eve.Title,
-                    Description= eve.Description,
-                    Start = eve.Start.ToString("yyyy-MM-dd"),
-                    End = eve.End.ToString("yyyy-MM-dd"),
-                    Color = eve.Color,
-                    AllDay = eve.AllDay,
-                    Url = eve.Url
-                };
+                    var resultDto = new ViewEventDto()
+                    {
+                        Id = eve.Id,
+                        Title = eve.Title,
+                        Description = eve.Description,
+                        Start = eve.Start.ToString("yyyy-MM-dd"),
+                        End = eve.End.ToString("yyyy-MM-dd"),
+                        Color = eve.Color,
+                        AllDay = eve.AllDay,
+                        Url = eve.Url
+                    };
 
-                result.Add(resultDto);
+                    result.Add(resultDto);
+                }
             }
 
             return result;
@@ -83,7 +86,7 @@ namespace AuctionAngular.Services
                 Color = dto.Color,
                 AllDay = dto.AllDay,
                 Owner = dto.Owner,
-                Url = "/edit-event/"
+                Url = "/event/edit/"
             };
 
             await _dbContext.Events.AddAsync(eventResult);
@@ -99,7 +102,7 @@ namespace AuctionAngular.Services
 
             var updateEventResult = await _dbContext.Events.FirstOrDefaultAsync(x => x.Id == eventResult.Id);
 
-            updateEventResult!.Url = "/edit-event/" + eventResult.Id;
+            updateEventResult!.Url = "/event/edit/" + eventResult.Id;
 
             try
             {
@@ -141,7 +144,6 @@ namespace AuctionAngular.Services
 
             return eventResult;
         }
-
 
         public async Task<int> DeleteEventAsync(int id)
         {

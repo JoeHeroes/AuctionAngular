@@ -13,9 +13,9 @@ export class CalendarService {
     this.baseUrl = "https://localhost:7257";
   }
 
-  getEvents(): Observable<any> {
+  getEvents(userId: number): Observable<any> {
 
-    let url_ = this.baseUrl + "/Calendar/EventList";
+    let url_ = this.baseUrl + "/Calendar/EventList/" + userId;
 
     return this.http.get<any>(url_);
   }

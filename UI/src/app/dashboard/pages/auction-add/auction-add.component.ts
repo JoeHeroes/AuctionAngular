@@ -52,13 +52,27 @@ export class AuctionAddComponent implements OnInit {
       auctionDate: add.auctionDate,
     }
 
+
+    if (add.location == "") {
+      this.errorMessage = "Location is required";
+      this.showError = true;
+    }
+    else if (add.description == "") {
+      this.errorMessage = "Description is required";
+      this.showError = true;
+    }
+    else if (add.auctionDate == "") {
+      this.errorMessage = "Auction date is required";
+      this.showError = true;
+    }
+    
+
     this.auctionService.addAuction(addData)
       .subscribe({
         next: (res: AuthResponseDto) => {
           this.router.navigate([this.returnUrl]);
         },
         error: (err: HttpErrorResponse) => {
-          this.errorMessage = err.message;
           this.showError = true;
         }
       })

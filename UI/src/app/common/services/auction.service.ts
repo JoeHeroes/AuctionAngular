@@ -35,6 +35,19 @@ export class AuctionService {
     return this.http.get<any>(url_);
   }
 
+  getAuction(id: number): Observable<any> {
+
+    let url_ = this.baseUrl + "/Auction/GetOne/" + id;
+
+    return this.http.get<any>(url_);
+  }
+
+  editAuction(data: EditAuctionDto): Observable<any> {
+
+    let url_ = this.baseUrl + "/Auction/EditAuction";
+
+    return this.http.post<any>(url_, data);
+  }
 
   deleteAuction(id: number): Observable<any> {
 
@@ -74,6 +87,7 @@ export interface AddAuctionDto {
 }
 
 export interface EditAuctionDto {
+  id: number;
   location: string;
   description: string;
   auctionDate: Date;

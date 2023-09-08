@@ -205,7 +205,7 @@ namespace AuctionAngular.Controllers
 
             string link = "https://localhost:7257" + "/Account/ConfirmEmail/"+ token + "/" + email;
 
-            string LOGIN_EMAIL_CONTENT_FORMAT = "<h1>Account Verification</h1></br><p>Thank you for choosing CarAuction</p></br> <p>Please confirm your email address by clicking the link below. </br> <a  href=\"{Link}\">Verify your email address</a></b></p>";
+            string LOGIN_EMAIL_CONTENT_FORMAT = "<h1>Account Verification</h1></br><p>Thank you for choosing CarAuction</p></br> <p>Please confirm your email address by clicking the link below. </br> <a style=\"color: blue\"  href=\"{Link}\">Verify your email address</a></b></p>";
             string content = LOGIN_EMAIL_CONTENT_FORMAT.Replace("{Link}", link);
 
             var mail = new MailRequestDto()

@@ -4,6 +4,7 @@ import allLocales from '@fullcalendar/core/locales-all'
 import { Component } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/core';
 import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/common/services/authentication.service';
 
 @Component({
   selector: 'app-calendar',
@@ -25,12 +26,16 @@ export class CalendarComponent {
   };
 
 
-  constructor(private calendarService: CalendarService,
-    private router: Router) {
+  constructor(private authenticationService: AuthenticationService,
+    private calendarService: CalendarService) {
   }
   ngOnInit(): void {
-    this.calendarService.getEvents().subscribe(res => {
-      this.calendarOptions.events = res;
+
+
+    this.authenticationService.loggedUserId().subscribe(res => {
+      this.calendarService.getEvents(res.userId).subscribe(res => {
+        this.calendarOptions.events = res;
+      });
     });
   }
 

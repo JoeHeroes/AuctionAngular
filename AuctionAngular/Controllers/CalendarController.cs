@@ -23,12 +23,12 @@ namespace AuctionAngular.Controllers
         /// <returns>Ok with event list</returns>
         /// <response code="200">Correct data</response>
         /// <response code="400">Incorrect id</response>
-        [HttpGet("[action]")]
+        [HttpGet("[action]/{userId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<IEnumerable<ViewEventDto>>> EventList()
+        public async Task<ActionResult<IEnumerable<ViewEventDto>>> EventList([FromRoute] int userId)
         {
-            var result = await _calendarService.GetEventsAsync();
+            var result = await _calendarService.GetEventsAsync(userId);
             return Ok(result);
         }
 
@@ -69,8 +69,6 @@ namespace AuctionAngular.Controllers
             var result = await _calendarService.CreateEventAsync(dto);
             return Ok();
         }
-
-
 
         /// <summary>
         /// Edit Event

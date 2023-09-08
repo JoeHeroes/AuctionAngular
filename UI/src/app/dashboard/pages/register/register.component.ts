@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
       dateOfBirth: new FormControl('', [Validators.required, this.validateMaxDate.bind(this)]),
       roleid: new FormControl("", [Validators.required]),
     })
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/login';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/account/login';
   }
 
   validateMaxDate(control: FormControl): { [key: string]: any } | null {
@@ -69,7 +69,7 @@ export class RegisterComponent implements OnInit {
       dateOfBirth: register.dateOfBirth,
       roleid: register.roleid,
     }
-
+ 
     if (register.email == "") {
       this.errorMessage = "Email is required";
       this.showError = true;

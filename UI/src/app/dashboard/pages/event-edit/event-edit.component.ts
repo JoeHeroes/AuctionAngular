@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -7,11 +7,11 @@ import { AuthResponseDto, AuthenticationService } from 'src/app/common/services/
 import { CalendarService, EditEventeDto } from 'src/app/common/services/calendar.service';
 
 @Component({
-  selector: 'app-edit-event',
-  templateUrl: './edit-event.component.html',
-  styleUrls: ['./edit-event.component.css']
+  selector: 'app-event-edit',
+  templateUrl: './event-edit.component.html',
+  styleUrls: ['./event-edit.component.css']
 })
-export class EditEventComponent {
+export class EventEditComponent {
 
   urlSubscription?: Subscription;
   id: any;
@@ -100,7 +100,6 @@ export class EditEventComponent {
           this.router.navigate([this.returnUrl]);
         },
         error: (err: HttpErrorResponse) => {
-          this.errorMessage = err.message;
           this.showError = true;
         }
       })

@@ -1,7 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AuctionService, EditAuctionDto } from 'src/app/common/services/auction.service';
 import { AuthResponseDto } from 'src/app/common/services/authentication.service';
 
@@ -12,10 +13,19 @@ import { AuthResponseDto } from 'src/app/common/services/authentication.service'
 })
 export class AuctionEditComponent implements OnInit {
 
+  urlSubscription?: Subscription;
+  id: any;
   returnUrl!: string;
   showError!: boolean;
-  editForm!: FormGroup;
+  editForm!: FormGroup; 
   errorMessage: string = '';
+
+
+  locationValue!: string;
+  descriptionValue!: string;
+  auctionDateValue!: string;
+
+  value!: string;
 
   constructor(private auctionService: AuctionService,
     private router: Router,
@@ -28,6 +38,23 @@ export class AuctionEditComponent implements OnInit {
       auctionDate: new FormControl("", [Validators.required, this.validateMinDate.bind(this)]),
     })
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/auction/panel';
+  
+    this.urlSubscription = this.route.url.subscribe(segments => {
+      this.loadData(segments);
+    });
+  
+  }
+
+  private loadData(url: UrlSegment[]) {
+    this.id = url.map(x => x.path).join('/');
+
+    this.auctionService.getAuction(this.id).subscribe(res => {
+
+      this.locationValue = res.location;
+      this.descriptionValue = res.description;
+      this.value = res.dateTime;
+      this.auctionDateValue = this.value.slice(0, 10);
+    });
   }
 
   validateMinDate(control: FormControl): { [key: string]: any } | null {
@@ -41,24 +68,27 @@ export class AuctionEditComponent implements OnInit {
     return null;
   }
 
-  editAuction = (addFormValue: any) => {
+  editAuction = (editFormValue: any) => {
     this.showError = false;
-    const add = { ...addFormValue };
+    const edit = { ...editFormValue };
 
-
-    const addData: EditAuctionDto = {
-      location: add.location,
-      description: add.description,
-      auctionDate: add.auctionDate,
+    if(edit.auctionDate == ""){
+      edit.auctionDate = this.value;
     }
 
-    this.auctionService.addAuction(addData)
+    const editData: EditAuctionDto = {
+      id: this.id,
+      location: edit.location,
+      description: edit.description,
+      auctionDate: edit.auctionDate,
+    }
+
+    this.auctionService.editAuction(editData)
       .subscribe({
         next: (res: AuthResponseDto) => {
           this.router.navigate([this.returnUrl]);
         },
         error: (err: HttpErrorResponse) => {
-          this.errorMessage = err.message;
           this.showError = true;
         }
       })
