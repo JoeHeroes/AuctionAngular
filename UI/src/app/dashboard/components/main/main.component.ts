@@ -14,13 +14,9 @@ import { TokenService } from 'src/app/common/services/token.service';
 export class MainComponent implements OnInit {
   @Output() sidebarButtonClick = new EventEmitter<void>();
   isUserAuthenticated: boolean = false;
-  datasource: any = {
-    Name: "",
-    SureName: "",
-  };
+  Name: string =  "";
+  SureName: string =  "";
   liveAuction: boolean = false;
-
-
 
   constructor(private authService: AuthenticationService,
     private auctionService: AuctionService,
@@ -47,10 +43,11 @@ export class MainComponent implements OnInit {
     });
 
     this.authService.loggedUserId().subscribe(res => {
+      this.isUserAuthenticated = true;
       this.authService.getUserInfo(res.userId).subscribe({
         next: (res) => {
-          this.datasource = res;
-          this.isUserAuthenticated = true;
+          this.Name = res.name,
+          this.SureName = res.sureName
         },
         error: () => {
         }
@@ -67,8 +64,9 @@ export class MainComponent implements OnInit {
   }
 
   public logout() {
-    this.datasource.Name = "",
-    this.datasource.SureName = "",
+    this.Name = "",
+    this.SureName = "",
+    this.isUserAuthenticated = false;
     this.notificationService.showSuccess(this.transloco.translate('notification.loggedOut'), "Success");
     this.tokenService.clear();
     this.router.navigate(["/"]);

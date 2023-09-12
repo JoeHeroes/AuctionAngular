@@ -1,7 +1,7 @@
 <ng-container *transloco="let t">
   <dx-toolbar>
     <dxi-item location="before" locateInMenu="never">
-      <div class="auction-logo" style="font-weight:bold; font-size: 30px; margin-left: 20px;" >carWink</div>
+      <div class="auction-logo" style="font-weight:bold; font-size: 30px; margin-left: 20px;">carWink</div>
     </dxi-item>
     <dxi-item location="after" locateInMenu="never">
       <dx-drop-down-button stylingMode="text" [items]="availableLangs" keyExpr="id" displayExpr="label"
@@ -11,15 +11,14 @@
   </dx-toolbar>
   <dx-toolbar class="auction" *ngIf='liveAuction'>
     <dxi-item>
-      <dx-button (onClick)="this.openAuction()" stylingMode="text" 
-      displayExpr="label"  [text]="t('action.auction')"> </dx-button>
+      <dx-button (onClick)="this.openAuction()" stylingMode="text" displayExpr="label" [text]="t('action.auction')">
+      </dx-button>
     </dxi-item>
   </dx-toolbar>
   <dx-toolbar class="bottom">
     <dxi-item widget="dxButton" [onClick]="emitSidebarButtonClick" [options]="{
       icon: 'menu',
-      stylingMode: 'text'}" 
-      location="before">
+      stylingMode: 'text'}" location="before">
     </dxi-item>
     <dxi-item location="after" locateInMenu="never">
       <dx-button *ngIf='!isUserAuthenticated' stylingMode="text" keyExpr="id" displayExpr="label"
@@ -28,12 +27,12 @@
       <dx-button *ngIf='!isUserAuthenticated' stylingMode="text" keyExpr="id" displayExpr="label"
         [text]="t('account.login')" [routerLink]="'/account/login'">
       </dx-button>
-      <dx-button *ngIf='isUserAuthenticated' stylingMode="text" keyExpr="id" displayExpr="label" 
-        text="{{datasource!.name}} {{datasource!.sureName}}"  [routerLink]="'/profile'">
+      <dx-button *ngIf='isUserAuthenticated' stylingMode="text" keyExpr="id" displayExpr="label" text="Account"
+        [routerLink]="'/profile'">
       </dx-button>
       <dx-button *ngIf='isUserAuthenticated' (onClick)="this.logout()" stylingMode="text" keyExpr="id"
-      displayExpr="label" [text]="t('account.logout')">
-    </dx-button>
+        displayExpr="label" [text]="t('account.logout')">
+      </dx-button>
     </dxi-item>
   </dx-toolbar>
 </ng-container>

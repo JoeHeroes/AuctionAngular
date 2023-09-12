@@ -8,7 +8,7 @@ export interface ListItem {
 }
 
 
-const navigationItems: ListItem[] = [
+const navigationItemsBuyer: ListItem[] = [
   { text: t('menu.home'), href: '/home', icon: 'fa fa-house' },
   { text: t('menu.vehicle'), href: '/vehicle', icon: 'fa fa-car' },
   { text: t('menu.vehicle-bids'), href: '/vehicle/bids', icon: 'fa-solid fa-caret-right' },
@@ -27,6 +27,19 @@ const navigationItems: ListItem[] = [
 
 ];
 
+
+const navigationItemsAdmin: ListItem[] = [
+  { text: t('menu.home'), href: '/home', icon: 'fa fa-house' },
+  { text: t('menu.vehicle'), href: '/vehicle', icon: 'fa fa-car' },
+  { text: t('menu.watch-list'), href: '/vehicle/watchlist', icon: 'fa fa-star' },
+  { text: t('menu.calendar'), href: '/calendar', icon: 'fa-solid fa-calendar-days' },
+  { text: t('menu.auction'), href: '/auction', icon: 'fa-solid fa-globe' },
+  { text: t('menu.location'), href: '/location', icon: 'fa fa-location-arrow' },
+  { text: t('menu.panel-vehicle'), href: '/vehicle/panel', icon: 'fa-solid fa-wrench' },
+  { text: t('menu.panel-auction'), href: '/auction/panel', icon: 'fa-solid fa-toolbox' },
+
+];
+
 @Component({
   selector: 'auction-nav',
   templateUrl: './nav-bar.component.html',
@@ -36,6 +49,6 @@ export class NavBarComponent {
   navigation: ListItem[];
 
   constructor() {
-    this.navigation = navigationItems
+    this.navigation = navigationItemsAdmin
   }
 }
