@@ -218,7 +218,7 @@ export class VehicleEditComponent implements OnInit {
     this.vehicleService.editVehicle(this.id, editVehicle)
       .subscribe({
         next: (res: any) => {
-          this.dataService.id = res;
+          this.dataService.userId = res;
           this.router.navigate([this.returnUrl]);
         },
         error: (err: HttpErrorResponse) => {

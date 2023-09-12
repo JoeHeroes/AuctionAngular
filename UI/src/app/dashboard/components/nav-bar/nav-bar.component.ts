@@ -1,5 +1,6 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { marker as t } from '@ngneat/transloco-keys-manager/marker';
+import { AuthenticationService } from "src/app/common/services/authentication.service";
 
 export interface ListItem {
   text: string;
@@ -8,7 +9,7 @@ export interface ListItem {
 }
 
 
-const navigationItemsBuyer: ListItem[] = [
+const navigationItemsClient: ListItem[] = [
   { text: t('menu.home'), href: '/home', icon: 'fa fa-house' },
   { text: t('menu.vehicle'), href: '/vehicle', icon: 'fa fa-car' },
   { text: t('menu.vehicle-bids'), href: '/vehicle/bids', icon: 'fa-solid fa-caret-right' },
@@ -45,10 +46,27 @@ const navigationItemsAdmin: ListItem[] = [
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.scss']
 })
-export class NavBarComponent {
-  navigation: ListItem[];
+export class NavBarComponent implements OnInit {
+  navigation: ListItem[] = [];
 
-  constructor() {
-    this.navigation = navigationItemsAdmin
+  constructor(private authenticationService: AuthenticationService) {
+  }
+
+  ngOnInit(): void {
+    this.authenticationService.loggedUserId().subscribe(res => {
+      this.authenticationService.getUserRole(res.userId).subscribe({
+        next: (res) => {
+          if(res.name=="Client"){
+            this.navigation = navigationItemsClient
+          }
+          if(res.name=="Admin"){
+            this.navigation = navigationItemsAdmin
+          }
+        },
+        error: () => {
+          this.navigation = [];
+        }
+      });
+    });
   }
 }

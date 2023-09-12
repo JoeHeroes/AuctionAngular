@@ -188,7 +188,6 @@ export class VehicleAddComponent implements OnInit {
     this.vehicleService.addVehicle(createVehicle)
       .subscribe({
         next: (res: any) => {
-          this.dataService.id = res;
           this.router.navigate([this.returnUrl]);
         },
         error: (err: HttpErrorResponse) => {

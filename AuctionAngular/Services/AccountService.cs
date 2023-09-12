@@ -45,7 +45,6 @@ namespace AuctionAngular.Services
                 EmialConfirmed = false
             };
 
-
             var user =  await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == dto.Email);
 
             if (user != null)
@@ -140,7 +139,7 @@ namespace AuctionAngular.Services
             return true;
         }
 
-        public async Task<ViewUserDto> GetUserInfoByIdAsync(int id)
+        public async Task<ViewUserDto> GetUserInfoAsync(int id)
         {
             var user = await _dbContext
                .Users
@@ -165,6 +164,31 @@ namespace AuctionAngular.Services
 
             return result;
         }
+
+        public async Task<ViewRoleDto> GetUserRoleAsync(int id)
+        {
+            var user = await _dbContext
+               .Users
+               .FirstOrDefaultAsync(u => u.Id == id);
+
+            if (user is null)
+            {
+                throw new NotFoundException("User not found.");
+            }
+
+
+            var role = await _dbContext
+               .Roles
+               .FirstOrDefaultAsync(u => u.Id == user.RoleId);
+
+            if (role is null)
+            {
+                throw new NotFoundException("Role not found.");
+            }
+
+            return new ViewRoleDto() { Name = role.Name };
+        }
+
 
         public async Task EditProfileAsync(EditUserDto dto)
         {

@@ -54,7 +54,6 @@ export class LotComponent implements OnInit {
   };
 
   constructor(private vehicleService: VehicleService,
-    private authService: AuthenticationService,
     private authenticationService: AuthenticationService,
     private notificationService: NotificationService,
     private activeRoute: ActivatedRoute,
@@ -62,7 +61,7 @@ export class LotComponent implements OnInit {
 
     this.isUserAuthenticated = false;
 
-    this.authService.loggedUserId().subscribe({
+    this.authenticationService.loggedUserId().subscribe({
       next: (res) => {
         this.isUserAuthenticated = true;
       },

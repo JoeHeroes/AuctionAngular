@@ -1,6 +1,5 @@
 ﻿using AuctionAngular.Dtos;
 using AuctionAngular.Interfaces;
-using AuctionAngular.Services;
 using Database.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -141,11 +140,28 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> GetUserInfo([FromRoute] int id)
         {
-            var result = await _accountService.GetUserInfoByIdAsync(id);
+            var result = await _accountService.GetUserInfoAsync(id);
 
             return Ok(result);
         }
 
+
+        /// <summary>
+        /// Get User Role
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Ok user information</returns>
+        /// <response code="200">Correct data</response>
+        /// <response code="400">Incorrect id</response>
+        [HttpGet("[action]/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> GetUserRole([FromRoute] int id)
+        {
+            var result = await _accountService.GetUserRoleAsync(id);
+
+            return Ok(result);
+        }
 
 
         /// <summary>
