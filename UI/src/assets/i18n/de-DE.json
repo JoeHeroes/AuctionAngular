@@ -161,7 +161,8 @@
     "invoiceAmount":"Rechnungsbetrag",
     "lastInvoicePaidDate":"Zahlungsdatum der Rechnung",
     "lotLeftLocationDate":"Datum des verlassenen Standorts",
-    "invoice":"Rechnung"
+    "invoice":"Rechnung",
+    "status":"Status"
   },
 
   "admin":{

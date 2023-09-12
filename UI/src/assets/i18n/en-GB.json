@@ -162,12 +162,13 @@
     "invoiceAmount":"Invoice Amount",
     "lastInvoicePaidDate":"Invoice Paid Date",
     "lotLeftLocationDate":"Left Location Date",
-    "invoice":"Invoice"
+    "invoice":"Invoice",
+    "status":"Status"
   },
 
   "admin":{
-    "panel-vehicles":"Vehicles management panel",
-    "panel-auctions":"Auctions management panel",
+    "panel-vehicles":"Vehicles Management Panel",
+    "panel-auctions":"Auctions Management Panel",
     "confirm": "Confirm sell",
     "invoice": "Generate Invoice",
     "edit": "Edit",

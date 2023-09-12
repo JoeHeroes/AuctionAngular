@@ -162,7 +162,8 @@
       "invoiceAmount":"Kwota faktury",
       "lastInvoicePaidDate":"Data zapłaty",
       "lotLeftLocationDate":"Data opuszczenia",
-      "invoice":"Faktura"
+      "invoice":"Faktura",
+      "status":"Status"
     },
 
     "admin":{

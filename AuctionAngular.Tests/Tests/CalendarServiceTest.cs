@@ -43,7 +43,7 @@ namespace AuctionAngular.Tests
 
             //Act
 
-            var events = await calendarService.GetEventsAsync();
+            var events = await calendarService.GetEventsAsync(1);
 
             //Assert
 
