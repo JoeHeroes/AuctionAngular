@@ -33,10 +33,6 @@ export class LoginComponent implements OnInit {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
-  get email() { return this.loginForm.get('email'); }
-
-  get password() { return this.loginForm.get('password'); }
-
   loginUser = (loginFormValue: any) => {
     const login = { ...loginFormValue };
 
@@ -49,7 +45,6 @@ export class LoginComponent implements OnInit {
       this.showError = true;
     }
     else {
-
       const userForAuth: UserAuthenticationDto = {
         email: login.email,
         password: login.password

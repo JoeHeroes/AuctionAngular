@@ -65,16 +65,21 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {
     this.router.events.subscribe((value: any) => {
       if (value.url) {
-        this.authenticationService.loggedUserId().subscribe(res => {
-          this.authenticationService.getUserRole(res.userId).subscribe( res => { 
-            if(res.name=="Client"){
-              this.navigation = navigationItemsClient;
-            }
-            if(res.name=="Admin"){
-              this.navigation = navigationItemsAdmin;
-            }
-          });
-        });
+        this.authenticationService.loggedUserId().subscribe({
+          next: (res: any) => {
+            this.authenticationService.getUserRole(res.userId).subscribe( res => { 
+              if(res.name=="Client"){
+                this.navigation = navigationItemsClient;
+              }
+              if(res.name=="Admin"){
+                this.navigation = navigationItemsAdmin;
+              }
+            });
+          },
+          error: (err: any) => {
+            this.navigation = navigationItemsDefault;
+          }
+        })
       }
     });
   }

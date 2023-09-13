@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LangDefinition, TranslocoService } from '@ngneat/transloco';
 import { AuctionService } from 'src/app/common/services/auction.service';
 import { AuthenticationService } from 'src/app/common/services/authentication.service';
@@ -13,6 +13,8 @@ import { TokenService } from 'src/app/common/services/token.service';
 })
 export class MainComponent implements OnInit {
   @Output() sidebarButtonClick = new EventEmitter<void>();
+
+  returnUrl!: string;
   isUserAuthenticated: boolean = false;
   liveAuction: boolean = false;
 
@@ -20,7 +22,8 @@ export class MainComponent implements OnInit {
     private auctionService: AuctionService,
     private tokenService: TokenService,
     private notificationService: NotificationService,
-    private router: Router, 
+    private router: Router,
+    private route: ActivatedRoute,
     private transloco: TranslocoService) {
   }
 
@@ -34,6 +37,8 @@ export class MainComponent implements OnInit {
           });
       }
     });
+
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
 
     this.auctionService.liveAuction().subscribe(res => {
       this.liveAuction = res;
@@ -56,7 +61,7 @@ export class MainComponent implements OnInit {
     this.isUserAuthenticated = false;
     this.notificationService.showSuccess(this.transloco.translate('notification.loggedOut'), "Success");
     this.tokenService.clear();
-    this.router.navigate(["/"]);
+    this.router.navigate([this.returnUrl]);
   }
 
   public selectLang(lang: string) {
