@@ -9,6 +9,7 @@ export interface ListItem {
   icon: string;
 }
 
+
 const navigationItemsClient: ListItem[] = [
   { text: t('menu.home'), href: '/home', icon: 'fa fa-house' },
   { text: t('menu.vehicle'), href: '/vehicle', icon: 'fa fa-car' },
@@ -55,15 +56,13 @@ const navigationItemsDefault: ListItem[] = [
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit {
-  navigation: ListItem[] = [];
+  navigation: ListItem[];
 
   constructor(private authenticationService: AuthenticationService,
     private router: Router) {
+    this.navigation = navigationItemsDefault;
   }
-
   ngOnInit(): void {
-    this.navigation == navigationItemsDefault;
-
     this.router.events.subscribe((value: any) => {
       if (value.url) {
         this.authenticationService.loggedUserId().subscribe(res => {
