@@ -20,7 +20,7 @@ export class MainComponent implements OnInit {
     private auctionService: AuctionService,
     private tokenService: TokenService,
     private notificationService: NotificationService,
-    private router: Router,
+    private router: Router, 
     private transloco: TranslocoService) {
   }
 
@@ -34,7 +34,6 @@ export class MainComponent implements OnInit {
           });
       }
     });
-
 
     this.auctionService.liveAuction().subscribe(res => {
       this.liveAuction = res;
