@@ -16,19 +16,57 @@ export class VerificationVehiclesComponent {
 
   constructor(private vehicleService: VehicleService,
     private router: Router) {
-    this.vehicleService.getVehiclesAuctionEnd().subscribe(res => {
+    this.vehicleService.getVehiclesWaiting().subscribe(res => {
       this.datasource = res;
     });
+  }
+
+  setClick(vehicleId: any)  {
+    this.router.navigate(['/vehicle/set', vehicleId].filter(v => !!v));
+  }
+
+  detailClick(vehicleId: any)  {
+    this.router.navigate(['/vehicle/detail', vehicleId].filter(v => !!v));
+  }
+
+  cancelClick(vehicleId: any)  {
+    this.vehicleService.deleteVehicle(vehicleId).subscribe(res => {
+      this.vehicleService.getVehiclesWaiting().subscribe(res => {
+        this.datasource = res;
+      });
+    })
+  }
+
+  acceptClick(vehicleId: any)  {
+    this.vehicleService.confirmVehicle(vehicleId).subscribe(res => {
+      this.vehicleService.getVehiclesWaiting().subscribe(res => {
+        this.datasource = res;
+      });
+    })
+  }
+
+
+
+
+
+
+
+
+
+
+  sellClick(vehicleId: any)  {
+    
   }
 
   editClick(vehicleId: any)  {
     this.router.navigate(['/vehicle/edit', vehicleId].filter(v => !!v));
   }
 
-  confirmClick(vehicleId: any)  {
-
-    this.vehicleService.getVehicle(vehicleId).subscribe(res => {
-
-    });
+  deleteClick(vehicleId: any)  {
+    this.vehicleService.deleteVehicle(vehicleId).subscribe(res => {
+      this.vehicleService.getVehiclesAuctionEnd().subscribe(res => {
+        this.datasource = res;
+      });
+    })
   }
 }

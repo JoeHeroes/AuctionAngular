@@ -9,7 +9,7 @@ namespace AuctionAngular.Interfaces
     {
         Task<int> CreateVehicleAsync(CreateVehicleDto dto);
         Task DeleteVehicleAsync(int id);
-        Task<IEnumerable<ViewVehiclesDto>> GetVehiclesAsync();
+        Task<IEnumerable<ViewVehiclesDto>> GetVehiclesAsync(bool status);
         Task<IEnumerable<ViewAdminVehiclesDto>> GetVehicleAuctionEndAsync();
         Task<IEnumerable<ViewVehiclesDto>> GetAllBidedAsync(int id);
         Task<IEnumerable<ViewVehiclesDto>> GetAllWonAsync(int id);
@@ -23,5 +23,7 @@ namespace AuctionAngular.Interfaces
         Task<IEnumerable<ViewVehiclesDto>> GetAllWatchAsync(int id);
         Task<List<string>> AddPictureAsync(int id, IFormFileCollection files);
         Task SoldVehicleAsync(int id);
+        Task ConfirmVehicleAsync(int id);
+        
     }
 }

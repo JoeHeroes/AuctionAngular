@@ -1,0 +1,17 @@
+<ng-container *transloco="let t">
+    <form [formGroup]="setAuctionForm" (ngSubmit)="setAuctionForVehicle(setAuctionForm.value)">
+        <h3>{{t('action.setAuctionNumber')}}</h3>
+        <br/>
+        <div class="dx-field">
+            <div class="dx-field-label">{{t('vehicle.auction')}}</div>
+            <div class="dx-field-value">
+                <select id="auction" formControlName="auction" class="form-control">
+                    <option *ngFor="let auction of auctions" [value]="auction.id">{{ auction.id }} {{ auction.city }}
+                    </option>
+                </select>
+            </div>
+        </div><br/>
+        <dx-button [text]="t('action.back')" type="normal" [routerLink]="['/vehicle/verification']"></dx-button>
+        <dx-button class="button" [text]="t('action.save')" type="success" [useSubmitBehavior]="true"></dx-button>
+    </form>
+</ng-container>

@@ -48,6 +48,7 @@ import { AuctionEditComponent } from './pages/auction-edit/auction-edit.componen
 import { EventEditComponent } from './pages/event-edit/event-edit.component';
 import { EventAddComponent } from './pages/event-add/event-add.component';
 import { VerificationVehiclesComponent } from './pages/verification-vehicles/verification-vehicles.component';
+import { VehicleSetComponent } from './pages/vehicle-set/vehicle-set.component';
 
 
 
@@ -89,7 +90,8 @@ import { VerificationVehiclesComponent } from './pages/verification-vehicles/ver
     AuctionEditComponent,
     EventEditComponent,
     EventAddComponent,
-    VerificationVehiclesComponent
+    VerificationVehiclesComponent,
+    VehicleSetComponent
   ],
   exports: [],
   imports: [

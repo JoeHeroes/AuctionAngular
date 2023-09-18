@@ -20,7 +20,8 @@
     "saveProfile": "Profil sichern",
     "auction":"Die Auktion läuft jetzt",
     "calendarManage": "Kalenderverwaltung",
-    "download":"Herunterladen"
+    "download":"Herunterladen",
+    "setAuctionNumber": "Auktionsnummer festlegen"
   },
   "menu": {
     "home": "Heim",
@@ -37,7 +38,7 @@
     "location": "Standort",
     "services": "Dienstleistungen",
     "support": "Unterstützung",
-    "verification-vehicle": "Fahrzeugüberprüfung",
+    "verification-vehicle": "Überprüfung",
     "panel-vehicle":"Fahrzeugtafel",
     "panel-auction":"Auktionspanel"
   },
@@ -145,16 +146,6 @@
     "text1":"carWink hat über  ",
     "text2":" Fahrzeuge im Angebot"
   },
-  "support":{
-    "readMore":"Mehr lesen",
-    "learnMore":"Lern mehr",
-    "contactUS":"Kontaktiere uns",
-    "contactUSDescription":"Haben Sie Fragen oder benötigen Sie Hilfe? carWink steht Ihnen gerne zur Verfügung. Kontaktieren Sie uns per E-Mail oder Telefon.",
-    "FAQ":"FAQ",
-    "FAQDescription":"Haben Sie Fragen oder fragen Sie sich, wie es funktioniert? Erfahren Sie mehr auf unserer FAQ-Seite.",
-    "howToBuy":"Wie kauft man",
-    "howToBuyDescription":"Sie haben keine Ahnung, wie der gesamte Kaufprozess aussieht. Erfahren Sie mehr über Kaufdetails und mehr."
-  },
   "payment":{
     "saleDate":"Verkaufsdatum",
     "lot":"Viel",
@@ -166,8 +157,8 @@
     "invoice":"Rechnung",
     "status":"Status"
   },
-
   "admin":{
+    "panel-verification":"Fahrzeugverifizierungsstelle",
     "panel-vehicles":"Fahrzeugverwaltungspanel",
     "panel-auctions":"Auktionsverwaltungspanel",
     "confirm": "Bestätigen Sie den Verkauf",
@@ -176,6 +167,10 @@
     "delete": "Löschen",
     "sell": "Verkaufen",
     "sold": "Verkauft",
-    "back": "Zurück"
+    "back": "Zurück",
+    "set":"Satz",
+    "detail": "Detail",
+    "cancel": "Stornieren",
+    "accept": "Akzeptieren"
   }
 }

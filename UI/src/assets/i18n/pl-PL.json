@@ -20,7 +20,8 @@
     "saveProfile": "Zapisz Profil",
     "auction":"Aktualnie trwa aukcja",
     "calendarManage": "Zarządzanie kalendarzem",
-    "download":"Pobierz"
+    "download":"Pobierz",
+    "setAuctionNumber": "Ustaw number aukcji"
   },
     "menu": {
       "home": "Home",
@@ -37,7 +38,7 @@
       "location": "Lokacja",
       "services": "Serwis",
       "support": "Wsparcie",
-      "verification-vehicle": "Zatwierdzenie pojazdu",
+      "verification-vehicle": "Zatwierdzenie",
       "panel-vehicle":"Panel pojazdów",
       "panel-auction":"Panel aukcji"
     },
@@ -145,17 +146,6 @@
       "text1":"carWink ma ponad ",
       "text2":" pojazdy na sprzedarz"
     },
-    "support":{
-      "readMore":"Czytaj wiecej",
-      "learnMore":"Naucz wiecej",
-      "contactUS":"Kontakt",
-      "contactUSDescription":"Masz pytania lub potrzebujesz pomocy? carWink jest do Twojej dyspozycji. Skontaktuj się z nami przez e-mail lub telefon.",
-      "FAQ":"FAQ",
-      "FAQDescription":"Masz pytania lub zastanawiasz się, jak to działa? Dowiedz się więcej na naszej stronie FAQ.",
-      "howToBuy":"Jak kupić",
-      "howToBuyDescription":"Nie masz pojęcia, jak wygląda cały proces zakupu. Dowiedz się więcej o szczegółach zakupu i nie tylko."
-    },
-
     "payment":{
       "saleDate":"Data Sprzedarzy",
       "lot":"Numer",
@@ -167,8 +157,8 @@
       "invoice":"Faktura",
       "status":"Status"
     },
-
     "admin":{
+      "panel-verification":"Panel zatwierdzania aut",
       "panel-vehicles":"Panel zarządzania autami",
       "panel-auctions":"Panel zarządzania aukcjami",
       "confirm": "Potwierdz sprzedarz",
@@ -177,7 +167,11 @@
       "delete": "Usuń",
       "sell": "Potwierdzam",
       "sold": "Sprzedane",
-      "back": "Cofnij"
+      "back": "Cofnij",
+      "set":"Ustaw Aukcje",
+      "detail": "Detale",
+      "cancel": "Anuluj",
+      "accept": "Akceptuj"
     }
   }
   

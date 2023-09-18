@@ -21,7 +21,14 @@ export class VehicleService {
 
     return this.http.get<any>(url_);
   }
+  
 
+  public getVehiclesWaiting(): Observable<Vehicle[]> {
+
+    let url_ = this.baseUrl + "/Vehicle/GetAllVehicleWaiting";
+
+    return this.http.get<any>(url_);
+  }
 
   public getVehiclesAuctionEnd(): Observable<Vehicle[]> {
 
@@ -62,6 +69,15 @@ export class VehicleService {
   public sellVehicle(id: number): Observable<any> {
 
     let url_ = this.baseUrl + "/Vehicle/SoldVehicle/" + id;
+
+    return this.http.get<any>(url_);
+  }
+
+
+  public confirmVehicle(id: number): Observable<any> {
+
+    alert(id);
+    let url_ = this.baseUrl + "/Vehicle/ConfirmVehicle/" + id;
 
     return this.http.get<any>(url_);
   }

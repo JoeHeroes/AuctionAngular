@@ -3,14 +3,7 @@
         <br />
         <dx-toolbar>
             <dxi-item location="before">
-                <h1 style="font-weight: bold">{{t('admin.panel-vehicles')}}</h1>
-            </dxi-item>
-            <dxi-item location="after" style="float: right; margin-right: 20px;">
-                <div *dxTemplate>
-                    <a [routerLink]="['/vehicle/add']">
-                        <dx-button type="default" [text]="t('action.addVehicle')"></dx-button>
-                    </a>
-                </div>
+                <h1 style="font-weight: bold">{{t('admin.panel-verification')}}</h1>
             </dxi-item>
         </dx-toolbar>
         <br />
@@ -36,36 +29,29 @@
                     [allowFiltering]="false" [allowSorting]="true"></dxi-column>
                 <dxi-column dataField="registrationYear" [caption]="t('vehicle.registrationYear')"
                     [allowFiltering]="false" [allowSorting]="true"></dxi-column>
-                <dxi-column dataField="dateTime" [caption]="t('vehicle.dateTime')" dataType="date"
-                    [allowFiltering]="false" [width]="120" [allowSorting]="true"></dxi-column>
-                <dxi-column dataField="currentBid" [caption]="t('vehicle.currentBid')" [allowFiltering]="false"
-                    [allowSorting]="false"></dxi-column>
 
-                <dxi-column type="buttons" dataField="sell" [caption]="t('admin.confirm')"
-                    cellTemplate="cellTemplateSell">
+                <dxi-column type="buttons"  [width]="150"
+                    cellTemplate="cellTemplateSet">
                 </dxi-column>
 
-                <dxi-column type="buttons" dataField="invoice" [caption]="t('admin.invoice')"
-                    cellTemplate="cellTemplateInvoice">
-                </dxi-column>
-
-                <dxi-column type="buttons" dataField="Edit" [caption]="t('admin.edit')"
-                    cellTemplate="cellTemplateEdit">
+                <dxi-column type="buttons"
+                    cellTemplate="cellTemplateCancel">
                 </dxi-column>
                 
-                <dxi-column type="buttons" dataField="Delete" [caption]="t('admin.delete')"
-                    cellTemplate="cellTemplateDelete">
+                <dxi-column type="buttons"
+                    cellTemplate="cellTemplateAccept">
                 </dxi-column>
 
-                <dxi-column dataField="sold" [caption]="t('admin.sold')" [allowFiltering]="false"
-                [allowSorting]="true"></dxi-column>
-
-                <div *dxTemplate="let data of 'cellTemplateEdit'">
-                    <span style="cursor: pointer; font-weight: bold; color: gray" (click)="editClick(data.data.lotNumber)">{{t('admin.edit')}}</span>
+                <div *dxTemplate="let data of 'cellTemplateSet'">
+                    <span style="cursor: pointer; font-weight: bold; color:lightcoral" (click)="setClick(data.data.lotNumber)">{{t('admin.set')}}</span>
                 </div>
 
-                <div *dxTemplate="let data of 'cellTemplateDelete'">
-                    <span style="cursor: pointer; font-weight: bold; color:orangered" (click)="confirmClick(data.data.lotNumber)">{{t('admin.delete')}}</span>
+                <div *dxTemplate="let data of 'cellTemplateCancel'">
+                    <span style="cursor: pointer; font-weight: bold; color:orangered" (click)="cancelClick(data.data.lotNumber)">{{t('admin.cancel')}}</span>
+                </div>
+
+                <div *dxTemplate="let data of 'cellTemplateAccept'">
+                    <span style="cursor: pointer; font-weight: bold; color:green" (click)="acceptClick(data.data.lotNumber)">{{t('admin.accept')}}</span>
                 </div>
 
                 <div *dxTemplate="let d of 'discountCellTemplate'">

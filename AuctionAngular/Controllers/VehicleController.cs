@@ -2,6 +2,7 @@
 using AuctionAngular.Dtos.Vehicle;
 using AuctionAngular.Dtos.Watch;
 using AuctionAngular.Interfaces;
+using Database.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AuctionAngular.Controllers
@@ -30,7 +31,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<ViewVehiclesDto>>> GetAllVehicle()
         {
-            var result = await _vehicleService.GetVehiclesAsync();
+            var result = await _vehicleService.GetVehiclesAsync(true);
 
             if (result is null)
             {
@@ -40,6 +41,26 @@ namespace AuctionAngular.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Get Waiting Vehicle List 
+        /// </summary>
+        /// <returns>Ok with vehicle list</returns>
+        /// <response code="200">Correct data</response>
+        /// <response code="400">Incorrect data</response>
+        [HttpGet("[action]")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<IEnumerable<ViewVehiclesDto>>> GetAllVehicleWaiting()
+        {
+            var result = await _vehicleService.GetVehiclesAsync(false);
+
+            if (result is null)
+            {
+                return NotFound();
+            }
+
+            return Ok(result);
+        }
 
         /// <summary>
         /// Get Vehicle List which auction end 
@@ -61,10 +82,6 @@ namespace AuctionAngular.Controllers
 
             return Ok(result);
         }
-
-
-        
-
 
 
         /// <summary>
@@ -322,6 +339,23 @@ namespace AuctionAngular.Controllers
 
             var response = new { Message = "Upload successfully!" };
             return Ok(response);
+        }
+
+
+        /// <summary>
+        /// Confirm Vehicle 
+        /// </summary>
+        /// <returns>Ok</returns>
+        /// <response code="200">Correct data</response>
+        /// <response code="400">Incorrect data</response>
+        [HttpGet("[action]/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<IEnumerable<ViewVehiclesDto>>> ConfirmVehicle([FromRoute] int id)
+        {
+            await _vehicleService.ConfirmVehicleAsync(id);
+
+            return Ok();
         }
 
 

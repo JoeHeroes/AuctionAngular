@@ -37,6 +37,7 @@ import { AuctionEditComponent } from "./pages/auction-edit/auction-edit.componen
 import { EventAddComponent } from "./pages/event-add/event-add.component";
 import { EventEditComponent } from "./pages/event-edit/event-edit.component";
 import { VerificationVehiclesComponent } from "./pages/verification-vehicles/verification-vehicles.component";
+import { VehicleSetComponent } from "./pages/vehicle-set/vehicle-set.component";
 
 const routes: Routes = [
   {
@@ -80,13 +81,15 @@ const routes: Routes = [
           { path: 'watchlist', pathMatch: 'full', component: WatchListComponent, data: { title: 'Watch List' }, canActivate: [AuthGuard] },
           { path: 'panel', pathMatch: 'full', component: AdminPanelVehiclesComponent, data: { title: 'Vehicles Panel' } },
           { path: 'verification', pathMatch: 'full', component: VerificationVehiclesComponent, data: { title: 'Verification' } },
+          { path: 'set', children: [{ path: ':id', pathMatch: 'full', component: VehicleSetComponent, data: { title: 'Set Auction Vehicle' }},],},
         ],
       },
       {
         path: 'auction',
         pathMatch: 'full',
         component: AuctionComponent,
-        data: { title: 'Auction' }
+        data: { title: 'Auction' },
+        canActivate: [AuthGuard]
       },
       {
         path: 'auction',
