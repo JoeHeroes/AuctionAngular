@@ -1,4 +1,4 @@
-﻿namespace AuctionAngular.Dtos
+﻿namespace AuctionAngular.Dtos.Auction
 {
     public class CreateAuctionDto
     {

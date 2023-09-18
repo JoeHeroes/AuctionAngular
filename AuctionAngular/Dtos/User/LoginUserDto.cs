@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AuctionAngular.Dtos
+namespace AuctionAngular.Dtos.User
 {
     public class LoginUserDto
     {

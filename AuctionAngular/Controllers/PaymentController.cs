@@ -1,4 +1,4 @@
-﻿using AuctionAngular.Dtos;
+﻿using AuctionAngular.Dtos.Payment;
 using AuctionAngular.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 

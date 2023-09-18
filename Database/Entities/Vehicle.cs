@@ -40,5 +40,6 @@ namespace Database.Entities
         public int WinnerId { get; set; }
         public int AuctionId { get; set; }
         public bool Sold { get; set; }
+        public bool Confirm { get; set; }
     }
 }

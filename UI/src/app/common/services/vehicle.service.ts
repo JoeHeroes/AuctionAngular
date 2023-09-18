@@ -157,6 +157,7 @@ export interface CreateVehicleDto {
   VIN: string;
   saleTerm: string;
   highlights: string;
+  confirm: boolean;
 }
 
 

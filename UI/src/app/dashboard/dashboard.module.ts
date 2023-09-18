@@ -47,6 +47,7 @@ import { AuctionAddComponent } from './pages/auction-add/auction-add.component';
 import { AuctionEditComponent } from './pages/auction-edit/auction-edit.component';
 import { EventEditComponent } from './pages/event-edit/event-edit.component';
 import { EventAddComponent } from './pages/event-add/event-add.component';
+import { VerificationVehiclesComponent } from './pages/verification-vehicles/verification-vehicles.component';
 
 
 
@@ -87,7 +88,8 @@ import { EventAddComponent } from './pages/event-add/event-add.component';
     AuctionAddComponent,
     AuctionEditComponent,
     EventEditComponent,
-    EventAddComponent
+    EventAddComponent,
+    VerificationVehiclesComponent
   ],
   exports: [],
   imports: [

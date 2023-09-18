@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace AuctionAngular.Dtos
+namespace AuctionAngular.Dtos.User
 {
     public class RegisterUserDto
     {
@@ -17,7 +17,7 @@ namespace AuctionAngular.Dtos
         public string Name { get; set; }
         [Required]
         [DisplayName("Sure Name")]
-        public string SureName { get; set; } 
+        public string SureName { get; set; }
         [Required]
         public string Nationality { get; set; }
         [Required]

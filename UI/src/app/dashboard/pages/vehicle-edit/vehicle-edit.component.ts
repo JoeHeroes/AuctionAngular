@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { AuctionService } from 'src/app/common/services/auction.service';
 import { DataService } from 'src/app/common/services/data.service';
 import { EditVehicleDto, VehicleService } from 'src/app/common/services/vehicle.service';
 
@@ -16,6 +17,8 @@ export class VehicleEditComponent implements OnInit {
   urlSubscription?: Subscription;
   returnUrl: string = "/panel";
   id: any;
+  auctions: any;
+
 
   editForm !: FormGroup;
   errorMessage: string = '';
@@ -55,12 +58,15 @@ export class VehicleEditComponent implements OnInit {
 
 
   constructor(private vehicleService: VehicleService,
+    private auctionService: AuctionService,
     private router: Router,
     private activeRoute: ActivatedRoute,
     private dataService: DataService) {
+      this.auctionService.getAuctionList().subscribe(res => {
+        this.auctions = res;
+      });
   }
-
-
+ 
   private loadData(url: UrlSegment[]) {
     this.id = url.map(x => x.path).join('/');
   }

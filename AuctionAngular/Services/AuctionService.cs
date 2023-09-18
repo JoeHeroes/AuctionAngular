@@ -1,4 +1,5 @@
-﻿using AuctionAngular.Dtos;
+﻿using AuctionAngular.Dtos.Auction;
+using AuctionAngular.Dtos.Vehicle;
 using AuctionAngular.Interfaces;
 using Database;
 using Database.Entities;

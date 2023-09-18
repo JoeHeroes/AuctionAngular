@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace AuctionAngular.Dtos
+namespace AuctionAngular.Dtos.User
 {
     public class ViewUserDto
     {
@@ -10,7 +10,7 @@ namespace AuctionAngular.Dtos
         public string SureName { get; set; }
         public DateTime? DateOfBirth { get; set; }
         public string Nationality { get; set; }
-        public string Phone{ get; set; }
+        public string Phone { get; set; }
 
         public string ProfilePicture { get; set; }
     }

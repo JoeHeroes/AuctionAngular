@@ -200,7 +200,8 @@ namespace Database.Migrations
                     CurrentBid = table.Column<int>(type: "int", nullable: false),
                     WinnerId = table.Column<int>(type: "int", nullable: false),
                     AuctionId = table.Column<int>(type: "int", nullable: false),
-                    Sold = table.Column<bool>(type: "bit", nullable: false)
+                    Sold = table.Column<bool>(type: "bit", nullable: false),
+                    Confirm = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {

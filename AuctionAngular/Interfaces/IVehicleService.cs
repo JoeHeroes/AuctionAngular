@@ -1,4 +1,6 @@
-﻿using AuctionAngular.Dtos;
+﻿using AuctionAngular.Dtos.Bid;
+using AuctionAngular.Dtos.Vehicle;
+using AuctionAngular.Dtos.Watch;
 using Database.Entities;
 
 namespace AuctionAngular.Interfaces
@@ -8,7 +10,7 @@ namespace AuctionAngular.Interfaces
         Task<int> CreateVehicleAsync(CreateVehicleDto dto);
         Task DeleteVehicleAsync(int id);
         Task<IEnumerable<ViewVehiclesDto>> GetVehiclesAsync();
-        Task<IEnumerable<AdminVehiclesDto>> GetVehicleAuctionEndAsync();
+        Task<IEnumerable<ViewAdminVehiclesDto>> GetVehicleAuctionEndAsync();
         Task<IEnumerable<ViewVehiclesDto>> GetAllBidedAsync(int id);
         Task<IEnumerable<ViewVehiclesDto>> GetAllWonAsync(int id);
         Task<IEnumerable<ViewVehiclesDto>> GetAllLostAsync(int id);

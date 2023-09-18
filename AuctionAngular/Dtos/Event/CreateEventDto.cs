@@ -1,12 +1,12 @@
-﻿namespace AuctionAngular.Dtos
+﻿namespace AuctionAngular.Dtos.Event
 {
-    public class EditEventDto
+    public class CreateEventDto
     {
-        public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public DateTime Date { get; set; }
         public string Color { get; set; }
         public bool AllDay { get; set; }
+        public int Owner { get; set; }
     }
 }

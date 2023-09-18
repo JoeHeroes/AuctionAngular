@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace AuctionAngular.Dtos
+namespace AuctionAngular.Dtos.Vehicle
 {
     public class EditVehicleDto
     {

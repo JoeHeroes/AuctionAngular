@@ -25,6 +25,7 @@
   "menu": {
     "home": "Heim",
     "vehicle": "Fahrzeug",
+    "vehicle-add":"Fahrzeugzusatz",
     "vehicle-bids": "Gebote",
     "vehicle-won": "Gewonnen",
     "vehicle-lost": "Verloren",
@@ -36,6 +37,7 @@
     "location": "Standort",
     "services": "Dienstleistungen",
     "support": "Unterstützung",
+    "verification-vehicle": "Fahrzeugüberprüfung",
     "panel-vehicle":"Fahrzeugtafel",
     "panel-auction":"Auktionspanel"
   },

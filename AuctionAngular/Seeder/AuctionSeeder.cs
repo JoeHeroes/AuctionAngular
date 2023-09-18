@@ -170,7 +170,11 @@ namespace CarAuction.Seeder
             {
                 new Role()
                 {
-                    Name = "Client"
+                    Name = "Buyer"
+                },
+                new Role()
+                {
+                    Name = "Seller"
                 },
                 new Role()
                 {

@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using AuctionAngular.Interfaces;
-using AuctionAngular.Dtos;
 using Database;
 using Database.Entities;
+using AuctionAngular.Dtos.Location;
 
 namespace AuctionAngular.Services
 {

@@ -2,8 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DataService } from 'src/app/common/services/data.service';
-import { LocationService } from 'src/app/common/services/location.service';
+import { AuctionService } from 'src/app/common/services/auction.service';
 import { CreateVehicleDto, VehicleService } from 'src/app/common/services/vehicle.service';
 
 
@@ -15,7 +14,9 @@ import { CreateVehicleDto, VehicleService } from 'src/app/common/services/vehicl
 export class VehicleAddComponent implements OnInit {
   private returnUrl!: string;
 
-  vehicleForm !: FormGroup;
+  auctions: any;
+
+  addForm !: FormGroup;
   errorMessage: string = '';
   showError: boolean = false;
   enumBodyCar = Object.values(BodyCar);
@@ -30,19 +31,18 @@ export class VehicleAddComponent implements OnInit {
   locations: any;
 
   constructor(private vehicleService: VehicleService,
-    private locationService: LocationService,
+    private auctionService: AuctionService,
     private router: Router,
-    private route: ActivatedRoute,
-    private dataService: DataService) {
+    private route: ActivatedRoute) {
 
-    this.locationService.getLocations().subscribe(res => {
-      this.locations = res;
+    this.auctionService.getAuctionList().subscribe(res => {
+      this.auctions = res;
     });
 
   }
 
   ngOnInit(): void {
-    this.vehicleForm = new FormGroup({
+    this.addForm = new FormGroup({
       producer: new FormControl("", [Validators.required]),
       modelSpecifer: new FormControl("", [Validators.required]),
       modelGeneration: new FormControl("", [Validators.required]),
@@ -94,6 +94,7 @@ export class VehicleAddComponent implements OnInit {
       VIN: vehicle.VIN,
       saleTerm: vehicle.saleTerm,
       highlights: vehicle.highlights,
+      confirm: false
     }
 
     if (vehicle.producer == "") {

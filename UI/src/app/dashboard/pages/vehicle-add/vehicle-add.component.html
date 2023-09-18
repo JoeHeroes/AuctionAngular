@@ -6,7 +6,7 @@
           <h1 style="font-weight: bold">{{t('action.addVehicle')}}</h1>
       </dxi-item>
   </dx-toolbar>
-    <form [formGroup]="vehicleForm" (ngSubmit)="addVehicle(vehicleForm.value)">
+    <form [formGroup]="addForm" (ngSubmit)="addVehicle(addForm.value)">
       <div class="row">
         <div class="column">
           <div class="dx-field">
@@ -49,7 +49,9 @@
           <div class="dx-field">
             <div class="dx-field-label">{{t('vehicle.auction')}}</div>
             <div class="dx-field-value">
-              <input type="number" id="auction" formControlName="auction" class="form-control" />
+              <select id="auction" formControlName="auction" class="form-control">
+                <option *ngFor="let auction of auctions" [value]="auction.id">{{ auction.id }} {{ auction.city }}</option>
+              </select>
             </div>
           </div>
       
@@ -142,19 +144,13 @@
           <div class="dx-field">
             <div class="dx-field-label">{{t('vehicle.serviceManual')}}</div>
             <div class="dx-field-value">
-              <select id="serviceManual" formControlName="serviceManual" class="form-control" >
-                <option value="true">True</option>
-                <option value="false">False</option>
-              </select>
+              <input type="checkbox" id="serviceManual" formControlName="serviceManual" class="form-control" >
             </div>
           </div>
           <div class="dx-field">
             <div class="dx-field-label">{{t('vehicle.secondTireSet')}}</div>
             <div class="dx-field-value">
-              <select id="secondTireSet" formControlName="secondTireSet" class="form-control">
-                <option value="true">True</option>
-                <option  value="false">False</option>
-              </select>
+              <input type="checkbox" id="secondTireSet" formControlName="secondTireSet" class="form-control">
             </div>
           </div>
           <div class="dx-field">
