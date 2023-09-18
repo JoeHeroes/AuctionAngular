@@ -1,4 +1,4 @@
-﻿using AuctionAngular.Dtos;
+﻿using AuctionAngular.Dtos.Location;
 
 namespace AuctionAngular.Interfaces
 {

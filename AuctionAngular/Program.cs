@@ -10,7 +10,6 @@ using FluentValidation;
 using NLog;
 using Microsoft.EntityFrameworkCore;
 using AuctionAngular.Interfaces;
-using AuctionAngular.Dtos;
 using Database.Entities;
 using Database.Entities.Validators;
 using Database;
@@ -19,6 +18,7 @@ using Quartz.Impl;
 using Quartz.Spi;
 using Quartz;
 using AuctionAngular.Background;
+using AuctionAngular.Dtos.User;
 
 var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
 logger.Debug("init main");

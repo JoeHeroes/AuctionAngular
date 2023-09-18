@@ -1,4 +1,4 @@
-﻿namespace AuctionAngular.Dtos
+﻿namespace AuctionAngular.Dtos.Role
 {
     public class ViewRoleDto
     {

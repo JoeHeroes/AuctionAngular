@@ -1,4 +1,6 @@
-﻿using AuctionAngular.Dtos;
+﻿using AuctionAngular.Dtos.Bid;
+using AuctionAngular.Dtos.Vehicle;
+using AuctionAngular.Dtos.Watch;
 using AuctionAngular.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -48,7 +50,7 @@ namespace AuctionAngular.Controllers
         [HttpGet("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<IEnumerable<AdminVehiclesDto>>> GetAllVehicleAuctionEnd()
+        public async Task<ActionResult<IEnumerable<ViewAdminVehiclesDto>>> GetAllVehicleAuctionEnd()
         {
             var result = await _vehicleService.GetVehicleAuctionEndAsync();
 

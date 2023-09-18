@@ -25,6 +25,7 @@
   "menu": {
     "home": "Home",
     "vehicle": "Vehicles",
+    "vehicle-add":"Add Vehicle",
     "vehicle-bids": "Bids",
     "vehicle-won": "Won",
     "vehicle-lost": "Lost",
@@ -36,6 +37,7 @@
     "location": "Location",
     "services": "Services",
     "support": "Support",
+    "verification-vehicle": "Vehicle Verification",
     "panel-vehicle":"Vehicle panel",
     "panel-auction":"Auction panel"
   },

@@ -1,4 +1,6 @@
-﻿using AuctionAngular.Dtos;
+﻿using AuctionAngular.Dtos.Bid;
+using AuctionAngular.Dtos.Vehicle;
+using AuctionAngular.Dtos.Watch;
 using AuctionAngular.Interfaces;
 using Database;
 using Database.Entities;
@@ -65,13 +67,13 @@ namespace AuctionAngular.Services
             return viewVehicle;
         }
 
-        public async Task<IEnumerable<AdminVehiclesDto>> GetVehicleAuctionEndAsync()
+        public async Task<IEnumerable<ViewAdminVehiclesDto>> GetVehicleAuctionEndAsync()
         {
             var vehicles = await _dbContext
                 .Vehicles
                 .ToListAsync();
 
-            var viewVehicle = new List<AdminVehiclesDto>();
+            var viewVehicle = new List<ViewAdminVehiclesDto>();
 
             foreach (var vehicle in vehicles)
             {
@@ -269,7 +271,7 @@ namespace AuctionAngular.Services
                 throw new DbUpdateException("Error DataBase", e);
             }
 
-            await AddEventVehicleAsync(vehicle.Id, dto);
+            //await AddEventVehicleAsync(vehicle.Id, dto);
 
             return vehicle.Id;
         }
@@ -588,7 +590,6 @@ namespace AuctionAngular.Services
             {
                 throw new DbUpdateException("Error DataBase", e);
             }
-
         }
 
         public async Task SoldVehicleAsync(int id)
@@ -651,7 +652,7 @@ namespace AuctionAngular.Services
                 Images = pictures,
                 DateTime = auction != null ? auction.DateTime: new DateTime(),
                 Sold = vehicle.Sold,
-                WaitingForConfirm = auction.SalesFinised
+                WaitingForConfirm = auction != null ? auction.SalesFinised : false,
             };
         }
 
@@ -671,16 +672,14 @@ namespace AuctionAngular.Services
                 DateTime = auction != null ? auction!.DateTime : new DateTime(),
                 CurrentBid = vehicle.CurrentBid,
                 Sold = vehicle.Sold,
+                Confirm = vehicle.Confirm,
             };
         }
 
 
-        
-
-
-        public AdminVehiclesDto AdminVehiclesDtoConvert(Vehicle vehicle, Auction auction)
+        public ViewAdminVehiclesDto AdminVehiclesDtoConvert(Vehicle vehicle, Auction auction)
         {
-            return new AdminVehiclesDto()
+            return new ViewAdminVehiclesDto()
             {
                 LotNumber = vehicle.Id,
                 Producer = vehicle.Producer,
@@ -691,6 +690,7 @@ namespace AuctionAngular.Services
                 DateTime = auction!.DateTime,
                 CurrentBid = vehicle.CurrentBid,
                 Sold = vehicle.Sold,
+                Confirm = vehicle.Confirm
             };
         }
     }

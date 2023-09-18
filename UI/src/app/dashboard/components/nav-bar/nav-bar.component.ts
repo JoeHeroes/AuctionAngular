@@ -10,7 +10,7 @@ export interface ListItem {
 }
 
 
-const navigationItemsClient: ListItem[] = [
+const navigationItemsBuyer: ListItem[] = [
   { text: t('menu.home'), href: '/home', icon: 'fa fa-house' },
   { text: t('menu.vehicle'), href: '/vehicle', icon: 'fa fa-car' },
   { text: t('menu.vehicle-bids'), href: '/vehicle/bids', icon: 'fa-solid fa-caret-right' },
@@ -29,6 +29,18 @@ const navigationItemsClient: ListItem[] = [
 ];
 
 
+const navigationItemsSeller: ListItem[] = [
+  { text: t('menu.home'), href: '/home', icon: 'fa fa-house' },
+  { text: t('menu.vehicle'), href: '/vehicle', icon: 'fa fa-car' },
+  { text: t('menu.vehicle-add'), href: '/vehicle/add', icon: 'fa-solid fa-plus' },
+  { text: t('menu.watch-list'), href: '/vehicle/watchlist', icon: 'fa fa-star' },
+  { text: t('menu.payment'), href: '/payment', icon: 'fa-regular fa-credit-card' },
+  { text: t('menu.calendar'), href: '/calendar', icon: 'fa-solid fa-calendar-days' },
+  { text: t('menu.services'), href: '/services', icon: 'fa fa-server' },
+  { text: t('menu.support'), href: '/support', icon: 'fa fa-info-circle' },
+];
+
+
 const navigationItemsAdmin: ListItem[] = [
   { text: t('menu.home'), href: '/home', icon: 'fa fa-house' },
   { text: t('menu.vehicle'), href: '/vehicle', icon: 'fa fa-car' },
@@ -36,6 +48,7 @@ const navigationItemsAdmin: ListItem[] = [
   { text: t('menu.calendar'), href: '/calendar', icon: 'fa-solid fa-calendar-days' },
   { text: t('menu.auction'), href: '/auction', icon: 'fa-solid fa-globe' },
   { text: t('menu.location'), href: '/location', icon: 'fa fa-location-arrow' },
+  { text: t('menu.verification-vehicle'), href: '/vehicle/verification', icon: 'fa-solid fa-square-check' },
   { text: t('menu.panel-vehicle'), href: '/vehicle/panel', icon: 'fa-solid fa-wrench' },
   { text: t('menu.panel-auction'), href: '/auction/panel', icon: 'fa-solid fa-toolbox' },
 ];
@@ -68,9 +81,14 @@ export class NavBarComponent implements OnInit {
         this.authenticationService.loggedUserId().subscribe({
           next: (res: any) => {
             this.authenticationService.getUserRole(res.userId).subscribe( res => { 
-              if(res.name=="Client"){
-                this.navigation = navigationItemsClient;
+              if(res.name=="Buyer"){
+                this.navigation = navigationItemsBuyer;
               }
+
+              if(res.name=="Seller"){
+                this.navigation = navigationItemsSeller;
+              }
+
               if(res.name=="Admin"){
                 this.navigation = navigationItemsAdmin;
               }

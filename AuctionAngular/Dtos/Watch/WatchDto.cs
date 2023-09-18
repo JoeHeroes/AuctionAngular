@@ -1,4 +1,4 @@
-﻿namespace AuctionAngular.Dtos
+﻿namespace AuctionAngular.Dtos.Watch
 {
     public class WatchDto
     {

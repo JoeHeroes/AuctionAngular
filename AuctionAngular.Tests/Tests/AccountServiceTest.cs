@@ -1,4 +1,4 @@
-﻿using AuctionAngular.Dtos;
+﻿using AuctionAngular.Dtos.User;
 using AuctionAngular.Services;
 using AuctionAngularTests;
 using Database;
@@ -327,7 +327,7 @@ namespace AuctionAngular.Tests
 
             //Act
 
-            var user = await accountService.GetUserInfoByIdAsync(5);
+            var user = await accountService.GetUserInfoAsync(5);
 
             //Assert
 
@@ -348,7 +348,7 @@ namespace AuctionAngular.Tests
 
             //Act
 
-            Func<Task> act = () => accountService.GetUserInfoByIdAsync(999); ;
+            Func<Task> act = () => accountService.GetUserInfoAsync(999); ;
 
             //Assert
             var exception = await Assert.ThrowsAsync<NotFoundException>(act);
@@ -376,7 +376,7 @@ namespace AuctionAngular.Tests
             //Act
             await accountService.EditProfileAsync(dto);
 
-            var user = await accountService.GetUserInfoByIdAsync(dto.UserId);
+            var user = await accountService.GetUserInfoAsync(dto.UserId);
 
             //Assert
 

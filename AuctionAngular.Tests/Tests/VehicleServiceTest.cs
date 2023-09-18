@@ -1,4 +1,6 @@
-﻿using AuctionAngular.Dtos;
+﻿using AuctionAngular.Dtos.Bid;
+using AuctionAngular.Dtos.Vehicle;
+using AuctionAngular.Dtos.Watch;
 using AuctionAngular.Services;
 using AuctionAngularTests;
 using Database;

@@ -49,7 +49,9 @@
             <div class="dx-field">
               <div class="dx-field-label">{{t('vehicle.auction')}}</div>
               <div class="dx-field-value">
-                <input type="number" id="auction" formControlName="auction" [value]="auctionValue" class="form-control" />
+                <select id="auction" formControlName="auction" [value]="auctionValue" class="form-control">
+                  <option *ngFor="let auction of auctions" [value]="auction.id">{{ auction.id }} {{ auction.city }}</option>
+                </select>
               </div>
             </div>
         

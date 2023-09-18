@@ -341,6 +341,9 @@ namespace Database.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("Confirm")
+                        .HasColumnType("bit");
+
                     b.Property<int>("CurrentBid")
                         .HasColumnType("int");
 

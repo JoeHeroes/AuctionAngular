@@ -1,4 +1,5 @@
 ﻿using AuctionAngular.Dtos;
+using AuctionAngular.Dtos.Event;
 using AuctionAngular.Services;
 using AuctionAngularTests;
 using Database;

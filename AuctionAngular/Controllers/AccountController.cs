@@ -1,4 +1,5 @@
 ﻿using AuctionAngular.Dtos;
+using AuctionAngular.Dtos.User;
 using AuctionAngular.Interfaces;
 using Database.Entities;
 using Microsoft.AspNetCore.Authorization;

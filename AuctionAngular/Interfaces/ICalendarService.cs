@@ -1,4 +1,4 @@
-﻿using AuctionAngular.Dtos;
+﻿using AuctionAngular.Dtos.Event;
 using Database.Entities;
 
 namespace AuctionAngular.Interfaces

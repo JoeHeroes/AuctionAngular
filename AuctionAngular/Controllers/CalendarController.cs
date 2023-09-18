@@ -1,4 +1,4 @@
-﻿using AuctionAngular.Dtos;
+﻿using AuctionAngular.Dtos.Event;
 using AuctionAngular.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 

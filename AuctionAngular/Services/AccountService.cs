@@ -1,4 +1,5 @@
-﻿using AuctionAngular.Dtos;
+﻿using AuctionAngular.Dtos.Role;
+using AuctionAngular.Dtos.User;
 using AuctionAngular.Interfaces;
 using Database;
 using Database.Entities;
@@ -215,7 +216,7 @@ namespace AuctionAngular.Services
             }
         }
 
-        public async Task<IEnumerable<RoleDto>> GetAllRoleAsync()
+        public async Task<IEnumerable<Role>> GetAllRoleAsync()
         {
             var roles = await _dbContext
                 .Roles
@@ -226,11 +227,11 @@ namespace AuctionAngular.Services
                 throw new NotFoundException("Roles not found.");
             }
 
-            List<RoleDto> result = new List<RoleDto>();
+            List<Role> result = new List<Role>();
 
             foreach (var role in roles)
             {
-                var roleDto = new RoleDto() { Id = role.Id, Name = role.Name };
+                var roleDto = new Role { Id = role.Id, Name = role.Name };
                 result.Add(roleDto);
             }
 

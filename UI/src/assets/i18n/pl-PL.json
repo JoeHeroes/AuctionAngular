@@ -25,6 +25,7 @@
     "menu": {
       "home": "Home",
       "vehicle": "Pojazdy",
+      "vehicle-add":"Dodaj Pojazd",
       "vehicle-bids": "Licytowane",
       "vehicle-won": "Wygrane",
       "vehicle-lost": "Przegrane",
@@ -36,6 +37,7 @@
       "location": "Lokacja",
       "services": "Serwis",
       "support": "Wsparcie",
+      "verification-vehicle": "Zatwierdzenie pojazdu",
       "panel-vehicle":"Panel pojazdów",
       "panel-auction":"Panel aukcji"
     },
