@@ -1,4 +1,5 @@
-﻿using AuctionAngular.Dtos.Bid;
+﻿using AuctionAngular.Dtos.Auction;
+using AuctionAngular.Dtos.Bid;
 using AuctionAngular.Dtos.Vehicle;
 using AuctionAngular.Dtos.Watch;
 using AuctionAngular.Interfaces;
@@ -546,6 +547,28 @@ namespace AuctionAngular.Services
             }
         }
 
+        public async Task SetAuctionForVehicleAsync(SetAuctionDto dto)
+        {
+
+            var vehicle = await _dbContext
+                                .Vehicles
+                                .FirstOrDefaultAsync(x => x.Id == dto.userId);
+
+            if (vehicle != null)
+            {
+                vehicle!.AuctionId = dto.auctionId;
+            }
+
+            try
+            {
+                await _dbContext.SaveChangesAsync();
+            }
+            catch (DbUpdateException e)
+            {
+                throw new DbUpdateException("Error DataBase", e);
+            }
+        }
+
         public ViewVehicleDto ViewVehicleDtoConvert(Vehicle vehicle, List<string> pictures)
         {
             var auction = _dbContext.Auctions.FirstOrDefault(x => x.Id == vehicle.AuctionId);
@@ -590,6 +613,7 @@ namespace AuctionAngular.Services
             return new ViewVehiclesDto()
             {
                 LotNumber = vehicle.Id,
+                AuctionNumber = vehicle.AuctionId,
                 Image = pictures.Count() == 0 ? "" : pictures.First(),
                 Producer = vehicle.Producer,
                 ModelSpecifer = vehicle.ModelSpecifer,
@@ -609,6 +633,7 @@ namespace AuctionAngular.Services
             return new ViewAdminVehiclesDto()
             {
                 LotNumber = vehicle.Id,
+                AuctionNumber = vehicle.AuctionId,
                 Producer = vehicle.Producer,
                 ModelSpecifer = vehicle.ModelSpecifer,
                 ModelGeneration = vehicle.ModelGeneration,

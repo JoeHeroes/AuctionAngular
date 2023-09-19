@@ -2,7 +2,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslocoService } from '@ngneat/transloco';
 import { AuctionService } from 'src/app/common/services/auction.service';
+import { NotificationService } from 'src/app/common/services/notification.service';
 import { CreateVehicleDto, VehicleService } from 'src/app/common/services/vehicle.service';
 
 
@@ -32,8 +34,10 @@ export class VehicleAddComponent implements OnInit {
 
   constructor(private vehicleService: VehicleService,
     private auctionService: AuctionService,
+    private notificationService: NotificationService,
     private router: Router,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private transloco: TranslocoService) {
 
     this.auctionService.getAuctionList().subscribe(res => {
       this.auctions = res;
@@ -189,9 +193,11 @@ export class VehicleAddComponent implements OnInit {
     this.vehicleService.addVehicle(createVehicle)
       .subscribe({
         next: (res: any) => {
+          this.notificationService.showSuccess( this.transloco.translate('notification.vehcileAddCorrect'), "Success");
           this.router.navigate([this.returnUrl]);
         },
         error: (err: HttpErrorResponse) => {
+          this.notificationService.showError( this.transloco.translate('notification.vehcileAddFail'), "Failed");
           this.showError = true;
         }
       })

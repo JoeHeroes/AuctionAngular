@@ -14,7 +14,6 @@ export class VehicleService {
     this.baseUrl = "https://localhost:7257";
   }
 
-
   public getVehicles(): Observable<Vehicle[]> {
 
     let url_ = this.baseUrl + "/Vehicle/GetAllVehicle";
@@ -76,11 +75,18 @@ export class VehicleService {
 
   public confirmVehicle(id: number): Observable<any> {
 
-    alert(id);
     let url_ = this.baseUrl + "/Vehicle/ConfirmVehicle/" + id;
 
     return this.http.get<any>(url_);
   }
+
+  public setAuctionForVehicle(data: SetAuctionVehcileDto): Observable<any> {
+
+    let url_ = this.baseUrl + "/Vehicle/SetAuctionForVehicle";
+
+    return this.http.patch<any>(url_, data);
+  }
+
 
   public deleteVehicle(id: number): Observable<any> {
 
@@ -136,6 +142,13 @@ export class VehicleService {
     let url_ = this.baseUrl + "/Vehicle/UpdateVehicle/" + id;
     return this.http.patch<any>(url_, data);
   }
+}
+
+
+
+export interface SetAuctionVehcileDto {
+  userId: number;
+  auctionId: number;
 }
 
 export interface WatchDto {

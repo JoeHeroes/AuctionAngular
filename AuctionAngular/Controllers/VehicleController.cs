@@ -1,4 +1,5 @@
-﻿using AuctionAngular.Dtos.Bid;
+﻿using AuctionAngular.Dtos.Auction;
+using AuctionAngular.Dtos.Bid;
 using AuctionAngular.Dtos.Vehicle;
 using AuctionAngular.Dtos.Watch;
 using AuctionAngular.Interfaces;
@@ -371,6 +372,22 @@ namespace AuctionAngular.Controllers
         public async Task<ActionResult<IEnumerable<ViewVehiclesDto>>> SoldVehicle([FromRoute] int id)
         {
             await _vehicleService.SoldVehicleAsync(id);
+
+            return Ok();
+        }
+
+        /// <summary>
+        /// Set Auction For Vehicle
+        /// </summary>
+        /// <returns>Ok</returns>
+        /// <response code="200">Correct data</response>
+        /// <response code="400">Incorrect data</response>
+        [HttpPatch("[action]")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<IEnumerable<ViewVehiclesDto>>> SetAuctionForVehicle([FromBody] SetAuctionDto dto)
+        {
+            await _vehicleService.SetAuctionForVehicleAsync(dto);
 
             return Ok();
         }

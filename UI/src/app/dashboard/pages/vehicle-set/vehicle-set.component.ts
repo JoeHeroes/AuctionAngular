@@ -1,8 +1,11 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuctionService } from 'src/app/common/services/auction.service';
+import { AuthResponseDto } from 'src/app/common/services/authentication.service';
+import { SetAuctionVehcileDto, VehicleService } from 'src/app/common/services/vehicle.service';
 
 @Component({
   selector: 'app-vehicle-set',
@@ -12,7 +15,7 @@ import { AuctionService } from 'src/app/common/services/auction.service';
 export class VehicleSetComponent  implements OnInit {
 
   urlSubscription?: Subscription;
-  returnUrl: string = "/panel";
+  returnUrl: string = "/vehicle/verification";
   id: any;
   auctions: any;
 
@@ -20,6 +23,7 @@ export class VehicleSetComponent  implements OnInit {
   setAuctionForm !: FormGroup;
   errorMessage: string = '';
   constructor(private auctionService: AuctionService,
+    private vehicleService: VehicleService,
     private router: Router,
     private activeRoute: ActivatedRoute) {
       this.auctionService.getAuctionList().subscribe(res => {
@@ -38,15 +42,30 @@ export class VehicleSetComponent  implements OnInit {
     });
 
     this.setAuctionForm = new FormGroup({
-      producer: new FormControl("", [Validators.required]),
+      auction: new FormControl("", [Validators.required]),
     })
     
     
   }
 
 
-  setAuctionForVehicle = (vehicleFormValue: any) => {
+  setAuctionForVehicle = (setAuctionForm: any) => {
+    const set = { ...setAuctionForm };
 
 
+    const setData: SetAuctionVehcileDto = {
+      userId: this.id,
+      auctionId: set.auction,
+    }
+
+    this.vehicleService.setAuctionForVehicle(setData)
+      .subscribe({
+        next: (res: AuthResponseDto) => {
+          this.router.navigate([this.returnUrl]);
+        },
+        error: (err: HttpErrorResponse) => {
+          this.errorMessage = err.message;
+        }
+      })
   }
 }

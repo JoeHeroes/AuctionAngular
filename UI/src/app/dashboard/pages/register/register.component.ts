@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
   roles: any;
 
   constructor(private authenticationService: AuthenticationService,
-    private notificationService: NotificationService,
+    private notificationService: NotificationService, 
     private router: Router,
     private route: ActivatedRoute,
     private transloco: TranslocoService) {

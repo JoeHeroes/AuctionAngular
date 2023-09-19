@@ -1,7 +1,9 @@
 import { Component } from "@angular/core";
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { DataService } from 'src/app/common/services/data.service';
+import { NotificationService } from "src/app/common/services/notification.service";
+import { TranslocoService } from "@ngneat/transloco";
 
 
 @Component({
@@ -10,9 +12,19 @@ import { DataService } from 'src/app/common/services/data.service';
   styleUrls: ['./vehicle-picture.component.css']
 })
 export class VehiclePictureComponent {
+  private returnUrl!: string;
+
+
+
   constructor(private http: HttpClient,
+    private notificationService: NotificationService,
     private router: Router,
-    private dataService: DataService) { }
+    private dataService: DataService,
+    private route: ActivatedRoute,
+    private transloco: TranslocoService) { 
+
+      this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/vehicle';
+    }
 
   uploadPictures(files: any) {
     if (files.length === 0)
@@ -27,9 +39,12 @@ export class VehiclePictureComponent {
     this.http.patch('https://localhost:7257/Vehicle/UploadVehicleImage/' + this.dataService.userId, formData, { reportProgress: true, observe: 'events' })
       .subscribe({
         next: (event: any) => {
-          this.router.navigate(['/vehicle/lot', this.dataService.userId].filter(v => !!v));
+          this.notificationService.showSuccess( this.transloco.translate('notification.pictureAddCorrect'), "Success");
+          this.router.navigate([this.returnUrl]);
         },
-        error: (err: HttpErrorResponse) => console.log(err)
+        error: (err: HttpErrorResponse) => {
+          this.notificationService.showError( this.transloco.translate('notification.pictureAddFail'), "Failed");
+        }
       });
 
 

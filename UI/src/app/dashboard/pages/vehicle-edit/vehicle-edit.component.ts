@@ -15,7 +15,7 @@ import { EditVehicleDto, VehicleService } from 'src/app/common/services/vehicle.
 export class VehicleEditComponent implements OnInit {
 
   urlSubscription?: Subscription;
-  returnUrl: string = "/panel";
+  returnUrl: string = "/vehicle/panel";
   id: any;
   auctions: any;
 

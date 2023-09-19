@@ -3,6 +3,7 @@
     public class ViewAdminVehiclesDto
     {
         public int LotNumber { get; set; }
+        public int AuctionNumber { get; set; }
         public string Producer { get; set; }
         public string ModelSpecifer { get; set; }
         public string ModelGeneration { get; set; }
