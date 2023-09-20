@@ -139,7 +139,9 @@
     "loggedInFail": "Eingeloggt, fehlgeschlagen",
     "registeredFail": "Angemeldet, fehlgeschlagen",
     "bid":"Ihr Gebot ist das höchste",
-    "bidFail":"Ihr Gebot ist nicht das höchste"
+    "bidFail":"Ihr Gebot ist nicht das höchste",
+    "vehicleAddCorrect": "Fahrzeug richtig hinzugefügt",
+    "vehicleAddFail": "Fehler beim Hinzufügen des Fahrzeugs"
   },
   "dashboard":{
     "title":"Armaturenbrett",

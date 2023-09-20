@@ -139,7 +139,9 @@
     "loggedInFail": "Login failed",
     "registeredFail": "Registration failed",
     "bid":"Your bid is the highest",
-    "bidFail":"Your bid is not the highest"
+    "bidFail":"Your bid is not the highest",
+    "vehicleAddCorrect": "Vehicle Added Correct",
+    "vehicleAddFail": "Vehicle Added Fail"
   },
   "dashboard":{
     "title":"Dashboard",

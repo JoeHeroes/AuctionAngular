@@ -5,7 +5,6 @@ import { DataService } from 'src/app/common/services/data.service';
 import { NotificationService } from "src/app/common/services/notification.service";
 import { TranslocoService } from "@ngneat/transloco";
 
-
 @Component({
   selector: 'app-vehicle-picture',
   templateUrl: './vehicle-picture.component.html',
@@ -46,8 +45,6 @@ export class VehiclePictureComponent {
           this.notificationService.showError( this.transloco.translate('notification.pictureAddFail'), "Failed");
         }
       });
-
-
   }
 
 }

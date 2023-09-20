@@ -139,7 +139,9 @@
       "loggedInFail": "Logowanie nie powiodło się",
       "registeredFail": "Rejestracja nie powiodła się",
       "bid":"Twoja oferta jest najwyższa",
-      "bidFail":"Twoja oferta nie jest najwyższa"
+      "bidFail":"Twoja oferta nie jest najwyższa",
+      "vehicleAddCorrect": "Pojazd dodany poprawnie",
+      "vehicleAddFail": "Pojazd dodany nieudane"
     },
     "dashboard":{
       "title":"Dashboard",

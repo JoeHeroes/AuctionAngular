@@ -76,6 +76,16 @@ export class VehicleAddComponent implements OnInit {
     this.showError = true;
     const vehicle = { ...vehicleFormValue };
 
+
+    if (vehicle.serviceManual == "") {
+      vehicle.serviceManual = true;
+    }
+
+    if (vehicle.secondTireSet == "") {
+      vehicle.secondTireSet = true;
+    }
+
+
     const createVehicle: CreateVehicleDto = {
       producer: vehicle.producer,
       modelSpecifer: vehicle.modelSpecifer,
@@ -166,8 +176,6 @@ export class VehicleAddComponent implements OnInit {
       this.showError = true;
     }
 
-
-
     else if (vehicle.serviceManual == "") {
       this.errorMessage = "ServiceManual is required";
       this.showError = true;
@@ -193,11 +201,11 @@ export class VehicleAddComponent implements OnInit {
     this.vehicleService.addVehicle(createVehicle)
       .subscribe({
         next: (res: any) => {
-          this.notificationService.showSuccess( this.transloco.translate('notification.vehcileAddCorrect'), "Success");
+          this.notificationService.showSuccess( this.transloco.translate('notification.vehicleAddCorrect'), "Success");
           this.router.navigate([this.returnUrl]);
         },
-        error: (err: HttpErrorResponse) => {
-          this.notificationService.showError( this.transloco.translate('notification.vehcileAddFail'), "Failed");
+        error: (err: HttpErrorResponse) => { 
+          this.notificationService.showError( this.transloco.translate('notification.vehicleAddFail'), "Failed");
           this.showError = true;
         }
       })

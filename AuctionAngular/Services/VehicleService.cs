@@ -506,8 +506,10 @@ namespace AuctionAngular.Services
                                 .FirstOrDefaultAsync(x => x.Id == id);
 
 
-            if (vehicle != null)
+            if (vehicle != null && vehicle.AuctionId != 0)
                 vehicle!.Confirm = !vehicle.Confirm;
+            else
+                throw new Exception();
 
             try
             {

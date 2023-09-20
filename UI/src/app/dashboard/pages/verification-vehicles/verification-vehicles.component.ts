@@ -1,5 +1,9 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslocoService } from '@ngneat/transloco';
+import { AuthResponseDto } from 'src/app/common/services/authentication.service';
+import { NotificationService } from 'src/app/common/services/notification.service';
 import { VehicleService } from 'src/app/common/services/vehicle.service';
 
 @Component({
@@ -15,7 +19,9 @@ export class VerificationVehiclesComponent {
   displayMode = 'full';
 
   constructor(private vehicleService: VehicleService,
-    private router: Router) {
+    private notificationService: NotificationService,
+    private router: Router,
+    private transloco: TranslocoService) {
     this.vehicleService.getVehiclesWaiting().subscribe(res => {
       this.datasource = res;
     });
@@ -30,43 +36,35 @@ export class VerificationVehiclesComponent {
   }
 
   cancelClick(vehicleId: any)  {
-    this.vehicleService.deleteVehicle(vehicleId).subscribe(res => {
-      this.vehicleService.getVehiclesWaiting().subscribe(res => {
-        this.datasource = res;
-      });
+    this.vehicleService.deleteVehicle(vehicleId).subscribe({
+      next: (res: AuthResponseDto) => {
+        this.vehicleService.getVehiclesWaiting().subscribe(res => {
+          this.datasource = res;
+        });
+        this.notificationService.showSuccess( this.transloco.translate('notification.deleteVehicleCorrect'), "Success");
+      },
+      error: (err: HttpErrorResponse) => {
+        this.notificationService.showError( this.transloco.translate('notification.deleteVehicleFail'), "Failed");
+      }
     })
   }
 
   acceptClick(vehicleId: any)  {
-    this.vehicleService.confirmVehicle(vehicleId).subscribe(res => {
-      this.vehicleService.getVehiclesWaiting().subscribe(res => {
-        this.datasource = res;
-      });
+    this.vehicleService.confirmVehicle(vehicleId).subscribe({
+      next: (res: AuthResponseDto) => {
+        this.vehicleService.getVehiclesWaiting().subscribe(res => {
+          this.datasource = res;
+        });
+        this.notificationService.showSuccess( this.transloco.translate('notification.confirmVehicleCorrect'), "Success");
+      },
+      error: (err: HttpErrorResponse) => {
+        this.notificationService.showError( this.transloco.translate('notification.confirmVehicleFail'), "Failed");
+      }
     })
   }
-
-
-
-
-
-
-
-
-
-
-  sellClick(vehicleId: any)  {
-    
-  }
+  
 
   editClick(vehicleId: any)  {
     this.router.navigate(['/vehicle/edit', vehicleId].filter(v => !!v));
-  }
-
-  deleteClick(vehicleId: any)  {
-    this.vehicleService.deleteVehicle(vehicleId).subscribe(res => {
-      this.vehicleService.getVehiclesAuctionEnd().subscribe(res => {
-        this.datasource = res;
-      });
-    })
   }
 }
