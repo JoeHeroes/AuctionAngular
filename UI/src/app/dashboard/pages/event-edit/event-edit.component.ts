@@ -2,9 +2,11 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
+import { TranslocoService } from '@ngneat/transloco';
 import { Subscription } from 'rxjs';
 import { AuthResponseDto, AuthenticationService } from 'src/app/common/services/authentication.service';
 import { CalendarService, EditEventeDto } from 'src/app/common/services/calendar.service';
+import { NotificationService } from 'src/app/common/services/notification.service';
 
 @Component({
   selector: 'app-event-edit',
@@ -21,7 +23,6 @@ export class EventEditComponent {
   errorMessage: string = '';
   userId: number = 0;
   day: boolean = true;
-
  
   titleValue!: string;
   descriptionValue!: string;
@@ -30,12 +31,13 @@ export class EventEditComponent {
   allDayValue!: string;
   value!: string;
 
-
   constructor(
     private authenticationService: AuthenticationService,
     private calendarService: CalendarService,
+    private notificationService: NotificationService,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private transloco: TranslocoService) { }
 
   ngOnInit(): void {
     this.eventForm = new FormGroup({
@@ -45,7 +47,7 @@ export class EventEditComponent {
       color: new FormControl("", [Validators.required]),
       allDay: new FormControl("", [Validators.required]),
     })
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/calendar';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/calendar/manage';
 
     this.urlSubscription = this.route.url.subscribe(segments => {
       this.loadData(segments);
@@ -54,7 +56,6 @@ export class EventEditComponent {
 
   private loadData(url: UrlSegment[]) {
     this.id = url.map(x => x.path).join('/');
-
 
     this.authenticationService.loggedUserId().subscribe(res => {
       this.userId = res.userId;
@@ -97,10 +98,11 @@ export class EventEditComponent {
     this.calendarService.editEvent(eventData)
       .subscribe({
         next: (res: AuthResponseDto) => {
+          this.notificationService.showSuccess( this.transloco.translate('notification.editEventCorrect'), "Success");
           this.router.navigate([this.returnUrl]);
         },
         error: (err: HttpErrorResponse) => {
-          this.showError = true;
+          this.notificationService.showError( this.transloco.translate('notification.editEventFail'), "Failed");
         }
       })
   }

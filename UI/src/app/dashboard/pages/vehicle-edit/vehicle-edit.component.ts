@@ -19,7 +19,6 @@ export class VehicleEditComponent implements OnInit {
   id: any;
   auctions: any;
 
-
   editForm !: FormGroup;
   errorMessage: string = '';
   showError: boolean = false;
@@ -197,7 +196,6 @@ export class VehicleEditComponent implements OnInit {
       vehicle.highlights = this.highlightsValue;
     }
 
-
     const editVehicle: EditVehicleDto = {
       producer: vehicle.producer,
       modelSpecifer: vehicle.modelSpecifer,
@@ -269,14 +267,12 @@ enum Damage {
   Vandalism = 'Vandalism'
 }
 
-
 enum Drive {
   none = '',
   AWD = 'AWD',
   FWD = 'FWD',
   RWD = 'RWD',
 }
-
 
 enum Fuel {
   none = '',
@@ -286,7 +282,6 @@ enum Fuel {
   Hybrid = 'Hybrid',
   Electric = 'Electric',
 }
-
 
 enum Highlight {
   NonOperational = 'Non Operational',

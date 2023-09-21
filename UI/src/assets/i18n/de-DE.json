@@ -80,7 +80,9 @@
     "paymentDue": "Zahlung fällig",
     "paymentHistory": "Zahlungshistorie",
     "picture":"Bild",
-    "search":"Suchen..."
+    "search":"Suchen...",
+    "bids": "Gebote",
+    "bidNow": "Bieten Sie jetzt"
   },
   "auction":{
     "list":"Liste der Auktionen",

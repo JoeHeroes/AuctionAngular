@@ -37,7 +37,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Register([FromBody] RegisterUserDto dto)
         {
-            await _accountService.CreateUserAsync(dto);
+            var result = await _accountService.CreateUserAsync(dto);
 
             var user = new User()
             {
@@ -55,7 +55,8 @@ namespace AuctionAngular.Controllers
 
             var token = await _accountService.GenerateTokenAsync(user);
 
-            await SendEmail(dto.Email);
+            if (result != null)
+                await SendEmail(dto.Email);
 
             return Ok(token);
         }
@@ -89,9 +90,9 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Restart([FromBody] RestartPasswordDto dto)
         {
-            await _accountService.RestartPasswordAsync(dto);
+            var result = await _accountService.RestartPasswordAsync(dto);
 
-            return Ok();
+            return Ok(result);
         }
 
         /// <summary>
@@ -202,14 +203,9 @@ namespace AuctionAngular.Controllers
             var result = await _accountService.AddProfilePictureAsync(id, files);
 
             if (result is null)
-            {
                 return NotFound();
-            }
             else
-            {
-                var response = new { Message = "Upload successfully!" };
-                return Ok(response);
-            }
+                return Ok(new { Message = "Upload successfully!" });
         }
 
 
@@ -222,12 +218,12 @@ namespace AuctionAngular.Controllers
 
             string link = "https://localhost:7257" + "/Account/ConfirmEmail/"+ token + "/" + email;
 
-            string LOGIN_EMAIL_CONTENT_FORMAT = "<h1>Account Verification</h1></br><p>Thank you for choosing CarAuction</p></br> <p>Please confirm your email address by clicking the link below. </br> <a style=\"color: blue\"  href=\"{Link}\">Verify your email address</a></b></p>";
+            string LOGIN_EMAIL_CONTENT_FORMAT = "<h1>Account Verification</h1></br><p>Thank you for choosing carWink</p></br> <p>Please confirm your email address by clicking the link below. </br> <a style=\"color: blue\"  href=\"{Link}\">Verify your email address</a></b></p>";
             string content = LOGIN_EMAIL_CONTENT_FORMAT.Replace("{Link}", link);
 
             var mail = new MailRequestDto()
             {
-                ToEmail = "JoeHeros@wp.pl",
+                ToEmail = email,
                 Subject = $"Hi {user.Name} {user.SureName}, please verify your CarAuction account",
                 Body = content
             };
@@ -246,9 +242,7 @@ namespace AuctionAngular.Controllers
             await _messageService.CreateMessageAsync(authenticationMessage);
 
             if (result)
-            {
                 return Ok("Please verify your email");
-            }
 
             return Problem();
         }
@@ -261,9 +255,8 @@ namespace AuctionAngular.Controllers
             var result = await _accountService.GetByEmailAsync(email);
 
             if(result is null)
-            {
                 return NotFound();
-            }
+
             return Ok(result.EmialConfirmed);
         }
 

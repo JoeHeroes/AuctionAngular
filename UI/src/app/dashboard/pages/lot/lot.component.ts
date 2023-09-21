@@ -1,4 +1,3 @@
-import { VehicleService, BidDto, WatchDto } from './../../../common/services/vehicle.service';
 import { Subscription } from 'rxjs';
 import { AuthenticationService } from 'src/app/common/services/authentication.service';
 import { NotificationService } from 'src/app/common/services/notification.service';
@@ -6,6 +5,7 @@ import { TranslocoService } from '@ngneat/transloco';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, UrlSegment } from '@angular/router';
+import { BidDto, VehicleService, WatchDto } from 'src/app/common/services/vehicle.service';
 
 @Component({
   selector: 'app-lot',
@@ -106,8 +106,10 @@ export class LotComponent implements OnInit {
       .subscribe({
         next: () => {
           this.watchLot = true;
+          this.notificationService.showSuccess( this.transloco.translate('notification.vehicleWatchCorrect'), "Success");
         },
         error: () => {
+          this.notificationService.showError( this.transloco.translate('notification.vehicleWatchFail'), "Failed");
         }
       })
   }
@@ -117,8 +119,10 @@ export class LotComponent implements OnInit {
       .subscribe({
         next: () => {
           this.watchLot = false;
+          this.notificationService.showSuccess( this.transloco.translate('notification.vehicleUnwatchCorrect'), "Success");
         },
         error: () => {
+          this.notificationService.showError( this.transloco.translate('notification.vehicleUnwatchFail'), "Failed");
         }
       })
   }
@@ -136,11 +140,11 @@ export class LotComponent implements OnInit {
         next: () => {
           this.vehicleService.getVehicle(this.id).subscribe(res => {
             this.datasource = res;
-            this.notificationService.showSuccess( this.transloco.translate('notification.bid'), "Success");
+            this.notificationService.showSuccess( this.transloco.translate('notification.bidVehicleCorrect'), "Success");
           });
         },
         error: () => {
-          this.notificationService.showError( this.transloco.translate('notification.bidFail'), "Failed");
+          this.notificationService.showError( this.transloco.translate('notification.bidVehicleFail'), "Failed");
         }
       })
   }

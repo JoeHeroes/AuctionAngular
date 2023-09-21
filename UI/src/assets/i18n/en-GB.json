@@ -79,8 +79,10 @@
     "watchlist": "Vehicle Watchlist",
     "paymentDue": "Payment Due",
     "paymentHistory": "Payment History",
-    "picture":"Picture",
-    "search":"Search..."
+    "picture": "Picture",
+    "search": "Search...",
+    "bids": "Bids",
+    "bidNow": "Bid Now"
   },
   "auction":{
     "list":"List of Auctions",

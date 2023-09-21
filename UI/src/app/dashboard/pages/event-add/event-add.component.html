@@ -11,7 +11,7 @@
             <div class="dx-field">
               <div class="dx-field-label">{{t('calendar.description')}}</div>
               <div class="dx-field-value">
-                <input type="text" id="description" formControlName="description" class="form-control" />
+                <dx-text-area [minHeight]="100" [maxHeight]="300" [autoResizeEnabled]="true" id="description" formControlName="description" class="form-control"></dx-text-area>
               </div>
             </div>
             <div class="dx-field">

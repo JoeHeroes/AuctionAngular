@@ -3,7 +3,6 @@ import { Component } from "@angular/core";
 import { RowDblClickEvent } from 'devextreme/ui/data_grid';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-vehicle',
   templateUrl: './vehicle.component.html',
@@ -26,6 +25,10 @@ export class VehicleComponent {
   handleRowDoubleClick(event: RowDblClickEvent) {
     const template = event.data
     this.router.navigate(['/vehicle/lot', template.lotNumber].filter(v => !!v));
+  }
+
+  bidClick(vehicleId: any)  {
+    this.router.navigate(['/vehicle/lot', vehicleId].filter(v => !!v));
   }
 
 }

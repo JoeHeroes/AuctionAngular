@@ -130,7 +130,7 @@ namespace AuctionAngular.Tests
 
             //Act
 
-            var vehicles = await vehicleService.GetVehiclesAsync();
+            var vehicles = await vehicleService.GetVehiclesAsync(true);
 
             //Assert
             Assert.False(vehicles.IsNullOrEmpty());

@@ -26,10 +26,8 @@ export class VehicleWonComponent {
     })
   }
 
-
   handleRowDoubleClick(event: RowDblClickEvent) {
     const template = event.data
     this.router.navigate(['/vehicle/lot', template.lotNumber].filter(v => !!v));
   }
-
 }

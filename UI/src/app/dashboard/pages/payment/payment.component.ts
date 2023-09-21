@@ -1,6 +1,4 @@
 import { Component } from "@angular/core";
-import { Router } from '@angular/router';
-import { RowDblClickEvent } from 'devextreme/ui/data_grid';
 import { AuthenticationService } from 'src/app/common/services/authentication.service';
 import { InvoiceInfo, InvoiceService } from "src/app/common/services/invoice.service";
 import { PaymentService } from "src/app/common/services/payment.service";
@@ -38,7 +36,6 @@ export class PaymentComponent{
     this.authenticationService.loggedUserId().subscribe(res => {
       this.invoiceInfo.userId = res.userId;
       this.invoiceInfo.vehicleId = vehicleId;
-
       this.invoiceService.downloadInvoice(this.invoiceInfo).subscribe(
         (pdfBlob: Blob) => {
           const url = window.URL.createObjectURL(pdfBlob);

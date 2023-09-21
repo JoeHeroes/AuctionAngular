@@ -21,7 +21,6 @@ export class VehicleSetComponent  implements OnInit {
   id: any;
   auctions: any;
 
-
   setAuctionForm !: FormGroup;
   errorMessage: string = '';
   constructor(private auctionService: AuctionService,
@@ -49,7 +48,6 @@ export class VehicleSetComponent  implements OnInit {
       auction: new FormControl("", [Validators.required]),
     })
   }
-
 
   setAuctionForVehicle = (setAuctionForm: any) => {
     const set = { ...setAuctionForm };

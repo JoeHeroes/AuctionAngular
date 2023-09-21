@@ -67,7 +67,7 @@
                 <div *dxTemplate="let data of 'cellTemplateInvoice'">
                     <span style="cursor: pointer; font-weight: bold; color: green" (click)="invoiceClick(data.data.lotNumber)">{{t('admin.invoice')}}</span>
                 </div>
-
+ 
                 <div *dxTemplate="let data of 'cellTemplateEdit'">
                     <span style="cursor: pointer; font-weight: bold; color: gray" (click)="editClick(data.data.lotNumber)">{{t('admin.edit')}}</span>
                 </div>

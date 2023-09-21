@@ -62,7 +62,6 @@ export class VerificationVehiclesComponent {
       }
     })
   }
-  
 
   editClick(vehicleId: any)  {
     this.router.navigate(['/vehicle/edit', vehicleId].filter(v => !!v));

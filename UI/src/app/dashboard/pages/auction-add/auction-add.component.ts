@@ -2,8 +2,10 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslocoService } from '@ngneat/transloco';
 import { AddAuctionDto, AuctionService } from 'src/app/common/services/auction.service';
 import { AuthResponseDto } from 'src/app/common/services/authentication.service';
+import { NotificationService } from 'src/app/common/services/notification.service';
 
 @Component({
   selector: 'app-auction-add',
@@ -18,8 +20,10 @@ export class AuctionAddComponent implements OnInit {
   errorMessage: string = '';
 
   constructor(private auctionService: AuctionService,
+    private notificationService: NotificationService,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private transloco: TranslocoService) { }
 
   ngOnInit(): void {
     this.addForm = new FormGroup({
@@ -52,7 +56,6 @@ export class AuctionAddComponent implements OnInit {
       auctionDate: add.auctionDate,
     }
 
-
     if (add.location == "") {
       this.errorMessage = "Location is required";
       this.showError = true;
@@ -66,14 +69,14 @@ export class AuctionAddComponent implements OnInit {
       this.showError = true;
     }
     
-
     this.auctionService.addAuction(addData)
       .subscribe({
         next: (res: AuthResponseDto) => {
+          this.notificationService.showSuccess( this.transloco.translate('notification.addAuctionCorrect'), "Success");
           this.router.navigate([this.returnUrl]);
         },
         error: (err: HttpErrorResponse) => {
-          this.showError = true;
+          this.notificationService.showError( this.transloco.translate('notification.addAuctionFail'), "Failed");
         }
       })
   }

@@ -226,8 +226,6 @@ enum BodyCar {
   Cabrio = 'Cabrio',
 }
 
-
-
 enum Damage {
   none = '',
   All_Over = 'All Over',
@@ -263,12 +261,10 @@ enum Fuel {
   Electric = 'Electric',
 }
 
-
 enum Highlight {
   NonOperational = 'Non Operational',
   RunAndDrive = 'Run and Drive',
 }
-
 
 enum Producer {
   none = '',
@@ -313,8 +309,6 @@ enum SaleTerm {
   To_be_desmantle = 'To be desmantle',
   Classic = 'Classic',
 }
-
-
 
 enum Transmission {
   none = '',

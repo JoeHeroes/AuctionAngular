@@ -2,8 +2,10 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslocoService } from '@ngneat/transloco';
 import { AuthResponseDto, AuthenticationService } from 'src/app/common/services/authentication.service';
 import { AddEventeDto, CalendarService } from 'src/app/common/services/calendar.service';
+import { NotificationService } from 'src/app/common/services/notification.service';
 
 @Component({
   selector: 'app-event-add',
@@ -21,8 +23,10 @@ export class EventAddComponent implements OnInit {
   constructor(
     private authenticationService: AuthenticationService,
     private calendarService: CalendarService,
+    private notificationService: NotificationService,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private transloco: TranslocoService) { }
 
   ngOnInit(): void {
     this.eventForm = new FormGroup({
@@ -52,7 +56,6 @@ export class EventAddComponent implements OnInit {
       owner: this.userId,
     }
 
-
     if (edit.title == "") {
       this.errorMessage = "Title is required";
       this.showError = true;
@@ -74,15 +77,16 @@ export class EventAddComponent implements OnInit {
       this.showError = true;
     }
 
-
     this.calendarService.addEvent(eventData)
       .subscribe({
         next: (res: AuthResponseDto) => {
+          this.notificationService.showSuccess( this.transloco.translate('notification.addEventCorrect'), "Success");
           this.router.navigate([this.returnUrl]);
         },
         error: (err: HttpErrorResponse) => {
-          this.showError = true;
+          this.notificationService.showError( this.transloco.translate('notification.addEventFail'), "Failed");
         }
       })
   }
 }
+

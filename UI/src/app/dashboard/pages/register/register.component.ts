@@ -54,7 +54,6 @@ export class RegisterComponent implements OnInit {
     return null;
   }
 
-
   registerUser = (registerFormValue: any) => {
     this.showError = false;
     const register = { ...registerFormValue };

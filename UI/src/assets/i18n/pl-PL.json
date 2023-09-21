@@ -80,7 +80,9 @@
       "paymentDue": "Należne płatności",
       "paymentHistory": "Historia Płatności",
       "picture":"Zdjecie",
-      "search":"Wyszukaj..."
+      "search":"Wyszukaj...",
+      "bids": "Oferta",
+      "bidNow": "Licytuj teraz"
     },
     "auction":{
       "list":"Lista aukcji",

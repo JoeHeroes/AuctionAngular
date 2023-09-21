@@ -1,5 +1,9 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslocoService } from '@ngneat/transloco';
+import { AuthResponseDto } from 'src/app/common/services/authentication.service';
+import { NotificationService } from 'src/app/common/services/notification.service';
 import { PaymentInfo, PaymentService } from 'src/app/common/services/payment.service';
 import { VehicleService } from 'src/app/common/services/vehicle.service';
 
@@ -17,17 +21,25 @@ export class AdminPanelVehiclesComponent {
 
   constructor(private vehicleService: VehicleService,
     private paymentService: PaymentService,
-    private router: Router) {
+    private notificationService: NotificationService,
+    private router: Router,
+    private transloco: TranslocoService) {
     this.vehicleService.getVehiclesAuctionEnd().subscribe(res => {
       this.datasource = res;
     });
   }
 
   sellClick(vehicleId: any)  {
-    this.vehicleService.sellVehicle(vehicleId).subscribe(res => {
-      this.vehicleService.getVehiclesAuctionEnd().subscribe(res => {
-        this.datasource = res;
-      });
+    this.vehicleService.sellVehicle(vehicleId).subscribe({
+      next: (res: AuthResponseDto) => {
+        this.vehicleService.getVehiclesAuctionEnd().subscribe(res => {
+          this.datasource = res;
+        });
+        this.notificationService.showSuccess( this.transloco.translate('notification.sellVehicleCorrect'), "Success");
+      },
+      error: (err: HttpErrorResponse) => {
+        this.notificationService.showError( this.transloco.translate('notification.sellVehicleFail'), "Failed");
+      }
     })
   }
 
@@ -36,10 +48,16 @@ export class AdminPanelVehiclesComponent {
   }
 
   deleteClick(vehicleId: any)  {
-    this.vehicleService.deleteVehicle(vehicleId).subscribe(res => {
-      this.vehicleService.getVehiclesAuctionEnd().subscribe(res => {
-        this.datasource = res;
-      });
+    this.vehicleService.deleteVehicle(vehicleId).subscribe({
+      next: (res: AuthResponseDto) => {
+        this.vehicleService.getVehiclesAuctionEnd().subscribe(res => {
+          this.datasource = res;
+        });
+        this.notificationService.showSuccess( this.transloco.translate('notification.deleteVehicleCorrect'), "Success");
+      },
+      error: (err: HttpErrorResponse) => {
+        this.notificationService.showError( this.transloco.translate('notification.deleteVehicleFail'), "Failed");
+      }
     })
   }
 

@@ -1,74 +1,70 @@
 <div class="center">
-    <ng-container *transloco="let t">
-      <br />
-      <dx-toolbar>
-        <dxi-item location="before">
-          <h1 style="font-weight: bold">{{t('calendar.manager')}}</h1>
-        </dxi-item>
-        <dxi-item location="after" style="float: right; margin-right: 20px;">
-          <div *dxTemplate >
-            <a [routerLink]="['/event/add']">
-              <dx-button type="default" [text]="t('action.addEvent')"></dx-button>
-            </a>
+  <ng-container *transloco="let t">
+    <br />
+    <dx-toolbar>
+      <dxi-item location="before">
+        <h1 style="font-weight: bold">{{t('calendar.manager')}}</h1>
+      </dxi-item>
+      <dxi-item location="after" style="float: right; margin-right: 20px;">
+        <div *dxTemplate>
+          <a [routerLink]="['/event/add']">
+            <dx-button type="default" [text]="t('action.addEvent')"></dx-button>
+          </a>
+        </div>
+      </dxi-item>
+    </dx-toolbar>
+    <br />
+    <div>
+      <dx-data-grid id="gridContainer" [dataSource]="datasource" [showBorders]="true" [hoverStateEnabled]="true"
+        [activeStateEnabled]="true" [allowColumnResizing]="true" [allowColumnReordering]="true"
+        [remoteOperations]="true">
+        <dxo-filter-row [visible]="true"></dxo-filter-row>
+        <dxo-scrolling rowRenderingMode="virtual"> </dxo-scrolling>
+        <dxo-sorting mode="multiple"></dxo-sorting>
+        <dxo-paging [pageSize]="10"> </dxo-paging>
+        <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"
+          [placeholder]="t('vehicle.search')"></dxo-search-panel>
+        <dxo-pager [visible]="true" [allowedPageSizes]="allowedPageSizes" [displayMode]="displayMode"
+          [showPageSizeSelector]="true" [showInfo]="true" [showNavigationButtons]="true">
+        </dxo-pager>
+        <dxi-column dataField="title" [caption]="t('calendar.title')" [filterOperations]="['startswith']" [width]="240"
+          [allowSorting]="true"></dxi-column>
+        <dxi-column dataField="description" [caption]="t('calendar.description')" [allowFiltering]="false"
+          [allowSorting]="true"></dxi-column>
+        <dxi-column dataField="start" [caption]="t('calendar.date')" dataType="date" [allowFiltering]="false"
+          [width]="120" [allowSorting]="true"></dxi-column>
+        <dxi-column dataField="color" [caption]="t('calendar.color')" [allowFiltering]="true" [width]="120"
+          [allowSorting]="false"></dxi-column>
+        <dxi-column dataField="allDay" [caption]="t('calendar.allDay')" [allowFiltering]="true" [width]="120"
+          [allowSorting]="false"></dxi-column>
+        <dxi-column type="buttons" dataField="Edit" [caption]="t('admin.edit')" cellTemplate="cellTemplateEdit">
+        </dxi-column>
+        <dxi-column type="buttons" dataField="Delete" [caption]="t('admin.delete')" cellTemplate="cellTemplateDelete">
+        </dxi-column>
+
+        <div *dxTemplate="let data of 'cellTemplateEdit'">
+          <span style="cursor: pointer; font-weight: bold; color: gray"
+            (click)="editClick(data.data.id)">{{t('admin.edit')}}</span>
+        </div>
+
+        <div *dxTemplate="let data of 'cellTemplateDelete'">
+          <span style="cursor: pointer; font-weight: bold; color:orangered"
+            (click)="deleteClick(data.data.id)">{{t('admin.delete')}}</span>
+        </div>
+
+        <div *dxTemplate="let d of 'discountCellTemplate'">
+          <div class="chart-cell">
+            <dx-bullet [showTarget]="false" [showZeroLevel]="true" [startScaleValue]="0" [endScaleValue]="100"
+              [value]="d.value * 100">
+              <dxo-size [width]="150" [height]="35"></dxo-size>
+              <dxo-tooltip [enabled]="true" [paddingTopBottom]="2">
+                <dxo-font [size]="18"></dxo-font>
+              </dxo-tooltip>
+              <dxo-margin [top]="5" [bottom]="0" [left]="5"></dxo-margin>
+            </dx-bullet>
           </div>
-        </dxi-item>
-      </dx-toolbar>
-      <br />
-      <div>
-        <dx-data-grid
-      id="gridContainer"
-      [dataSource]="datasource"
-      [showBorders]="true" [hoverStateEnabled]="true" [activeStateEnabled]="true"
-      [allowColumnResizing]="true" [allowColumnReordering]="true" [remoteOperations]="true"
-      (onRowDblClick)="handleRowDoubleClick($event)">
-      <dxo-filter-row [visible]="true"></dxo-filter-row>
-      <dxo-scrolling rowRenderingMode="virtual"> </dxo-scrolling>
-      <dxo-sorting mode="multiple"></dxo-sorting>
-      <dxo-paging [pageSize]="10"> </dxo-paging>
-      <dxo-search-panel
-      [visible]="true"
-      [highlightCaseSensitive]="true"
-      [placeholder]="t('vehicle.search')"
-    ></dxo-search-panel>
-      <dxo-pager
-        [visible]="true"
-        [allowedPageSizes]="allowedPageSizes"
-        [displayMode]="displayMode"
-        [showPageSizeSelector]="true"
-        [showInfo]="true"
-        [showNavigationButtons]="true"
-      >
-      </dxo-pager>
-          <dxi-column dataField="title" [caption]="t('calendar.title')" [filterOperations]="['startswith']" [width]="240"
-            [allowSorting]="true"></dxi-column>
-            <dxi-column dataField="description" [caption]="t('calendar.description')" [allowFiltering]="false"
-            [allowSorting]="true"></dxi-column>
-          <dxi-column dataField="start" [caption]="t('calendar.date')" dataType="date" [allowFiltering]="false" [width]="120"
-            [allowSorting]="true"></dxi-column>
-          <dxi-column dataField="color" [caption]="t('calendar.color')" [allowFiltering]="true" [width]="120"
-            [allowSorting]="false"></dxi-column>
-            <dxi-column dataField="allDay" [caption]="t('calendar.allDay')" [allowFiltering]="true" [width]="120"
-            [allowSorting]="false"></dxi-column>
-          <dxi-column [width]="120"></dxi-column>
-          <div *dxTemplate="let d of 'discountCellTemplate'">
-            <div class="chart-cell">
-              <dx-bullet
-                [showTarget]="false"
-                [showZeroLevel]="true"
-                [startScaleValue]="0"
-                [endScaleValue]="100"
-                [value]="d.value * 100">
-                <dxo-size [width]="150" [height]="35"></dxo-size>
-                <dxo-tooltip
-                  [enabled]="true"
-                  [paddingTopBottom]="2">
-                  <dxo-font [size]="18"></dxo-font>
-                </dxo-tooltip>
-                <dxo-margin [top]="5" [bottom]="0" [left]="5"></dxo-margin>
-              </dx-bullet>
-            </div>
-          </div>
-        </dx-data-grid>
-      </div>
-    </ng-container>
-  </div>
+        </div>
+      </dx-data-grid>
+    </div>
+  </ng-container>
+</div>

@@ -13,8 +13,6 @@ import { TranslocoService } from "@ngneat/transloco";
 export class VehiclePictureComponent {
   private returnUrl!: string;
 
-
-
   constructor(private http: HttpClient,
     private notificationService: NotificationService,
     private router: Router,
@@ -45,6 +43,5 @@ export class VehiclePictureComponent {
           this.notificationService.showError( this.transloco.translate('notification.pictureAddFail'), "Failed");
         }
       });
-  }
-
+    }
 }

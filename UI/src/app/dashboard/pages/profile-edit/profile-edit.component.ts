@@ -2,7 +2,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslocoService } from '@ngneat/transloco';
 import { AuthResponseDto, AuthenticationService, EditProfileDto } from 'src/app/common/services/authentication.service';
+import { NotificationService } from 'src/app/common/services/notification.service';
 
 @Component({
   selector: 'app-profile-edit',
@@ -17,19 +19,18 @@ export class ProfileEditComponent implements OnInit {
   errorMessage: string = '';
   email: string = '';
   userId: number = 0;
-
-
   nameValue!: string;
   sureNameValue!: string;
   phoneValue!: string;
   nationalityValue!: string;
   dateOfBirthValue!: string;
-
   value!: string;
 
   constructor(private authenticationService: AuthenticationService,
+    private notificationService: NotificationService,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private transloco: TranslocoService) { }
 
   ngOnInit(): void {
     this.editForm = new FormGroup({
@@ -87,9 +88,11 @@ export class ProfileEditComponent implements OnInit {
     this.authenticationService.editProfile(editData)
       .subscribe({
         next: (res: AuthResponseDto) => {
+          this.notificationService.showSuccess( this.transloco.translate('notification.profileEditCorrect'), "Success");
           this.router.navigate([this.returnUrl]);
         },
         error: (err: HttpErrorResponse) => {
+          this.notificationService.showError( this.transloco.translate('notification.profileEditFail'), "Failed");
           this.errorMessage = err.message;
           this.showError = true;
         }

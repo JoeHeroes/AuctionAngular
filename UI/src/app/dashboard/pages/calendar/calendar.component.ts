@@ -1,9 +1,8 @@
 import dayGridPlugin from '@fullcalendar/daygrid';
-import { CalendarService } from 'src/app/common/services/calendar.service';
 import allLocales from '@fullcalendar/core/locales-all'
+import { CalendarService } from 'src/app/common/services/calendar.service';
 import { Component } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/core';
-import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/common/services/authentication.service';
 
 @Component({
@@ -11,7 +10,6 @@ import { AuthenticationService } from 'src/app/common/services/authentication.se
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css']
 })
-
 
 export class CalendarComponent {
   calendarOptions: CalendarOptions = {
@@ -25,13 +23,10 @@ export class CalendarComponent {
     locale: sessionStorage.getItem('auction:lang')?.toString(),
   };
 
-
   constructor(private authenticationService: AuthenticationService,
     private calendarService: CalendarService) {
   }
   ngOnInit(): void {
-
-
     this.authenticationService.loggedUserId().subscribe(res => {
       this.calendarService.getEvents(res.userId).subscribe(res => {
         this.calendarOptions.events = res;

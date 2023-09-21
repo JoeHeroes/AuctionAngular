@@ -48,8 +48,13 @@
           [allowSorting]="true"></dxi-column>
         <dxi-column dataField="currentBid" [caption]="t('vehicle.currentBid')" [allowFiltering]="false"
           [allowSorting]="false"></dxi-column>
+          <dxi-column type="buttons" dataField="Edit" [caption]="t('vehicle.bids')" [width]="160" cellTemplate="cellTemplateBid">
+        </dxi-column>
   
-        <dxi-column [width]="120"></dxi-column>
+          <div *dxTemplate="let data of 'cellTemplateBid'">
+            <span style="cursor: pointer; font-weight: bold; color: white"
+              (click)="bidClick(data.data.lotNumber)">{{t('vehicle.bidNow')}}</span>
+          </div>
   
         <div *dxTemplate="let data of 'cellTemplate'">
           <img width="200" src="https://storagevehicleauction.blob.core.windows.net/vehicle-images/{{data.value}}">

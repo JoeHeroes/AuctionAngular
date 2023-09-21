@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { AuthenticationService, EditProfileDto } from 'src/app/common/services/authentication.service';
+import { AuthenticationService} from 'src/app/common/services/authentication.service';
 import { StorageService } from 'src/app/common/services/storage.service';
 
 @Component({
@@ -29,12 +29,12 @@ export class ProfileComponent {
       this.userId = res.userId;
       this.authenticationService.getUserInfo(res.userId).subscribe(res => {
         this.datasource = res;
-
         if (res.profilePicture == "") {
           this.isPictureNull = true;
           this.imageUrl = this.storageService.getProfileImageUrl("profileDefult");
-
-        } else {
+        } 
+        else 
+        {
           this.isPictureNull = false;
           this.imageUrl = this.storageService.getProfileImageUrl(res.profilePicture);
         }

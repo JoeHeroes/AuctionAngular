@@ -1,8 +1,10 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { RowDblClickEvent } from 'devextreme/ui/data_grid';
-import { AuthenticationService } from 'src/app/common/services/authentication.service';
+import { TranslocoService } from '@ngneat/transloco';
+import { AuthResponseDto, AuthenticationService } from 'src/app/common/services/authentication.service';
 import { CalendarService } from 'src/app/common/services/calendar.service';
+import { NotificationService } from 'src/app/common/services/notification.service';
 
 @Component({
   selector: 'app-calendar-manage',
@@ -10,6 +12,7 @@ import { CalendarService } from 'src/app/common/services/calendar.service';
   styleUrls: ['./calendar-manage.component.css']
 })
 export class CalendarManageComponent {
+  userId: any;
   datasource: any;
 
   readonly allowedPageSizes = [5, 10, 20, 'all'];
@@ -18,23 +21,37 @@ export class CalendarManageComponent {
 
   constructor(private authenticationService: AuthenticationService,
     private calendarService: CalendarService,
-    private router: Router) {
+    private notificationService: NotificationService,
+    private router: Router,
+    private transloco: TranslocoService) {
     
-
-
-
-    this.authenticationService.loggedUserId().subscribe(res => {
-      this.calendarService.getEvents(res.userId).subscribe(res => {
-        this.datasource = res;
+      this.authenticationService.loggedUserId().subscribe(res => {
+        this.calendarService.getEvents(res.userId).subscribe(res => {
+          this.datasource = res;
+        });
       });
-    });
-
   }
 
-  handleRowDoubleClick(event: RowDblClickEvent) {
-    const template = event.data
-    this.router.navigate(['/event/edit', template.id].filter(v => !!v));
+  editClick(vehicleId: any)  {
+    this.router.navigate(['/event/edit', vehicleId].filter(v => !!v));
   }
 
+  deleteClick(eventId: any)  {
+    this.calendarService.deleteEvent(eventId).subscribe({
+      next: (res: AuthResponseDto) => {
+        this.authenticationService.loggedUserId().subscribe(res => {
+          this.calendarService.getEvents(res.userId).subscribe(res => {
+            this.datasource = res;
+          });
+        });
+        this.notificationService.showSuccess( this.transloco.translate('notification.deleteEventCorrect'), "Success");
+      },
+      error: (err: HttpErrorResponse) => {
+        this.notificationService.showError( this.transloco.translate('notification.deleteEventFail'), "Failed");
+      }
+    })
+  }
 }
+
+
 

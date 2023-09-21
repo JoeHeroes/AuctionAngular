@@ -1,5 +1,6 @@
 ﻿using AuctionAngular.Dtos.Event;
 using AuctionAngular.Interfaces;
+using AuctionAngular.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AuctionAngular.Controllers
@@ -83,6 +84,23 @@ namespace AuctionAngular.Controllers
         {
             await _calendarService.EditEventAsync(dto);
             return Ok();
+        }
+
+
+
+        /// <summary>
+        /// Delete Event
+        /// </summary>
+        /// <response code="200">Correct data</response>
+        /// <response code="400">Incorrect data</response>
+        [HttpDelete("[action]/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> DeleteEvent([FromRoute] int id)
+        {
+            await _calendarService.DeleteEventAsync(id);
+
+            return NoContent();
         }
     }
 }

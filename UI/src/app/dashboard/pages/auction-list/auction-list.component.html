@@ -18,9 +18,9 @@
         </dxo-pager>
         <dxi-column dataField="id" [caption]="t('auction.id')" [allowFiltering]="false" [width]="160"
           [allowSorting]="true"></dxi-column>
-        <dxi-column dataField="location" [caption]="t('auction.location')" [allowSorting]="true"></dxi-column>
+        <dxi-column dataField="location" [caption]="t('auction.location')" [allowSorting]="true" [width]="160"></dxi-column>
         <dxi-column dataField="description" [caption]="t('auction.description')" [allowSorting]="true"></dxi-column>
-        <dxi-column dataField="countVehicle" [caption]="t('auction.countVehicle')" [allowSorting]="true"></dxi-column>
+        <dxi-column dataField="countVehicle" [caption]="t('auction.countVehicle')" [allowSorting]="true" [width]="120"></dxi-column>
         <dxi-column dataField="dateTime" [caption]="t('auction.dateTime')" dataType="date" [width]="120"
           [allowSorting]="true"></dxi-column>
         <div *dxTemplate="let d of 'discountCellTemplate'">

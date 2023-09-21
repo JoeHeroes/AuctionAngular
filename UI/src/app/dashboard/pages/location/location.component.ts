@@ -1,5 +1,4 @@
-import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { LocationService } from 'src/app/common/services/location.service';
 
 @Component({
@@ -7,33 +6,16 @@ import { LocationService } from 'src/app/common/services/location.service';
   templateUrl: './location.component.html',
   styleUrls: ['./location.component.css']
 })
-export class LocationComponent implements OnInit {
+export class LocationComponent{
   locations!: Location[];
 
   constructor(private locationService: LocationService) {
-
-
-    this.locationService.getLocations()
-      .subscribe({
-        next: (res: any) => {
-
-          this.locations = res
-        },
-        error: (err: HttpErrorResponse) => {
-
-        }
-      })
-
-  }
-  ngOnInit(): void {
+    this.locationService.getLocations().subscribe(res => this.locations = res)
   }
 }
 
-
-
 export default class Location {
   ID: number | undefined;
-
   CompanyName: string | undefined;
   name: string | undefined;
   phone: string | undefined;
@@ -42,5 +24,4 @@ export default class Location {
   street: string | undefined;
   postalCode: string | undefined;
   profileImg: string | undefined;
-
 }

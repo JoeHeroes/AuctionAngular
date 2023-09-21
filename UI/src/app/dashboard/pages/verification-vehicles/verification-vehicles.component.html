@@ -29,20 +29,19 @@
                     [allowFiltering]="false" [allowSorting]="true"></dxi-column>
                 <dxi-column dataField="registrationYear" [caption]="t('vehicle.registrationYear')"
                     [allowFiltering]="false" [allowSorting]="true"></dxi-column>
-
                 <dxi-column dataField="auctionNumber" [caption]="t('vehicle.auction')"
-                    [allowFiltering]="false" [allowSorting]="true"></dxi-column>
+                    [allowFiltering]="false" [allowSorting]="true"></dxi-column> 
 
-                <dxi-column type="buttons"  [width]="150"
+                <dxi-column type="buttons" [caption]="t('admin.set')" [width]="150"
                     cellTemplate="cellTemplateSet">
                 </dxi-column>
 
-                <dxi-column type="buttons"
+                <dxi-column type="buttons" [caption]="t('admin.cancel')"
                     cellTemplate="cellTemplateCancel">
                 </dxi-column>
                 
-                <dxi-column type="buttons"
-                    cellTemplate="cellTemplateAccept">
+                <dxi-column type="buttons" [caption]="t('admin.accept')"
+                    cellTemplate="cellTemplateAccept">  
                 </dxi-column>
 
                 <div *dxTemplate="let data of 'cellTemplateSet'">

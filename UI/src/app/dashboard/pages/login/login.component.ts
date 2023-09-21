@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
                 .subscribe({
                   next: (res: AuthResponseDto) => {
                     this.tokenService.set(res.token);
-                    this.notificationService.showSuccess( this.transloco.translate('notification.loggedIn'), "Success");
+                    this.notificationService.showSuccess( this.transloco.translate('notification.loggedInCorrect'), "Success");
                     this.router.navigate([this.returnUrl]);
                   },
                   error: (err: any) => {

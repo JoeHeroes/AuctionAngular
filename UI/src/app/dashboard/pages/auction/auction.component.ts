@@ -21,8 +21,6 @@ export class AuctionComponent implements OnInit {
   index: number = 0;
   id: any;
   user: any;
-
-
   bidForm!: FormGroup;
 
   constructor(private auctionService: AuctionService,
@@ -34,7 +32,6 @@ export class AuctionComponent implements OnInit {
       this.mySubscription = interval(200).subscribe((x => {
         this.doTimer();
       }));
-
   }
 
   ngOnInit(): void {
@@ -57,7 +54,6 @@ export class AuctionComponent implements OnInit {
     })
   }
 
-
   doTimer() {
     this.time++;
     if (this.time > 110) {
@@ -79,17 +75,16 @@ export class AuctionComponent implements OnInit {
       userId: this.user.userId
     }
 
-
     this.vehicleService.bidVehicle(bidDto)
       .subscribe({
         next: () => {
           this.auctionService.liveAuctionList().subscribe(res => {
             this.datasource = res;
-            this.notificationService.showSuccess( this.transloco.translate('notification.bid'), "Success");
+            this.notificationService.showSuccess( this.transloco.translate('notification.bidVehicleCorrect'), "Success");
           });
         },
         error: () => {
-          this.notificationService.showError( this.transloco.translate('notification.bidFail'), "Failed");
+          this.notificationService.showError( this.transloco.translate('notification.bidVehicleFail'), "Failed");
         }
       })
   }

@@ -40,6 +40,13 @@ export class CalendarService {
     
     return this.http.post<any>(url_, data);
   }
+
+  deleteEvent(eventId: number): Observable<any> {
+
+    let url_ = this.baseUrl + "/Calendar/DeleteEvent/" + eventId;
+    
+    return this.http.delete<any>(url_);
+  }
 }
 
 export interface AddEventeDto {

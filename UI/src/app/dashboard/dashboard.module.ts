@@ -24,7 +24,6 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { ProfileEditComponent } from './pages/profile-edit/profile-edit.component';
 import { RestartPasswordComponent } from './pages/restart-password/restart-password.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
-import { ScrollComponent } from './pages/scroll/scroll.component';
 import { CalendarComponent } from './pages/calendar/calendar.component';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { WatchListComponent } from './pages/watch-list/watch-list.component';
@@ -70,7 +69,6 @@ import { VehicleSetComponent } from './pages/vehicle-set/vehicle-set.component';
     ProfileComponent,
     ProfileEditComponent,
     RestartPasswordComponent,
-    ScrollComponent,
     CalendarComponent,
     WatchListComponent,
     VehiclePictureComponent,
