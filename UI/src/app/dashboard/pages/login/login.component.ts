@@ -58,12 +58,11 @@ export class LoginComponent implements OnInit {
                 .subscribe({
                   next: (res: AuthResponseDto) => {
                     this.tokenService.set(res.token);
-                    this.notificationService.showSuccess( this.transloco.translate('notification.loggedInCorrect'), "Success");
+                    this.notificationService.showSuccess( this.transloco.translate('notification.loggedIn'), "Success");
                     this.router.navigate([this.returnUrl]);
                   },
                   error: (err: any) => {
                     this.errorMessage = "Incorrect email address or password";
-                    this.notificationService.showError( this.transloco.translate('notification.loggedInFail'), "Failed");
                     this.showError = true;
                     this.loading = true;
                   }
