@@ -43,7 +43,7 @@ export class AuctionAddComponent implements OnInit {
     if (selectedDate < currentDate) {
       return { minDate: true };
     }
-    return null;
+    return null; 
   }
 
   addAuction = (addFormValue: any) => {

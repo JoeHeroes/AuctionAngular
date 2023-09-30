@@ -11,14 +11,12 @@ import { DataService } from "src/app/services/data.service";
   styleUrls: ['./vehicle-picture.component.css']
 })
 export class VehiclePictureComponent {
+  successMessage: string | null = null;
   private returnUrl!: string;
-
   constructor(private http: HttpClient,
-    private notificationService: NotificationService,
     private router: Router,
     private dataService: DataService,
-    private route: ActivatedRoute,
-    private transloco: TranslocoService) { 
+    private route: ActivatedRoute) { 
 
       this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/vehicle';
     }
@@ -32,15 +30,13 @@ export class VehiclePictureComponent {
     for (const file of files) {
       formData.append(file.name, file);
     }
-
-    this.http.patch('https://localhost:7257/Vehicle/UploadVehicleImage/' + this.dataService.userId, formData, { reportProgress: true, observe: 'events' })
+    this.http.post<any>('https://localhost:7257/Vehicle/UploadVehicleImage/' + this.dataService.userId, formData, { reportProgress: true, observe: 'events' })
       .subscribe({
         next: (event: any) => {
-          this.notificationService.showSuccess( this.transloco.translate('notification.pictureAddCorrect'), "Success");
+          this.successMessage = 'File uploaded successfully.';
           this.router.navigate([this.returnUrl]);
         },
         error: (err: HttpErrorResponse) => {
-          this.notificationService.showError( this.transloco.translate('notification.pictureAddFail'), "Failed");
         }
       });
     }

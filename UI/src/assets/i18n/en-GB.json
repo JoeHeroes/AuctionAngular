@@ -82,7 +82,9 @@
     "picture": "Picture",
     "search": "Search...",
     "bids": "Bids",
-    "bidNow": "Bid Now"
+    "bidNow": "Bid Now",
+    "generalInformation": "General Information",
+    "bidInformation":"Bid Information"
   },
   "auction":{
     "list":"List of Auctions",
@@ -146,7 +148,7 @@
     "setAuctionCorrect":"Auction Set Correct",
     "setAuctionFail":"Auction Set Fail",
     "confirmVehicleCorrect":"Vehicle Confirm Correct",
-    "confirmVehicleFail":"Vehicle Confirm Fail",
+    "confirmVehicleFail":"Set Correct Auction ID",
     "deleteVehicleCorrect":"Vehicle Delete Correct",
     "deleteVehicleFail":"Vehicle Delete Fail",
     "vehicleWatchCorrect":"Vehicle Watch Correct",

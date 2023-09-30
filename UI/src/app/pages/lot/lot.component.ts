@@ -6,6 +6,7 @@ import { ActivatedRoute, UrlSegment } from '@angular/router';
 import { BidDto, VehicleService, WatchDto } from 'src/app/services/vehicle.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { NotificationService } from 'src/app/services/notification.service';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-lot',
@@ -47,6 +48,8 @@ export class LotComponent implements OnInit {
   bidForm!: FormGroup;
   watchLot: boolean = false;
   isUserAuthenticated: boolean = false;
+  auctionEnd: boolean = false;
+  currentDate!: Date;
 
   watchDto: WatchDto = {
     vehicleId: 0,
@@ -81,6 +84,12 @@ export class LotComponent implements OnInit {
 
     this.vehicleService.getVehicle(this.id).subscribe(res => {
       this.datasource = res;
+
+      this.currentDate = new Date();
+
+      if(formatDate(res.dateTime, 'yyyy-MM-dd', 'en-US') < formatDate(this.currentDate, 'yyyy-MM-dd', 'en-US')){
+        this.auctionEnd = true
+      }
     });
 
     this.bidForm = new FormGroup({

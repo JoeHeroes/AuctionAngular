@@ -201,7 +201,10 @@ namespace AuctionAngular.Services
 
             foreach (var auc in auctions)
             {
-                auctionDto.Add(await ViewAuctionDtoConvert(auc));
+                if (auc.DateTime > DateTime.Now)
+                {
+                    auctionDto.Add(await ViewAuctionDtoConvert(auc));
+                }
             }
 
             return auctionDto;

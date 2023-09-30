@@ -7,7 +7,7 @@ import { MessageComponent } from "src/app/common/components/message/message.comp
     MessageComponent,
   ],
   imports: [
-    CommonModule,
+    CommonModule
   ],
   exports: [
     MessageComponent,

@@ -507,7 +507,16 @@ namespace AuctionAngular.Services
 
 
             if (vehicle != null && vehicle.AuctionId != 0)
-                vehicle!.Confirm = !vehicle.Confirm;
+            {
+                var auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.Id == vehicle.AuctionId);
+                if(auction!.DateTime > DateTime.Now)
+                {
+                    vehicle!.Confirm = !vehicle.Confirm;
+                }
+                else
+                    throw new Exception();
+
+            }
             else
                 throw new Exception();
 

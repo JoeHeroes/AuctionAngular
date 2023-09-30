@@ -17,7 +17,7 @@
             <dx-gallery [dataSource]="datasource.images" [loop]="true" [showNavButtons]="true" [showIndicator]="true">
               <div *dxTemplate="let i of 'item'">
                 <div>
-                  <img height="450" src="https://storagevehicleauction.blob.core.windows.net/vehicle-images/{{i}}">
+                  <img height="450" src="assets\picture\{{datasource.producer}}-{{datasource.modelSpecifer}}-{{datasource.modelGeneration}}-{{datasource.registrationYear}}\{{i}}">
                 </div>
               </div>
             </dx-gallery>
@@ -26,7 +26,7 @@
         <div class="column2">
           <div class="shadow-sm">
             <div class="card-header bg-transparent border-0">
-              <h3 class="mb-0">General Information</h3>
+              <h3 class="mb-0">{{t('vehicle.generalInformation')}}</h3>
             </div>
             <div class="card-body pt-0">
               <table class="table table-bordered">
@@ -97,33 +97,43 @@
         <div class="column3">
           <div class="shadow-sm">
             <div class="card-header bg-transparent border-0">
-              <h3 class="mb-0">Bid Information</h3>
+              <h3 class="mb-0">{{t('vehicle.bidInformation')}}</h3>
             </div>
 
             <div *ngIf="watchDto.userId">
-              <div class="card-body pt-0" *ngIf="!datasource.waitingForConfirm">
-                <table class="table table-bordered">
-                  <tr>
-                    <th width="50%">{{t('vehicle.currentBid')}}</th>
-                    <td>{{datasource.currentBid}}</td>
-                  </tr>
-                </table>
-                <form [formGroup]="bidForm" (ngSubmit)="bidCar(bidForm.value)">
-                  {{t('vehicle.newBid')}}:
-                  <input type="number" id="bidNow" formControlName="bidNow" class="form-control" />
-                  <br />
-                  <br />
-                  <dx-button class="button" [text]="t('vehicle.nowBid')" type="default" [useSubmitBehavior]="true">
-                  </dx-button>
-                </form>
-              </div>
-
-              <div class="card-header bg-transparent border-0" *ngIf="datasource.waitingForConfirm && !datasource.sold">
-                <h3 class="mb-0" style="color: orangered;">Waiting For Confirm</h3>
-              </div>
+              
+              <div *ngIf="!auctionEnd">
+              
+                <div class="card-body pt-0" *ngIf="!datasource.waitingForConfirm">
+                  <table class="table table-bordered">
+                    <tr>
+                      <th width="50%">{{t('vehicle.currentBid')}}</th>
+                      <td>{{datasource.currentBid}}</td>
+                    </tr>
+                  </table>
+                  <form [formGroup]="bidForm" (ngSubmit)="bidCar(bidForm.value)">
+                    {{t('vehicle.newBid')}}:
+                    <input type="number" id="bidNow" formControlName="bidNow" class="form-control" />
+                    <br />
+                    <br />
+                    <dx-button class="button" [text]="t('vehicle.nowBid')" type="default" [useSubmitBehavior]="true">
+                    </dx-button>
+                  </form>
+                </div>
   
-              <div class="card-header bg-transparent border-0" *ngIf="datasource.sold">
-                <h3 class="mb-0" style="color: red;">Sales End</h3>
+                <div class="card-header bg-transparent border-0" *ngIf="datasource.waitingForConfirm && !datasource.sold">
+                  <h3 class="mb-0" style="color: orangered;">Waiting For Confirm</h3>
+                </div>
+    
+                <div class="card-header bg-transparent border-0" *ngIf="datasource.sold">
+                  <h3 class="mb-0" style="color: red;">Sales End</h3>
+                </div>
+  
+              </div>
+              <div *ngIf="auctionEnd">
+                <div class="card-header bg-transparent border-0">
+                  <h3 class="mb-0" style="color: red;">Sales End</h3>
+                </div>
               </div>
 
             </div>

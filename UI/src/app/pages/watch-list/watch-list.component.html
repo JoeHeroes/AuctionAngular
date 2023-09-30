@@ -45,9 +45,6 @@
         </dxi-column>
         <dxi-column dataField="currentBid" [caption]="t('vehicle.currentBid')" [allowFiltering]="false"
           [allowSorting]="false"></dxi-column>
-        
-        <dxi-column dataField="currentBid" [caption]="t('vehicle.currentBid')" [allowFiltering]="false"
-          [allowSorting]="false"></dxi-column>
           <dxi-column type="buttons" dataField="Watch" [caption]="t('action.watch')" [width]="160" cellTemplate="cellTemplateWatch">
         </dxi-column>
   
@@ -56,7 +53,7 @@
             <span *ngIf="!data.data.watchLot" class="removeWatch" (click)="this.removeWatchClick(data.data.lotNumber)" style="color: yellow; font-size: 20px; cursor: pointer;">★</span>
           </div>
         <div *dxTemplate="let data of 'cellTemplate'">
-          <img width="200" src="https://storagevehicleauction.blob.core.windows.net/vehicle-images/{{data.value}}">
+          <img width="200" src="assets\picture\{{data.data.producer}}-{{data.data.modelSpecifer}}-{{data.data.modelGeneration}}-{{data.data.registrationYear}}\{{data.value}}">
         </div>
         <div *dxTemplate="let d of 'discountCellTemplate'">
           <div class="chart-cell">

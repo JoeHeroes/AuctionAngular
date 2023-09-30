@@ -64,7 +64,6 @@ namespace AuctionAngular.Services
                 City = location.City,
                 Street = location.Street,
                 PostalCode = location.PostalCode,
-                Picture = location.Picture,
             };
         }
     }

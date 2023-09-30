@@ -219,7 +219,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> UpdateVehicle([FromRoute] int id,[FromBody] EditVehicleDto dto)
         {
-            await _vehicleService.UpdateVehicleAsync(id, dto);
+            _vehicleService.UpdateVehicleAsync(id, dto);
 
             return NoContent();
         }
@@ -326,20 +326,19 @@ namespace AuctionAngular.Controllers
         /// <response code="200">Correct data</response>
         /// <response code="400">Incorrect id</response>
         /// <response code="500">Exception</response>
-        [HttpPatch("[action]/{id}")]
+        [HttpPost("[action]/{id}")]
         public async Task<IActionResult> UploadVehicleImage([FromRoute] int id)
         {
             IFormFileCollection files = Request.Form.Files;
 
-            var result = await _vehicleService.AddPictureAsync(id, files);
+            var result = _vehicleService.AddPictureAsync(id, files);
 
             if (result is null)
             {
                 return NotFound();
             }
 
-            var response = new { Message = "Upload successfully!" };
-            return Ok(response);
+            return Ok();
         }
 
 

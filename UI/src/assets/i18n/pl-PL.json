@@ -82,7 +82,9 @@
       "picture":"Zdjecie",
       "search":"Wyszukaj...",
       "bids": "Oferta",
-      "bidNow": "Licytuj teraz"
+      "bidNow": "Licytuj teraz",
+      "generalInformation": "Ogólne informacje",
+      "bidInformation":"Informacje o ofercie"
     },
     "auction":{
       "list":"Lista aukcji",
@@ -146,7 +148,7 @@
       "setAuctionCorrect":"Aukcja dodana poprawnie",
       "setAuctionFail":"Aukcja dodana niepoprawnie",
       "confirmVehicleCorrect":"Auto zweryfikowane poprawnie",
-      "confirmVehicleFail":"Auto zweryfikowane niepoprawnie",
+      "confirmVehicleFail":"Ustaw prawidłowy identyfikator aukcji",
       "deleteVehicleCorrect":"Auto usuniete poprawnie",
       "deleteVehicleFail":"Auto usuniete niepoprawnie",
       "vehicleWatchCorrect":"Auto obserwowane poprawnie",

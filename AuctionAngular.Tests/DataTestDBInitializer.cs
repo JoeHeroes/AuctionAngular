@@ -23,7 +23,6 @@ namespace AuctionAngularTests
                     City = "Espoo",
                     Street = "Pieni teollisuuskatu 7",
                     PostalCode = "Uusimaa 02920",
-                    Picture = "Espoo.png"
                 }
             );
 
@@ -113,7 +112,6 @@ namespace AuctionAngularTests
                 City = "Test3",
                 Street = "Test4",
                 PostalCode = "Test5",
-                Picture = "Test6"
             });
 
 

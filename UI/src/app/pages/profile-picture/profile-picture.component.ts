@@ -15,10 +15,8 @@ export class ProfilePictureComponent {
   returnUrl: string = "/profile";
   constructor(
     private authenticationService: AuthenticationService,
-    private notificationService: NotificationService,
     private http: HttpClient,
-    private router: Router,
-    private transloco: TranslocoService) { }
+    private router: Router) { }
 
   uploadPictures(files: any) {
     if (files.length === 0)
@@ -35,10 +33,8 @@ export class ProfilePictureComponent {
           next: (res: any) => {
             this.successMessage = 'File uploaded successfully.';
             this.router.navigate([this.returnUrl]);
-            this.notificationService.showSuccess( this.transloco.translate('notification.pictureAddCorrect'), "Success");
           },
           error: (err: HttpErrorResponse) => {
-            this.notificationService.showError( this.transloco.translate('notification.pictureAddFail'), "Failed");
           }
         });
     })

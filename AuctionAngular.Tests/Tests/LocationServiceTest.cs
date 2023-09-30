@@ -66,7 +66,6 @@ namespace AuctionAngular.Tests
                 City = "Test3",
                 Street = "Test4",
                 PostalCode = "Test5",
-                Picture = "Test6"
             };
 
             //Act
@@ -81,8 +80,6 @@ namespace AuctionAngular.Tests
             Assert.Equal(locationResult.Email, locationExaple.Email);
             Assert.Equal(locationResult.Street, locationExaple.Street);
             Assert.Equal(locationResult.PostalCode, locationExaple.PostalCode);
-            Assert.Equal(locationResult.Picture, locationExaple.Picture);
-
         }
 
 

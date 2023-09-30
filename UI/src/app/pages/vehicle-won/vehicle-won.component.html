@@ -49,7 +49,7 @@
         <dxi-column dataField="currentBid" [caption]="t('vehicle.currentBid')" [allowFiltering]="false"
           [allowSorting]="false"></dxi-column>
         <div *dxTemplate="let data of 'cellTemplate'">
-          <img width="200" src="https://storagevehicleauction.blob.core.windows.net/vehicle-images/{{data.value}}">
+          <img width="200" src="assets\picture\{{data.data.producer}}-{{data.data.modelSpecifer}}-{{data.data.modelGeneration}}-{{data.data.registrationYear}}\{{data.value}}">
         </div>
   
   

@@ -82,7 +82,9 @@
     "picture":"Bild",
     "search":"Suchen...",
     "bids": "Gebote",
-    "bidNow": "Bieten Sie jetzt"
+    "bidNow": "Bieten Sie jetzt",
+    "generalInformation": "Allgemeine Informationen",
+    "bidInformation":"Angebotsinformationen"
   },
   "auction":{
     "list":"Liste der Auktionen",
@@ -137,7 +139,7 @@
   "notification":{
     "loggedOut": "Abgemeldet",
     "loggedIn": "Eingeloggt",
-    "registered": "Eingetragen",
+    "registeredCorrect": "Eingetragen",
     "loggedInFail": "Eingeloggt, fehlgeschlagen",
     "registeredFail": "Angemeldet, fehlgeschlagen",
     "bid":"Ihr Gebot ist das höchste",
@@ -149,7 +151,7 @@
     "setAuctionCorrect":"Auktionssatz korrekt",
     "setAuctionFail":"Auktionssatz fehlgeschlagen",
     "confirmVehicleCorrect":"Fahrzeug bestätigen, dass es richtig ist",
-    "confirmVehicleFail":"Fahrzeugbestätigung fehlgeschlagen",
+    "confirmVehicleFail":"Legen Sie die richtige Auktions-ID fest",
     "deleteVehicleCorrect":"Fahrzeuglöschung korrekt",
     "deleteVehicleFail":"Fehler beim Löschen des Fahrzeugs",
     "vehicleWatchCorrect":"Fahrzeugüberwachung korrekt",

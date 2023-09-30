@@ -15,6 +15,7 @@ import { AuctionCommonModule } from 'src/app/common/auction-common.module';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { DxTreeViewModule } from 'devextreme-angular';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { RouterModule } from '@angular/router';
     DxFormModule,
     DxButtonModule,
     DxLoadIndicatorModule,
-    DxDropDownButtonModule
+    DxDropDownButtonModule,
+    DxTreeViewModule,
   ],
   exports: [
     MainComponent,
