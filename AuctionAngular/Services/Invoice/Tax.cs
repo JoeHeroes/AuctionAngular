@@ -1,4 +1,4 @@
-﻿namespace AuctionAngular.Services.NewFolder
+﻿namespace AuctionAngular.Services.Invoice
 {
     public class Tax
     {

@@ -1,6 +1,6 @@
 ﻿namespace AuctionAngular.Services.NewFolder
 {
-    public class InvoiceDetail
+    public class Detail
     {
         public string Product { get; set; }
         public int Pcs { get; set; }

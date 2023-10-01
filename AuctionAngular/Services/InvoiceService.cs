@@ -1,8 +1,8 @@
 ﻿using AuctionAngular.Dtos;
 using AuctionAngular.Interfaces;
+using AuctionAngular.Services.Invoice;
 using AuctionAngular.Services.NewFolder;
 using Database;
-using Database.Entities;
 using Microsoft.EntityFrameworkCore;
 using PdfSharpCore;
 using PdfSharpCore.Pdf;
@@ -19,7 +19,7 @@ namespace AuctionAngular.Services
             _dbContext = dbContext;
         }
 
-        public async Task<PDFResponseDto> GeneratePDFAsync(PDFInfo info)
+        public async Task<PDFResponseDto> GeneratePDFAsync(Info info)
         {
             var document = new PdfDocument();
             //string imgeurl = "data:image/png;base64, " + Getbase64string() + "";
@@ -36,7 +36,7 @@ namespace AuctionAngular.Services
 
             Random rand = new Random();
 
-            InvoiceHeader header = new InvoiceHeader()
+            Header header = new Header()
             {
                 InvoiceNumber = rand.Next(100000, 1000000).ToString(),
                 CustomerId = user!.Id,
@@ -58,9 +58,9 @@ namespace AuctionAngular.Services
                 TaxFreeFrice = 0
             };
 
-            List<InvoiceDetail> detail = new List<InvoiceDetail>()
+            List<Detail> detail = new List<Detail>()
             {
-                new InvoiceDetail()
+                new Detail()
                 {
                     Product = vehicle.Producer +" "+vehicle.ModelSpecifer,
                     Pcs = 1,
@@ -68,7 +68,7 @@ namespace AuctionAngular.Services
                     Tax = "VAT "+ header.Tax +"%",
                     Total = vehicle.CurrentBid,
                 },
-                new InvoiceDetail()
+                new Detail()
                 {
                     Product = "Lot Retrieval Fee",
                     Pcs = 1,
@@ -76,7 +76,7 @@ namespace AuctionAngular.Services
                     Tax = "VAT "+ header.Tax +"%",
                     Total = 15.00,
                 },
-                new InvoiceDetail()
+                new Detail()
                 {
                     Product = "Buyer fee",
                     Pcs = 1,
@@ -84,7 +84,7 @@ namespace AuctionAngular.Services
                     Tax = "VAT "+ header.Tax +"%",
                     Total = 150.00,
                 },
-                new InvoiceDetail()
+                new Detail()
                 {
                     Product = "Virtual Bid Fee",
                     Pcs = 1,
@@ -92,7 +92,7 @@ namespace AuctionAngular.Services
                     Tax = "VAT "+ header.Tax +"%",
                     Total = 30.00,
                 },
-                new InvoiceDetail()
+                new Detail()
                 {
                     Product = "Green papers fee",
                     Pcs = 1,

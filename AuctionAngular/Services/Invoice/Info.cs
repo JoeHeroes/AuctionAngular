@@ -1,6 +1,6 @@
-﻿namespace AuctionAngular.Services.NewFolder
+﻿namespace AuctionAngular.Services.Invoice
 {
-    public class PDFInfo
+    public class Info
     {
         public int UserId { get; set; }
         public int VehicleId { get; set; }

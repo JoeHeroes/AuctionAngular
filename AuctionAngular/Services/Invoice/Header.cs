@@ -1,6 +1,6 @@
-﻿namespace AuctionAngular.Services.NewFolder
+﻿namespace AuctionAngular.Services.Invoice
 {
-    public class InvoiceHeader
+    public class Header
     {
         public string InvoiceNumber { get; set; }
         public string InvoiceDate { get; set; }
