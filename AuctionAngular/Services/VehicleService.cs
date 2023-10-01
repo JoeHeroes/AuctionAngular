@@ -41,9 +41,7 @@ namespace AuctionAngular.Services
 
         public async Task<IEnumerable<ViewVehiclesDto>> GetVehiclesAsync(bool status)
         {
-            var vehicles = await _dbContext
-                .Vehicles
-                .ToListAsync();
+            List<Vehicle> vehicles = await _dbContext.Vehicles.Where(x => x.Sold == false).ToListAsync();
 
             return await PictureProcess(vehicles, status);
         }
