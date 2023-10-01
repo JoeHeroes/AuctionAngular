@@ -11,7 +11,7 @@
         public long MeterReadout { get; set; }
         public DateTime DateTime { get; set; }
         public int CurrentBid { get; set; }
-        public bool Sold { get; set; }
-        public bool Confirm { get; set; }
+        public bool isSold { get; set; }
+        public bool isConfirm { get; set; }
     }
 }

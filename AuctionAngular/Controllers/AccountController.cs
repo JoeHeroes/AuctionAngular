@@ -50,7 +50,7 @@ namespace AuctionAngular.Controllers
                 Phone = dto.Phone,
                 RoleId = dto.RoleId,
                 ProfilePicture = "",
-                EmialConfirmed = false
+                isConfirmed = false
             };
 
             var token = await _accountService.GenerateTokenAsync(user);
@@ -233,11 +233,12 @@ namespace AuctionAngular.Controllers
             Message authenticationMessage = new Message()
             {
                 Email = email,
-                Sent = result,
+                isSent = result,
                 Title = "Logowanie do Panelu klienta",
                 Content = content,
                 Data = token,
                 Date = DateTime.Now,
+                UserId = user.Id
             };
             await _messageService.CreateMessageAsync(authenticationMessage);
 
@@ -257,7 +258,7 @@ namespace AuctionAngular.Controllers
             if(result is null)
                 return NotFound();
 
-            return Ok(result.EmialConfirmed);
+            return Ok(result.isConfirmed);
         }
 
 

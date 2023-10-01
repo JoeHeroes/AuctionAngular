@@ -37,9 +37,9 @@ namespace Database.Entities
         [DisplayName("Sale Term")]
         public string SaleTerm { get; set; }
         public int CurrentBid { get; set; }
+        public bool isSold { get; set; }
+        public bool isConfirm { get; set; }
         public int WinnerId { get; set; }
         public int AuctionId { get; set; }
-        public bool Sold { get; set; }
-        public bool Confirm { get; set; }
     }
 }

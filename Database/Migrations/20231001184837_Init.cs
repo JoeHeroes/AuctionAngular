@@ -53,9 +53,9 @@ namespace Database.Migrations
                     Start = table.Column<DateTime>(type: "datetime2", nullable: false),
                     End = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Color = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    AllDay = table.Column<bool>(type: "bit", nullable: false),
-                    Owner = table.Column<int>(type: "int", nullable: false),
-                    Url = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    isAllDay = table.Column<bool>(type: "bit", nullable: false),
+                    Url = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -88,11 +88,12 @@ namespace Database.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Sent = table.Column<bool>(type: "bit", nullable: false),
+                    isSent = table.Column<bool>(type: "bit", nullable: false),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Data = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -163,7 +164,7 @@ namespace Database.Migrations
                     PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     RoleId = table.Column<int>(type: "int", nullable: false),
                     ProfilePicture = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    EmialConfirmed = table.Column<bool>(type: "bit", nullable: false)
+                    isConfirmed = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -197,10 +198,10 @@ namespace Database.Migrations
                     Highlights = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SaleTerm = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CurrentBid = table.Column<int>(type: "int", nullable: false),
+                    isSold = table.Column<bool>(type: "bit", nullable: false),
+                    isConfirm = table.Column<bool>(type: "bit", nullable: false),
                     WinnerId = table.Column<int>(type: "int", nullable: false),
-                    AuctionId = table.Column<int>(type: "int", nullable: false),
-                    Sold = table.Column<bool>(type: "bit", nullable: false),
-                    Confirm = table.Column<bool>(type: "bit", nullable: false)
+                    AuctionId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

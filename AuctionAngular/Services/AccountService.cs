@@ -43,7 +43,7 @@ namespace AuctionAngular.Services
                 Phone = dto.Phone,
                 RoleId = dto.RoleId,
                 ProfilePicture = "",
-                EmialConfirmed = false
+                isConfirmed = false
             };
 
             var user =  await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == dto.Email);
@@ -92,7 +92,7 @@ namespace AuctionAngular.Services
                 throw new BadRequestException("Invalid username or password.");
             }
 
-            if (account.EmialConfirmed == false)
+            if (account.isConfirmed == false)
             {
                 throw new BadRequestException("Confirm your email.");
             }
@@ -305,7 +305,7 @@ namespace AuctionAngular.Services
         public async Task AccountVerification(int id ,bool autorization)
         {
             var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == id);
-            user.EmialConfirmed = autorization;
+            user.isConfirmed = autorization;
 
             try
             {

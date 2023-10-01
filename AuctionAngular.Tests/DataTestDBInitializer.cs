@@ -1,7 +1,5 @@
-﻿using AuctionAngular.Enums;
-using Database;
+﻿using Database;
 using Database.Entities;
-using System.Diagnostics.Metrics;
 
 namespace AuctionAngularTests
 {
@@ -127,8 +125,8 @@ namespace AuctionAngularTests
                 Start = DateTime.Now,
                 End = DateTime.Now.AddHours(1),
                 Color = "Red",
-                AllDay = false,
-                Owner = 1,
+                isAllDay = false,
+                UserId = 1,
                 Url = "/edit-event/"
             });
 
@@ -149,7 +147,7 @@ namespace AuctionAngularTests
                     DateOfBirth = DateTime.Now.Date,
                     RoleId = 1,
                     ProfilePicture="",
-                    EmialConfirmed = false
+                    isConfirmed = false
                 },
                 new User()
                 {
@@ -162,7 +160,7 @@ namespace AuctionAngularTests
                     DateOfBirth = DateTime.Now.Date,
                     RoleId = 1,
                     ProfilePicture = "",
-                    EmialConfirmed = true
+                    isConfirmed = true
                 },
                 new User()
                 {
@@ -175,7 +173,7 @@ namespace AuctionAngularTests
                     DateOfBirth = DateTime.Now.Date,
                     RoleId = 1,
                     ProfilePicture = "",
-                    EmialConfirmed = false
+                    isConfirmed = false
                 },
                 new User()
                 {
@@ -188,7 +186,7 @@ namespace AuctionAngularTests
                     DateOfBirth = DateTime.Now.Date,
                     RoleId = 1,
                     ProfilePicture = "",
-                    EmialConfirmed = true
+                    isConfirmed = true
                 },
                 new User()
                 {
@@ -201,7 +199,7 @@ namespace AuctionAngularTests
                     DateOfBirth = DateTime.Now.Date,
                     RoleId = 1,
                     ProfilePicture = "",
-                    EmialConfirmed = true
+                   isConfirmed = true
                 },
                 new User()
                 {
@@ -214,7 +212,7 @@ namespace AuctionAngularTests
                     DateOfBirth = DateTime.Now.Date,
                     RoleId = 1,
                     ProfilePicture = "",
-                    EmialConfirmed = true
+                    isConfirmed = true
                 }
             );
 

@@ -322,7 +322,7 @@ namespace AuctionAngular.Tests
                 DateOfBirth = DateTime.Now.Date,
                 RoleId = 1,
                 ProfilePicture = "",
-                EmialConfirmed = true
+                isConfirmed = true
             };
 
             //Act

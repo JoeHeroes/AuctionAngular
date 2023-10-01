@@ -41,7 +41,7 @@ namespace AuctionAngular.Services
 
         public async Task<IEnumerable<ViewVehiclesDto>> GetVehiclesAsync(bool status)
         {
-            List<Vehicle> vehicles = await _dbContext.Vehicles.Where(x => x.Sold == false).ToListAsync();
+            List<Vehicle> vehicles = await _dbContext.Vehicles.Where(x => x.isSold == false).ToListAsync();
 
             return await PictureProcess(vehicles, status);
         }
@@ -61,7 +61,7 @@ namespace AuctionAngular.Services
                 foreach (var pic in restultPictures)
                     pictures.Add(pic.PathImg);
 
-                if (vehicle.Confirm == status)
+                if (vehicle.isConfirm == status)
                     viewVehicle.Add(ViewVehiclesDtoConvert(vehicle, pictures));
             }
 
@@ -363,8 +363,8 @@ namespace AuctionAngular.Services
                     Start = auction != null ? auction.DateTime: new DateTime(),
                     End = auction != null ? auction.DateTime : new DateTime(),
                     Color = vehicle.Color,
-                    AllDay = true,
-                    Owner = user!.Id,
+                    isAllDay = true,
+                    UserId = user!.Id,
                     Url = "/vehicle/lot/"+ vehicle.Id
                 };
 
@@ -398,7 +398,7 @@ namespace AuctionAngular.Services
 
             var events = await _dbContext.Events.FirstOrDefaultAsync(x => x.Title == vehicle!.Id + " " + vehicle.Producer + " " + vehicle.ModelGeneration);
 
-            if (events != null && events.Owner == dto.UserId)
+            if (events != null && events.UserId == dto.UserId)
                 _dbContext.Events.Remove(events);
 
             _dbContext.Watches.Remove(observed!);
@@ -478,8 +478,8 @@ namespace AuctionAngular.Services
                 Start = auction!.DateTime,
                 End = auction.DateTime,
                 Color = dto.Color,
-                AllDay = false,
-                Owner = 0, //For All Users
+                isAllDay = false,
+                UserId = 0, //For All Users
                 Url = "/vehicle/lot"+id
             };
 
@@ -509,7 +509,7 @@ namespace AuctionAngular.Services
                 var auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.Id == vehicle.AuctionId);
                 if(auction!.DateTime > DateTime.Now)
                 {
-                    vehicle!.Confirm = !vehicle.Confirm;
+                    vehicle!.isConfirm = !vehicle.isConfirm;
                 }
                 else
                     throw new Exception();
@@ -542,7 +542,7 @@ namespace AuctionAngular.Services
 
             if(payment != null)
             {
-                vehicle!.Sold = !vehicle.Sold;
+                vehicle!.isSold = !vehicle.isSold;
                 payment!.StatusSell = !payment.StatusSell;
             }
             else
@@ -612,7 +612,7 @@ namespace AuctionAngular.Services
                 WinnerId = vehicle.WinnerId,
                 Images = pictures,
                 DateTime = auction != null ? auction.DateTime: new DateTime(),
-                Sold = vehicle.Sold,
+                isSold = vehicle.isSold,
                 WaitingForConfirm = auction != null ? auction.SalesFinised : false,
             };
         }
@@ -633,8 +633,8 @@ namespace AuctionAngular.Services
                 MeterReadout = vehicle.MeterReadout,
                 DateTime = auction != null ? auction!.DateTime : new DateTime(),
                 CurrentBid = vehicle.CurrentBid,
-                Sold = vehicle.Sold,
-                Confirm = vehicle.Confirm,
+                isSold = vehicle.isSold,
+                isConfirm = vehicle.isConfirm,
             };
         }
 
@@ -652,8 +652,8 @@ namespace AuctionAngular.Services
                 MeterReadout = vehicle.MeterReadout,
                 DateTime = auction!.DateTime,
                 CurrentBid = vehicle.CurrentBid,
-                Sold = vehicle.Sold,
-                Confirm = vehicle.Confirm
+                isSold = vehicle.isSold,
+                isConfirm = vehicle.isConfirm
             };
         }
     }

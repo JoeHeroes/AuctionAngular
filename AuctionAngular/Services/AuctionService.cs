@@ -245,7 +245,7 @@ namespace AuctionAngular.Services
                 CurrentBid = vehicle.CurrentBid,
                 WinnerId = vehicle.WinnerId,
                 Images = pictures,
-                Sold = vehicle.Sold,
+                isSold = vehicle.isSold,
                 WaitingForConfirm = auction.SalesFinised
             };
         }

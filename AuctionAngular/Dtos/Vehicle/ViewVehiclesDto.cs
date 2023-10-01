@@ -12,7 +12,7 @@
         public DateTime DateTime { get; set; }
         public int CurrentBid { get; set; }
         public string Image { get; set; }
-        public bool Sold { get; set; }
-        public bool Confirm { get; set; }
+        public bool isSold { get; set; }
+        public bool isConfirm { get; set; }
     }
 }
