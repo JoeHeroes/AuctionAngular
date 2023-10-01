@@ -15,7 +15,7 @@ namespace AuctionAngular.Tests
         private CalendarService calendarService;
 
         public static DbContextOptions<AuctionDbContext> dbContextOptions { get; }
-        public static string connectionString = "Server=(localdb)\\mssqllocaldb;Database=AngularAuctionDB; Trusted_Connection=True";
+        public static string connectionString = "Server=(localdb)\\mssqllocaldb;Database=AngularAuctionDBTest2; Trusted_Connection=True";
 
         static CalendarServiceTest()
         {

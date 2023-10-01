@@ -21,7 +21,7 @@ namespace AuctionAngular.Tests
         private AccountService accountService;
 
         public static DbContextOptions<AuctionDbContext> dbContextOptions { get; }
-        public static string connectionString = "Server=(localdb)\\mssqllocaldb;Database=AngularAuctionDB; Trusted_Connection=True";
+        public static string connectionString = "Server=(localdb)\\mssqllocaldb;Database=AngularAuctionDBTest; Trusted_Connection=True";
 
         static AccountServiceTest()
         {

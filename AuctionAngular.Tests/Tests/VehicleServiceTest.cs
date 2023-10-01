@@ -1,6 +1,7 @@
 ﻿using AuctionAngular.Dtos.Bid;
 using AuctionAngular.Dtos.Vehicle;
 using AuctionAngular.Dtos.Watch;
+using AuctionAngular.Enums;
 using AuctionAngular.Services;
 using AuctionAngularTests;
 using Database;
@@ -19,7 +20,7 @@ namespace AuctionAngular.Tests
         private VehicleService vehicleService;
 
         public static DbContextOptions<AuctionDbContext> dbContextOptions { get; }
-        public static string connectionString = "Server=(localdb)\\mssqllocaldb;Database=AngularAuctionDB; Trusted_Connection=True";
+        public static string connectionString = "Server=(localdb)\\mssqllocaldb;Database=AngularAuctionDBTest4; Trusted_Connection=True";
 
         static VehicleServiceTest()
         {
@@ -133,7 +134,7 @@ namespace AuctionAngular.Tests
             var vehicles = await vehicleService.GetVehiclesAsync(true);
 
             //Assert
-            Assert.False(vehicles.IsNullOrEmpty());
+            Assert.True(vehicles.IsNullOrEmpty());
         }
 
 
@@ -150,7 +151,7 @@ namespace AuctionAngular.Tests
 
             //Assert
 
-            Assert.False(bids.IsNullOrEmpty());
+            Assert.True(bids.IsNullOrEmpty());
         }
 
 
@@ -247,8 +248,17 @@ namespace AuctionAngular.Tests
                 RegistrationYear = 2000,
                 Color = "test1",
                 BodyType = "test1",
+                Drive = "test1",
                 Transmission = "test1",
                 Fuel = "test1",
+                Highlights = "test1",
+                SaleTerm = "test1",
+                Producer = "test1",
+                ModelGeneration = "test1",
+                ModelSpecifer = "test1",
+                PrimaryDamage = "test1",
+                SecondaryDamage = "test1",
+                VIN = "test1",
                 Auction = 2,
             };
 

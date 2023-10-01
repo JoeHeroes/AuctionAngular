@@ -15,7 +15,7 @@ namespace AuctionAngular.Tests
         private LocationService locationService;
 
         public static DbContextOptions<AuctionDbContext> dbContextOptions { get; }
-        public static string connectionString = "Server=(localdb)\\mssqllocaldb;Database=AngularAuctionDB; Trusted_Connection=True";
+        public static string connectionString = "Server=(localdb)\\mssqllocaldb;Database=AngularAuctionDBTest3; Trusted_Connection=True";
 
         static LocationServiceTest()
         {
@@ -60,12 +60,12 @@ namespace AuctionAngular.Tests
 
             var locationExaple = new Location()
             {
-                Name = "Test1",
-                Phone = "Test2",
-                Email = "Test@Test.pl",
-                City = "Test3",
-                Street = "Test4",
-                PostalCode = "Test5",
+                Name = "Espoo",
+                Phone = "358401776000",
+                Email = "Espoo@Copart.fi",
+                City = "Pieni teollisuuskatu 7",
+                Street = "Pieni teollisuuskatu 7",
+                PostalCode = "Uusimaa 02920",
             };
 
             //Act

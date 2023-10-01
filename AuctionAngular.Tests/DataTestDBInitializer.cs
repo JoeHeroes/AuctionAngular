@@ -1,6 +1,7 @@
 ﻿using AuctionAngular.Enums;
 using Database;
 using Database.Entities;
+using System.Diagnostics.Metrics;
 
 namespace AuctionAngularTests
 {
@@ -23,6 +24,7 @@ namespace AuctionAngularTests
                     City = "Espoo",
                     Street = "Pieni teollisuuskatu 7",
                     PostalCode = "Uusimaa 02920",
+                    County = "Finalndia"
                 }
             );
 
@@ -30,6 +32,7 @@ namespace AuctionAngularTests
             {
                 DateTime = DateTime.Now.AddDays(1),
                 LocationId = 1,
+                Description = "",
                 SalesStarted = false,
                 SalesFinised = false,
             },
@@ -37,6 +40,7 @@ namespace AuctionAngularTests
             {
                 DateTime = DateTime.Now.AddDays(2),
                 LocationId = 1,
+                Description = "",
                 SalesStarted = false,
                 SalesFinised = false,
             });
@@ -112,6 +116,7 @@ namespace AuctionAngularTests
                 City = "Test3",
                 Street = "Test4",
                 PostalCode = "Test5",
+                County = "Test6"
             });
 
 
