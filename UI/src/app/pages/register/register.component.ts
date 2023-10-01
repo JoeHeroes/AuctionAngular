@@ -52,7 +52,7 @@ export class RegisterComponent implements OnInit {
     if (selectedDate > currentDate) {
       return { maxDate: true };
     }
-    return null;
+    return null; 
   }
 
   registerUser = (registerFormValue: any) => {

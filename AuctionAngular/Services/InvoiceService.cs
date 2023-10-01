@@ -22,7 +22,7 @@ namespace AuctionAngular.Services
         public async Task<PDFResponseDto> GeneratePDFAsync(PDFInfo info)
         {
             var document = new PdfDocument();
-            string imgeurl = "data:image/png;base64, " + Getbase64string() + "";
+            //string imgeurl = "data:image/png;base64, " + Getbase64string() + "";
 
             var user = await  _dbContext.Users.FirstOrDefaultAsync(x => x.Id == info.UserId);
 
@@ -116,7 +116,9 @@ namespace AuctionAngular.Services
 
             string htmlcontent = "<style>body { font-family: Arial, sans-serif; margin: 0; padding: 20px; width:100%;} .invoice {max-width: 800px;margin-bottom: 20px; padding: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);} .item-list { width: 100%; border-collapse: collapse; margin-bottom: 20px; } .item-list th, .item-list td { border: 1px solid #ccc; padding: 8px; text-align: center; } .total { text-align: right; }</style>\r\n";
 
-            htmlcontent += "<table style='margin-bottom: 20px;'><tr><td><img style='width:80px;height:80%' src='" + imgeurl + "'/></td>";
+            htmlcontent += "<table style='margin-bottom: 20px;'><tr><td></td>";
+            //htmlcontent += "<table style='margin-bottom: 20px;'><tr><td><img style='width:80px;height:80%' src='" + imgeurl + "'/></td>";
+
             htmlcontent += "<td style='width:150px'><div></div></td>";
             htmlcontent += "<td><h1>Receipt</h1><p>Receipt number: "+header.InvoiceNumber+"</p></td></tr></table>";
             htmlcontent += "<div class='invoice'>";

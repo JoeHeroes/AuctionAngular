@@ -21,7 +21,7 @@ export class AuctionComponent implements OnInit {
   time: number = 0;
   index: number = 0;
   id: any;
-  user: any;
+  user: any; 
   bidForm!: FormGroup;
 
   constructor(private auctionService: AuctionService,

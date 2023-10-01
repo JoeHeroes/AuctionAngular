@@ -79,9 +79,12 @@ namespace AuctionAngular.Services
         {
             var location = await _dbContext.Locations.FirstOrDefaultAsync(x => x.Name == dto.Location);
 
+            if (dto.AuctionDate < DateTime.Now)
+                throw new Exception();
+
             var auction = new Auction()
             {
-                DateTime = dto.AuctionDate,
+                DateTime = dto.AuctionDate.AddHours(12),
                 LocationId = location != null ? location.Id : 0,
                 Description = dto.Description,
                 SalesStarted = false,
@@ -238,6 +241,7 @@ namespace AuctionAngular.Services
                 SecondaryDamage = vehicle.SecondaryDamage,
                 VIN = vehicle.VIN,
                 Highlights = vehicle.Highlights,
+                DateTime = auction!.DateTime,
                 CurrentBid = vehicle.CurrentBid,
                 WinnerId = vehicle.WinnerId,
                 Images = pictures,

@@ -171,7 +171,9 @@
     "addEventCorrect":"Ereignis richtig hinzugefügt",
     "addEventFail":"Ereignis hinzugefügt, fehlgeschlagen",
     "editEventCorrect":"Ereignisbearbeitung korrekt",
-    "editEventFail":"Ereignisbearbeitung fehlgeschlagen"
+    "editEventFail":"Ereignisbearbeitung fehlgeschlagen",
+    "minDate":"Das Datum darf nicht in der Vergangenheit liegen",
+    "maxDate":"Das Datum darf nicht in der Zukunft liegen"
   },
   "dashboard":{
     "title":"Armaturenbrett",

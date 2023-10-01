@@ -149,7 +149,7 @@ namespace AuctionAngular.Services
             {
                 SaleDate = payment.SaleDate,
                 LotId = payment.LotId,
-                Location = location!.Name,
+                Location = location != null ? location!.Name: "" ,
                 Description = payment.Description,
                 InvoiceAmount = payment.InvoiceAmount,
                 LastInvoicePaidDate = payment.LastInvoicePaidDate,

@@ -547,6 +547,8 @@ namespace AuctionAngular.Services
                 vehicle!.Sold = !vehicle.Sold;
                 payment!.StatusSell = !payment.StatusSell;
             }
+            else
+                throw new Exception();
 
             try
             {

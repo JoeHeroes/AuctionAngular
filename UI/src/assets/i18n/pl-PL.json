@@ -168,7 +168,9 @@
       "addEventCorrect":"Wydarzenie dodane poprawnie",
       "addEventFail":"Wydarzenie dodane niepoprawnie",
       "editEventCorrect":"Wydarzenie edytowane poprawnie",
-      "editEventFail":"Wydarzenie edytowane niepoprawnie"
+      "editEventFail":"Wydarzenie edytowane niepoprawnie",
+      "minDate":"Data nie może być w przeszłości",
+      "maxDate":"Data nie może być w przyszłości"
     },
     "dashboard":{
       "title":"Dashboard",

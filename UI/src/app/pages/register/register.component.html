@@ -51,7 +51,7 @@
           <div
             *ngIf="registerForm.controls['dateOfBirth'].invalid && (registerForm.controls['dateOfBirth'].errors?.['required'] || registerForm.controls['dateOfBirth'].errors?.['maxDate'])">
             <div *ngIf="registerForm.controls['dateOfBirth'].errors?.['maxDate']">
-              Data nie może być w przyszłości.
+              {{t('notification.maxDate')}}
             </div>
           </div>
         </div>

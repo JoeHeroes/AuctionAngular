@@ -168,7 +168,9 @@
     "addEventCorrect":"Event Added Correct",
     "addEventFail":"Event Added Fail",
     "editEventCorrect":"Event Edit Correct",
-    "editEventFail":"Event Edit Fail"
+    "editEventFail":"Event Edit Fail",
+    "minDate":"The date cannot be in the past",
+    "maxDate":"The date cannot be in the future"
   },
   "dashboard":{
     "title":"Dashboard",

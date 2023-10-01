@@ -3,7 +3,6 @@ using AuctionAngular.Dtos.Bid;
 using AuctionAngular.Dtos.Vehicle;
 using AuctionAngular.Dtos.Watch;
 using AuctionAngular.Interfaces;
-using Database.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AuctionAngular.Controllers
