@@ -10,6 +10,8 @@
     "save": "Zapisz",
     "back": "Wróć",
     "watch": "Oberwuj",
+    "send": "Wyślij email",
+    "contact": "Skontaktuj sie",
     "removeWatch": "Usuń obserwacje",
     "editProfile": "Edytuj Profil",
     "upload": "Prześlij",
@@ -203,6 +205,10 @@
       "detail": "Detale",
       "cancel": "Anuluj",
       "accept": "Akceptuj"
+    },
+    "email":{
+      "title":"Tytuł",
+      "body":"Treść"
     }
   }
   

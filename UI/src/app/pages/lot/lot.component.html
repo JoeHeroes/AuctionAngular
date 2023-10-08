@@ -115,12 +115,19 @@
                     {{t('vehicle.newBid')}}:
                     <input type="number" id="bidNow" formControlName="bidNow" class="form-control" />
                     <br />
-                    <br />
-                    <dx-button class="button" [text]="t('vehicle.nowBid')" type="default" [useSubmitBehavior]="true">
-                    </dx-button>
+                    <dx-button class="button" [text]="t('vehicle.nowBid')" type="default" [useSubmitBehavior]="true"></dx-button>
                   </form>
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+
+                  <div class="dx-field">
+                    <dx-button (onClick)="this.contact()" [text]="t('action.contact')"></dx-button>
+                  </div>
                 </div>
-  
                 <div class="card-header bg-transparent border-0" *ngIf="datasource.waitingForConfirm && !datasource.sold">
                   <h3 class="mb-0" style="color: orangered;">Waiting For Confirm</h3>
                 </div>

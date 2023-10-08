@@ -199,7 +199,7 @@ namespace AuctionAngular.Services
                                  .Payments
                                  .FirstOrDefaultAsync(x => x.LotId == info.VehicleId);
 
-            payment!.InvoiceGenereted = !payment.InvoiceGenereted;
+            payment!.isInvoiceGenereted = !payment.isInvoiceGenereted;
 
             return dto;
         }

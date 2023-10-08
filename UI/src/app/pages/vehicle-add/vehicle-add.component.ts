@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslocoService } from '@ngneat/transloco';
 import { AuctionService } from 'src/app/services/auction.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { CreateVehicleDto, VehicleService } from 'src/app/services/vehicle.service';
 
@@ -17,6 +18,7 @@ export class VehicleAddComponent implements OnInit {
   private returnUrl!: string;
 
   auctions: any;
+  userId: any;
 
   addForm !: FormGroup;
   errorMessage: string = '';
@@ -34,6 +36,7 @@ export class VehicleAddComponent implements OnInit {
 
   constructor(private vehicleService: VehicleService,
     private auctionService: AuctionService,
+    private authenticationService: AuthenticationService,
     private notificationService: NotificationService,
     private router: Router,
     private route: ActivatedRoute,
@@ -67,7 +70,7 @@ export class VehicleAddComponent implements OnInit {
       secondTireSet: new FormControl("", [Validators.required]),
       VIN: new FormControl("", [Validators.required]),
       saleTerm: new FormControl("", [Validators.required]),
-      highlights: new FormControl("", [Validators.required]),
+      Category: new FormControl("", [Validators.required]),
     })
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/vehicle/picture';
   }
@@ -84,6 +87,10 @@ export class VehicleAddComponent implements OnInit {
     if (vehicle.secondTireSet == "") {
       vehicle.secondTireSet = true;
     }
+
+    this.authenticationService.loggedUserId().subscribe(res => {
+      this.userId = res.userId;
+	  })
 
     const createVehicle: CreateVehicleDto = {
       producer: vehicle.producer,
@@ -106,8 +113,10 @@ export class VehicleAddComponent implements OnInit {
       secondTireSet: vehicle.secondTireSet,
       VIN: vehicle.VIN,
       saleTerm: vehicle.saleTerm,
-      highlights: vehicle.highlights,
-      confirm: false
+      Category: vehicle.Category,
+      confirm: false,
+      ownerId : this.userId,
+
     }
 
     if (vehicle.producer == "") {
@@ -191,8 +200,8 @@ export class VehicleAddComponent implements OnInit {
       this.errorMessage = "SaleTerm is required";
       this.showError = true;
     }
-    else if (vehicle.highlights == "") {
-      this.errorMessage = "Highlights is required";
+    else if (vehicle.Category == "") {
+      this.errorMessage = "Category is required";
       this.showError = true;
     }
 

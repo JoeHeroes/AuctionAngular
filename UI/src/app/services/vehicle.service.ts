@@ -185,8 +185,9 @@ export interface CreateVehicleDto {
   secondTireSet: boolean;
   VIN: string;
   saleTerm: string;
-  highlights: string;
+  Category: string;
   confirm: boolean;
+  ownerId: number;
 }
 
 
@@ -211,7 +212,7 @@ export interface EditVehicleDto {
   secondTireSet: boolean;
   VIN: string;
   saleTerm: string;
-  highlights: string;
+  Category: string;
 }
 
 

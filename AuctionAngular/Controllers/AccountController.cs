@@ -1,4 +1,5 @@
 ﻿using AuctionAngular.Dtos;
+using AuctionAngular.Dtos.MailDto;
 using AuctionAngular.Dtos.User;
 using AuctionAngular.Interfaces;
 using Database.Entities;

@@ -22,11 +22,12 @@
         public string PrimaryDamage { get; set; }
         public string SecondaryDamage { get; set; }
         public string VIN { get; set; } = null!;
-        public string Highlights { get; set; }
+        public string Category { get; set; }
         public string SaleTerm { get; set; }
         public DateTime DateTime { get; set; }
         public int CurrentBid { get; set; }
         public int WinnerId { get; set; }
+        public int OwnerId { get; set; }
         public List<string> Images { get; set; }
         public bool WaitingForConfirm { get; set; }
         public bool isSold { get; set; }

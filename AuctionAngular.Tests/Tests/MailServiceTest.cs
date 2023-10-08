@@ -1,4 +1,5 @@
 ﻿using AuctionAngular.Dtos;
+using AuctionAngular.Dtos.MailDto;
 using AuctionAngular.Services;
 using Microsoft.Extensions.Options;
 using Moq;

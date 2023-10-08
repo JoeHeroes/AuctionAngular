@@ -17,11 +17,11 @@ namespace Database.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LocationId = table.Column<int>(type: "int", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SalesStarted = table.Column<bool>(type: "bit", nullable: false),
-                    SalesFinised = table.Column<bool>(type: "bit", nullable: false)
+                    DateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    isStarted = table.Column<bool>(type: "bit", nullable: false),
+                    isFinised = table.Column<bool>(type: "bit", nullable: false),
+                    LocationId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -53,8 +53,8 @@ namespace Database.Migrations
                     Start = table.Column<DateTime>(type: "datetime2", nullable: false),
                     End = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Color = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    isAllDay = table.Column<bool>(type: "bit", nullable: false),
                     Url = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    isAllDay = table.Column<bool>(type: "bit", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -107,14 +107,14 @@ namespace Database.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     SaleDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LotId = table.Column<int>(type: "int", nullable: false),
-                    LocationId = table.Column<int>(type: "int", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     InvoiceAmount = table.Column<int>(type: "int", nullable: false),
                     LastInvoicePaidDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LotLeftLocationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    StatusSell = table.Column<bool>(type: "bit", nullable: false),
-                    InvoiceGenereted = table.Column<bool>(type: "bit", nullable: false),
+                    isSold = table.Column<bool>(type: "bit", nullable: false),
+                    isInvoiceGenereted = table.Column<bool>(type: "bit", nullable: false),
+                    LotId = table.Column<int>(type: "int", nullable: false),
+                    LocationId = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -195,11 +195,12 @@ namespace Database.Migrations
                     PrimaryDamage = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SecondaryDamage = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     VIN = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Highlights = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Category = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SaleTerm = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CurrentBid = table.Column<int>(type: "int", nullable: false),
                     isSold = table.Column<bool>(type: "bit", nullable: false),
                     isConfirm = table.Column<bool>(type: "bit", nullable: false),
+                    OwnerId = table.Column<int>(type: "int", nullable: false),
                     WinnerId = table.Column<int>(type: "int", nullable: false),
                     AuctionId = table.Column<int>(type: "int", nullable: false)
                 },

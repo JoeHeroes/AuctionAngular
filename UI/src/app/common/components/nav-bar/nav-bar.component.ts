@@ -24,6 +24,7 @@ const navigationItemsBuyer: ListItem[] = [
   { text: t('menu.location'), href: '/location', icon: 'fa fa-location-arrow' },
   { text: t('menu.services'), href: '/services', icon: 'fa fa-server' },
   { text: t('menu.support'), href: '/support', icon: 'fa fa-info-circle' },
+  { text: t('menu.contact'), href: '/contact', icon: '' },
 ];
 
 

@@ -75,8 +75,8 @@ namespace CarAuction.Seeder
                     InvoiceAmount = 1231,
                     LastInvoicePaidDate = DateTime.Now.AddDays(1),
                     LotLeftLocationDate =  DateTime.Now.AddDays(2),
-                    StatusSell = false,
-                    InvoiceGenereted = false,
+                    isSold = false,
+                    isInvoiceGenereted = false,
                 }
             };
         }
@@ -89,8 +89,8 @@ namespace CarAuction.Seeder
                     DateTime = DateTime.Now,
                     LocationId = 1,
                     Description = "",
-                    SalesStarted = false,
-                    SalesFinised = false,
+                    isStarted = false,
+                    isFinised = false,
                     
                 },
                 new Auction()
@@ -98,16 +98,16 @@ namespace CarAuction.Seeder
                     DateTime = new DateTime(2023, 8, 7, 19, 0, 0),
                     LocationId = 2,
                     Description = "",
-                    SalesStarted = false,
-                    SalesFinised = false,
+                    isStarted = false,
+                    isFinised = false,
                 },
                 new Auction()
                 {
                     DateTime = new DateTime(2023, 8, 7, 19, 0, 0),
                     LocationId = 3,
                     Description = "",
-                    SalesStarted = false,
-                    SalesFinised = false,
+                    isStarted = false,
+                    isFinised = false,
                 },
 
             };
@@ -559,7 +559,8 @@ namespace CarAuction.Seeder
                     VIN = "XXXX",
                     AuctionId = 3,
                     SaleTerm="",
-                    Highlights="",
+                    Category="",
+                    OwnerId = 1,
                 },
                 new Vehicle()
                 {
@@ -584,7 +585,8 @@ namespace CarAuction.Seeder
                     VIN = "XXXX",
                     AuctionId = 1,
                     SaleTerm="",
-                    Highlights="",
+                    Category="",
+                    OwnerId = 1,
                 },
                 new Vehicle()
                 {
@@ -609,7 +611,8 @@ namespace CarAuction.Seeder
                     VIN = "XXXX",
                     AuctionId = 3,
                     SaleTerm="",
-                    Highlights="",
+                    Category="",
+                    OwnerId = 1,
                 },
                 new Vehicle()
                 {
@@ -634,7 +637,8 @@ namespace CarAuction.Seeder
                     VIN = "XXXX",
                     AuctionId = 3,
                     SaleTerm="",
-                    Highlights="",
+                    Category="",
+                    OwnerId = 1,
                 },
 
                 new Vehicle()
@@ -660,7 +664,8 @@ namespace CarAuction.Seeder
                     VIN = "XXXX",
                     AuctionId = 2,
                     SaleTerm="",
-                    Highlights="",
+                    Category="",
+                    OwnerId = 1,
                 },
 
                 new Vehicle()
@@ -686,7 +691,8 @@ namespace CarAuction.Seeder
                     VIN = "XXXX",
                     AuctionId = 2,
                     SaleTerm="",
-                    Highlights="",
+                    Category="",
+                    OwnerId = 1,
                 },
 
 
@@ -713,7 +719,8 @@ namespace CarAuction.Seeder
                     VIN = "XXXX",
                     AuctionId = 3,
                     SaleTerm="",
-                    Highlights="",
+                    Category="",
+                    OwnerId = 1,
                 },
             };
         }

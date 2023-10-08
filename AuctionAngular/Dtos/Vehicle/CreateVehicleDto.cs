@@ -63,7 +63,9 @@ namespace AuctionAngular.Dtos.Vehicle
         [Required]
         public string SaleTerm { get; set; }
         [Required]
-        public string Highlights { get; set; }
+        public string Category { get; set; }
+        [Required]
+        public int OwnerId { get; set; }
 
     }
 }

@@ -10,6 +10,8 @@
     "save": "Speichern",
     "back": "Zurück",
     "watch": "Betrachten",
+    "send": "E-Mail senden",
+    "contact": "Kontakt mit",
     "removeWatch": "Uhr entfernen",
     "editProfile": "Profil bearbeiten",
     "upload": "Hochladen",
@@ -206,5 +208,9 @@
     "detail": "Detail",
     "cancel": "Stornieren",
     "accept": "Akzeptieren"
+  },
+  "email":{
+    "title":"Titel",
+    "body":"Körper"
   }
 }

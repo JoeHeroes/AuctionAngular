@@ -71,7 +71,7 @@ namespace AuctionAngular.Tests
                 PrimaryDamage = "Test",
                 SecondaryDamage = "Test",
                 VIN = "Test",
-                Highlights = "Test",
+                Category = "Test",
                 CurrentBid = 1000,
                 WinnerId = 1,
                 isSold = false,
@@ -103,7 +103,7 @@ namespace AuctionAngular.Tests
             Assert.Equal(dto.PrimaryDamage, vehicle.PrimaryDamage);
             Assert.Equal(dto.SecondaryDamage, vehicle.SecondaryDamage);
             Assert.Equal(dto.VIN, vehicle.VIN);
-            Assert.Equal(dto.Highlights, vehicle.Highlights);
+            Assert.Equal(dto.Category, vehicle.Category);
             Assert.Equal(dto.CurrentBid, vehicle.CurrentBid);
         }
 
@@ -210,7 +210,7 @@ namespace AuctionAngular.Tests
                 SecondaryDamage = "test",
                 VIN = "test",
                 SaleTerm = "test",
-                Highlights = "test",
+                Category = "test",
             };
 
             //Act
@@ -251,7 +251,7 @@ namespace AuctionAngular.Tests
                 Drive = "test1",
                 Transmission = "test1",
                 Fuel = "test1",
-                Highlights = "test1",
+                Category = "test1",
                 SaleTerm = "test1",
                 Producer = "test1",
                 ModelGeneration = "test1",

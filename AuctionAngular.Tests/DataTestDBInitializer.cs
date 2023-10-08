@@ -31,16 +31,16 @@ namespace AuctionAngularTests
                 DateTime = DateTime.Now.AddDays(1),
                 LocationId = 1,
                 Description = "",
-                SalesStarted = false,
-                SalesFinised = false,
+                isStarted = false,
+                isFinised = false,
             },
             new Auction
             {
                 DateTime = DateTime.Now.AddDays(2),
                 LocationId = 1,
                 Description = "",
-                SalesStarted = false,
-                SalesFinised = false,
+                isStarted = false,
+                isFinised = false,
             });
 
 
@@ -78,7 +78,7 @@ namespace AuctionAngularTests
                 VIN = "Test",
                 AuctionId = 1,
                 SaleTerm = "Test",
-                Highlights = "Test",
+                Category = "Test",
             },
             new Vehicle()
             {
@@ -103,7 +103,7 @@ namespace AuctionAngularTests
                 VIN = "Test",
                 AuctionId = 2,
                 SaleTerm = "Test",
-                Highlights = "Test",
+                Category = "Test",
             });
 
             context.Locations.AddRange(new Location()

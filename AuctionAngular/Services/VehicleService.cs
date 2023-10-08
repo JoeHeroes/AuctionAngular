@@ -79,7 +79,7 @@ namespace AuctionAngular.Services
             foreach (var vehicle in vehicles)
             {
 
-                var auction = await _dbContext.Auctions.FirstOrDefaultAsync(a => a.Id == vehicle.AuctionId && a.SalesFinised == true);
+                var auction = await _dbContext.Auctions.FirstOrDefaultAsync(a => a.Id == vehicle.AuctionId && a.isFinised == true);
 
                 if(auction != null)
                     viewVehicle.Add(AdminVehiclesDtoConvert(vehicle, auction));
@@ -137,7 +137,7 @@ namespace AuctionAngular.Services
 
                 if(veh != null)
                 {
-                    var auc = auctionsList.FirstOrDefault(a => a.Id == veh.AuctionId && a.SalesFinised == true);
+                    var auc = auctionsList.FirstOrDefault(a => a.Id == veh.AuctionId && a.isFinised == true);
 
                     if (auc != null)
                         vehicles.Add(veh);
@@ -166,7 +166,7 @@ namespace AuctionAngular.Services
                 var veh = vehiclesList.FirstOrDefault(d => d.Id == x.VehicleId && d.WinnerId != id);
                 if(veh != null)
                 {
-                    var auc = auctionsList.FirstOrDefault(a => a.Id == veh.AuctionId && a.SalesFinised == true);
+                    var auc = auctionsList.FirstOrDefault(a => a.Id == veh.AuctionId && a.isFinised == true);
 
                     if (auc != null)
                         vehicles.Add(veh);
@@ -200,8 +200,9 @@ namespace AuctionAngular.Services
                 SecondaryDamage = dto.SecondaryDamage,
                 VIN = dto.VIN,
                 AuctionId = dto.AuctionId,
+                OwnerId = dto.OwnerId,
                 SaleTerm = dto.SaleTerm,
-                Highlights = dto.Highlights,
+                Category = dto.Category,
             };
 
 
@@ -271,7 +272,7 @@ namespace AuctionAngular.Services
             vehicle.SecondTireSet = dto.SecondTireSet.ToString() != "" ? dto.SecondTireSet : vehicle.SecondTireSet;
             vehicle.VIN = dto.VIN != "" ? dto.VIN : vehicle.VIN;
             vehicle.SaleTerm = dto.SaleTerm != "" ? dto.SaleTerm : vehicle.SaleTerm;
-            vehicle.Highlights = dto.Highlights != "" ? dto.Highlights : vehicle.Highlights;
+            vehicle.Category = dto.Category != "" ? dto.Category : vehicle.Category;
 
             try
             {
@@ -543,7 +544,7 @@ namespace AuctionAngular.Services
             if(payment != null)
             {
                 vehicle!.isSold = !vehicle.isSold;
-                payment!.StatusSell = !payment.StatusSell;
+                payment!.isSold = !payment.isSold;
             }
             else
                 throw new Exception();
@@ -606,14 +607,15 @@ namespace AuctionAngular.Services
                 PrimaryDamage = vehicle.PrimaryDamage,
                 SecondaryDamage = vehicle.SecondaryDamage,
                 VIN = vehicle.VIN,
-                Highlights = vehicle.Highlights,
+                Category = vehicle.Category,
                 SaleTerm = vehicle.SaleTerm,
                 CurrentBid = vehicle.CurrentBid,
                 WinnerId = vehicle.WinnerId,
+                OwnerId = vehicle.OwnerId,
                 Images = pictures,
                 DateTime = auction != null ? auction.DateTime: new DateTime(),
                 isSold = vehicle.isSold,
-                WaitingForConfirm = auction != null ? auction.SalesFinised : false,
+                WaitingForConfirm = auction != null ? auction.isFinised : false,
             };
         }
 

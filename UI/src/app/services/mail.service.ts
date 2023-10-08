@@ -5,20 +5,25 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class StorageLocalService {
+export class MailService {
 
   private baseUrl: string;
 
   constructor(private http: HttpClient) {
     this.baseUrl = "https://localhost:7257";
   }
- 
-  public getPayments(userId: number) {
-     
-  }
 
-  public getProfileImageUrl(fileName: string) {
-    let url_ = this.baseUrl + "/StorageLocal/GetProfileImage/"+ fileName;
-    return this.http.get(url_, { responseType: 'blob' });
-  }
+  public SendEmail(data: MailDto): Observable<any> {
+
+    let url_ = this.baseUrl + "/Mail/SendEmail";
+
+    return this.http.post<any>(url_, data);
+ }
+}
+
+export interface MailDto {
+  FromId: number;
+  ToId: number;
+  Title: string;
+  Body: string;
 }

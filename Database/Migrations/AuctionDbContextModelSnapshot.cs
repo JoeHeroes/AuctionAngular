@@ -40,10 +40,10 @@ namespace Database.Migrations
                     b.Property<int>("LocationId")
                         .HasColumnType("int");
 
-                    b.Property<bool>("SalesFinised")
+                    b.Property<bool>("isFinised")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("SalesStarted")
+                    b.Property<bool>("isStarted")
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
@@ -205,9 +205,6 @@ namespace Database.Migrations
                     b.Property<int>("InvoiceAmount")
                         .HasColumnType("int");
 
-                    b.Property<bool>("InvoiceGenereted")
-                        .HasColumnType("bit");
-
                     b.Property<DateTime>("LastInvoicePaidDate")
                         .HasColumnType("datetime2");
 
@@ -223,11 +220,14 @@ namespace Database.Migrations
                     b.Property<DateTime>("SaleDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("StatusSell")
-                        .HasColumnType("bit");
-
                     b.Property<int>("UserId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("isInvoiceGenereted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("isSold")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
@@ -336,6 +336,10 @@ namespace Database.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Color")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -357,10 +361,6 @@ namespace Database.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Highlights")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<long>("MeterReadout")
                         .HasColumnType("bigint");
 
@@ -373,6 +373,9 @@ namespace Database.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("NumberKeys")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OwnerId")
                         .HasColumnType("int");
 
                     b.Property<string>("PrimaryDamage")

@@ -10,6 +10,8 @@
     "save": "Save",
     "back": "Back",
     "watch": "Watch",
+    "send": "Send Email",
+    "contact": "Contact With",
     "removeWatch": "Remove Watch",
     "editProfile": "Edit Profile",
     "upload": "Upload",
@@ -203,5 +205,9 @@
     "detail": "Detail",
     "cancel": "Cancel",
     "accept": "Accept"
+  },
+  "email":{
+    "title":"Title",
+    "body":"Body"
   }
 }

@@ -1,9 +1,9 @@
-﻿using AuctionAngular.Dtos;
-using AuctionAngular.Interfaces;
+﻿using AuctionAngular.Interfaces;
 using MimeKit;
 using MailKit.Net.Smtp;
 using MailKit.Security;
 using Microsoft.Extensions.Options;
+using AuctionAngular.Dtos.MailDto;
 
 namespace AuctionAngular.Services
 {

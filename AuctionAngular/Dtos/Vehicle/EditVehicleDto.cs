@@ -22,7 +22,7 @@ namespace AuctionAngular.Dtos.Vehicle
         public string PrimaryDamage { get; set; }
         public string SecondaryDamage { get; set; }
         public string VIN { get; set; } = null!;
-        public string Highlights { get; set; }
+        public string Category { get; set; }
         public string SaleTerm { get; set; }
         public int Auction { get; set; }
 

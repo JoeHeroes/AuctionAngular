@@ -46,6 +46,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthGuard } from '../common/components/auth.guard';
+import { ContactusComponent } from '../pages/contactus/contactus.component';
 
 
 
@@ -87,7 +88,8 @@ import { AuthGuard } from '../common/components/auth.guard';
     EventEditComponent,
     EventAddComponent,
     VerificationVehiclesComponent,
-    VehicleSetComponent
+    VehicleSetComponent,
+    ContactusComponent
   ],
   exports: [],
   imports: [

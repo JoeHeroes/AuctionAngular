@@ -40,8 +40,8 @@ namespace AuctionAngular.Services
                 InvoiceAmount = dto.InvoiceAmount,
                 LastInvoicePaidDate = DateTime.Now,
                 LotLeftLocationDate = dto.LotLeftLocationDate,
-                StatusSell = false,
-                InvoiceGenereted = false,
+                isSold = false,
+                isInvoiceGenereted = false,
                 UserId = vehicle!.WinnerId
             };
 
@@ -94,8 +94,8 @@ namespace AuctionAngular.Services
 
             result.InvoiceAmount = dto.InvoiceAmount;
             result.LotLeftLocationDate = dto.LotLeftLocationDate;
-            result.StatusSell = dto.StatusSell;
-            result.InvoiceGenereted = dto.InvoiceGenereted;
+            result.isSold = dto.StatusSell;
+            result.isInvoiceGenereted = dto.InvoiceGenereted;
 
             try
             {
@@ -154,8 +154,8 @@ namespace AuctionAngular.Services
                 InvoiceAmount = payment.InvoiceAmount,
                 LastInvoicePaidDate = payment.LastInvoicePaidDate,
                 LotLeftLocationDate = payment.LotLeftLocationDate,
-                StatusSell = payment.StatusSell,
-                InvoiceGenereted = payment.InvoiceGenereted
+                StatusSell = payment.isSold,
+                InvoiceGenereted = payment.isInvoiceGenereted
             };
         } 
     }

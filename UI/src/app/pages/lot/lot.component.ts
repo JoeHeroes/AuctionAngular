@@ -2,7 +2,7 @@ import { Subscription } from 'rxjs';
 import { TranslocoService } from '@ngneat/transloco';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, UrlSegment } from '@angular/router';
+import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 import { BidDto, VehicleService, WatchDto } from 'src/app/services/vehicle.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { NotificationService } from 'src/app/services/notification.service';
@@ -40,7 +40,7 @@ export class LotComponent implements OnInit {
     LocationId: 0,
     SalesFinised: false,
     SaleTerm: "",
-    Highlights: "",
+    Category: "",
     WaitingForConfirm: false,
   };
   pictures: any;
@@ -59,6 +59,7 @@ export class LotComponent implements OnInit {
   constructor(private vehicleService: VehicleService,
     private authenticationService: AuthenticationService,
     private notificationService: NotificationService,
+    private router: Router,
     private activeRoute: ActivatedRoute,
     private transloco: TranslocoService) {
 
@@ -156,5 +157,9 @@ export class LotComponent implements OnInit {
           this.notificationService.showError( this.transloco.translate('notification.bidVehicleFail'), "Failed");
         }
       })
+  }
+
+  contact()  {
+    this.router.navigate(['/vehicle/contact', this.id].filter(v => !!v));
   }
 }

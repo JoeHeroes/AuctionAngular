@@ -83,8 +83,7 @@ const routes: Routes = [
           { path: 'panel', pathMatch: 'full', component: AdminPanelVehiclesComponent, data: { title: 'Vehicles Panel' } },
           { path: 'verification', pathMatch: 'full', component: VerificationVehiclesComponent, data: { title: 'Verification' } },
           { path: 'set', children: [{ path: ':id', pathMatch: 'full', component: VehicleSetComponent, data: { title: 'Set Auction Vehicle' }},],},
-        ],
-      },
+          { path: 'contact', children: [{path: ':id', pathMatch: 'full', component: ContactusComponent, data: { title: 'Contact' }},], },],},
       {
         path: 'auction',
         pathMatch: 'full',
@@ -100,14 +99,6 @@ const routes: Routes = [
           { path: 'list', pathMatch: 'full', component: AuctionListComponent, data: { title: 'Auction List' }},
           { path: 'add', pathMatch: 'full', component: AuctionAddComponent, data: { title: 'Auction Add' }},
           { path: 'panel', pathMatch: 'full', component: AdminPanelAuctionsComponent, data: { title: 'Auctions Panel' }},
-        ],
-      },
-      {
-        path: 'support',
-        children: [
-          { path: 'ContactUs', pathMatch: 'full', component: ContactusComponent, data: { title: 'Contact Us' } },
-          { path: 'FAQ', pathMatch: 'full', component: FaqComponent, data: { title: 'FAQ' } },
-          { path: 'HowToBuy', pathMatch: 'full', component: HowtobuyComponent, data: { title: 'How To Buy' } },
         ],
       },
       {

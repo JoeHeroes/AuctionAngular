@@ -54,7 +54,7 @@ export class VehicleEditComponent implements OnInit {
       secondTireSetValue!: string;
       VINValue!: string;
       saleTermValue!: string;
-      highlightsValue!: string;
+      CategoryValue!: string;
 
 
   constructor(private vehicleService: VehicleService,
@@ -98,7 +98,7 @@ export class VehicleEditComponent implements OnInit {
       secondTireSet: new FormControl("", [Validators.required]),
       VIN: new FormControl("", [Validators.required]),
       saleTerm: new FormControl("", [Validators.required]),
-      highlights: new FormControl("", [Validators.required]),
+      Category: new FormControl("", [Validators.required]),
     })
     
 
@@ -123,7 +123,7 @@ export class VehicleEditComponent implements OnInit {
       this.secondTireSetValue = res.secondTireSet;
       this.VINValue = res.vin;
       this.saleTermValue = res.saleTerm;
-      this.highlightsValue = res.highlights;
+      this.CategoryValue = res.Category;
     });
   }
 
@@ -193,8 +193,8 @@ export class VehicleEditComponent implements OnInit {
     if(vehicle.saleTerm==""){
       vehicle.saleTerm = this.saleTermValue;
     }
-    if(vehicle.highlights==""){
-      vehicle.highlights = this.highlightsValue;
+    if(vehicle.Category==""){
+      vehicle.Category = this.CategoryValue;
     }
 
     const editVehicle: EditVehicleDto = {
@@ -218,7 +218,7 @@ export class VehicleEditComponent implements OnInit {
       secondTireSet: vehicle.secondTireSet,
       VIN: vehicle.VIN,
       saleTerm: vehicle.saleTerm,
-      highlights: vehicle.highlights,
+      Category: vehicle.Category,
     }
     this.vehicleService.editVehicle(this.id, editVehicle)
       .subscribe({
