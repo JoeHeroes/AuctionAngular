@@ -60,7 +60,7 @@ export class LotComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private notificationService: NotificationService,
     private router: Router,
-    private activeRoute: ActivatedRoute,
+    private route: ActivatedRoute,
     private transloco: TranslocoService) {
 
     this.isUserAuthenticated = false;
@@ -75,7 +75,7 @@ export class LotComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.urlSubscription = this.activeRoute.url.subscribe(segments => {
+    this.urlSubscription = this.route.url.subscribe(segments => {
       this.loadData(segments);
     });
   }
@@ -161,5 +161,9 @@ export class LotComponent implements OnInit {
 
   contact()  {
     this.router.navigate(['/vehicle/contact', this.id].filter(v => !!v));
+  }
+
+  opinion()  {
+    this.router.navigate(['/vehicle/opinion', this.id].filter(v => !!v));
   }
 }

@@ -1,0 +1,42 @@
+<ng-container *transloco="let t">
+    <form [formGroup]="addForm" (ngSubmit)="addOpinion(addForm.value)" enctype="multipart/form-data">
+        <h3>{{t('action.addOpinion')}}</h3>
+        <div class="dx-fieldset">
+            <div class="dx-field">
+                <div class="dx-field-label">{{t('opinion.description')}}</div>
+                <div class="dx-field-value">
+                    <dx-text-area [minHeight]="100" [maxHeight]="300" [autoResizeEnabled]="true" id="description"
+                        formControlName="description" class="form-control"></dx-text-area>
+                </div>
+            </div>
+            <div class="dx-field">
+                <div class="dx-field-label">{{t('opinion.origin')}}</div>
+                <div class="dx-field-value">
+                    <input type="text" id="origin" formControlName="origin" class="form-control" />
+                </div>
+            </div>
+            <div class="dx-field">
+                <div class="dx-field-label">{{t('opinion.valuation')}}</div>
+                <div class="dx-field-value">
+                    <input type="text" id="valuation" formControlName="valuation" class="form-control" />
+                </div>
+            </div>
+            <div class="dx-field">
+                <div class="dx-field-label">{{t('opinion.condition')}}</div>
+                <div class="dx-field-value">
+                    <div class="form-group rating" id="group1">
+                        <input type="radio" formControlName="condition" name="group1" id="1" value=5><label for="1"></label>
+                        <input type="radio" formControlName="condition" name="group1" id="2" value=4><label for="2"></label>
+                        <input type="radio" formControlName="condition" name="group1" id="3" value=3><label for="3"></label>
+                        <input type="radio" formControlName="condition" name="group1" id="4" value=2><label for="4"></label>
+                        <input type="radio" formControlName="condition" name="group1" id="5" value=1><label for="5"></label>
+                    </div>
+                </div>
+            </div>
+            <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
+        </div>
+        <dx-validation-summary id="summary"></dx-validation-summary>
+        <dx-button [text]="t('action.back')" type="normal" [routerLink]="['/vehicle/verification']"></dx-button>
+        <dx-button class="button" [text]="t('action.add')" type="success" [useSubmitBehavior]="true"></dx-button>
+    </form>
+</ng-container>

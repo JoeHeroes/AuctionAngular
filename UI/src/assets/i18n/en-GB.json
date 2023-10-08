@@ -6,12 +6,14 @@
     "editVehicle": "Edit Vehicle",
     "addAuction": "Add Auction",
     "editAuction": "Edit Auction",
+    "addOpinion": "Add Opinion",
+    "checkOpinion": "Check Opinion",
     "add": "Add",
     "save": "Save",
     "back": "Back",
     "watch": "Watch",
     "send": "Send Email",
-    "contact": "Contact With",
+    "contact": "Contact With Seller",
     "removeWatch": "Remove Watch",
     "editProfile": "Edit Profile",
     "upload": "Upload",
@@ -165,6 +167,8 @@
     "bidVehicleFail":"Vehicle Added Fail",
     "addAuctionCorrect":"Auction Added Correct",
     "addAuctionFail":"Auction Added Fail",
+    "addOpinionCorrect":"Opinion Added Correct",
+    "addOpinionFail":"Opinion Added Fail",
     "deleteEventCorrect":"Event Delete Correct",
     "deleteEventFail":"Event Delete Fail",
     "addEventCorrect":"Event Added Correct",
@@ -204,10 +208,18 @@
     "set":"Set Auction",
     "detail": "Detail",
     "cancel": "Cancel",
-    "accept": "Accept"
+    "accept": "Accept",
+    "opinion": "Opinion"
   },
   "email":{
     "title":"Title",
     "body":"Body"
+  },
+  "opinion":{
+    "vehicle":"Vehicle opinion",
+    "description":"Description",
+    "origin":"Origin",
+    "valuation":"Valuation",
+    "condition":"Condition"
   }
 }

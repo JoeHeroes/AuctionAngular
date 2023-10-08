@@ -16,13 +16,16 @@ namespace AuctionAngular.Services
 
         public async Task<int> CreateOpinionAsync(CreateOpinionDto dto)
         {
+            var opinionExist = await _dbContext.Opinions.FirstOrDefaultAsync(x => x.VehicleId == dto.VehicleId);
+            if (opinionExist != null)
+                throw new Exception("Opinion exist");
+
             var opinion = new Opinion
             {
                 Description = dto.Description,
                 Origin = dto.Origin,
                 Valuation = dto.Valuation,
-                assessConditionInside = dto.assessConditionInside,
-                assessConditionOutsite = dto.assessConditionOutsite,
+                Condition = dto.Condition,
                 VehicleId = dto.VehicleId,
             };
 
@@ -40,11 +43,11 @@ namespace AuctionAngular.Services
             return opinion.Id;
         }
 
-        public async Task<ViewOpinionDto> GetByIdOpinionAsync(int id)
+        public async Task<ViewOpinionDto> GetByVehicleIdOpinionAsync(int id)
         {
             var opinion = await _dbContext
                 .Opinions
-                .FirstOrDefaultAsync(u => u.Id == id);
+                .FirstOrDefaultAsync(u => u.VehicleId == id);
 
             if (opinion is null)
                 throw new NotFoundException("Opinion not found.");
@@ -59,8 +62,7 @@ namespace AuctionAngular.Services
                 Description = opinion.Description,
                 Origin = opinion.Origin,
                 Valuation = opinion.Valuation,
-                assessConditionInside = opinion.assessConditionInside,
-                assessConditionOutsite = opinion.assessConditionOutsite,
+                Condition = opinion.Condition,
             };
         }
     }

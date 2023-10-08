@@ -20,8 +20,6 @@ import { AuctionListComponent } from "../pages/auction-list/auction-list.compone
 import { AuctionAddComponent } from "../pages/auction-add/auction-add.component";
 import { AdminPanelAuctionsComponent } from "../pages/admin-panel-auctions/admin-panel-auctions.component";
 import { ContactusComponent } from "../pages/contactus/contactus.component";
-import { FaqComponent } from "../pages/faq/faq.component";
-import { HowtobuyComponent } from "../pages/howtobuy/howtobuy.component";
 import { CalendarComponent } from "../pages/calendar/calendar.component";
 import { CalendarManageComponent } from "../pages/calendar-manage/calendar-manage.component";
 import { EventEditComponent } from "../pages/event-edit/event-edit.component";
@@ -34,10 +32,10 @@ import { RegisterComponent } from "../pages/register/register.component";
 import { RestartPasswordComponent } from "../pages/restart-password/restart-password.component";
 import { PaymentComponent } from "../pages/payment/payment.component";
 import { LocationComponent } from "../pages/location/location.component";
-import { SevicesComponent } from "../pages/sevices/sevices.component";
 import { NotFoundComponent } from "../not-found/not-found.component";
-import { SupportComponent } from "../pages/support/support.component";
 import { NgModule } from "@angular/core";
+import { OpinionAddComponent } from "../pages/opinion-add/opinion-add.component";
+import { OpinionComponent } from "../pages/opinion/opinion.component";
 
 
 const routes: Routes = [
@@ -83,6 +81,8 @@ const routes: Routes = [
           { path: 'panel', pathMatch: 'full', component: AdminPanelVehiclesComponent, data: { title: 'Vehicles Panel' } },
           { path: 'verification', pathMatch: 'full', component: VerificationVehiclesComponent, data: { title: 'Verification' } },
           { path: 'set', children: [{ path: ':id', pathMatch: 'full', component: VehicleSetComponent, data: { title: 'Set Auction Vehicle' }},],},
+          { path: 'opinion', children: [{ path: ':id', pathMatch: 'full', component: OpinionComponent, data: { title: 'Vehicle Opinion' }},],},
+          { path: 'opinion/add', children: [{ path: ':id', pathMatch: 'full', component: OpinionAddComponent, data: { title: 'Add Vehicle Opinion' }},],},
           { path: 'contact', children: [{path: ':id', pathMatch: 'full', component: ContactusComponent, data: { title: 'Contact' }},], },],},
       {
         path: 'auction',
@@ -154,18 +154,6 @@ const routes: Routes = [
         component: LocationComponent,
         data: { title: 'Location' },
         canActivate: [AuthGuard]
-      },
-      {
-        path: 'services',
-        pathMatch: 'full',
-        component: SevicesComponent,
-        data: { title: 'Sevices' }
-      },
-      {
-        path: 'support',
-        pathMatch: 'full',
-        component: SupportComponent,
-        data: { title: 'Support' }
       },
       {
         path: '**',

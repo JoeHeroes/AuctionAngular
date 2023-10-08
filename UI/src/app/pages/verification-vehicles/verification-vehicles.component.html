@@ -36,6 +36,10 @@
                     cellTemplate="cellTemplateSet">
                 </dxi-column>
 
+                <dxi-column type="buttons" [caption]="t('admin.opinion')" [width]="150"
+                    cellTemplate="cellTemplateOpinion">
+                </dxi-column>
+
                 <dxi-column type="buttons" [caption]="t('admin.cancel')"
                     cellTemplate="cellTemplateCancel">
                 </dxi-column>
@@ -43,6 +47,10 @@
                 <dxi-column type="buttons" [caption]="t('admin.accept')"
                     cellTemplate="cellTemplateAccept">  
                 </dxi-column>
+
+                <div *dxTemplate="let data of 'cellTemplateOpinion'">
+                    <span style="cursor: pointer; font-weight: bold; color:purple" (click)="addOpinion(data.data.lotNumber)">{{t('admin.opinion')}}</span>
+                </div>
 
                 <div *dxTemplate="let data of 'cellTemplateSet'">
                     <span style="cursor: pointer; font-weight: bold; color:lightcoral" (click)="setClick(data.data.lotNumber)">{{t('admin.set')}}</span>

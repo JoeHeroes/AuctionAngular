@@ -6,12 +6,14 @@
     "editVehicle": "Fahrzeug bearbeiten",
     "addAuction": "Auktion hinzufügen",
     "editAuction": "Auktion bearbeiten",
+    "addOpinion": "Meinung hinzufügen",
+    "checkOpinion": "Meinung prüfen",
     "add": "Hinzufügen",
     "save": "Speichern",
     "back": "Zurück",
     "watch": "Betrachten",
     "send": "E-Mail senden",
-    "contact": "Kontakt mit",
+    "contact": "Kontakt mit dem Verkäufer",
     "removeWatch": "Uhr entfernen",
     "editProfile": "Profil bearbeiten",
     "upload": "Hochladen",
@@ -168,6 +170,8 @@
     "bidVehicleFail":"Fehler beim Hinzufügen des Fahrzeugs",
     "addAuctionCorrect":"Auktion korrekt hinzugefügt",
     "addAuctionFail":"Auktion hinzugefügt fehlgeschlagen",
+    "addOpinionCorrect":"Meinung hinzugefügt: Richtig",
+    "addOpinionFail":"Meinung hinzugefügt fehlgeschlagen",
     "deleteEventCorrect":"Ereignis löschen. Korrekt",
     "deleteEventFail":"Fehler beim Löschen des Ereignisses",
     "addEventCorrect":"Ereignis richtig hinzugefügt",
@@ -207,10 +211,18 @@
     "set":"Satz",
     "detail": "Detail",
     "cancel": "Stornieren",
-    "accept": "Akzeptieren"
+    "accept": "Akzeptieren",
+    "opinion": "Meinung"
   },
   "email":{
     "title":"Titel",
     "body":"Körper"
+  },
+  "opinion":{
+    "vehicle":"Fahrzeugmeinung",
+    "description":"Beschreibung",
+    "origin":"Herkunft",
+    "valuation":"Bewertung",
+    "condition":"Zustand"
   }
 }

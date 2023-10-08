@@ -12,8 +12,6 @@ import { LoginComponent } from '../pages/login/login.component';
 import { VehicleComponent } from '../pages/vehicle/vehicle.component';
 import { AuctionComponent } from '../pages/auction/auction.component';
 import { LocationComponent } from '../pages/location/location.component';
-import { SevicesComponent } from '../pages/sevices/sevices.component';
-import { SupportComponent } from '../pages/support/support.component';
 import { LotComponent } from '../pages/lot/lot.component';
 import { VehicleEditComponent } from '../pages/vehicle-edit/vehicle-edit.component';
 import { ProfileComponent } from '../pages/profile/profile.component';
@@ -47,6 +45,8 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthGuard } from '../common/components/auth.guard';
 import { ContactusComponent } from '../pages/contactus/contactus.component';
+import { OpinionAddComponent } from '../pages/opinion-add/opinion-add.component';
+import { OpinionComponent } from '../pages/opinion/opinion.component';
 
 
 
@@ -61,8 +61,6 @@ import { ContactusComponent } from '../pages/contactus/contactus.component';
     VehicleComponent,
     AuctionComponent,
     LocationComponent,
-    SevicesComponent,
-    SupportComponent,
     LotComponent,
     VehicleEditComponent,
     ProfileComponent,
@@ -89,7 +87,9 @@ import { ContactusComponent } from '../pages/contactus/contactus.component';
     EventAddComponent,
     VerificationVehiclesComponent,
     VehicleSetComponent,
-    ContactusComponent
+    ContactusComponent,
+    OpinionAddComponent,
+    OpinionComponent
   ],
   exports: [],
   imports: [

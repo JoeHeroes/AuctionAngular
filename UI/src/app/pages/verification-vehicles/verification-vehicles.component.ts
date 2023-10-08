@@ -28,6 +28,10 @@ export class VerificationVehiclesComponent {
     });
   }
 
+  addOpinion(vehicleId: any)  {
+    this.router.navigate(['/vehicle/opinion/add', vehicleId].filter(v => !!v));
+  }
+
   setClick(vehicleId: any)  {
     this.router.navigate(['/vehicle/set', vehicleId].filter(v => !!v));
   }

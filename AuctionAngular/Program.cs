@@ -88,6 +88,8 @@ try
     builder.Services.AddTransient<IMessageService, MessageService>();
     builder.Services.AddScoped<IPaymentService, PaymentService>();
     builder.Services.AddScoped<IVehicleService, VehicleService>();
+    builder.Services.AddScoped<IOpinionService, OpinionService>();
+
 
     //Hasser
     builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();

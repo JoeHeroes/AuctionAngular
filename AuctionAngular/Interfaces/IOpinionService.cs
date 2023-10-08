@@ -6,6 +6,6 @@ namespace AuctionAngular.Interfaces
     public interface IOpinionService
     {
         Task<int> CreateOpinionAsync(CreateOpinionDto dto);
-        Task<ViewOpinionDto> GetByIdOpinionAsync(int id);
+        Task<ViewOpinionDto> GetByVehicleIdOpinionAsync(int id);
     }
 }

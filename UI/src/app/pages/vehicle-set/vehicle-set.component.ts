@@ -28,7 +28,7 @@ export class VehicleSetComponent  implements OnInit {
     private vehicleService: VehicleService,
     private notificationService: NotificationService,
     private router: Router,
-    private activeRoute: ActivatedRoute,
+    private route: ActivatedRoute,
     private transloco: TranslocoService) {
       this.auctionService.getAuctionList().subscribe(res => {
         this.auctions = res;
@@ -41,7 +41,7 @@ export class VehicleSetComponent  implements OnInit {
 
   ngOnInit(): void {
 
-    this.urlSubscription = this.activeRoute.url.subscribe(segments => {
+    this.urlSubscription = this.route.url.subscribe(segments => {
       this.loadData(segments);
     });
 

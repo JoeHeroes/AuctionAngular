@@ -60,7 +60,7 @@ export class VehicleEditComponent implements OnInit {
   constructor(private vehicleService: VehicleService,
     private auctionService: AuctionService,
     private router: Router,
-    private activeRoute: ActivatedRoute,
+    private route: ActivatedRoute,
     private dataService: DataService) {
       this.auctionService.getAuctionList().subscribe(res => {
         this.auctions = res;
@@ -73,7 +73,7 @@ export class VehicleEditComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.urlSubscription = this.activeRoute.url.subscribe(segments => {
+    this.urlSubscription = this.route.url.subscribe(segments => {
       this.loadData(segments);
     });
 

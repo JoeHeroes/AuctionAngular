@@ -6,12 +6,14 @@
     "editVehicle": "Edytuj Pojazd",
     "addAuction": "Dodaj Aukcje",
     "editAuction": "Edytuj Aukcje",
+    "addOpinion": "Dodaj Opinie",
+    "checkOpinion": "Sprawdz Opinie",
     "add": "Dodaj",
     "save": "Zapisz",
     "back": "Wróć",
     "watch": "Oberwuj",
     "send": "Wyślij email",
-    "contact": "Skontaktuj sie",
+    "contact": "Skontaktuj się ze sprzedawcą",
     "removeWatch": "Usuń obserwacje",
     "editProfile": "Edytuj Profil",
     "upload": "Prześlij",
@@ -165,6 +167,8 @@
       "bidVehicleFail":"Twoja oferta nie jest najwyższa",
       "addAuctionCorrect":"Aukcja dodana poprawnie",
       "addAuctionFail":"Aukcja dodana niepoprawnie",
+      "addOpinionCorrect":"Opinia dodana poprawnie",
+      "addOpinionFail":"Opinia dodana niepoprawnie",
       "deleteEventCorrect":"Wydarzenie usuniete poprawnie",
       "deleteEventFail":"Wydarzenie usuniete niepoprawnie",
       "addEventCorrect":"Wydarzenie dodane poprawnie",
@@ -204,11 +208,19 @@
       "set":"Ustaw Aukcje",
       "detail": "Detale",
       "cancel": "Anuluj",
-      "accept": "Akceptuj"
+      "accept": "Akceptuj",
+      "opinion": "Opinia"
     },
     "email":{
       "title":"Tytuł",
       "body":"Treść"
+    },
+    "opinion":{
+      "vehicle":"Opinia pojazdu",
+      "description":"Opis",
+      "origin":"Pochodzenie",
+      "valuation":"Wycena",
+      "condition":"Stan"
     }
   }
   
