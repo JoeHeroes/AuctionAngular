@@ -152,8 +152,7 @@ const routes: Routes = [
         path: 'location',
         pathMatch: 'full',
         component: LocationComponent,
-        data: { title: 'Location' },
-        canActivate: [AuthGuard]
+        data: { title: 'Location' }
       },
       {
         path: '**',

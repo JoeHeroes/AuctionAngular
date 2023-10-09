@@ -22,9 +22,6 @@ const navigationItemsBuyer: ListItem[] = [
   { text: t('menu.auction-list'), href: '/auction/list', icon: 'fa fa-gavel' },
   { text: t('menu.auction'), href: '/auction', icon: 'fa-solid fa-globe' },
   { text: t('menu.location'), href: '/location', icon: 'fa fa-location-arrow' },
-  { text: t('menu.services'), href: '/services', icon: 'fa fa-server' },
-  { text: t('menu.support'), href: '/support', icon: 'fa fa-info-circle' },
-  { text: t('menu.contact'), href: '/contact', icon: '' },
 ];
 
 
@@ -33,10 +30,7 @@ const navigationItemsSeller: ListItem[] = [
   { text: t('menu.vehicle'), href: '/vehicle', icon: 'fa fa-car' },
   { text: t('menu.vehicle-add'), href: '/vehicle/add', icon: 'fa-solid fa-plus' },
   { text: t('menu.watch-list'), href: '/vehicle/watchlist', icon: 'fa fa-star' },
-  { text: t('menu.payment'), href: '/payment', icon: 'fa-regular fa-credit-card' },
   { text: t('menu.calendar'), href: '/calendar', icon: 'fa-solid fa-calendar-days' },
-  { text: t('menu.services'), href: '/services', icon: 'fa fa-server' },
-  { text: t('menu.support'), href: '/support', icon: 'fa fa-info-circle' },
 ];
 
 
@@ -58,8 +52,6 @@ const navigationItemsDefault: ListItem[] = [
   { text: t('menu.auction-list'), href: '/auction/list', icon: 'fa fa-gavel' },
   { text: t('menu.auction'), href: '/auction', icon: 'fa-solid fa-globe' },
   { text: t('menu.location'), href: '/location', icon: 'fa fa-location-arrow' },
-  { text: t('menu.services'), href: '/services', icon: 'fa fa-server' },
-  { text: t('menu.support'), href: '/support', icon: 'fa fa-info-circle' },
 ];
 
 @Component({
