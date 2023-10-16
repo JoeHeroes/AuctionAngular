@@ -44,11 +44,9 @@ export class OpinionAddComponent implements OnInit {
     this.id = url.map(x => x.path).join('/');
   }
 
-
   addOpinion = (addFormValue: any) => {
     this.showError = false;
     const add = { ...addFormValue };
-
 
     const addData: AddOpinionDto = {
       description: add.description,
@@ -74,9 +72,6 @@ export class OpinionAddComponent implements OnInit {
       this.errorMessage = "Condition is required";
       this.showError = true;
     }
-
-   
-    
     this.opinionService.addOpinion(addData)
       .subscribe({
         next: (res: AuthResponseDto) => {
@@ -87,5 +82,5 @@ export class OpinionAddComponent implements OnInit {
           this.notificationService.showError( this.transloco.translate('notification.addOpinionFail'), "Failed");
         }
       })
-  }
+   }
 }

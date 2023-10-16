@@ -130,7 +130,8 @@
     "title": "Seite nicht gefunden",
     "message": "Wir konnten Seite finden",
     "goBack": "geh zurück",
-    "noAuction": "Es gibt keine aktuellen Live-Auktionen"
+    "noAuction": "Es gibt keine aktuellen Live-Auktionen",
+    "noOpinion": "Keine Meinung"
   },
   "calendar":{
     "title": "Titel",

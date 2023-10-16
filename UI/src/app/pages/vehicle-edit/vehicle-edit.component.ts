@@ -248,7 +248,6 @@ enum BodyCar {
   Cabrio = 'Cabrio',
 }
 
-
 enum Damage {
   none = '',
   All_Over = 'All_Over',
@@ -288,7 +287,6 @@ enum Highlight {
   NonOperational = 'Non Operational',
   RunAndDrive = 'Run and Drive',
 }
-
 
 enum Producer {
   none = '',
@@ -334,8 +332,6 @@ enum SaleTerm {
   Classic = 'Classic',
 }
 
-
-
 enum Transmission {
   none = '',
   Manual = 'Manual',
@@ -343,4 +339,3 @@ enum Transmission {
   DualClutch = 'DualClutch',
   CVT = 'CVT',
 }
-

@@ -6,7 +6,6 @@ import { TranslocoService } from '@ngneat/transloco';
 import { AuthResponseDto, AuthenticationService, EditProfileDto } from 'src/app/services/authentication.service';
 import { NotificationService } from 'src/app/services/notification.service';
 
-
 @Component({
   selector: 'app-profile-edit',
   templateUrl: './profile-edit.component.html',

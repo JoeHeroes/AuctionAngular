@@ -1,8 +1,6 @@
 import { Component } from "@angular/core";
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { TranslocoService } from "@ngneat/transloco";
-import { NotificationService } from "src/app/services/notification.service";
 import { DataService } from "src/app/services/data.service";
 
 @Component({

@@ -20,7 +20,6 @@
         </dxo-pager>
         <dxi-column dataField="saleDate" [caption]="t('payment.saleDate')" dataType="date"
           [filterOperations]="['startswith']" [width]="160" [allowSorting]="true"></dxi-column>
-
         <dxi-column dataField="lotId" [caption]="t('payment.lot')" [allowFiltering]="true"
           [allowSorting]="false"></dxi-column>
         <dxi-column dataField="location" [caption]="t('payment.location')" [allowFiltering]="false"
@@ -40,7 +39,6 @@
         </div>
         <dxi-column dataField="status" [caption]="t('payment.status')" [allowFiltering]="false"
           [allowSorting]="true"></dxi-column>
-
         <div *dxTemplate="let d of 'discountCellTemplate'">
           <div class="chart-cell">
             <dx-bullet [showTarget]="false" [showZeroLevel]="true" [startScaleValue]="0" [endScaleValue]="100"

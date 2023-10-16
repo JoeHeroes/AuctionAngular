@@ -27,30 +27,29 @@
                 <dxo-pager [visible]="true" [allowedPageSizes]="allowedPageSizes" [displayMode]="displayMode"
                     [showPageSizeSelector]="true" [showInfo]="true" [showNavigationButtons]="true">
                 </dxo-pager>
-                <dxi-column dataField="id" [caption]="t('auction.id')" [filterOperations]="['startswith']" [width]="160"[allowSorting]="true"></dxi-column>
-                <dxi-column dataField="location" [caption]="t('auction.location')"  [allowSorting]="true" [width]="240"></dxi-column>
-                <dxi-column dataField="description" [caption]="t('auction.description')" [allowSorting]="true" ></dxi-column>
+                <dxi-column dataField="id" [caption]="t('auction.id')" [filterOperations]="['startswith']" [width]="160"
+                    [allowSorting]="true"></dxi-column>
+                <dxi-column dataField="location" [caption]="t('auction.location')" [allowSorting]="true"
+                    [width]="240"></dxi-column>
+                <dxi-column dataField="description" [caption]="t('auction.description')"
+                    [allowSorting]="true"></dxi-column>
                 <dxi-column dataField="countVehicle" [caption]="t('auction.countVehicle')" [width]="120"></dxi-column>
-                <dxi-column dataField="dateTime" [caption]="t('auction.dateTime')" dataType="date" [width]="120" [allowSorting]="true"></dxi-column>
-
-
-                <dxi-column type="buttons" dataField="Edit" [caption]="t('admin.edit')"
-                    cellTemplate="cellTemplateEdit">
+                <dxi-column dataField="dateTime" [caption]="t('auction.dateTime')" dataType="date" [width]="120"
+                    [allowSorting]="true"></dxi-column>
+                <dxi-column type="buttons" dataField="Edit" [caption]="t('admin.edit')" cellTemplate="cellTemplateEdit">
                 </dxi-column>
-                
                 <dxi-column type="buttons" dataField="Delete" [caption]="t('admin.delete')"
                     cellTemplate="cellTemplateDelete">
                 </dxi-column>
-
-
                 <div *dxTemplate="let data of 'cellTemplateEdit'">
-                    <span style="cursor: pointer; font-weight: bold; color: gray" (click)="editClick(data.data.id)">{{t('admin.edit')}}</span>
+                    <span style="cursor: pointer; font-weight: bold; color: gray"
+                        (click)="editClick(data.data.id)">{{t('admin.edit')}}</span>
                 </div>
 
                 <div *dxTemplate="let data of 'cellTemplateDelete'">
-                    <span style="cursor: pointer; font-weight: bold; color:orangered" (click)="deleteClick(data.data.id)">{{t('admin.delete')}}</span>
+                    <span style="cursor: pointer; font-weight: bold; color:orangered"
+                        (click)="deleteClick(data.data.id)">{{t('admin.delete')}}</span>
                 </div>
-
                 <div *dxTemplate="let d of 'discountCellTemplate'">
                     <div class="chart-cell">
                         <dx-bullet [showTarget]="false" [showZeroLevel]="true" [startScaleValue]="0"

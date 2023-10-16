@@ -39,15 +39,9 @@ export class AdminPanelAuctionsComponent  {
         });
         this.notificationService.showSuccess( this.transloco.translate('notification.deleteVehicleCorrect'), "Success");
       },
-      error: (err: HttpErrorResponse) => {
+      error: () => {
         this.notificationService.showError( this.transloco.translate('notification.deleteVehicleFail'), "Failed");
       }
     })
   }
 }
-
-
-
-
-
-

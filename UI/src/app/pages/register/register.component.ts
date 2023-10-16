@@ -112,7 +112,7 @@ export class RegisterComponent implements OnInit {
           next: (res: any) => {
 
           },
-          error: (err: any) => {
+          error: () => {
             this.notificationService.showSuccess( this.transloco.translate('notification.registeredCorrect'), "Success");
             this.router.navigate([this.returnUrl]);
           }

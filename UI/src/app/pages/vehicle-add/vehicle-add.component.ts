@@ -6,7 +6,7 @@ import { TranslocoService } from '@ngneat/transloco';
 import { AuctionService } from 'src/app/services/auction.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { NotificationService } from 'src/app/services/notification.service';
-import { CreateVehicleDto, VehicleService } from 'src/app/services/vehicle.service';
+import { CreateVehicleDto, VehicleService, WatchDto } from 'src/app/services/vehicle.service';
 
 
 @Component({
@@ -18,8 +18,7 @@ export class VehicleAddComponent implements OnInit {
   private returnUrl!: string;
 
   auctions: any;
-  userId: any;
-
+  userId: number = 0;
   addForm !: FormGroup;
   errorMessage: string = '';
   showError: boolean = false;
@@ -32,7 +31,7 @@ export class VehicleAddComponent implements OnInit {
   enumProducer = Object.values(Producer);
   enumSaleTerm = Object.values(SaleTerm);
   enumTransmission = Object.values(Transmission);
-  locations: any;
+
 
   constructor(private vehicleService: VehicleService,
     private auctionService: AuctionService,
@@ -46,6 +45,9 @@ export class VehicleAddComponent implements OnInit {
       this.auctions = res;
     });
 
+    this.authenticationService.loggedUserId().subscribe(res => {
+      this.userId = res.userId;
+	  })
   }
 
   ngOnInit(): void {
@@ -79,7 +81,6 @@ export class VehicleAddComponent implements OnInit {
     this.showError = true;
     const vehicle = { ...vehicleFormValue };
 
-
     if (vehicle.serviceManual == "") {
       vehicle.serviceManual = true;
     }
@@ -87,10 +88,6 @@ export class VehicleAddComponent implements OnInit {
     if (vehicle.secondTireSet == "") {
       vehicle.secondTireSet = true;
     }
-
-    this.authenticationService.loggedUserId().subscribe(res => {
-      this.userId = res.userId;
-	  })
 
     const createVehicle: CreateVehicleDto = {
       producer: vehicle.producer,
@@ -116,7 +113,6 @@ export class VehicleAddComponent implements OnInit {
       Category: vehicle.Category,
       confirm: false,
       ownerId : this.userId,
-
     }
 
     if (vehicle.producer == "") {
@@ -204,7 +200,6 @@ export class VehicleAddComponent implements OnInit {
       this.errorMessage = "Category is required";
       this.showError = true;
     }
-
 
     this.vehicleService.addVehicle(createVehicle)
       .subscribe({
@@ -325,4 +320,3 @@ enum Transmission {
   DualClutch = 'DualClutch',
   CVT = 'CVT',
 }
-

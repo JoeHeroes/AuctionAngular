@@ -130,7 +130,8 @@
     "title": "Not Found Page",
     "message": "We could found page",
     "goBack": "go Back",
-    "noAuction": "There are no current Live Auctions"
+    "noAuction": "There are no current Live Auctions",
+    "noOpinion": "No opinion"
   },
   "calendar":{
     "title": "Title",

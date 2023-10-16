@@ -41,12 +41,10 @@
         </dxi-column>
         <dxi-column type="buttons" dataField="Delete" [caption]="t('admin.delete')" cellTemplate="cellTemplateDelete">
         </dxi-column>
-
         <div *dxTemplate="let data of 'cellTemplateEdit'">
           <span style="cursor: pointer; font-weight: bold; color: gray"
             (click)="editClick(data.data.id)">{{t('admin.edit')}}</span>
         </div>
-
         <div *dxTemplate="let data of 'cellTemplateDelete'">
           <span style="cursor: pointer; font-weight: bold; color:orangered"
             (click)="deleteClick(data.data.id)">{{t('admin.delete')}}</span>

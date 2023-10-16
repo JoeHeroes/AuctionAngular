@@ -19,8 +19,6 @@ export class AuctionEditComponent implements OnInit {
   showError!: boolean;
   editForm!: FormGroup; 
   errorMessage: string = '';
-
-
   locationValue!: string;
   descriptionValue!: string;
   auctionDateValue!: string;
@@ -42,7 +40,6 @@ export class AuctionEditComponent implements OnInit {
     this.urlSubscription = this.route.url.subscribe(segments => {
       this.loadData(segments);
     });
-  
   }
 
   private loadData(url: UrlSegment[]) {

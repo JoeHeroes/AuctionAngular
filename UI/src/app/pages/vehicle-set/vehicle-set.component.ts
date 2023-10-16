@@ -53,7 +53,6 @@ export class VehicleSetComponent  implements OnInit {
   setAuctionForVehicle = (setAuctionForm: any) => {
     const set = { ...setAuctionForm };
 
-
     const setData: SetAuctionVehcileDto = {
       userId: this.id,
       auctionId: set.auction,

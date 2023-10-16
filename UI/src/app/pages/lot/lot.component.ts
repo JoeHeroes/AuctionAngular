@@ -44,7 +44,6 @@ export class LotComponent implements OnInit {
     WaitingForConfirm: false,
   };
   pictures: any;
-  userId: any;
   bidForm!: FormGroup;
   watchLot: boolean = false;
   isUserAuthenticated: boolean = false;

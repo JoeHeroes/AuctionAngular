@@ -3,7 +3,6 @@ import { AuthenticationService } from "src/app/services/authentication.service";
 import { InvoiceInfo, InvoiceService } from "src/app/services/invoice.service";
 import { PaymentService } from "src/app/services/payment.service";
 
-
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',

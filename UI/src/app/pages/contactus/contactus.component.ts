@@ -30,8 +30,7 @@ export class ContactusComponent  implements OnInit {
     private authenticationService: AuthenticationService,
     private mailService: MailService,
     private router: Router,
-    private route: ActivatedRoute,
-    private transloco: TranslocoService) { }
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.sendForm = new FormGroup({
@@ -55,13 +54,11 @@ export class ContactusComponent  implements OnInit {
     this.vehicleService.getVehicle(this.idVehicle).subscribe(res => {
       this.idTo = res.ownerId;
     });
-
   }
   
   sendEmail = (sendEmail: any) => {
     this.showError = false;
     const send = { ...sendEmail };
-
 
     const sendData: MailDto = {
       FromId: this.idFrom,

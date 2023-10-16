@@ -7,7 +7,6 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { BidDto, VehicleService } from 'src/app/services/vehicle.service';
 
-
 @Component({
   selector: 'app-auction',
   templateUrl: './auction.component.html',
