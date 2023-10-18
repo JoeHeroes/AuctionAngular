@@ -29,6 +29,7 @@ const navigationItemsSeller: ListItem[] = [
   { text: t('menu.home'), href: '/home', icon: 'fa fa-house' },
   { text: t('menu.vehicle'), href: '/vehicle', icon: 'fa fa-car' },
   { text: t('menu.vehicle-add'), href: '/vehicle/add', icon: 'fa-solid fa-plus' },
+  { text: t('menu.vehicle-status'), href: '/vehicle/status', icon: 'fa fa-legal' },
   { text: t('menu.watch-list'), href: '/vehicle/watchlist', icon: 'fa fa-star' },
   { text: t('menu.calendar'), href: '/calendar', icon: 'fa-solid fa-calendar-days' },
 ];

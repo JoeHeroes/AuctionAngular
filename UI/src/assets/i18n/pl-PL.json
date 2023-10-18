@@ -4,6 +4,7 @@
     "editEvent": "Edytuj wydarzenie",
     "addVehicle": "Dodaj Pojazd",
     "editVehicle": "Edytuj Pojazd",
+    "checkVehicle": "Sprawdz Pojazd",
     "addAuction": "Dodaj Aukcje",
     "editAuction": "Edytuj Aukcje",
     "addOpinion": "Dodaj Opinie",
@@ -30,7 +31,8 @@
     "menu": {
       "home": "Home",
       "vehicle": "Pojazdy",
-      "vehicle-add":"Dodaj Pojazd",
+      "vehicle-add":"Dodaj pojazd",
+      "vehicle-status": "Sprawdz pojazd",
       "vehicle-bids": "Licytowane",
       "vehicle-won": "Wygrane",
       "vehicle-lost": "Przegrane",

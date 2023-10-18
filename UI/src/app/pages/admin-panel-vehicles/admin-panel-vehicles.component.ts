@@ -16,7 +16,7 @@ export class AdminPanelVehiclesComponent {
   datasource: any;
 
   readonly allowedPageSizes = [5, 10, 20, 'all'];
-
+ 
   displayMode = 'full';
 
   constructor(private vehicleService: VehicleService,
@@ -28,21 +28,7 @@ export class AdminPanelVehiclesComponent {
       this.datasource = res;
     });
   }
-
-  sellClick(vehicleId: any)  {
-    this.vehicleService.sellVehicle(vehicleId).subscribe({
-      next: (res: AuthResponseDto) => {
-        this.vehicleService.getVehiclesAuctionEnd().subscribe(res => {
-          this.datasource = res;
-        });
-        this.notificationService.showSuccess( this.transloco.translate('notification.sellVehicleCorrect'), "Success");
-      },
-      error: (err: HttpErrorResponse) => {
-        this.notificationService.showError( this.transloco.translate('notification.sellVehicleFail'), "Failed");
-      }
-    })
-  }
-
+ 
   editClick(vehicleId: any)  {
     this.router.navigate(['/vehicle/edit', vehicleId].filter(v => !!v));
   }

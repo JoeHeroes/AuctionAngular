@@ -36,6 +36,7 @@ import { NotFoundComponent } from "../not-found/not-found.component";
 import { NgModule } from "@angular/core";
 import { OpinionAddComponent } from "../pages/opinion-add/opinion-add.component";
 import { OpinionComponent } from "../pages/opinion/opinion.component";
+import { VehicleCheckComponent } from "../pages/vehicle-check/vehicle-check.component";
 
 
 const routes: Routes = [
@@ -79,6 +80,7 @@ const routes: Routes = [
           { path: 'bids', pathMatch: 'full', component: VehicleBidsComponent, data: { title: 'Vehicle Bids' }, canActivate: [AuthGuard] },
           { path: 'watchlist', pathMatch: 'full', component: WatchListComponent, data: { title: 'Watch List' }, canActivate: [AuthGuard] },
           { path: 'panel', pathMatch: 'full', component: AdminPanelVehiclesComponent, data: { title: 'Vehicles Panel' } },
+          { path: 'status', pathMatch: 'full', component: VehicleCheckComponent, data: { title: 'Check Vehicle' } },
           { path: 'verification', pathMatch: 'full', component: VerificationVehiclesComponent, data: { title: 'Verification' } },
           { path: 'set', children: [{ path: ':id', pathMatch: 'full', component: VehicleSetComponent, data: { title: 'Set Auction Vehicle' }},],},
           { path: 'opinion', children: [{ path: ':id', pathMatch: 'full', component: OpinionComponent, data: { title: 'Vehicle Opinion' }},],},

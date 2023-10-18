@@ -47,6 +47,7 @@ import { AuthGuard } from '../common/components/auth.guard';
 import { ContactusComponent } from '../pages/contactus/contactus.component';
 import { OpinionAddComponent } from '../pages/opinion-add/opinion-add.component';
 import { OpinionComponent } from '../pages/opinion/opinion.component';
+import { VehicleCheckComponent } from '../pages/vehicle-check/vehicle-check.component';
 
 
 
@@ -63,6 +64,7 @@ import { OpinionComponent } from '../pages/opinion/opinion.component';
     LocationComponent,
     LotComponent,
     VehicleEditComponent,
+    VehicleCheckComponent,
     ProfileComponent,
     ProfileEditComponent,
     RestartPasswordComponent,
