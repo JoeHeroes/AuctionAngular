@@ -22,7 +22,7 @@ export class PaymentService {
   }
 
 
-  public createPayment(data: PaymentInfo): Observable<Vehicle[]> {
+  public createPayment(data: PaymentInfo): Observable<any> {
 
     let url_ = this.baseUrl + "/Payment/CreatePayment";
 

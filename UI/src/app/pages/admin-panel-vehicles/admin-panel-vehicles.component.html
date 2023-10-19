@@ -45,29 +45,12 @@
                     cellTemplate="cellTemplateInvoice">
                 </dxi-column>
 
-                <dxi-column type="buttons" dataField="Edit" [caption]="t('admin.edit')" cellTemplate="cellTemplateEdit">
-                </dxi-column>
-
-                <dxi-column type="buttons" dataField="Delete" [caption]="t('admin.delete')"
-                    cellTemplate="cellTemplateDelete">
-                </dxi-column>
-
                 <dxi-column dataField="isSold" [caption]="t('admin.sold')" [allowFiltering]="false"
                     [allowSorting]="true"></dxi-column>
 
                 <div *dxTemplate="let data of 'cellTemplateInvoice'">
                     <span style="cursor: pointer; font-weight: bold; color: green"
                         (click)="invoiceClick(data.data.lotNumber)">{{t('admin.invoice')}}</span>
-                </div>
-
-                <div *dxTemplate="let data of 'cellTemplateEdit'">
-                    <span style="cursor: pointer; font-weight: bold; color: gray"
-                        (click)="editClick(data.data.lotNumber)">{{t('admin.edit')}}</span>
-                </div>
-
-                <div *dxTemplate="let data of 'cellTemplateDelete'">
-                    <span style="cursor: pointer; font-weight: bold; color:orangered"
-                        (click)="deleteClick(data.data.lotNumber)">{{t('admin.delete')}}</span>
                 </div>
 
                 <div *dxTemplate="let d of 'discountCellTemplate'">

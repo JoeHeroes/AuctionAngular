@@ -46,7 +46,8 @@
       "support": "Wsparcie",
       "verification-vehicle": "Zatwierdzenie",
       "panel-vehicle":"Panel pojazdów",
-      "panel-auction":"Panel aukcji"
+      "panel-auction":"Panel aukcji",
+      "panel-invoice":"Panel faktur"
     },
     "vehicle": {
       "image": "Zdjecie",
@@ -179,7 +180,9 @@
       "editEventCorrect":"Wydarzenie edytowane poprawnie",
       "editEventFail":"Wydarzenie edytowane niepoprawnie",
       "minDate":"Data nie może być w przeszłości",
-      "maxDate":"Data nie może być w przyszłości"
+      "maxDate":"Data nie może być w przyszłości",
+      "generateInvoiceCorrect":"Faktura wygenerowana poprawnie",
+      "generateInvoiceFail":"Faktura wygenerowana niepoprawnie"
     },
     "dashboard":{
       "title":"Dashboard",

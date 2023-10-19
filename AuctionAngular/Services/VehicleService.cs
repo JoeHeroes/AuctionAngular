@@ -541,13 +541,15 @@ namespace AuctionAngular.Services
                                 .Payments
                                 .FirstOrDefaultAsync(x => x.LotId == id);
 
-            if(payment != null)
-            {
-                vehicle!.isSold = !vehicle.isSold;
-                payment!.isSold = !payment.isSold;
-            }
-            else
-                throw new Exception();
+            vehicle!.isSold = !vehicle.isSold;
+
+            //if (payment != null)
+            //{
+            //    vehicle!.isSold = !vehicle.isSold;
+            //    payment!.isSold = !payment.isSold;
+            //}
+            //else
+            //    throw new Exception();
 
             try
             {

@@ -1,6 +1,6 @@
-﻿namespace AuctionAngular.Services.Invoice
+﻿namespace AuctionAngular.Dtos.Invoice
 {
-    public class Tax
+    public class TaxDto
     {
         public double VAT { get; set; }
         public double TotalTax { get; set; }

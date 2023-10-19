@@ -37,6 +37,7 @@ import { NgModule } from "@angular/core";
 import { OpinionAddComponent } from "../pages/opinion-add/opinion-add.component";
 import { OpinionComponent } from "../pages/opinion/opinion.component";
 import { VehicleCheckComponent } from "../pages/vehicle-check/vehicle-check.component";
+import { AdminPanelInvoicesComponent } from "../pages/admin-panel-invoices/admin-panel-invoices.component";
 
 
 const routes: Routes = [
@@ -92,6 +93,12 @@ const routes: Routes = [
         component: AuctionComponent,
         data: { title: 'Auction' },
         canActivate: [AuthGuard]
+      },
+      {
+        path: 'invoice/panel',
+        pathMatch: 'full',
+        component: AdminPanelInvoicesComponent,
+        data: { title: 'Invoice Panel' }
       },
       {
         path: 'auction',

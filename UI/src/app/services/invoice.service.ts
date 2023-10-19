@@ -18,6 +18,15 @@ export class InvoiceService {
     let url_ = this.baseUrl + "/Invoice/GeneratePDF";
     return this.http.post(url_, data, {responseType: 'blob'});
   }
+
+
+  public getInvoices(): Observable<any> {
+
+    let url_ = this.baseUrl + "/Invoice/GetAllInvoice";
+    return this.http.get<any>(url_);
+  }
+
+
 }
 
 

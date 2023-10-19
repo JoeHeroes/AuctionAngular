@@ -48,6 +48,7 @@ import { ContactusComponent } from '../pages/contactus/contactus.component';
 import { OpinionAddComponent } from '../pages/opinion-add/opinion-add.component';
 import { OpinionComponent } from '../pages/opinion/opinion.component';
 import { VehicleCheckComponent } from '../pages/vehicle-check/vehicle-check.component';
+import { AdminPanelInvoicesComponent } from '../pages/admin-panel-invoices/admin-panel-invoices.component';
 
 
 
@@ -83,6 +84,7 @@ import { VehicleCheckComponent } from '../pages/vehicle-check/vehicle-check.comp
     AuctionListComponent,
     AdminPanelVehiclesComponent,
     AdminPanelAuctionsComponent,
+    AdminPanelInvoicesComponent,
     AuctionAddComponent,
     AuctionEditComponent,
     EventEditComponent,

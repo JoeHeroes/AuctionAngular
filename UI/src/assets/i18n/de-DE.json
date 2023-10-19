@@ -46,7 +46,8 @@
     "support": "Unterstützung",
     "verification-vehicle": "Überprüfung",
     "panel-vehicle":"Fahrzeugtafel",
-    "panel-auction":"Auktionspanel"
+    "panel-auction":"Auktionspanel",
+    "panel-invoice":"Rechnungspanel"
   },
   "vehicle": {
     "image": "Bild",

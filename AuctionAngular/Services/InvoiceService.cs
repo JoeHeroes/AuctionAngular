@@ -1,9 +1,10 @@
 ﻿using AuctionAngular.Dtos;
+using AuctionAngular.Dtos.Invoice;
 using AuctionAngular.Interfaces;
-using AuctionAngular.Services.Invoice;
-using AuctionAngular.Services.NewFolder;
 using Database;
+using Database.Entities;
 using Microsoft.EntityFrameworkCore;
+using MimeKit;
 using PdfSharpCore;
 using PdfSharpCore.Pdf;
 using TheArtOfDev.HtmlRenderer.PdfSharp;
@@ -19,7 +20,7 @@ namespace AuctionAngular.Services
             _dbContext = dbContext;
         }
 
-        public async Task<PDFResponseDto> GeneratePDFAsync(Info info)
+        public async Task<PDFResponseDto> GeneratePDFAsync(InfoDto info)
         {
             var document = new PdfDocument();
             //string imgeurl = "data:image/png;base64, " + Getbase64string() + "";
@@ -36,7 +37,7 @@ namespace AuctionAngular.Services
 
             Random rand = new Random();
 
-            Header header = new Header()
+            HeaderDto header = new HeaderDto()
             {
                 InvoiceNumber = rand.Next(100000, 1000000).ToString(),
                 CustomerId = user!.Id,
@@ -51,16 +52,16 @@ namespace AuctionAngular.Services
                 InvoiceDate = DateTime.Now.ToString("MM.dd.yyyy"),
             };
 
-            Tax tax = new Tax()
+            TaxDto tax = new TaxDto()
             {
                 VAT = 0,
                 TotalTax = 0,
                 TaxFreeFrice = 0
             };
 
-            List<Detail> detail = new List<Detail>()
+            List<DetailDto> detail = new List<DetailDto>()
             {
-                new Detail()
+                new DetailDto()
                 {
                     Product = vehicle.Producer +" "+vehicle.ModelSpecifer,
                     Pcs = 1,
@@ -68,7 +69,7 @@ namespace AuctionAngular.Services
                     Tax = "VAT "+ header.Tax +"%",
                     Total = vehicle.CurrentBid,
                 },
-                new Detail()
+                new DetailDto()
                 {
                     Product = "Lot Retrieval Fee",
                     Pcs = 1,
@@ -76,7 +77,7 @@ namespace AuctionAngular.Services
                     Tax = "VAT "+ header.Tax +"%",
                     Total = 15.00,
                 },
-                new Detail()
+                new DetailDto()
                 {
                     Product = "Buyer fee",
                     Pcs = 1,
@@ -84,7 +85,7 @@ namespace AuctionAngular.Services
                     Tax = "VAT "+ header.Tax +"%",
                     Total = 150.00,
                 },
-                new Detail()
+                new DetailDto()
                 {
                     Product = "Virtual Bid Fee",
                     Pcs = 1,
@@ -92,7 +93,7 @@ namespace AuctionAngular.Services
                     Tax = "VAT "+ header.Tax +"%",
                     Total = 30.00,
                 },
-                new Detail()
+                new DetailDto()
                 {
                     Product = "Green papers fee",
                     Pcs = 1,
@@ -194,22 +195,75 @@ namespace AuctionAngular.Services
             dto.Filename = "Invoice_" + header.InvoiceNumber + ".pdf";
 
 
-
             var payment = await _dbContext
                                  .Payments
                                  .FirstOrDefaultAsync(x => x.LotId == info.VehicleId);
 
             payment!.isInvoiceGenereted = !payment.isInvoiceGenereted;
 
+
+
+            _dbContext.SaveChanges();
+
+            await AddInvoice(header, info);
+
             return dto;
         }
-      
+
+
+        public async Task AddInvoice(HeaderDto header, InfoDto info)
+        {
+            var invoice = new Invoice()
+            {
+                InvoiceNumber = header.InvoiceNumber,
+                InvoiceDate = header.InvoiceDate,
+                CustomerId = info.UserId,
+                LocationId = info.LocationId,
+                VehicleId = info.VehicleId,
+                CustomerAddressId = header.CustomerAddressId,
+                DeliveryAddressId = header.DeliveryAddressId,
+                Product = header.Product,
+                Tax = header.Tax,
+                TaxFreePrice = header.TaxFreePrice,
+                TaxTotal = header.TaxTotal,
+                Total = header.Total,
+                PaymentMethod = header.PaymentMethod,
+            };
+
+            _dbContext.Invoices.Add(invoice);
+
+            _dbContext.SaveChanges();
+        }
+        public async Task<IEnumerable<ViewInvoicesDto>> GetInvoicesAsync()
+        {
+            List<Invoice> invoices = await _dbContext.Invoices.ToListAsync();
+
+            return ViewInvoicesDtoConvert(invoices);
+        }
+
         public string Getbase64string()
         {
             string filepath = "D:\\Logo\\404_learnmore.png";
             byte[] imgarray = File.ReadAllBytes(filepath);
             string base64 = Convert.ToBase64String(imgarray);
             return base64;
+        }
+
+        public List<ViewInvoicesDto> ViewInvoicesDtoConvert(List<Invoice> invoices)
+        {
+            var viewInvoice = new List<ViewInvoicesDto>();
+            foreach (var invoice in invoices)
+            {
+                viewInvoice.Add(new ViewInvoicesDto()
+                    {
+                        InvoiceNumber = invoice.InvoiceNumber,
+                        InvoiceDate = invoice.InvoiceDate,
+                        VehicleId = invoice.VehicleId,
+                        CustomerId = invoice.CustomerId,
+                        Total = invoice.Total,
+                    });
+            }
+            return viewInvoice;
         }
     }
 }

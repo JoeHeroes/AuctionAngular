@@ -43,6 +43,7 @@ const navigationItemsAdmin: ListItem[] = [
   { text: t('menu.auction'), href: '/auction', icon: 'fa-solid fa-globe' },
   { text: t('menu.location'), href: '/location', icon: 'fa fa-location-arrow' },
   { text: t('menu.verification-vehicle'), href: '/vehicle/verification', icon: 'fa-solid fa-square-check' },
+  { text: t('menu.panel-invoice'), href: '/invoice/panel', icon: 'fa-solid fa-file-invoice' },
   { text: t('menu.panel-vehicle'), href: '/vehicle/panel', icon: 'fa-solid fa-wrench' },
   { text: t('menu.panel-auction'), href: '/auction/panel', icon: 'fa-solid fa-toolbox' },
 ];

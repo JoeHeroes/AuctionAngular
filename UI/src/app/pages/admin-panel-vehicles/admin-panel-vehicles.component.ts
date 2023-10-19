@@ -22,31 +22,12 @@ export class AdminPanelVehiclesComponent {
   constructor(private vehicleService: VehicleService,
     private paymentService: PaymentService,
     private notificationService: NotificationService,
-    private router: Router,
     private transloco: TranslocoService) {
     this.vehicleService.getVehiclesAuctionEnd().subscribe(res => {
       this.datasource = res;
     });
   }
  
-  editClick(vehicleId: any)  {
-    this.router.navigate(['/vehicle/edit', vehicleId].filter(v => !!v));
-  }
-
-  deleteClick(vehicleId: any)  {
-    this.vehicleService.deleteVehicle(vehicleId).subscribe({
-      next: (res: AuthResponseDto) => {
-        this.vehicleService.getVehiclesAuctionEnd().subscribe(res => {
-          this.datasource = res;
-        });
-        this.notificationService.showSuccess( this.transloco.translate('notification.deleteVehicleCorrect'), "Success");
-      },
-      error: (err: HttpErrorResponse) => {
-        this.notificationService.showError( this.transloco.translate('notification.deleteVehicleFail'), "Failed");
-      }
-    })
-  }
-
   invoiceClick(vehicleId: any)  {
 
     this.vehicleService.getVehicle(vehicleId).subscribe(res => {
@@ -59,8 +40,14 @@ export class AdminPanelVehiclesComponent {
         lotLeftLocationDate: new Date,
       }
   
-      this.paymentService.createPayment(paymentInfo).subscribe(res => {
-      })
+      this.paymentService.createPayment(paymentInfo).subscribe({
+      next: (res: AuthResponseDto) => {
+        this.notificationService.showSuccess( this.transloco.translate('notification.generateInvoiceCorrect'), "Success");
+      },
+      error: (err: HttpErrorResponse) => {
+        this.notificationService.showError( this.transloco.translate('notification.generateInvoiceFail'), "Failed");
+      }
+    })
     });
   }
 }

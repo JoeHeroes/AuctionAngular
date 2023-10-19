@@ -1,6 +1,6 @@
-﻿namespace AuctionAngular.Services.Invoice
+﻿namespace AuctionAngular.Dtos.Invoice
 {
-    public class Info
+    public class InfoDto
     {
         public int UserId { get; set; }
         public int VehicleId { get; set; }

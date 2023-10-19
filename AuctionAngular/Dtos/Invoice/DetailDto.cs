@@ -1,6 +1,6 @@
-﻿namespace AuctionAngular.Services.NewFolder
+﻿namespace AuctionAngular.Dtos.Invoice
 {
-    public class Detail
+    public class DetailDto
     {
         public string Product { get; set; }
         public int Pcs { get; set; }

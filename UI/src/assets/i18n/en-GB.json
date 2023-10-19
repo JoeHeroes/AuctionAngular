@@ -46,7 +46,8 @@
     "support": "Support",
     "verification-vehicle": "Verification",
     "panel-vehicle":"Vehicle panel",
-    "panel-auction":"Auction panel"
+    "panel-auction":"Auction panel",
+    "panel-invoice":"Invoice panel"
   },
   "vehicle": {
     "image": "Image",

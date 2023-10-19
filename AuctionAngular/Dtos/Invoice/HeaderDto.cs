@@ -1,6 +1,6 @@
-﻿namespace AuctionAngular.Services.Invoice
+﻿namespace AuctionAngular.Dtos.Invoice
 {
-    public class Header
+    public class HeaderDto
     {
         public string InvoiceNumber { get; set; }
         public string InvoiceDate { get; set; }
