@@ -225,7 +225,7 @@ namespace AuctionAngular.Controllers
             var mail = new MailRequestDto()
             {
                 ToEmail = email,
-                Subject = $"Hi {user.Name} {user.SureName}, please verify your CarAuction account",
+                Subject = $"Hi {user.Name} {user.SureName}, please verify your CarWink account",
                 Body = content
             };
             var result = await _mailService.SendEmailAsync(mail);

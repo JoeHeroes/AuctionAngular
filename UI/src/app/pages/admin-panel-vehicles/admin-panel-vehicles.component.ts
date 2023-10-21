@@ -1,6 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { TranslocoService } from '@ngneat/transloco';
 import { AuthResponseDto } from 'src/app/services/authentication.service';
 import { NotificationService } from 'src/app/services/notification.service';
@@ -42,6 +41,9 @@ export class AdminPanelVehiclesComponent {
   
       this.paymentService.createPayment(paymentInfo).subscribe({
       next: (res: AuthResponseDto) => {
+        this.vehicleService.getVehiclesAuctionEnd().subscribe(res => {
+          this.datasource = res;
+        });
         this.notificationService.showSuccess( this.transloco.translate('notification.generateInvoiceCorrect'), "Success");
       },
       error: (err: HttpErrorResponse) => {

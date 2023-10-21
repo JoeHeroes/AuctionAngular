@@ -11,7 +11,7 @@ import { BidDto, VehicleService } from 'src/app/services/vehicle.service';
   selector: 'app-auction',
   templateUrl: './auction.component.html',
   styleUrls: ['./auction.component.css']
-})
+}) 
 export class AuctionComponent implements OnInit {
 
   mySubscription: Subscription
@@ -32,18 +32,19 @@ export class AuctionComponent implements OnInit {
       this.mySubscription = interval(200).subscribe((x => {
         this.doTimer();
       }));
+
+      this.auctionService.liveAuction().subscribe(res => {
+        this.liveAuction = res;
+        if (res) {
+          this.auctionService.liveAuctionList().subscribe(res => {
+            this.datasource = res;
+          });
+        }
+      });
   }
 
   ngOnInit(): void {
     window.scroll(0, 0);
-    this.auctionService.liveAuction().subscribe(res => {
-      this.liveAuction = res;
-      if (res) {
-        this.auctionService.liveAuctionList().subscribe(res => {
-          this.datasource = res;
-        });
-      }
-    });
 
     this.authenticationService.loggedUserId().subscribe(res => {
       this.user = res;

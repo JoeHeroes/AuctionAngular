@@ -16,7 +16,7 @@ export class VehiclePictureComponent {
     private dataService: DataService,
     private route: ActivatedRoute) { 
 
-      this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/vehicle';
+      this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/vehicle/waiting';
     }
 
   uploadPictures(files: any) {

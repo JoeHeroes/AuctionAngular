@@ -201,44 +201,9 @@ namespace AuctionAngular.Services
 
             payment!.isInvoiceGenereted = !payment.isInvoiceGenereted;
 
-
-
             _dbContext.SaveChanges();
-
-            await AddInvoice(header, info);
 
             return dto;
-        }
-
-
-        public async Task AddInvoice(HeaderDto header, InfoDto info)
-        {
-            var invoice = new Invoice()
-            {
-                InvoiceNumber = header.InvoiceNumber,
-                InvoiceDate = header.InvoiceDate,
-                CustomerId = info.UserId,
-                LocationId = info.LocationId,
-                VehicleId = info.VehicleId,
-                CustomerAddressId = header.CustomerAddressId,
-                DeliveryAddressId = header.DeliveryAddressId,
-                Product = header.Product,
-                Tax = header.Tax,
-                TaxFreePrice = header.TaxFreePrice,
-                TaxTotal = header.TaxTotal,
-                Total = header.Total,
-                PaymentMethod = header.PaymentMethod,
-            };
-
-            _dbContext.Invoices.Add(invoice);
-
-            _dbContext.SaveChanges();
-        }
-        public async Task<IEnumerable<ViewInvoicesDto>> GetInvoicesAsync()
-        {
-            List<Invoice> invoices = await _dbContext.Invoices.ToListAsync();
-
-            return ViewInvoicesDtoConvert(invoices);
         }
 
         public string Getbase64string()
@@ -247,23 +212,6 @@ namespace AuctionAngular.Services
             byte[] imgarray = File.ReadAllBytes(filepath);
             string base64 = Convert.ToBase64String(imgarray);
             return base64;
-        }
-
-        public List<ViewInvoicesDto> ViewInvoicesDtoConvert(List<Invoice> invoices)
-        {
-            var viewInvoice = new List<ViewInvoicesDto>();
-            foreach (var invoice in invoices)
-            {
-                viewInvoice.Add(new ViewInvoicesDto()
-                    {
-                        InvoiceNumber = invoice.InvoiceNumber,
-                        InvoiceDate = invoice.InvoiceDate,
-                        VehicleId = invoice.VehicleId,
-                        CustomerId = invoice.CustomerId,
-                        Total = invoice.Total,
-                    });
-            }
-            return viewInvoice;
         }
     }
 }

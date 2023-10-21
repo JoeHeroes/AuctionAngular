@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { InvoiceInfo, InvoiceService } from 'src/app/services/invoice.service';
+import { PaymentService } from 'src/app/services/payment.service';
 
 @Component({
   selector: 'app-admin-panel-invoices',
@@ -20,10 +21,10 @@ export class AdminPanelInvoicesComponent {
 
   displayMode = 'full';
 
-  constructor(private invoiceService: InvoiceService,
+  constructor(private paymentService: PaymentService,
+    private invoiceService: InvoiceService,
     private authenticationService: AuthenticationService) {
-
-      this.invoiceService.getInvoices().subscribe(res => {
+      this.paymentService.getPayments(0).subscribe(res => {
         this.datasource = res;
       });
   }

@@ -9,7 +9,6 @@ namespace Database.Entities
         public int InvoiceAmount { get; set; }
         public DateTime LastInvoicePaidDate { get; set; }
         public DateTime LotLeftLocationDate { get; set; }
-        public bool isSold { get; set; }
         public bool isInvoiceGenereted { get; set; }
         public int LotId { get; set; }
         public int LocationId { get; set; }

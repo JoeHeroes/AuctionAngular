@@ -21,7 +21,7 @@ import { CalendarComponent } from '../pages/calendar/calendar.component';
 import { WatchListComponent } from '../pages/watch-list/watch-list.component';
 import { VehiclePictureComponent } from '../pages/vehicle-picture/vehicle-picture.component';
 import { ProfilePictureComponent } from '../pages/profile-picture/profile-picture.component';
-import { VehicleWonComponent } from '../pages/vehicle-won/vehicle-won.component';
+import { VehicleWonComponent } from '../pages/vehicle-won/vehicle-won.component'; 
 import { VehicleLostComponent } from '../pages/vehicle-lost/vehicle-lost.component';
 import { VehicleBidsComponent } from '../pages/vehicle-bids/vehicle-bids.component';
 import { EventAddComponent } from '../pages/event-add/event-add.component';
@@ -49,6 +49,7 @@ import { OpinionAddComponent } from '../pages/opinion-add/opinion-add.component'
 import { OpinionComponent } from '../pages/opinion/opinion.component';
 import { VehicleCheckComponent } from '../pages/vehicle-check/vehicle-check.component';
 import { AdminPanelInvoicesComponent } from '../pages/admin-panel-invoices/admin-panel-invoices.component';
+import { VehicleWaitingComponent } from '../pages/vehicle-waiting/vehicle-waiting.component';
 
 
 
@@ -93,7 +94,8 @@ import { AdminPanelInvoicesComponent } from '../pages/admin-panel-invoices/admin
     VehicleSetComponent,
     ContactusComponent,
     OpinionAddComponent,
-    OpinionComponent
+    OpinionComponent,
+    VehicleWaitingComponent
   ],
   exports: [],
   imports: [

@@ -38,6 +38,7 @@ import { OpinionAddComponent } from "../pages/opinion-add/opinion-add.component"
 import { OpinionComponent } from "../pages/opinion/opinion.component";
 import { VehicleCheckComponent } from "../pages/vehicle-check/vehicle-check.component";
 import { AdminPanelInvoicesComponent } from "../pages/admin-panel-invoices/admin-panel-invoices.component";
+import { VehicleWaitingComponent } from "../pages/vehicle-waiting/vehicle-waiting.component";
 
 
 const routes: Routes = [
@@ -83,6 +84,7 @@ const routes: Routes = [
           { path: 'panel', pathMatch: 'full', component: AdminPanelVehiclesComponent, data: { title: 'Vehicles Panel' } },
           { path: 'status', pathMatch: 'full', component: VehicleCheckComponent, data: { title: 'Check Vehicle' } },
           { path: 'verification', pathMatch: 'full', component: VerificationVehiclesComponent, data: { title: 'Verification' } },
+          { path: 'waiting', pathMatch: 'full', component: VehicleWaitingComponent, data: { title: 'Waiting Vehicle' } }, 
           { path: 'set', children: [{ path: ':id', pathMatch: 'full', component: VehicleSetComponent, data: { title: 'Set Auction Vehicle' }},],},
           { path: 'opinion', children: [{ path: ':id', pathMatch: 'full', component: OpinionComponent, data: { title: 'Vehicle Opinion' }},],},
           { path: 'opinion/add', children: [{ path: ':id', pathMatch: 'full', component: OpinionAddComponent, data: { title: 'Add Vehicle Opinion' }},],},

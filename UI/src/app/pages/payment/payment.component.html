@@ -37,8 +37,6 @@
         <div *dxTemplate="let data of 'cellTemplate'">
           <span style="cursor: pointer; font-weight: bold" (click)="downloadClick(data.data.lotId)">{{t('action.download')}}</span>
         </div>
-        <dxi-column dataField="status" [caption]="t('payment.status')" [allowFiltering]="false"
-          [allowSorting]="true"></dxi-column>
         <div *dxTemplate="let d of 'discountCellTemplate'">
           <div class="chart-cell">
             <dx-bullet [showTarget]="false" [showZeroLevel]="true" [startScaleValue]="0" [endScaleValue]="100"

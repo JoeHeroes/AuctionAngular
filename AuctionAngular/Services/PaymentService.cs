@@ -21,13 +21,13 @@ namespace AuctionAngular.Services
               .Payments
               .FirstOrDefaultAsync(x => x.LotId == dto.LotId);
 
-            if(result != null)
-            {
+            if (result != null)
                 return result.Id;
-            }
-
 
             var vehicle = await _dbContext.Vehicles.FirstOrDefaultAsync(u => u.Id == dto.LotId);
+
+            if (vehicle!.isSold == false)
+                throw new Exception();
 
             var auction = await _dbContext.Auctions.FirstOrDefaultAsync(u => u.Id == dto.AuctionId);
 
@@ -40,8 +40,7 @@ namespace AuctionAngular.Services
                 InvoiceAmount = dto.InvoiceAmount,
                 LastInvoicePaidDate = DateTime.Now,
                 LotLeftLocationDate = dto.LotLeftLocationDate,
-                isSold = false,
-                isInvoiceGenereted = false,
+                isInvoiceGenereted = true,
                 UserId = vehicle!.WinnerId
             };
 
@@ -94,7 +93,6 @@ namespace AuctionAngular.Services
 
             result.InvoiceAmount = dto.InvoiceAmount;
             result.LotLeftLocationDate = dto.LotLeftLocationDate;
-            result.isSold = dto.StatusSell;
             result.isInvoiceGenereted = dto.InvoiceGenereted;
 
             try
@@ -129,14 +127,17 @@ namespace AuctionAngular.Services
                 .Payments
                 .ToListAsync();
 
+            
+
             List<ViewPaymentDto> viewPayment = new List<ViewPaymentDto>();
 
             foreach (var payment in payments)
             {
-                if(payment.UserId == userId)
-                {
+                if (userId == 0 && payment.isInvoiceGenereted==true)
                     viewPayment.Add(ViewPaymentDtoConvert(payment));
-                }
+
+                if (payment.UserId == userId)
+                    viewPayment.Add(ViewPaymentDtoConvert(payment));
             }
             return viewPayment;
         }
@@ -154,7 +155,6 @@ namespace AuctionAngular.Services
                 InvoiceAmount = payment.InvoiceAmount,
                 LastInvoicePaidDate = payment.LastInvoicePaidDate,
                 LotLeftLocationDate = payment.LotLeftLocationDate,
-                StatusSell = payment.isSold,
                 InvoiceGenereted = payment.isInvoiceGenereted
             };
         } 

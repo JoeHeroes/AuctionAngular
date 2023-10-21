@@ -113,7 +113,7 @@
                   </table>
                   <form [formGroup]="bidForm" (ngSubmit)="bidCar(bidForm.value)">
                     {{t('vehicle.newBid')}}:
-                    <input type="number" id="bidNow" formControlName="bidNow" class="form-control" />
+                    <input type="number" id="bidNow" min="0" formControlName="bidNow" class="form-control" />
                     <br />
                     <dx-button class="button" [text]="t('vehicle.nowBid')" type="default" [useSubmitBehavior]="true"></dx-button>
                   </form>
@@ -132,17 +132,11 @@
                     <dx-button (onClick)="this.opinion()" [text]="t('action.checkOpinion')"></dx-button>
                   </div>
                 </div>
-                <div class="card-header bg-transparent border-0" *ngIf="datasource.waitingForConfirm && !datasource.sold">
+                <div class="card-header bg-transparent border-0" *ngIf="datasource.waitingForConfirm">
                   <h3 class="mb-0" style="color: orangered;">Waiting For Confirm</h3>
                 </div>
     
-                <div class="card-header bg-transparent border-0" *ngIf="datasource.sold">
-                  <h3 class="mb-0" style="color: red;">Sales End</h3>
-                </div>
-  
-              </div>
-              <div *ngIf="auctionEnd">
-                <div class="card-header bg-transparent border-0">
+                <div class="card-header bg-transparent border-0" *ngIf="auctionEnd">
                   <h3 class="mb-0" style="color: red;">Sales End</h3>
                 </div>
               </div>

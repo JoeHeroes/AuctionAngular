@@ -127,14 +127,16 @@
       "dateOfBirth": "Data urodzin",
       "role": "Rola",
       "profile": "Profil",
-      "description": "Opis"
+      "description": "Opis",
+      "option": "Opcje"
     },
     "message":{
       "title": "Nie znaleziono strony",
       "message": "Nie można znależ strony",
       "goBack": "Wróć",
       "noAuction": "Brak aktualnych aukcji na żywo",
-      "noOpinion": "Brak opinii"
+      "noOpinion": "Brak opinii",
+      "vehicleWaiting": "Pojazd oczekuje na zatwierdzenie"
     },
     "calendar":{
       "title": "Tytuł",
@@ -204,6 +206,7 @@
       "panel-verification":"Panel zatwierdzania aut",
       "panel-vehicles":"Panel zarządzania autami",
       "panel-auctions":"Panel zarządzania aukcjami",
+      "panel-invoices":"Panel zarządzania fakturami",
       "confirm": "Potwierdz sprzedarz",
       "invoice": "Wygeneruj fakture",
       "edit": "Edytuj",

@@ -47,15 +47,6 @@
           </div>
 
           <div class="dx-field">
-            <div class="dx-field-label">{{t('vehicle.auction')}}</div>
-            <div class="dx-field-value">
-              <select id="auction" formControlName="auction" class="form-control">
-                <option *ngFor="let auction of auctions" [value]="auction.id">{{ auction.id }} {{ auction.city }}</option>
-              </select>
-            </div>
-          </div>
-      
-          <div class="dx-field">
             <div class="dx-field-label">{{t('vehicle.bodyType')}}</div>
             <div class="dx-field-value">
               <select id="bodyType" formControlName="bodyType" class="form-control">

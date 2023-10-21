@@ -16,11 +16,12 @@
             <h1 style="font-weight: bold;">{{datasource[index].id}} {{datasource[index].producer}} {{datasource[index].modelSpecifer}} {{datasource[index].modelGeneration}}</h1>
             <h1 style="font-weight: bold; color: green;">On Live</h1>
           </div>
+
           <div class="widget-container">
-            <dx-gallery [dataSource]="datasource.images" [loop]="true" [showNavButtons]="true" [showIndicator]="true">
+            <dx-gallery [dataSource]="datasource[index].images" [loop]="true" [showNavButtons]="true" [showIndicator]="true">
               <div *dxTemplate="let i of 'item'">
                 <div>
-                  <img height="450" src="https://storagevehicleauction.blob.core.windows.net/vehicle-images/{{i}}">
+                  <img height="450" src="assets\picture\{{datasource[index].producer}}-{{datasource[index].modelSpecifer}}-{{datasource[index].modelGeneration}}-{{datasource[index].registrationYear}}\{{i}}">
                 </div>
               </div>
             </dx-gallery>

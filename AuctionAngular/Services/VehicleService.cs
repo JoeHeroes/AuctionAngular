@@ -74,14 +74,18 @@ namespace AuctionAngular.Services
                 .Vehicles
                 .ToListAsync();
 
+            var payments = _dbContext
+               .Payments;
+
             var viewVehicle = new List<ViewAdminVehiclesDto>();
 
             foreach (var vehicle in vehicles)
             {
-
                 var auction = await _dbContext.Auctions.FirstOrDefaultAsync(a => a.Id == vehicle.AuctionId && a.isFinised == true);
 
-                if(auction != null)
+                var payment = payments.FirstOrDefault(x => x.LotId == vehicle.Id);
+
+                if (auction != null && payment == null)
                     viewVehicle.Add(AdminVehiclesDtoConvert(vehicle, auction));
             }
 
@@ -94,11 +98,10 @@ namespace AuctionAngular.Services
 
             var bids = _dbContext.Bids.Where(x => x.UserId == id);
 
-            var vehiclesReult = await _dbContext
-                .Vehicles
-                .ToListAsync();
+            if (bids is null)
+                throw new NotFoundException("Bids not found.");
 
-            var vehicles = new List<Vehicle>();
+            List<Vehicle> vehicles = new List<Vehicle>();
 
             var vehiclesList = _dbContext.Vehicles.ToList();
 
@@ -110,11 +113,7 @@ namespace AuctionAngular.Services
                     vehicles.Add(veh);
             }
 
-            List<ViewVehiclesDto> viewVehicle = new List<ViewVehiclesDto>();
-
-            await PictureProcess(vehicles, true);
-
-            return viewVehicle;
+            return await PictureProcess(vehicles, true);
         }
 
         public async Task<IEnumerable<ViewVehiclesDto>> GetAllWonAsync(int id)
@@ -537,11 +536,17 @@ namespace AuctionAngular.Services
                                 .Vehicles
                                 .FirstOrDefaultAsync(x => x.Id == id);
 
-            var payment = await _dbContext
-                                .Payments
-                                .FirstOrDefaultAsync(x => x.LotId == id);
+            //var payment = await _dbContext
+            //                    .Payments
+            //                    .FirstOrDefaultAsync(x => x.LotId == id);
 
-            vehicle!.isSold = !vehicle.isSold;
+
+            if (vehicle != null)
+            {
+                vehicle!.isSold = !vehicle.isSold;
+            }
+            else
+                throw new Exception();
 
             //if (payment != null)
             //{

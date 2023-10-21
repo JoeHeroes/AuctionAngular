@@ -127,14 +127,16 @@
     "dateOfBirth": "Date Birth",
     "role": "Role",
     "profile": "Profile",
-    "description": "Description"
+    "description": "Description",
+    "option": "Option"
   },
   "message":{
     "title": "Not Found Page",
     "message": "We could found page",
     "goBack": "go Back",
     "noAuction": "There are no current Live Auctions",
-    "noOpinion": "No opinion"
+    "noOpinion": "No opinion",
+    "vehicleWaiting": "Vehicle waiting for confirm"
   },
   "calendar":{
     "title": "Title",
@@ -202,6 +204,7 @@
     "panel-verification":"Vehicles Verification Panel",
     "panel-vehicles":"Vehicles Management Panel",
     "panel-auctions":"Auctions Management Panel",
+    "panel-invoices":"Invoices Management Panel",
     "confirm": "Confirm sell",
     "invoice": "Generate Invoice",
     "edit": "Edit",

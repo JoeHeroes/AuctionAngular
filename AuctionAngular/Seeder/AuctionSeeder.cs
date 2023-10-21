@@ -75,7 +75,6 @@ namespace CarAuction.Seeder
                     InvoiceAmount = 1231,
                     LastInvoicePaidDate = DateTime.Now.AddDays(1),
                     LotLeftLocationDate =  DateTime.Now.AddDays(2),
-                    isSold = false,
                     isInvoiceGenereted = false,
                 }
             };
@@ -86,7 +85,7 @@ namespace CarAuction.Seeder
             {
                 new Auction()
                 {
-                    DateTime = DateTime.Now,
+                    DateTime = DateTime.Now.AddDays(1),
                     LocationId = 1,
                     Description = "",
                     isStarted = false,
@@ -95,7 +94,7 @@ namespace CarAuction.Seeder
                 },
                 new Auction()
                 {
-                    DateTime = new DateTime(2023, 8, 7, 19, 0, 0),
+                    DateTime = DateTime.Now.AddDays(2),
                     LocationId = 2,
                     Description = "",
                     isStarted = false,
@@ -103,7 +102,7 @@ namespace CarAuction.Seeder
                 },
                 new Auction()
                 {
-                    DateTime = new DateTime(2023, 8, 7, 19, 0, 0),
+                    DateTime = DateTime.Now.AddDays(3),
                     LocationId = 3,
                     Description = "",
                     isStarted = false,

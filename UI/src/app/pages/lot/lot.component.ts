@@ -73,7 +73,7 @@ export class LotComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
     this.urlSubscription = this.route.url.subscribe(segments => {
       this.loadData(segments);
     });
