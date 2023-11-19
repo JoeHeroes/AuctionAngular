@@ -374,6 +374,7 @@ namespace AuctionAngular.Tests
             };
 
             //Act
+
             await accountService.EditProfileAsync(dto);
 
             var user = await accountService.GetUserInfoAsync(dto.UserId);

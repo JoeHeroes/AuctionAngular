@@ -111,7 +111,7 @@
     },
     "account": {
       "account": "Konto",
-      "login": "Login",
+      "login": "Zaloguj",
       "register": "Rejestracja",
       "logout": "Wyloguj",
       "id":"Id",

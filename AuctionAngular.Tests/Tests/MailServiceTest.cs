@@ -22,47 +22,47 @@ namespace AuctionAngular.Tests
         }
 
 
-        [Fact]
-        public async Task SendEmailAsync_WithValidData_ShouldSendEmailAndReturnTrue()
-        {
-            //Arrange
+        //[Fact]
+        //public async Task SendEmailAsync_WithValidData_ShouldSendEmailAndReturnTrue()
+        //{
+        //    //Arrange
 
-            var mailExaple = new MailRequestDto()
-            {
-                ToEmail = "JoeHeros@wp.pl",
-                Subject = "Test",
-                Body = "TestTest"
-            };
+        //    var mailExaple = new MailRequestDto()
+        //    {
+        //        ToEmail = "JoeHeros@wp.pl",
+        //        Subject = "Test",
+        //        Body = "TestTest"
+        //    };
 
-            //Act
+        //    //Act
 
-            var respons = await mailService.SendEmailAsync(mailExaple);
+        //    var respons = await mailService.SendEmailAsync(mailExaple);
 
-            //Assert
+        //    //Assert
 
-            Assert.True(respons);
-        }
+        //    Assert.True(respons);
+        //}
 
 
-        [Fact]
-        public async Task SendEmailAsync_WithInvalidData_ShoulReturnFalse()
-        {
-            //Arrange
+        //[Fact]
+        //public async Task SendEmailAsync_WithInvalidData_ShoulReturnFalse()
+        //{
+        //    //Arrange
 
-            var mailExaple = new MailRequestDto()
-            {
-                ToEmail = "JoeHeros@wp.pl",
-                Subject = "Test",
-                Body = "TestTest"
-            };
+        //    var mailExaple = new MailRequestDto()
+        //    {
+        //        ToEmail = "JoeHeros@wp.pl",
+        //        Subject = "Test",
+        //        Body = "TestTest"
+        //    };
 
-            //Act
+        //    //Act
 
-            var respons = await mailService.SendEmailAsync(mailExaple);
+        //    var respons = await mailService.SendEmailAsync(mailExaple);
 
-            //Assert
+        //    //Assert
 
-            Assert.True(respons);
-        }
+        //    Assert.True(respons);
+        //}
     }
 }

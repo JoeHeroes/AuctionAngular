@@ -43,18 +43,20 @@ namespace AuctionAngular.Services
         {
             List<Vehicle> vehicles = await _dbContext.Vehicles.Where(x => x.isSold == false).ToListAsync();
 
-            return await PictureProcess(vehicles, status);
+            return await AddPicture(vehicles, status);
         }
 
 
 
-        public async Task<List<ViewVehiclesDto>> PictureProcess(List<Vehicle> vehicles, bool status)
+        public async Task<List<ViewVehiclesDto>> AddPicture(List<Vehicle> vehicles, bool status)
         {
             var viewVehicle = new List<ViewVehiclesDto>();
 
+            var picturesBase = _dbContext.Pictures.ToList();
+
             foreach (var vehicle in vehicles)
             {
-                var restultPictures = _dbContext.Pictures.Where(x => x.VehicleId == vehicle.Id);
+                var restultPictures = picturesBase.Where(x => x.VehicleId == vehicle.Id);
 
                 var pictures = new List<string>();
 
@@ -113,7 +115,7 @@ namespace AuctionAngular.Services
                     vehicles.Add(veh);
             }
 
-            return await PictureProcess(vehicles, true);
+            return await AddPicture(vehicles, true);
         }
 
         public async Task<IEnumerable<ViewVehiclesDto>> GetAllWonAsync(int id)
@@ -143,7 +145,7 @@ namespace AuctionAngular.Services
                 }
             }
 
-            return await PictureProcess(vehicles, true);
+            return await AddPicture(vehicles, true);
         }
 
         public async Task<IEnumerable<ViewVehiclesDto>> GetAllLostAsync(int id)
@@ -172,7 +174,7 @@ namespace AuctionAngular.Services
                 }
             }
 
-            return await PictureProcess(vehicles, true);
+            return await AddPicture(vehicles, true);
         }
 
         public async Task<int> CreateVehicleAsync(CreateVehicleDto dto)
@@ -431,7 +433,7 @@ namespace AuctionAngular.Services
             foreach(var watch in watches)
                 vehicles.Add(await _dbContext.Vehicles.FirstOrDefaultAsync(x => x.Id == watch.VehicleId));
 
-            return await PictureProcess(vehicles, true);
+            return await AddPicture(vehicles, true);
         }
 
         public async Task<List<string>> AddPictureAsync(int id, IFormFileCollection files)
