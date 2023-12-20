@@ -124,7 +124,7 @@ namespace CarAuction.Seeder
                     City = "Warsaw",
                     Street = "Warsaw 7",
                     PostalCode = "Warsaw 02920",
-                    County = "Poland",
+                    Country = "Poland",
                 },
                 new Location()
                 {
@@ -134,7 +134,7 @@ namespace CarAuction.Seeder
                     City = "Berlin",
                     Street = "Berlin 1",
                     PostalCode = "Berlin 90940",
-                    County = "German",
+                    Country = "German",
                 },
                 new Location()
                 {
@@ -144,7 +144,7 @@ namespace CarAuction.Seeder
                     City = "Praga",
                     Street = "Praga 24",
                     PostalCode = "Praga 33960",
-                    County = "Czech",
+                    Country = "Czech",
                 },
                 new Location()
                 {
@@ -154,7 +154,7 @@ namespace CarAuction.Seeder
                     City = "Turku",
                     Street = "Tiemestarinkatu 5",
                     PostalCode = "20360",
-                    County = "Finlandia",
+                    Country = "Finlandia",
                 },
             };
         }

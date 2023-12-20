@@ -127,8 +127,6 @@ namespace AuctionAngular.Services
                 .Payments
                 .ToListAsync();
 
-            
-
             List<ViewPaymentDto> viewPayment = new List<ViewPaymentDto>();
 
             foreach (var payment in payments)
@@ -144,13 +142,12 @@ namespace AuctionAngular.Services
 
         public ViewPaymentDto ViewPaymentDtoConvert(Payment payment)
         {
-            var location = _dbContext.Locations.FirstOrDefault(x => x.Id == payment.LocationId);
 
             return new ViewPaymentDto()
             {
                 SaleDate = payment.SaleDate,
                 LotId = payment.LotId,
-                Location = location != null ? location!.Name: "" ,
+                Location = "Las Vegas" ,
                 Description = payment.Description,
                 InvoiceAmount = payment.InvoiceAmount,
                 LastInvoicePaidDate = payment.LastInvoicePaidDate,

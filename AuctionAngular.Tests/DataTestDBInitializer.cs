@@ -22,7 +22,7 @@ namespace AuctionAngularTests
                     City = "Espoo",
                     Street = "Pieni teollisuuskatu 7",
                     PostalCode = "Uusimaa 02920",
-                    County = "Finalndia"
+                    Country = "Finlandia"
                 }
             );
 
@@ -114,7 +114,7 @@ namespace AuctionAngularTests
                 City = "Test3",
                 Street = "Test4",
                 PostalCode = "Test5",
-                County = "Test6"
+                Country = "Test6"
             });
 
 

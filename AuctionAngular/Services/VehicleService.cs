@@ -313,7 +313,6 @@ namespace AuctionAngular.Services
                     UserId = user!.Id,
                     VehicleId = vehicle.Id,
                 };
-
                 
                 if (await _dbContext.Bids.FirstOrDefaultAsync(x => x.UserId == user.Id && x.VehicleId == vehicle.Id) == null)
                     await _dbContext.Bids.AddAsync(bind);
@@ -328,7 +327,6 @@ namespace AuctionAngular.Services
                 }
                 return true;
             }
-
             return false;
         }
 
