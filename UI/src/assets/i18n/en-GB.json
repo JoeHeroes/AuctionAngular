@@ -182,7 +182,9 @@
     "editEventCorrect":"Event Edit Correct",
     "editEventFail":"Event Edit Fail",
     "minDate":"The date cannot be in the past",
-    "maxDate":"The date cannot be in the future"
+    "maxDate":"The date cannot be in the future",
+    "sendEmail":"Message sent successfully",
+    "sendEmailFail":"Message sent incorrectly"
   },
   "dashboard":{
     "title":"Dashboard",

@@ -185,7 +185,9 @@
     "editEventCorrect":"Ereignisbearbeitung korrekt",
     "editEventFail":"Ereignisbearbeitung fehlgeschlagen",
     "minDate":"Das Datum darf nicht in der Vergangenheit liegen",
-    "maxDate":"Das Datum darf nicht in der Zukunft liegen"
+    "maxDate":"Das Datum darf nicht in der Zukunft liegen",
+    "sendEmail":"Nachricht erfolgreich gesendet",
+    "sendEmailFail":"Nachricht falsch gesendet"
   },
   "dashboard":{
     "title":"Armaturenbrett",

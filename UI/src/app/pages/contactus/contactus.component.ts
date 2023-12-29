@@ -28,9 +28,11 @@ export class ContactusComponent  implements OnInit {
 
   constructor(private vehicleService: VehicleService,
     private authenticationService: AuthenticationService,
+    private notificationService: NotificationService,
     private mailService: MailService,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private transloco: TranslocoService) { }
 
   ngOnInit(): void {
     this.sendForm = new FormGroup({
@@ -79,9 +81,11 @@ export class ContactusComponent  implements OnInit {
     this.mailService.SendEmail(sendData)
     .subscribe({
       next: (res: AuthResponseDto) => {
+        this.notificationService.showSuccess( this.transloco.translate('notification.sendEmail'), "Success");
         this.router.navigate([this.returnUrl]);
       },
       error: (err: HttpErrorResponse) => {
+        this.notificationService.showError( this.transloco.translate('notification.sendEmailFail'), "Failed");
         this.showError = true;
       }
     })

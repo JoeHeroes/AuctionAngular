@@ -184,7 +184,9 @@
       "minDate":"Data nie może być w przeszłości",
       "maxDate":"Data nie może być w przyszłości",
       "generateInvoiceCorrect":"Faktura wygenerowana poprawnie",
-      "generateInvoiceFail":"Faktura wygenerowana niepoprawnie"
+      "generateInvoiceFail":"Faktura wygenerowana niepoprawnie",
+      "sendEmail":"Widomość wysłana poprawnie",
+      "sendEmailFail":"Widomość wysłana niepoprawnie"
     },
     "dashboard":{
       "title":"Dashboard",
