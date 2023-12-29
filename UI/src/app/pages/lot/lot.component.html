@@ -132,14 +132,19 @@
                     <dx-button (onClick)="this.opinion()" [text]="t('action.checkOpinion')"></dx-button>
                   </div>
                 </div>
+                
+              </div>
+              <div *ngIf="!auctionEnd">
                 <div class="card-header bg-transparent border-0" *ngIf="datasource.waitingForConfirm">
                   <h3 class="mb-0" style="color: orangered;">Waiting For Confirm</h3>
                 </div>
-    
-                <div class="card-header bg-transparent border-0" *ngIf="auctionEnd">
+              </div>
+              <div *ngIf="auctionEnd">
+                <div class="card-header bg-transparent border-0" *ngIf="datasource.isSold">
                   <h3 class="mb-0" style="color: red;">Sales End</h3>
                 </div>
               </div>
+              
 
             </div>
 
