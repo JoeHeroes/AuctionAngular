@@ -58,15 +58,15 @@ export class AuctionAddComponent implements OnInit {
     }
 
     if (add.location == "") {
-      this.errorMessage = "Location is required";
+      this.errorMessage =  this.transloco.translate('message.locationRequired');
       this.showError = true;
     }
     else if (add.description == "") {
-      this.errorMessage = "Description is required";
+      this.errorMessage = this.transloco.translate('message.descriptionRequired');
       this.showError = true;
     }
     else if (add.auctionDate == "") {
-      this.errorMessage = "Auction date is required";
+      this.errorMessage = this.transloco.translate('message.auctionDateRequired');
       this.showError = true;
     }
     
