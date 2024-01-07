@@ -116,88 +116,88 @@ export class VehicleAddComponent implements OnInit {
     }
 
     if (vehicle.producer == "") {
-      this.errorMessage = "Producer is required";
+      this.errorMessage = this.transloco.translate('message.producerRequired');
       this.showError = true;
     }
     else if (vehicle.modelSpecifer == "") {
-      this.errorMessage = "ModelSpecifer is required";
+      this.errorMessage = this.transloco.translate('message.modelSpeciferRequired');
       this.showError = true;
     }
     else if (vehicle.modelGeneration == "") {
-      this.errorMessage = "ModelGeneration is required";
+      this.errorMessage = this.transloco.translate('message.modelGenerationRequired');
       this.showError = true;
     }
     else if (vehicle.registrationYear == "") {
-      this.errorMessage = "RegistrationYear is required";
+      this.errorMessage = this.transloco.translate('message.registrationYearRequired');
       this.showError = true;
     }
     else if (vehicle.color == "") {
-      this.errorMessage = "Color is required";
+      this.errorMessage = this.transloco.translate('message.colorRequired');
       this.showError = true;
     }
     else if (vehicle.auction == "") {
-      this.errorMessage = "Auction is required";
+      this.errorMessage = this.transloco.translate('message.auctionRequired');
       this.showError = true;
     }
     else if (vehicle.bodyType == "") {
-      this.errorMessage = "BodyType is required";
+      this.errorMessage = this.transloco.translate('message.bodyTypeRequired');
       this.showError = true;
     }
     else if (vehicle.transmission == "") {
-      this.errorMessage = "Transmission is required";
+      this.errorMessage = this.transloco.translate('message.transmissionRequired');
       this.showError = true;
     }
     else if (vehicle.drive == "") {
-      this.errorMessage = "Drive is required";
+      this.errorMessage = this.transloco.translate('message.driveRequired');
       this.showError = true;
     }
     else if (vehicle.meterReadout == "") {
-      this.errorMessage = "MeterReadout is required";
+      this.errorMessage = this.transloco.translate('message.meterReadoutRequired');
       this.showError = true;
     }
     else if (vehicle.fuel == "") {
-      this.errorMessage = "Fuel  is required";
+      this.errorMessage = this.transloco.translate('message.fuelRequired');
       this.showError = true;
     }
     else if (vehicle.primaryDamage == "") {
-      this.errorMessage = "PrimaryDamage is required";
+      this.errorMessage = this.transloco.translate('message.primaryDamageRequired');
       this.showError = true;
     }
     else if (vehicle.secondaryDamage == "") {
-      this.errorMessage = "SecondaryDamage is required";
+      this.errorMessage = this.transloco.translate('message.secondaryDamageRequired');
       this.showError = true;
     }
     else if (vehicle.engineCapacity == "") {
-      this.errorMessage = "EngineCapacity is required";
+      this.errorMessage = this.transloco.translate('message.engineCapacityRequired');
       this.showError = true;
     }
     else if (vehicle.engineOutput == "") {
-      this.errorMessage = "EngineOutput is required";
+      this.errorMessage = this.transloco.translate('message.engineOutputRequired');
       this.showError = true;
     }
     else if (vehicle.numberKeys == "") {
-      this.errorMessage = "NumberKeys is required";
+      this.errorMessage = this.transloco.translate('message.numberKeysRequired');
       this.showError = true;
     }
 
     else if (vehicle.serviceManual == "") {
-      this.errorMessage = "ServiceManual is required";
+      this.errorMessage = this.transloco.translate('message.serviceManualRequired');
       this.showError = true;
     }
     else if (vehicle.secondTireSet == "") {
-      this.errorMessage = "SecondTireSet is required";
+      this.errorMessage = this.transloco.translate('message.secondTireSetRequired');
       this.showError = true;
     }
     else if (vehicle.VIN == "") {
-      this.errorMessage = "VIN is required";
+      this.errorMessage = this.transloco.translate('message.vinRequired');
       this.showError = true;
     }
     else if (vehicle.saleTerm == "") {
-      this.errorMessage = "SaleTerm is required";
+      this.errorMessage = this.transloco.translate('message.saleTermRequired');
       this.showError = true;
     }
     else if (vehicle.Category == "") {
-      this.errorMessage = "Category is required";
+      this.errorMessage = this.transloco.translate('message.categoryRequired');
       this.showError = true;
     }
 

@@ -19,9 +19,8 @@
         <dx-validation-summary id="summary"></dx-validation-summary>
         <div style="text-align: center;">
             <a routerLink="/account/register" class="btn btn-link">{{t('account.register')}}</a>
-            <button [disabled]="loading" class="btn btn-primary" id="button" type="default"
+            <button class="btn btn-primary" id="button" type="default"
                 useSubmitBehavior="true">
-                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                 {{t('account.login')}}
             </button>
         </div>

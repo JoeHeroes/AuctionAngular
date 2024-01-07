@@ -57,23 +57,23 @@ export class EventAddComponent implements OnInit {
     }
 
     if (edit.title == "") {
-      this.errorMessage = "Title is required";
+      this.errorMessage = this.transloco.translate('message.titleRequired');
       this.showError = true;
     }
     else if (edit.description == "") {
-      this.errorMessage = "Description is required";
+      this.errorMessage = this.transloco.translate('message.descriptionRequired');
       this.showError = true;
     }
     else if (edit.date == "") {
-      this.errorMessage = "Date is required";
+      this.errorMessage = this.transloco.translate('message.dateRequired');
       this.showError = true;
     }
     else if (edit.color == "") {
-      this.errorMessage = "Color is required";
+      this.errorMessage = this.transloco.translate('message.colorRequired');
       this.showError = true;
     }
     else if (edit.allDay == "") {
-      this.errorMessage = "All day is required";
+      this.errorMessage = this.transloco.translate('message.allDayRequired');
       this.showError = true;
     }
 

@@ -100,7 +100,8 @@
     "description":"Description",
     "countVehicle":"Count Vehicle",
     "dateTime":"Auction Date",
-    "search":"Search auction"
+    "search":"Search auction",
+    "live":"On live"
   },
   "location": {
     "phone": "Phone",
@@ -136,7 +137,58 @@
     "goBack": "go Back",
     "noAuction": "There are no current Live Auctions",
     "noOpinion": "No opinion",
-    "vehicleWaiting": "Vehicle waiting for confirm"
+    "vehicleWaiting": "Vehicle waiting for confirm",
+    "emailRequired":"Email is required", 
+    "passwordRequired":"Password is required",
+    "passwordAndConfirmPasswordSame":"Password and Confirm password must be the same",
+    "confirmPasswordRequired":"Confirm password is required",
+    "nameRequired":"Name is required",
+    "surnameRequired":"Surname is required",
+    "nationalityRequired":"Nationality is required",
+    "phoneRequired":"Phone is required",
+    "dateBirthRequired":"Date of birth is required",
+    "roleRequired":"Role is required",
+
+
+    "locationRequired":"Location is required",
+    "descriptionRequired":"Description is required",
+    "auctionDateRequired":"Auction date is required",
+    "titleRequired":"Title is required",
+    "bodyRequired":"Body is required",
+    "dateRequired":"Date is required",
+    "colorRequired":"Color is required",
+    "allDayRequired":"All day is required",
+    "incorrectEmailAddressPassword":"Incorrect email address or password",
+    "confirmAccount":"Confirm your account on email",
+    "originRequired":"Origin is required",
+    "valuationRequired":"Valuation is required",
+    "conditionRequire":"Condition is required",
+    "oldPasswordRequired":"Old Password is required",
+    "newPasswordRequired":"New Password is required",
+    "confirmNewPasswordRequired":"Confirm New Password is required",
+    "newPasswordSame":"New Password must be the same",
+    "newAndOldPasswordNotSame":"New and Old Password and couldn't be the same",
+    "producerRequired":"Producer is required",
+    "modelSpeciferRequired":"Model Specifier is required",
+    "modelGenerationRequired":"Model Generation is required",
+    "registrationYearRequired":"Registration Year is required",
+    "auctionRequired":"Auction is required",
+    "bodyTypeRequired":"Body Type is required",
+    "transmissionRequired":"Transmission is required",
+    "driveRequired":"Drive is required",
+    "meterReadoutRequired":"Meter Readout is required",
+    "fuelRequired":"Fuel  is required",
+    "primaryDamageRequired":"Primary Damage is required",
+    "secondaryDamageRequired":"Secondary Damage is required",
+    "engineCapacityRequired":"Engine Capacity is required",
+    "engineOutputRequired":"Engine Output is required",
+    "numberKeysRequired":"Number Keys is required",
+    "serviceManualRequired":"Service Manual is required",
+    "secondTireSetRequired":"Second Tire Set is required",
+    "vinRequired":"VIN is required",
+    "saleTermRequired":"Sale Term is required",
+    "categoryRequired":"Category is required"
+
   },
   "calendar":{
     "title": "Title",
@@ -183,6 +235,7 @@
     "editEventFail":"Event Edit Fail",
     "minDate":"The date cannot be in the past",
     "maxDate":"The date cannot be in the future",
+    "minAge":"You must be an adult",
     "sendEmail":"Message sent successfully",
     "sendEmailFail":"Message sent incorrectly"
   },
@@ -230,5 +283,58 @@
     "origin":"Origin",
     "valuation":"Valuation",
     "condition":"Condition"
+  },
+  "role":{
+    "Buyer":"Buyer",
+    "Seller":"Seller",
+    "Admin":"Admin"
+  },
+  "bodyType":{
+    "Micro":"Micro",
+    "Sedan":"Sedan",
+    "Liftback":"Liftback",
+    "Combi":"Combi",
+    "Coupe":"Coupe",
+    "Hatchback":"Hatchback",
+    "Van ":"Van",
+    "SUV":"SUV",
+    "Picup":"Picup",
+    "Cabrio":"Cabrio"
+  },
+  "damage":{
+    "All_Over ":"All Over",
+    "Burn ":"Burn",
+    "Burn_Engine":"Burn Engine",
+    "Front_End ":"Front End",
+    "Hail":"Hail",
+    "Mechanical":"Mechanical",
+    "Minor_Dents_Scratch":"Minor Dents Scratch",
+    "Normal_Wear":"Normal Wear",
+    "Rear_End":"Rear End",
+    "Rollover":"Rollover",
+    "Side":"Side",
+    "Top_Roof":"Top Roof",
+    "Undercarriage":"Undercarriage",
+    "Unknown":"Unknown",
+    "Vandalism":"Vandalism"
+  },
+  "fuel": {
+    "Diesel":"Diesel",
+    "Petrol":"Petrol",
+    "Gas":"Gas",
+    "Hybrid":"Hybrid",
+    "Electric":"Electric"
+  },
+  "saleTerm": {
+    "Conditional Repair":"Conditional Repair",
+    "Used Vehicle":"Used Vehicle",
+    "To be desmantle":"To be dismantled",
+    "Classic":"Classic"
+  },
+  "transmission": {
+    "Manual":"Manual",
+    "Automatic":"Automatic",
+    "DualClutch":"Dual Clutch",
+    "CVT":"CVT"
   }
 }

@@ -9,8 +9,8 @@ namespace AuctionAngular.Enums
         Conditional_repair,
         [Display(Name = "Used vehicle")]
         Used_vehicle,
-        [Display(Name = "To be desmantled")]
-        To_be_desmantled,
+        [Display(Name = "To be dismantled")]
+        To_be_dismantled,
         Classic
     }
 }

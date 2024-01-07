@@ -70,11 +70,11 @@ export class ContactusComponent  implements OnInit {
     }
 
     if (send.title == "") {
-      this.errorMessage = "Title is required";
+      this.errorMessage = this.transloco.translate('message.titleRequired');
       this.showError = true;
     }
     else if (send.body == "") {
-      this.errorMessage = "Body is required";
+      this.errorMessage = this.transloco.translate('message.bodyRequired');
       this.showError = true;
     }
 

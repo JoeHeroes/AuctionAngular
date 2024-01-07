@@ -352,7 +352,7 @@ namespace AuctionAngular.Services
                 VehicleMany = vehicle!,
             };
 
-            if (await _dbContext.Watches.FirstOrDefaultAsync(x => x.VehicleId == dto.VehicleId) == null)
+            if (await _dbContext.Watches.FirstOrDefaultAsync(x => x.VehicleId == dto.VehicleId && x.UserId == user.Id) == null)
             {
                 Auction? auction = await _dbContext.Auctions.FirstOrDefaultAsync(a => a.Id == dto.VehicleId);
 
