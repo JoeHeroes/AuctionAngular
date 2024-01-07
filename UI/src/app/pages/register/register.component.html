@@ -49,9 +49,12 @@
         <div class="dx-field-value">
           <input type="date" id="dateOfBirth" formControlName="dateOfBirth" class="form-control" />
           <div
-            *ngIf="registerForm.controls['dateOfBirth'].invalid && (registerForm.controls['dateOfBirth'].errors?.['required'] || registerForm.controls['dateOfBirth'].errors?.['maxDate'])">
+            *ngIf="registerForm.controls['dateOfBirth'].invalid && (registerForm.controls['dateOfBirth'].errors?.['required'] || registerForm.controls['dateOfBirth'].errors?.['maxDate'] || registerForm.controls['dateOfBirth'].errors?.['minAge'])">
             <div *ngIf="registerForm.controls['dateOfBirth'].errors?.['maxDate']">
               {{t('notification.maxDate')}}
+            </div>
+            <div *ngIf="registerForm.controls['dateOfBirth'].errors?.['minAge']">
+              {{t('notification.minAge')}}
             </div>
           </div>
         </div>
@@ -60,7 +63,7 @@
         <div class="dx-field-label">{{t('account.role')}}</div>
         <div class="dx-field-value">
           <select id="roleid" formControlName="roleid" class="form-control">
-            <option *ngFor="let role of roles" [value]="role.id">{{ role.name }}</option>
+            <option *ngFor="let role of roles" [value]="role.id">{{t('role.'+role.name)}}</option>
           </select>
         </div>
       </div>

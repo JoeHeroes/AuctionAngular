@@ -100,7 +100,8 @@
     "description":"Beschreibung",
     "countVehicle":"Fahrzeug zählen",
     "dateTime":"Auktionsdatum",
-    "search":"Suchauktion"
+    "search":"Suchauktion",
+    "live":"Auf Live"
   },
   "location": {
     "phone": "Telefon",
@@ -136,7 +137,58 @@
     "goBack": "geh zurück",
     "noAuction": "Es gibt keine aktuellen Live-Auktionen",
     "noOpinion": "Keine Meinung",
-    "vehicleWaiting": "Fahrzeug wartet auf Bestätigung"
+    "vehicleWaiting": "Fahrzeug wartet auf Bestätigung",
+    "emailRequired":"E-Mail ist erforderlich", 
+    "passwordRequired":"Passwort wird benötigt",
+    "passwordAndConfirmPasswordSame":"Passwort und Passwort bestätigen müssen identisch sein",
+    "confirmPasswordRequired":"Zur Bestätigung ist ein Passwort erforderlich",
+    "nameRequired":"Name ist erforderlich",
+    "surnameRequired":"Nachname ist erforderlich",
+    "nationalityRequired":"Staatsangehörigkeit ist erforderlich",
+    "phoneRequired":"Telefon ist erforderlich",
+    "dateBirthRequired":"Geburtsdatum ist erforderlich",
+    "roleRequired":"Rolle ist erforderlich",
+
+
+
+    "locationRequired":"Der Standort ist erforderlich",
+    "descriptionRequired":"Beschreibung ist erforderlich",
+    "auctionDateRequired":"Auktionsdatum ist erforderlich",
+    "titleRequired":"Titel ist erforderlich",
+    "bodyRequired":"Körper ist erforderlich",
+    "dateRequired":"Datum ist erforderlich",
+    "colorRequired":"Farbe ist gefragt",
+    "allDayRequired":"Der ganze Tag ist erforderlich",
+    "incorrectEmailAddressPassword":"Falsche E-Mail-Adresse oder falsches Passwort",
+    "confirmAccount":"Bestätigen Sie Ihr Konto per E-Mail",
+    "originRequired":"Herkunft ist erforderlich",
+    "valuationRequired":"Eine Wertermittlung ist erforderlich",
+    "conditionRequire":"Kondition ist erforderlich",
+    "oldPasswordRequired":"Altes Passwort ist erforderlich",
+    "newPasswordRequired":"Neues Passwort ist erforderlich",
+    "confirmNewPasswordRequired":"Bestätigen Sie, dass ein neues Passwort erforderlich ist",
+    "newPasswordSame":"Das neue Passwort muss dasselbe sein",
+    "newAndOldPasswordNotSame":"Neues und altes Passwort und dürfen nicht identisch sein",
+    "producerRequired":"Produzent ist erforderlich",
+    "modelSpeciferRequired":"Modellspezifizierer ist erforderlich",
+    "modelGenerationRequired":"Modellgenerierung ist erforderlich",
+    "registrationYearRequired":"Anmeldejahr ist erforderlich",
+    "auctionRequired":"Eine Auktion ist erforderlich",
+    "bodyTypeRequired":"Körpertyp ist erforderlich",
+    "transmissionRequired":"Eine Übermittlung ist erforderlich",
+    "driveRequired":"Antrieb ist erforderlich",
+    "meterReadoutRequired":"Eine Zählerablesung ist erforderlich",
+    "fuelRequired":"Kraftstoff ist erforderlichd",
+    "primaryDamageRequired":"Primärschaden ist erforderlich",
+    "secondaryDamageRequired":"Sekundärschaden ist erforderlich",
+    "engineCapacityRequired":"Motorkapazität ist erforderlich",
+    "engineOutputRequired":"Motorleistung ist erforderlich",
+    "numberKeysRequired":"Zahlenschlüssel sind erforderlich",
+    "serviceManualRequired":"Servicehandbuch ist erforderlich",
+    "secondTireSetRequired":"Ein zweiter Reifensatz ist erforderlich",
+    "vinRequired":"Fahrgestellnummer ist erforderlich",
+    "saleTermRequired":"Verkaufsbedingungen sind erforderlich",
+    "categoryRequired":"Kategorie ist erforderlich"
   },
   "calendar":{
     "title": "Titel",
@@ -186,6 +238,7 @@
     "editEventFail":"Ereignisbearbeitung fehlgeschlagen",
     "minDate":"Das Datum darf nicht in der Vergangenheit liegen",
     "maxDate":"Das Datum darf nicht in der Zukunft liegen",
+    "minAge":"Sie müssen ein Erwachsener sein",
     "sendEmail":"Nachricht erfolgreich gesendet",
     "sendEmailFail":"Nachricht falsch gesendet"
   },
@@ -233,5 +286,58 @@
     "origin":"Herkunft",
     "valuation":"Bewertung",
     "condition":"Zustand"
+  },
+  "role":{
+    "Buyer":"Käufer",
+    "Seller":"Verkäufer",
+    "Admin":"Administrator"
+  },
+  "bodyType":{
+    "Micro":"Mikro",
+    "Sedan":"Limousine",
+    "Liftback":"Liftback",
+    "Combi":"Kombi",
+    "Coupe":"Coupe",
+    "Hatchback":"Fließheck",
+    "Van ":"Van",
+    "SUV":"SUV",
+    "Picup":"Aufheben",
+    "Cabrio":"Cabrio"
+  },
+  "damage":{
+    "All_Over ":"Überall",
+    "Burn ":"Brennen",
+    "Burn_Engine":"Brenn - Maschine",
+    "Front_End ":"Frontend",
+    "Hail":"Hagel",
+    "Mechanical":"Mechanisch",
+    "Minor_Dents_Scratch":"Kleinere Dellen, Kratzer",
+    "Normal_Wear":"Normale Gebrauchsspuren",
+    "Rear_End":"Hinteres Ende",
+    "Rollover":"Sich umdrehen",
+    "Side":"Seite",
+    "Top_Roof":"Oberes Dach",
+    "Undercarriage":"Fahrwerk",
+    "Unknown":"Unbekannt",
+    "Vandalism":"Vandalismus"
+  },
+  "fuel": {
+    "Diesel":"Diesel",
+    "Petrol":"Benzin",
+    "Gas":"Gas",
+    "Hybrid":"Hybrid",
+    "Electric":"Elektrisch"
+  },
+  "saleTerm": {
+    "Conditional Repair":"Bedingte Reparatur",
+    "Used Vehicle":"Gebrauchtfahrzeug",
+    "To be desmantle":"Zum Abbau",
+    "Classic":"Klassisch"
+  },
+  "transmission": {
+    "Manual":"Handbuch",
+    "Automatic":"Automatisch",
+    "DualClutch":"Doppelkupplung",
+    "CVT":"CVT"
   }
 }

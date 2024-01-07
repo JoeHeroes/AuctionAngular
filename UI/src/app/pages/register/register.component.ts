@@ -52,6 +52,14 @@ export class RegisterComponent implements OnInit {
     if (selectedDate > currentDate) {
       return { maxDate: true };
     }
+
+
+    const ageDifference = currentDate.getFullYear() - selectedDate.getFullYear();
+
+    if (ageDifference < 18) {
+      return { minAge: true };
+    }
+    
     return null; 
   }
 
@@ -71,39 +79,43 @@ export class RegisterComponent implements OnInit {
     }
  
     if (register.email == "") {
-      this.errorMessage = "Email is required";
+      this.errorMessage = this.transloco.translate('message.emailRequired');
       this.showError = true;
     }
     else if (register.password == "") {
-      this.errorMessage = "Password is required";
+      this.errorMessage = this.transloco.translate('message.passwordRequired');
+      this.showError = true;
+    }
+    else if (register.password != register.confirmpassword) {
+      this.errorMessage = this.transloco.translate('message.passwordAndConfirmPasswordSame');
       this.showError = true;
     }
     else if (register.confirmpassword == "") {
-      this.errorMessage = "Confirm password is required";
+      this.errorMessage = this.transloco.translate('message.confirmPasswordRequired');
       this.showError = true;
     }
     else if (register.name == "") {
-      this.errorMessage = "Name is required";
+      this.errorMessage = this.transloco.translate('message.nameRequired');
       this.showError = true;
     }
     else if (register.surename == "") {
-      this.errorMessage = "Surename is required";
+      this.errorMessage = this.transloco.translate('message.surenameRequired');
       this.showError = true;
     }
     else if (register.nationality == "") {
-      this.errorMessage = "Nationality is required";
+      this.errorMessage = this.transloco.translate('message.nationalityRequired');
       this.showError = true;
     }
     else if (register.phone == "") {
-      this.errorMessage = "Phone is required";
+      this.errorMessage = this.transloco.translate('message.phoneRequired');
       this.showError = true;
     }
     else if (register.dateOfBirth == "") {
-      this.errorMessage = "Date of birth is required";
+      this.errorMessage = this.transloco.translate('message.dateBirthRequired');
       this.showError = true;
     }
     else if (register.roleid == "") {
-      this.errorMessage = "Role ID is required";
+      this.errorMessage = this.transloco.translate('message.roleRequired');
       this.showError = true;
     }
     else {

@@ -46,23 +46,23 @@ export class RestartPasswordComponent implements OnInit {
     const restart = { ...restartFormValue };
 
     if (restart.oldPassword == "") {
-      this.errorMessage = "Old Password is required";
+      this.errorMessage = this.transloco.translate('message.oldPasswordRequired');
       this.showError = true;
     }
     else if (restart.newPassword == "") {
-      this.errorMessage = "New Password is required";
+      this.errorMessage = this.transloco.translate('message.newPasswordRequired');
       this.showError = true;
     }
     else if (restart.confirmNewPassword == "") {
-      this.errorMessage = "Confirm New Password is required";
+      this.errorMessage = this.transloco.translate('message.confirmNewPasswordRequired');
       this.showError = true;
     }
     else if (restart.newPassword != restart.confirmNewPassword) {
-      this.errorMessage = "New Password must be the same";
+      this.errorMessage = this.transloco.translate('message.newPasswordSame');
       this.showError = true;
     }
     else if (restart.oldPassword == restart.newPassword) {
-      this.errorMessage = "New and Old Password and couldn't be the same";
+      this.errorMessage = this.transloco.translate('message.newAndOldPasswordNotSame');
       this.showError = true;
     }
     else{

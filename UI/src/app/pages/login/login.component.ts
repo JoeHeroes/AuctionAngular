@@ -14,7 +14,6 @@ import { TokenService } from 'src/app/services/token.service';
 export class LoginComponent implements OnInit {
   private returnUrl!: string;
 
-  loading = false;
   loginForm!: FormGroup;
   errorMessage: string = '';
   showError: boolean = false;
@@ -37,11 +36,11 @@ export class LoginComponent implements OnInit {
     const login = { ...loginFormValue };
 
     if (login.email == "") {
-      this.errorMessage = "Email is required";
+      this.errorMessage = this.transloco.translate('message.emailRequired');
       this.showError = true;
     }
     else if (login.password == "") {
-      this.errorMessage = "Password is required";
+      this.errorMessage = this.transloco.translate('message.passwordRequired');
       this.showError = true;
     }
     else {
@@ -62,19 +61,18 @@ export class LoginComponent implements OnInit {
                     this.router.navigate([this.returnUrl]);
                   },
                   error: (err: any) => {
-                    this.errorMessage = "Incorrect email address or password";
+                    this.errorMessage = this.transloco.translate('message.incorrectEmailAddressPassword');
                     this.showError = true;
-                    this.loading = true;
                   }
                 })
             }
             else {
-              this.errorMessage = "Confirm your account on email";
+              this.errorMessage = this.transloco.translate('message.confirmAccount');
               this.showError = true;
             }
           },
           error: (err: any) => {
-            this.errorMessage = "Incorrect email address or password";
+            this.errorMessage = this.transloco.translate('message.incorrectEmailAddressPassword');
             this.showError = true;
           }
         });

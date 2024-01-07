@@ -57,19 +57,19 @@ export class OpinionAddComponent implements OnInit {
     }
 
     if (add.description == "") {
-      this.errorMessage = "Description is required";
+      this.errorMessage = this.transloco.translate('message.descriptionRequired');
       this.showError = true;
     }
     else if (add.origin == "") {
-      this.errorMessage = "Origin is required";
+      this.errorMessage = this.transloco.translate('message.originRequired');
       this.showError = true;
     }
     else if (add.valuation == "") {
-      this.errorMessage = "Valuation is required";
+      this.errorMessage = this.transloco.translate('message.valuationRequired');
       this.showError = true;
     }
     else if (add.condition == "") {
-      this.errorMessage = "Condition is required";
+      this.errorMessage = this.transloco.translate('message.conditionRequired');
       this.showError = true;
     }
     this.opinionService.addOpinion(addData)
