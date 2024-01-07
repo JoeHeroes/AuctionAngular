@@ -4,12 +4,17 @@
     "editEvent": "Edytuj wydarzenie",
     "addVehicle": "Dodaj Pojazd",
     "editVehicle": "Edytuj Pojazd",
+    "checkVehicle": "Sprawdz Pojazd",
     "addAuction": "Dodaj Aukcje",
     "editAuction": "Edytuj Aukcje",
+    "addOpinion": "Dodaj Opinie",
+    "checkOpinion": "Sprawdz Opinie",
     "add": "Dodaj",
     "save": "Zapisz",
     "back": "Wróć",
     "watch": "Oberwuj",
+    "send": "Wyślij email",
+    "contact": "Skontaktuj się ze sprzedawcą",
     "removeWatch": "Usuń obserwacje",
     "editProfile": "Edytuj Profil",
     "upload": "Prześlij",
@@ -20,11 +25,14 @@
     "saveProfile": "Zapisz Profil",
     "auction":"Aktualnie trwa aukcja",
     "calendarManage": "Zarządzanie kalendarzem",
-    "download":"Pobierz"
+    "download":"Pobierz",
+    "setAuctionNumber": "Ustaw number aukcji"
   },
     "menu": {
       "home": "Home",
       "vehicle": "Pojazdy",
+      "vehicle-add":"Dodaj pojazd",
+      "vehicle-status": "Sprawdz pojazd",
       "vehicle-bids": "Licytowane",
       "vehicle-won": "Wygrane",
       "vehicle-lost": "Przegrane",
@@ -36,8 +44,10 @@
       "location": "Lokacja",
       "services": "Serwis",
       "support": "Wsparcie",
+      "verification-vehicle": "Zatwierdzenie",
       "panel-vehicle":"Panel pojazdów",
-      "panel-auction":"Panel aukcji"
+      "panel-auction":"Panel aukcji",
+      "panel-invoice":"Panel faktur"
     },
     "vehicle": {
       "image": "Zdjecie",
@@ -77,7 +87,11 @@
       "paymentDue": "Należne płatności",
       "paymentHistory": "Historia Płatności",
       "picture":"Zdjecie",
-      "search":"Wyszukaj..."
+      "search":"Wyszukaj...",
+      "bids": "Oferta",
+      "bidNow": "Licytuj teraz",
+      "generalInformation": "Ogólne informacje",
+      "bidInformation":"Informacje o ofercie"
     },
     "auction":{
       "list":"Lista aukcji",
@@ -97,7 +111,7 @@
     },
     "account": {
       "account": "Konto",
-      "login": "Login",
+      "login": "Zaloguj",
       "register": "Rejestracja",
       "logout": "Wyloguj",
       "id":"Id",
@@ -113,13 +127,16 @@
       "dateOfBirth": "Data urodzin",
       "role": "Rola",
       "profile": "Profil",
-      "description": "Opis"
+      "description": "Opis",
+      "option": "Opcje"
     },
     "message":{
       "title": "Nie znaleziono strony",
       "message": "Nie można znależ strony",
       "goBack": "Wróć",
-      "noAuction": "Brak aktualnych aukcji na żywo"
+      "noAuction": "Brak aktualnych aukcji na żywo",
+      "noOpinion": "Brak opinii",
+      "vehicleWaiting": "Pojazd oczekuje na zatwierdzenie"
     },
     "calendar":{
       "title": "Tytuł",
@@ -132,28 +149,50 @@
     "notification":{
       "loggedOut": "Wylogowano",
       "loggedIn": "Zalogowano",
-      "registered": "Zarejestrowano",
-      "loggedInFail": "Logowanie nie powiodło się",
+      "registeredCorrect": "Rejestracja powiodła się",
       "registeredFail": "Rejestracja nie powiodła się",
-      "bid":"Twoja oferta jest najwyższa",
-      "bidFail":"Twoja oferta nie jest najwyższa"
+      "vehicleAddCorrect": "Auto dodane poprawnie",
+      "vehicleAddFail": "Auto dodane niepoprawnie",
+      "pictureAddCorrect":"Zdjecie dodane poprawnie",
+      "pictureAddFail":"Zdjecie dodane niepoprawnie",
+      "setAuctionCorrect":"Aukcja dodana poprawnie",
+      "setAuctionFail":"Aukcja dodana niepoprawnie",
+      "confirmVehicleCorrect":"Auto zweryfikowane poprawnie",
+      "confirmVehicleFail":"Ustaw prawidłowy identyfikator aukcji",
+      "deleteVehicleCorrect":"Auto usuniete poprawnie",
+      "deleteVehicleFail":"Auto usuniete niepoprawnie",
+      "vehicleWatchCorrect":"Auto obserwowane poprawnie",
+      "vehicleWatchFail":"Auto obserwowane niepoprawnie",
+      "vehicleUnwatchCorrect":"Auto odobserwowane poprawnie",
+      "vehicleUnwatchFail":"Auto odobserwowane niepoprawnie",
+      "profileEditCorrect":"Profil edytowany poprawnie",
+      "profileEditFail":"Profil edytowany niepoprawnie",
+      "sellVehicleCorrect":"Auto sprzedane poprawnie",
+      "sellVehicleFail":"Auto sprzedane niepoprawnie",
+      "bidVehicleCorrect":"Twoja oferta jest najwyższa",
+      "bidVehicleFail":"Twoja oferta nie jest najwyższa",
+      "addAuctionCorrect":"Aukcja dodana poprawnie",
+      "addAuctionFail":"Aukcja dodana niepoprawnie",
+      "addOpinionCorrect":"Opinia dodana poprawnie",
+      "addOpinionFail":"Opinia dodana niepoprawnie",
+      "deleteEventCorrect":"Wydarzenie usuniete poprawnie",
+      "deleteEventFail":"Wydarzenie usuniete niepoprawnie",
+      "addEventCorrect":"Wydarzenie dodane poprawnie",
+      "addEventFail":"Wydarzenie dodane niepoprawnie",
+      "editEventCorrect":"Wydarzenie edytowane poprawnie",
+      "editEventFail":"Wydarzenie edytowane niepoprawnie",
+      "minDate":"Data nie może być w przeszłości",
+      "maxDate":"Data nie może być w przyszłości",
+      "generateInvoiceCorrect":"Faktura wygenerowana poprawnie",
+      "generateInvoiceFail":"Faktura wygenerowana niepoprawnie",
+      "sendEmail":"Widomość wysłana poprawnie",
+      "sendEmailFail":"Widomość wysłana niepoprawnie"
     },
     "dashboard":{
       "title":"Dashboard",
       "text1":"carWink ma ponad ",
       "text2":" pojazdy na sprzedarz"
     },
-    "support":{
-      "readMore":"Czytaj wiecej",
-      "learnMore":"Naucz wiecej",
-      "contactUS":"Kontakt",
-      "contactUSDescription":"Masz pytania lub potrzebujesz pomocy? carWink jest do Twojej dyspozycji. Skontaktuj się z nami przez e-mail lub telefon.",
-      "FAQ":"FAQ",
-      "FAQDescription":"Masz pytania lub zastanawiasz się, jak to działa? Dowiedz się więcej na naszej stronie FAQ.",
-      "howToBuy":"Jak kupić",
-      "howToBuyDescription":"Nie masz pojęcia, jak wygląda cały proces zakupu. Dowiedz się więcej o szczegółach zakupu i nie tylko."
-    },
-
     "payment":{
       "saleDate":"Data Sprzedarzy",
       "lot":"Numer",
@@ -165,17 +204,34 @@
       "invoice":"Faktura",
       "status":"Status"
     },
-
     "admin":{
+      "panel-verification":"Panel zatwierdzania aut",
       "panel-vehicles":"Panel zarządzania autami",
       "panel-auctions":"Panel zarządzania aukcjami",
+      "panel-invoices":"Panel zarządzania fakturami",
       "confirm": "Potwierdz sprzedarz",
       "invoice": "Wygeneruj fakture",
       "edit": "Edytuj",
       "delete": "Usuń",
       "sell": "Potwierdzam",
       "sold": "Sprzedane",
-      "back": "Cofnij"
+      "back": "Cofnij",
+      "set":"Ustaw Aukcje",
+      "detail": "Detale",
+      "cancel": "Anuluj",
+      "accept": "Akceptuj",
+      "opinion": "Opinia"
+    },
+    "email":{
+      "title":"Tytuł",
+      "body":"Treść"
+    },
+    "opinion":{
+      "vehicle":"Opinia pojazdu",
+      "description":"Opis",
+      "origin":"Pochodzenie",
+      "valuation":"Wycena",
+      "condition":"Stan"
     }
   }
   

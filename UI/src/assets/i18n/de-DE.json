@@ -4,12 +4,17 @@
     "editEvent": "Ereignis bearbeiten",
     "addVehicle": "Fahrzeug hinzufügen",
     "editVehicle": "Fahrzeug bearbeiten",
+    "checkVehicle": "Fahrzeug prüfen",
     "addAuction": "Auktion hinzufügen",
     "editAuction": "Auktion bearbeiten",
+    "addOpinion": "Meinung hinzufügen",
+    "checkOpinion": "Meinung prüfen",
     "add": "Hinzufügen",
     "save": "Speichern",
     "back": "Zurück",
     "watch": "Betrachten",
+    "send": "E-Mail senden",
+    "contact": "Kontakt mit dem Verkäufer",
     "removeWatch": "Uhr entfernen",
     "editProfile": "Profil bearbeiten",
     "upload": "Hochladen",
@@ -20,11 +25,14 @@
     "saveProfile": "Profil sichern",
     "auction":"Die Auktion läuft jetzt",
     "calendarManage": "Kalenderverwaltung",
-    "download":"Herunterladen"
+    "download":"Herunterladen",
+    "setAuctionNumber": "Auktionsnummer festlegen"
   },
   "menu": {
     "home": "Heim",
     "vehicle": "Fahrzeug",
+    "vehicle-add":"Fahrzeugzusatz",
+    "vehicle-status": "Fahrzeug prüfen",
     "vehicle-bids": "Gebote",
     "vehicle-won": "Gewonnen",
     "vehicle-lost": "Verloren",
@@ -36,8 +44,10 @@
     "location": "Standort",
     "services": "Dienstleistungen",
     "support": "Unterstützung",
+    "verification-vehicle": "Überprüfung",
     "panel-vehicle":"Fahrzeugtafel",
-    "panel-auction":"Auktionspanel"
+    "panel-auction":"Auktionspanel",
+    "panel-invoice":"Rechnungspanel"
   },
   "vehicle": {
     "image": "Bild",
@@ -77,7 +87,11 @@
     "paymentDue": "Zahlung fällig",
     "paymentHistory": "Zahlungshistorie",
     "picture":"Bild",
-    "search":"Suchen..."
+    "search":"Suchen...",
+    "bids": "Gebote",
+    "bidNow": "Bieten Sie jetzt",
+    "generalInformation": "Allgemeine Informationen",
+    "bidInformation":"Angebotsinformationen"
   },
   "auction":{
     "list":"Liste der Auktionen",
@@ -113,13 +127,16 @@
     "dateOfBirth": "Geburtsdatum",
     "role": "Rolle",
     "profile": "Profil",
-    "description": "Beschreibung"
+    "description": "Beschreibung",
+    "option": "Möglichkeit"
   },
   "message":{
     "title": "Seite nicht gefunden",
     "message": "Wir konnten Seite finden",
     "goBack": "geh zurück",
-    "noAuction": "Es gibt keine aktuellen Live-Auktionen"
+    "noAuction": "Es gibt keine aktuellen Live-Auktionen",
+    "noOpinion": "Keine Meinung",
+    "vehicleWaiting": "Fahrzeug wartet auf Bestätigung"
   },
   "calendar":{
     "title": "Titel",
@@ -132,26 +149,50 @@
   "notification":{
     "loggedOut": "Abgemeldet",
     "loggedIn": "Eingeloggt",
-    "registered": "Eingetragen",
+    "registeredCorrect": "Eingetragen",
     "loggedInFail": "Eingeloggt, fehlgeschlagen",
     "registeredFail": "Angemeldet, fehlgeschlagen",
     "bid":"Ihr Gebot ist das höchste",
-    "bidFail":"Ihr Gebot ist nicht das höchste"
+    "bidFail":"Ihr Gebot ist nicht das höchste",
+    "vehicleAddCorrect": "Fahrzeug richtig hinzugefügt",
+    "vehicleAddFail": "Fehler beim Hinzufügen des Fahrzeugs",
+    "pictureAddCorrect":"Bild richtig hinzugefügt",
+    "pictureAddFail":"Bild hinzugefügt, fehlgeschlagen",
+    "setAuctionCorrect":"Auktionssatz korrekt",
+    "setAuctionFail":"Auktionssatz fehlgeschlagen",
+    "confirmVehicleCorrect":"Fahrzeug bestätigen, dass es richtig ist",
+    "confirmVehicleFail":"Legen Sie die richtige Auktions-ID fest",
+    "deleteVehicleCorrect":"Fahrzeuglöschung korrekt",
+    "deleteVehicleFail":"Fehler beim Löschen des Fahrzeugs",
+    "vehicleWatchCorrect":"Fahrzeugüberwachung korrekt",
+    "vehicleWatchFail":"Fahrzeugüberwachung fehlgeschlagen",
+    "vehicleUnwatchCorrect":"Fahrzeug-Unwatch korrekt",
+    "vehicleUnwatchFail":"Fehler beim Aufheben der Überwachung des Fahrzeugs",
+    "profileEditCorrect":"Profilbearbeitung korrekt",
+    "profileEditFail":"Profilbearbeitung fehlgeschlagen",
+    "sellVehicleCorrect":"Fahrzeugverkauf korrekt",
+    "sellVehicleFail":"Fahrzeugverkauf fehlgeschlagen",
+    "bidVehicleCorrect":"Ihr Gebot ist das höchste",
+    "bidVehicleFail":"Fehler beim Hinzufügen des Fahrzeugs",
+    "addAuctionCorrect":"Auktion korrekt hinzugefügt",
+    "addAuctionFail":"Auktion hinzugefügt fehlgeschlagen",
+    "addOpinionCorrect":"Meinung hinzugefügt: Richtig",
+    "addOpinionFail":"Meinung hinzugefügt fehlgeschlagen",
+    "deleteEventCorrect":"Ereignis löschen. Korrekt",
+    "deleteEventFail":"Fehler beim Löschen des Ereignisses",
+    "addEventCorrect":"Ereignis richtig hinzugefügt",
+    "addEventFail":"Ereignis hinzugefügt, fehlgeschlagen",
+    "editEventCorrect":"Ereignisbearbeitung korrekt",
+    "editEventFail":"Ereignisbearbeitung fehlgeschlagen",
+    "minDate":"Das Datum darf nicht in der Vergangenheit liegen",
+    "maxDate":"Das Datum darf nicht in der Zukunft liegen",
+    "sendEmail":"Nachricht erfolgreich gesendet",
+    "sendEmailFail":"Nachricht falsch gesendet"
   },
   "dashboard":{
     "title":"Armaturenbrett",
     "text1":"carWink hat über  ",
     "text2":" Fahrzeuge im Angebot"
-  },
-  "support":{
-    "readMore":"Mehr lesen",
-    "learnMore":"Lern mehr",
-    "contactUS":"Kontaktiere uns",
-    "contactUSDescription":"Haben Sie Fragen oder benötigen Sie Hilfe? carWink steht Ihnen gerne zur Verfügung. Kontaktieren Sie uns per E-Mail oder Telefon.",
-    "FAQ":"FAQ",
-    "FAQDescription":"Haben Sie Fragen oder fragen Sie sich, wie es funktioniert? Erfahren Sie mehr auf unserer FAQ-Seite.",
-    "howToBuy":"Wie kauft man",
-    "howToBuyDescription":"Sie haben keine Ahnung, wie der gesamte Kaufprozess aussieht. Erfahren Sie mehr über Kaufdetails und mehr."
   },
   "payment":{
     "saleDate":"Verkaufsdatum",
@@ -164,16 +205,33 @@
     "invoice":"Rechnung",
     "status":"Status"
   },
-
   "admin":{
+    "panel-verification":"Fahrzeugverifizierungsstelle",
     "panel-vehicles":"Fahrzeugverwaltungspanel",
     "panel-auctions":"Auktionsverwaltungspanel",
+    "panel-invoices":"Rechnungsverwaltungspanel",
     "confirm": "Bestätigen Sie den Verkauf",
     "invoice": "Rechnung erstellen",
     "edit": "Bearbeiten",
     "delete": "Löschen",
     "sell": "Verkaufen",
     "sold": "Verkauft",
-    "back": "Zurück"
+    "back": "Zurück",
+    "set":"Satz",
+    "detail": "Detail",
+    "cancel": "Stornieren",
+    "accept": "Akzeptieren",
+    "opinion": "Meinung"
+  },
+  "email":{
+    "title":"Titel",
+    "body":"Körper"
+  },
+  "opinion":{
+    "vehicle":"Fahrzeugmeinung",
+    "description":"Beschreibung",
+    "origin":"Herkunft",
+    "valuation":"Bewertung",
+    "condition":"Zustand"
   }
 }

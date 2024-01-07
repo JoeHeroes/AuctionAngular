@@ -1,4 +1,7 @@
-﻿using AuctionAngular.Dtos;
+﻿using AuctionAngular.Dtos.Auction;
+using AuctionAngular.Dtos.Bid;
+using AuctionAngular.Dtos.Vehicle;
+using AuctionAngular.Dtos.Watch;
 using Database.Entities;
 
 namespace AuctionAngular.Interfaces
@@ -7,8 +10,8 @@ namespace AuctionAngular.Interfaces
     {
         Task<int> CreateVehicleAsync(CreateVehicleDto dto);
         Task DeleteVehicleAsync(int id);
-        Task<IEnumerable<ViewVehiclesDto>> GetVehiclesAsync();
-        Task<IEnumerable<AdminVehiclesDto>> GetVehicleAuctionEndAsync();
+        Task<IEnumerable<ViewVehiclesDto>> GetVehiclesAsync(bool status);
+        Task<IEnumerable<ViewAdminVehiclesDto>> GetVehicleAuctionEndAsync();
         Task<IEnumerable<ViewVehiclesDto>> GetAllBidedAsync(int id);
         Task<IEnumerable<ViewVehiclesDto>> GetAllWonAsync(int id);
         Task<IEnumerable<ViewVehiclesDto>> GetAllLostAsync(int id);
@@ -21,5 +24,7 @@ namespace AuctionAngular.Interfaces
         Task<IEnumerable<ViewVehiclesDto>> GetAllWatchAsync(int id);
         Task<List<string>> AddPictureAsync(int id, IFormFileCollection files);
         Task SoldVehicleAsync(int id);
+        Task ConfirmVehicleAsync(int id); 
+        Task SetAuctionForVehicleAsync(SetAuctionDto dto); 
     }
 }

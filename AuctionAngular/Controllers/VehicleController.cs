@@ -1,4 +1,7 @@
-﻿using AuctionAngular.Dtos;
+﻿using AuctionAngular.Dtos.Auction;
+using AuctionAngular.Dtos.Bid;
+using AuctionAngular.Dtos.Vehicle;
+using AuctionAngular.Dtos.Watch;
 using AuctionAngular.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,7 +31,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<ViewVehiclesDto>>> GetAllVehicle()
         {
-            var result = await _vehicleService.GetVehiclesAsync();
+            var result = await _vehicleService.GetVehiclesAsync(true);
 
             if (result is null)
             {
@@ -38,6 +41,26 @@ namespace AuctionAngular.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Get Waiting Vehicle List 
+        /// </summary>
+        /// <returns>Ok with vehicle list</returns>
+        /// <response code="200">Correct data</response>
+        /// <response code="400">Incorrect data</response>
+        [HttpGet("[action]")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<IEnumerable<ViewVehiclesDto>>> GetAllVehicleWaiting()
+        {
+            var result = await _vehicleService.GetVehiclesAsync(false);
+
+            if (result is null)
+            {
+                return NotFound();
+            }
+
+            return Ok(result);
+        }
 
         /// <summary>
         /// Get Vehicle List which auction end 
@@ -48,7 +71,7 @@ namespace AuctionAngular.Controllers
         [HttpGet("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<IEnumerable<AdminVehiclesDto>>> GetAllVehicleAuctionEnd()
+        public async Task<ActionResult<IEnumerable<ViewAdminVehiclesDto>>> GetAllVehicleAuctionEnd()
         {
             var result = await _vehicleService.GetVehicleAuctionEndAsync();
 
@@ -59,10 +82,6 @@ namespace AuctionAngular.Controllers
 
             return Ok(result);
         }
-
-
-        
-
 
 
         /// <summary>
@@ -199,7 +218,7 @@ namespace AuctionAngular.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> UpdateVehicle([FromRoute] int id,[FromBody] EditVehicleDto dto)
         {
-            await _vehicleService.UpdateVehicleAsync(id, dto);
+            _vehicleService.UpdateVehicleAsync(id, dto);
 
             return NoContent();
         }
@@ -306,20 +325,36 @@ namespace AuctionAngular.Controllers
         /// <response code="200">Correct data</response>
         /// <response code="400">Incorrect id</response>
         /// <response code="500">Exception</response>
-        [HttpPatch("[action]/{id}")]
+        [HttpPost("[action]/{id}")]
         public async Task<IActionResult> UploadVehicleImage([FromRoute] int id)
         {
             IFormFileCollection files = Request.Form.Files;
 
-            var result = await _vehicleService.AddPictureAsync(id, files);
+            var result = _vehicleService.AddPictureAsync(id, files);
 
             if (result is null)
             {
                 return NotFound();
             }
 
-            var response = new { Message = "Upload successfully!" };
-            return Ok(response);
+            return Ok();
+        }
+
+
+        /// <summary>
+        /// Confirm Vehicle 
+        /// </summary>
+        /// <returns>Ok</returns>
+        /// <response code="200">Correct data</response>
+        /// <response code="400">Incorrect data</response>
+        [HttpGet("[action]/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<IEnumerable<ViewVehiclesDto>>> ConfirmVehicle([FromRoute] int id)
+        {
+            await _vehicleService.ConfirmVehicleAsync(id);
+
+            return Ok();
         }
 
 
@@ -335,6 +370,22 @@ namespace AuctionAngular.Controllers
         public async Task<ActionResult<IEnumerable<ViewVehiclesDto>>> SoldVehicle([FromRoute] int id)
         {
             await _vehicleService.SoldVehicleAsync(id);
+
+            return Ok();
+        }
+
+        /// <summary>
+        /// Set Auction For Vehicle
+        /// </summary>
+        /// <returns>Ok</returns>
+        /// <response code="200">Correct data</response>
+        /// <response code="400">Incorrect data</response>
+        [HttpPatch("[action]")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<IEnumerable<ViewVehiclesDto>>> SetAuctionForVehicle([FromBody] SetAuctionDto dto)
+        {
+            await _vehicleService.SetAuctionForVehicleAsync(dto);
 
             return Ok();
         }

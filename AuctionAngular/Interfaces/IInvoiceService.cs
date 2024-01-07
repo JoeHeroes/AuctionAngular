@@ -1,11 +1,11 @@
 ﻿using AuctionAngular.Dtos;
-using AuctionAngular.Services.NewFolder;
+using AuctionAngular.Dtos.Invoice;
 
 namespace AuctionAngular.Interfaces
 {
     public interface IInvoiceService
     {
-        Task<PDFResponseDto> GeneratePDFAsync(PDFInfo info);
+        Task<PDFResponseDto> GeneratePDFAsync(InfoDto info);
         string Getbase64string();
     }
 }

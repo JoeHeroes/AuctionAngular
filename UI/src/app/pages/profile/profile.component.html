@@ -1,0 +1,57 @@
+<div class="center">
+  <ng-container *transloco="let t"> 
+    <div class="border rounded mt-5 mb-5 border-right">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+            <img *ngIf='!isPictureNull' class="rounded-circle mt-5" width="150px"  src="assets\picture\profile.jpg" alt="profile">
+            <img *ngIf='isPictureNull' class="rounded-circle mt-5" width="150px" height="150px" src="assets\picture\null-profile.png">
+            <br/>
+            <span class="font-weight-bold">{{datasource.name}} {{datasource.sureName}}</span><span
+              class="text-white-50">{{datasource.email}}</span><span> </span>
+            </div>
+        </div>
+        <div class="col-md-7">
+          <div class="p-3 py-5">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4 class="text-right"><span style="font-weight:bold;">{{t('account.profile')}}</span></h4>
+            </div>
+            <div class="dx-fieldset">
+              <div class="dx-field">
+                <span style="font-weight:bold;">{{t('account.name')}}: </span> {{datasource.name}}
+              </div>
+              <div class="dx-field">
+                <span style="font-weight:bold;">{{t('account.sureName')}}: </span> {{datasource.sureName}}
+              </div>
+              <div class="dx-field">
+                <span style="font-weight:bold;">{{t('account.phone')}}: </span> {{datasource.phone}}
+              </div>
+              <div class="dx-field">
+                <span style="font-weight:bold;">{{t('account.nationality')}}: </span> {{datasource.nationality}}
+              </div>
+              <div class="dx-field">
+                <span style="font-weight:bold;">{{t('account.dateOfBirth')}}: </span> {{datasource.dateOfBirth | date:'dd/MM/yyyy'}} 
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-md-2">
+          <div class="p-3 py-5">
+            <h4><span style="font-weight:bold;">{{t('account.option')}}</span></h4>
+            <br/>
+            <div class="mt-2"><dx-button displayExpr="label" [text]="t('action.selectPicture')"
+              [routerLink]="'/profile/picture'"></dx-button></div>
+            <div class="mt-2"><dx-button displayExpr="label" [text]="t('action.editProfile')"
+                [routerLink]="'/profile/edit'"></dx-button></div>
+            <div class="mt-2"><dx-button displayExpr="label" [text]="t('action.restart')"
+                [routerLink]="'/account/restart'"></dx-button></div>
+          </div>
+        </div>
+        
+       
+      </div>
+    </div>
+  </ng-container>
+</div>

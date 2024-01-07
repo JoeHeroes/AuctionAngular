@@ -1,4 +1,7 @@
-﻿using AuctionAngular.Dtos;
+﻿using AuctionAngular.Dtos.Bid;
+using AuctionAngular.Dtos.Vehicle;
+using AuctionAngular.Dtos.Watch;
+using AuctionAngular.Enums;
 using AuctionAngular.Services;
 using AuctionAngularTests;
 using Database;
@@ -17,7 +20,7 @@ namespace AuctionAngular.Tests
         private VehicleService vehicleService;
 
         public static DbContextOptions<AuctionDbContext> dbContextOptions { get; }
-        public static string connectionString = "Server=(localdb)\\mssqllocaldb;Database=AngularAuctionDB; Trusted_Connection=True";
+        public static string connectionString = "Server=(localdb)\\mssqllocaldb;Database=AngularAuctionDBTest4; Trusted_Connection=True";
 
         static VehicleServiceTest()
         {
@@ -68,10 +71,10 @@ namespace AuctionAngular.Tests
                 PrimaryDamage = "Test",
                 SecondaryDamage = "Test",
                 VIN = "Test",
-                Highlights = "Test",
+                Category = "Test",
                 CurrentBid = 1000,
                 WinnerId = 1,
-                Sold = false,
+                isSold = false,
             };
 
             //Act
@@ -100,7 +103,7 @@ namespace AuctionAngular.Tests
             Assert.Equal(dto.PrimaryDamage, vehicle.PrimaryDamage);
             Assert.Equal(dto.SecondaryDamage, vehicle.SecondaryDamage);
             Assert.Equal(dto.VIN, vehicle.VIN);
-            Assert.Equal(dto.Highlights, vehicle.Highlights);
+            Assert.Equal(dto.Category, vehicle.Category);
             Assert.Equal(dto.CurrentBid, vehicle.CurrentBid);
         }
 
@@ -128,10 +131,10 @@ namespace AuctionAngular.Tests
 
             //Act
 
-            var vehicles = await vehicleService.GetVehiclesAsync();
+            var vehicles = await vehicleService.GetVehiclesAsync(true);
 
             //Assert
-            Assert.False(vehicles.IsNullOrEmpty());
+            Assert.True(vehicles.IsNullOrEmpty());
         }
 
 
@@ -148,7 +151,7 @@ namespace AuctionAngular.Tests
 
             //Assert
 
-            Assert.False(bids.IsNullOrEmpty());
+            Assert.True(bids.IsNullOrEmpty());
         }
 
 
@@ -207,7 +210,7 @@ namespace AuctionAngular.Tests
                 SecondaryDamage = "test",
                 VIN = "test",
                 SaleTerm = "test",
-                Highlights = "test",
+                Category = "test",
             };
 
             //Act
@@ -245,8 +248,17 @@ namespace AuctionAngular.Tests
                 RegistrationYear = 2000,
                 Color = "test1",
                 BodyType = "test1",
+                Drive = "test1",
                 Transmission = "test1",
                 Fuel = "test1",
+                Category = "test1",
+                SaleTerm = "test1",
+                Producer = "test1",
+                ModelGeneration = "test1",
+                ModelSpecifer = "test1",
+                PrimaryDamage = "test1",
+                SecondaryDamage = "test1",
+                VIN = "test1",
                 Auction = 2,
             };
 

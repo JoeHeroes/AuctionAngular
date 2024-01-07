@@ -1,0 +1,22 @@
+<ng-container *transloco="let t">
+    <form [formGroup]="sendForm" (ngSubmit)="sendEmail(sendForm.value)" enctype="multipart/form-data">
+      <h3>{{t('action.send')}}</h3>
+        <div class="dx-fieldset">
+          <div class="dx-field">
+              <div class="dx-field-label">{{t('email.title')}}</div>
+              <div class="dx-field-value">
+                <input type="text" id="title" formControlName="title" class="form-control"/>
+              </div> 
+            </div>
+            <div class="dx-field">
+              <div class="dx-field-label">{{t('email.body')}}</div>
+              <div class="dx-field-value">
+                <dx-text-area [minHeight]="100" [maxHeight]="300" [autoResizeEnabled]="true" id="body" formControlName="body" class="form-control"></dx-text-area>
+              </div>
+            </div>
+          <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
+        </div>
+        <dx-button  [text]="t('action.back')" type="normal" [routerLink]="[returnUrl]"></dx-button>
+        <dx-button class="button" [text]="t('action.send')" type="success" [useSubmitBehavior]="true"></dx-button>
+      </form>
+    </ng-container>

@@ -1,4 +1,7 @@
-﻿using AuctionAngular.Dtos;
+﻿using AuctionAngular.Dtos.Auction;
+using AuctionAngular.Dtos.Bid;
+using AuctionAngular.Dtos.Vehicle;
+using AuctionAngular.Dtos.Watch;
 using AuctionAngular.Interfaces;
 using Database;
 using Database.Entities;
@@ -24,64 +27,68 @@ namespace AuctionAngular.Services
                 .FirstOrDefaultAsync(u => u.Id == id);
 
             if(vehicle is null)
-            {
                 throw new NotFoundException("Vehicle not found.");
-            }
 
             var restultPictures = _dbContext.Pictures.Where(x => x.VehicleId == vehicle!.Id);
 
             List<string> pictures = new List<string>();
 
             foreach (var pic in restultPictures)
-            {
                 pictures.Add(pic.PathImg);
-            }
-            
+
             return ViewVehicleDtoConvert(vehicle!, pictures);
         }
 
-        public async Task<IEnumerable<ViewVehiclesDto>> GetVehiclesAsync()
+        public async Task<IEnumerable<ViewVehiclesDto>> GetVehiclesAsync(bool status)
         {
-            var vehicles = await _dbContext
-                .Vehicles
-                .ToListAsync();
+            List<Vehicle> vehicles = await _dbContext.Vehicles.Where(x => x.isSold == false).ToListAsync();
 
+            return await AddPicture(vehicles, status);
+        }
+
+
+
+        public async Task<List<ViewVehiclesDto>> AddPicture(List<Vehicle> vehicles, bool status)
+        {
             var viewVehicle = new List<ViewVehiclesDto>();
+
+            var picturesBase = _dbContext.Pictures.ToList();
 
             foreach (var vehicle in vehicles)
             {
-                var restultPictures = _dbContext.Pictures.Where(x => x.VehicleId == vehicle.Id);
+                var restultPictures = picturesBase.Where(x => x.VehicleId == vehicle.Id);
 
                 var pictures = new List<string>();
 
                 foreach (var pic in restultPictures)
-                {
                     pictures.Add(pic.PathImg);
-                }
 
-                viewVehicle.Add(ViewVehiclesDtoConvert(vehicle, pictures));
+                if (vehicle.isConfirm == status)
+                    viewVehicle.Add(ViewVehiclesDtoConvert(vehicle, pictures));
             }
 
             return viewVehicle;
         }
 
-        public async Task<IEnumerable<AdminVehiclesDto>> GetVehicleAuctionEndAsync()
+        public async Task<IEnumerable<ViewAdminVehiclesDto>> GetVehicleAuctionEndAsync()
         {
             var vehicles = await _dbContext
                 .Vehicles
                 .ToListAsync();
 
-            var viewVehicle = new List<AdminVehiclesDto>();
+            var payments = _dbContext
+               .Payments;
+
+            var viewVehicle = new List<ViewAdminVehiclesDto>();
 
             foreach (var vehicle in vehicles)
             {
+                var auction = await _dbContext.Auctions.FirstOrDefaultAsync(a => a.Id == vehicle.AuctionId && a.isFinised == true);
 
-                var auction = await _dbContext.Auctions.FirstOrDefaultAsync(a => a.Id == vehicle.AuctionId && a.SalesFinised == true);
+                var payment = payments.FirstOrDefault(x => x.LotId == vehicle.Id);
 
-                if(auction != null)
-                {
+                if (auction != null && payment == null)
                     viewVehicle.Add(AdminVehiclesDtoConvert(vehicle, auction));
-                }
             }
 
             return viewVehicle;
@@ -93,9 +100,8 @@ namespace AuctionAngular.Services
 
             var bids = _dbContext.Bids.Where(x => x.UserId == id);
 
-            var vehiclesReult = await _dbContext
-                .Vehicles
-                .ToListAsync();
+            if (bids is null)
+                throw new NotFoundException("Bids not found.");
 
             List<Vehicle> vehicles = new List<Vehicle>();
 
@@ -106,28 +112,10 @@ namespace AuctionAngular.Services
                 var veh = vehiclesList.FirstOrDefault(d => d.Id == x.VehicleId);
 
                 if (veh != null)
-                {
                     vehicles.Add(veh);
-                }
             }
 
-            List<ViewVehiclesDto> viewVehicle = new List<ViewVehiclesDto>();
-
-            foreach (var vehicle in vehicles)
-            {
-                var restultPictures = _dbContext.Pictures.Where(x => x.VehicleId == vehicle.Id);
-
-                List<string> pictures = new List<string>();
-
-                foreach (var pic in restultPictures)
-                {
-                    pictures.Add(pic.PathImg);
-                }
-
-                viewVehicle.Add(ViewVehiclesDtoConvert(vehicle, pictures));
-            }
-
-            return viewVehicle;
+            return await AddPicture(vehicles, true);
         }
 
         public async Task<IEnumerable<ViewVehiclesDto>> GetAllWonAsync(int id)
@@ -136,9 +124,7 @@ namespace AuctionAngular.Services
             var bids = _dbContext.Bids.Where(x => x.UserId == id);
 
             if (bids is null)
-            {
                 throw new NotFoundException("Bids not found.");
-            }
 
             List<Vehicle> vehicles = new List<Vehicle>();
 
@@ -152,32 +138,14 @@ namespace AuctionAngular.Services
 
                 if(veh != null)
                 {
-                    var auc = auctionsList.FirstOrDefault(a => a.Id == veh.AuctionId && a.SalesFinised == true);
+                    var auc = auctionsList.FirstOrDefault(a => a.Id == veh.AuctionId && a.isFinised == true);
 
                     if (auc != null)
-                    {
                         vehicles.Add(veh);
-                    }
                 }
             }
 
-            var viewVehicle = new List<ViewVehiclesDto>();
-
-            foreach (var vehicle in vehicles)
-            {
-                var restultPictures = _dbContext.Pictures.Where(x => x.VehicleId == vehicle.Id);
-
-                List<string> pictures = new List<string>();
-
-                foreach (var pic in restultPictures)
-                {
-                    pictures.Add(pic.PathImg);
-                }
-
-                viewVehicle.Add(ViewVehiclesDtoConvert(vehicle, pictures));
-            }
-
-            return viewVehicle;
+            return await AddPicture(vehicles, true);
         }
 
         public async Task<IEnumerable<ViewVehiclesDto>> GetAllLostAsync(int id)
@@ -186,9 +154,7 @@ namespace AuctionAngular.Services
             var bids = _dbContext.Bids.Where(x => x.UserId == id);
 
             if (bids is null)
-            {
                 throw new NotFoundException("Bids not found.");
-            }
 
             List<Vehicle> vehicles = new List<Vehicle>();
 
@@ -201,32 +167,14 @@ namespace AuctionAngular.Services
                 var veh = vehiclesList.FirstOrDefault(d => d.Id == x.VehicleId && d.WinnerId != id);
                 if(veh != null)
                 {
-                    var auc = auctionsList.FirstOrDefault(a => a.Id == veh.AuctionId && a.SalesFinised == true);
+                    var auc = auctionsList.FirstOrDefault(a => a.Id == veh.AuctionId && a.isFinised == true);
 
                     if (auc != null)
-                    {
                         vehicles.Add(veh);
-                    }
                 }
             }
 
-            var viewVehicle = new List<ViewVehiclesDto>();
-
-            foreach (var vehicle in vehicles)
-            {
-                var restultPictures = _dbContext.Pictures.Where(x => x.VehicleId == vehicle.Id);
-
-                List<string> pictures = new List<string>();
-
-                foreach (var pic in restultPictures)
-                {
-                    pictures.Add(pic.PathImg);
-                }
-
-                viewVehicle.Add(ViewVehiclesDtoConvert(vehicle, pictures));
-            }
-
-            return viewVehicle;
+            return await AddPicture(vehicles, true);
         }
 
         public async Task<int> CreateVehicleAsync(CreateVehicleDto dto)
@@ -253,8 +201,9 @@ namespace AuctionAngular.Services
                 SecondaryDamage = dto.SecondaryDamage,
                 VIN = dto.VIN,
                 AuctionId = dto.AuctionId,
+                OwnerId = dto.OwnerId,
                 SaleTerm = dto.SaleTerm,
-                Highlights = dto.Highlights,
+                Category = dto.Category,
             };
 
 
@@ -269,7 +218,7 @@ namespace AuctionAngular.Services
                 throw new DbUpdateException("Error DataBase", e);
             }
 
-            await AddEventVehicleAsync(vehicle.Id, dto);
+            //await AddEventVehicleAsync(vehicle.Id, dto);
 
             return vehicle.Id;
         }
@@ -302,9 +251,7 @@ namespace AuctionAngular.Services
                 .FirstOrDefaultAsync(u => u.Id == id);
 
             if (vehicle is null)
-            {
                 throw new NotFoundException("Vehicle not found.");
-            }
 
             vehicle.Producer = dto.Producer != "" ? dto.Producer : vehicle.Producer;
             vehicle.ModelSpecifer = dto.ModelSpecifer != "" ? dto.ModelSpecifer : vehicle.ModelSpecifer;
@@ -326,8 +273,7 @@ namespace AuctionAngular.Services
             vehicle.SecondTireSet = dto.SecondTireSet.ToString() != "" ? dto.SecondTireSet : vehicle.SecondTireSet;
             vehicle.VIN = dto.VIN != "" ? dto.VIN : vehicle.VIN;
             vehicle.SaleTerm = dto.SaleTerm != "" ? dto.SaleTerm : vehicle.SaleTerm;
-            vehicle.Highlights = dto.Highlights != "" ? dto.Highlights : vehicle.Highlights;
-
+            vehicle.Category = dto.Category != "" ? dto.Category : vehicle.Category;
 
             try
             {
@@ -348,9 +294,7 @@ namespace AuctionAngular.Services
                                 .FirstOrDefaultAsync(x => x.Id == dto.lotNumber);
 
             if (vehicle is null)
-            {
                 throw new NotFoundException("Vehicle not found.");
-            }
 
             if (dto.bidNow > vehicle?.CurrentBid)
             {
@@ -362,22 +306,17 @@ namespace AuctionAngular.Services
                                   .FirstOrDefaultAsync(x => x.Id == dto.userId);
 
                 if (user is null)
-                {
                     throw new NotFoundException("User not found.");
-                }
 
                 var bind = new Bid()
                 {
                     UserId = user!.Id,
                     VehicleId = vehicle.Id,
                 };
-
                 
                 if (await _dbContext.Bids.FirstOrDefaultAsync(x => x.UserId == user.Id && x.VehicleId == vehicle.Id) == null)
-                {
                     await _dbContext.Bids.AddAsync(bind);
-                }
-                
+
                 try
                 {
                     await _dbContext.SaveChangesAsync();
@@ -388,7 +327,6 @@ namespace AuctionAngular.Services
                 }
                 return true;
             }
-
             return false;
         }
 
@@ -399,18 +337,14 @@ namespace AuctionAngular.Services
                                     .FirstOrDefaultAsync(x => x.Id == dto.UserId);
 
             if (user is null)
-            {
                 throw new NotFoundException("User not found.");
-            }
 
             var vehicle = await _dbContext
                                     .Vehicles
                                     .FirstOrDefaultAsync(x => x.Id == dto.VehicleId);
 
             if (vehicle is null)
-            {
                 throw new NotFoundException("Vehicle not found.");
-            }
 
             var observed = new Watch()
             {
@@ -429,8 +363,8 @@ namespace AuctionAngular.Services
                     Start = auction != null ? auction.DateTime: new DateTime(),
                     End = auction != null ? auction.DateTime : new DateTime(),
                     Color = vehicle.Color,
-                    AllDay = true,
-                    Owner = user!.Id,
+                    isAllDay = true,
+                    UserId = user!.Id,
                     Url = "/vehicle/lot/"+ vehicle.Id
                 };
 
@@ -455,23 +389,17 @@ namespace AuctionAngular.Services
             var vehicle = await _dbContext.Vehicles.FirstOrDefaultAsync(x => x.Id == dto.VehicleId);
 
             if (vehicle is null)
-            {
                 throw new NotFoundException("Vehicle not found.");
-            }
 
             var observed = await _dbContext.Watches.FirstOrDefaultAsync(x => x.UserId == dto.UserId && x.VehicleId == vehicle!.Id);
 
             if (observed is null)
-            {
                 throw new NotFoundException("Observed not found.");
-            }
 
             var events = await _dbContext.Events.FirstOrDefaultAsync(x => x.Title == vehicle!.Id + " " + vehicle.Producer + " " + vehicle.ModelGeneration);
 
-            if (events != null && events.Owner == dto.UserId)
-            {
+            if (events != null && events.UserId == dto.UserId)
                 _dbContext.Events.Remove(events);
-            }
 
             _dbContext.Watches.Remove(observed!);
 
@@ -490,13 +418,9 @@ namespace AuctionAngular.Services
             var result = await _dbContext.Watches.FirstOrDefaultAsync(x => x.UserId == dto.UserId && x.VehicleId == dto.VehicleId);
 
             if (result == null)
-            {
                 return false;
-            }
             else
-            {
                 return true;
-            }
         }
         public async Task<IEnumerable<ViewVehiclesDto>> GetAllWatchAsync(int id)
         {
@@ -505,28 +429,9 @@ namespace AuctionAngular.Services
             var vehicles = new List<Vehicle>();
 
             foreach(var watch in watches)
-            {
-                var result = await _dbContext.Vehicles.FirstOrDefaultAsync(x => x.Id == watch.VehicleId);
-                vehicles.Add(result);
-            }
+                vehicles.Add(await _dbContext.Vehicles.FirstOrDefaultAsync(x => x.Id == watch.VehicleId));
 
-            var viewVehicle = new List<ViewVehiclesDto>();
-
-            foreach (var vehicle in vehicles)
-            {
-                var restultPictures = _dbContext.Pictures.Where(x => x.VehicleId == vehicle.Id);
-
-                List<string> pictures = new List<string>();
-
-                foreach (var pic in restultPictures)
-                {
-                    pictures.Add(pic.PathImg);
-                }
-
-                viewVehicle.Add(ViewVehiclesDtoConvert(vehicle, pictures));
-            }
-
-            return viewVehicle;
+            return await AddPicture(vehicles, true);
         }
 
         public async Task<List<string>> AddPictureAsync(int id, IFormFileCollection files)
@@ -573,8 +478,8 @@ namespace AuctionAngular.Services
                 Start = auction!.DateTime,
                 End = auction.DateTime,
                 Color = dto.Color,
-                AllDay = false,
-                Owner = 0, //For All Users
+                isAllDay = false,
+                UserId = 0, //For All Users
                 Url = "/vehicle/lot"+id
             };
 
@@ -588,8 +493,41 @@ namespace AuctionAngular.Services
             {
                 throw new DbUpdateException("Error DataBase", e);
             }
-
         }
+
+
+        public async Task ConfirmVehicleAsync(int id)
+        {
+
+            var vehicle = await _dbContext
+                                .Vehicles
+                                .FirstOrDefaultAsync(x => x.Id == id);
+
+
+            if (vehicle != null && vehicle.AuctionId != 0)
+            {
+                var auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.Id == vehicle.AuctionId);
+                if(auction!.DateTime > DateTime.Now)
+                {
+                    vehicle!.isConfirm = !vehicle.isConfirm;
+                }
+                else
+                    throw new Exception();
+
+            }
+            else
+                throw new Exception();
+
+            try
+            {
+                await _dbContext.SaveChangesAsync();
+            }
+            catch (DbUpdateException e)
+            {
+                throw new DbUpdateException("Error DataBase", e);
+            }
+        }
+
 
         public async Task SoldVehicleAsync(int id)
         {
@@ -598,14 +536,46 @@ namespace AuctionAngular.Services
                                 .Vehicles
                                 .FirstOrDefaultAsync(x => x.Id == id);
 
-            var payment = await _dbContext
-                                .Payments
-                                .FirstOrDefaultAsync(x => x.LotId == id);
+            //var payment = await _dbContext
+            //                    .Payments
+            //                    .FirstOrDefaultAsync(x => x.LotId == id);
 
-            if(payment != null)
+
+            if (vehicle != null)
             {
-                vehicle!.Sold = !vehicle.Sold;
-                payment!.StatusSell = !payment.StatusSell;
+                vehicle!.isSold = !vehicle.isSold;
+            }
+            else
+                throw new Exception();
+
+            //if (payment != null)
+            //{
+            //    vehicle!.isSold = !vehicle.isSold;
+            //    payment!.isSold = !payment.isSold;
+            //}
+            //else
+            //    throw new Exception();
+
+            try
+            {
+                await _dbContext.SaveChangesAsync();
+            }
+            catch (DbUpdateException e)
+            {
+                throw new DbUpdateException("Error DataBase", e);
+            }
+        }
+
+        public async Task SetAuctionForVehicleAsync(SetAuctionDto dto)
+        {
+
+            var vehicle = await _dbContext
+                                .Vehicles
+                                .FirstOrDefaultAsync(x => x.Id == dto.userId);
+
+            if (vehicle != null)
+            {
+                vehicle!.AuctionId = dto.auctionId;
             }
 
             try
@@ -644,14 +614,15 @@ namespace AuctionAngular.Services
                 PrimaryDamage = vehicle.PrimaryDamage,
                 SecondaryDamage = vehicle.SecondaryDamage,
                 VIN = vehicle.VIN,
-                Highlights = vehicle.Highlights,
+                Category = vehicle.Category,
                 SaleTerm = vehicle.SaleTerm,
                 CurrentBid = vehicle.CurrentBid,
                 WinnerId = vehicle.WinnerId,
+                OwnerId = vehicle.OwnerId,
                 Images = pictures,
                 DateTime = auction != null ? auction.DateTime: new DateTime(),
-                Sold = vehicle.Sold,
-                WaitingForConfirm = auction.SalesFinised
+                isSold = vehicle.isSold,
+                WaitingForConfirm = auction != null ? auction.isFinised : false,
             };
         }
 
@@ -662,6 +633,7 @@ namespace AuctionAngular.Services
             return new ViewVehiclesDto()
             {
                 LotNumber = vehicle.Id,
+                AuctionNumber = vehicle.AuctionId,
                 Image = pictures.Count() == 0 ? "" : pictures.First(),
                 Producer = vehicle.Producer,
                 ModelSpecifer = vehicle.ModelSpecifer,
@@ -670,19 +642,18 @@ namespace AuctionAngular.Services
                 MeterReadout = vehicle.MeterReadout,
                 DateTime = auction != null ? auction!.DateTime : new DateTime(),
                 CurrentBid = vehicle.CurrentBid,
-                Sold = vehicle.Sold,
+                isSold = vehicle.isSold,
+                isConfirm = vehicle.isConfirm,
             };
         }
 
 
-        
-
-
-        public AdminVehiclesDto AdminVehiclesDtoConvert(Vehicle vehicle, Auction auction)
+        public ViewAdminVehiclesDto AdminVehiclesDtoConvert(Vehicle vehicle, Auction auction)
         {
-            return new AdminVehiclesDto()
+            return new ViewAdminVehiclesDto()
             {
                 LotNumber = vehicle.Id,
+                AuctionNumber = vehicle.AuctionId,
                 Producer = vehicle.Producer,
                 ModelSpecifer = vehicle.ModelSpecifer,
                 ModelGeneration = vehicle.ModelGeneration,
@@ -690,7 +661,8 @@ namespace AuctionAngular.Services
                 MeterReadout = vehicle.MeterReadout,
                 DateTime = auction!.DateTime,
                 CurrentBid = vehicle.CurrentBid,
-                Sold = vehicle.Sold,
+                isSold = vehicle.isSold,
+                isConfirm = vehicle.isConfirm
             };
         }
     }

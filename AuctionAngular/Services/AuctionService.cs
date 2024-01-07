@@ -1,4 +1,5 @@
-﻿using AuctionAngular.Dtos;
+﻿using AuctionAngular.Dtos.Auction;
+using AuctionAngular.Dtos.Vehicle;
 using AuctionAngular.Interfaces;
 using Database;
 using Database.Entities;
@@ -17,14 +18,14 @@ namespace AuctionAngular.Services
 
         public async Task<bool> LiveAuctionAsync()
         {
-            var auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.DateTime <= DateTime.Now && x.DateTime.AddHours(1) >= DateTime.Now && x.SalesFinised == false);
+            var auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.DateTime <= DateTime.Now && x.DateTime.AddHours(1) >= DateTime.Now && x.isFinised == false);
 
             return auction != null ? true : false;
         }
 
         public async Task<bool> StartedAuctionAsync()
         {
-            var auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.DateTime <= DateTime.Now && x.DateTime.AddHours(1) >= DateTime.Now && x.SalesStarted == true);
+            var auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.DateTime <= DateTime.Now && x.DateTime.AddHours(1) >= DateTime.Now && x.isStarted == true);
 
             return auction != null ? true : false;
         }
@@ -33,9 +34,9 @@ namespace AuctionAngular.Services
         {
             await Console.Out.WriteLineAsync("Auction Start!!!");
 
-            var auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.DateTime <= DateTime.Now && x.DateTime.AddHours(1) >= DateTime.Now && x.SalesFinised == false);
+            var auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.DateTime <= DateTime.Now && x.DateTime.AddHours(1) >= DateTime.Now && x.isFinised == false);
 
-            auction!.SalesStarted = true;
+            auction!.isStarted = true;
 
             try
             {
@@ -56,11 +57,11 @@ namespace AuctionAngular.Services
         {
             await Console.Out.WriteLineAsync("Auction End!!!");
 
-            var auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.SalesStarted == true && x.SalesFinised == false);
+            var auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.isStarted == true && x.isFinised == false);
 
             if (auction != null && auction!.DateTime.AddMinutes(1) <= DateTime.Now)
             {
-                auction.SalesFinised = true;
+                auction.isFinised = true;
             }
             
 
@@ -78,13 +79,16 @@ namespace AuctionAngular.Services
         {
             var location = await _dbContext.Locations.FirstOrDefaultAsync(x => x.Name == dto.Location);
 
+            if (dto.AuctionDate < DateTime.Now)
+                throw new Exception();
+
             var auction = new Auction()
             {
-                DateTime = dto.AuctionDate,
+                DateTime = dto.AuctionDate.AddHours(12),
                 LocationId = location != null ? location.Id : 0,
                 Description = dto.Description,
-                SalesStarted = false,
-                SalesFinised = false
+                isStarted = false,
+                isFinised = false
             };
 
             _dbContext.Auctions.Add(auction);
@@ -162,7 +166,7 @@ namespace AuctionAngular.Services
 
         public async Task<IEnumerable<ViewVehicleDto>> LiveAuctionListAsync()
         {
-            var auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.DateTime <= DateTime.Now && x.DateTime.AddHours(1) >= DateTime.Now && x.SalesFinised == false && x.SalesStarted == true);
+            var auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.DateTime <= DateTime.Now && x.DateTime.AddHours(1) >= DateTime.Now && x.isFinised == false && x.isStarted == true);
 
             var result = new List<ViewVehicleDto>();
 
@@ -194,13 +198,16 @@ namespace AuctionAngular.Services
 
         public async Task<IEnumerable<ViewAuctionDto>> AuctionListAsync()
         {
-            var auctions = await _dbContext.Auctions.Where(x => x.SalesFinised == false).ToListAsync();
+            var auctions = await _dbContext.Auctions.Where(x => x.isFinised == false).ToListAsync();
 
             var auctionDto = new List<ViewAuctionDto>();
 
             foreach (var auc in auctions)
             {
-                auctionDto.Add(await ViewAuctionDtoConvert(auc));
+                if (auc.DateTime > DateTime.Now)
+                {
+                    auctionDto.Add(await ViewAuctionDtoConvert(auc));
+                }
             }
 
             return auctionDto;
@@ -233,12 +240,13 @@ namespace AuctionAngular.Services
                 PrimaryDamage = vehicle.PrimaryDamage,
                 SecondaryDamage = vehicle.SecondaryDamage,
                 VIN = vehicle.VIN,
-                Highlights = vehicle.Highlights,
+                Category = vehicle.Category,
+                DateTime = auction!.DateTime,
                 CurrentBid = vehicle.CurrentBid,
                 WinnerId = vehicle.WinnerId,
                 Images = pictures,
-                Sold = vehicle.Sold,
-                WaitingForConfirm = auction.SalesFinised
+                isSold = vehicle.isSold,
+                WaitingForConfirm = auction.isFinised
             };
         }
 

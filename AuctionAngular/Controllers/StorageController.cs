@@ -26,77 +26,77 @@ namespace AuctionAngular.Controllers
             _configuration = configuration;
         }
 
-        [HttpGet("[action]")]
-        public async Task<ActionResult<Uri>> GetVehicleImage(string fileName)
-        {
-            var containerClient = _blobServiceClient.GetBlobContainerClient(containerVehicleImages);
-            var blobClient = containerClient.GetBlobClient(fileName);
+        //[HttpGet("[action]")]
+        //public async Task<ActionResult<Uri>> GetVehicleImage(string fileName)
+        //{
+        //    var containerClient = _blobServiceClient.GetBlobContainerClient(containerVehicleImages);
+        //    var blobClient = containerClient.GetBlobClient(fileName);
 
-            return Ok(blobClient.Uri);
-        }
-
-
-        [HttpPost("[action]/{id}")]
-        public async Task<ActionResult<FileNameDto>> UploadVehicleImage([FromRoute] int id)
-        {
-            IFormFile formFile = Request.Form.Files[0];
-            var containerClient = _blobServiceClient.GetBlobContainerClient(containerVehicleImages);
-            var blobClient = containerClient.GetBlobClient(formFile.FileName);
-            using (var stream = formFile.OpenReadStream())
-            {
-                await blobClient.UploadAsync(stream);
-            }
-
-            var fileName = new FileNameDto()
-            {
-                Name = formFile.FileName,
-            };
-
-            return Ok(fileName);
-        }
+        //    return Ok(blobClient.Uri);
+        //}
 
 
+        //[HttpPost("[action]/{id}")]
+        //public async Task<ActionResult<FileNameDto>> UploadVehicleImage([FromRoute] int id)
+        //{
+        //    IFormFile formFile = Request.Form.Files[0];
+        //    var containerClient = _blobServiceClient.GetBlobContainerClient(containerVehicleImages);
+        //    var blobClient = containerClient.GetBlobClient(formFile.FileName);
+        //    using (var stream = formFile.OpenReadStream())
+        //    {
+        //        await blobClient.UploadAsync(stream);
+        //    }
+
+        //    var fileName = new FileNameDto()
+        //    {
+        //        Name = formFile.FileName,
+        //    };
+
+        //    return Ok(fileName);
+        //}
 
 
-        [HttpGet("[action]")]
-        public async Task<ActionResult<Uri>> GetProfileImage(string fileName)
-        {
-            var containerClient = _blobServiceClient.GetBlobContainerClient(containerProfileImages);
-            var blobClient = containerClient.GetBlobClient(fileName);
-
-            return Ok(blobClient.Uri);
-        }
 
 
-        [HttpPost("[action]/{id}")]
-        public async Task<IActionResult> UploadProfileImage([FromRoute] int id)
-        {
-            IFormFile formFile = Request.Form.Files[0];
+        //[HttpGet("[action]")]
+        //public async Task<ActionResult<Uri>> GetProfileImage(string fileName)
+        //{
+        //    var containerClient = _blobServiceClient.GetBlobContainerClient(containerProfileImages);
+        //    var blobClient = containerClient.GetBlobClient(fileName);
 
-            string uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(formFile.FileName);
+        //    return Ok(blobClient.Uri);
+        //}
 
 
-            var containerClient = _blobServiceClient.GetBlobContainerClient(containerProfileImages);
-            var blobClient = containerClient.GetBlobClient(uniqueFileName);
-            using (var stream = formFile.OpenReadStream())
-            {
-                await blobClient.UploadAsync(stream);
-            }
+        //[HttpPost("[action]/{id}")]
+        //public async Task<IActionResult> UploadProfileImage([FromRoute] int id)
+        //{
+        //    IFormFile formFile = Request.Form.Files[0];
 
-            var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == id);
-            user.ProfilePicture = uniqueFileName;
+        //    string uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(formFile.FileName);
 
-            try
-            {
-                await _dbContext.SaveChangesAsync();
-            }
-            catch (DbUpdateException e)
-            {
-                throw new DbUpdateException("Error DataBase", e);
-            }
 
-            var response = new { Message = "Upload successfully!" };
-            return Ok(response);
-        }
+        //    var containerClient = _blobServiceClient.GetBlobContainerClient(containerProfileImages);
+        //    var blobClient = containerClient.GetBlobClient(uniqueFileName);
+        //    using (var stream = formFile.OpenReadStream())
+        //    {
+        //        await blobClient.UploadAsync(stream);
+        //    }
+
+        //    var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == id);
+        //    user.ProfilePicture = uniqueFileName;
+
+        //    try
+        //    {
+        //        await _dbContext.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateException e)
+        //    {
+        //        throw new DbUpdateException("Error DataBase", e);
+        //    }
+
+        //    var response = new { Message = "Upload successfully!" };
+        //    return Ok(response);
+        //}
     }
 }

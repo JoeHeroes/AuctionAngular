@@ -4,12 +4,17 @@
     "editEvent": "Edit Event",
     "addVehicle": "Add Vehicle",
     "editVehicle": "Edit Vehicle",
+    "checkVehicle": "Check Vehicle",
     "addAuction": "Add Auction",
     "editAuction": "Edit Auction",
+    "addOpinion": "Add Opinion",
+    "checkOpinion": "Check Opinion",
     "add": "Add",
     "save": "Save",
     "back": "Back",
     "watch": "Watch",
+    "send": "Send Email",
+    "contact": "Contact With Seller",
     "removeWatch": "Remove Watch",
     "editProfile": "Edit Profile",
     "upload": "Upload",
@@ -20,11 +25,14 @@
     "saveProfile": "Save Profile",
     "auction":"Auction is on now",
     "calendarManage": "Calendar management",
-    "download":"Download"
+    "download":"Download",
+    "setAuctionNumber": "Set Auction Number"
   },
   "menu": {
     "home": "Home",
     "vehicle": "Vehicles",
+    "vehicle-add":"Add Vehicle",
+    "vehicle-status": "Check Vehicle",
     "vehicle-bids": "Bids",
     "vehicle-won": "Won",
     "vehicle-lost": "Lost",
@@ -36,8 +44,10 @@
     "location": "Location",
     "services": "Services",
     "support": "Support",
+    "verification-vehicle": "Verification",
     "panel-vehicle":"Vehicle panel",
-    "panel-auction":"Auction panel"
+    "panel-auction":"Auction panel",
+    "panel-invoice":"Invoice panel"
   },
   "vehicle": {
     "image": "Image",
@@ -76,8 +86,12 @@
     "watchlist": "Vehicle Watchlist",
     "paymentDue": "Payment Due",
     "paymentHistory": "Payment History",
-    "picture":"Picture",
-    "search":"Search..."
+    "picture": "Picture",
+    "search": "Search...",
+    "bids": "Bids",
+    "bidNow": "Bid Now",
+    "generalInformation": "General Information",
+    "bidInformation":"Bid Information"
   },
   "auction":{
     "list":"List of Auctions",
@@ -113,13 +127,16 @@
     "dateOfBirth": "Date Birth",
     "role": "Role",
     "profile": "Profile",
-    "description": "Description"
+    "description": "Description",
+    "option": "Option"
   },
   "message":{
     "title": "Not Found Page",
     "message": "We could found page",
     "goBack": "go Back",
-    "noAuction": "There are no current Live Auctions"
+    "noAuction": "There are no current Live Auctions",
+    "noOpinion": "No opinion",
+    "vehicleWaiting": "Vehicle waiting for confirm"
   },
   "calendar":{
     "title": "Title",
@@ -132,28 +149,48 @@
   "notification":{
     "loggedOut": "Logged out",
     "loggedIn": "Logged in",
-    "registered": "Registered",
-    "loggedInFail": "Login failed",
-    "registeredFail": "Registration failed",
-    "bid":"Your bid is the highest",
-    "bidFail":"Your bid is not the highest"
+    "registeredCorrect": "Registered Correct",
+    "registeredFail": "Registration Failed",
+    "vehicleAddCorrect": "Vehicle Added Correct",
+    "vehicleAddFail": "Vehicle Added Fail",
+    "pictureAddCorrect":"Picture Added Correct",
+    "pictureAddFail":"Picture Added Fail",
+    "setAuctionCorrect":"Auction Set Correct",
+    "setAuctionFail":"Auction Set Fail",
+    "confirmVehicleCorrect":"Vehicle Confirm Correct",
+    "confirmVehicleFail":"Set Correct Auction ID",
+    "deleteVehicleCorrect":"Vehicle Delete Correct",
+    "deleteVehicleFail":"Vehicle Delete Fail",
+    "vehicleWatchCorrect":"Vehicle Watch Correct",
+    "vehicleWatchFail":"Vehicle Watch Fail",
+    "vehicleUnwatchCorrect":"Vehicle Unwatch Correct",
+    "vehicleUnwatchFail":"Vehicle Unwatch Fail",
+    "profileEditCorrect":"Profile Edit Correct",
+    "profileEditFail":"Profile Edit Fail",
+    "sellVehicleCorrect":"Vehicle Sell Correct",
+    "sellVehicleFail":"Vehicle Sell Fail",
+    "bidVehicleCorrect":"Your bid is the highest",
+    "bidVehicleFail":"Vehicle Added Fail",
+    "addAuctionCorrect":"Auction Added Correct",
+    "addAuctionFail":"Auction Added Fail",
+    "addOpinionCorrect":"Opinion Added Correct",
+    "addOpinionFail":"Opinion Added Fail",
+    "deleteEventCorrect":"Event Delete Correct",
+    "deleteEventFail":"Event Delete Fail",
+    "addEventCorrect":"Event Added Correct",
+    "addEventFail":"Event Added Fail",
+    "editEventCorrect":"Event Edit Correct",
+    "editEventFail":"Event Edit Fail",
+    "minDate":"The date cannot be in the past",
+    "maxDate":"The date cannot be in the future",
+    "sendEmail":"Message sent successfully",
+    "sendEmailFail":"Message sent incorrectly"
   },
   "dashboard":{
     "title":"Dashboard",
     "text1":"carWink has over ",
     "text2":" vehicles on sell"
   },
-  "support":{
-    "readMore":"Read more",
-    "learnMore":"Learn more",
-    "contactUS":"Contact us",
-    "contactUSDescription":"Having questions or needing help? carWink is at your service. Contact us by email or phone.",
-    "FAQ":"FAQ",
-    "FAQDescription":"Having questions or wondering how it works? Learn more on our FAQ page.",
-    "howToBuy":"How to buy",
-    "howToBuyDescription":"You have no idea what the whole buying process looks like. Learn more about buying details and more."
-  },
-
   "payment":{
     "saleDate":"Sale Date",
     "lot":"Lot",
@@ -165,36 +202,33 @@
     "invoice":"Invoice",
     "status":"Status"
   },
-
   "admin":{
+    "panel-verification":"Vehicles Verification Panel",
     "panel-vehicles":"Vehicles Management Panel",
     "panel-auctions":"Auctions Management Panel",
+    "panel-invoices":"Invoices Management Panel",
     "confirm": "Confirm sell",
     "invoice": "Generate Invoice",
     "edit": "Edit",
     "delete": "Delete",
     "sell": "Sell",
     "sold": "Sold",
-    "back": "Back"
+    "back": "Back",
+    "set":"Set Auction",
+    "detail": "Detail",
+    "cancel": "Cancel",
+    "accept": "Accept",
+    "opinion": "Opinion"
   },
-
-  "howToBuy":{
-    "line1":"How to Buy Vehicles from carWink",
-    "line2":"Copart Finland auctions are held 100% online, so you can search and bid vehicles at home or on the go. Copart Finland specializes in salvage car auctions.",
-    "line3":"Copart.fi takes the guess work out of finding the perfect vehicle for your next project.",
-    "line4":"Copart provides key information on every vehicle in our inventory to make it easy for members to bid on and win also clean title used vehicles; hassle-free.",
-    "line5":"Use",
-    "line6":"Vehicle Finder",
-    "line7":" to explore the range of Cars, Trucks, Moped/Scooters, Vans and more.",
-    "line8":"There are four Copart locations plus more than 20 sublots in Finland to store and resell vehicles. carWink operates in 11 countries. Copart Finland's experience in damaged vehicles have now been combined with Copart Inc.'s international and modern auction technology.",
-    "line9":"Follow the following steps, and you'll be on your way to bidding and buying in carWink Finland auctions:",
-
-    "line10":"Join",
-    "line11":"Search vehicles",
-    "line12":"Vehicle preview",
-    "line13":"Join auctions",
-    "line14":"Place bids",
-    "line15":"After auction",
-    "line16":"Fees and pricelist"
+  "email":{
+    "title":"Title",
+    "body":"Body"
+  },
+  "opinion":{
+    "vehicle":"Vehicle opinion",
+    "description":"Description",
+    "origin":"Origin",
+    "valuation":"Valuation",
+    "condition":"Condition"
   }
 }

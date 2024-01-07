@@ -1,0 +1,55 @@
+<div class="center">
+  <ng-container *transloco="let t">
+    <br />
+    <dx-toolbar>
+      <dxi-item location="before">
+        <h1 style="font-weight: bold">{{t('vehicle.paymentDue')}}</h1>
+      </dxi-item>
+    </dx-toolbar>
+    <br />
+    <div>
+      <dx-data-grid id="gridContainer" [dataSource]="datasource" [showBorders]="true" [hoverStateEnabled]="true">
+        <dxo-filter-row [visible]="true"></dxo-filter-row>
+        <dxo-scrolling rowRenderingMode="virtual"> </dxo-scrolling>
+        <dxo-sorting mode="multiple"></dxo-sorting>
+        <dxo-paging [pageSize]="10"> </dxo-paging>
+        <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"
+          [placeholder]="t('vehicle.search')"></dxo-search-panel>
+        <dxo-pager [visible]="true" [allowedPageSizes]="allowedPageSizes" [displayMode]="displayMode"
+          [showPageSizeSelector]="true" [showInfo]="true" [showNavigationButtons]="true">
+        </dxo-pager>
+        <dxi-column dataField="saleDate" [caption]="t('payment.saleDate')" dataType="date"
+          [filterOperations]="['startswith']" [width]="160" [allowSorting]="true"></dxi-column>
+        <dxi-column dataField="lotId" [caption]="t('payment.lot')" [allowFiltering]="true"
+          [allowSorting]="false"></dxi-column>
+        <dxi-column dataField="location" [caption]="t('payment.location')" [allowFiltering]="false"
+          [allowSorting]="true"></dxi-column>
+        <dxi-column dataField="description" [caption]="t('payment.description')" [allowFiltering]="false"
+          [allowSorting]="true"></dxi-column>
+        <dxi-column dataField="invoiceAmount" [caption]="t('payment.invoiceAmount')" [allowFiltering]="false"
+          [allowSorting]="true"></dxi-column>
+        <dxi-column dataField="lastInvoicePaidDate" [caption]="t('payment.lastInvoicePaidDate')" dataType="date"
+          [allowFiltering]="false" [width]="160" [allowSorting]="true"></dxi-column>
+        <dxi-column dataField="lotLeftLocationDate" [caption]="t('payment.lotLeftLocationDate')" dataType="date"
+          [allowFiltering]="false" [width]="160" [allowSorting]="true"></dxi-column>
+        <dxi-column type="buttons" dataField="invoice" [caption]="t('payment.invoice')" cellTemplate="cellTemplate">
+        </dxi-column>
+        <div *dxTemplate="let data of 'cellTemplate'">
+          <span style="cursor: pointer; font-weight: bold" (click)="downloadClick(data.data.lotId)">{{t('action.download')}}</span>
+        </div>
+        <div *dxTemplate="let d of 'discountCellTemplate'">
+          <div class="chart-cell">
+            <dx-bullet [showTarget]="false" [showZeroLevel]="true" [startScaleValue]="0" [endScaleValue]="100"
+              [value]="d.value * 100">
+              <dxo-size [width]="150" [height]="35"></dxo-size>
+              <dxo-tooltip [enabled]="true" [paddingTopBottom]="2">
+                <dxo-font [size]="18"></dxo-font>
+              </dxo-tooltip>
+              <dxo-margin [top]="5" [bottom]="0" [left]="5"></dxo-margin>
+            </dx-bullet>
+          </div>
+        </div>
+      </dx-data-grid>
+    </div>
+  </ng-container>
+</div>

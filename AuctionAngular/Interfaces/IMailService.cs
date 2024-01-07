@@ -1,4 +1,4 @@
-﻿using AuctionAngular.Dtos;
+﻿using AuctionAngular.Dtos.MailDto;
 
 namespace AuctionAngular.Interfaces
 {

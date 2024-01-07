@@ -33,12 +33,14 @@ namespace Database.Entities
         public string PrimaryDamage { get; set; }
         public string SecondaryDamage { get; set; }
         public string VIN { get; set; } = null!;
-        public string Highlights { get; set; }
+        public string Category { get; set; }
         [DisplayName("Sale Term")]
         public string SaleTerm { get; set; }
         public int CurrentBid { get; set; }
+        public bool isSold { get; set; }
+        public bool isConfirm { get; set; }
+        public int OwnerId { get; set; }
         public int WinnerId { get; set; }
         public int AuctionId { get; set; }
-        public bool Sold { get; set; }
     }
 }

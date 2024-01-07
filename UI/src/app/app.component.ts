@@ -42,7 +42,7 @@ export class AppComponent implements OnInit {
       })
     ).subscribe((routeTitle: string) => {
       if (routeTitle) {
-        this.titleService.setTitle(routeTitle + ' | CP');
+        this.titleService.setTitle(routeTitle + ' | CW');
       } else {
         this.titleService.setTitle("carWink Poland")
       }

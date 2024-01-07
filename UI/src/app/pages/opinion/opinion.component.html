@@ -1,0 +1,26 @@
+<ng-container *transloco="let t">
+    <div class="p-3 py-5" *ngIf="datasource" >
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4 class="text-right"><span style="font-weight:bold;">{{t('opinion.vehicle')}}</span></h4>
+            </div>
+            <div class="dx-fieldset">
+              <div class="dx-field">
+                <span style="font-weight:bold;">{{t('opinion.description')}}: </span> {{datasource.description}}
+              </div>
+              <div class="dx-field">
+                <span style="font-weight:bold;">{{t('opinion.origin')}}: </span> {{datasource.origin}}
+              </div>
+              <div class="dx-field">
+                <span style="font-weight:bold;">{{t('opinion.valuation')}}: </span> {{datasource.valuation}}
+              </div>
+              <div class="dx-field">
+                <span style="font-weight:bold;">{{t('opinion.condition')}}: </span> {{datasource.condition}}
+              </div>
+            </div>
+          </div>
+          <div class="p-3 py-5" *ngIf="!datasource" >
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h2 class="text-right"><span style="font-weight:bold;">{{t('message.noOpinion')}}</span></h2>
+            </div>
+          </div>
+</ng-container>

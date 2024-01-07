@@ -1,6 +1,5 @@
-﻿using AuctionAngular.Interfaces;
-using AuctionAngular.Services.NewFolder;
-using Azure;
+﻿using AuctionAngular.Dtos.Invoice;
+using AuctionAngular.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AuctionAngular.Controllers
@@ -30,7 +29,7 @@ namespace AuctionAngular.Controllers
         [HttpPost("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> GeneratePDF([FromBody] PDFInfo info)
+        public async Task<IActionResult> GeneratePDF([FromBody] InfoDto info)
         {
             var file = await _invoiceService.GeneratePDFAsync(info);
 

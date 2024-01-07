@@ -1,4 +1,4 @@
-﻿using AuctionAngular.Dtos;
+﻿using AuctionAngular.Dtos.Payment;
 using AuctionAngular.Interfaces;
 using Database;
 using Database.Entities;
@@ -21,13 +21,13 @@ namespace AuctionAngular.Services
               .Payments
               .FirstOrDefaultAsync(x => x.LotId == dto.LotId);
 
-            if(result != null)
-            {
+            if (result != null)
                 return result.Id;
-            }
-
 
             var vehicle = await _dbContext.Vehicles.FirstOrDefaultAsync(u => u.Id == dto.LotId);
+
+            if (vehicle!.isSold == false)
+                throw new Exception();
 
             var auction = await _dbContext.Auctions.FirstOrDefaultAsync(u => u.Id == dto.AuctionId);
 
@@ -40,8 +40,7 @@ namespace AuctionAngular.Services
                 InvoiceAmount = dto.InvoiceAmount,
                 LastInvoicePaidDate = DateTime.Now,
                 LotLeftLocationDate = dto.LotLeftLocationDate,
-                StatusSell = false,
-                InvoiceGenereted = false,
+                isInvoiceGenereted = true,
                 UserId = vehicle!.WinnerId
             };
 
@@ -94,8 +93,7 @@ namespace AuctionAngular.Services
 
             result.InvoiceAmount = dto.InvoiceAmount;
             result.LotLeftLocationDate = dto.LotLeftLocationDate;
-            result.StatusSell = dto.StatusSell;
-            result.InvoiceGenereted = dto.InvoiceGenereted;
+            result.isInvoiceGenereted = dto.InvoiceGenereted;
 
             try
             {
@@ -133,10 +131,11 @@ namespace AuctionAngular.Services
 
             foreach (var payment in payments)
             {
-                if(payment.UserId == userId)
-                {
+                if (userId == 0 && payment.isInvoiceGenereted==true)
                     viewPayment.Add(ViewPaymentDtoConvert(payment));
-                }
+
+                if (payment.UserId == userId)
+                    viewPayment.Add(ViewPaymentDtoConvert(payment));
             }
             return viewPayment;
         }
@@ -149,13 +148,12 @@ namespace AuctionAngular.Services
             {
                 SaleDate = payment.SaleDate,
                 LotId = payment.LotId,
-                Location = location!.Name,
+                Location = location != null ? location!.Name : "" ,
                 Description = payment.Description,
                 InvoiceAmount = payment.InvoiceAmount,
                 LastInvoicePaidDate = payment.LastInvoicePaidDate,
                 LotLeftLocationDate = payment.LotLeftLocationDate,
-                StatusSell = payment.StatusSell,
-                InvoiceGenereted = payment.InvoiceGenereted
+                InvoiceGenereted = payment.isInvoiceGenereted
             };
         } 
     }

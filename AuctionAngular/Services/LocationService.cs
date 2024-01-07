@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using AuctionAngular.Interfaces;
-using AuctionAngular.Dtos;
 using Database;
 using Database.Entities;
+using AuctionAngular.Dtos.Location;
 
 namespace AuctionAngular.Services
 {
@@ -64,7 +64,6 @@ namespace AuctionAngular.Services
                 City = location.City,
                 Street = location.Street,
                 PostalCode = location.PostalCode,
-                Picture = location.Picture,
             };
         }
     }

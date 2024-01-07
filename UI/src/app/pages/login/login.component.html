@@ -1,0 +1,29 @@
+<ng-container *transloco="let t">
+    <form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)">
+        <h3>{{t('account.login')}}</h3>
+        <div class="dx-fieldset">
+            <div class="dx-field">
+                <div class="dx-field-label">{{t('account.email')}}</div>
+                <div class="dx-field-value">
+                    <input type="text" id="email" formControlName="email" class="form-control" />
+                </div>
+            </div>
+            <div class="dx-field">
+                <div class="dx-field-label">{{t('account.password')}}</div>
+                <div class="dx-field-value">
+                    <input type="password" id="password" formControlName="password" class="form-control" />
+                </div>
+            </div>
+            <div class="error" *ngIf="showError" >{{errorMessage}}</div> 
+        </div>
+        <dx-validation-summary id="summary"></dx-validation-summary>
+        <div style="text-align: center;">
+            <a routerLink="/account/register" class="btn btn-link">{{t('account.register')}}</a>
+            <button [disabled]="loading" class="btn btn-primary" id="button" type="default"
+                useSubmitBehavior="true">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                {{t('account.login')}}
+            </button>
+        </div>
+    </form>
+</ng-container>

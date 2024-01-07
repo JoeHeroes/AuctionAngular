@@ -40,10 +40,10 @@ namespace Database.Migrations
                     b.Property<int>("LocationId")
                         .HasColumnType("int");
 
-                    b.Property<bool>("SalesFinised")
+                    b.Property<bool>("isFinised")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("SalesStarted")
+                    b.Property<bool>("isStarted")
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
@@ -78,9 +78,6 @@ namespace Database.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<bool>("AllDay")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Color")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -92,9 +89,6 @@ namespace Database.Migrations
                     b.Property<DateTime>("End")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Owner")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("Start")
                         .HasColumnType("datetime2");
 
@@ -105,6 +99,12 @@ namespace Database.Migrations
                     b.Property<string>("Url")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("isAllDay")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
@@ -123,7 +123,7 @@ namespace Database.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("County")
+                    b.Property<string>("Country")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -136,10 +136,6 @@ namespace Database.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Picture")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -179,16 +175,50 @@ namespace Database.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("Sent")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("isSent")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
 
                     b.ToTable("Messages");
+                });
+
+            modelBuilder.Entity("Database.Entities.Opinion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Condition")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Origin")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Valuation")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("VehicleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Opinions");
                 });
 
             modelBuilder.Entity("Database.Entities.Payment", b =>
@@ -206,9 +236,6 @@ namespace Database.Migrations
                     b.Property<int>("InvoiceAmount")
                         .HasColumnType("int");
 
-                    b.Property<bool>("InvoiceGenereted")
-                        .HasColumnType("bit");
-
                     b.Property<DateTime>("LastInvoicePaidDate")
                         .HasColumnType("datetime2");
 
@@ -224,11 +251,11 @@ namespace Database.Migrations
                     b.Property<DateTime>("SaleDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("StatusSell")
-                        .HasColumnType("bit");
-
                     b.Property<int>("UserId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("isInvoiceGenereted")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
@@ -287,9 +314,6 @@ namespace Database.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("EmialConfirmed")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -317,6 +341,9 @@ namespace Database.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("isConfirmed")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
 
                     b.ToTable("Users");
@@ -334,6 +361,10 @@ namespace Database.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("BodyType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Category")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -358,10 +389,6 @@ namespace Database.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Highlights")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<long>("MeterReadout")
                         .HasColumnType("bigint");
 
@@ -374,6 +401,9 @@ namespace Database.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("NumberKeys")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OwnerId")
                         .HasColumnType("int");
 
                     b.Property<string>("PrimaryDamage")
@@ -401,9 +431,6 @@ namespace Database.Migrations
                     b.Property<bool>("ServiceManual")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("Sold")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Transmission")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -414,6 +441,12 @@ namespace Database.Migrations
 
                     b.Property<int>("WinnerId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("isConfirm")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("isSold")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 

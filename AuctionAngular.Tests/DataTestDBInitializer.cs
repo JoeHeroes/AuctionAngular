@@ -1,5 +1,4 @@
-﻿using AuctionAngular.Enums;
-using Database;
+﻿using Database;
 using Database.Entities;
 
 namespace AuctionAngularTests
@@ -23,7 +22,7 @@ namespace AuctionAngularTests
                     City = "Espoo",
                     Street = "Pieni teollisuuskatu 7",
                     PostalCode = "Uusimaa 02920",
-                    Picture = "Espoo.png"
+                    Country = "Finlandia"
                 }
             );
 
@@ -31,15 +30,17 @@ namespace AuctionAngularTests
             {
                 DateTime = DateTime.Now.AddDays(1),
                 LocationId = 1,
-                SalesStarted = false,
-                SalesFinised = false,
+                Description = "",
+                isStarted = false,
+                isFinised = false,
             },
             new Auction
             {
                 DateTime = DateTime.Now.AddDays(2),
                 LocationId = 1,
-                SalesStarted = false,
-                SalesFinised = false,
+                Description = "",
+                isStarted = false,
+                isFinised = false,
             });
 
 
@@ -77,7 +78,7 @@ namespace AuctionAngularTests
                 VIN = "Test",
                 AuctionId = 1,
                 SaleTerm = "Test",
-                Highlights = "Test",
+                Category = "Test",
             },
             new Vehicle()
             {
@@ -102,7 +103,7 @@ namespace AuctionAngularTests
                 VIN = "Test",
                 AuctionId = 2,
                 SaleTerm = "Test",
-                Highlights = "Test",
+                Category = "Test",
             });
 
             context.Locations.AddRange(new Location()
@@ -113,7 +114,7 @@ namespace AuctionAngularTests
                 City = "Test3",
                 Street = "Test4",
                 PostalCode = "Test5",
-                Picture = "Test6"
+                Country = "Test6"
             });
 
 
@@ -124,8 +125,8 @@ namespace AuctionAngularTests
                 Start = DateTime.Now,
                 End = DateTime.Now.AddHours(1),
                 Color = "Red",
-                AllDay = false,
-                Owner = 1,
+                isAllDay = false,
+                UserId = 1,
                 Url = "/edit-event/"
             });
 
@@ -146,7 +147,7 @@ namespace AuctionAngularTests
                     DateOfBirth = DateTime.Now.Date,
                     RoleId = 1,
                     ProfilePicture="",
-                    EmialConfirmed = false
+                    isConfirmed = false
                 },
                 new User()
                 {
@@ -159,7 +160,7 @@ namespace AuctionAngularTests
                     DateOfBirth = DateTime.Now.Date,
                     RoleId = 1,
                     ProfilePicture = "",
-                    EmialConfirmed = true
+                    isConfirmed = true
                 },
                 new User()
                 {
@@ -172,7 +173,7 @@ namespace AuctionAngularTests
                     DateOfBirth = DateTime.Now.Date,
                     RoleId = 1,
                     ProfilePicture = "",
-                    EmialConfirmed = false
+                    isConfirmed = false
                 },
                 new User()
                 {
@@ -185,7 +186,7 @@ namespace AuctionAngularTests
                     DateOfBirth = DateTime.Now.Date,
                     RoleId = 1,
                     ProfilePicture = "",
-                    EmialConfirmed = true
+                    isConfirmed = true
                 },
                 new User()
                 {
@@ -198,7 +199,7 @@ namespace AuctionAngularTests
                     DateOfBirth = DateTime.Now.Date,
                     RoleId = 1,
                     ProfilePicture = "",
-                    EmialConfirmed = true
+                   isConfirmed = true
                 },
                 new User()
                 {
@@ -211,7 +212,7 @@ namespace AuctionAngularTests
                     DateOfBirth = DateTime.Now.Date,
                     RoleId = 1,
                     ProfilePicture = "",
-                    EmialConfirmed = true
+                    isConfirmed = true
                 }
             );
 

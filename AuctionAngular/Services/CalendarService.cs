@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using AuctionAngular.Interfaces;
-using AuctionAngular.Dtos;
 using Database;
 using Database.Entities;
+using AuctionAngular.Dtos.Event;
 
 namespace AuctionAngular.Services
 {
@@ -30,7 +30,7 @@ namespace AuctionAngular.Services
 
             foreach(var eve in events)
             {
-                if (eve.Owner == userId || eve.Owner == 0)
+                if (eve.UserId == userId || eve.UserId == 0)
                 {
                     var resultDto = new ViewEventDto()
                     {
@@ -40,7 +40,7 @@ namespace AuctionAngular.Services
                         Start = eve.Start.ToString("yyyy-MM-dd"),
                         End = eve.End.ToString("yyyy-MM-dd"),
                         Color = eve.Color,
-                        AllDay = eve.AllDay,
+                        AllDay = eve.isAllDay,
                         Url = eve.Url
                     };
 
@@ -70,7 +70,7 @@ namespace AuctionAngular.Services
                 Start = eventResult.Start.ToString("yyyy-MM-dd"),
                 End = eventResult.End.ToString("yyyy-MM-dd"),
                 Color = eventResult.Color,
-                AllDay = eventResult.AllDay,
+                AllDay = eventResult.isAllDay,
                 Url = eventResult.Url
             };
         }
@@ -84,8 +84,8 @@ namespace AuctionAngular.Services
                 Start = dto.Date,
                 End = dto.Date,
                 Color = dto.Color,
-                AllDay = dto.AllDay,
-                Owner = dto.Owner,
+                isAllDay = dto.AllDay,
+                UserId = dto.Owner,
                 Url = "/event/edit/"
             };
 
@@ -131,7 +131,7 @@ namespace AuctionAngular.Services
             eventResult.Start = dto.Date.ToString() != default(DateTime).ToString() ? dto.Date : eventResult.Start;
             eventResult.End = dto.Date.ToString() != default(DateTime).ToString() ? dto.Date : eventResult.End;
             eventResult.Color = dto.Color != "" ? dto.Color : eventResult.Color;
-            eventResult.AllDay = dto.AllDay;
+            eventResult.isAllDay = dto.AllDay;
 
             try
             {

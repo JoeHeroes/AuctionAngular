@@ -1,4 +1,5 @@
-﻿using AuctionAngular.Dtos;
+﻿using AuctionAngular.Dtos.Role;
+using AuctionAngular.Dtos.User;
 using AuctionAngular.Interfaces;
 using Database;
 using Database.Entities;
@@ -42,9 +43,8 @@ namespace AuctionAngular.Services
                 Phone = dto.Phone,
                 RoleId = dto.RoleId,
                 ProfilePicture = "",
-                EmialConfirmed = false
+                isConfirmed = false
             };
-
 
             var user =  await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == dto.Email);
 
@@ -92,7 +92,7 @@ namespace AuctionAngular.Services
                 throw new BadRequestException("Invalid username or password.");
             }
 
-            if (account.EmialConfirmed == false)
+            if (account.isConfirmed == false)
             {
                 throw new BadRequestException("Confirm your email.");
             }
@@ -140,7 +140,7 @@ namespace AuctionAngular.Services
             return true;
         }
 
-        public async Task<ViewUserDto> GetUserInfoByIdAsync(int id)
+        public async Task<ViewUserDto> GetUserInfoAsync(int id)
         {
             var user = await _dbContext
                .Users
@@ -165,6 +165,31 @@ namespace AuctionAngular.Services
 
             return result;
         }
+
+        public async Task<ViewRoleDto> GetUserRoleAsync(int id)
+        {
+            var user = await _dbContext
+               .Users
+               .FirstOrDefaultAsync(u => u.Id == id);
+
+            if (user is null)
+            {
+                throw new NotFoundException("User not found.");
+            }
+
+
+            var role = await _dbContext
+               .Roles
+               .FirstOrDefaultAsync(u => u.Id == user.RoleId);
+
+            if (role is null)
+            {
+                throw new NotFoundException("Role not found.");
+            }
+
+            return new ViewRoleDto() { Name = role.Name };
+        }
+
 
         public async Task EditProfileAsync(EditUserDto dto)
         {
@@ -191,7 +216,7 @@ namespace AuctionAngular.Services
             }
         }
 
-        public async Task<IEnumerable<RoleDto>> GetAllRoleAsync()
+        public async Task<IEnumerable<Role>> GetAllRoleAsync()
         {
             var roles = await _dbContext
                 .Roles
@@ -202,11 +227,11 @@ namespace AuctionAngular.Services
                 throw new NotFoundException("Roles not found.");
             }
 
-            List<RoleDto> result = new List<RoleDto>();
+            List<Role> result = new List<Role>();
 
             foreach (var role in roles)
             {
-                var roleDto = new RoleDto() { Id = role.Id, Name = role.Name };
+                var roleDto = new Role { Id = role.Id, Name = role.Name };
                 result.Add(roleDto);
             }
 
@@ -280,7 +305,7 @@ namespace AuctionAngular.Services
         public async Task AccountVerification(int id ,bool autorization)
         {
             var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == id);
-            user.EmialConfirmed = autorization;
+            user.isConfirmed = autorization;
 
             try
             {

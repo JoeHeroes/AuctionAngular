@@ -1,4 +1,5 @@
 ﻿using AuctionAngular.Dtos;
+using AuctionAngular.Dtos.Event;
 using AuctionAngular.Services;
 using AuctionAngularTests;
 using Database;
@@ -14,7 +15,7 @@ namespace AuctionAngular.Tests
         private CalendarService calendarService;
 
         public static DbContextOptions<AuctionDbContext> dbContextOptions { get; }
-        public static string connectionString = "Server=(localdb)\\mssqllocaldb;Database=AngularAuctionDB; Trusted_Connection=True";
+        public static string connectionString = "Server=(localdb)\\mssqllocaldb;Database=AngularAuctionDBTest2; Trusted_Connection=True";
 
         static CalendarServiceTest()
         {
@@ -65,8 +66,8 @@ namespace AuctionAngular.Tests
                 Start = DateTime.Now,
                 End = DateTime.Now.AddHours(1),
                 Color = "Red",
-                AllDay = false,
-                Owner = 1,
+                isAllDay = false,
+                UserId = 1,
                 Url = "/edit-event/"
             };
 
@@ -80,7 +81,7 @@ namespace AuctionAngular.Tests
             Assert.Equal(eventExaple.Title, eventResult.Title);
             Assert.Equal(eventExaple.Description, eventResult.Description);
             Assert.Equal(eventExaple.Color, eventResult.Color);
-            Assert.Equal(eventExaple.AllDay, eventResult.AllDay);
+            Assert.Equal(eventExaple.isAllDay, eventResult.AllDay);
 
 
         }
@@ -157,7 +158,7 @@ namespace AuctionAngular.Tests
             Assert.Equal(eventEdit.Title, eventResult.Title);
             Assert.Equal(eventEdit.Description, eventResult.Description);
             Assert.Equal(eventEdit.Color, eventResult.Color);
-            Assert.Equal(eventEdit.AllDay, eventResult.AllDay);
+            Assert.Equal(eventEdit.AllDay, eventResult.isAllDay);
         }
 
 

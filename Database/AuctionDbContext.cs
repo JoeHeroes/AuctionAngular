@@ -20,11 +20,13 @@ namespace Database
         public DbSet<User> Users { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<Watch> Watches { get; set; }
+        public DbSet<Opinion> Opinions { get; set; }
         
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Auction>()
-              .Property(u => u.SalesFinised)
+              .Property(u => u.isFinised)
               .IsRequired();
 
             modelBuilder.Entity<Bid>()

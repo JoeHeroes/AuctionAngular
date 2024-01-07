@@ -1,8 +1,11 @@
-﻿namespace AuctionAngular.Enums
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace AuctionAngular.Enums
 {
     public enum Producer
     {
         none,
+        [Display(Name = "Alfa Romeo")]
         Alfa_Romeo,
         Audi,
         BMW,
@@ -17,6 +20,7 @@
         Honda,
         Hyundai,
         Kia,
+        [Display(Name = "Land Rover")]
         Land_Rover,
         Jeep,
         Lexus,
