@@ -223,6 +223,8 @@
       "profileEditFail":"Profil edytowany niepoprawnie",
       "sellVehicleCorrect":"Auto sprzedane poprawnie",
       "sellVehicleFail":"Auto sprzedane niepoprawnie",
+      "rejectVehicleCorrect":"Odrzucono oferte poprawnie",
+      "rejectVehicleFail":"Odrzucono oferte niepoprawnie",
       "bidVehicleCorrect":"Twoja oferta jest najwyższa",
       "bidVehicleFail":"Twoja oferta nie jest najwyższa",
       "addAuctionCorrect":"Aukcja dodana poprawnie",
@@ -265,6 +267,7 @@
       "panel-auctions":"Panel zarządzania aukcjami",
       "panel-invoices":"Panel zarządzania fakturami",
       "confirm": "Potwierdź sprzedaż",
+      "reject": "Odrzucić ofertę",
       "invoice": "Wygeneruj fakturę",
       "edit": "Edytuj",
       "delete": "Usuń",
@@ -286,7 +289,10 @@
       "description":"Opis",
       "origin":"Pochodzenie",
       "valuation":"Wycena",
-      "condition":"Stan"
+      "condition":"Stan",
+      "conditionInside":"Stan wewnetrzny",
+      "conditionBodywork":"Stan blacharski",
+      "complianceWithVIN":"Zgodność z VIN'em"
     },
     "role":{
       "Buyer":"Kupujący",
@@ -306,10 +312,10 @@
       "Cabrio":"Cabrio"
     },
     "damage":{
-      "All_Over ":"Wszystko",
-      "Burn ":"Spalenie",
+      "All_Over":"Wszystko",
+      "Burn":"Spalenie",
       "Burn_Engine":"Spalenie silnika",
-      "Front_End ":"Przód",
+      "Front_End":"Przód",
       "Hail":"Grad",
       "Mechanical":"Mechaniczne",
       "Minor_Dents_Scratch":"Drobne wgniecenia",
@@ -340,6 +346,10 @@
       "Automatic":"Automatyczna",
       "DualClutch":"Dwusprzęgłowa",
       "CVT":"CVT"
+    },
+    "highlight":{
+      "Non Operational":"Nie odpala",
+      "Run and Drive":"Odpala i jeździ"
     }
   }
   

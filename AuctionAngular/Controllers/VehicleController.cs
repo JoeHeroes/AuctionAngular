@@ -359,7 +359,7 @@ namespace AuctionAngular.Controllers
 
 
         /// <summary>
-        /// Sold Vehicle
+        /// Sell Vehicle
         /// </summary>
         /// <returns>Ok</returns>
         /// <response code="200">Correct data</response>
@@ -367,9 +367,25 @@ namespace AuctionAngular.Controllers
         [HttpGet("[action]/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<IEnumerable<ViewVehiclesDto>>> SoldVehicle([FromRoute] int id)
+        public async Task<ActionResult<IEnumerable<ViewVehiclesDto>>> SellVehicle([FromRoute] int id)
         {
-            await _vehicleService.SoldVehicleAsync(id);
+            await _vehicleService.SellVehicleAsync(id);
+
+            return Ok();
+        }
+
+        /// <summary>
+        /// Reject Vehicle
+        /// </summary>
+        /// <returns>Ok</returns>
+        /// <response code="200">Correct data</response>
+        /// <response code="400">Incorrect data</response>
+        [HttpGet("[action]/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<IEnumerable<ViewVehiclesDto>>> RejectVehicle([FromRoute] int id)
+        {
+            await _vehicleService.RejectVehicleAsync(id);
 
             return Ok();
         }

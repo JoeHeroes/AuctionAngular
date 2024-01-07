@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="dx-field">
-                <div class="dx-field-label">{{t('opinion.condition')}}</div>
+                <div class="dx-field-label" style="padding-top: 27px;">{{t('opinion.condition')}}</div>
                 <div class="dx-field-value">
                     <div class="form-group rating" id="group1">
                         <input type="radio" formControlName="condition" name="group1" id="1" value=5><label for="1"></label>
@@ -33,6 +33,30 @@
                     </div>
                 </div>
             </div>
+            <div class="dx-field">
+                <div class="dx-field-label">{{t('opinion.conditionInside')}}</div>
+                <div class="dx-field-value">
+                    <dx-text-area [minHeight]="100" [maxHeight]="300" [autoResizeEnabled]="true" id="descriptionConditionInside"
+                        formControlName="descriptionConditionInside" class="form-control"></dx-text-area>
+                </div>
+            </div>
+            <div class="dx-field">
+                <div class="dx-field-label">{{t('opinion.conditionBodywork')}}</div>
+                <div class="dx-field-value">
+                    <dx-text-area [minHeight]="100" [maxHeight]="300" [autoResizeEnabled]="true" id="descriptionConditionBodywork"
+                        formControlName="descriptionConditionBodywork" class="form-control"></dx-text-area>
+                </div>
+            </div>
+
+
+
+            <div class="dx-field">
+                <div class="dx-field-label">{{t('opinion.complianceWithVIN')}}</div>
+                <div class="dx-field-value">
+                  <input type="checkbox" id="complianceWithVIN" formControlName="complianceWithVIN" class="form-control" >
+                </div>
+              </div>
+
             <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
         </div>
         <dx-validation-summary id="summary"></dx-validation-summary>

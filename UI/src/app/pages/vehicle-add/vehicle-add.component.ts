@@ -230,33 +230,30 @@ enum BodyCar {
 }
 
 enum Damage {
-  none = '',
-  All_Over = 'All Over',
+  All_Over = 'All_Over',
   Burn = 'Burn',
-  Burn_Engine = 'Burn Engine',
-  Front_End = 'Front End',
+  Burn_Engine = 'Burn_Engine',
+  Front_End = 'Front_End',
   Hail = 'Hail',
   Mechanical = 'Mechanical',
-  Minor_Dents_Scratch = 'Minor Dents Scratch',
-  Normal_Wear = 'Normal Wear',
-  Rear_End = 'Rear End',
+  Minor_Dents_Scratch = 'Minor_Dents_Scratch',
+  Normal_Wear = 'Normal_Wear',
+  Rear_End = 'Rear_End',
   Rollover = 'Rollover',
   Side = 'Side',
-  Top_Roof = 'Top Roof',
+  Top_Roof = 'Top_Roof',
   Undercarriage = 'Undercarriage',
   Unknown = 'Unknown',
   Vandalism = 'Vandalism'
 }
 
 enum Drive {
-  none = '',
   AWD = 'AWD',
   FWD = 'FWD',
   RWD = 'RWD',
 }
 
 enum Fuel {
-  none = '',
   Diesel = 'Diesel',
   Petrol = 'Petrol',
   Gas = 'Gas',
@@ -306,7 +303,6 @@ enum Producer {
 }
 
 enum SaleTerm {
-  none = '',
   Conditional_repair = 'Conditional Repair',
   Used_vehicle = 'Used Vehicle',
   To_be_desmantle = 'To be desmantle',
@@ -314,7 +310,6 @@ enum SaleTerm {
 }
 
 enum Transmission {
-  none = '',
   Manual = 'Manual',
   Automatic = 'Automatic',
   DualClutch = 'DualClutch',

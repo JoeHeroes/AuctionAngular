@@ -38,4 +38,18 @@ export class VehicleCheckComponent {
       }
     })
   }
+
+  rejectClick(vehicleId: any)  {
+    this.vehicleService.rejectVehicle(vehicleId).subscribe({
+      next: (res: AuthResponseDto) => {
+        this.vehicleService.getVehiclesAuctionEnd().subscribe(res => {
+          this.datasource = res;
+        });
+        this.notificationService.showSuccess( this.transloco.translate('notification.rejectVehicleCorrect'), "Success");
+      },
+      error: (err: HttpErrorResponse) => {
+        this.notificationService.showError( this.transloco.translate('notification.rejectVehicleFail'), "Failed");
+      }
+    })
+  }
 }

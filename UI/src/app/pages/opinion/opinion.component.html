@@ -1,26 +1,55 @@
 <ng-container *transloco="let t">
-    <div class="p-3 py-5" *ngIf="datasource" >
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <h4 class="text-right"><span style="font-weight:bold;">{{t('opinion.vehicle')}}</span></h4>
-            </div>
-            <div class="dx-fieldset">
-              <div class="dx-field">
-                <span style="font-weight:bold;">{{t('opinion.description')}}: </span> {{datasource.description}}
-              </div>
-              <div class="dx-field">
-                <span style="font-weight:bold;">{{t('opinion.origin')}}: </span> {{datasource.origin}}
-              </div>
-              <div class="dx-field">
-                <span style="font-weight:bold;">{{t('opinion.valuation')}}: </span> {{datasource.valuation}}
-              </div>
-              <div class="dx-field">
-                <span style="font-weight:bold;">{{t('opinion.condition')}}: </span> {{datasource.condition}}
+    <div class="p-3 py-5" *ngIf="datasource.condition" >
+            <div class="column2">
+              <div class="shadow-sm">
+                <div class="card-header bg-transparent border-0">
+                  <h3 class="mb-0">{{t('opinion.vehicle')}}</h3>
+                </div>
+                <div class="card-body pt-0">
+                  <table class="table table-bordered">
+                    <tr>
+                      <th width="50%">{{t('opinion.description')}}</th>
+                      <td width="400px">{{datasource.description}}</td>
+                    </tr>
+                    <tr>
+                      <th width="50%">{{t('opinion.origin')}}</th>
+                      <td>{{datasource.origin}}</td>
+                    </tr>
+                    <tr>
+                      <th width="50%">{{t('opinion.valuation')}}</th>
+                      <td>{{datasource.valuation}}</td>
+                    </tr>
+                    <tr>
+                      <th width="50%">{{t('opinion.condition')}}</th>
+                      <div style="width: 10%; float: left; padding: 10px;" *ngFor="let item of getRepeatCountYellow()">
+                        <span style="font-weight: bold; font-size: 30px; color:yellow">★</span>
+                      </div>
+                      <div style="width: 10%; float: left; padding: 10px;" *ngFor="let item of getRepeatCountGray()">
+                        <span style="font-weight: bold; font-size: 30px; color:gray">★</span>
+                      </div>
+                    </tr>
+                    <tr>
+                      <th width="50%">{{t('opinion.conditionInside')}}</th>
+                      <td>{{datasource.descriptionConditionInside}}</td>
+                    </tr>
+                    <tr>
+                      <th width="50%">{{t('opinion.conditionBodywork')}}</th>
+                      <td>{{datasource.descriptionConditionBodywork}}</td>
+                    </tr>
+                    <tr>
+                      <th width="50%">{{t('opinion.complianceWithVIN')}}</th>
+                      <td>{{datasource.complianceWithVIN}}</td>
+                    </tr>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
-          <div class="p-3 py-5" *ngIf="!datasource" >
+          <div class="p-3 py-5" *ngIf="!datasource.condition" >
             <div class="d-flex justify-content-between align-items-center mb-3">
               <h2 class="text-right"><span style="font-weight:bold;">{{t('message.noOpinion')}}</span></h2>
             </div>
           </div>
+
+          
 </ng-container>

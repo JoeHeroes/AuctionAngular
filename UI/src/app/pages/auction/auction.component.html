@@ -52,7 +52,7 @@
                 </tr>
                 <tr>
                   <th width="50%">{{t('vehicle.bodyType')}}</th>
-                  <td>{{datasource[index].bodyType}}</td>
+                  <td>{{t('bodyType.'+datasource[index].bodyType)}}</td>
                 </tr>
                 <tr>
                   <th width="50%">{{t('vehicle.engineCapacity')}}</th>
@@ -67,6 +67,10 @@
                   <td>{{datasource[index].drive}}</td>
                 </tr>
                 <tr>
+                  <th width="50%">{{t('vehicle.transmission')}}</th>
+                  <td>{{t('transmission.'+datasource[index].transmission)}}</td>
+                </tr>
+                <tr>
                   <th width="50%">{{t('vehicle.engineCapacity')}}</th>
                   <td>{{datasource[index].engineCapacity}}</td>
                 </tr>
@@ -76,7 +80,7 @@
                 </tr>
                 <tr>
                   <th width="50%">{{t('vehicle.fuel')}}</th>
-                  <td>{{datasource[index].fuel}}</td>
+                  <td>{{t('fuel.'+datasource[index].fuel)}}</td>
                 </tr>
                 <tr>
                   <th width="50%">{{t('vehicle.numberKeys')}}</th>
@@ -88,11 +92,15 @@
                 </tr>
                 <tr>
                   <th width="50%">{{t('vehicle.primaryDamage')}}</th>
-                  <td>{{datasource[index].primaryDamage}}</td>
+                  <td>{{t('damage.'+datasource[index].primaryDamage)}}</td>
                 </tr>
                 <tr>
                   <th width="50%">{{t('vehicle.dateTime')}}</th>
                   <td>{{datasource[index].dateTime | date:'dd/MM/yyyy'}}</td>
+                </tr>
+                <tr>
+                  <th width="50%">{{t('vehicle.saleTerm')}}</th>
+                  <td>{{t('saleTerm.'+datasource[index].saleTerm)}}</td>
                 </tr>
               </table>
             </div>

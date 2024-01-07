@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Database.Migrations
 {
     [DbContext(typeof(AuctionDbContext))]
-    [Migration("20231220183107_Init")]
+    [Migration("20240107205655_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -201,10 +201,21 @@ namespace Database.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<bool>("ComplianceWithVIN")
+                        .HasColumnType("bit");
+
                     b.Property<int>("Condition")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DescriptionConditionBodywork")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DescriptionConditionInside")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

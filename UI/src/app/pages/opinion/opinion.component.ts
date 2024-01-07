@@ -17,6 +17,9 @@ export class OpinionComponent implements OnInit {
     origin: "",
     valuation: "",
     condition: 0,
+    descriptionConditionInside: "",
+    descriptionConditionBodywork: "",
+    complianceWithVIN: false,
   };
   returnUrl!: string;
   showError!: boolean;
@@ -37,5 +40,13 @@ export class OpinionComponent implements OnInit {
 
   private loadData(url: UrlSegment[]) {
     this.id = url.map(x => x.path).join('/');
+  }
+
+  getRepeatCountYellow(): number[] {
+    return new Array(this.datasource.condition);
+  }
+
+  getRepeatCountGray(): number[] {
+    return new Array(5-this.datasource.condition);
   }
 }

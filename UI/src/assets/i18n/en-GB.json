@@ -221,6 +221,8 @@
     "profileEditFail":"Profile Edit Fail",
     "sellVehicleCorrect":"Vehicle Sell Correct",
     "sellVehicleFail":"Vehicle Sell Fail",
+    "rejectVehicleCorrect":"Offer Reject Correct",
+    "rejectVehicleFail":"Offer Reject Fail",
     "bidVehicleCorrect":"Your bid is the highest",
     "bidVehicleFail":"Vehicle Added Fail",
     "addAuctionCorrect":"Auction Added Correct",
@@ -261,6 +263,7 @@
     "panel-auctions":"Auctions Management Panel",
     "panel-invoices":"Invoices Management Panel",
     "confirm": "Confirm sell",
+    "reject": "Reject offer",
     "invoice": "Generate Invoice",
     "edit": "Edit",
     "delete": "Delete",
@@ -282,7 +285,10 @@
     "description":"Description",
     "origin":"Origin",
     "valuation":"Valuation",
-    "condition":"Condition"
+    "condition":"Condition",
+    "conditionInside":"Condition Inside",
+    "conditionBodywork":"Condition Bodywork",
+    "complianceWithVIN":"Compliance with VIN"
   },
   "role":{
     "Buyer":"Buyer",
@@ -302,10 +308,10 @@
     "Cabrio":"Cabrio"
   },
   "damage":{
-    "All_Over ":"All Over",
-    "Burn ":"Burn",
+    "All_Over":"All Over",
+    "Burn":"Burn",
     "Burn_Engine":"Burn Engine",
-    "Front_End ":"Front End",
+    "Front_End":"Front End",
     "Hail":"Hail",
     "Mechanical":"Mechanical",
     "Minor_Dents_Scratch":"Minor Dents Scratch",
@@ -336,5 +342,9 @@
     "Automatic":"Automatic",
     "DualClutch":"Dual Clutch",
     "CVT":"CVT"
+  },
+  "highlight":{
+    "Non Operational":"Non Operational",
+    "Run and Drive":"Run and Drive"
   }
 }

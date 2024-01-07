@@ -38,13 +38,25 @@
                     cellTemplate="cellTemplateSell">
                 </dxi-column>
 
+                <dxi-column type="buttons" dataField="reject" [caption]="t('admin.reject')"
+                    cellTemplate="cellTemplateReject">
+                </dxi-column>
+
                 <dxi-column dataField="isSold" [caption]="t('admin.sold')" [allowFiltering]="false"
                 [allowSorting]="true"></dxi-column>
 
                 <div *dxTemplate="let data of 'cellTemplateSell'">
-                    <span style="cursor: pointer; font-weight: bold" (click)="sellClick(data.data.lotNumber)"><span
-                            *ngIf='!data.data.isSold'>{{t('admin.sell')}}</span> <span
-                            *ngIf='data.data.isSold'>{{t('admin.back')}}</span></span>
+                    <span style="cursor: pointer; font-weight: bold">
+                        <span (click)="sellClick(data.data.lotNumber)" *ngIf='!data.data.isSold'>{{t('admin.sell')}}</span> 
+                        <span *ngIf='data.data.isSold'>{{t('admin.sold')}}</span>
+                    </span>
+                </div>
+
+
+                <div *dxTemplate="let data of 'cellTemplateReject'">
+                    <span style="cursor: pointer; font-weight: bold">
+                        <span (click)="rejectClick(data.data.lotNumber)" *ngIf='!data.data.isSold'>{{t('admin.reject')}}</span> 
+                    </span>
                 </div>
 
                 <div *dxTemplate="let d of 'discountCellTemplate'">

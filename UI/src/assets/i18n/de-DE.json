@@ -224,6 +224,8 @@
     "profileEditFail":"Profilbearbeitung fehlgeschlagen",
     "sellVehicleCorrect":"Fahrzeugverkauf korrekt",
     "sellVehicleFail":"Fahrzeugverkauf fehlgeschlagen",
+    "rejectVehicleCorrect":"Angebotsablehnung korrekt",
+    "rejectVehicleFail":"Angebotsablehnung fehlgeschlagen",
     "bidVehicleCorrect":"Ihr Gebot ist das höchste",
     "bidVehicleFail":"Fehler beim Hinzufügen des Fahrzeugs",
     "addAuctionCorrect":"Auktion korrekt hinzugefügt",
@@ -264,6 +266,7 @@
     "panel-auctions":"Auktionsverwaltungspanel",
     "panel-invoices":"Rechnungsverwaltungspanel",
     "confirm": "Bestätigen Sie den Verkauf",
+    "reject": "Angebot ablehnen",
     "invoice": "Rechnung erstellen",
     "edit": "Bearbeiten",
     "delete": "Löschen",
@@ -285,7 +288,10 @@
     "description":"Beschreibung",
     "origin":"Herkunft",
     "valuation":"Bewertung",
-    "condition":"Zustand"
+    "condition":"Zustand",
+    "conditionInside":"Zustand innen",
+    "conditionBodywork":"Zustand der Karosserie",
+    "complianceWithVIN":"Einhaltung der Fahrgestellnummer"
   },
   "role":{
     "Buyer":"Käufer",
@@ -305,10 +311,10 @@
     "Cabrio":"Cabrio"
   },
   "damage":{
-    "All_Over ":"Überall",
-    "Burn ":"Brennen",
-    "Burn_Engine":"Brenn - Maschine",
-    "Front_End ":"Frontend",
+    "All_Over":"Überall",
+    "Burn":"Brennen",
+    "Burn_Engine":"Brenn Maschine",
+    "Front_End3333333333333333333333333333333333333333333333333333333333333333":"Frontend",
     "Hail":"Hagel",
     "Mechanical":"Mechanisch",
     "Minor_Dents_Scratch":"Kleinere Dellen, Kratzer",
@@ -339,5 +345,9 @@
     "Automatic":"Automatisch",
     "DualClutch":"Doppelkupplung",
     "CVT":"CVT"
+  },
+  "highlight":{
+    "Non Operational":"Nicht betriebsbereit",
+    "Run and Drive":"Laufen und fahren"
   }
 }

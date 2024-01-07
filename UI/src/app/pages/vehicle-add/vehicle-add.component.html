@@ -59,7 +59,7 @@
             <div class="dx-field-label">{{t('vehicle.transmission')}}</div>
             <div class="dx-field-value">
               <select id="transmission" formControlName="transmission" class="form-control" >
-                <option *ngFor="let transmission of enumTransmission"  [value]="transmission">{{ transmission }}</option>
+                <option *ngFor="let transmission of enumTransmission"  [value]="transmission"> {{t('transmission.'+transmission)}}</option>
               </select>
             </div>
           </div>
@@ -84,7 +84,7 @@
             <div class="dx-field-label">{{t('vehicle.fuel')}}</div>
             <div class="dx-field-value">
               <select id="fuel" formControlName="fuel" class="form-control" >
-                <option *ngFor="let fuel of enumFuel"  [value]="fuel">{{ fuel }}</option>
+                <option *ngFor="let fuel of enumFuel"  [value]="fuel">{{t('fuel.'+fuel)}}</option>
               </select>
             </div>
           </div>
@@ -95,7 +95,7 @@
             <div class="dx-field-label">{{t('vehicle.primaryDamage')}}</div>
             <div class="dx-field-value">
               <select id="primaryDamage" formControlName="primaryDamage" class="form-control" >
-                <option *ngFor="let damage of enumPrimaryDamage"  [value]="damage">{{ damage }}</option>
+                <option *ngFor="let damage of enumPrimaryDamage"  [value]="damage">{{t('damage.'+damage)}}</option>
               </select>
             </div>
           </div>
@@ -104,7 +104,7 @@
             <div class="dx-field-label">{{t('vehicle.secondaryDamage')}}</div>
             <div class="dx-field-value">
               <select id="secondaryDamage" formControlName="secondaryDamage" class="form-control" >
-                <option *ngFor="let damage of enumSecondaryDamage"  [value]="damage">{{ damage }}</option>
+                <option *ngFor="let damage of enumSecondaryDamage"  [value]="damage">{{t('damage.'+damage)}}</option>
               </select>
             </div>
           </div>
@@ -152,7 +152,7 @@
             <div class="dx-field-label">{{t('vehicle.saleTerm')}}</div>
             <div class="dx-field-value">
               <select id="saleTerm" formControlName="saleTerm" class="form-control" >
-                <option *ngFor="let saleTerm of enumSaleTerm"  [value]="saleTerm">{{ saleTerm }}</option>
+                <option *ngFor="let saleTerm of enumSaleTerm"  [value]="saleTerm">{{t('saleTerm.'+saleTerm)}}</option>
               </select>
             </div>
           </div>
@@ -160,7 +160,7 @@
             <div class="dx-field-label">{{t('vehicle.highlight')}}</div>
             <div class="dx-field-value">
               <select id="highlight" formControlName="Category" class="form-control" >
-                <option *ngFor="let highlight of enumHighlight"  [value]="highlight">{{ highlight }}</option>
+                <option *ngFor="let highlight of enumHighlight"  [value]="highlight">{{t('highlight.'+highlight)}}</option>
               </select>
             </div> 
           </div>

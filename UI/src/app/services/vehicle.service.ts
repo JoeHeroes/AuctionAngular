@@ -67,11 +67,17 @@ export class VehicleService {
 
   public sellVehicle(id: number): Observable<any> {
 
-    let url_ = this.baseUrl + "/Vehicle/SoldVehicle/" + id;
+    let url_ = this.baseUrl + "/Vehicle/SellVehicle/" + id;
 
     return this.http.get<any>(url_);
   }
 
+  public rejectVehicle(id: number): Observable<any> {
+
+    let url_ = this.baseUrl + "/Vehicle/RejectVehicle/" + id;
+
+    return this.http.get<any>(url_);
+  }
 
   public confirmVehicle(id: number): Observable<any> {
 

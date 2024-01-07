@@ -198,10 +198,21 @@ namespace Database.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<bool>("ComplianceWithVIN")
+                        .HasColumnType("bit");
+
                     b.Property<int>("Condition")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DescriptionConditionBodywork")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DescriptionConditionInside")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

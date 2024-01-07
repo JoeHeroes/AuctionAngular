@@ -529,7 +529,7 @@ namespace AuctionAngular.Services
         }
 
 
-        public async Task SoldVehicleAsync(int id)
+        public async Task SellVehicleAsync(int id)
         {
 
             var vehicle = await _dbContext
@@ -547,6 +547,42 @@ namespace AuctionAngular.Services
             }
             else
                 throw new Exception();
+
+            //if (payment != null)
+            //{
+            //    vehicle!.isSold = !vehicle.isSold;
+            //    payment!.isSold = !payment.isSold;
+            //}
+            //else
+            //    throw new Exception();
+
+            try
+            {
+                await _dbContext.SaveChangesAsync();
+            }
+            catch (DbUpdateException e)
+            {
+                throw new DbUpdateException("Error DataBase", e);
+            }
+        }
+
+        public async Task RejectVehicleAsync(int id)
+        {
+
+            var vehicle = await _dbContext
+                                .Vehicles
+                                .FirstOrDefaultAsync(x => x.Id == id);
+
+            //var payment = await _dbContext
+            //                    .Payments
+            //                    .FirstOrDefaultAsync(x => x.LotId == id);
+
+
+            var auction = await _dbContext
+                                .Auctions
+                                .OrderByDescending(a => a.Id) .FirstAsync();
+
+            vehicle.AuctionId = auction.Id;
 
             //if (payment != null)
             //{
