@@ -128,6 +128,9 @@ namespace AuctionAngular.Services
 
             var auction = await _dbContext.Auctions.FirstOrDefaultAsync(x => x.Id == dto.Id);
 
+            if (dto.AuctionDate < DateTime.Now)
+                throw new Exception();
+
             if (auction is null)
                 throw new NotFoundException("Auction not found.");
 

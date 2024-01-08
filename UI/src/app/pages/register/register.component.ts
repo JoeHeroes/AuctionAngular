@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslocoService } from '@ngneat/transloco';
-import { AuthenticationService, UserRegisterDto } from 'src/app/services/authentication.service';
+import { AuthResponseDto, AuthenticationService, UserRegisterDto } from 'src/app/services/authentication.service';
 import { NotificationService } from 'src/app/services/notification.service';
 
 
@@ -120,13 +120,14 @@ export class RegisterComponent implements OnInit {
     }
     else {
       this.authenticationService.registerUser(userForAuth)
+      
         .subscribe({
-          next: (res: any) => {
-
-          },
-          error: () => {
+          next: (res: AuthResponseDto) => {
             this.notificationService.showSuccess( this.transloco.translate('notification.registeredCorrect'), "Success");
             this.router.navigate([this.returnUrl]);
+          },
+          error: (err: any) => {
+            this.notificationService.showSuccess( this.transloco.translate('notification.registeredIncorrect'), "Success");
           }
         })
     }

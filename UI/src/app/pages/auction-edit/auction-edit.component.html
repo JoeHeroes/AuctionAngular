@@ -18,6 +18,12 @@
               <div class="dx-field-label">{{t('auction.dateTime')}}</div>
               <div class="dx-field-value">
                 <input type="date" id="auctionDate" formControlName="auctionDate" [value]="auctionDateValue" class="form-control" />
+                <div
+                  *ngIf="editForm.controls['auctionDate'].invalid && (editForm.controls['auctionDate'].errors?.['required'] || editForm.controls['auctionDate'].errors?.['minDate'])">
+                  <div *ngIf="editForm.controls['auctionDate'].errors?.['minDate']">
+                    {{t('notification.minDate')}}
+                  </div>
+                </div>
               </div>
           </div> 
         </div>

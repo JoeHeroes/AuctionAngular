@@ -59,7 +59,7 @@ export class ContactusComponent  implements OnInit {
   }
   
   sendEmail = (sendEmail: any) => {
-    this.showError = false;
+    this.showError = true;
     const send = { ...sendEmail };
 
     const sendData: MailDto = {
@@ -77,17 +77,18 @@ export class ContactusComponent  implements OnInit {
       this.errorMessage = this.transloco.translate('message.bodyRequired');
       this.showError = true;
     }
-
-    this.mailService.SendEmail(sendData)
-    .subscribe({
-      next: (res: AuthResponseDto) => {
-        this.notificationService.showSuccess( this.transloco.translate('notification.sendEmail'), "Success");
-        this.router.navigate([this.returnUrl]);
-      },
-      error: (err: HttpErrorResponse) => {
-        this.notificationService.showError( this.transloco.translate('notification.sendEmailFail'), "Failed");
-        this.showError = true;
-      }
-    })
+    else{
+      this.showError = false;
+      this.mailService.SendEmail(sendData)
+      .subscribe({
+        next: (res: AuthResponseDto) => {
+          this.notificationService.showSuccess( this.transloco.translate('notification.sendEmail'), "Success");
+          this.router.navigate([this.returnUrl]);
+        },
+        error: (err: HttpErrorResponse) => {
+          this.notificationService.showError( this.transloco.translate('notification.sendEmailFail'), "Failed");
+        }
+      })
+    }
   }
 }

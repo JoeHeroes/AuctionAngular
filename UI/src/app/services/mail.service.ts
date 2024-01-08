@@ -13,7 +13,7 @@ export class MailService {
     this.baseUrl = "https://localhost:7257";
   }
 
-  public SendEmail(data: MailDto): Observable<any> {
+  public SendEmail(data: MailDto){
 
     let url_ = this.baseUrl + "/Mail/SendEmail";
 

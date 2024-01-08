@@ -2,9 +2,11 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
+import { TranslocoService } from '@ngneat/transloco';
 import { Subscription } from 'rxjs';
 import { AuctionService, EditAuctionDto } from 'src/app/services/auction.service';
 import { AuthResponseDto } from 'src/app/services/authentication.service';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-auction-edit',
@@ -27,6 +29,8 @@ export class AuctionEditComponent implements OnInit {
 
   constructor(private auctionService: AuctionService,
     private router: Router,
+    private notificationService: NotificationService,
+    private transloco: TranslocoService,
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -81,13 +85,14 @@ export class AuctionEditComponent implements OnInit {
     }
 
     this.auctionService.editAuction(editData)
-      .subscribe({
-        next: (res: AuthResponseDto) => {
-          this.router.navigate([this.returnUrl]);
-        },
-        error: (err: HttpErrorResponse) => {
-          this.showError = true;
-        }
-      })
+    .subscribe({
+      next: (res: AuthResponseDto) => {
+        this.notificationService.showSuccess( this.transloco.translate('notification.editAuctionCorrect'), "Success");
+        this.router.navigate([this.returnUrl]);
+      },
+      error: (err: HttpErrorResponse) => {
+        this.notificationService.showError( this.transloco.translate('notification.editAuctionFail'), "Failed");
+      }
+    })
   }
 }

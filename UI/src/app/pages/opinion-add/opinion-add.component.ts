@@ -51,6 +51,13 @@ export class OpinionAddComponent implements OnInit {
     this.showError = false;
     const add = { ...addFormValue };
 
+    if (add.complianceWithVIN == "") {
+      add.complianceWithVIN = false;
+    }
+    else{
+      add.complianceWithVIN = true;
+    }
+
     const addData: AddOpinionDto = {
       description: add.description,
       origin: add.origin,

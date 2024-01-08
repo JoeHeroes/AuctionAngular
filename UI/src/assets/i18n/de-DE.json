@@ -148,9 +148,6 @@
     "phoneRequired":"Telefon ist erforderlich",
     "dateBirthRequired":"Geburtsdatum ist erforderlich",
     "roleRequired":"Rolle ist erforderlich",
-
-
-
     "locationRequired":"Der Standort ist erforderlich",
     "descriptionRequired":"Beschreibung ist erforderlich",
     "auctionDateRequired":"Auktionsdatum ist erforderlich",
@@ -164,6 +161,8 @@
     "originRequired":"Herkunft ist erforderlich",
     "valuationRequired":"Eine Wertermittlung ist erforderlich",
     "conditionRequire":"Kondition ist erforderlich",
+    "descriptionConditionInsideRequired":"Beschreibung des Zustands im Inneren ist erforderlich",
+    "descriptionConditionBodyworkRequired":"Beschreibung Karosserie ist erforderlich",
     "oldPasswordRequired":"Altes Passwort ist erforderlich",
     "newPasswordRequired":"Neues Passwort ist erforderlich",
     "confirmNewPasswordRequired":"Bestätigen Sie, dass ein neues Passwort erforderlich ist",
@@ -230,6 +229,8 @@
     "bidVehicleFail":"Fehler beim Hinzufügen des Fahrzeugs",
     "addAuctionCorrect":"Auktion korrekt hinzugefügt",
     "addAuctionFail":"Auktion hinzugefügt fehlgeschlagen",
+    "editAuctionCorrect":"Auktion korrekt bearbeitet",
+    "editAuctionFail":"Auktion bearbeitet, fehlgeschlagen",
     "addOpinionCorrect":"Meinung hinzugefügt: Richtig",
     "addOpinionFail":"Meinung hinzugefügt fehlgeschlagen",
     "deleteEventCorrect":"Ereignis löschen. Korrekt",
@@ -307,14 +308,14 @@
     "Hatchback":"Fließheck",
     "Van ":"Van",
     "SUV":"SUV",
-    "Picup":"Aufheben",
+    "Pickup":"Aufheben",
     "Cabrio":"Cabrio"
   },
   "damage":{
     "All_Over":"Überall",
     "Burn":"Brennen",
     "Burn_Engine":"Brenn Maschine",
-    "Front_End3333333333333333333333333333333333333333333333333333333333333333":"Frontend",
+    "Front_End":"Frontend",
     "Hail":"Hagel",
     "Mechanical":"Mechanisch",
     "Minor_Dents_Scratch":"Kleinere Dellen, Kratzer",

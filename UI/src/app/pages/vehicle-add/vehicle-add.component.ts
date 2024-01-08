@@ -179,7 +179,6 @@ export class VehicleAddComponent implements OnInit {
       this.errorMessage = this.transloco.translate('message.numberKeysRequired');
       this.showError = true;
     }
-
     else if (vehicle.serviceManual == "") {
       this.errorMessage = this.transloco.translate('message.serviceManualRequired');
       this.showError = true;
@@ -225,7 +224,7 @@ enum BodyCar {
   Hatchback = 'Hatchback',
   Van = 'Van',
   SUV = 'SUV',
-  Picup = 'Picup',
+  Pickup = 'Pickup',
   Cabrio = 'Cabrio',
 }
 

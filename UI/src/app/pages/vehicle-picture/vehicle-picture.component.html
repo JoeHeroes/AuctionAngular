@@ -5,7 +5,6 @@
       <input #file type="file" id="pictureForm" accept=".jpg,.png,.gif" />
     </div>
     <p *ngIf="successMessage">{{ successMessage }}</p>
-    <dx-button [text]="t('action.back')" type="normal" [routerLink]="['/vehicle/add']"></dx-button>
     <dx-button class="button" [text]="t('action.add')" type="success" [useSubmitBehavior]="true"></dx-button>
   </form>
 </ng-container>

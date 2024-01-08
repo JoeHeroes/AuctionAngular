@@ -244,7 +244,7 @@ enum BodyCar {
   Hatchback = 'Hatchback',
   Van = 'Van',
   SUV = 'SUV',
-  Picup = 'Picup',
+  Pickup = 'Pickup',
   Cabrio = 'Cabrio',
 }
 

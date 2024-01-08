@@ -59,7 +59,7 @@ namespace AuctionAngular.Controllers
             if (result != null)
                 await SendEmail(dto.Email);
 
-            return Ok(token);
+            return Ok(new AuthResponseDto { IsAuthSuccessful = false, Token = token });
         }
 
         /// <summary>
