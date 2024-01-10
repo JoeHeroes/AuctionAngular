@@ -234,199 +234,40 @@ namespace CarAuction.Seeder
                     PathImg = "A4.10.jpg"
                 },
 
-                //Ford
-                new Picture()
-                {
-                    VehicleId = 2,
-                    PathImg = "Ford.1.jpg"
-                },
-                new Picture()
-                {
-                    VehicleId = 2,
-                    PathImg = "Ford.2.jpg"
-                },
-                new Picture()
-                {
-                    VehicleId = 2,
-                    PathImg = "Ford.3.jpg"
-                },
-                new Picture()
-                {
-                    VehicleId = 2,
-                    PathImg = "Ford.4.jpg"
-                },
-                new Picture()
-                {
-                    VehicleId = 2,
-                    PathImg = "Ford.5.jpg"
-                },
-                new Picture()
-                {
-                    VehicleId = 2,
-                    PathImg = "Ford.6.jpg"
-                },
-                new Picture()
-                {
-                    VehicleId = 2,
-                    PathImg = "Ford.7.jpg"
-                },
-                new Picture()
-                {
-                    VehicleId = 2,
-                    PathImg = "Ford.8.jpg"
-                },
-                new Picture()
-                {
-                    VehicleId = 2,
-                    PathImg = "Ford.9.jpg"
-                },
-                new Picture()
-                {
-                    VehicleId = 2,
-                    PathImg = "Ford.10.jpg"
-                },
-
-
-                //Volkswagen
-                new Picture()
-                {
-                    VehicleId = 3,
-                    PathImg = "Volkswagen.1.jpg"
-                },
-                new Picture()
-                {
-                    VehicleId = 3,
-                    PathImg = "Volkswagen.2.jpg"
-                },
-                new Picture()
-                {
-                    VehicleId = 3,
-                    PathImg = "Volkswagen.3.jpg"
-                },
-                new Picture()
-                {
-                    VehicleId = 3,
-                    PathImg = "Volkswagen.4.jpg"
-                },
-                new Picture()
-                {
-                    VehicleId = 3,
-                    PathImg = "Volkswagen.5.jpg"
-                },
-                new Picture()
-                {
-                    VehicleId = 3,
-                    PathImg = "Volkswagen.6.jpg"
-                },
-                new Picture()
-                {
-                    VehicleId = 3,
-                    PathImg = "Volkswagen.7.jpg"
-                },
-                new Picture()
-                {
-                    VehicleId = 3,
-                    PathImg = "Volkswagen.8.jpg"
-                },
-                new Picture()
-                {
-                    VehicleId = 3,
-                    PathImg = "Volkswagen.9.jpg"
-                },
-                new Picture()
-                {
-                    VehicleId = 3,
-                    PathImg = "Volkswagen.10.jpg"
-                },
-
-
-                //Nissan
-                new Picture()
-                {
-                    VehicleId = 4,
-                    PathImg = "Nissan.1.jpg"
-                },
-                new Picture()
-                {
-                    VehicleId = 4,
-                    PathImg = "Nissan.2.jpg"
-                },
-                new Picture()
-                {
-                    VehicleId = 4,
-                    PathImg = "Nissan.3.jpg"
-                },
-                new Picture()
-                {
-                    VehicleId = 4,
-                    PathImg = "Nissan.4.jpg"
-                },
-                new Picture()
-                {
-                    VehicleId = 4,
-                    PathImg = "Nissan.5.jpg"
-                },
-                new Picture()
-                {
-                    VehicleId = 4,
-                    PathImg = "Nissan.6.jpg"
-                },
-                new Picture()
-                {
-                    VehicleId = 4,
-                    PathImg = "Nissan.7.jpg"
-                },
-                new Picture()
-                {
-                    VehicleId = 4,
-                    PathImg = "Nissan.8.jpg"
-                },
-                new Picture()
-                {
-                    VehicleId = 4,
-                    PathImg = "Nissan.9.jpg"
-                },
-                new Picture()
-                {
-                    VehicleId = 4,
-                    PathImg = "Nissan.10.jpg"
-                },
-
-
                  //Mercedes
                 new Picture()
                 {
-                    VehicleId = 5,
+                    VehicleId = 2,
                     PathImg = "Mercedes.1.jpg"
                 },
                 new Picture()
                 {
-                    VehicleId = 5,
+                    VehicleId = 2,
                     PathImg = "Mercedes.2.jpg"
                 },
                 new Picture()
                 {
-                    VehicleId = 5,
+                    VehicleId = 2,
                     PathImg = "Mercedes.3.jpg"
                 },
                 new Picture()
                 {
-                    VehicleId = 5,
+                    VehicleId = 2,
                     PathImg = "Mercedes.4.jpg"
                 },
                 new Picture()
                 {
-                    VehicleId = 5,
+                    VehicleId = 2,
                     PathImg = "Mercedes.5.jpg"
                 },
                 new Picture()
                 {
-                    VehicleId = 5,
+                    VehicleId = 2,
                     PathImg = "Mercedes.6.jpg"
                 },
                 new Picture()
                 {
-                    VehicleId = 5,
+                    VehicleId = 2,
                     PathImg = "Mercedes.7.jpg"
                 },
 
@@ -434,47 +275,47 @@ namespace CarAuction.Seeder
                 //Chevrolet
                 new Picture()
                 {
-                    VehicleId = 6,
+                    VehicleId = 3,
                     PathImg = "Chevrolet.1.jpg"
                 },
                 new Picture()
                 {
-                    VehicleId = 6,
+                    VehicleId = 3,
                     PathImg = "Chevrolet.2.jpg"
                 },
                 new Picture()
                 {
-                    VehicleId = 6,
+                    VehicleId = 3,
                     PathImg = "Chevrolet.3.jpg"
                 },
                 new Picture()
                 {
-                    VehicleId = 6,
+                    VehicleId = 3,
                     PathImg = "Chevrolet.4.jpg"
                 },
                 new Picture()
                 {
-                    VehicleId = 6,
+                    VehicleId = 3,
                     PathImg = "Chevrolet.5.jpg"
                 },
                 new Picture()
                 {
-                    VehicleId = 6,
+                    VehicleId = 3,
                     PathImg = "Chevrolet.6.jpg"
                 },
                 new Picture()
                 {
-                    VehicleId = 6,
+                    VehicleId = 3,
                     PathImg = "Chevrolet.7.jpg"
                 },
                 new Picture()
                 {
-                    VehicleId = 6,
+                    VehicleId = 3,
                     PathImg = "Chevrolet.8.jpg"
                 },
                 new Picture()
                 {
-                    VehicleId = 6,
+                    VehicleId = 3,
                     PathImg = "Chevrolet.9.jpg"
                 },
 
@@ -482,47 +323,47 @@ namespace CarAuction.Seeder
                 //Chevrolet
                 new Picture()
                 {
-                    VehicleId = 7,
+                    VehicleId = 4,
                     PathImg = "BMW.1.jpg"
                 },
                 new Picture()
                 {
-                    VehicleId = 7,
+                    VehicleId = 4,
                     PathImg = "BMW.2.jpg"
                 },
                 new Picture()
                 {
-                    VehicleId = 7,
+                    VehicleId = 4,
                     PathImg = "BMW.3.jpg"
                 },
                 new Picture()
                 {
-                    VehicleId = 7,
+                    VehicleId = 4,
                     PathImg = "BMW.4.jpg"
                 },
                 new Picture()
                 {
-                    VehicleId = 7,
+                    VehicleId = 4,
                     PathImg = "BMW.5.jpg"
                 },
                 new Picture()
                 {
-                    VehicleId = 7,
+                    VehicleId = 4,
                     PathImg = "BMW.6.jpg"
                 },
                 new Picture()
                 {
-                    VehicleId = 7,
+                    VehicleId = 4,
                     PathImg = "BMW.7.jpg"
                 },
                 new Picture()
                 {
-                    VehicleId = 7,
+                    VehicleId = 4,
                     PathImg = "BMW.8.jpg"
                 },
                 new Picture()
                 {
-                    VehicleId = 7,
+                    VehicleId = 4,
                     PathImg = "BMW.9.jpg"
                 },
 
@@ -561,85 +402,6 @@ namespace CarAuction.Seeder
                     Category="Run and Drive",
                     OwnerId = 1,
                 },
-                new Vehicle()
-                {
-                    Producer = Producer.Ford.ToString(),
-                    ModelSpecifer = "CMAX",
-                    ModelGeneration = "2",
-                    RegistrationYear = 2015,
-                    Color = "Brown",
-                    BodyType = BodyCar.Van.ToString(),
-                    EngineCapacity = 1999,
-                    EngineOutput = 110,
-                    Transmission = Transmission.Manual.ToString(),
-                    Drive = Drive.FWD.ToString(),
-                    MeterReadout = 25000,
-                    Fuel = Fuel.Petrol.ToString(),
-                    NumberKeys = 2,
-                    ServiceManual = true,
-                    SecondTireSet = true,
-                    CurrentBid = 0,
-                    PrimaryDamage = Damage.Normal_Wear.ToString(),
-                    SecondaryDamage = Damage.Normal_Wear.ToString(),
-                    VIN = "XXXX",
-                    AuctionId = 1,
-                    SaleTerm="Used vehicle",
-                    Category="Run and Drive",
-                    OwnerId = 1,
-                },
-                new Vehicle()
-                {
-                    Producer = Producer.Volkswagen.ToString(),
-                    ModelSpecifer = "Polo",
-                    ModelGeneration = "5",
-                    RegistrationYear = 2017,
-                    Color = "Red",
-                    BodyType = BodyCar.Hatchback.ToString(),
-                    EngineCapacity = 999,
-                    EngineOutput = 88,
-                    Transmission = Transmission.Manual.ToString(),
-                    Drive = Drive.FWD.ToString(),
-                    MeterReadout = 230000,
-                    Fuel = Fuel.Diesel.ToString(),
-                    NumberKeys = 2,
-                    ServiceManual = true,
-                    SecondTireSet = true,
-                    CurrentBid = 0,
-                    PrimaryDamage = Damage.Vandalism.ToString(),
-                    SecondaryDamage = Damage.Normal_Wear.ToString(),
-                    VIN = "XXXX",
-                    AuctionId = 3,
-                    SaleTerm="Used vehicle",
-                    Category="Run and Drive",
-                    OwnerId = 1,
-                },
-                new Vehicle()
-                {
-                    Producer = Producer.Nissan.ToString(),
-                    ModelSpecifer = "Note",
-                    ModelGeneration = "2",
-                    RegistrationYear = 2016,
-                    Color = "Gray",
-                    BodyType = BodyCar.Hatchback.ToString(),
-                    EngineCapacity = 999,
-                    EngineOutput = 88,
-                    Transmission = Transmission.Manual.ToString(),
-                    Drive = Drive.FWD.ToString(),
-                    MeterReadout = 230000,
-                    Fuel = Fuel.Diesel.ToString(),
-                    NumberKeys = 2,
-                    ServiceManual = true,
-                    SecondTireSet = true,
-                    CurrentBid = 0,
-                    PrimaryDamage = Damage.Normal_Wear.ToString(),
-                    SecondaryDamage = Damage.Normal_Wear.ToString(),
-                    VIN = "XXXX",
-                    AuctionId = 3,
-                    SaleTerm="Used vehicle",
-                    Category="Run and Drive",
-                    OwnerId = 1,
-                },
-
                 new Vehicle()
                 {
                     Producer = Producer.Mercedes.ToString(),
