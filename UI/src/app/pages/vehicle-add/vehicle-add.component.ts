@@ -345,9 +345,9 @@ enum Producer {
 }
 
 enum SaleTerm {
-  Conditional_repair = 'Conditional Repair',
-  Used_vehicle = 'Used Vehicle',
-  To_be_desmantle = 'To be desmantle',
+  Conditional_repair = 'Conditional repair',
+  Used_vehicle = 'Used vehicle',
+  To_be_dismantled = 'To be dismantled',
   Classic = 'Classic',
 }
 

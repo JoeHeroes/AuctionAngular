@@ -345,9 +345,9 @@
       "Electric":"Elektryczny"
     },
     "saleTerm": {
-      "Conditional Repair":"Naprawa warunkowa",
-      "Used Vehicle":"Używany pojazd",
-      "To be desmantle":"Do demontażu",
+      "Conditional repair":"Naprawa warunkowa",
+      "Used vehicle":"Używany pojazd",
+      "To be dismantled":"Do demontażu",
       "Classic":"Klasyczny"
     },
     "transmission": {
