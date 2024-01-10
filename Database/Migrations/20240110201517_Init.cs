@@ -110,8 +110,8 @@ namespace Database.Migrations
                     Origin = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Valuation = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Condition = table.Column<int>(type: "int", nullable: false),
-                    DescriptionConditionInside = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DescriptionConditionBodywork = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DescriptionInside = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DescriptionBodywork = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ComplianceWithVIN = table.Column<bool>(type: "bit", nullable: false),
                     VehicleId = table.Column<int>(type: "int", nullable: false)
                 },

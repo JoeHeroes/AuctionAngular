@@ -33,8 +33,8 @@ export class OpinionAddComponent implements OnInit {
       origin: new FormControl("", [Validators.required]),
       valuation: new FormControl("", [Validators.required]),
       condition: new FormControl("", [Validators.required]),
-      descriptionConditionInside: new FormControl("", [Validators.required]),
-      descriptionConditionBodywork: new FormControl("", [Validators.required]),
+      descriptionInside: new FormControl("", [Validators.required]),
+      descriptionBodywork: new FormControl("", [Validators.required]),
       complianceWithVIN: new FormControl("", [Validators.required]),
     })
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/vehicle/verification';
@@ -63,8 +63,8 @@ export class OpinionAddComponent implements OnInit {
       origin: add.origin,
       valuation: add.valuation,
       condition: add.condition,
-      descriptionConditionInside: add.descriptionConditionInside,
-      descriptionConditionBodywork: add.descriptionConditionBodywork,
+      descriptionInside: add.descriptionInside,
+      descriptionBodywork: add.descriptionBodywork,
       complianceWithVIN: add.complianceWithVIN,
       vehicleId: this.id
     }
@@ -85,11 +85,11 @@ export class OpinionAddComponent implements OnInit {
       this.errorMessage = this.transloco.translate('message.conditionRequired');
       this.showError = true;
     }
-    else if (add.descriptionConditionInside == "") {
+    else if (add.descriptionInside == "") {
       this.errorMessage = this.transloco.translate('message.descriptionConditionInsideRequired');
       this.showError = true;
     }
-    else if (add.descriptionConditionBodywork == "") {
+    else if (add.descriptionBodywork == "") {
       this.errorMessage = this.transloco.translate('message.descriptionConditionBodyworkRequired');
       this.showError = true;
     }

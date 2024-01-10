@@ -35,8 +35,8 @@ export interface AddOpinionDto {
   origin: string,
   valuation: string,
   condition: number,
-  descriptionConditionInside: string,
-  descriptionConditionBodywork: string,
+  descriptionInside: string,
+  descriptionBodywork: string,
   complianceWithVIN: boolean,
   vehicleId: number,
 }

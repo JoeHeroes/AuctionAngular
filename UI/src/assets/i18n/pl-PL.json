@@ -9,6 +9,7 @@
     "editAuction": "Edytuj Aukcje",
     "addOpinion": "Dodaj opinię",
     "checkOpinion": "Sprawdź Opinie",
+    "loginToBid":"Zaloguj się żeby licytować",
     "add": "Dodaj",
     "save": "Zapisz",
     "back": "Wróć",
@@ -247,7 +248,11 @@
       "generateInvoiceCorrect":"Faktura wygenerowana poprawnie",
       "generateInvoiceFail":"Faktura wygenerowana niepoprawnie",
       "sendEmail":"Widomość wysłana poprawnie",
-      "sendEmailFail":"Widomość wysłana niepoprawnie"
+      "sendEmailFail":"Widomość wysłana niepoprawnie",
+      "positiveMeterReadout":"Podany przebieg musi być dodatnia",
+      "positiveEngineCapacity":"Podana pojemność musi być dodatnia",
+      "positiveEngineOutput":"Podana moc musi być dodatnia",
+      "positiveNumberKeys":"Podana liczba kluczyków musi być dodatnia"
     },
     "dashboard":{
       "title":"Dashboard",
@@ -354,6 +359,10 @@
     "highlight":{
       "Non Operational":"Nie odpala",
       "Run and Drive":"Odpala i jeździ"
+    },
+    "trueOrFalse":{
+      "true":"Prawda",
+      "false":"Fałsz"
     }
   }
   

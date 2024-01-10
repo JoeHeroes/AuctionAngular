@@ -26,8 +26,8 @@ namespace AuctionAngular.Services
                 Origin = dto.Origin,
                 Valuation = dto.Valuation,
                 Condition = dto.Condition,
-                DescriptionConditionInside = dto.DescriptionConditionInside,
-                DescriptionConditionBodywork = dto.DescriptionConditionBodywork,
+                DescriptionInside = dto.DescriptionInside,
+                DescriptionBodywork = dto.DescriptionBodywork,
                 ComplianceWithVIN = dto.ComplianceWithVIN,
                 VehicleId = dto.VehicleId,
             };
@@ -66,8 +66,8 @@ namespace AuctionAngular.Services
                 Origin = opinion.Origin,
                 Valuation = opinion.Valuation,
                 Condition = opinion.Condition,
-                DescriptionConditionInside = opinion.DescriptionConditionInside,
-                DescriptionConditionBodywork = opinion.DescriptionConditionBodywork,
+                DescriptionInside = opinion.DescriptionInside,
+                DescriptionBodywork = opinion.DescriptionBodywork,
                 ComplianceWithVIN = opinion.ComplianceWithVIN,
             };
         }

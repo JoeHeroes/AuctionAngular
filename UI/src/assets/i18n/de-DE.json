@@ -9,6 +9,7 @@
     "editAuction": "Auktion bearbeiten",
     "addOpinion": "Meinung hinzufügen",
     "checkOpinion": "Meinung prüfen",
+    "loginToBid":"Melden Sie sich an, um zu bieten",
     "add": "Hinzufügen",
     "save": "Speichern",
     "back": "Zurück",
@@ -243,7 +244,11 @@
     "maxDate":"Das Datum darf nicht in der Zukunft liegen",
     "minAge":"Sie müssen ein Erwachsener sein",
     "sendEmail":"Nachricht erfolgreich gesendet",
-    "sendEmailFail":"Nachricht falsch gesendet"
+    "sendEmailFail":"Nachricht falsch gesendet",
+    "positiveMeterReadout":"Die angegebene Wellenform muss positiv sein",
+    "positiveEngineCapacity":"Die angegebene Kapazität muss positiv sein",
+    "positiveEngineOutput":"Die angegebene Leistung muss positiv sein",
+    "positiveNumberKeys":"Die Anzahl der eingegebenen Schlüssel muss positiv sein"
   },
   "dashboard":{
     "title":"Armaturenbrett",
@@ -350,5 +355,9 @@
   "highlight":{
     "Non Operational":"Nicht betriebsbereit",
     "Run and Drive":"Laufen und fahren"
+  },
+  "trueOrFalse":{
+    "true":"Wahr",
+    "false":"Falsch"
   }
 }

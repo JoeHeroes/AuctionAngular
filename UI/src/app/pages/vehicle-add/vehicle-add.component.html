@@ -35,7 +35,7 @@
           <div class="dx-field">
             <div class="dx-field-label">{{t('vehicle.registrationYear')}}</div>
             <div class="dx-field-value">
-              <input type="number" id="registrationYear" formControlName="registrationYear" class="form-control" />
+              <input type="text" maxlength="4" id="registrationYear" formControlName="registrationYear" class="form-control" />
             </div>
           </div>
       
@@ -77,6 +77,12 @@
             <div class="dx-field-label">{{t('vehicle.meterReadout')}}</div>
             <div class="dx-field-value">
               <input type="number" id="meterReadout" formControlName="meterReadout" class="form-control" />
+              <div
+                *ngIf="addForm.controls['meterReadout'].invalid && (addForm.controls['meterReadout'].errors?.['required'] || addForm.controls['meterReadout'].errors?.['positiveMeterReadout'])">
+                <div *ngIf="addForm.controls['meterReadout'].errors?.['positiveMeterReadout']" style="color: red;  font-weight: bold;">
+                  {{t('notification.positiveMeterReadout')}}
+                </div>
+              </div>
             </div>
           </div>
   
@@ -114,6 +120,12 @@
             <div class="dx-field-value">
               <input type="number" id="engineCapacity" formControlName="engineCapacity" class="form-control" />
             </div>
+              <div
+                *ngIf="addForm.controls['engineCapacity'].invalid && (addForm.controls['engineCapacity'].errors?.['required'] || addForm.controls['engineCapacity'].errors?.['positiveEngineCapacity'])">
+                <div *ngIf="addForm.controls['engineCapacity'].errors?.['positiveEngineCapacity']" style="color: red;  font-weight: bold;">
+                  {{t('notification.positiveEngineCapacity')}}
+                </div>
+              </div>
           </div>
       
           <div class="dx-field">
@@ -121,12 +133,24 @@
             <div class="dx-field-value">
               <input type="number" id="engineOutput" formControlName="engineOutput" class="form-control" />
             </div>
+            <div
+              *ngIf="addForm.controls['engineOutput'].invalid && (addForm.controls['engineOutput'].errors?.['required'] || addForm.controls['engineOutput'].errors?.['positiveEngineOutput'])">
+              <div *ngIf="addForm.controls['engineOutput'].errors?.['positiveEngineOutput']"  style="color: red;  font-weight: bold;">
+                {{t('notification.positiveEngineOutput')}}
+              </div>
+            </div>
           </div>
       
           <div class="dx-field">
             <div class="dx-field-label">{{t('vehicle.numberKeys')}}</div>
             <div class="dx-field-value">
               <input type="number" id="numberKeys" formControlName="numberKeys" class="form-control" />
+            </div>
+            <div
+              *ngIf="addForm.controls['numberKeys'].invalid && (addForm.controls['numberKeys'].errors?.['required'] || addForm.controls['numberKeys'].errors?.['positiveNumberKeys'])">
+              <div *ngIf="addForm.controls['numberKeys'].errors?.['positiveNumberKeys']" style="color: red;  font-weight: bold;">
+                {{t('notification.positiveNumberKeys')}}
+              </div>
             </div>
           </div>
 

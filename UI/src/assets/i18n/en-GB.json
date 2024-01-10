@@ -9,6 +9,7 @@
     "editAuction": "Edit Auction",
     "addOpinion": "Add Opinion",
     "checkOpinion": "Check Opinion",
+    "loginToBid":"Login to bid",
     "add": "Add",
     "save": "Save",
     "back": "Back",
@@ -243,7 +244,11 @@
     "maxDate":"The date cannot be in the future",
     "minAge":"You must be an adult",
     "sendEmail":"Message sent successfully",
-    "sendEmailFail":"Message sent incorrectly"
+    "sendEmailFail":"Message sent incorrectly",
+    "positiveMeterReadout":"The specified waveform must be positive",
+    "positiveEngineCapacity":"The specified capacity must be positive",
+    "positiveEngineOutput":"The specified power must be positive",
+    "positiveNumberKeys":"The number of keys entered must be positive"
   },
   "dashboard":{
     "title":"Dashboard",
@@ -350,5 +355,9 @@
   "highlight":{
     "Non Operational":"Non Operational",
     "Run and Drive":"Run and Drive"
+  },
+  "trueOrFalse":{
+    "true":"True",
+    "false":"False"
   }
 }

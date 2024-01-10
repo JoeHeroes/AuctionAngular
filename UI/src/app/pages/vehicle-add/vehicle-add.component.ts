@@ -61,13 +61,13 @@ export class VehicleAddComponent implements OnInit {
       bodyType: new FormControl("", [Validators.required]),
       transmission: new FormControl("", [Validators.required]),
       drive: new FormControl("", [Validators.required]),
-      meterReadout: new FormControl("", [Validators.required]),
+      meterReadout: new FormControl("", [Validators.required, this.validatePositiveMeterReadout.bind(this)]),
       fuel: new FormControl("", [Validators.required]),
       primaryDamage: new FormControl("", [Validators.required]),
       secondaryDamage: new FormControl("", [Validators.required]),
-      engineCapacity: new FormControl("", [Validators.required]),
-      engineOutput: new FormControl("", [Validators.required]),
-      numberKeys: new FormControl("", [Validators.required]),
+      engineCapacity: new FormControl("", [Validators.required, this.validatePositiveEngineCapacity.bind(this)]),
+      engineOutput: new FormControl("", [Validators.required, this.validatePositiveEngineOutput.bind(this)]),
+      numberKeys: new FormControl("", [Validators.required, this.validatePositiveNumberKeys.bind(this)]),
       serviceManual: new FormControl("", [Validators.required]),
       secondTireSet: new FormControl("", [Validators.required]),
       VIN: new FormControl("", [Validators.required]),
@@ -76,6 +76,49 @@ export class VehicleAddComponent implements OnInit {
     })
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/vehicle/picture';
   }
+
+
+  validatePositiveMeterReadout(control: FormControl): { [key: string]: any } | null {
+    const number = control.value;
+
+    if (number < 0) {
+      return { positiveMeterReadout: true };
+    }
+    
+    return null; 
+  }
+
+  validatePositiveEngineCapacity(control: FormControl): { [key: string]: any } | null {
+    const number = control.value;
+
+    if (number < 0) {
+      return { positiveEngineCapacity: true };
+    }
+    
+    return null; 
+  }
+
+  validatePositiveEngineOutput(control: FormControl): { [key: string]: any } | null {
+    const number = control.value;
+
+    if (number < 0) {
+      return { positiveEngineOutput: true };
+    }
+    
+    return null; 
+  }
+  
+  validatePositiveNumberKeys(control: FormControl): { [key: string]: any } | null {
+    const number = control.value;
+
+    if (number < 0) {
+      return { positiveNumberKeys: true };
+    }
+    
+    return null; 
+  }
+  
+  
 
   addVehicle = (vehicleFormValue: any) => {
     this.showError = true;

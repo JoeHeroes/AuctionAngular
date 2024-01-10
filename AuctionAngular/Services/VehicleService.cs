@@ -179,6 +179,27 @@ namespace AuctionAngular.Services
 
         public async Task<int> CreateVehicleAsync(CreateVehicleDto dto)
         {
+
+            if(dto.EngineCapacity < 0)
+            {
+                throw new Exception();
+            }
+
+            if (dto.EngineOutput < 0)
+            {
+                throw new Exception();
+            }
+
+            if (dto.MeterReadout < 0)
+            {
+                throw new Exception();
+            }
+
+            if (dto.NumberKeys < 0)
+            {
+                throw new Exception();
+            }
+
             var vehicle = new Vehicle
             {
                 Producer = dto.Producer,
@@ -354,7 +375,7 @@ namespace AuctionAngular.Services
 
             if (await _dbContext.Watches.FirstOrDefaultAsync(x => x.VehicleId == dto.VehicleId && x.UserId == user.Id) == null)
             {
-                Auction? auction = await _dbContext.Auctions.FirstOrDefaultAsync(a => a.Id == dto.VehicleId);
+                Auction? auction = await _dbContext.Auctions.FirstOrDefaultAsync(a => a.Id == vehicle.AuctionId);
 
                 var newEvent = new Event()
                 {

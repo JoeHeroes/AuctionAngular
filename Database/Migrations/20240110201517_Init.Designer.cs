@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Database.Migrations
 {
     [DbContext(typeof(AuctionDbContext))]
-    [Migration("20240107205655_Init")]
+    [Migration("20240110201517_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -211,11 +211,11 @@ namespace Database.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("DescriptionConditionBodywork")
+                    b.Property<string>("DescriptionBodywork")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("DescriptionConditionInside")
+                    b.Property<string>("DescriptionInside")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

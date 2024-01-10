@@ -80,7 +80,7 @@
                 </tr>
                 <tr>
                   <th width="50%">{{t('vehicle.serviceManual')}}</th>
-                  <td>{{datasource.serviceManual}}</td>
+                  <td>{{t('trueOrFalse.'+datasource.serviceManual)}}</td>
                 </tr>
                 <tr>
                   <th width="50%">{{t('vehicle.primaryDamage')}}</th>
@@ -155,8 +155,8 @@
             
 
             <div class="card-body pt-0" *ngIf="!watchDto.userId">
-              Login do bid
-              <button  class="btn btn-primary" id="button" type="default" [routerLink]="'/account/login'">
+              {{t('action.loginToBid')}}
+              <button class="btn btn-primary" id="button" type="default" [routerLink]="'/account/login'">
                 {{t('account.login')}}
               </button>
             </div>

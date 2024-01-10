@@ -208,11 +208,11 @@ namespace Database.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("DescriptionConditionBodywork")
+                    b.Property<string>("DescriptionBodywork")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("DescriptionConditionInside")
+                    b.Property<string>("DescriptionInside")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

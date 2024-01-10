@@ -17,8 +17,8 @@ export class OpinionComponent implements OnInit {
     origin: "",
     valuation: "",
     condition: 0,
-    descriptionConditionInside: "",
-    descriptionConditionBodywork: "",
+    descriptionInside: "",
+    descriptionBodywork: "",
     complianceWithVIN: false,
   };
   returnUrl!: string;
