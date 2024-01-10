@@ -341,8 +341,8 @@
     "Electric":"Elektrisch"
   },
   "saleTerm": {
-    "Conditional Repair":"Bedingte Reparatur",
-    "Used Vehicle":"Gebrauchtfahrzeug",
+    "Conditional repair":"Bedingte Reparatur",
+    "Used vehicle":"Gebrauchtfahrzeug",
     "To be dismantled":"Zum Abbau",
     "Classic":"Klassisch"
   },

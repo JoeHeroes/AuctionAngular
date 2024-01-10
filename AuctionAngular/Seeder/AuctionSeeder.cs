@@ -18,6 +18,13 @@ namespace CarAuction.Seeder
             if (_dbContext.Database.CanConnect())
             {
 
+                if (!_dbContext.Users.Any())
+                {
+                    var info = GetUser();
+                    _dbContext.Users.AddRange(info);
+                    _dbContext.SaveChanges();
+                }
+
                 if (!_dbContext.Payments.Any())
                 {
                     var info = GetPayment();
@@ -61,6 +68,53 @@ namespace CarAuction.Seeder
                 }
             }
         }
+
+        public IEnumerable<User> GetUser()
+        {
+            return new List<User>()
+            {
+                new User
+                {
+                    Email = "Seller@wp.pl",
+                    Name = "Seller",
+                    SureName = "Seller",
+                    PasswordHash = "AQAAAAIAAYagAAAAEKZAdaODcQ36bA8ZGX2/r8zrnG+4n7D/PloNbGTlM+xSA38FGUaqGa6bl8kr7DwRNg==",
+                    DateOfBirth = DateTime.Parse("28.02.2000"),
+                    Nationality = "Poland",
+                    Phone = "123456789",
+                    RoleId = 2,
+                    ProfilePicture = "",
+                    isConfirmed = true
+                },
+                new User
+                {
+                    Email = "Buyer@wp.pl",
+                    Name = "Buyer",
+                    SureName = "Buyer",
+                    PasswordHash = "AQAAAAIAAYagAAAAEKZAdaODcQ36bA8ZGX2/r8zrnG+4n7D/PloNbGTlM+xSA38FGUaqGa6bl8kr7DwRNg==",
+                    DateOfBirth = DateTime.Parse("28.02.2000"),
+                    Nationality = "Poland",
+                    Phone = "123456789",
+                    RoleId = 1,
+                    ProfilePicture = "",
+                    isConfirmed = true
+                },
+                new User
+                {
+                    Email = "Admin@wp.pl",
+                    Name = "Admin",
+                    SureName = "Admin",
+                    PasswordHash = "AQAAAAIAAYagAAAAEKZAdaODcQ36bA8ZGX2/r8zrnG+4n7D/PloNbGTlM+xSA38FGUaqGa6bl8kr7DwRNg==",
+                    DateOfBirth = DateTime.Parse("28.02.2000"),
+                    Nationality = "Poland",
+                    Phone = "123456789",
+                    RoleId = 3,
+                    ProfilePicture = "",
+                    isConfirmed = true
+                }
+            };
+        }
+        
 
         public IEnumerable<Payment> GetPayment()
         {

@@ -123,7 +123,7 @@
     "newPassword": "New Password",
     "confirmNewPassword": "Confirm New Password",
     "name": "Name",
-    "surName": "Surname",
+    "sureName": "Surname",
     "nationality": "Nationality",
     "phone":"Phone",
     "dateOfBirth": "Date of Birth",
@@ -341,8 +341,8 @@
     "Electric":"Electric"
   },
   "saleTerm": {
-    "Conditional Repair":"Conditional Repair",
-    "Used Vehicle":"Used Vehicle",
+    "Conditional repair":"Conditional Repair",
+    "Used vehicle":"Used Vehicle",
     "To be dismantled":"To be dismantled",
     "Classic":"Classic"
   },
